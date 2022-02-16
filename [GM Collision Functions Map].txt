@@ -1,0 +1,9 @@
+Function            Checks using   Checks against     Returns
+----------------------------------------------------------------
+place_free          sprite/mask    solid objects      true/false
+place_empty         sprite/mask    any object         true/false
+place_meeting       sprite/mask    specified object   true/false
+position_empty      point          any object         true/false
+position_meeting    point          specified object   true/false
+instance_place      sprite/mask    specified object   instance id
+instance_position   point          specified object   instance id
