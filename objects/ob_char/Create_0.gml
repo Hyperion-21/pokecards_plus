@@ -1,0 +1,11 @@
+anim_set=0;
+anim_dir=0;
+anim_frame=0;
+anim_frame_timer=0;
+anim_frame_timermax=0;
+//
+tallgrass=false;
+attacking=false;
+jumping_state=0;
+jumping_air=0;
+jumping_air_max=16;

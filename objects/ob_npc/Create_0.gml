@@ -1,0 +1,38 @@
+//OB_NPC
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+start_x=x;
+start_y=y;
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+event_state=0;
+event_trigger=false;
+//
+event_physical=true;
+anim_set_x=-1;
+anim_set_y=-1;
+anim_dir=0;
+anim_frame=0;
+anim_frame_timer=0;
+anim_frame_timermax=10;
+//
+event_mobile=false;
+move_x=0;
+move_y=0;
+move_timer_rmax=150;
+move_timer=irandom(move_timer_rmax);
+//
+tallgrass=false;
+jumping_state=0;
+jumping_air=0;
+jumping_air_max=16;
+//
+hp_full=1;
+hp_curr=hp_full;
+hurt_cooldown=0;
+hurt_cooldownmax=16;
+knockback_x=0;
+knockback_y=0;
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+if object_get_name(object_index)="ob_npc_001" {
+	anim_set_x=5; anim_set_y=0;
+	event_mobile=true;
+}

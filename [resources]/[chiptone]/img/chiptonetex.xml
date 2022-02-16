@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker https://www.codeandweb.com/texturepacker -->
+<!-- $TexturePacker:SmartUpdate:0474cd5548f2ce9ae853b46ed86e38a0:b08d7555d039e0650008235edd28d7fd:41ebb4ac0d09be35e1df64adab772308$ -->
+<TextureAtlas imagePath="chiptonetex.png" width="512" height="512">
+    <SubTexture name="aristawhite" x="2" y="106" width="245" height="124" frameX="-2" frameY="-2" frameWidth="256" frameHeight="128"/>
+    <SubTexture name="boxwhite" x="2" y="289" width="100" height="100"/>
+    <SubTexture name="brown" x="415" y="289" width="58" height="57" frameX="-1" frameY="-2" frameWidth="60" frameHeight="60"/>
+    <SubTexture name="by" x="106" y="282" width="30" height="21" frameX="-1" frameY="-2" frameWidth="32" frameHeight="24"/>
+    <SubTexture name="cableArrow" x="2" y="234" width="30" height="46" frameX="-15" frameY="-7" frameWidth="60" frameHeight="60"/>
+    <SubTexture name="circleshadow" x="435" y="75" width="72" height="73" frameX="-14" frameY="-20" frameWidth="100" frameHeight="100"/>
+    <SubTexture name="circlewhite" x="454" y="350" width="56" height="56"/>
+    <SubTexture name="cubic" x="206" y="377" width="58" height="58" frameX="-1" frameY="-1" frameWidth="60" frameHeight="60"/>
+    <SubTexture name="dialpointerwhite" x="493" y="2" width="10" height="38" frameX="-35" frameY="-2" frameWidth="80" frameHeight="80"/>
+    <SubTexture name="dotwhite" x="491" y="51" width="10" height="10"/>
+    <SubTexture name="drag" x="243" y="268" width="48" height="28"/>
+    <SubTexture name="genCoin" x="296" y="322" width="36" height="36" frameX="-5" frameY="-5" frameWidth="46" frameHeight="46"/>
+    <SubTexture name="genDeath" x="87" y="461" width="40" height="38" frameX="-3" frameY="-4" frameWidth="46" frameHeight="46"/>
+    <SubTexture name="genExplosion" x="251" y="106" width="43" height="42" frameX="-2" frameY="-2" frameWidth="46" frameHeight="46"/>
+    <SubTexture name="genHurt" x="45" y="465" width="38" height="42" frameX="-4" frameY="-2" frameWidth="46" frameHeight="46"/>
+    <SubTexture name="genJump" x="98" y="234" width="39" height="44" frameX="-3" frameY="-1" frameWidth="46" frameHeight="46"/>
+    <SubTexture name="genJump2" x="2" y="465" width="39" height="44" frameX="-3" frameY="-1" frameWidth="46" frameHeight="46"/>
+    <SubTexture name="genLaser" x="251" y="152" width="43" height="35" frameX="-1" frameY="-5" frameWidth="46" frameHeight="46"/>
+    <SubTexture name="genPower" x="251" y="191" width="42" height="38" frameX="-2" frameY="-4" frameWidth="46" frameHeight="46"/>
+    <SubTexture name="genSelect" x="251" y="233" width="42" height="31" frameX="-2" frameY="-8" frameWidth="46" frameHeight="46"/>
+    <SubTexture name="load" x="435" y="16" width="52" height="55" frameX="-4" frameY="-5" frameWidth="60" frameHeight="60"/>
+    <SubTexture name="logo" x="2" y="16" width="292" height="86" frameX="-3" frameY="-2" frameWidth="300" frameHeight="90"/>
+    <SubTexture name="pen" x="234" y="313" width="58" height="58" frameX="-1" frameY="-1" frameWidth="60" frameHeight="60"/>
+    <SubTexture name="pink" x="229" y="439" width="58" height="58" frameX="-1" frameY="-1" frameWidth="60" frameHeight="60"/>
+    <SubTexture name="play" x="131" y="461" width="38" height="38" frameX="-1" frameY="-1" frameWidth="40" frameHeight="40"/>
+    <SubTexture name="random" x="428" y="232" width="72" height="53" frameX="-4" frameY="-14" frameWidth="80" frameHeight="80"/>
+    <SubTexture name="rec" x="173" y="457" width="52" height="52" frameX="-4" frameY="-4" frameWidth="60" frameHeight="60"/>
+    <SubTexture name="refresh" x="296" y="288" width="42" height="30" frameX="-2" frameY="-8" frameWidth="46" frameHeight="46"/>
+    <SubTexture name="saw" x="268" y="375" width="58" height="58" frameX="-1" frameY="-1" frameWidth="60" frameHeight="60"/>
+    <SubTexture name="sfb" x="36" y="234" width="58" height="44"/>
+    <SubTexture name="shadowhigh" x="431" y="152" width="76" height="76" frameX="-12" frameY="-20" frameWidth="100" frameHeight="100"/>
+    <SubTexture name="shadowinner" x="106" y="313" width="60" height="61" frameX="-20" frameY="-19" frameWidth="100" frameHeight="100"/>
+    <SubTexture name="shadowinnermid" x="170" y="313" width="60" height="60" frameX="-20" frameY="-20" frameWidth="100" frameHeight="100"/>
+    <SubTexture name="shadowinnersmall" x="142" y="392" width="60" height="61" frameX="-20" frameY="-19" frameWidth="100" frameHeight="100"/>
+    <SubTexture name="shadowlow" x="74" y="393" width="64" height="64" frameX="-18" frameY="-19" frameWidth="100" frameHeight="100"/>
+    <SubTexture name="shadowmid" x="2" y="393" width="68" height="68" frameX="-16" frameY="-20" frameWidth="100" frameHeight="100"/>
+    <SubTexture name="sine" x="291" y="437" width="58" height="58" frameX="-1" frameY="-1" frameWidth="60" frameHeight="60"/>
+    <SubTexture name="square" x="415" y="412" width="57" height="57" frameX="-2" frameY="-2" frameWidth="60" frameHeight="60"/>
+    <SubTexture name="tabSampler" x="298" y="93" width="129" height="88" frameX="-11" frameY="-6" frameWidth="150" frameHeight="100"/>
+    <SubTexture name="tabSequencer" x="298" y="16" width="133" height="73" frameX="-9" frameY="-14" frameWidth="150" frameHeight="100"/>
+    <SubTexture name="tabSynth" x="141" y="234" width="98" height="75" frameX="-26" frameY="-13" frameWidth="150" frameHeight="100"/>
+    <SubTexture name="tabVocoder" x="298" y="185" width="126" height="75" frameX="-12" frameY="-15" frameWidth="150" frameHeight="100"/>
+    <SubTexture name="tangent" x="353" y="288" width="58" height="58" frameX="-1" frameY="-1" frameWidth="60" frameHeight="60"/>
+    <SubTexture name="timebars0" x="2" y="2" width="487" height="10" frameX="-13" frameY="0" frameWidth="500" frameHeight="10"/>
+    <SubTexture name="timebars1" x="297" y="264" width="108" height="20" frameX="-22" frameY="0" frameWidth="130" frameHeight="20"/>
+    <SubTexture name="timebars2" x="106" y="378" width="56" height="10" frameX="-9" frameY="0" frameWidth="65" frameHeight="10"/>
+    <SubTexture name="timebars3" x="491" y="44" width="19" height="3" frameX="-1" frameY="0" frameWidth="20" frameHeight="3"/>
+    <SubTexture name="timebars4" x="505" y="51" width="5" height="3" frameX="-15" frameY="0" frameWidth="20" frameHeight="3"/>
+    <SubTexture name="triangle" x="330" y="362" width="58" height="58" frameX="-1" frameY="-1" frameWidth="60" frameHeight="60"/>
+    <SubTexture name="whistle" x="353" y="424" width="58" height="58" frameX="-1" frameY="-1" frameWidth="60" frameHeight="60"/>
+    <SubTexture name="white" x="392" y="350" width="58" height="58" frameX="-1" frameY="-1" frameWidth="60" frameHeight="60"/>
+</TextureAtlas>
