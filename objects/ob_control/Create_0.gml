@@ -1,6 +1,6 @@
 randomize(); //random seed
-game_name="";
-game_version="v0.0.0.1";
+game_name="The Viridian Road";
+game_version="v0.0.0.2";
 window_set_caption(game_name + " " + string(game_version));
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-1000;
@@ -9,7 +9,7 @@ camera_set_view_pos(view_camera[0],x,y);
 camera_set_view_size(view_camera[0],512,288);
 camera_set_view_target(view_camera[0],ob_control);
 camera_set_view_border(view_camera[0],99999,99999);
-camera_set_view_speed(view_camera[0],8,8);
+camera_set_view_speed(view_camera[0],-1,-1);
 cam_x=camera_get_view_x(view_camera[0]);
 cam_y=camera_get_view_y(view_camera[0]);
 cam_w=camera_get_view_width(view_camera[0]);
@@ -23,11 +23,11 @@ global.sound_level=10;
 global.music_level=10;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 //instance_create_layer(x+128,y+96,"instances",ob_char);
+instance_create_layer(16,16,"instances",ob_card);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 event_active=false;
 reset_objects=false;
 screen_transition=false;
-quick_transition=false;
 //
 fade_black=0;
 textbox_active=false;

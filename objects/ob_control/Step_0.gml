@@ -1,11 +1,5 @@
-//x=(floor(ob_char.x/256)*256)+128;
-//y=(floor(ob_char.y/192)*192)+96;
-//
 cam_x=camera_get_view_x(view_camera[0]);
 cam_y=camera_get_view_y(view_camera[0]);
-//
-if quick_transition=true { camera_set_view_speed(view_camera[0],-1,-1); }
-else { camera_set_view_speed(view_camera[0],8,8); }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if cam_x!=(floor(x/256)*256) or cam_y!=(floor(y/192)*192) { //camera moving
 	if screen_transition=false { screen_transition=true; }
