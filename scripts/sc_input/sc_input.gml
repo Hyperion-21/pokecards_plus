@@ -2,18 +2,13 @@ function sc_input(argument0,argument1) {
 /// @param input
 /// @param hold
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if gamepad_axis_value(global.gamepad_current,gp_axislv)=0 { global.gamepad_lvaxis=false; }
-if gamepad_axis_value(global.gamepad_current,gp_axislh)=0 { global.gamepad_lhaxis=false; }
-//————————————————————————————————————————————————————————————————————————————————————————————————————
-if argument0="01" { //cross
+if argument0="01" {
 	if argument1=true
-		and ((keyboard_check(vk_space) or keyboard_check(ord("S")))
-		or gamepad_button_check(global.gamepad_current,gp_face1)) {
+		and (keyboard_check(vk_tab)) {
 		return true;
 	}
 	else if argument1=false
-		and ((keyboard_check_pressed(vk_space) or keyboard_check_pressed(ord("S")))
-		or gamepad_button_check_pressed(global.gamepad_current,gp_face1)) {
+		and (keyboard_check_pressed(vk_tab)) {
 		return true;
 	}
 }

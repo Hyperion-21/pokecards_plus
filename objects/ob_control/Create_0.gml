@@ -1,6 +1,6 @@
 randomize(); //random seed
-game_name="The Viridian Road";
-game_version="v0.0.0.2";
+game_name="The Crystal Road";
+game_version="v0.0.0.3";
 window_set_caption(game_name + " " + string(game_version));
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-1000;
@@ -22,9 +22,23 @@ window_set_fullscreen(false);
 global.sound_level=10;
 global.music_level=10;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-//instance_create_layer(x+128,y+96,"instances",ob_char);
 instance_create_layer(16,16,"instances",ob_card);
+instance_create_layer(80,16,"instances",ob_card);
+instance_create_layer(144,16,"instances",ob_card);
+instance_create_layer(208,16,"instances",ob_card);
+instance_create_layer(272,16,"instances",ob_card);
+instance_create_layer(336,16,"instances",ob_card);
+instance_create_layer(400,16,"instances",ob_card);
+instance_create_layer(16,128,"instances",ob_card);
+instance_create_layer(80,128,"instances",ob_card);
+instance_create_layer(144,128,"instances",ob_card);
+instance_create_layer(208,128,"instances",ob_card);
+instance_create_layer(272,128,"instances",ob_card);
+instance_create_layer(336,128,"instances",ob_card);
+instance_create_layer(400,128,"instances",ob_card);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+tooltip_text="";
+//
 event_active=false;
 reset_objects=false;
 screen_transition=false;
