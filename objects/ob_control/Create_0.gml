@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="The Crystal Road";
-game_version="v0.0.0.3";
+game_version="v0.0.0.4";
 window_set_caption(game_name + " " + string(game_version));
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-1000;
@@ -29,13 +29,20 @@ instance_create_layer(208,16,"instances",ob_card);
 instance_create_layer(272,16,"instances",ob_card);
 instance_create_layer(336,16,"instances",ob_card);
 instance_create_layer(400,16,"instances",ob_card);
-instance_create_layer(16,128,"instances",ob_card);
-instance_create_layer(80,128,"instances",ob_card);
-instance_create_layer(144,128,"instances",ob_card);
-instance_create_layer(208,128,"instances",ob_card);
-instance_create_layer(272,128,"instances",ob_card);
-instance_create_layer(336,128,"instances",ob_card);
-instance_create_layer(400,128,"instances",ob_card);
+instance_create_layer(16,103,"instances",ob_card);
+instance_create_layer(80,103,"instances",ob_card);
+instance_create_layer(144,103,"instances",ob_card);
+instance_create_layer(208,103,"instances",ob_card);
+instance_create_layer(272,103,"instances",ob_card);
+instance_create_layer(336,103,"instances",ob_card);
+instance_create_layer(400,103,"instances",ob_card);
+instance_create_layer(16,190,"instances",ob_card);
+instance_create_layer(80,190,"instances",ob_card);
+instance_create_layer(144,190,"instances",ob_card);
+instance_create_layer(208,190,"instances",ob_card);
+instance_create_layer(272,190,"instances",ob_card);
+instance_create_layer(336,190,"instances",ob_card);
+instance_create_layer(400,190,"instances",ob_card);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 tooltip_text="";
 //

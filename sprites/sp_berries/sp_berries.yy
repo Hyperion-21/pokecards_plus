@@ -7,15 +7,15 @@
   "edgeFiltering": false,
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
-  "bbox_left": 16,
-  "bbox_right": 299,
+  "bbox_left": 0,
+  "bbox_right": 131,
   "bbox_top": 0,
-  "bbox_bottom": 106,
+  "bbox_bottom": 35,
   "HTile": false,
   "VTile": false,
   "For3D": false,
-  "width": 400,
-  "height": 400,
+  "width": 132,
+  "height": 36,
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
@@ -24,12 +24,12 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"c15f73ef-5a4c-4cd2-9b9b-a31c97c78fb0","path":"sprites/sp_sheet/sp_sheet.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"c15f73ef-5a4c-4cd2-9b9b-a31c97c78fb0","path":"sprites/sp_sheet/sp_sheet.yy",},"LayerId":{"name":"c7eda954-64ee-4b20-b726-578e59bb3180","path":"sprites/sp_sheet/sp_sheet.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"sp_sheet","path":"sprites/sp_sheet/sp_sheet.yy",},"resourceVersion":"1.0","name":"c15f73ef-5a4c-4cd2-9b9b-a31c97c78fb0","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"8257a7af-6a32-4688-a9e1-b5aee43b5901","path":"sprites/sp_berries/sp_berries.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"8257a7af-6a32-4688-a9e1-b5aee43b5901","path":"sprites/sp_berries/sp_berries.yy",},"LayerId":{"name":"5460a16f-7277-4571-9cc4-b560daf62c7d","path":"sprites/sp_berries/sp_berries.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"sp_berries","path":"sprites/sp_berries/sp_berries.yy",},"resourceVersion":"1.0","name":"8257a7af-6a32-4688-a9e1-b5aee43b5901","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"sp_sheet","path":"sprites/sp_sheet/sp_sheet.yy",},
+    "spriteId": {"name":"sp_berries","path":"sprites/sp_berries/sp_berries.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"c7e79574-afbc-4523-8018-dbfded207a1c","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"c15f73ef-5a4c-4cd2-9b9b-a31c97c78fb0","path":"sprites/sp_sheet/sp_sheet.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"4d7b0d40-74c0-4ab0-9433-68ef942abc80","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"8257a7af-6a32-4688-a9e1-b5aee43b5901","path":"sprites/sp_berries/sp_berries.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
@@ -58,14 +58,14 @@
     "yorigin": 0,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"sp_sheet","path":"sprites/sp_sheet/sp_sheet.yy",},
+    "parent": {"name":"sp_berries","path":"sprites/sp_berries/sp_berries.yy",},
     "resourceVersion": "1.3",
-    "name": "sp_sheet",
+    "name": "sp_berries",
     "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"c7eda954-64ee-4b20-b726-578e59bb3180","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"5460a16f-7277-4571-9cc4-b560daf62c7d","tags":[],"resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
@@ -73,7 +73,7 @@
     "path": "folders/Sprites.yy",
   },
   "resourceVersion": "1.0",
-  "name": "sp_sheet",
+  "name": "sp_berries",
   "tags": [],
   "resourceType": "GMSprite",
 }
