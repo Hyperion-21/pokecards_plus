@@ -1,5 +1,6 @@
 cam_x=camera_get_view_x(view_camera[0]);
 cam_y=camera_get_view_y(view_camera[0]);
+if keyboard_check_pressed(vk_f5) { game_restart(); } //< delete later, testing
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if cam_x!=(floor(x/256)*256) or cam_y!=(floor(y/192)*192) { //camera moving
 	if screen_transition=false { screen_transition=true; }
