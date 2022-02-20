@@ -53,22 +53,17 @@ if card_cat=0 {
 	}
 	else if (card_cost_total=1 and mouse_x>=x+3 and mouse_y>=y+35 and mouse_x<=x+7 and mouse_y<=y+39) or
 		(card_cost_total=2 and mouse_x>=x+3 and mouse_y>=y+35 and mouse_x<=x+11 and mouse_y<=y+39) or
-		(card_cost_total=3 and mouse_x>=x+3 and mouse_y>=y+35 and mouse_x<=x+15 and mouse_y<=y+39) or
-		(card_cost_total=4 and mouse_x>=x+3 and mouse_y>=y+35 and mouse_x<=x+19 and mouse_y<=y+39) {
+		(card_cost_total=3 and mouse_x>=x+3 and mouse_y>=y+35 and mouse_x<=x+15 and mouse_y<=y+39) {
 		ob_control.tooltip_text="";
-		if card_cost[0]=0 { ob_control.tooltip_text=ob_control.tooltip_text + "Oran"; }
-		else if card_cost[0]=1 { ob_control.tooltip_text=ob_control.tooltip_text + "Leppa"; }
-		else if card_cost[0]=2 { ob_control.tooltip_text=ob_control.tooltip_text + "Lum"; }
-		else if card_cost[0]=3 { ob_control.tooltip_text=ob_control.tooltip_text + "Enigma"; }
-		if card_cost[1]=0 { ob_control.tooltip_text=ob_control.tooltip_text + ", Oran"; }
-		else if card_cost[1]=1 { ob_control.tooltip_text=ob_control.tooltip_text + ", Leppa"; }
-		else if card_cost[1]=2 { ob_control.tooltip_text=ob_control.tooltip_text + ", Lum"; }
-		else if card_cost[1]=3 { ob_control.tooltip_text=ob_control.tooltip_text + ", Enigma"; }
-		if card_cost[2]=0 { ob_control.tooltip_text=ob_control.tooltip_text + ", Oran"; }
-		else if card_cost[2]=1 { ob_control.tooltip_text=ob_control.tooltip_text + ", Leppa"; }
-		else if card_cost[2]=2 { ob_control.tooltip_text=ob_control.tooltip_text + ", Lum"; }
-		else if card_cost[2]=3 { ob_control.tooltip_text=ob_control.tooltip_text + ", Enigma"; }
-		if card_cost[3]=3 { ob_control.tooltip_text=ob_control.tooltip_text + ", Enigma"; }
+		if card_cost[0]=0 { ob_control.tooltip_text=ob_control.tooltip_text + "Oran Berry"; }
+		else if card_cost[0]=1 { ob_control.tooltip_text=ob_control.tooltip_text + "Leppa Berry"; }
+		else if card_cost[0]=2 { ob_control.tooltip_text=ob_control.tooltip_text + "Lum Berry"; }
+		else if card_cost[0]=3 { ob_control.tooltip_text=ob_control.tooltip_text + "Enigma Berry"; }
+		if card_cost[1]=0 { ob_control.tooltip_text=ob_control.tooltip_text + ", Oran Berry"; }
+		else if card_cost[1]=1 { ob_control.tooltip_text=ob_control.tooltip_text + ", Leppa Berry"; }
+		else if card_cost[1]=2 { ob_control.tooltip_text=ob_control.tooltip_text + ", Lum Berry"; }
+		else if card_cost[1]=3 { ob_control.tooltip_text=ob_control.tooltip_text + ", Enigma Berry"; }
+		if card_cost[2]=3 { ob_control.tooltip_text=ob_control.tooltip_text + ", Enigma Berry"; }
 		ob_control.tooltip_text=ob_control.tooltip_text + ".";
 	}
 }

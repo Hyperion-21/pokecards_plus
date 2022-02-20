@@ -29,17 +29,17 @@ if card_cat=0 {
 	if card_glyph_c>=0 { draw_sprite_general(sp_sheet,0,16*(card_glyph_c+1),16*6,12,11,x+43,y+22,1,1,0,c_white,c_white,c_white,c_white,1); }
 	//
 	var i=0;
-	repeat (4) {
+	repeat (3) {
 		if card_cost[i]>=0 { draw_sprite_general(sp_sheet,0,16*(card_cost[i]+1),16*4,4,4,x+3+4*i,y+35,1,1,0,c_white,c_white,c_white,c_white,1); }
 		i+=1;
 	}
 	//
-	draw_healthbar(x+4,y+56,x+52,y+57,card_exp,make_colour_rgb(205,198,181),make_colour_rgb(91,88,80),make_colour_rgb(91,88,80),0,true,false);
-	//
 	draw_set_font(fn_m3x6);
 	draw_set_halign(fa_center);
+	draw_healthbar(x+4,y+56,x+52,y+57,0,make_colour_rgb(205,198,181),c_white,c_white,0,true,false);
 	sc_drawtext(x+29,y+39,card_name,make_colour_rgb(230,230,230),make_colour_rgb(40,40,40),1,0.6,0,-1);
 	sc_drawtext(x+29,y+50,"lv " + string(card_level),make_colour_rgb(190,190,190),make_colour_rgb(40,40,40),1,0.5,0,-1);
+	//sc_drawtext(x+29,y+4,string(card_rarity),c_aqua,make_colour_rgb(40,40,40),1,0.6,0,-1);
 	//
 	draw_set_halign(fa_left);
 	sc_drawtext(x+5,y+66,string(card_atk),make_colour_rgb(230,230,230),make_colour_rgb(40,40,40),1,0.5,0,-1);

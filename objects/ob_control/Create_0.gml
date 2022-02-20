@@ -1,6 +1,6 @@
 randomize(); //random seed
-game_name="The Crystal Road";
-game_version="v0.0.0.5";
+game_name="Faraway Road";
+game_version="v0.0.0.6";
 window_set_caption(game_name + " " + string(game_version));
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-1000;
