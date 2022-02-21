@@ -1,0 +1,1 @@
+draw_sprite_general(sp_sheet,0,16*37+4,16*0,57,80,x,y,1,1,0,c_white,c_white,c_white,c_white,1);

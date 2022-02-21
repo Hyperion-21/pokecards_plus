@@ -1,0 +1,13 @@
+✔	project setup
+✔	card stats system
+✔	random card generation
+✔	playing grid & drawing cards
+placing cards
+attacking
+turn order
+enemy AI
+win & lose
+save data
+world map setup
+random map generation
+map events

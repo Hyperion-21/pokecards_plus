@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Faraway Road";
-game_version="v0.0.0.6";
+game_version="v0.0.0.7";
 window_set_caption(game_name + " " + string(game_version));
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-1000;
@@ -14,7 +14,7 @@ cam_x=camera_get_view_x(view_camera[0]);
 cam_y=camera_get_view_y(view_camera[0]);
 cam_w=camera_get_view_width(view_camera[0]);
 cam_h=camera_get_view_height(view_camera[0]);
-surface_resize(application_surface,cam_w*2,cam_h*2);
+surface_resize(application_surface,cam_w,cam_h);
 //
 display_reset(0,true);
 window_set_fullscreen(false);
@@ -22,30 +22,46 @@ window_set_fullscreen(false);
 global.sound_level=10;
 global.music_level=10;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-instance_create_layer(16,16,"instances",ob_card);
-instance_create_layer(80,16,"instances",ob_card);
-instance_create_layer(144,16,"instances",ob_card);
-instance_create_layer(208,16,"instances",ob_card);
-instance_create_layer(272,16,"instances",ob_card);
-instance_create_layer(336,16,"instances",ob_card);
-instance_create_layer(400,16,"instances",ob_card);
-instance_create_layer(16,103,"instances",ob_card);
-instance_create_layer(80,103,"instances",ob_card);
-instance_create_layer(144,103,"instances",ob_card);
-instance_create_layer(208,103,"instances",ob_card);
-instance_create_layer(272,103,"instances",ob_card);
-instance_create_layer(336,103,"instances",ob_card);
-instance_create_layer(400,103,"instances",ob_card);
-instance_create_layer(16,190,"instances",ob_card);
-instance_create_layer(80,190,"instances",ob_card);
-instance_create_layer(144,190,"instances",ob_card);
-instance_create_layer(208,190,"instances",ob_card);
-instance_create_layer(272,190,"instances",ob_card);
-instance_create_layer(336,190,"instances",ob_card);
-instance_create_layer(400,190,"instances",ob_card);
+var i=0;
+repeat (10) {
+	if i<=4 { card_space_id[i]=instance_create_layer(100+64*(i),59,"instances",ob_card_space); }
+	else { card_space_id[i]=instance_create_layer(100+64*(i-5),149,"instances",ob_card_space); }
+	i+=1;
+}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-tooltip_text="";
+card_maindeck_total=100;
+var i=0;
+repeat (card_maindeck_total) {
+	card_cat_creation=0;
+	card_maindeck[i]=instance_create_layer(cam_w-67,181,"instances",ob_card);
+	card_maindeck[i].num_in_maindeck=i;
+	i+=1;
+}
 //
+card_berrydeck_total=20;
+var i=0;
+repeat (card_berrydeck_total) {
+	card_cat_creation=1;
+	card_berrydeck[i]=instance_create_layer(10,181,"instances",ob_card);
+	card_berrydeck[i].num_in_berrydeck=i;
+	i+=1;
+}
+//
+card_hand_total=0;
+card_hand_max=50;
+var i=0;
+repeat (card_hand_max) {
+	card_hand[i]=-1;
+	i+=1;
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+mouse_cursor=0;
+cursor_hide=false;
+tooltip_text="";
+card_focus=-1; //id
+card_hold=-1; //id
+card_focus_hand=-1;
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 event_active=false;
 reset_objects=false;
 screen_transition=false;

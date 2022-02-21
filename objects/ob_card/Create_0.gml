@@ -1,4 +1,13 @@
-card_cat=choose(0,0,0,1);
+depth=100;
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+card_face=false;
+card_cat=ob_control.card_cat_creation;
+//
+num_in_maindeck=-1;
+num_in_berrydeck=-1;
+//
+potential_x=x;
+potential_y=y;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if card_cat=0 {
 	do {
@@ -14,28 +23,30 @@ if card_cat=0 {
 		}
 		card_enigma=false;
 		card_secret=false;
-		//
 		card_glyph_a=-1;
 		card_glyph_b=-1;
 		card_glyph_c=-1;
+		//
+		sc_pokelist();
+		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		var card_glyph_chance=irandom(999)+1, card_glyph_total=0;
 		if card_glyph_chance<=1 { card_glyph_total=3; } //0.1%
 		else if card_glyph_chance<=11 { card_glyph_total=2; } //1%
 		else if card_glyph_chance<=31 { card_glyph_total=1; } //2%
-		if card_glyph_total>=1 { card_glyph_a=irandom_range(0,17); }
-		if card_glyph_total>=2 {
+		if card_glyph_total>=1 and card_glyph_a=-1 {
+			card_glyph_a=irandom_range(0,17);
+		}
+		if card_glyph_total>=2 and card_glyph_b=-1 {
 			do {
 				card_glyph_b=irandom_range(0,17);
 			} until (card_glyph_b!=card_glyph_a);
 		}
-		if card_glyph_total=3 {
+		if card_glyph_total=3 and card_glyph_c=-1 {
 			do {
 				card_glyph_c=irandom_range(0,17);
 			} until (card_glyph_c!=card_glyph_a and card_glyph_c!=card_glyph_b);
 		}
 		//
-		sc_pokelist();
-		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		card_full_hp=1+floor((card_base_hp*card_level)/30); //hp: 1/255 -> 1/9 to 1/86
 		card_full_atk=ceil((card_base_atk*card_level)/100); //atk: 20/~250 -> 1/2 to 2/25
 		card_full_def=floor((card_base_def*card_level)/300); //def: 35/460 -> 0/1 to 1/15
