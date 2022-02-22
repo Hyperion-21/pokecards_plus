@@ -35,4 +35,4 @@ if textbox_active=true { sc_drawrectangle(cam_x+4,cam_y+cam_h-52,cam_x+cam_w-6,c
 if text_string!="" { sc_drawtext(cam_x+12,cam_y+cam_h-48,text_show,c_white,c_black,1,0.5,0,233); }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if cursor_hide=false { var mouse_alpha=1; } else { var mouse_alpha=0.5; }
-draw_sprite_general(sp_sheet,0,16*(mouse_cursor+1),16*0,16,16,mouse_x-3,mouse_y-3,1,1,0,c_white,c_white,c_white,c_white,mouse_alpha);
+draw_sprite_general(sp_sheet,0,16*(mouse_cursor+1),16*0,16,16,mouse_x-5,mouse_y-5,1,1,0,c_white,c_white,c_white,c_white,mouse_alpha);

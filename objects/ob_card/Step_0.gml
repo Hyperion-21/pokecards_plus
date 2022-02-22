@@ -19,11 +19,12 @@ if potential_y!=y {
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if mouse_x>=x and mouse_y>=y and mouse_x<=x+57 and mouse_y<=y+80 {
-	ob_control.mouse_cursor=1;
+if mouse_x>=x and mouse_y>=y and mouse_x<=x+sprite_width and mouse_y<=y+sprite_height {
+	if card_face=false { ob_control.mouse_cursor=1; }
+	else { ob_control.mouse_cursor=2; }
 	//
 	if card_face=false and ((num_in_maindeck>=0 and num_in_maindeck=ob_control.card_maindeck_total-1) or (num_in_berrydeck>=0 and num_in_berrydeck=ob_control.card_berrydeck_total-1)) {
-		if mouse_check_button_pressed(mb_left) {
+		if mouse_check_button_pressed(mb_left) and ob_control.cursor_hide=false {
 			ob_control.card_hand_total+=1;
 			ob_control.card_hand[ob_control.card_hand_total-1]=id;
 			card_face=true;

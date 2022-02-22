@@ -39,20 +39,48 @@ repeat (card_hand_total) {
 	i+=1;
 }
 if card_focus!=-1 {
-	if mouse_check_button(mb_left) {
+	if mouse_check_button(mb_left) and cursor_hide=false {
 		card_focus.potential_x=mouse_x-28;
 		card_focus.potential_y=mouse_y-40;
 		card_hold=card_focus;
 	}
-	else if cursor_hide=true or (mouse_x<card_focus.x or mouse_y<card_focus.y or mouse_x>card_focus.x+57 or mouse_y>card_focus.y+80) {
+	else if (mouse_x<card_focus.x or mouse_y<card_focus.y or mouse_x>card_focus.x+57 or mouse_y>card_focus.y+80) or cursor_hide=true {
 		card_focus=-1;
 		card_focus_hand=-1;
 	}
 }
-if card_hold!=-1 and !mouse_check_button(mb_left) {
+if card_hold!=-1 and (!mouse_check_button(mb_left) or cursor_hide=true) {
 	card_focus=-1;
 	card_hold=-1;
 	card_focus_hand=-1;
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+if button_sorthand=true and card_focus=-1 {
+	var i=0, card_hand_pos_replace;
+	repeat (card_hand_total) {
+		card_hand_pos_replace[i]=-1;
+		i+=1;
+	}
+	//
+	var i=1, ii=0;
+	do {
+		var iii=0;
+		repeat (card_hand_total) {
+			if card_hand[iii].card_id=i and card_hand_pos_replace[ii]=-1 {
+				card_hand_pos_replace[ii]=card_hand[iii];
+				ii+=1;
+			}
+			iii+=1;
+		}
+		i+=1;
+	}
+	until (ii=card_hand_total);
+	//
+	var i=0;
+	repeat (card_hand_total) {
+		card_hand[i]=card_hand_pos_replace[i];
+		i+=1;
+	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 //if cam_x!=(floor(x/256)*256) or cam_y!=(floor(y/192)*192) { //camera moving
@@ -98,3 +126,6 @@ else if text_string!="" {
 		text_next=true;
 	}
 }
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+button_sorthand=false;
+button_nextturn=false;

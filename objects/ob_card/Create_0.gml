@@ -11,7 +11,10 @@ potential_y=y;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if card_cat=0 {
 	do {
-		card_id=irandom_range(0,251);
+		normal_id_max=251;
+		card_id=irandom_range(1,normal_id_max+1); //from 1 to max normal cards + secret cards
+		if card_id>normal_id_max { card_id+=2000-normal_id_max; } //secret cards
+		//
 		card_level=irandom_range(1,10);
 		//
 		if card_id<=386 { card_sheet=sp_poke_a; }
@@ -131,17 +134,17 @@ if card_cat=0 {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if card_cat=1 {
 	var card_berry_chance=irandom(999)+1;
-	if card_berry_chance<=995 { card_id=choose(2001,2002,2003); }
-	else { card_id=2004; }
+	if card_berry_chance<=995 { card_id=choose(3001,3002,3003); }
+	else { card_id=3004; }
 	//
 	switch (card_id) {
-		case 2001:
+		case 3001:
 			card_name="Oran Berry"; break;
-		case 2002:
+		case 3002:
 			card_name="Leppa Berry"; break;
-		case 2003:
+		case 3003:
 			card_name="Lum Berry"; break;
-		case 2004:
+		case 3004:
 			card_name="Enigma Berry"; break;
 	}
 }

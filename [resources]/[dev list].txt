@@ -2,6 +2,7 @@
 ✔	card stats system
 ✔	random card generation
 ✔	playing grid & drawing cards
+✔	sorting cards in hand
 placing cards
 attacking
 turn order
@@ -9,5 +10,6 @@ enemy AI
 win & lose
 save data
 world map setup
+deck construction
 random map generation
 map events

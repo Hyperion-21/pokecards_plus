@@ -1,0 +1,2 @@
+if button_id=0 { draw_sprite_general(sp_sheet,0,16*3,16*(7+(ceil(button_state)*2)),31,24,x,y,1,1,0,c_white,c_white,c_white,c_white,1); }
+else if button_id=1 { draw_sprite_general(sp_sheet,0,16*1,16*(7+(ceil(button_state)*2)),16,16,x,y,1,1,0,c_white,c_white,c_white,c_white,1); }
