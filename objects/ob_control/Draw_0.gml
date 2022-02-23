@@ -12,6 +12,16 @@ draw_set_halign(fa_right);
 var var_text=string(card_maindeck_total) + "x Main Deck";
 sc_drawrectangle(cam_w-15-string_width(var_text),cam_h-20,cam_w-11,cam_h-9,make_colour_rgb(40,40,40),make_colour_rgb(40,40,40),1,0.5,0);
 sc_drawtext(cam_w-12,cam_h-21,var_text,make_colour_rgb(230,230,230),c_black,0.1,0,0,-1);
+//
+draw_set_halign(fa_left);
+if card_draw_points>=card_drawcost_berry {
+	sc_drawrectangle(27,193,49,204,make_colour_rgb(40,40,40),make_colour_rgb(40,40,40),1,0.5,0);
+	sc_drawtext(30,192,"Draw",make_colour_rgb(160,193,225),make_colour_rgb(40,40,40),1,0.5,0,-1);
+}
+if card_draw_points>=card_drawcost_main {
+	sc_drawrectangle(cam_w-50,193,cam_w-28,204,make_colour_rgb(40,40,40),make_colour_rgb(40,40,40),1,0.5,0);
+	sc_drawtext(cam_w-47,192,"Draw",make_colour_rgb(160,193,225),make_colour_rgb(40,40,40),1,0.5,0,-1);
+}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if tooltip_text!="" {
 	if mouse_x+17+string_width(tooltip_text)<cam_w {

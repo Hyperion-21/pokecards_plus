@@ -1,4 +1,4 @@
-if mouse_x>=x and mouse_y>=y+2 and mouse_x<=x+sprite_width and mouse_y<=y+sprite_height-2 and ob_control.mouse_cursor=0 {
+if mouse_x>=x and mouse_y>=y+2 and mouse_x<x+sprite_width and mouse_y<y+sprite_height-2 and ob_control.mouse_cursor=0 {
 	ob_control.mouse_cursor=1;
 	if mouse_check_button_pressed(mb_left) and button_state=0 {
 		if button_id=0 {

@@ -1,6 +1,7 @@
-depth=100;
+depth=200;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 card_face=false;
+card_played=false;
 card_cat=ob_control.card_cat_creation;
 //
 num_in_maindeck=-1;
@@ -118,33 +119,50 @@ if card_cat=0 {
 	else if card_cost_total=3 and card_type_b=-1 and card_enigma=true { card_cost[0]=card_type_a; card_cost[1]=card_type_a; card_cost[2]=20; }
 	else if card_cost_total=3 and card_type_b>=0 and card_enigma=true { card_cost[0]=card_type_a; card_cost[1]=card_type_b; card_cost[2]=20; }
 	//
+	card_cost_total_type[0]=0; //oran
+	card_cost_total_type[1]=0; //leppa
+	card_cost_total_type[2]=0; //lum
+	card_cost_total_type[3]=0; //enigma
+	//
 	var i=0;
 	repeat (3) {
 		//normal, grass, fire, water, electric, flying
-		if card_cost[i]=00 or card_cost[i]=01 or card_cost[i]=02 or card_cost[i]=03 or card_cost[i]=04 or card_cost[i]=05 { card_cost[i]=0; } //oran
+		if card_cost[i]=00 or card_cost[i]=01 or card_cost[i]=02 or card_cost[i]=03 or card_cost[i]=04 or card_cost[i]=05 {
+			card_cost[i]=0; //oran
+			card_cost_total_type[0]+=1;
+		}
 		//psychic, fairy, bug, poison, ghost, dark
-		else if card_cost[i]=07 or card_cost[i]=08 or card_cost[i]=11 or card_cost[i]=12 or card_cost[i]=16 or card_cost[i]=17 { card_cost[i]=1; } //leppa
+		else if card_cost[i]=07 or card_cost[i]=08 or card_cost[i]=11 or card_cost[i]=12 or card_cost[i]=16 or card_cost[i]=17 {
+			card_cost[i]=1; //leppa
+			card_cost_total_type[1]+=1;
+		}
 		//fighting, ground, rock, ice, dragon, steel
-		else if card_cost[i]=06 or card_cost[i]=09 or card_cost[i]=10 or card_cost[i]=13 or card_cost[i]=14 or card_cost[i]=15 { card_cost[i]=2; } //lum
+		else if card_cost[i]=06 or card_cost[i]=09 or card_cost[i]=10 or card_cost[i]=13 or card_cost[i]=14 or card_cost[i]=15 {
+			card_cost[i]=2; //lum
+			card_cost_total_type[2]+=1;
+		}
 		//enigma
-		else if card_cost[i]=20 { card_cost[i]=3; } //enigma
+		else if card_cost[i]=20 {
+			card_cost[i]=3; //enigma
+			card_cost_total_type[3]+=1;
+		}
 		i+=1;
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if card_cat=1 {
 	var card_berry_chance=irandom(999)+1;
-	if card_berry_chance<=995 { card_id=choose(3001,3002,3003); }
-	else { card_id=3004; }
+	if card_berry_chance<=990 { card_id=choose(3000,3001,3002); }
+	else { card_id=3003; }
 	//
 	switch (card_id) {
-		case 3001:
+		case 3000:
 			card_name="Oran Berry"; break;
-		case 3002:
+		case 3001:
 			card_name="Leppa Berry"; break;
-		case 3003:
+		case 3002:
 			card_name="Lum Berry"; break;
-		case 3004:
+		case 3003:
 			card_name="Enigma Berry"; break;
 	}
 }

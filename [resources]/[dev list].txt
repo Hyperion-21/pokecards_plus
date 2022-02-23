@@ -3,9 +3,9 @@
 ✔	random card generation
 ✔	playing grid & drawing cards
 ✔	sorting cards in hand
-placing cards
-attacking
+✔	placing cards
 turn order
+attacking
 enemy AI
 win & lose
 save data

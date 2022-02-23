@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Faraway Road";
-game_version="v0.0.0.8";
+game_version="v0.0.0.9";
 window_set_caption(game_name + " " + string(game_version));
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-1000;
@@ -25,13 +25,13 @@ global.music_level=10;
 var button_create;
 button_create=instance_create_layer(cam_w-54,150,"instances",ob_button_31x24);
 button_create.button_id=0;
-button_create=instance_create_layer(cam_w-91,212,"instances",ob_button_16x16);
+button_create=instance_create_layer(cam_w-91,198,"instances",ob_button_16x16);
 button_create.button_id=1;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var i=0;
 repeat (10) {
-	if i<=4 { card_space_id[i]=instance_create_layer(100+64*(i),59,"instances",ob_card_space); }
-	else { card_space_id[i]=instance_create_layer(100+64*(i-5),149,"instances",ob_card_space); }
+	if i<=4 { card_space_id[i]=instance_create_layer(100+64*(i),45,"instances",ob_card_space); } //0-4 enemy side
+	else { card_space_id[i]=instance_create_layer(100+64*(i-5),135,"instances",ob_card_space); } //5-9 player side
 	i+=1;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -55,7 +55,7 @@ repeat (card_berrydeck_total) {
 //
 card_hand_total=0;
 var i=0;
-repeat (card_maindeck_total+card_berrydeck_total) {
+repeat (card_maindeck_total+card_berrydeck_total+1) { //+1 for checking if there's a card in hand next to a card that's being played
 	card_hand[i]=-1;
 	i+=1;
 }
@@ -63,6 +63,10 @@ repeat (card_maindeck_total+card_berrydeck_total) {
 mouse_cursor=0;
 cursor_hide=false;
 tooltip_text="";
+player_turn=true;
+card_draw_points=2;
+card_drawcost_main=2;
+card_drawcost_berry=1;
 card_focus=-1; //id
 card_hold=-1; //id
 card_focus_hand=-1;

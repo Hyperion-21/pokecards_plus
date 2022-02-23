@@ -51,24 +51,33 @@ if card_cat=0 and card_face=true {
 	sc_drawtext(x+29,y+50,"lv " + string(card_level),make_colour_rgb(190,190,190),make_colour_rgb(40,40,40),1,0.5,0,-1);
 	//sc_drawtext(x+29,y+4,string(card_rarity),c_aqua,make_colour_rgb(40,40,40),1,0.6,0,-1);
 	//
+	var num_color=c_white;
 	draw_set_halign(fa_left);
-	sc_drawtext(x+5,y+66,string(card_atk),make_colour_rgb(230,230,230),make_colour_rgb(40,40,40),1,0.5,0,-1);
+	if card_atk<card_full_atk { num_color=make_colour_rgb(225,168,160); }
+	else if card_atk>card_full_atk { num_color=make_colour_rgb(160,193,225); }
+	else { num_color=make_colour_rgb(230,230,230); }
+	sc_drawtext(x+5,y+66,string(card_atk),num_color,make_colour_rgb(40,40,40),1,0.5,0,-1);
 	draw_set_halign(fa_center);
-	sc_drawtext(x+29,y+60,string(card_hp),make_colour_rgb(230,230,230),make_colour_rgb(40,40,40),1,0.5,0,-1);
+	if card_hp<card_full_hp { num_color=make_colour_rgb(225,168,160); }
+	else { num_color=make_colour_rgb(176,223,159); }
+	sc_drawtext(x+29,y+60,string(card_hp),num_color,make_colour_rgb(40,40,40),1,0.5,0,-1);
 	draw_set_halign(fa_right);
-	sc_drawtext(x+53,y+66,string(card_def),make_colour_rgb(230,230,230),make_colour_rgb(40,40,40),1,0.5,0,-1);
+	if card_def<card_full_def { num_color=make_colour_rgb(225,168,160); }
+	else if card_def>card_full_def { num_color=make_colour_rgb(160,193,225); }
+	else { num_color=make_colour_rgb(230,230,230); }
+	sc_drawtext(x+53,y+66,string(card_def),num_color,make_colour_rgb(40,40,40),1,0.5,0,-1);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if card_cat=1 and card_face=true {
 	draw_sprite_general(sp_sheet,0,16*9+4,16*0,sprite_width,sprite_height,x,y,1,1,0,c_white,c_white,c_white,c_white,1);
 	draw_sprite_general(sp_sheet,0,16*1,16*2,53,10,x+2,y+41,1,1,0,make_colour_rgb(205,198,181),make_colour_rgb(233,230,222),make_colour_rgb(233,230,222),make_colour_rgb(205,198,181),1);
-	draw_sprite_general(sp_berries,0,32*(card_id-3001)+1,1,32,32,x+12,y+4,1,1,0,c_white,c_white,c_white,c_white,1);
+	draw_sprite_general(sp_berries,0,32*(card_id-3000)+1,1,32,32,x+12,y+4,1,1,0,c_white,c_white,c_white,c_white,1);
 	//
 	draw_set_font(fn_m3x6);
 	draw_set_halign(fa_center);
 	sc_drawtext(x+29,y+39,card_name,make_colour_rgb(230,230,230),make_colour_rgb(40,40,40),1,0.6,0,-1);
 	//
-	draw_sprite_general(sp_sheet,0,16*(card_id-3000),16*3,4,4,x+26,y+63,1,1,0,c_white,c_white,c_white,c_white,1);
+	draw_sprite_general(sp_sheet,0,16*(card_id-3000+1),16*3,4,4,x+26,y+63,1,1,0,c_white,c_white,c_white,c_white,1);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if card_face=false {
