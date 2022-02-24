@@ -1,6 +1,6 @@
 randomize(); //random seed
-game_name="Faraway Road";
-game_version="v0.0.0.9";
+game_name="Masara Road";
+game_version="v0.0.0.10";
 window_set_caption(game_name + " " + string(game_version));
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-1000;
@@ -25,13 +25,23 @@ global.music_level=10;
 var button_create;
 button_create=instance_create_layer(cam_w-54,150,"instances",ob_button_31x24);
 button_create.button_id=0;
-button_create=instance_create_layer(cam_w-91,198,"instances",ob_button_16x16);
+button_create=instance_create_layer(cam_w-91,197,"instances",ob_button_16x16);
 button_create.button_id=1;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var i=0;
-repeat (10) {
-	if i<=4 { card_space_id[i]=instance_create_layer(100+64*(i),45,"instances",ob_card_space); } //0-4 enemy side
-	else { card_space_id[i]=instance_create_layer(100+64*(i-5),135,"instances",ob_card_space); } //5-9 player side
+repeat (11) {
+	if i<=4 { //0-4 enemy side
+		card_space_id[i]=instance_create_layer(100+64*(i),44,"instances",ob_card_space);
+		card_space_id[i].trash=false;
+	}
+	else if i<=9 { //5-9 player side
+		card_space_id[i]=instance_create_layer(100+64*(i-5),134,"instances",ob_card_space);
+		card_space_id[i].trash=false;
+	}
+	else { //10 trash
+		card_space_id[i]=instance_create_layer(10,44,"instances",ob_card_space);
+		card_space_id[i].trash=true;
+	}
 	i+=1;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -54,8 +64,9 @@ repeat (card_berrydeck_total) {
 }
 //
 card_hand_total=0;
+card_hand_max=12;
 var i=0;
-repeat (card_maindeck_total+card_berrydeck_total+1) { //+1 for checking if there's a card in hand next to a card that's being played
+repeat (card_hand_max) {
 	card_hand[i]=-1;
 	i+=1;
 }
@@ -63,6 +74,7 @@ repeat (card_maindeck_total+card_berrydeck_total+1) { //+1 for checking if there
 mouse_cursor=0;
 cursor_hide=false;
 tooltip_text="";
+helpmsg_dismissed=false;
 player_turn=true;
 card_draw_points=2;
 card_drawcost_main=2;

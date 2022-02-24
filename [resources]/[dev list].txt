@@ -4,12 +4,14 @@
 ✔	playing grid & drawing cards
 ✔	sorting cards in hand
 ✔	placing cards
-turn order
+✔	trashing cards
 attacking
-enemy AI
+basic enemy AI
+glyphs
 win & lose
 save data
 world map setup
 deck construction
 random map generation
 map events
+full enemy AI

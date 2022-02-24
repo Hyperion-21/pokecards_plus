@@ -19,15 +19,22 @@ if potential_y!=y {
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if card_cat=1 and card_played=true {
-	instance_destroy();
+if effect_damaged>0 { effect_damaged-=0.1; }
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+if card_trash=true {
+	card_face=false;
+	x=ob_control.card_space_id[10].x;
+	y=ob_control.card_space_id[10].y;
+	potential_x=x;
+	potential_y=y;
+	depth=300;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height {
+if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height and card_trash=false {
 	if ob_control.card_hold=-1 { ob_control.mouse_cursor=1; }
 	else { ob_control.mouse_cursor=2; }
 	//
-	if card_face=false and ob_control.player_turn=true and
+	if card_face=false and ob_control.player_turn=true and ob_control.card_hand_total<ob_control.card_hand_max and
 	((num_in_maindeck>=0 and num_in_maindeck=ob_control.card_maindeck_total-1 and ob_control.card_draw_points>=ob_control.card_drawcost_main) or
 	(num_in_berrydeck>=0 and num_in_berrydeck=ob_control.card_berrydeck_total-1 and ob_control.card_draw_points>=ob_control.card_drawcost_berry)) {
 		if mouse_check_button_pressed(mb_left) and ob_control.cursor_hide=false {

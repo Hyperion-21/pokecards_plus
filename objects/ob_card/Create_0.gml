@@ -2,6 +2,7 @@ depth=200;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 card_face=false;
 card_played=false;
+card_trash=false;
 card_cat=ob_control.card_cat_creation;
 //
 num_in_maindeck=-1;
@@ -9,6 +10,8 @@ num_in_berrydeck=-1;
 //
 potential_x=x;
 potential_y=y;
+//
+effect_damaged=0;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if card_cat=0 {
 	do {

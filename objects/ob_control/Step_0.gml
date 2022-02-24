@@ -2,7 +2,10 @@ cam_x=camera_get_view_x(view_camera[0]);
 cam_y=camera_get_view_y(view_camera[0]);
 //
 mouse_cursor=0;
-if mouse_check_button(mb_right) { cursor_hide=true; }
+if mouse_check_button(mb_right) {
+	cursor_hide=true;
+	helpmsg_dismissed=true;
+}
 else { cursor_hide=false; }
 //
 if keyboard_check_pressed(vk_f5) { game_restart(); } //< delete later, testing
@@ -61,10 +64,13 @@ if card_focus!=-1 {
 	if mouse_check_button_pressed(mb_left) and card_hold=-1 and cursor_hide=false and card_focus.card_played=true {
 		with (card_focus) {
 			card_hp-=1;
+			effect_damaged=1;
 			if card_hp<=0 {
 				instance_position(x,y,ob_card_space).occupied=false;
+				instance_position(x,y,ob_card_space).effect_use=1;
+				ob_control.card_space_id[10].effect_use=1;
 				ob_control.card_focus=-1;
-				instance_destroy();
+				card_trash=true;
 			}
 		}
 	}
@@ -74,8 +80,8 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or cursor_hide=true) {
 	if position_meeting(mouse_x,mouse_y,ob_card_space) {
 		var var_cardspace_id=instance_position(mouse_x,mouse_y,ob_card_space), playing_requirements=false;
 		//
-		if card_space_id[5]=var_cardspace_id or card_space_id[6]=var_cardspace_id or card_space_id[7]=var_cardspace_id or
-		card_space_id[8]=var_cardspace_id or card_space_id[9]=var_cardspace_id {
+		if var_cardspace_id=card_space_id[5] or var_cardspace_id=card_space_id[6] or var_cardspace_id=card_space_id[7] or
+		var_cardspace_id=card_space_id[8] or var_cardspace_id=card_space_id[9] {
 			if card_hold.card_cat=0 and
 			var_cardspace_id.berries_total_type[0]>=card_hold.card_cost_total_type[0] and
 			var_cardspace_id.berries_total_type[1]>=card_hold.card_cost_total_type[1] and
@@ -88,9 +94,15 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or cursor_hide=true) {
 				playing_requirements=true;
 			}
 		}
+		else if var_cardspace_id=card_space_id[10] {
+			playing_requirements=true;
+		}
 		//
-		if var_cardspace_id.occupied=false and playing_requirements=true {
-			if card_hold.card_cat=0 {
+		if (var_cardspace_id.occupied=false and playing_requirements=true) or var_cardspace_id=card_space_id[10] {
+			if var_cardspace_id=card_space_id[10] {
+				card_hold.card_trash=true;
+			}
+			else if card_hold.card_cat=0 {
 				card_hold.potential_x=var_cardspace_id.x;
 				card_hold.potential_y=var_cardspace_id.y;
 				var_cardspace_id.berries_total_type[0]-=card_hold.card_cost_total_type[0];
@@ -104,8 +116,10 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or cursor_hide=true) {
 			else if card_hold.card_cat=1 {
 				var_cardspace_id.berries_total+=1;
 				var_cardspace_id.berries_total_type[card_hold.card_id-3000]+=1;
+				card_hold.card_trash=true;
 			}
 			//
+			var_cardspace_id.effect_use=1;
 			card_hold.card_played=true;
 			//
 			var i=0, lower_hand_num=false;
@@ -114,7 +128,8 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or cursor_hide=true) {
 					lower_hand_num=true;
 				}
 				if lower_hand_num=true {
-					card_hand[i]=card_hand[i+1];
+					if i<card_hand_max-1 { card_hand[i]=card_hand[i+1]; }
+					else { card_hand[i]=-1; }
 				}
 				i+=1;
 			}
@@ -155,9 +170,16 @@ if button_sorthand=true and card_focus=-1 {
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if button_nextturn=true and card_draw_points=0 {
-	player_turn=true;
-	card_draw_points=2;
+if button_nextturn=true {
+	if player_turn=true {
+		player_turn=false;
+		card_draw_points=0;
+	}
+	else if player_turn=false {
+		player_turn=true;
+		card_draw_points=4//2;
+		helpmsg_dismissed=false;
+	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 //if cam_x!=(floor(x/256)*256) or cam_y!=(floor(y/192)*192) { //camera moving
