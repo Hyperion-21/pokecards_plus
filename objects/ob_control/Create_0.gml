@@ -1,10 +1,15 @@
 randomize(); //random seed
-game_name="Masara Road";
-game_version="v0.0.0.10";
-window_set_caption(game_name + " " + string(game_version));
+game_name="Pocket Palette";
+game_version="v0.0.0.11";
+window_set_caption(game_name + " (" + string(game_version) + ")");
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-1000;
 //
+view_set_visible(view_camera[0],true);
+view_set_xport(view_camera[0],0);
+view_set_yport(view_camera[0],0);
+view_set_wport(view_camera[0],512);
+view_set_hport(view_camera[0],288);
 camera_set_view_pos(view_camera[0],x,y);
 camera_set_view_size(view_camera[0],512,288);
 camera_set_view_target(view_camera[0],ob_control);
@@ -15,6 +20,16 @@ cam_y=camera_get_view_y(view_camera[0]);
 cam_w=camera_get_view_width(view_camera[0]);
 cam_h=camera_get_view_height(view_camera[0]);
 surface_resize(application_surface,cam_w,cam_h);
+//
+var screen_w=display_get_width(), screen_h=display_get_height();
+var i=0, biggest_screen_size_found=false;
+do {
+	i+=1;
+	if 512*i>=screen_w or 288*i>=screen_h {
+		biggest_screen_size_found=true;
+	}
+} until (biggest_screen_size_found=true);
+window_set_size(512*(i-1),288*(i-1));
 //
 display_reset(0,true);
 window_set_fullscreen(false);

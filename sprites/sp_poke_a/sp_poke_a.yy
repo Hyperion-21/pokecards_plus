@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sp_poke_a","path":"sprites/sp_poke_a/sp_poke_a.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sp_poke_a",
     "tags": [],
     "resourceType": "GMSequence",

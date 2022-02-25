@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sp_31x24","path":"sprites/sp_31x24/sp_31x24.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sp_31x24",
     "tags": [],
     "resourceType": "GMSequence",

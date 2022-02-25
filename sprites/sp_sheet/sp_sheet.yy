@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"sp_sheet","path":"sprites/sp_sheet/sp_sheet.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "sp_sheet",
     "tags": [],
     "resourceType": "GMSequence",
