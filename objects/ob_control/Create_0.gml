@@ -1,6 +1,6 @@
 randomize(); //random seed
-game_name="Pocket Palette";
-game_version="v0.0.0.12";
+game_name="Pocket Pallet CCG";
+game_version="v0.0.0.13";
 window_set_caption(game_name + " (" + string(game_version) + ")");
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-1000;
@@ -50,8 +50,8 @@ repeat (18) {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var button_create;
-button_create=instance_create_layer(23,150,"instances",ob_button_31x24); //cam_w-54
-button_create.button_id=0;
+button_nextturn_id=instance_create_layer(23,150,"instances",ob_button_31x24); //cam_w-54
+button_nextturn_id.button_id=0;
 button_create=instance_create_layer(76,197,"instances",ob_button_16x16); //cam_w-91
 button_create.button_id=1;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -102,8 +102,8 @@ enemycard_maindeck_total=50;
 var i=0;
 repeat (enemycard_maindeck_total) {
 	card_cat_creation=0;
-	enemycard_maindeck[i]=instance_create_layer(cam_w-67,-48,"instances",ob_card);
-	enemycard_maindeck[i].num_in_maindeck=i;
+	enemycard_maindeck[i]=instance_create_layer(cam_w-67,-100,"instances",ob_card);
+	//enemycard_maindeck[i].num_in_maindeck=i;
 	enemycard_maindeck[i].card_enemy=true;
 	i+=1;
 }
@@ -112,8 +112,8 @@ enemycard_berrydeck_total=50;
 var i=0;
 repeat (enemycard_berrydeck_total) {
 	card_cat_creation=1;
-	enemycard_berrydeck[i]=instance_create_layer(10,-48,"instances",ob_card);
-	enemycard_berrydeck[i].num_in_berrydeck=i;
+	enemycard_berrydeck[i]=instance_create_layer(10,-100,"instances",ob_card);
+	//enemycard_berrydeck[i].num_in_berrydeck=i;
 	enemycard_berrydeck[i].card_enemy=true;
 	i+=1;
 }
@@ -130,7 +130,10 @@ cursor_hide=false;
 tooltip_text="";
 helpmsg_dismissed=false;
 player_turn=true;
+enemy_turn_timer=0;
+enemy_turn_phase=-1;
 card_draw_points=2;
+enemycard_draw_points=2;
 card_drawcost_main=2;
 card_drawcost_berry=1;
 card_focus=-1; //id
@@ -139,9 +142,8 @@ card_focus_hand=-1;
 button_sorthand=false;
 button_nextturn=false;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-event_active=false;
-reset_objects=false;
-screen_transition=false;
+//event_active=false;
+//reset_objects=false;
 //
 fade_black=0;
 textbox_active=false;

@@ -12,36 +12,40 @@ draw_set_halign(fa_right);
 var var_text=string(card_maindeck_total) + "x Main Deck";
 sc_drawrectangle(cam_w-15-string_width(var_text),cam_h-20,cam_w-11,cam_h-9,make_colour_rgb(40,40,40),make_colour_rgb(40,40,40),1,0.5,0);
 sc_drawtext(cam_w-12,cam_h-21,var_text,make_colour_rgb(230,230,230),c_black,0.1,0,0,-1);
-//
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 draw_set_halign(fa_center);
-if card_draw_points>0 {
-	if card_hand_total=card_hand_max {
-		var var_message="You can't hold more than " + string(card_hand_max) + " cards in your hand. Discard or play one to draw more."
-		var var_message_color=make_colour_rgb(225,168,160);
-	}
-	else if card_draw_points<=2 {
-		var var_message="You may draw a card from your main deck, or 2 berries."
-		var var_message_color=make_colour_rgb(160,193,225);
-	}
-	else if card_draw_points>2 {
-		var var_message="You may draw a card from your main deck, or 2 berries (2x)."
-		var var_message_color=make_colour_rgb(160,193,225);
-	}
-	//
-	if helpmsg_dismissed=false {
-		sc_drawrectangle(cam_w/2-string_width(var_message)/2-5,219,cam_w/2+string_width(var_message)/2+3,230,make_colour_rgb(40,40,40),make_colour_rgb(40,40,40),1,0.8,0);
-		sc_drawtext(cam_w/2,218,var_message,var_message_color,make_colour_rgb(40,40,40),1,0.5,0,-1);
-	}
-	//
-	draw_set_halign(fa_left);
-	if card_draw_points>=card_drawcost_berry {
-		sc_drawrectangle(27,193,49,204,make_colour_rgb(40,40,40),make_colour_rgb(40,40,40),1,0.5,0);
-		sc_drawtext(30,192,"Draw",make_colour_rgb(160,193,225),make_colour_rgb(40,40,40),1,0.5,0,-1);
-	}
-	if card_draw_points>=card_drawcost_main {
-		sc_drawrectangle(cam_w-50,193,cam_w-28,204,make_colour_rgb(40,40,40),make_colour_rgb(40,40,40),1,0.5,0);
-		sc_drawtext(cam_w-47,192,"Draw",make_colour_rgb(160,193,225),make_colour_rgb(40,40,40),1,0.5,0,-1);
-	}
+var var_message="", var_message_color=c_white;
+//
+if player_turn=false {
+	var_message="(Opponent's turn)"
+	var_message_color=make_colour_rgb(225,168,160);
+}
+else if card_draw_points>0 and card_hand_total=card_hand_max {
+	var_message="You can't hold more than " + string(card_hand_max) + " cards in your hand. Discard or play one to draw more."
+	var_message_color=make_colour_rgb(225,168,160);
+}
+else if card_draw_points>0 and card_draw_points<=2 {
+	var_message="You may draw a card from your main deck, or 2 berries."
+	var_message_color=make_colour_rgb(160,193,225);
+}
+else if card_draw_points>2 {
+	var_message="You may draw a card from your main deck, or 2 berries (2x)."
+	var_message_color=make_colour_rgb(160,193,225);
+}
+//
+if helpmsg_dismissed=false and var_message!="" {
+	sc_drawrectangle(cam_w/2-string_width(var_message)/2-5,219,cam_w/2+string_width(var_message)/2+3,230,make_colour_rgb(40,40,40),make_colour_rgb(40,40,40),1,0.8,0);
+	sc_drawtext(cam_w/2,218,var_message,var_message_color,make_colour_rgb(40,40,40),1,0.5,0,-1);
+}
+//
+draw_set_halign(fa_left);
+if card_draw_points>=card_drawcost_berry {
+	sc_drawrectangle(27,193,49,204,make_colour_rgb(40,40,40),make_colour_rgb(40,40,40),1,0.5,0);
+	sc_drawtext(30,192,"Draw",make_colour_rgb(160,193,225),make_colour_rgb(40,40,40),1,0.5,0,-1);
+}
+if card_draw_points>=card_drawcost_main {
+	sc_drawrectangle(cam_w-50,193,cam_w-28,204,make_colour_rgb(40,40,40),make_colour_rgb(40,40,40),1,0.5,0);
+	sc_drawtext(cam_w-47,192,"Draw",make_colour_rgb(160,193,225),make_colour_rgb(40,40,40),1,0.5,0,-1);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if tooltip_text!="" {

@@ -30,7 +30,7 @@ if card_trash=true {
 	depth=300;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height and card_trash=false {
+if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height and card_trash=false and card_enemy=false {
 	if ob_control.card_hold=-1 { ob_control.mouse_cursor=1; }
 	else { ob_control.mouse_cursor=2; }
 	//

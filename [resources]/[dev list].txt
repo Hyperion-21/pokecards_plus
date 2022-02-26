@@ -6,8 +6,7 @@
 ✔	placing cards
 ✔	trashing cards
 ✔	background
-enemy deck
-enemy turn
+✔	enemy turn
 attacking
 basic enemy AI
 glyphs

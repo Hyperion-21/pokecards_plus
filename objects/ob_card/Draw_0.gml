@@ -86,6 +86,10 @@ else if card_cat=1 and card_face=true {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if card_face=false {
 	if card_trash=false { var overlay_color=c_white; } else { var overlay_color=make_colour_rgb(170,170,170); }
-	if card_cat=0 { draw_sprite_general(sp_sheet,0,16*25+4,16*0,sprite_width,sprite_height,draw_x,draw_y,1,1,0,overlay_color,overlay_color,overlay_color,overlay_color,1); }
-	else if card_cat=1 { draw_sprite_general(sp_sheet,0,16*29+4,16*0,sprite_width,sprite_height,draw_x,draw_y,1,1,0,overlay_color,overlay_color,overlay_color,overlay_color,1); }
+	if card_cat=0 or card_enemy=true {
+		draw_sprite_general(sp_sheet,0,16*25+4,16*0,sprite_width,sprite_height,draw_x,draw_y,1,1,0,overlay_color,overlay_color,overlay_color,overlay_color,1);
+	}
+	else if card_cat=1 {
+		draw_sprite_general(sp_sheet,0,16*29+4,16*0,sprite_width,sprite_height,draw_x,draw_y,1,1,0,overlay_color,overlay_color,overlay_color,overlay_color,1);
+	}
 }
