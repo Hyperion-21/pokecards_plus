@@ -63,8 +63,9 @@ if card_focus!=-1 {
 	//
 	if mouse_check_button_pressed(mb_left) and card_hold=-1 and cursor_hide=false and card_focus.card_played=true {
 		with (card_focus) {
-			card_hp-=1;
-			effect_damaged=1;
+			//card_hp-=1;
+			//effect_damaged=1;
+			y-=70;
 			if card_hp<=0 {
 				instance_position(x,y,ob_card_space).occupied=false;
 				instance_position(x,y,ob_card_space).effect_use=1;
@@ -177,7 +178,7 @@ if button_nextturn=true {
 	}
 	else if player_turn=false {
 		player_turn=true;
-		card_draw_points=4//2;
+		card_draw_points=2;
 		helpmsg_dismissed=false;
 	}
 }

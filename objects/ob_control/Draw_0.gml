@@ -16,7 +16,7 @@ sc_drawtext(cam_w-12,cam_h-21,var_text,make_colour_rgb(230,230,230),c_black,0.1,
 draw_set_halign(fa_center);
 if card_draw_points>0 {
 	if card_hand_total=card_hand_max {
-		var var_message="You can't hold more than " + string(card_hand_max) + " cards in your hand. Discard or play some to draw more."
+		var var_message="You can't hold more than " + string(card_hand_max) + " cards in your hand. Discard or play one to draw more."
 		var var_message_color=make_colour_rgb(225,168,160);
 	}
 	else if card_draw_points<=2 {

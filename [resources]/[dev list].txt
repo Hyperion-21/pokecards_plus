@@ -5,6 +5,9 @@
 ✔	sorting cards in hand
 ✔	placing cards
 ✔	trashing cards
+✔	background
+enemy deck
+enemy turn
 attacking
 basic enemy AI
 glyphs

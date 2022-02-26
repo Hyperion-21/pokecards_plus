@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Palette";
-game_version="v0.0.0.11";
+game_version="v0.0.0.12";
 window_set_caption(game_name + " (" + string(game_version) + ")");
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-1000;
@@ -37,10 +37,22 @@ window_set_fullscreen(false);
 global.sound_level=10;
 global.music_level=10;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+instance_create_layer(0,0,"instances",ob_background);
+//
+var i=0;
+repeat (18) {
+	var ii=0;
+	repeat (5) {
+		instance_create_layer(i*32,ii*64+(i mod 2)*32,"instances",ob_background_tile);
+		ii+=1;
+	}
+	i+=1;
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 var button_create;
-button_create=instance_create_layer(cam_w-54,150,"instances",ob_button_31x24);
+button_create=instance_create_layer(23,150,"instances",ob_button_31x24); //cam_w-54
 button_create.button_id=0;
-button_create=instance_create_layer(cam_w-91,197,"instances",ob_button_16x16);
+button_create=instance_create_layer(76,197,"instances",ob_button_16x16); //cam_w-91
 button_create.button_id=1;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var i=0;
@@ -83,6 +95,33 @@ card_hand_max=12;
 var i=0;
 repeat (card_hand_max) {
 	card_hand[i]=-1;
+	i+=1;
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+enemycard_maindeck_total=50;
+var i=0;
+repeat (enemycard_maindeck_total) {
+	card_cat_creation=0;
+	enemycard_maindeck[i]=instance_create_layer(cam_w-67,-48,"instances",ob_card);
+	enemycard_maindeck[i].num_in_maindeck=i;
+	enemycard_maindeck[i].card_enemy=true;
+	i+=1;
+}
+//
+enemycard_berrydeck_total=50;
+var i=0;
+repeat (enemycard_berrydeck_total) {
+	card_cat_creation=1;
+	enemycard_berrydeck[i]=instance_create_layer(10,-48,"instances",ob_card);
+	enemycard_berrydeck[i].num_in_berrydeck=i;
+	enemycard_berrydeck[i].card_enemy=true;
+	i+=1;
+}
+//
+enemycard_hand_total=0;
+var i=0;
+repeat (card_hand_max) {
+	enemycard_hand[i]=-1;
 	i+=1;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

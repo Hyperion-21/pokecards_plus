@@ -4,6 +4,7 @@ card_face=false;
 card_played=false;
 card_trash=false;
 card_cat=ob_control.card_cat_creation;
+card_enemy=false;
 //
 num_in_maindeck=-1;
 num_in_berrydeck=-1;
