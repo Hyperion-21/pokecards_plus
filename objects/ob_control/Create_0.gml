@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Pallet CCG";
-game_version="v0.0.0.13";
+game_version="v0.0.0.14";
 window_set_caption(game_name + " (" + string(game_version) + ")");
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-1000;
@@ -141,6 +141,8 @@ card_hold=-1; //id
 card_focus_hand=-1;
 button_sorthand=false;
 button_nextturn=false;
+AI_report="";
+AI_report_toggle=false;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 //event_active=false;
 //reset_objects=false;

@@ -8,6 +8,10 @@ if mouse_check_button(mb_right) {
 }
 else { cursor_hide=false; }
 //
+if keyboard_check_pressed(vk_f1) {
+	if AI_report_toggle=false { AI_report_toggle=true; }
+	else { AI_report_toggle=false; }
+}
 if keyboard_check_pressed(vk_f5) { game_restart(); } //< delete later, testing
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var i=0;
@@ -175,112 +179,28 @@ if player_turn=false {
 	//
 	if enemy_turn_timer=0 {
 		if enemy_turn_phase<0 { enemy_turn_timer=irandom_range(30,45); }
-		else { enemy_turn_timer=irandom_range(30,90); }
+		else { enemy_turn_timer=irandom_range(45,90); }
 		enemy_turn_phase+=1;
 	}
 	//
-	if enemy_turn_phase=1 { //draw cards
+	if enemy_turn_phase=1 {
 		if enemycard_draw_points>0 and enemycard_hand_total<card_hand_max and (enemycard_maindeck[0]!=-1 or enemycard_berrydeck[0]!=-1) {
-			var enemy_draw_possible=false;
-			do {
-				var enemy_draw_cat=irandom(1);
-				if enemy_draw_cat=0 and enemycard_draw_points>=card_drawcost_main and enemycard_maindeck[0]!=-1 {
-					enemy_draw_possible=true;
-				}
-				else if enemy_draw_cat=1 and enemycard_draw_points>=card_drawcost_berry and enemycard_berrydeck[0]!=-1 {
-					enemy_draw_possible=true;
-				}
-			} until (enemy_draw_possible=true);
-			//
-			if enemy_draw_cat=0 {
-				var var_card_numcheck=enemycard_maindeck_total;
-				do {
-					var_card_numcheck-=1;
-					var var_card_selected=enemycard_maindeck[var_card_numcheck];
-				} until (var_card_selected!=-1);
-			}
-			else if enemy_draw_cat=1 {
-				var var_card_numcheck=enemycard_berrydeck_total;
-				do {
-					var_card_numcheck-=1;
-					var var_card_selected=enemycard_berrydeck[var_card_numcheck];
-				} until (var_card_selected!=-1);
-			}
-			//
-			enemycard_hand_total+=1;
-			enemycard_hand[enemycard_hand_total-1]=var_card_selected;
-			//var_card_selected.card_face=true; //cheat
-			//
-			if enemy_draw_cat=0 {
-				enemycard_maindeck_total-=1;
-				enemycard_maindeck[var_card_numcheck]=-1;
-				enemycard_draw_points-=card_drawcost_main;
-			}
-			else if enemy_draw_cat=1 {
-				enemycard_berrydeck_total-=1;
-				enemycard_berrydeck[var_card_numcheck]=-1;
-				enemycard_draw_points-=card_drawcost_berry;
-			}
+			sc_AI_draw(choose(0,1,1));
 		}
 	}
 	//
-	else if enemy_turn_phase=2 { //play cards
+	else if enemy_turn_phase=2 {
 		if card_space_id[0].occupied=false or card_space_id[1].occupied=false or card_space_id[2].occupied=false or
 		card_space_id[3].occupied=false or card_space_id[4].occupied=false {
-			var i=0, pokecard_total=0, pokecard_atk, pokecard_def, pokecard_hp, pokecard_handslot;
-			repeat (enemycard_hand_total) {
-				if enemycard_hand[i].card_cat=0 {
-					pokecard_atk[pokecard_total]=enemycard_hand[i].card_atk;
-					pokecard_def[pokecard_total]=enemycard_hand[i].card_def;
-					pokecard_hp[pokecard_total]=enemycard_hand[i].card_hp;
-					pokecard_handslot[pokecard_total]=i;
-					pokecard_total+=1;
-				}
-				i+=1;
-			}
-			//
-			if pokecard_total>0 {
-				var i=0, play_pokecard=-1;
-				repeat (pokecard_total) {
-					if play_pokecard=-1 or (pokecard_atk[i]>pokecard_atk[play_pokecard]) {
-						play_pokecard=i;
-					}
-					i+=1;
-				}
-				//
-				do {
-					var space_choice=irandom(4);
-				} until (card_space_id[space_choice].occupied=false or
-				(card_space_id[0].occupied=true and card_space_id[1].occupied=true and card_space_id[2].occupied=true and
-				card_space_id[3].occupied=true and card_space_id[4].occupied=true));
-				if card_space_id[space_choice].occupied=false {
-					enemycard_hand[pokecard_handslot[play_pokecard]].potential_x=card_space_id[space_choice].x;
-					enemycard_hand[pokecard_handslot[play_pokecard]].potential_y=card_space_id[space_choice].y;
-					enemycard_hand[pokecard_handslot[play_pokecard]].depth=200;
-					enemycard_hand[pokecard_handslot[play_pokecard]].card_face=true;
-					card_space_id[space_choice].occupied=true;
-					//
-					card_space_id[space_choice].effect_use=1;
-					enemycard_hand[pokecard_handslot[play_pokecard]].card_played=true;
-					//
-					var i=0, lower_hand_num=false;
-					repeat (enemycard_hand_total) {
-						if enemycard_hand[pokecard_handslot[play_pokecard]]=enemycard_hand[i] {
-							lower_hand_num=true;
-						}
-						if lower_hand_num=true {
-							if i<card_hand_max-1 { enemycard_hand[i]=enemycard_hand[i+1]; }
-							else { enemycard_hand[i]=-1; }
-						}
-						i+=1;
-					}
-					enemycard_hand_total-=1;
-				}
-			}
+			sc_AI_play(0);
 		}
 	}
 	//
-	else if enemy_turn_phase=3 { //finish turn
+	else if enemy_turn_phase=3 {
+		sc_AI_attack(0);
+	}
+	//
+	else if enemy_turn_phase=4 {
 		button_nextturn=true;
 		button_nextturn_id.button_state=1;
 	}
@@ -324,6 +244,7 @@ if button_nextturn=true {
 		helpmsg_dismissed=false;
 		enemy_turn_timer=0;
 		enemy_turn_phase=-1;
+		sc_AI_report("- NEW TURN -");
 	}
 	else if player_turn=false {
 		player_turn=true;

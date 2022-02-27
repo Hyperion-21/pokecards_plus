@@ -7,8 +7,11 @@
 ✔	trashing cards
 ✔	background
 ✔	enemy turn
+✔	basic enemy AI: draw
+basic enemy AI: play
 attacking
-basic enemy AI
+basic enemy AI: attack
+first turn (coin + limitations)
 glyphs
 win & lose
 save data
