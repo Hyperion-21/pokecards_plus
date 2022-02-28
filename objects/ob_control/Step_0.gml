@@ -181,6 +181,8 @@ if player_turn=false {
 		if enemy_turn_phase<0 { enemy_turn_timer=irandom_range(30,45); }
 		else { enemy_turn_timer=irandom_range(45,90); }
 		enemy_turn_phase+=1;
+		enemycard_play_id=-1;
+		enemyspace_play=-1;
 	}
 	//
 	if enemy_turn_phase=1 {
