@@ -121,14 +121,28 @@ else if AI_level<=4 and enemycard_poke_playable=false and enemycard_justberry_pl
 	} until (berries_held[enemycard_berry_play]>0 and card_space_id[enemyspace_playplan].berries_total<8 and card_space_id[enemyspace_playplan].occupied=false);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-// PLAY (DISCARD): RANDOM BERRY
+// PLAY (DISCARD): RANDOM BERRY (FIRST) OR POKEMON (SECOND)
 else if AI_level<=4 and discard_check=true {
-	if berries_held[0]+berries_held[1]+berries_held[2]>0 {
+	if berries_held[0]+berries_held[1]+berries_held[2]>0 { //no enigma
 		do {
 			enemycard_discard_id=enemycard_hand[irandom(enemycard_hand_total-1)];
 		} until (enemycard_discard_id.card_id=3000 or enemycard_discard_id.card_id=3001 or enemycard_discard_id.card_id=3002); //no enigma
 	}
-	else { discard_skip=true; }
+	else {
+		var i=0, discardable_poke=false;
+		repeat (enemycard_hand_total) {
+			if enemycard_hp[i]>0 { discardable_poke=true; }
+			i+=1;
+		}
+		//
+		if discardable_poke=true {
+			do {
+				var enemycard_discard_slot=irandom(enemycard_hand_total-1);
+			} until (enemycard_hp[enemycard_discard_slot]>0);
+			enemycard_discard_id=enemycard_hand[enemycard_discard_slot];
+		}
+		else { discard_skip=true; }
+	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if enemycard_poke_playable=false and enemycard_justberry_playable=false and enemy_turn_timer=1 {
@@ -172,7 +186,6 @@ if enemycard_poke_playable=true or enemycard_justberry_playable=true or enemycar
 		card_space_id[enemyspace_playplan].berries_total_type[2]-=enemycard_playnow_id.card_cost_total_type[2];
 		card_space_id[enemyspace_playplan].berries_total_type[3]-=enemycard_playnow_id.card_cost_total_type[3];
 		card_space_id[enemyspace_playplan].berries_total-=enemycard_playnow_id.card_cost_total;
-		enemycard_playnow_id.depth=200;
 		enemycard_playnow_id.card_face=true;
 		enemycard_playnow_id.card_played=true;
 		card_space_id[enemyspace_playplan].occupied=true;

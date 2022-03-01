@@ -47,6 +47,10 @@ if card_cat=0 and card_face=true {
 		i+=1;
 	}
 	//
+	if already_attacked=false and card_played=true and card_trash=false and card_enemy=false and ob_control.player_turn=true {
+		draw_sprite_general(sp_sheet,0,16*1,16*12,16,16,draw_x+20,draw_y-8,1,1,0,c_white,c_white,c_white,c_white,1);
+	}
+	//
 	draw_set_font(fn_m3x6);
 	draw_set_halign(fa_center);
 	draw_healthbar(draw_x+4,draw_y+56,draw_x+52,draw_y+57,0,make_colour_rgb(205,198,181),c_white,c_white,0,true,false);

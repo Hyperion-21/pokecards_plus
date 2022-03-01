@@ -21,6 +21,13 @@ if potential_y!=y {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if effect_damaged>0 { effect_damaged-=0.1; }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+if card_played=true and card_trash=false and y!=potential_y { //attacking
+	depth=-100;
+}
+else if card_played=true and card_trash=false and y=potential_y {
+	depth=200;
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 if card_trash=true {
 	card_face=false;
 	x=ob_control.card_space_id[10].x;

@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Palette Arena";
-game_version="v0.0.0.16";
+game_version="v0.0.0.17";
 window_set_caption(game_name + " (" + string(game_version) + ")");
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-1000;
@@ -129,6 +129,12 @@ mouse_cursor=0;
 cursor_hide=false;
 tooltip_text="";
 helpmsg_dismissed=false;
+//
+player_hp=100;
+enemy_hp=100;
+player_effect_damaged=0;
+enemy_effect_damaged=0;
+//
 player_turn=true;
 enemy_turn_timer=0;
 enemy_turn_phase=-1;
@@ -138,11 +144,14 @@ enemycard_playplan_id=-1;
 enemyspace_playplan=-1;
 card_drawcost_main=2;
 card_drawcost_berry=1;
+//
 card_focus=-1; //id
 card_hold=-1; //id
 card_focus_hand=-1;
+//
 button_sorthand=false;
 button_nextturn=false;
+//
 AI_report="";
 AI_report_toggle=false;
 AI_threshold[0]=20;

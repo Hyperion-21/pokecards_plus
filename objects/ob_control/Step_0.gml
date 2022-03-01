@@ -14,6 +14,9 @@ if keyboard_check_pressed(vk_f1) {
 }
 if keyboard_check_pressed(vk_f5) { game_restart(); } //< delete later, testing
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+if player_effect_damaged>0 { player_effect_damaged-=0.08; }
+if enemy_effect_damaged>0 { enemy_effect_damaged-=0.08; }
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 var i=0;
 repeat (card_hand_total) { //sets x coordinate in hand
 	var ii=0;
@@ -91,17 +94,44 @@ if card_focus!=-1 {
 		card_focus_hand=-1;
 	}
 	//
-	if mouse_check_button_pressed(mb_left) and card_hold=-1 and cursor_hide=false and card_focus.card_played=true and card_focus.card_enemy=false { //click played card
+	if mouse_check_button_pressed(mb_left) and player_turn=true and card_hold=-1 and cursor_hide=false and
+	card_focus.card_played=true and card_focus.card_enemy=false { //click played card
 		with (card_focus) {
-			//card_hp-=1;
-			//effect_damaged=1;
-			y-=70;
-			if card_hp<=0 {
-				instance_position(x,y,ob_card_space).occupied=false;
-				instance_position(x,y,ob_card_space).effect_use=1;
-				ob_control.card_space_id[10].effect_use=1;
-				ob_control.card_focus=-1;
-				card_trash=true;
+			if already_attacked=false {
+				var card_target=-1;
+				if position_meeting(ob_control.card_focus.x+28,ob_control.card_focus.y-20,ob_card) {
+					card_target=instance_position(ob_control.card_focus.x+28,ob_control.card_focus.y-20,ob_card);
+					//
+					var damage_dealt=card_atk-card_target.card_def;
+					if damage_dealt<0 { damage_dealt=0; }
+					card_target.card_hp-=damage_dealt;
+					card_target.effect_damaged=1;
+					var damage_num_id=instance_create_layer(card_target.x+28,card_target.y+60,"instances",ob_damage_num);
+					damage_num_id.damage_num=damage_dealt;
+					//
+					if card_target.card_hp<=0 {
+						instance_position(card_target.x,card_target.y,ob_card_space).occupied=false;
+						instance_position(card_target.x,card_target.y,ob_card_space).effect_use=1;
+						ob_control.card_space_id[10].effect_use=1;
+						card_target.card_trash=true;
+					}
+					if card_hp<=0 {
+						instance_position(x,y,ob_card_space).occupied=false;
+						instance_position(x,y,ob_card_space).effect_use=1;
+						ob_control.card_space_id[10].effect_use=1;
+						ob_control.card_focus=-1;
+						card_trash=true;
+					}
+				}
+				else {
+					ob_control.enemy_hp-=card_atk;
+					ob_control.enemy_effect_damaged=1;
+					var damage_num_id=instance_create_layer(ob_control.cam_w-30,109,"instances",ob_damage_num);
+					damage_num_id.damage_num=card_atk;
+				}
+				//
+				already_attacked=true;
+				y-=70;
 			}
 		}
 	}
@@ -140,7 +170,6 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or cursor_hide=true) { //play
 				var_cardspace_id.berries_total_type[2]-=card_hold.card_cost_total_type[2];
 				var_cardspace_id.berries_total_type[3]-=card_hold.card_cost_total_type[3];
 				var_cardspace_id.berries_total-=card_hold.card_cost_total;
-				card_hold.depth=200;
 				var_cardspace_id.occupied=true;
 			}
 			else if card_hold.card_cat=1 {
@@ -235,6 +264,11 @@ if button_sorthand=true and card_focus=-1 {
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+if keyboard_check_pressed(vk_space) and !mouse_check_button(mb_left) and player_turn=true and card_hold=-1 {
+	button_nextturn=true;
+	button_nextturn_id.button_state=1;
+}
+//
 if button_nextturn=true {
 	if player_turn=true {
 		player_turn=false;
@@ -250,6 +284,10 @@ if button_nextturn=true {
 		card_draw_points=2;
 		enemycard_draw_points=0;
 		helpmsg_dismissed=false;
+	}
+	//
+	with (ob_card) {
+		already_attacked=false;
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -12,6 +12,7 @@ num_in_berrydeck=-1;
 potential_x=x;
 potential_y=y;
 //
+already_attacked=false;
 effect_damaged=0;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if card_cat=0 {

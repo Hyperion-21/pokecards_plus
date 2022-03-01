@@ -1,6 +1,19 @@
 cam_x=camera_get_view_x(view_camera[0]);
 cam_y=camera_get_view_y(view_camera[0]);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+draw_set_font(fn_m6x11);
+//
+if enemy_effect_damaged>0 { var enemyhp_draw_x=x+irandom_range(-2,2), enemyhp_draw_y=y+irandom_range(-2,2); }
+else { var enemyhp_draw_x=x, enemyhp_draw_y=y; }
+if player_effect_damaged>0 { var playerhp_draw_x=x+irandom_range(-2,2), playerhp_draw_y=y+irandom_range(-2,2); }
+else { var playerhp_draw_x=x, playerhp_draw_y=y; }
+//
+draw_set_halign(fa_center);
+sc_drawrectangle(cam_w-45+enemyhp_draw_x,105+enemyhp_draw_y,cam_w-16+enemyhp_draw_x,125+enemyhp_draw_y,make_colour_rgb(40,40,40),make_colour_rgb(230,230,230),1,0.5,0);
+sc_drawtext(cam_w-30+enemyhp_draw_x,109+enemyhp_draw_y,string(enemy_hp),make_colour_rgb(182,161,226),make_colour_rgb(40,40,40),1,0.5,0,-1);
+sc_drawrectangle(cam_w-45+playerhp_draw_x,132+playerhp_draw_y,cam_w-16+playerhp_draw_x,152+playerhp_draw_y,make_colour_rgb(40,40,40),make_colour_rgb(230,230,230),1,0.5,0);
+sc_drawtext(cam_w-30+playerhp_draw_x,136+playerhp_draw_y,string(player_hp),make_colour_rgb(160,193,225),make_colour_rgb(40,40,40),1,0.5,0,-1);
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 draw_set_font(fn_m3x6);
 //
 draw_set_halign(fa_left);

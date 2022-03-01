@@ -9,15 +9,20 @@
 ✔	enemy turn
 ✔	basic enemy AI: draw
 ✔	basic enemy AI: play
-basic enemy AI: discard
-attacking
+✔	basic enemy AI: discard
+✔	attacking
+type bonuses
 basic enemy AI: attack
+stalemate solving
 first turn (coin + limitations)
 glyphs
 win & lose
 save data
+main menu
+in-game menu
 world map setup
 deck construction
 random map generation
 map events
+pokemon data (gen 1&2)
 full enemy AI
