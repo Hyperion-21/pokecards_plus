@@ -17,7 +17,7 @@ draw_set_halign(fa_center);
 var var_message="", var_message_color=c_white;
 //
 if player_turn=false {
-	var_message="(Opponent's turn)"
+	var_message="(Adversary's turn)"
 	var_message_color=make_colour_rgb(225,168,160);
 }
 else if card_draw_points>0 and card_hand_total=card_hand_max {

@@ -8,7 +8,8 @@
 ✔	background
 ✔	enemy turn
 ✔	basic enemy AI: draw
-basic enemy AI: play
+✔	basic enemy AI: play
+basic enemy AI: discard
 attacking
 basic enemy AI: attack
 first turn (coin + limitations)

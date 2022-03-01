@@ -179,27 +179,24 @@ if player_turn=false {
 	//
 	if enemy_turn_timer=0 {
 		if enemy_turn_phase<0 { enemy_turn_timer=irandom_range(30,45); }
-		else { enemy_turn_timer=irandom_range(45,90); }
+		else { enemy_turn_timer=irandom_range(15,15); }
 		enemy_turn_phase+=1;
-		enemycard_play_id=-1;
-		enemyspace_play=-1;
+		enemycard_playplan_id=-1;
+		enemyspace_playplan=-1;
 	}
 	//
 	if enemy_turn_phase=1 {
 		if enemycard_draw_points>0 and enemycard_hand_total<card_hand_max and (enemycard_maindeck[0]!=-1 or enemycard_berrydeck[0]!=-1) {
-			sc_AI_draw(choose(0,1,1));
+			sc_AI_draw(irandom(99)+1);
 		}
 	}
 	//
 	else if enemy_turn_phase=2 {
-		if card_space_id[0].occupied=false or card_space_id[1].occupied=false or card_space_id[2].occupied=false or
-		card_space_id[3].occupied=false or card_space_id[4].occupied=false {
-			sc_AI_play(0);
-		}
+		sc_AI_play(irandom(99)+1);
 	}
 	//
 	else if enemy_turn_phase=3 {
-		sc_AI_attack(0);
+		sc_AI_attack(irandom(99)+1);
 	}
 	//
 	else if enemy_turn_phase=4 {

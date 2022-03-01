@@ -1,10 +1,17 @@
 function sc_AI_draw(argument0) {
 /// @param AI_level
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+var AI_level=-1;
+if argument0<=AI_threshold[0] { AI_level=0; }
+else if argument0<=AI_threshold[1] { AI_level=1; }
+else if argument0<=AI_threshold[2] { AI_level=2; }
+else if argument0<=AI_threshold[3] { AI_level=3; }
+else if argument0<=AI_threshold[4] { AI_level=4; }
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 var enemy_draw_confirm=false, enemy_draw_cat=-1;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-// RANDOM
-if argument0=0 {
+// DRAW: RANDOM
+if AI_level<=0 {
 	do {
 		enemy_draw_cat=irandom(1);
 		if (enemy_draw_cat=0 and enemycard_draw_points>=card_drawcost_main and enemycard_maindeck[0]!=-1) or
@@ -14,8 +21,8 @@ if argument0=0 {
 	} until (enemy_draw_confirm=true);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-// BERRIES IF NEEDED
-else if argument0>=1 {
+// DRAW: BERRIES IF NEEDED
+else if AI_level<=4 {
 	var i=0, berries_needed, berries_held;
 	berries_needed[0]=0;
 	berries_needed[1]=0;
@@ -56,8 +63,9 @@ else if argument0>=1 {
 		}
 	} until (enemy_draw_confirm=true);
 	//
-	sc_AI_report("(total berries needed: " + string(berries_needed[0]) + "+" + string(berries_needed[1]) + "+" + string(berries_needed[2]) + "+" + string(berries_needed[3]) +
-	" / berries held: " + string(berries_held[0]) + "+" + string(berries_held[1]) + "+" + string(berries_held[2]) + "+" + string(berries_held[3]) + ")");
+	sc_AI_report("Draw (AI " + string(AI_level) + ") // berries needed (hand): " +
+	string(berries_needed[0]) + "+" + string(berries_needed[1]) + "+" + string(berries_needed[2]) + "+" + string(berries_needed[3]) +
+	", berries held (hand): " + string(berries_held[0]) + "+" + string(berries_held[1]) + "+" + string(berries_held[2]) + "+" + string(berries_held[3]));
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if enemy_draw_cat=0 {
@@ -82,6 +90,6 @@ else if enemy_draw_cat=1 {
 	enemycard_draw_points-=card_drawcost_berry;
 }
 //
-sc_AI_report("Draw (AI level " + string(argument0) + ") > " + string(var_card_selected.card_name));
+sc_AI_report("Draw (AI " + string(AI_level) + ") > " + string(var_card_selected.card_name));
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }

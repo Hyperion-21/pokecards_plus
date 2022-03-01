@@ -1,6 +1,6 @@
 randomize(); //random seed
-game_name="Pocket Pallet CCG";
-game_version="v0.0.0.15";
+game_name="Pocket Palette Arena";
+game_version="v0.0.0.16";
 window_set_caption(game_name + " (" + string(game_version) + ")");
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-1000;
@@ -134,8 +134,8 @@ enemy_turn_timer=0;
 enemy_turn_phase=-1;
 card_draw_points=2;
 enemycard_draw_points=2;
-enemycard_play_id=-1;
-enemyspace_play=-1;
+enemycard_playplan_id=-1;
+enemyspace_playplan=-1;
 card_drawcost_main=2;
 card_drawcost_berry=1;
 card_focus=-1; //id
@@ -145,6 +145,11 @@ button_sorthand=false;
 button_nextturn=false;
 AI_report="";
 AI_report_toggle=false;
+AI_threshold[0]=20;
+AI_threshold[1]=100;
+AI_threshold[2]=0;
+AI_threshold[3]=0;
+AI_threshold[4]=0;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 //event_active=false;
 //reset_objects=false;

@@ -106,7 +106,7 @@ if card_cat=0 {
 	} until (card_rarity_check=true and card_name!="");
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	if card_full_hp+card_full_atk*2+card_full_def*2>=50 { card_cost_total=2; }
-	else if card_full_hp+card_full_atk*2+card_full_def*2>=20 or card_level>=5 { card_cost_total=1; }
+	else if card_full_hp+card_full_atk*2+card_full_def*2>=10 { card_cost_total=1; }
 	else { card_cost_total=0; }
 	if card_enigma=true { card_cost_total+=1; }
 	//
