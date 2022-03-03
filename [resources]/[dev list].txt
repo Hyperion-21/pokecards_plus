@@ -11,7 +11,7 @@
 ✔	basic enemy AI: play
 ✔	basic enemy AI: discard
 ✔	attacking
-type bonuses
+✔	type bonuses
 basic enemy AI: attack
 stalemate solving
 first turn (coin + limitations)

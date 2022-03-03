@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Palette Arena";
-game_version="v0.0.0.17";
+game_version="v0.0.0.18";
 window_set_caption(game_name + " (" + string(game_version) + ")");
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-1000;

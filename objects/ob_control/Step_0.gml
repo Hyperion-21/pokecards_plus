@@ -99,15 +99,18 @@ if card_focus!=-1 {
 		with (card_focus) {
 			if already_attacked=false {
 				var card_target=-1;
-				if position_meeting(ob_control.card_focus.x+28,ob_control.card_focus.y-20,ob_card) {
-					card_target=instance_position(ob_control.card_focus.x+28,ob_control.card_focus.y-20,ob_card);
+				if position_meeting(x+28,y-20,ob_card) {
+					card_target=instance_position(x+28,y-20,ob_card);
 					//
-					var damage_dealt=card_atk-card_target.card_def;
+					var damage_dealt=card_atk-card_target.card_def, damage_extra_dealt=0;
 					if damage_dealt<0 { damage_dealt=0; }
+					if sc_type_bonus(card_type_a,card_type_b,card_target.card_type_a,card_target.card_type_b)=true { damage_extra_dealt=1; }
+					damage_dealt+=damage_extra_dealt;
 					card_target.card_hp-=damage_dealt;
 					card_target.effect_damaged=1;
 					var damage_num_id=instance_create_layer(card_target.x+28,card_target.y+60,"instances",ob_damage_num);
-					damage_num_id.damage_num=damage_dealt;
+					damage_num_id.damage_num=damage_dealt-damage_extra_dealt;
+					damage_num_id.damage_extra=damage_extra_dealt;
 					//
 					if card_target.card_hp<=0 {
 						instance_position(card_target.x,card_target.y,ob_card_space).occupied=false;
@@ -128,6 +131,7 @@ if card_focus!=-1 {
 					ob_control.enemy_effect_damaged=1;
 					var damage_num_id=instance_create_layer(ob_control.cam_w-30,109,"instances",ob_damage_num);
 					damage_num_id.damage_num=card_atk;
+					damage_num_id.damage_extra=0;
 				}
 				//
 				already_attacked=true;
