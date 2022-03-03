@@ -81,7 +81,8 @@ repeat (enemycard_hand_total) {
 var i=0, enemycard_justberry_playable=false;
 repeat (5) {
 	if card_space_id[i].berries_total<8 and card_space_id[i].occupied=false and
-	enemycard_draw_points>0 and enemycard_hand_total=card_hand_max and (enemycard_maindeck[0]!=-1 or enemycard_berrydeck[0]!=-1) { enemycard_justberry_playable=true; }
+	enemycard_draw_points>0 and enemycard_hand_total=card_hand_max and (enemycard_maindeck[0]!=-1 or enemycard_berrydeck[0]!=-1) and
+	(berries_held[0]>0 or berries_held[1]>0 or berries_held[2]>0) { enemycard_justberry_playable=true; }
 	i+=1;
 }
 //
@@ -121,7 +122,7 @@ else if AI_level<=4 and enemycard_poke_playable=false and enemycard_justberry_pl
 	} until (berries_held[enemycard_berry_play]>0 and card_space_id[enemyspace_playplan].berries_total<8 and card_space_id[enemyspace_playplan].occupied=false);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-// PLAY (DISCARD): RANDOM BERRY (FIRST) OR POKEMON (SECOND)
+// PLAY (DISCARD): RANDOM BERRY > RANDOM POKEMON
 else if AI_level<=4 and discard_check=true {
 	if berries_held[0]+berries_held[1]+berries_held[2]>0 { //no enigma
 		do {
@@ -164,7 +165,7 @@ if enemycard_poke_playable=true or enemycard_justberry_playable=true or enemycar
 	if enemycard_berry_play!=-1 {
 		var i=0;
 		do {
-			if enemycard_hand[i].card_id=3000+enemycard_berry_play {
+			if enemycard_hand[i].card_id=3000+enemycard_berry_play { //<error enemycard_hand[i] empty
 				enemycard_playnow_id=enemycard_hand[i];
 			}
 			i+=1;
@@ -216,7 +217,7 @@ if enemycard_poke_playable=true or enemycard_justberry_playable=true or enemycar
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if enemycard_draw_points>0 and enemy_turn_timer>1 and discard_skip=false {
-	enemy_turn_phase-=1;
+	enemy_turn_phase=enemy_turn_phase_draw; //no enemy_turn_timer=0
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }

@@ -9,21 +9,21 @@ if player_effect_damaged>0 { var playerhp_draw_x=x+irandom_range(-2,2), playerhp
 else { var playerhp_draw_x=x, playerhp_draw_y=y; }
 //
 draw_set_halign(fa_center);
-sc_drawrectangle(cam_w-45+enemyhp_draw_x,105+enemyhp_draw_y,cam_w-16+enemyhp_draw_x,125+enemyhp_draw_y,make_colour_rgb(40,40,40),make_colour_rgb(230,230,230),1,0.5,0);
+sc_drawrectangle(cam_w-45+enemyhp_draw_x,105+enemyhp_draw_y,cam_w-16+enemyhp_draw_x,125+enemyhp_draw_y,make_colour_rgb(40,40,40),make_colour_rgb(230,230,230),1,0.5,1,0);
 sc_drawtext(cam_w-30+enemyhp_draw_x,109+enemyhp_draw_y,string(enemy_hp),make_colour_rgb(182,161,226),make_colour_rgb(40,40,40),1,0.5,0,-1);
-sc_drawrectangle(cam_w-45+playerhp_draw_x,132+playerhp_draw_y,cam_w-16+playerhp_draw_x,152+playerhp_draw_y,make_colour_rgb(40,40,40),make_colour_rgb(230,230,230),1,0.5,0);
+sc_drawrectangle(cam_w-45+playerhp_draw_x,132+playerhp_draw_y,cam_w-16+playerhp_draw_x,152+playerhp_draw_y,make_colour_rgb(40,40,40),make_colour_rgb(230,230,230),1,0.5,1,0);
 sc_drawtext(cam_w-30+playerhp_draw_x,136+playerhp_draw_y,string(player_hp),make_colour_rgb(160,193,225),make_colour_rgb(40,40,40),1,0.5,0,-1);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 draw_set_font(fn_m3x6);
 //
 draw_set_halign(fa_left);
 var var_text=string(card_berrydeck_total) + "x Berry Deck";
-sc_drawrectangle(10,cam_h-20,14+string_width(var_text),cam_h-9,make_colour_rgb(40,40,40),make_colour_rgb(40,40,40),1,0.5,0);
+sc_drawrectangle(10,cam_h-20,14+string_width(var_text),cam_h-9,make_colour_rgb(40,40,40),make_colour_rgb(40,40,40),1,0.5,1,0);
 sc_drawtext(13,cam_h-21,var_text,make_colour_rgb(230,230,230),c_black,0.1,0,0,-1);
 //
 draw_set_halign(fa_right);
 var var_text=string(card_maindeck_total) + "x Main Deck";
-sc_drawrectangle(cam_w-15-string_width(var_text),cam_h-20,cam_w-11,cam_h-9,make_colour_rgb(40,40,40),make_colour_rgb(40,40,40),1,0.5,0);
+sc_drawrectangle(cam_w-15-string_width(var_text),cam_h-20,cam_w-11,cam_h-9,make_colour_rgb(40,40,40),make_colour_rgb(40,40,40),1,0.5,1,0);
 sc_drawtext(cam_w-12,cam_h-21,var_text,make_colour_rgb(230,230,230),c_black,0.1,0,0,-1);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 draw_set_halign(fa_center);
@@ -47,44 +47,44 @@ else if card_draw_points>2 {
 }
 //
 if helpmsg_dismissed=false and var_message!="" {
-	sc_drawrectangle(cam_w/2-string_width(var_message)/2-5,219,cam_w/2+string_width(var_message)/2+3,230,make_colour_rgb(40,40,40),make_colour_rgb(40,40,40),1,0.8,0);
+	sc_drawrectangle(cam_w/2-string_width(var_message)/2-5,219,cam_w/2+string_width(var_message)/2+3,230,make_colour_rgb(40,40,40),make_colour_rgb(40,40,40),1,0.8,1,0);
 	sc_drawtext(cam_w/2,218,var_message,var_message_color,make_colour_rgb(40,40,40),1,0.5,0,-1);
 }
 //
 draw_set_halign(fa_left);
 if card_draw_points>=card_drawcost_berry {
-	sc_drawrectangle(27,193,49,204,make_colour_rgb(40,40,40),make_colour_rgb(40,40,40),1,0.5,0);
+	sc_drawrectangle(27,193,49,204,make_colour_rgb(40,40,40),make_colour_rgb(40,40,40),1,0.5,1,0);
 	sc_drawtext(30,192,"Draw",make_colour_rgb(160,193,225),make_colour_rgb(40,40,40),1,0.5,0,-1);
 }
 if card_draw_points>=card_drawcost_main {
-	sc_drawrectangle(cam_w-50,193,cam_w-28,204,make_colour_rgb(40,40,40),make_colour_rgb(40,40,40),1,0.5,0);
+	sc_drawrectangle(cam_w-50,193,cam_w-28,204,make_colour_rgb(40,40,40),make_colour_rgb(40,40,40),1,0.5,1,0);
 	sc_drawtext(cam_w-47,192,"Draw",make_colour_rgb(160,193,225),make_colour_rgb(40,40,40),1,0.5,0,-1);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if tooltip_text!="" {
 	if mouse_x+17+string_width(tooltip_text)<cam_w {
 		draw_set_halign(fa_left);
-		sc_drawrectangle(mouse_x+9,mouse_y-4,mouse_x+18+string_width(tooltip_text),mouse_y+12,make_colour_rgb(40,40,40),make_colour_rgb(230,230,230),1,0.8,0);
+		sc_drawrectangle(mouse_x+9,mouse_y-4,mouse_x+18+string_width(tooltip_text),mouse_y+12,make_colour_rgb(40,40,40),make_colour_rgb(230,230,230),1,0.8,1,0);
 		sc_drawtext(mouse_x+15,mouse_y-2,tooltip_text,make_colour_rgb(230,230,230),make_colour_rgb(40,40,40),1,0.5,0,-1);
 	}
 	else {
 		draw_set_halign(fa_right);
-		sc_drawrectangle(mouse_x-14-string_width(tooltip_text),mouse_y-4,mouse_x-5,mouse_y+12,make_colour_rgb(40,40,40),make_colour_rgb(230,230,230),1,0.8,0);
+		sc_drawrectangle(mouse_x-14-string_width(tooltip_text),mouse_y-4,mouse_x-5,mouse_y+12,make_colour_rgb(40,40,40),make_colour_rgb(230,230,230),1,0.8,1,0);
 		sc_drawtext(mouse_x-8,mouse_y-2,tooltip_text,make_colour_rgb(230,230,230),make_colour_rgb(40,40,40),1,0.5,0,-1);
 	}
 }
 tooltip_text="";
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if fade_black>0 {
-	sc_drawrectangle(cam_x-8,cam_y-8,cam_x+cam_w+8,cam_y+cam_h+8,c_black,c_white,0,fade_black,0);
+	sc_drawrectangle(cam_x-8,cam_y-8,cam_x+cam_w+8,cam_y+cam_h+8,c_black,c_white,0,fade_black,1,0);
 }
 //
-if textbox_active=true { sc_drawrectangle(cam_x+4,cam_y+cam_h-52,cam_x+cam_w-6,cam_y+cam_h-6,c_black,c_white,1,0.5,1); }
+if textbox_active=true { sc_drawrectangle(cam_x+4,cam_y+cam_h-52,cam_x+cam_w-6,cam_y+cam_h-6,c_black,c_white,1,0.5,1,1); }
 if text_string!="" { sc_drawtext(cam_x+12,cam_y+cam_h-48,text_show,c_white,c_black,1,0.5,0,233); }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if AI_report_toggle=true {
 	draw_set_halign(fa_left);
-	sc_drawrectangle(-2,-2,room_width+2,room_height+2,c_black,c_black,0,0.4,0);
+	sc_drawrectangle(-2,-2,room_width+2,room_height+2,c_black,c_black,0,0.4,1,0);
 	sc_drawtext(4,0,AI_report,c_aqua,c_black,1,0.5,0,-1);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

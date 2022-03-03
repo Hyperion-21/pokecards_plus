@@ -96,48 +96,7 @@ if card_focus!=-1 {
 	//
 	if mouse_check_button_pressed(mb_left) and player_turn=true and card_hold=-1 and cursor_hide=false and
 	card_focus.card_played=true and card_focus.card_enemy=false { //click played card
-		with (card_focus) {
-			if already_attacked=false {
-				var card_target=-1;
-				if position_meeting(x+28,y-20,ob_card) {
-					card_target=instance_position(x+28,y-20,ob_card);
-					//
-					var damage_dealt=card_atk-card_target.card_def, damage_extra_dealt=0;
-					if damage_dealt<0 { damage_dealt=0; }
-					if sc_type_bonus(card_type_a,card_type_b,card_target.card_type_a,card_target.card_type_b)=true { damage_extra_dealt=1; }
-					damage_dealt+=damage_extra_dealt;
-					card_target.card_hp-=damage_dealt;
-					card_target.effect_damaged=1;
-					var damage_num_id=instance_create_layer(card_target.x+28,card_target.y+60,"instances",ob_damage_num);
-					damage_num_id.damage_num=damage_dealt-damage_extra_dealt;
-					damage_num_id.damage_extra=damage_extra_dealt;
-					//
-					if card_target.card_hp<=0 {
-						instance_position(card_target.x,card_target.y,ob_card_space).occupied=false;
-						instance_position(card_target.x,card_target.y,ob_card_space).effect_use=1;
-						ob_control.card_space_id[10].effect_use=1;
-						card_target.card_trash=true;
-					}
-					if card_hp<=0 {
-						instance_position(x,y,ob_card_space).occupied=false;
-						instance_position(x,y,ob_card_space).effect_use=1;
-						ob_control.card_space_id[10].effect_use=1;
-						ob_control.card_focus=-1;
-						card_trash=true;
-					}
-				}
-				else {
-					ob_control.enemy_hp-=card_atk;
-					ob_control.enemy_effect_damaged=1;
-					var damage_num_id=instance_create_layer(ob_control.cam_w-30,109,"instances",ob_damage_num);
-					damage_num_id.damage_num=card_atk;
-					damage_num_id.damage_extra=0;
-				}
-				//
-				already_attacked=true;
-				y-=70;
-			}
-		}
+		sc_card_attack(true,card_focus);
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -211,28 +170,30 @@ if player_turn=false {
 	if enemy_turn_timer>0 { enemy_turn_timer-=1; }
 	//
 	if enemy_turn_timer=0 {
-		if enemy_turn_phase<0 { enemy_turn_timer=irandom_range(30,45); }
-		else { enemy_turn_timer=irandom_range(15,15); }
 		enemy_turn_phase+=1;
 		enemycard_playplan_id=-1;
 		enemyspace_playplan=-1;
+		if enemy_turn_phase=0 { enemy_turn_timer=irandom_range(30,60); }
+		else if enemy_turn_phase=enemy_turn_phase_draw { enemy_turn_timer=irandom_range(45,90); }
+		else if enemy_turn_phase=enemy_turn_phase_play { enemy_turn_timer=irandom_range(15,30); }
+		else { enemy_turn_timer=4; }
 	}
 	//
-	if enemy_turn_phase=1 {
+	if enemy_turn_phase=enemy_turn_phase_draw {
 		if enemycard_draw_points>0 and enemycard_hand_total<card_hand_max and (enemycard_maindeck[0]!=-1 or enemycard_berrydeck[0]!=-1) {
 			sc_AI_draw(irandom(99)+1);
 		}
 	}
 	//
-	else if enemy_turn_phase=2 {
+	else if enemy_turn_phase=enemy_turn_phase_play {
 		sc_AI_play(irandom(99)+1);
 	}
 	//
-	else if enemy_turn_phase=3 {
+	else if enemy_turn_phase>=enemy_turn_phase_attack and enemy_turn_phase<=enemy_turn_phase_attack+4 {
 		sc_AI_attack(irandom(99)+1);
 	}
 	//
-	else if enemy_turn_phase=4 {
+	else if enemy_turn_phase=enemy_turn_phase_attack+5 {
 		button_nextturn=true;
 		button_nextturn_id.button_state=1;
 	}

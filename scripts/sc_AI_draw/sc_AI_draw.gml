@@ -21,9 +21,9 @@ if AI_level<=0 {
 	} until (enemy_draw_confirm=true);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-// DRAW: BERRIES IF NEEDED
+// DRAW: AT LEAST 2 POKEMON > BERRIES IF NEEDED
 else if AI_level<=4 {
-	var i=0, berries_needed, berries_held;
+	var i=0, berries_needed, berries_held, poke_held=0;
 	berries_needed[0]=0;
 	berries_needed[1]=0;
 	berries_needed[2]=0;
@@ -39,29 +39,28 @@ else if AI_level<=4 {
 			berries_needed[1]+=enemycard_hand[i].card_cost_total_type[1]; //leppa
 			berries_needed[2]+=enemycard_hand[i].card_cost_total_type[2]; //lum
 			berries_needed[3]+=enemycard_hand[i].card_cost_total_type[3]; //enigma
+			poke_held+=1;
 		}
 		else if enemycard_hand[i].card_cat=1 {
 			berries_held[enemycard_hand[i].card_id-3000]+=1;
 		}
 		i+=1;
 	}
-	do {
-		if (enemycard_draw_points>=card_drawcost_berry and enemycard_berrydeck[0]!=-1) and
-		((berries_needed[0]>berries_held[0]) or
-		(berries_needed[1]>berries_held[1]) or
-		(berries_needed[2]>berries_held[2])) {
-			enemy_draw_cat=1;
-			enemy_draw_confirm=true;
-		}
-		else if (enemycard_draw_points>=card_drawcost_main and enemycard_maindeck[0]!=-1) {
-			enemy_draw_cat=0;
-			enemy_draw_confirm=true;
-		}
-		else if (enemycard_draw_points>=card_drawcost_berry and enemycard_berrydeck[0]!=-1) {
-			enemy_draw_cat=1;
-			enemy_draw_confirm=true;
-		}
-	} until (enemy_draw_confirm=true);
+	if (enemycard_draw_points>=card_drawcost_main and enemycard_maindeck[0]!=-1 and poke_held<2) {
+		enemy_draw_cat=0;
+	}
+	else if (enemycard_draw_points>=card_drawcost_berry and enemycard_berrydeck[0]!=-1) and
+	((berries_needed[0]>berries_held[0]) or
+	(berries_needed[1]>berries_held[1]) or
+	(berries_needed[2]>berries_held[2])) {
+		enemy_draw_cat=1;
+	}
+	else if (enemycard_draw_points>=card_drawcost_main and enemycard_maindeck[0]!=-1) {
+		enemy_draw_cat=0;
+	}
+	else if (enemycard_draw_points>=card_drawcost_berry and enemycard_berrydeck[0]!=-1) {
+		enemy_draw_cat=1;
+	}
 	//
 	sc_AI_report("Draw (AI " + string(AI_level) + ") // berries needed (hand): " +
 	string(berries_needed[0]) + "+" + string(berries_needed[1]) + "+" + string(berries_needed[2]) + "+" + string(berries_needed[3]) +

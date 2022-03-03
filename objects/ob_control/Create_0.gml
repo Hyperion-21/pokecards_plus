@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Palette Arena";
-game_version="v0.0.0.18";
+game_version="v0.0.0.19";
 window_set_caption(game_name + " (" + string(game_version) + ")");
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-1000;
@@ -138,6 +138,10 @@ enemy_effect_damaged=0;
 player_turn=true;
 enemy_turn_timer=0;
 enemy_turn_phase=-1;
+enemy_turn_phase_draw=1;
+enemy_turn_phase_play=2;
+enemy_turn_phase_attack=3;
+//
 card_draw_points=2;
 enemycard_draw_points=2;
 enemycard_playplan_id=-1;
