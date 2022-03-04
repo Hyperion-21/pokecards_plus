@@ -27,7 +27,7 @@ if card_cat=0 and card_face=true {
 	if card_enigma=false and card_secret=false { draw_sprite_general(sp_sheet,0,16*5+4,16*0,sprite_width,sprite_height,draw_x,draw_y,1,1,0,c_white,c_white,c_white,c_white,1); }
 	else { draw_sprite_general(sp_sheet,0,16*13+4,16*0,sprite_width,sprite_height,draw_x,draw_y,1,1,0,c_white,c_white,c_white,c_white,1); }
 	//
-	draw_sprite_general(sp_sheet,0,16*1,16*2,53,10,draw_x+2,draw_y+41,1,1,0,namebar_color,make_colour_rgb(230,230,230),make_colour_rgb(230,230,230),namebar_color,1);
+	draw_sprite_general(sp_sheet,0,16*1,16*2,53,10,draw_x+2,draw_y+41,1,1,0,namebar_color,global.color_white,global.color_white,namebar_color,1);
 	//
 	draw_sprite_general(card_sheet,0,65*(card_grid_x-1)+1,33*(card_grid_y-1)+1,64,32,draw_x-4,draw_y+3,1,1,0,c_white,c_white,c_white,c_white,1);
 	//
@@ -47,49 +47,49 @@ if card_cat=0 and card_face=true {
 		i+=1;
 	}
 	//
-	if already_attacked=false and card_played=true and card_trash=false and card_enemy=false and ob_control.player_turn=true {
+	if already_attacked=false and card_played=true and card_trash=false and card_enemy=false and ob_control.player_turn=true and ob_control.turn_num>2 {
 		draw_sprite_general(sp_sheet,0,16*1,16*12,16,16,draw_x+20,draw_y-8,1,1,0,c_white,c_white,c_white,c_white,1);
 	}
 	//
 	draw_set_font(fn_m3x6);
 	draw_set_halign(fa_center);
-	draw_healthbar(draw_x+4,draw_y+56,draw_x+52,draw_y+57,0,make_colour_rgb(205,198,181),c_white,c_white,0,true,false);
-	sc_drawtext(draw_x+29,draw_y+39,card_name,make_colour_rgb(230,230,230),make_colour_rgb(40,40,40),1,0.6,0,-1);
-	sc_drawtext(draw_x+29,draw_y+50,"lv " + string(card_level),make_colour_rgb(190,190,190),make_colour_rgb(40,40,40),1,0.5,0,-1);
-	//sc_drawtext(draw_x+29,draw_y+4,string(card_rarity),c_aqua,make_colour_rgb(40,40,40),1,0.6,0,-1);
+	draw_healthbar(draw_x+4,draw_y+56,draw_x+52,draw_y+57,0,global.color_card_dark,c_white,c_white,0,true,false);
+	sc_drawtext(draw_x+29,draw_y+39,card_name,global.color_white,global.color_black,1,0.6,0,-1);
+	sc_drawtext(draw_x+29,draw_y+50,"lv " + string(card_level),global.color_gray,global.color_black,1,0.5,0,-1);
+	//sc_drawtext(draw_x+29,draw_y+4,string(card_rarity),c_aqua,global.color_black,1,0.6,0,-1);
 	//
 	var num_color=c_white;
 	draw_set_halign(fa_left);
-	if card_atk<card_full_atk { num_color=make_colour_rgb(225,168,160); }
-	else if card_atk>card_full_atk { num_color=make_colour_rgb(160,193,225); }
-	else { num_color=make_colour_rgb(230,230,230); }
-	sc_drawtext(draw_x+5,draw_y+66,string(card_atk),num_color,make_colour_rgb(40,40,40),1,0.5,0,-1);
+	if card_atk<card_full_atk { num_color=global.color_damage; }
+	else if card_atk>card_full_atk { num_color=global.color_player; }
+	else { num_color=global.color_white; }
+	sc_drawtext(draw_x+5,draw_y+66,string(card_atk),num_color,global.color_black,1,0.5,0,-1);
 	draw_set_halign(fa_center);
-	if card_hp<card_full_hp { num_color=make_colour_rgb(225,168,160); }
-	else { num_color=make_colour_rgb(176,223,159); }
-	sc_drawtext(draw_x+29,draw_y+60,string(card_hp),num_color,make_colour_rgb(40,40,40),1,0.5,0,-1);
+	if card_hp<card_full_hp { num_color=global.color_damage; }
+	else { num_color=global.color_fullhp; }
+	sc_drawtext(draw_x+29,draw_y+60,string(card_hp),num_color,global.color_black,1,0.5,0,-1);
 	draw_set_halign(fa_right);
-	if card_def<card_full_def { num_color=make_colour_rgb(225,168,160); }
-	else if card_def>card_full_def { num_color=make_colour_rgb(160,193,225); }
-	else { num_color=make_colour_rgb(230,230,230); }
-	sc_drawtext(draw_x+53,draw_y+66,string(card_def),num_color,make_colour_rgb(40,40,40),1,0.5,0,-1);
+	if card_def<card_full_def { num_color=global.color_damage; }
+	else if card_def>card_full_def { num_color=global.color_player; }
+	else { num_color=global.color_white; }
+	sc_drawtext(draw_x+53,draw_y+66,string(card_def),num_color,global.color_black,1,0.5,0,-1);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if card_cat=1 and card_face=true {
 	draw_sprite_general(sp_sheet,0,16*9+4,16*0,sprite_width,sprite_height,draw_x,draw_y,1,1,0,c_white,c_white,c_white,c_white,1);
 	draw_sprite_general(sp_sheet,0,16*1,16*2,53,10,draw_x+2,draw_y+41,1,1,0,
-	make_colour_rgb(205,198,181),make_colour_rgb(233,230,222),make_colour_rgb(233,230,222),make_colour_rgb(205,198,181),1);
+	global.color_card_dark,global.color_card_light,global.color_card_light,global.color_card_dark,1);
 	draw_sprite_general(sp_berries,0,32*(card_id-3000)+1,1,32,32,draw_x+12,draw_y+4,1,1,0,c_white,c_white,c_white,c_white,1);
 	//
 	draw_set_font(fn_m3x6);
 	draw_set_halign(fa_center);
-	sc_drawtext(draw_x+29,draw_y+39,card_name,make_colour_rgb(230,230,230),make_colour_rgb(40,40,40),1,0.6,0,-1);
+	sc_drawtext(draw_x+29,draw_y+39,card_name,global.color_white,global.color_black,1,0.6,0,-1);
 	//
 	draw_sprite_general(sp_sheet,0,16*(card_id-3000+1),16*3,4,4,draw_x+26,draw_y+63,1,1,0,c_white,c_white,c_white,c_white,1);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if card_face=false {
-	if card_trash=false { var overlay_color=c_white; } else { var overlay_color=make_colour_rgb(170,170,170); }
+	if card_trash=false { var overlay_color=c_white; } else { var overlay_color=global.color_gray; }
 	if card_cat=0 or card_enemy=true {
 		draw_sprite_general(sp_sheet,0,16*25+4,16*0,sprite_width,sprite_height,draw_x,draw_y,1,1,0,overlay_color,overlay_color,overlay_color,overlay_color,1);
 	}

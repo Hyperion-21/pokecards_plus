@@ -96,7 +96,8 @@ if card_focus!=-1 {
 	//
 	if mouse_check_button_pressed(mb_left) and player_turn=true and card_hold=-1 and cursor_hide=false and
 	card_focus.card_played=true and card_focus.card_enemy=false { //click played card
-		sc_card_attack(true,card_focus);
+		if turn_num>2 { sc_card_attack(true,card_focus); }
+		else { first_turn_warning=true; }
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -186,11 +187,14 @@ if player_turn=false {
 		if enemy_play_delay=0 {
 			sc_AI_play(irandom(99)+1);
 		}
-		else enemy_play_delay-=1;
+		else { enemy_play_delay-=1; }
 	}
 	//
 	else if enemy_turn_phase>=enemy_turn_phase_attack and enemy_turn_phase<=enemy_turn_phase_attack+4 {
-		sc_AI_attack(irandom(99)+1);
+		if turn_num>2 {
+			sc_AI_attack(irandom(99)+1);
+		}
+		else { enemy_turn_timer=0; }
 	}
 	//
 	else if enemy_turn_phase=enemy_turn_phase_attack+5 {
@@ -239,7 +243,6 @@ if button_nextturn=true {
 		player_turn=false;
 		card_draw_points=0;
 		enemycard_draw_points=2;
-		helpmsg_dismissed=false;
 		enemy_turn_timer=0;
 		enemy_turn_phase=-1;
 		sc_AI_report("- NEW TURN -");
@@ -248,8 +251,11 @@ if button_nextturn=true {
 		player_turn=true;
 		card_draw_points=2;
 		enemycard_draw_points=0;
-		helpmsg_dismissed=false;
 	}
+	//
+	turn_num+=1;
+	helpmsg_dismissed=false;
+	first_turn_warning=false;
 	//
 	with (ob_card) {
 		already_attacked=false;

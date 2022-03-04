@@ -19,7 +19,7 @@ with (argument1) {
 			damage_num_id.damage_num=damage_dealt-damage_extra_dealt;
 			damage_num_id.damage_extra=damage_extra_dealt;
 			damage_num_id.text_alpha=damage_num_id.text_alpha_full;
-			damage_num_id.text_color=make_colour_rgb(225,168,160);
+			damage_num_id.text_color=global.color_damage;
 			//
 			if card_target.card_hp<=0 {
 				instance_position(card_target.x,card_target.y,ob_card_space).occupied=false;
@@ -44,23 +44,28 @@ with (argument1) {
 		else if (argument0=true and !position_meeting(x+28,y-20,ob_card)) or (argument0=false and !position_meeting(x+28,y+100,ob_card)) {
 			if argument0=true {
 				ob_control.enemy_hp-=card_atk;
-				if ob_control.enemy_hp<0 { ob_control.enemy_hp=0; }
+				ob_control.player_hp+=card_atk;
 				ob_control.enemy_effect_damaged=1;
 				var damage_num_id=instance_create_layer(x+28,y-57,"instances",ob_damage_num);
 				var damage_num_id_b=ob_control.enemy_directdamage_id;
 			}
 			else {
 				ob_control.player_hp-=card_atk;
-				if ob_control.player_hp<0 { ob_control.player_hp=0; }
+				ob_control.enemy_hp+=card_atk;
 				ob_control.player_effect_damaged=1;
 				var damage_num_id=instance_create_layer(x+28,y+123,"instances",ob_damage_num);
 				var damage_num_id_b=ob_control.player_directdamage_id;
 			}
 			//
+			if ob_control.player_hp>ob_control.hp_max*2 { ob_control.player_hp=ob_control.hp_max*2; }
+			else if ob_control.player_hp<0 { ob_control.player_hp=0; }
+			if ob_control.enemy_hp>ob_control.hp_max*2 { ob_control.enemy_hp=ob_control.hp_max*2; }
+			else if ob_control.enemy_hp<0 { ob_control.enemy_hp=0; }
+			//
 			damage_num_id.damage_num=card_atk;
 			damage_num_id.damage_direct_color=true;
 			damage_num_id.text_alpha=damage_num_id.text_alpha_full;
-			damage_num_id.text_color=make_colour_rgb(226,204,161);
+			damage_num_id.text_color=global.color_direct_damage;
 			//
 			damage_num_id_b.damage_num+=card_atk;
 			damage_num_id_b.damage_direct_color=true;

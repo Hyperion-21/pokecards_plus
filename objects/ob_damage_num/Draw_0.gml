@@ -7,9 +7,9 @@ if text_alpha>0 {
 	//
 	if damage_direct_unique=false {
 		sc_drawrectangle(x-6-floor(string_width(damage_text)/2),y-4,x+4+ceil(string_width(damage_text)/2),y+15,
-		make_colour_rgb(40,40,40),make_colour_rgb(40,40,40),1,text_alpha/2,text_alpha/2,0);
+		global.color_black,global.color_black,1,text_alpha/2,text_alpha/2,0);
 	}
 	//
 	draw_set_halign(fa_center);
-	sc_drawtext(x,y,damage_text,text_color,make_colour_rgb(40,40,40),text_alpha,text_alpha/1.5,0,-1);
+	sc_drawtext(x,y,damage_text,text_color,global.color_black,text_alpha,text_alpha/1.5,0,-1);
 }

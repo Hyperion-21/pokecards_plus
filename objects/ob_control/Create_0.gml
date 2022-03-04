@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Palette: Card Arena";
-game_version="v0.0.0.20";
+game_version="v0.0.0.21";
 window_set_caption(game_name + " (" + string(game_version) + ")");
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-1000;
@@ -37,6 +37,19 @@ window_set_fullscreen(false);
 global.sound_level=10;
 global.music_level=10;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+global.color_white=make_colour_rgb(230,230,230);
+global.color_black=make_colour_rgb(40,40,40);
+global.color_gray=make_colour_rgb(190,190,190);
+global.color_card_light=make_colour_rgb(233,230,222);
+global.color_card_dark=make_colour_rgb(205,198,181);
+global.color_player=make_colour_rgb(160,193,225);
+global.color_enemy=make_colour_rgb(221,172,159);
+global.color_fullhp=make_colour_rgb(176,223,159);
+global.color_damage=make_colour_rgb(225,168,160);
+global.color_direct_damage=make_colour_rgb(226,204,161);
+global.color_background_a=make_colour_rgb(59,57,53);
+global.color_background_b=make_colour_rgb(64,62,58);
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 instance_create_layer(0,0,"instances",ob_background);
 //
 var i=0;
@@ -55,12 +68,12 @@ button_nextturn_id.button_id=0;
 button_create=instance_create_layer(76,197,"instances",ob_button_16x16); //cam_w-91
 button_create.button_id=1;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-player_directdamage_id=instance_create_layer(cam_w-30,136,"instances",ob_damage_num);
+player_directdamage_id=instance_create_layer(cam_w-62,80,"instances",ob_damage_num);
 player_directdamage_id.damage_direct_unique=true;
-player_directdamage_id.text_color=make_colour_rgb(160,193,225);
-enemy_directdamage_id=instance_create_layer(cam_w-30,109,"instances",ob_damage_num);
+player_directdamage_id.text_color=global.color_player;
+enemy_directdamage_id=instance_create_layer(cam_w-26,80,"instances",ob_damage_num);
 enemy_directdamage_id.damage_direct_unique=true;
-enemy_directdamage_id.text_color=make_colour_rgb(182,161,226);
+enemy_directdamage_id.text_color=global.color_enemy;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var i=0;
 repeat (11) {
@@ -136,12 +149,15 @@ mouse_cursor=0;
 cursor_hide=false;
 tooltip_text="";
 helpmsg_dismissed=false;
+first_turn_warning=false;
 //
-player_hp=100;
-enemy_hp=100;
+hp_max=20;
+player_hp=hp_max;
+enemy_hp=hp_max;
 player_effect_damaged=0;
 enemy_effect_damaged=0;
 //
+turn_num=1;
 player_turn=true;
 enemy_turn_timer=0;
 enemy_turn_phase=-1;

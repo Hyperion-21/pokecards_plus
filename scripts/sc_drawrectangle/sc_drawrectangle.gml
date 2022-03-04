@@ -13,7 +13,7 @@ function sc_drawrectangle(argument0,argument1,argument2,argument3,argument4,argu
 draw_set_color(argument4); draw_set_alpha(argument7);
 draw_rectangle(argument0+1,argument1+1,argument2,argument3,false);
 //
-draw_set_color(make_colour_rgb(40,40,40)); draw_set_alpha(argument9);
+draw_set_color(global.color_black); draw_set_alpha(argument9);
 draw_line_width(argument0-1,argument1-1,argument0-1,argument3+1,argument6);
 draw_line_width(argument0-1,argument1-1,argument2+1,argument1-1,argument6);
 draw_line_width(argument0-1,argument3+1,argument2+1,argument3+1,argument6);
