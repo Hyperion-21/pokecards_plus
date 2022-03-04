@@ -1,6 +1,10 @@
 depth=-1100;
 //
-text_alpha=2;
-text_move=false;
-damage_direct=false;
-offset_x=0;
+original_y=y;
+//
+damage_num=0;
+damage_extra=0;
+text_alpha_full=2;
+text_alpha=0;
+text_color=c_white;
+damage_direct_unique=false;

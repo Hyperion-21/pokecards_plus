@@ -1,6 +1,6 @@
 randomize(); //random seed
-game_name="Pocket Palette Arena";
-game_version="v0.0.0.19";
+game_name="Pocket Palette: Card Arena";
+game_version="v0.0.0.20";
 window_set_caption(game_name + " (" + string(game_version) + ")");
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-1000;
@@ -55,6 +55,13 @@ button_nextturn_id.button_id=0;
 button_create=instance_create_layer(76,197,"instances",ob_button_16x16); //cam_w-91
 button_create.button_id=1;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+player_directdamage_id=instance_create_layer(cam_w-30,136,"instances",ob_damage_num);
+player_directdamage_id.damage_direct_unique=true;
+player_directdamage_id.text_color=make_colour_rgb(160,193,225);
+enemy_directdamage_id=instance_create_layer(cam_w-30,109,"instances",ob_damage_num);
+enemy_directdamage_id.damage_direct_unique=true;
+enemy_directdamage_id.text_color=make_colour_rgb(182,161,226);
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 var i=0;
 repeat (11) {
 	if i<=4 { //0-4 enemy side
@@ -93,7 +100,7 @@ repeat (card_berrydeck_total) {
 card_hand_total=0;
 card_hand_max=12;
 var i=0;
-repeat (card_hand_max) {
+repeat (card_hand_max+1) { //+1 to replace value when using last card when hand is full
 	card_hand[i]=-1;
 	i+=1;
 }
@@ -120,7 +127,7 @@ repeat (enemycard_berrydeck_total) {
 //
 enemycard_hand_total=0;
 var i=0;
-repeat (card_hand_max) {
+repeat (card_hand_max+1) { //+1 to replace value when using last card when hand is full
 	enemycard_hand[i]=-1;
 	i+=1;
 }
@@ -141,6 +148,7 @@ enemy_turn_phase=-1;
 enemy_turn_phase_draw=1;
 enemy_turn_phase_play=2;
 enemy_turn_phase_attack=3;
+enemy_play_delay=0;
 //
 card_draw_points=2;
 enemycard_draw_points=2;

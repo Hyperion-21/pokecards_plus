@@ -150,8 +150,7 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or cursor_hide=true) { //play
 					lower_hand_num=true;
 				}
 				if lower_hand_num=true {
-					if i<card_hand_max-1 { card_hand[i]=card_hand[i+1]; }
-					else { card_hand[i]=-1; }
+					card_hand[i]=card_hand[i+1];
 				}
 				i+=1;
 			}
@@ -171,8 +170,6 @@ if player_turn=false {
 	//
 	if enemy_turn_timer=0 {
 		enemy_turn_phase+=1;
-		enemycard_playplan_id=-1;
-		enemyspace_playplan=-1;
 		if enemy_turn_phase=0 { enemy_turn_timer=irandom_range(30,60); }
 		else if enemy_turn_phase=enemy_turn_phase_draw { enemy_turn_timer=irandom_range(45,90); }
 		else if enemy_turn_phase=enemy_turn_phase_play { enemy_turn_timer=irandom_range(15,30); }
@@ -186,7 +183,10 @@ if player_turn=false {
 	}
 	//
 	else if enemy_turn_phase=enemy_turn_phase_play {
-		sc_AI_play(irandom(99)+1);
+		if enemy_play_delay=0 {
+			sc_AI_play(irandom(99)+1);
+		}
+		else enemy_play_delay-=1;
 	}
 	//
 	else if enemy_turn_phase>=enemy_turn_phase_attack and enemy_turn_phase<=enemy_turn_phase_attack+4 {

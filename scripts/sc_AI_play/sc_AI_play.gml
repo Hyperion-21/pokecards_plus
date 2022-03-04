@@ -165,7 +165,7 @@ if enemycard_poke_playable=true or enemycard_justberry_playable=true or enemycar
 	if enemycard_berry_play!=-1 {
 		var i=0;
 		do {
-			if enemycard_hand[i].card_id=3000+enemycard_berry_play { //<error enemycard_hand[i] empty
+			if enemycard_hand[i].card_id=3000+enemycard_berry_play {
 				enemycard_playnow_id=enemycard_hand[i];
 			}
 			i+=1;
@@ -176,6 +176,8 @@ if enemycard_poke_playable=true or enemycard_justberry_playable=true or enemycar
 		enemycard_playnow_id.card_trash=true;
 		enemycard_playnow_id.card_played=true;
 		card_space_id[enemyspace_playplan].effect_use=1;
+		//
+		if enemycard_playplan_id=-1 { enemyspace_playplan=-1; } //only if it's playing a random berry
 	}
 	else if enemycard_playplan_id!=-1 {
 		enemycard_playnow_id=enemycard_playplan_id;
@@ -191,6 +193,9 @@ if enemycard_poke_playable=true or enemycard_justberry_playable=true or enemycar
 		enemycard_playnow_id.card_played=true;
 		card_space_id[enemyspace_playplan].occupied=true;
 		card_space_id[enemyspace_playplan].effect_use=1;
+		//
+		enemycard_playplan_id=-1;
+		enemyspace_playplan=-1;
 	}
 	else if enemycard_discard_id!=-1 {
 		enemycard_playnow_id=enemycard_discard_id;
@@ -205,12 +210,14 @@ if enemycard_poke_playable=true or enemycard_justberry_playable=true or enemycar
 			lower_hand_num=true;
 		}
 		if lower_hand_num=true {
-			if i<card_hand_max-1 { enemycard_hand[i]=enemycard_hand[i+1]; }
-			else { enemycard_hand[i]=-1; }
+			enemycard_hand[i]=enemycard_hand[i+1];
 		}
 		i+=1;
 	}
 	enemycard_hand_total-=1;
+	//
+	enemy_play_delay=15;
+	enemy_turn_timer+=15;
 	//
 	if enemycard_discard_id!=-1 { sc_AI_report("Discard (AI " + string(AI_level) + ") > " + string(enemycard_playnow_id.card_name)); }
 	else { sc_AI_report("Play (AI " + string(AI_level) + ") > " + string(enemycard_playnow_id.card_name)); }

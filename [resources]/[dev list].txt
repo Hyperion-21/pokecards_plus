@@ -12,11 +12,11 @@
 ✔	basic enemy AI: discard
 ✔	attacking
 ✔	type bonuses
-basic enemy AI: attack
-stalemate solving
+✔	basic enemy AI: attack
 first turn (coin + limitations)
 glyphs
 win & lose
+stalemate solving
 save data
 main menu
 in-game menu
