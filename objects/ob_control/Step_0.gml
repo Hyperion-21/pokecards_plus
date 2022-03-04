@@ -4,7 +4,7 @@ cam_y=camera_get_view_y(view_camera[0]);
 mouse_cursor=0;
 if mouse_check_button(mb_right) {
 	cursor_hide=true;
-	helpmsg_dismissed=true;
+	tooltip_timer=0;
 }
 else { cursor_hide=false; }
 //
@@ -16,6 +16,12 @@ if keyboard_check_pressed(vk_f5) { game_restart(); } //< delete later, testing
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if player_effect_damaged>0 { player_effect_damaged-=0.08; }
 if enemy_effect_damaged>0 { enemy_effect_damaged-=0.08; }
+//
+if tooltip_timer>0 { tooltip_timer-=1; }
+else if tooltip_timer=0 {
+	first_turn_attack_warning=false;
+	hand_full_draw_warning=false;
+}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var i=0;
 repeat (card_hand_total) { //sets x coordinate in hand
@@ -84,7 +90,7 @@ repeat (enemycard_hand_total) { //sets depth of cards in enemy's hand
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if card_focus!=-1 {
-	if mouse_check_button(mb_left) and cursor_hide=false and player_turn=true and card_focus.card_played=false { //hold focused card
+	if mouse_check_button(mb_left) and cursor_hide=false and battler_turn=1 and card_focus.card_played=false { //hold focused card
 		card_focus.potential_x=mouse_x-28;
 		card_focus.potential_y=mouse_y-40;
 		card_hold=card_focus;
@@ -94,10 +100,13 @@ if card_focus!=-1 {
 		card_focus_hand=-1;
 	}
 	//
-	if mouse_check_button_pressed(mb_left) and player_turn=true and card_hold=-1 and cursor_hide=false and
+	if mouse_check_button_pressed(mb_left) and battler_turn=1 and card_hold=-1 and cursor_hide=false and
 	card_focus.card_played=true and card_focus.card_enemy=false { //click played card
 		if turn_num>2 { sc_card_attack(true,card_focus); }
-		else { first_turn_warning=true; }
+		else {
+			first_turn_attack_warning=true;
+			tooltip_timer=tooltip_timer_max;
+		}
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -166,7 +175,7 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or cursor_hide=true) { //play
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 // ENEMY TURN
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if player_turn=false {
+if battler_turn=2 {
 	if enemy_turn_timer>0 { enemy_turn_timer-=1; }
 	//
 	if enemy_turn_timer=0 {
@@ -233,29 +242,28 @@ if button_sorthand=true and card_focus=-1 {
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if keyboard_check_pressed(vk_space) and !mouse_check_button(mb_left) and player_turn=true and card_hold=-1 {
+if keyboard_check_pressed(vk_space) and !mouse_check_button(mb_left) and battler_turn=1 and card_hold=-1 {
 	button_nextturn=true;
 	button_nextturn_id.button_state=1;
 }
 //
 if button_nextturn=true {
-	if player_turn=true {
-		player_turn=false;
-		card_draw_points=0;
-		enemycard_draw_points=2;
+	if battler_turn=1 {
+		battler_turn=2;
+		if turn_num>1 { enemycard_draw_points=2; }
 		enemy_turn_timer=0;
 		enemy_turn_phase=-1;
 		sc_AI_report("- NEW TURN -");
 	}
-	else if player_turn=false {
-		player_turn=true;
-		card_draw_points=2;
-		enemycard_draw_points=0;
+	else if battler_turn=2 {
+		battler_turn=1;
+		if turn_num>1 { card_draw_points=2; }
 	}
 	//
 	turn_num+=1;
-	helpmsg_dismissed=false;
-	first_turn_warning=false;
+	tooltip_timer=tooltip_timer_max;
+	first_turn_attack_warning=false;
+	hand_full_draw_warning=false;
 	//
 	with (ob_card) {
 		already_attacked=false;

@@ -41,10 +41,10 @@ if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_hei
 	if ob_control.card_hold=-1 { ob_control.mouse_cursor=1; }
 	else { ob_control.mouse_cursor=2; }
 	//
-	if card_face=false and ob_control.player_turn=true and ob_control.card_hand_total<ob_control.card_hand_max and
+	if mouse_check_button_pressed(mb_left) and ob_control.cursor_hide=false and card_face=false and ob_control.battler_turn=1 and
 	((num_in_maindeck>=0 and num_in_maindeck=ob_control.card_maindeck_total-1 and ob_control.card_draw_points>=ob_control.card_drawcost_main) or
 	(num_in_berrydeck>=0 and num_in_berrydeck=ob_control.card_berrydeck_total-1 and ob_control.card_draw_points>=ob_control.card_drawcost_berry)) {
-		if mouse_check_button_pressed(mb_left) and ob_control.cursor_hide=false {
+		if ob_control.card_hand_total<ob_control.card_hand_max {
 			ob_control.card_hand_total+=1;
 			ob_control.card_hand[ob_control.card_hand_total-1]=id;
 			card_face=true;
@@ -61,6 +61,10 @@ if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_hei
 				num_in_berrydeck=-1;
 				ob_control.card_draw_points-=ob_control.card_drawcost_berry;
 			}
+		}
+		else {
+			ob_control.hand_full_draw_warning=true;
+			ob_control.tooltip_timer=ob_control.tooltip_timer_max;
 		}
 	}
 }

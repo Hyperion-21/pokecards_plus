@@ -47,7 +47,7 @@ if card_cat=0 and card_face=true {
 		i+=1;
 	}
 	//
-	if already_attacked=false and card_played=true and card_trash=false and card_enemy=false and ob_control.player_turn=true and ob_control.turn_num>2 {
+	if already_attacked=false and card_played=true and card_trash=false and card_enemy=false and ob_control.battler_turn=1 and ob_control.turn_num>2 {
 		draw_sprite_general(sp_sheet,0,16*1,16*12,16,16,draw_x+20,draw_y-8,1,1,0,c_white,c_white,c_white,c_white,1);
 	}
 	//

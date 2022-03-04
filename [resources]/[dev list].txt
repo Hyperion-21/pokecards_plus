@@ -13,7 +13,8 @@
 ✔	attacking
 ✔	type bonuses
 ✔	basic enemy AI: attack
-first turn (coin + limitations)
+✔	first turn (bonuses & limitations)
+first turn selection
 glyphs
 win & lose
 stalemate solving

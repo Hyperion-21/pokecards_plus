@@ -11,7 +11,7 @@ if enemy_effect_damaged>0 { var enemy_hp_draw_x=x+irandom_range(-2,2), enemy_hp_
 else { var enemy_hp_draw_x=x, enemy_hp_draw_y=y; }
 //
 var scoreboard_x=cam_w-78;
-var scoreboard_y=71;
+var scoreboard_y=button_nextturn_id.y-31;
 //
 sc_drawrectangle(scoreboard_x,scoreboard_y,scoreboard_x+67,scoreboard_y+25,global.color_black,global.color_white,1,0.5,1,0);
 draw_set_halign(fa_center);
@@ -37,41 +37,48 @@ sc_drawtext(cam_w-12,cam_h-21,var_text,global.color_white,c_black,0.1,0,0,-1);
 draw_set_halign(fa_center);
 var var_message="", var_message_color=c_white;
 //
-if player_turn=false {
-	var_message="(Adversary's turn)"
+if battler_turn=2 {
+	var_message="(Adversary's turn)";
 	var_message_color=global.color_enemy;
 }
-else if first_turn_warning=true {
-	var_message="You can't attack on your first turn."
+else if first_turn_attack_warning=true {
+	var_message="You can't attack on your first turn.";
 	var_message_color=global.color_damage;
 }
-else if card_draw_points>0 and card_hand_total=card_hand_max {
-	var_message="You can't hold more than " + string(card_hand_max) + " cards in your hand. Discard or play one to draw more."
+else if (card_draw_points>0 and card_hand_total=card_hand_max) or hand_full_draw_warning=true {
+	var_message="You can't hold more than " + string(card_hand_max) + " cards in your hand. Discard or play one to draw more.";
 	var_message_color=global.color_damage;
 }
-else if card_draw_points>0 and card_draw_points<=2 {
-	var_message="You may draw a card from your main deck, or 2 berries."
-	var_message_color=global.color_player;
-}
-else if card_draw_points>2 {
-	var_message="You may draw a card from your main deck, or 2 berries (2x)."
+else if card_draw_points>0 {
+	var_message="You may draw cards. You have " + string(card_draw_points) + " DP (Draw Points) remaining.";
 	var_message_color=global.color_player;
 }
 //
-if helpmsg_dismissed=false and var_message!="" {
-	sc_drawrectangle(cam_w/2-string_width(var_message)/2-5,219,cam_w/2+string_width(var_message)/2+3,230,global.color_black,global.color_black,1,0.8,1,0);
-	sc_drawtext(cam_w/2,218,var_message,var_message_color,global.color_black,1,0.5,0,-1);
+if tooltip_timer>0 and var_message!="" {
+	var tooltip_alpha=(tooltip_timer*100/tooltip_timer_max)/100;
+	sc_drawrectangle(cam_w/2-string_width(var_message)/2-5,219,cam_w/2+string_width(var_message)/2+3,230,global.color_black,global.color_black,1,tooltip_alpha*0.8,tooltip_alpha,0);
+	sc_drawtext(cam_w/2,218,var_message,var_message_color,global.color_black,tooltip_alpha*2,tooltip_alpha/2,0,-1);
 }
 //
-draw_set_halign(fa_left);
+draw_set_halign(fa_center);
 if card_draw_points>=card_drawcost_berry {
-	sc_drawrectangle(27,193,49,204,global.color_black,global.color_black,1,0.5,1,0);
-	sc_drawtext(30,192,"Draw",global.color_player,global.color_black,1,0.5,0,-1);
+	sc_drawrectangle(26,188,50,209,global.color_black,global.color_black,1,0.5,1,0);
+	sc_drawtext(39,187,"Berry",global.color_player,global.color_black,1,0.5,0,-1);
+	sc_drawtext(39,197,string(card_drawcost_berry) + " DP",global.color_player,global.color_black,1,0.5,0,-1);
 }
 if card_draw_points>=card_drawcost_main {
-	sc_drawrectangle(cam_w-50,193,cam_w-28,204,global.color_black,global.color_black,1,0.5,1,0);
-	sc_drawtext(cam_w-47,192,"Draw",global.color_player,global.color_black,1,0.5,0,-1);
+	sc_drawrectangle(cam_w-50,188,cam_w-28,209,global.color_black,global.color_black,1,0.5,1,0);
+	sc_drawtext(cam_w-38,187,"Main",global.color_player,global.color_black,1,0.5,0,-1);
+	sc_drawtext(cam_w-38,197,string(card_drawcost_main) + " DP",global.color_player,global.color_black,1,0.5,0,-1);
 }
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+var dpboard_x=cam_w-39;
+var dpboard_y=button_nextturn_id.y+3;
+//
+draw_set_halign(fa_right);
+sc_drawrectangle(dpboard_x,dpboard_y,dpboard_x+26,dpboard_y+15,global.color_black,global.color_white,1,0.25,0.5,0);
+sc_drawtext(dpboard_x+9,dpboard_y+1,string(card_draw_points),global.color_white,global.color_black,1,1,0,-1);
+draw_sprite_general(sp_sheet,0,16*2,16*12,16,16,dpboard_x+9,dpboard_y,1,1,0,c_white,c_white,c_white,c_white,1);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if tooltip_text!="" {
 	if mouse_x+17+string_width(tooltip_text)<cam_w {

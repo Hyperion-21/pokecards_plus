@@ -1,6 +1,6 @@
 randomize(); //random seed
-game_name="Pocket Palette: Card Arena";
-game_version="v0.0.0.21";
+game_name="Pocket Palette: Card League";
+game_version="v0.0.0.22";
 window_set_caption(game_name + " (" + string(game_version) + ")");
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-1000;
@@ -63,7 +63,7 @@ repeat (18) {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var button_create;
-button_nextturn_id=instance_create_layer(23,150,"instances",ob_button_31x24); //cam_w-54
+button_nextturn_id=instance_create_layer(cam_w-76,134,"instances",ob_button_31x24); //cam_w-54
 button_nextturn_id.button_id=0;
 button_create=instance_create_layer(76,197,"instances",ob_button_16x16); //cam_w-91
 button_create.button_id=1;
@@ -148,8 +148,10 @@ repeat (card_hand_max+1) { //+1 to replace value when using last card when hand 
 mouse_cursor=0;
 cursor_hide=false;
 tooltip_text="";
-helpmsg_dismissed=false;
-first_turn_warning=false;
+tooltip_timer_max=300;
+tooltip_timer=tooltip_timer_max;
+first_turn_attack_warning=false;
+hand_full_draw_warning=false;
 //
 hp_max=20;
 player_hp=hp_max;
@@ -158,7 +160,7 @@ player_effect_damaged=0;
 enemy_effect_damaged=0;
 //
 turn_num=1;
-player_turn=true;
+battler_turn=choose(1,2)//0; //0 stand-by, 1 player, 2 enemy
 enemy_turn_timer=0;
 enemy_turn_phase=-1;
 enemy_turn_phase_draw=1;
@@ -166,8 +168,8 @@ enemy_turn_phase_play=2;
 enemy_turn_phase_attack=3;
 enemy_play_delay=0;
 //
-card_draw_points=2;
-enemycard_draw_points=2;
+card_draw_points=3;
+enemycard_draw_points=3;
 enemycard_playplan_id=-1;
 enemyspace_playplan=-1;
 card_drawcost_main=2;
