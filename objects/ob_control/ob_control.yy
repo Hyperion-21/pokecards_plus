@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "sp_16x16",
-    "path": "sprites/sp_16x16/sp_16x16.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,

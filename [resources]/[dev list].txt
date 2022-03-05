@@ -14,16 +14,18 @@
 ✔	type bonuses
 ✔	basic enemy AI: attack
 ✔	first turn (bonuses & limitations)
-first turn selection
-glyphs
+✔	first turn selection
+world map setup
+random map generation
 win & lose
+glyphs
 stalemate solving
 save data
+deck construction
 main menu
 in-game menu
-world map setup
-deck construction
-random map generation
 map events
+evolution
+card openings
 pokemon data (gen 1&2)
 full enemy AI
