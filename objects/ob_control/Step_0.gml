@@ -251,6 +251,8 @@ if button_nextturn=true {
 	if battler_turn=1 {
 		battler_turn=2;
 		if turn_num>1 { enemycard_draw_points=2; }
+		else { enemycard_draw_points=3; }
+		card_draw_points=0;
 		enemy_turn_timer=0;
 		enemy_turn_phase=-1;
 		sc_AI_report("- NEW TURN -");
@@ -258,6 +260,8 @@ if button_nextturn=true {
 	else if battler_turn=2 {
 		battler_turn=1;
 		if turn_num>1 { card_draw_points=2; }
+		else { card_draw_points=3; }
+		enemycard_draw_points=0;
 	}
 	//
 	turn_num+=1;

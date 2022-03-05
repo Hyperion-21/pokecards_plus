@@ -95,35 +95,35 @@ switch (card_id) {
 		card_base_hp=65; card_base_atk=90+45; card_base_def=40+80;
 		card_grid_x=4; card_grid_y=2; break;
 	case 016:
-		card_name="";
-		card_stage=1; card_evo[0]=000;
-		card_type_a=00; card_type_b=-1;
-		card_base_hp=000; card_base_atk=000+000; card_base_def=000+000;
-		card_grid_x=000; card_grid_y=000; break;
+		card_name="Pidgey";
+		card_stage=1; card_evo[0]=017;
+		card_type_a=00; card_type_b=05;
+		card_base_hp=40; card_base_atk=45+35; card_base_def=40+35;
+		card_grid_x=6; card_grid_y=2; break;
 	case 017:
-		card_name="";
-		card_stage=1; card_evo[0]=000;
-		card_type_a=00; card_type_b=-1;
-		card_base_hp=000; card_base_atk=000+000; card_base_def=000+000;
-		card_grid_x=000; card_grid_y=000; break;
+		card_name="Pidgeotto";
+		card_stage=2; card_evo[0]=018;
+		card_type_a=00; card_type_b=05;
+		card_base_hp=63; card_base_atk=60+50; card_base_def=55+50;
+		card_grid_x=7; card_grid_y=2; break;
 	case 018:
-		card_name="";
-		card_stage=1; card_evo[0]=000;
-		card_type_a=00; card_type_b=-1;
-		card_base_hp=000; card_base_atk=000+000; card_base_def=000+000;
-		card_grid_x=000; card_grid_y=000; break;
+		card_name="Pidgeot";
+		card_stage=3;
+		card_type_a=00; card_type_b=05;
+		card_base_hp=83; card_base_atk=80+70; card_base_def=75+70;
+		card_grid_x=8; card_grid_y=2; break;
 	case 019:
-		card_name="";
-		card_stage=1; card_evo[0]=000;
+		card_name="Rattata";
+		card_stage=1; card_evo[0]=020;
 		card_type_a=00; card_type_b=-1;
-		card_base_hp=000; card_base_atk=000+000; card_base_def=000+000;
-		card_grid_x=000; card_grid_y=000; break;
+		card_base_hp=30; card_base_atk=56+25; card_base_def=35+35;
+		card_grid_x=10; card_grid_y=2; break;
 	case 020:
-		card_name="";
-		card_stage=1; card_evo[0]=000;
+		card_name="Raticate";
+		card_stage=2;
 		card_type_a=00; card_type_b=-1;
-		card_base_hp=000; card_base_atk=000+000; card_base_def=000+000;
-		card_grid_x=000; card_grid_y=000; break;
+		card_base_hp=55; card_base_atk=81+50; card_base_def=60+70;
+		card_grid_x=12; card_grid_y=2; break;
 	case 021:
 		card_name="";
 		card_stage=1; card_evo[0]=000;

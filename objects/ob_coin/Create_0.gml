@@ -1,0 +1,9 @@
+depth=-1100;
+//
+coin_state=choose(0,2);
+ground_y=y;
+coin_vspeed=0;
+coin_bounce=-14;
+times_bounced=0;
+//
+final_timer=40;
