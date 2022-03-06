@@ -15,15 +15,15 @@
 ✔	basic enemy AI: attack
 ✔	first turn (bonuses & limitations)
 ✔	first turn selection
-✔	world map/event setup
-random map/event generation
+✔	roadmap setup
+roadmap generation
 win & lose
 glyphs
 stalemate solving
 save data
 deck construction
 main menu
-in-game menu
+options menu
 map events
 evolution
 card openings
