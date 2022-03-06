@@ -15,8 +15,8 @@
 ✔	basic enemy AI: attack
 ✔	first turn (bonuses & limitations)
 ✔	first turn selection
-world map setup
-random map generation
+✔	world map/event setup
+random map/event generation
 win & lose
 glyphs
 stalemate solving

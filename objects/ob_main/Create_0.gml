@@ -1,9 +1,9 @@
 randomize(); //random seed
 game_name="Pocket Card League";
-game_version="v0.0.0.24";
+game_version="v0.0.0.25";
 window_set_caption(game_name + " (" + string(game_version) + ")");
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-depth=-1000;
+depth=-2000;
 //
 view_set_visible(view_camera[0],true);
 view_set_xport(view_camera[0],0);
@@ -12,10 +12,16 @@ view_set_wport(view_camera[0],512);
 view_set_hport(view_camera[0],288);
 camera_set_view_pos(view_camera[0],x,y);
 camera_set_view_size(view_camera[0],512,288);
-camera_set_view_target(view_camera[0],ob_control);
-camera_set_view_border(view_camera[0],99999,99999);
-camera_set_view_speed(view_camera[0],-1,-1);
-surface_resize(application_surface,camera_get_view_width(view_camera[0]),camera_get_view_height(view_camera[0]));
+//camera_set_view_target(view_camera[0],ob_main);
+//camera_set_view_border(view_camera[0],-1,-1);
+//camera_set_view_speed(view_camera[0],-1,-1);
+//
+cam_x=camera_get_view_x(view_camera[0]);
+cam_y=camera_get_view_y(view_camera[0]);
+cam_w=camera_get_view_width(view_camera[0]);
+cam_h=camera_get_view_height(view_camera[0]);
+//
+surface_resize(application_surface,cam_w,cam_h);
 //
 var screen_w=display_get_width(), screen_h=display_get_height();
 var i=0, biggest_screen_size_found=false;
@@ -46,3 +52,12 @@ global.color_direct_damage=make_colour_rgb(226,204,161);
 global.color_background_a=make_colour_rgb(59,57,53);
 global.color_background_b=make_colour_rgb(59,57,53);
 global.color_background_tile=make_colour_rgb(64,62,58);
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+mouse_cursor=0;
+cursor_hide=false;
+map_create=true;
+//
+character_original_x=x+96;
+character_original_y=y+floor(cam_h/2);
+character_x=character_original_x;
+character_y=character_original_y;

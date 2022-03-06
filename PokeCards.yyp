@@ -4,7 +4,7 @@
     {"id":{"name":"sc_pokelist","path":"scripts/sc_pokelist/sc_pokelist.yy",},"order":0,},
     {"id":{"name":"ob_control","path":"objects/ob_control/ob_control.yy",},"order":1,},
     {"id":{"name":"ob_coin","path":"objects/ob_coin/ob_coin.yy",},"order":6,},
-    {"id":{"name":"sc_drawtext","path":"scripts/sc_drawtext/sc_drawtext.yy",},"order":2,},
+    {"id":{"name":"sc_drawtext","path":"scripts/sc_drawtext/sc_drawtext.yy",},"order":3,},
     {"id":{"name":"ob_solid","path":"objects/ob_solid/ob_solid.yy",},"order":14,},
     {"id":{"name":"ob_background_tile","path":"objects/ob_background_tile/ob_background_tile.yy",},"order":8,},
     {"id":{"name":"sp_poke_b","path":"sprites/sp_poke_b/sp_poke_b.yy",},"order":2,},

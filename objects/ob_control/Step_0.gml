@@ -1,18 +1,11 @@
-cam_x=camera_get_view_x(view_camera[0]);
-cam_y=camera_get_view_y(view_camera[0]);
-//————————————————————————————————————————————————————————————————————————————————————————————————————
-mouse_cursor=0;
-if mouse_check_button(mb_right) {
-	cursor_hide=true;
+if ob_main.cursor_hide=true {
 	tooltip_timer=0;
 }
-else { cursor_hide=false; }
 //
 if keyboard_check_pressed(vk_f1) {
 	if AI_report_toggle=false { AI_report_toggle=true; }
 	else { AI_report_toggle=false; }
 }
-if keyboard_check_pressed(vk_f5) { game_restart(); } //< delete later, testing
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if player_effect_damaged>0 { player_effect_damaged-=0.08; }
 if enemy_effect_damaged>0 { enemy_effect_damaged-=0.08; }
@@ -31,7 +24,7 @@ repeat (card_hand_total) { //sets x coordinate in hand
 		var card_distance=25-ii;
 	}
 	until (((card_hand_total-1)*card_distance*2)+57<=350);
-	card_hand[i].potential_x=round(cam_w/2)-28-(card_distance*(card_hand_total-1))+(card_distance*i*2);
+	card_hand[i].potential_x=cam_x+round(cam_w/2)-28-(card_distance*(card_hand_total-1))+(card_distance*i*2);
 	i+=1;
 }
 //
@@ -43,8 +36,8 @@ repeat (enemycard_hand_total) { //sets x and y coordinates in hand for enemy
 		var card_distance=25-ii;
 	}
 	until (((enemycard_hand_total-1)*card_distance*2)+57<=350);
-	enemycard_hand[i].potential_x=round(cam_w/2)-28-(card_distance*(enemycard_hand_total-1))+(card_distance*i*2);
-	enemycard_hand[i].potential_y=-58;
+	enemycard_hand[i].potential_x=cam_x+round(cam_w/2)-28-(card_distance*(enemycard_hand_total-1))+(card_distance*i*2);
+	enemycard_hand[i].potential_y=cam_y-58;
 	i+=1;
 }
 //
@@ -59,7 +52,7 @@ repeat (card_hand_total+1) { //sets card focus
 	}
 	if var_card_id!=-1 {
 		if mouse_x>=var_card_id.x and mouse_y>=var_card_id.y and mouse_x<var_card_id.x+57 and mouse_y<var_card_id.y+80 and
-		var_card_id.card_face=true and (card_focus=-1 or var_card_id.depth<card_focus.depth) and var_card_id.x=var_card_id.potential_x and cursor_hide=false {
+		var_card_id.card_face=true and (card_focus=-1 or var_card_id.depth<card_focus.depth) and var_card_id.x=var_card_id.potential_x and ob_main.cursor_hide=false {
 			card_focus=var_card_id;
 			if i<card_hand_total { card_focus_hand=i; }
 		}
@@ -70,10 +63,10 @@ repeat (card_hand_total+1) { //sets card focus
 var i=0;
 repeat (card_hand_total) { //sets y coordinate and depth of cards in hand
 	if card_focus=card_hand[i] {
-		card_hand[i].potential_y=208;
+		card_hand[i].potential_y=cam_y+208;
 	}
 	else if card_focus!=card_hand[i] {
-		card_hand[i].potential_y=236;
+		card_hand[i].potential_y=cam_y+236;
 	}
 	//
 	if card_focus_hand=-1 { card_hand[i].depth=card_hand_total-i; }
@@ -90,17 +83,17 @@ repeat (enemycard_hand_total) { //sets depth of cards in enemy's hand
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if card_focus!=-1 {
-	if mouse_check_button(mb_left) and cursor_hide=false and battler_turn=1 and card_focus.card_played=false { //hold focused card
+	if mouse_check_button(mb_left) and ob_main.cursor_hide=false and battler_turn=1 and card_focus.card_played=false { //hold focused card
 		card_focus.potential_x=mouse_x-28;
 		card_focus.potential_y=mouse_y-40;
 		card_hold=card_focus;
 	}
-	else if (mouse_x<card_focus.x or mouse_y<card_focus.y or mouse_x>=card_focus.x+57 or mouse_y>=card_focus.y+80) or cursor_hide=true {
+	else if (mouse_x<card_focus.x or mouse_y<card_focus.y or mouse_x>=card_focus.x+57 or mouse_y>=card_focus.y+80) or ob_main.cursor_hide=true {
 		card_focus=-1;
 		card_focus_hand=-1;
 	}
 	//
-	if mouse_check_button_pressed(mb_left) and battler_turn=1 and card_hold=-1 and cursor_hide=false and
+	if mouse_check_button_pressed(mb_left) and battler_turn=1 and card_hold=-1 and ob_main.cursor_hide=false and
 	card_focus.card_played=true and card_focus.card_enemy=false { //click played card
 		if turn_num>2 { sc_card_attack(true,card_focus); }
 		else {
@@ -110,7 +103,7 @@ if card_focus!=-1 {
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if card_hold!=-1 and (!mouse_check_button(mb_left) or cursor_hide=true) { //play held card
+if card_hold!=-1 and (!mouse_check_button(mb_left) or ob_main.cursor_hide=true) { //play held card
 	if position_meeting(mouse_x,mouse_y,ob_card_space) {
 		var var_cardspace_id=instance_position(mouse_x,mouse_y,ob_card_space), playing_requirements=false;
 		//

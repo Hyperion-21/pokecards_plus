@@ -1,7 +1,4 @@
-//ob_background_tile
+cam_x=camera_get_view_x(view_camera[0]);
+cam_y=camera_get_view_y(view_camera[0]);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-x-=0.5;
-if x<=ob_control.cam_x-32 { x+=512+64; }
-//
-//y-=0.5;
-//if y<=ob_control.cam_y-32 { y+=288+32; }
+mouse_cursor=0;

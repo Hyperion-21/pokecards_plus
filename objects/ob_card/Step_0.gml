@@ -38,10 +38,10 @@ if card_trash=true {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height and card_trash=false and card_enemy=false {
-	if ob_control.card_hold=-1 { ob_control.mouse_cursor=1; }
-	else { ob_control.mouse_cursor=2; }
+	if ob_control.card_hold=-1 { ob_main.mouse_cursor=1; }
+	else { ob_main.mouse_cursor=2; }
 	//
-	if mouse_check_button_pressed(mb_left) and ob_control.cursor_hide=false and card_face=false and ob_control.battler_turn=1 and
+	if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false and card_face=false and ob_control.battler_turn=1 and
 	((num_in_maindeck>=0 and num_in_maindeck=ob_control.card_maindeck_total-1 and ob_control.card_draw_points>=ob_control.card_drawcost_main) or
 	(num_in_berrydeck>=0 and num_in_berrydeck=ob_control.card_berrydeck_total-1 and ob_control.card_draw_points>=ob_control.card_drawcost_berry)) {
 		if ob_control.card_hand_total<ob_control.card_hand_max {
@@ -69,7 +69,7 @@ if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_hei
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if ob_control.card_focus=id and card_face=true and card_cat=0 and ob_control.cursor_hide=false {
+if ob_control.card_focus=id and card_face=true and card_cat=0 and ob_main.cursor_hide=false {
 	if (mouse_x>=x+2 and mouse_y>=y+2 and mouse_x<=x+13 and mouse_y<=y+12) or
 	(card_type_b>=0 and mouse_x>=x+2 and mouse_y>=y+12 and mouse_x<=x+13 and mouse_y<=y+22) {
 		if card_type_b>=0 and mouse_x>=x+2 and mouse_y>=y+12 and mouse_x<=x+13 and mouse_y<=y+22 { var switch_var=card_type_b; }

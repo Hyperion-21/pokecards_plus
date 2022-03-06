@@ -5,45 +5,45 @@ cam_y=camera_get_view_y(view_camera[0]);
 cam_w=camera_get_view_width(view_camera[0]);
 cam_h=camera_get_view_height(view_camera[0]);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-instance_create_layer(-2,-2,"instances",ob_background);
+instance_create_layer(cam_x-2,cam_y-2,"instances",ob_background);
 //
 var i=0;
 repeat (18) {
 	var ii=0;
 	repeat (5) {
-		instance_create_layer(i*32,ii*64+(i mod 2)*32,"instances",ob_background_tile);
+		instance_create_layer(cam_x+i*32,cam_y+ii*64+(i mod 2)*32,"instances",ob_background_tile);
 		ii+=1;
 	}
 	i+=1;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var button_create;
-button_nextturn_id=instance_create_layer(cam_w-76,134,"instances",ob_button_31x24); //cam_w-54
+button_nextturn_id=instance_create_layer(cam_x+cam_w-76,cam_y+134,"instances",ob_button_31x24);
 button_nextturn_id.button_id=0;
-button_create=instance_create_layer(76,197,"instances",ob_button_16x16); //cam_w-91
+button_create=instance_create_layer(cam_x+76,cam_y+197,"instances",ob_button_16x16); //cam_w-91
 button_create.button_id=1;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-instance_create_layer(cam_w/2-24,cam_h/2-24,"instances",ob_coin);
+instance_create_layer(cam_x+cam_w/2-24,cam_y+cam_h/2-24,"instances",ob_coin);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-player_directdamage_id=instance_create_layer(cam_w-62,80,"instances",ob_damage_num);
+player_directdamage_id=instance_create_layer(cam_x+cam_w-62,cam_y+112,"instances",ob_damage_num);
 player_directdamage_id.damage_direct_unique=true;
 player_directdamage_id.text_color=global.color_player;
-enemy_directdamage_id=instance_create_layer(cam_w-26,80,"instances",ob_damage_num);
+enemy_directdamage_id=instance_create_layer(cam_x+cam_w-26,cam_y+112,"instances",ob_damage_num);
 enemy_directdamage_id.damage_direct_unique=true;
 enemy_directdamage_id.text_color=global.color_enemy;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var i=0;
 repeat (11) {
 	if i<=4 { //0-4 enemy side
-		card_space_id[i]=instance_create_layer(100+64*(i),44,"instances",ob_card_space);
+		card_space_id[i]=instance_create_layer(cam_x+100+64*(i),cam_y+44,"instances",ob_card_space);
 		card_space_id[i].trash=false;
 	}
 	else if i<=9 { //5-9 player side
-		card_space_id[i]=instance_create_layer(100+64*(i-5),134,"instances",ob_card_space);
+		card_space_id[i]=instance_create_layer(cam_x+100+64*(i-5),cam_y+134,"instances",ob_card_space);
 		card_space_id[i].trash=false;
 	}
 	else { //10 trash
-		card_space_id[i]=instance_create_layer(10,44,"instances",ob_card_space);
+		card_space_id[i]=instance_create_layer(cam_x+10,cam_y+44,"instances",ob_card_space);
 		card_space_id[i].trash=true;
 	}
 	i+=1;
@@ -53,7 +53,7 @@ card_maindeck_total=50;
 var i=0;
 repeat (card_maindeck_total) {
 	card_cat_creation=0;
-	card_maindeck[i]=instance_create_layer(cam_w-67,181,"instances",ob_card);
+	card_maindeck[i]=instance_create_layer(cam_x+cam_w-67,cam_y+181,"instances",ob_card);
 	card_maindeck[i].num_in_maindeck=i;
 	i+=1;
 }
@@ -62,7 +62,7 @@ card_berrydeck_total=999;
 var i=0;
 repeat (card_berrydeck_total) {
 	card_cat_creation=1;
-	card_berrydeck[i]=instance_create_layer(10,181,"instances",ob_card);
+	card_berrydeck[i]=instance_create_layer(cam_x+10,cam_y+181,"instances",ob_card);
 	card_berrydeck[i].num_in_berrydeck=i;
 	i+=1;
 }
@@ -79,7 +79,7 @@ enemycard_maindeck_total=50;
 var i=0;
 repeat (enemycard_maindeck_total) {
 	card_cat_creation=0;
-	enemycard_maindeck[i]=instance_create_layer(cam_w-67,-100,"instances",ob_card);
+	enemycard_maindeck[i]=instance_create_layer(cam_x+cam_w-67,cam_y-100,"instances",ob_card);
 	//enemycard_maindeck[i].num_in_maindeck=i;
 	enemycard_maindeck[i].card_enemy=true;
 	i+=1;
@@ -89,7 +89,7 @@ enemycard_berrydeck_total=999;
 var i=0;
 repeat (enemycard_berrydeck_total) {
 	card_cat_creation=1;
-	enemycard_berrydeck[i]=instance_create_layer(10,-100,"instances",ob_card);
+	enemycard_berrydeck[i]=instance_create_layer(cam_x+10,cam_y-100,"instances",ob_card);
 	//enemycard_berrydeck[i].num_in_berrydeck=i;
 	enemycard_berrydeck[i].card_enemy=true;
 	i+=1;
@@ -102,8 +102,6 @@ repeat (card_hand_max+1) { //+1 to replace value when using last card when hand 
 	i+=1;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-mouse_cursor=0;
-cursor_hide=false;
 tooltip_text="";
 tooltip_timer=0;
 tooltip_timer_max=300;

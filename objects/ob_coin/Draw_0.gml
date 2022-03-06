@@ -1,4 +1,4 @@
-sc_drawrectangle(-2,-2,ob_control.cam_w+2,ob_control.cam_h+2,global.color_black,c_white,0,0.5,1,0);
+sc_drawrectangle(ob_control.cam_x-2,ob_control.cam_y-2,ob_control.cam_x+ob_control.cam_w+2,ob_control.cam_y+ob_control.cam_h+2,global.color_black,c_white,0,0.5,1,0);
 //
 var coin_state_sprite=floor(coin_state);
 if coin_state_sprite=3 { coin_state_sprite=1; }
