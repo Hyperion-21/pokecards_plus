@@ -1,15 +1,15 @@
-Hi! I'm a hobbyist game developer and this is Pocket Card League, a fan-made single-player Pokemon Card Game, partially inspired by Inscryption's (Act 1) gameplay mechanics.
+Hi! I'm a hobbyist game developer and this is Pocket Card League, a single-player Pokemon Card Game, partially inspired by Inscryption's gameplay mechanics.
 
 ---
 
-Sup! This is Pocket Card League, a personal project I'm working on, just for fun, and I'm very excited to finally share some info about it.
+Sup! This is Pocket Card League, a personal project I'm working on just for fun, and I'm very excited to share some info about it.
 
-PCL is a Pokemon card game, but completely different to the official TCG. The gameplay style, mechanics and rules are pretty simple, and were partially inspired by Daniel Mullins' Inscryption's Act 1.
+PCL is a Pokemon card game, but completely different to the official TCG. The gameplay style, mechanics and rules are pretty simple, and were partially inspired by Daniel Mullins' Inscryption.
 
-Basically, you choose a starter Pokemon and embark on a journey visiting different locations, battling trainers of varying difficulty, acquiring new cards and opening card packs, leveling and powering up your Pokemon cards, adding special abilities to them, sometimes even evolving them, all while fighting your way through the eight regional gyms to reach your ultimate goal: the Card League.
+Basically, you choose a starter Pokemon and embark on a journey visiting various locations, each one of them presenting you with a different choice of events, be it battling trainers of varying difficulty, acquiring new cards and opening card packs, leveling and powering up your Pokemon cards, adding special abilities to them or even evolving them, and all while fighting your way through the eight regional gyms to reach the ultimate goal: the Card League.
 
 The game will obviously be free to play. I have no release date in mind as of yet, since I'm working on it on my own and just on my free time, but it's going well so far. I'm looking forward to sharing more with you soon!
 
-The first release will include all Pokemon from Gens 1 and 2 (but with corresponding Fairy types), and more Pokemon and challenges will be added over time. You can follow the project on itch.io if you'd like to get updates and know when it's released!
+The first release will include all Pokemon from Gens 1 and 2 (but with corresponding Fairy types), and more Pokemon and challenges will probably be added over time. You can follow the project on itch.io if you'd like to get updates and know when it's released!
 
-But anyway, thanks everybody for checking it out! I hope you have a great day. 💚
+But anyway, thanks everybody for checking it out! I hope you have a great day.
