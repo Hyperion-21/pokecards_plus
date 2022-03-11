@@ -16,16 +16,16 @@
 ✔	first turn (bonuses & limitations)
 ✔	first turn selection
 ✔	roadmap setup
-roadmap generation
+✔	roadmap generation
 win & lose
-glyphs
-stalemate solving
 save data
 deck construction
+map events
+card openings
+evolution
 main menu
 options menu
-map events
-evolution
-card openings
+glyphs
+stalemate solving
 pokemon data (gen 1&2)
 full enemy AI

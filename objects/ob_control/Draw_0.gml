@@ -95,13 +95,6 @@ if tooltip_text!="" {
 }
 tooltip_text="";
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if fade_black>0 {
-	sc_drawrectangle(cam_x-8,cam_y-8,cam_x+cam_w+8,cam_y+cam_h+8,c_black,c_white,0,fade_black,1,0);
-}
-//
-if textbox_active=true { sc_drawrectangle(cam_x+4,cam_y+cam_h-52,cam_x+cam_w-6,cam_y+cam_h-6,c_black,c_white,1,0.5,1,1); }
-if text_string!="" { sc_drawtext(cam_x+12,cam_y+cam_h-48,text_show,c_white,c_black,1,0.5,0,233); }
-//————————————————————————————————————————————————————————————————————————————————————————————————————
 if AI_report_toggle=true {
 	draw_set_halign(fa_left);
 	sc_drawrectangle(cam_x-2,cam_y-2,cam_x+cam_w+2,cam_y+cam_h+2,c_black,c_black,0,0.4,1,0);

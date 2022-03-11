@@ -1,7 +1,7 @@
 y+=coin_vspeed;
 //
 if y<ground_y {
-	coin_vspeed+=1;
+	coin_vspeed++;
 }
 else if y=ground_y and times_bounced<(coin_bounce*-1) {
 	coin_vspeed=coin_bounce+times_bounced;
@@ -18,7 +18,7 @@ if times_bounced<(coin_bounce*-1) {
 	if coin_state>=4 { coin_state=0; }
 }
 else {
-	final_timer-=1;
+	final_timer--;
 	if final_timer=0 {
 		if floor(coin_state)=0 {
 			ob_control.battler_turn=1;

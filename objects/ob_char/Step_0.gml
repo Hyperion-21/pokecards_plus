@@ -63,14 +63,14 @@ if jumping_state=0 and !place_free(x,y) {
 	var check_free_distance=4, check_free_moving=false;
 	do {
 		check_free_moving=false;
-		if place_free(x,y+check_free_distance) { y+=1; check_free_moving=true; }
-		else if place_free(x,y-check_free_distance) { y-=1; check_free_moving=true; }
-		else if place_free(x+check_free_distance,y) { x+=1; check_free_moving=true; }
-		else if place_free(x-check_free_distance,y) { x-=1; check_free_moving=true; }
-		else if place_free(x+check_free_distance,y+check_free_distance) { x+=1; y+=1; check_free_moving=true; }
-		else if place_free(x-check_free_distance,y+check_free_distance) { x-=1; y+=1; check_free_moving=true; }
-		else if place_free(x+check_free_distance,y-check_free_distance) { x+=1; y-=1; check_free_moving=true; }
-		else if place_free(x-check_free_distance,y-check_free_distance) { x-=1; y-=1; check_free_moving=true; }
+		if place_free(x,y+check_free_distance) { y++; check_free_moving=true; }
+		else if place_free(x,y-check_free_distance) { y--; check_free_moving=true; }
+		else if place_free(x+check_free_distance,y) { x++; check_free_moving=true; }
+		else if place_free(x-check_free_distance,y) { x--; check_free_moving=true; }
+		else if place_free(x+check_free_distance,y+check_free_distance) { x++; y++; check_free_moving=true; }
+		else if place_free(x-check_free_distance,y+check_free_distance) { x--; y++; check_free_moving=true; }
+		else if place_free(x+check_free_distance,y-check_free_distance) { x++; y--; check_free_moving=true; }
+		else if place_free(x-check_free_distance,y-check_free_distance) { x--; y--; check_free_moving=true; }
 		check_free_distance+=4;
 	} until (check_free_moving=true);
 }
@@ -102,10 +102,10 @@ if attacking=true and jumping_state=0 {
 		else if anim_dir=3 { var collision_total=collision_ellipse_list(x+3,y-16,x+13,y-8,ob_tallgrass,false,true,collision_list,false); }
 	}
 	if collision_total>0 {
-		for (var i=0; i<collision_total; i+=1;) {
+		for (var i=0; i<collision_total; i++;) {
 			var collision_id = ds_list_find_value(collision_list,i);
 			if collision_id.hurt_cooldown=0 and collision_id.hp_curr>0 {
-				collision_id.hp_curr-=1;
+				collision_id.hp_curr--;
 				collision_id.hurt_cooldown=collision_id.hurt_cooldownmax;
 			}
 		}
@@ -140,11 +140,11 @@ if attacking=true {
 		else if anim_dir=3 { var collision_total=collision_ellipse_list(x+3,y-16,x+13,y-8,ob_enemy,false,true,collision_list,false); }
 	}
 	if collision_total>0 {
-		for (var i=0; i<collision_total; i+=1;) {
+		for (var i=0; i<collision_total; i++;) {
 			var collision_id = ds_list_find_value(collision_list,i);
 			if collision_id.hurt_cooldown=0 and collision_id.hp_curr>0
 				and ((jumping_state=0 and collision_id.jumping_state=0) or (jumping_state>0 and collision_id.jumping_state>0)) {
-				collision_id.hp_curr-=1;
+				collision_id.hp_curr--;
 				collision_id.hurt_cooldown=collision_id.hurt_cooldownmax;
 				//
 				if anim_dir=0 { collision_id.knockback_y=12; }
@@ -209,7 +209,7 @@ if anim_moving=true or attacking=true or jumping_state>0 { //playing animation
 	if attacking=true { anim_set=4; anim_frame_timermax=4; } //hurt cooldowns are based on this
 	else if jumping_state>0 { anim_set=0; anim_frame_timermax=8; }
 	else if anim_moving=true { anim_set=0; anim_frame_timermax=10; }
-	anim_frame_timer+=1;
+	anim_frame_timer++;
 }
 else { //no animation
 	anim_frame=0;
@@ -217,7 +217,7 @@ else { //no animation
 }
 //
 if anim_frame_timer>=anim_frame_timermax { //next frame in animation
-	anim_frame+=1;
+	anim_frame++;
 	if anim_frame>3 { //animation loop/end
 		anim_frame=0;
 		if attacking=true { anim_set=0; attacking=false; }

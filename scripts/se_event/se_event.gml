@@ -6,7 +6,7 @@ if argument0=true {
 	move_y=0;
 	//
 	ob_control.event_active=true;
-	event_state+=1;
+	event_state++;
 }
 else {
 	ob_control.event_active=false;

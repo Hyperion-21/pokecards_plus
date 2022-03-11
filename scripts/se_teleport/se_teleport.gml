@@ -23,7 +23,7 @@ if ob_char.x=argument0 and ob_char.y=argument1 {
 	if ob_control.fade_black=0 {
 		x=start_x;
 		y=start_y;
-		event_state+=1;
+		event_state++;
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

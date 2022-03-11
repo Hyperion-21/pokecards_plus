@@ -16,11 +16,11 @@ else if trash=false {
 		do {
 			if var_berries_total[ii]>0 {
 				draw_sprite_general(sp_sheet,0,16*(ii+1),16*4,5,5,x+5+6*i,y+70,1,1,0,c_white,c_white,c_white,c_white,1);
-				var_berries_total[ii]-=1;
+				var_berries_total[ii]--;
 				berry_drawn=true;
 			}
-			ii+=1;
+			ii++;
 		} until (berry_drawn=true);
-		i+=1;
+		i++;
 	}
 }

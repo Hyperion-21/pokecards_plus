@@ -21,15 +21,15 @@ repeat (enemycard_hand_total) {
 	space_confirm[2][i]=false;
 	space_confirm[3][i]=false;
 	space_confirm[4][i]=false;
-	i+=1;
+	i++;
 }
 //
 var i=0;
 repeat (enemycard_hand_total) {
 	if enemycard_hand[i].card_cat=1 {
-		berries_held[enemycard_hand[i].card_id-3000]+=1;
+		berries_held[enemycard_hand[i].card_id-3000]++;
 	}
-	i+=1;
+	i++;
 }
 //
 var i=0, enemycard_atk, enemycard_def, enemycard_hp;
@@ -62,10 +62,10 @@ repeat (enemycard_hand_total) {
 			(card_space_id[ii].berries_total+space_missing_berries[0]+space_missing_berries[1]+space_missing_berries[2]+space_missing_berries[3]<=8) {
 				space_confirm[ii][i]=true;
 			}
-			ii+=1;
+			ii++;
 		}
 	}
-	i+=1;
+	i++;
 }
 //
 var i=0, enemycard_poke_playable=false;
@@ -73,9 +73,9 @@ repeat (enemycard_hand_total) {
 	var ii=0;
 	repeat (5) {
 		if space_confirm[ii][i]=true { enemycard_poke_playable=true; }
-		ii+=1;
+		ii++;
 	}
-	i+=1;
+	i++;
 }
 //
 var i=0, enemycard_justberry_playable=false;
@@ -83,7 +83,7 @@ repeat (5) {
 	if card_space_id[i].berries_total<8 and card_space_id[i].occupied=false and
 	enemycard_draw_points>0 and enemycard_hand_total=card_hand_max and (enemycard_maindeck[0]!=-1 or enemycard_berrydeck[0]!=-1) and
 	(berries_held[0]>0 or berries_held[1]>0 or berries_held[2]>0) { enemycard_justberry_playable=true; }
-	i+=1;
+	i++;
 }
 //
 var discard_check=false, discard_skip=false, enemycard_discard_id=-1;
@@ -110,7 +110,7 @@ else if AI_level<=4 and enemycard_poke_playable=true and enemycard_playplan_id=-
 		if enemycard_playplan_slot=-1 or (enemycard_atk[i]>enemycard_atk[enemycard_playplan_slot]) {
 			enemycard_playplan_slot=i;
 		}
-		i+=1;
+		i++;
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -133,7 +133,7 @@ else if AI_level<=4 and discard_check=true {
 		var i=0, discardable_poke=false;
 		repeat (enemycard_hand_total) {
 			if enemycard_hp[i]>0 { discardable_poke=true; }
-			i+=1;
+			i++;
 		}
 		//
 		if discardable_poke=true {
@@ -168,11 +168,11 @@ if enemycard_poke_playable=true or enemycard_justberry_playable=true or enemycar
 			if enemycard_hand[i].card_id=3000+enemycard_berry_play {
 				enemycard_playnow_id=enemycard_hand[i];
 			}
-			i+=1;
+			i++;
 		} until (enemycard_playnow_id!=-1);
 		//
-		card_space_id[enemyspace_playplan].berries_total+=1;
-		card_space_id[enemyspace_playplan].berries_total_type[enemycard_berry_play]+=1;
+		card_space_id[enemyspace_playplan].berries_total++;
+		card_space_id[enemyspace_playplan].berries_total_type[enemycard_berry_play]++;
 		enemycard_playnow_id.card_trash=true;
 		enemycard_playnow_id.card_played=true;
 		card_space_id[enemyspace_playplan].effect_use=1;
@@ -212,9 +212,9 @@ if enemycard_poke_playable=true or enemycard_justberry_playable=true or enemycar
 		if lower_hand_num=true {
 			enemycard_hand[i]=enemycard_hand[i+1];
 		}
-		i+=1;
+		i++;
 	}
-	enemycard_hand_total-=1;
+	enemycard_hand_total--;
 	//
 	enemy_play_delay=15;
 	enemy_turn_timer+=15;

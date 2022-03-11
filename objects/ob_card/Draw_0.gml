@@ -44,7 +44,7 @@ if card_cat=0 and card_face=true {
 	var i=0;
 	repeat (3) {
 		if card_cost[i]>=0 { draw_sprite_general(sp_sheet,0,16*(card_cost[i]+1),16*3,4,4,draw_x+3+4*i,draw_y+35,1,1,0,c_white,c_white,c_white,c_white,1); }
-		i+=1;
+		i++;
 	}
 	//
 	if already_attacked=false and card_played=true and card_trash=false and card_enemy=false and ob_control.battler_turn=1 and ob_control.turn_num>2 {
@@ -54,25 +54,25 @@ if card_cat=0 and card_face=true {
 	draw_set_font(fn_m3x6);
 	draw_set_halign(fa_center);
 	draw_healthbar(draw_x+4,draw_y+56,draw_x+52,draw_y+57,0,global.color_card_dark,c_white,c_white,0,true,false);
-	sc_drawtext(draw_x+29,draw_y+39,card_name,global.color_white,global.color_black,1,0.6,0,-1);
-	sc_drawtext(draw_x+29,draw_y+50,"lv " + string(card_level),global.color_gray,global.color_black,1,0.5,0,-1);
-	//sc_drawtext(draw_x+29,draw_y+4,string(card_rarity),c_aqua,global.color_black,1,0.6,0,-1);
+	sc_drawtext(draw_x+29,draw_y+39,card_name,global.color_white,global.color_black,1,(1/1.5),0,-1);
+	sc_drawtext(draw_x+29,draw_y+50,"lv " + string(card_level),global.color_gray,global.color_black,1,(1/1.7),0,-1);
+	//sc_drawtext(draw_x+29,draw_y+4,string(card_rarity),c_aqua,global.color_black,1,1,0,-1);
 	//
 	var num_color=c_white;
 	draw_set_halign(fa_left);
 	if card_atk<card_full_atk { num_color=global.color_damage; }
 	else if card_atk>card_full_atk { num_color=global.color_player; }
 	else { num_color=global.color_white; }
-	sc_drawtext(draw_x+5,draw_y+66,string(card_atk),num_color,global.color_black,1,0.5,0,-1);
+	sc_drawtext(draw_x+5,draw_y+66,string(card_atk),num_color,global.color_black,1,(1/1.7),0,-1);
 	draw_set_halign(fa_center);
 	if card_hp<card_full_hp { num_color=global.color_damage; }
 	else { num_color=global.color_fullhp; }
-	sc_drawtext(draw_x+29,draw_y+60,string(card_hp),num_color,global.color_black,1,0.5,0,-1);
+	sc_drawtext(draw_x+29,draw_y+60,string(card_hp),num_color,global.color_black,1,(1/1.7),0,-1);
 	draw_set_halign(fa_right);
 	if card_def<card_full_def { num_color=global.color_damage; }
 	else if card_def>card_full_def { num_color=global.color_player; }
 	else { num_color=global.color_white; }
-	sc_drawtext(draw_x+53,draw_y+66,string(card_def),num_color,global.color_black,1,0.5,0,-1);
+	sc_drawtext(draw_x+53,draw_y+66,string(card_def),num_color,global.color_black,1,(1/1.7),0,-1);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if card_cat=1 and card_face=true {
@@ -83,7 +83,7 @@ else if card_cat=1 and card_face=true {
 	//
 	draw_set_font(fn_m3x6);
 	draw_set_halign(fa_center);
-	sc_drawtext(draw_x+29,draw_y+39,card_name,global.color_white,global.color_black,1,0.6,0,-1);
+	sc_drawtext(draw_x+29,draw_y+39,card_name,global.color_white,global.color_black,1,(1/1.5),0,-1);
 	//
 	draw_sprite_general(sp_sheet,0,16*(card_id-3000+1),16*3,4,4,draw_x+26,draw_y+63,1,1,0,c_white,c_white,c_white,c_white,1);
 }

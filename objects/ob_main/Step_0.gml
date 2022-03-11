@@ -17,13 +17,27 @@ if roadmap_create=true {
 			do {
 				area[ii]=irandom(21);
 			} until (area[ii]!=11 and area[ii]!=13 and area[ii]!=15); //rocket HQs & city
-			ii+=1;
+			ii++;
 		}
-		i+=1;
+		i++;
 	}
 	roadmap_create=false;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if keyboard_check_pressed(vk_enter) {
-	if !instance_exists(ob_control) { instance_create_layer(x,y,"instances",ob_control); }
+if event_transition=true and fade_black<1 {
+	fade_black+=0.02;
+}
+else if event_transition=false and fade_black>0 {
+	fade_black-=0.02;
+}
+else if event_transition=true and fade_black>=1 {
+	if !instance_exists(ob_control) {
+		instance_create_layer(x,y,"instances",ob_control);
+		event_transition=false;
+	}
+}
+else if event_transition=false and fade_black<=0 {
+	if keyboard_check_pressed(vk_enter) and !instance_exists(ob_control) {
+		event_transition=true;
+	}
 }

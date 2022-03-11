@@ -28,7 +28,7 @@ if card_cat=0 {
 		var i=0;
 		repeat (8) {
 			card_evo[i]=-1;
-			i+=1;
+			i++;
 		}
 		card_enigma=false;
 		card_secret=false;
@@ -109,12 +109,12 @@ if card_cat=0 {
 	if card_full_hp+card_full_atk*2+card_full_def*2>=50 { card_cost_total=2; }
 	else if card_full_hp+card_full_atk*2+card_full_def*2>=10 { card_cost_total=1; }
 	else { card_cost_total=0; }
-	if card_enigma=true { card_cost_total+=1; }
+	if card_enigma=true { card_cost_total++; }
 	//
 	var i=0;
 	repeat (3) {
 		card_cost[i]=-1;
-		i+=1;
+		i++;
 	}
 	if card_cost_total=1 and card_enigma=false { card_cost[0]=card_type_a; }
 	else if card_cost_total=1 and card_enigma=true { card_cost[0]=20; }
@@ -134,24 +134,24 @@ if card_cat=0 {
 		//normal, grass, fire, water, electric, flying
 		if card_cost[i]=00 or card_cost[i]=01 or card_cost[i]=02 or card_cost[i]=03 or card_cost[i]=04 or card_cost[i]=05 {
 			card_cost[i]=0; //oran
-			card_cost_total_type[0]+=1;
+			card_cost_total_type[0]++;
 		}
 		//psychic, fairy, bug, poison, ghost, dark
 		else if card_cost[i]=07 or card_cost[i]=08 or card_cost[i]=11 or card_cost[i]=12 or card_cost[i]=16 or card_cost[i]=17 {
 			card_cost[i]=1; //leppa
-			card_cost_total_type[1]+=1;
+			card_cost_total_type[1]++;
 		}
 		//fighting, ground, rock, ice, dragon, steel
 		else if card_cost[i]=06 or card_cost[i]=09 or card_cost[i]=10 or card_cost[i]=13 or card_cost[i]=14 or card_cost[i]=15 {
 			card_cost[i]=2; //lum
-			card_cost_total_type[2]+=1;
+			card_cost_total_type[2]++;
 		}
 		//enigma
 		else if card_cost[i]=20 {
 			card_cost[i]=3; //enigma
-			card_cost_total_type[3]+=1;
+			card_cost_total_type[3]++;
 		}
-		i+=1;
+		i++;
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

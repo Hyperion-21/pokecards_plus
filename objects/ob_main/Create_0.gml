@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Card League";
-game_version="v0.0.0.27";
+game_version="v0.0.0.28";
 window_set_caption(game_name + " (" + string(game_version) + ")");
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -27,7 +27,7 @@ surface_resize(application_surface,cam_w,cam_h);
 var screen_w=display_get_width(), screen_h=display_get_height();
 var i=0, biggest_screen_size_found=false;
 do {
-	i+=1;
+	i++;
 	if 512*i>=screen_w or 288*i>=screen_h {
 		biggest_screen_size_found=true;
 	}
@@ -58,8 +58,11 @@ global.color_background_tile=make_colour_rgb(64,62,58);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 mouse_cursor=0;
 cursor_hide=false;
+//
 roadmap_create=true;
 roadmap_area=0;
+event_transition=false;
+fade_black=0;
 //
 //character_original_x=x+96;
 //character_original_y=y+floor(cam_h/2);

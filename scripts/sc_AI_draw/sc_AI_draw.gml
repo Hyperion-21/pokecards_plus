@@ -39,12 +39,12 @@ else if AI_level<=4 {
 			berries_needed[1]+=enemycard_hand[i].card_cost_total_type[1]; //leppa
 			berries_needed[2]+=enemycard_hand[i].card_cost_total_type[2]; //lum
 			berries_needed[3]+=enemycard_hand[i].card_cost_total_type[3]; //enigma
-			poke_held+=1;
+			poke_held++;
 		}
 		else if enemycard_hand[i].card_cat=1 {
-			berries_held[enemycard_hand[i].card_id-3000]+=1;
+			berries_held[enemycard_hand[i].card_id-3000]++;
 		}
-		i+=1;
+		i++;
 	}
 	if (enemycard_draw_points>=card_drawcost_main and enemycard_maindeck[0]!=-1 and poke_held<2) {
 		enemy_draw_cat=0;
@@ -74,17 +74,17 @@ else if enemy_draw_cat=1 {
 	var var_card_selected=enemycard_berrydeck[enemycard_berrydeck_total-1];
 }
 //
-enemycard_hand_total+=1;
+enemycard_hand_total++;
 enemycard_hand[enemycard_hand_total-1]=var_card_selected;
 //var_card_selected.card_face=true; //cheat
 //
 if enemy_draw_cat=0 {
-	enemycard_maindeck_total-=1;
+	enemycard_maindeck_total--;
 	enemycard_maindeck[enemycard_maindeck_total]=-1;
 	enemycard_draw_points-=card_drawcost_main;
 }
 else if enemy_draw_cat=1 {
-	enemycard_berrydeck_total-=1;
+	enemycard_berrydeck_total--;
 	enemycard_berrydeck[enemycard_berrydeck_total]=-1;
 	enemycard_draw_points-=card_drawcost_berry;
 }

@@ -12,9 +12,9 @@ repeat (18) {
 	var ii=0;
 	repeat (5) {
 		instance_create_layer(cam_x+i*32,cam_y+ii*64+(i mod 2)*32,"instances",ob_background_tile);
-		ii+=1;
+		ii++;
 	}
-	i+=1;
+	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var button_create;
@@ -46,7 +46,7 @@ repeat (11) {
 		card_space_id[i]=instance_create_layer(cam_x+10,cam_y+44,"instances",ob_card_space);
 		card_space_id[i].trash=true;
 	}
-	i+=1;
+	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 card_maindeck_total=50;
@@ -55,7 +55,7 @@ repeat (card_maindeck_total) {
 	card_cat_creation=0;
 	card_maindeck[i]=instance_create_layer(cam_x+cam_w-67,cam_y+181,"instances",ob_card);
 	card_maindeck[i].num_in_maindeck=i;
-	i+=1;
+	i++;
 }
 //
 card_berrydeck_total=999;
@@ -64,7 +64,7 @@ repeat (card_berrydeck_total) {
 	card_cat_creation=1;
 	card_berrydeck[i]=instance_create_layer(cam_x+10,cam_y+181,"instances",ob_card);
 	card_berrydeck[i].num_in_berrydeck=i;
-	i+=1;
+	i++;
 }
 //
 card_hand_total=0;
@@ -72,7 +72,7 @@ card_hand_max=12;
 var i=0;
 repeat (card_hand_max+1) { //+1 to replace value when using last card when hand is full
 	card_hand[i]=-1;
-	i+=1;
+	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 enemycard_maindeck_total=50;
@@ -82,7 +82,7 @@ repeat (enemycard_maindeck_total) {
 	enemycard_maindeck[i]=instance_create_layer(cam_x+cam_w-67,cam_y-100,"instances",ob_card);
 	//enemycard_maindeck[i].num_in_maindeck=i;
 	enemycard_maindeck[i].card_enemy=true;
-	i+=1;
+	i++;
 }
 //
 enemycard_berrydeck_total=999;
@@ -92,14 +92,14 @@ repeat (enemycard_berrydeck_total) {
 	enemycard_berrydeck[i]=instance_create_layer(cam_x+10,cam_y-100,"instances",ob_card);
 	//enemycard_berrydeck[i].num_in_berrydeck=i;
 	enemycard_berrydeck[i].card_enemy=true;
-	i+=1;
+	i++;
 }
 //
 enemycard_hand_total=0;
 var i=0;
 repeat (card_hand_max+1) { //+1 to replace value when using last card when hand is full
 	enemycard_hand[i]=-1;
-	i+=1;
+	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 tooltip_text="";
@@ -148,7 +148,6 @@ AI_threshold[4]=0;
 //event_active=false;
 //reset_objects=false;
 //
-fade_black=0;
 textbox_active=false;
 text_string="";
 text_show="";
