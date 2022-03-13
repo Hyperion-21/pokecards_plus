@@ -21,8 +21,9 @@ win & lose
 save data
 deck construction
 map events
-card openings
 evolution
+starter decks
+card openings
 main menu
 options menu
 glyphs

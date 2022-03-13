@@ -24,20 +24,32 @@ if roadmap_create=true {
 	roadmap_create=false;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if event_transition=true and fade_black<1 {
-	fade_black+=0.02;
+if event_transition>-1 and fade_black<1 {
+	if event_transition=0 { fade_black+=0.02; }
+	else if event_transition=1 or event_transition=2 { fade_black+=0.005; }
 }
-else if event_transition=false and fade_black>0 {
+else if event_transition=-1 and fade_black>0 {
 	fade_black-=0.02;
 }
-else if event_transition=true and fade_black>=1 {
-	if !instance_exists(ob_control) {
+else if event_transition>-1 and fade_black>=1 {
+	if event_transition=0 {
 		instance_create_layer(x,y,"instances",ob_control);
-		event_transition=false;
 	}
+	else if event_transition=1 or event_transition=2 {
+		//destroy everything except ob_main
+		with (ob_control) { instance_destroy(); }
+		with (ob_card) { instance_destroy(); }
+		with (ob_card_space) { instance_destroy(); }
+		with (ob_button_16x16) { instance_destroy(); }
+		with (ob_button_31x24) { instance_destroy(); }
+		with (ob_background) { instance_destroy(); }
+		with (ob_background_tile) { instance_destroy(); }
+		with (ob_damage_num) { instance_destroy(); }
+	}
+	event_transition=-1;
 }
-else if event_transition=false and fade_black<=0 {
+else if event_transition=-1 and fade_black<=0 {
 	if keyboard_check_pressed(vk_enter) and !instance_exists(ob_control) {
-		event_transition=true;
+		event_transition=0;
 	}
 }

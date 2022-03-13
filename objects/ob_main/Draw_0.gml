@@ -54,5 +54,14 @@ if fade_black>0 {
 //if textbox_active=true { sc_drawrectangle(cam_x+4,cam_y+cam_h-52,cam_x+cam_w-6,cam_y+cam_h-6,c_black,c_white,1,0.5,1,1); }
 //if text_string!="" { sc_drawtext(cam_x+12,cam_y+cam_h-48,text_show,c_white,c_black,1,0.5,0,233); }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+if event_transition=1 or event_transition=2 {
+	draw_set_font(fn_m6x11_large);
+	draw_set_halign(fa_center);
+	//
+	if event_transition=1 { var result_message="VICTORY", result_color=global.color_player; }
+	else if event_transition=2 { var result_message="DEFEAT", result_color=global.color_enemy; }
+	sc_drawtext(cam_x+cam_w/2,cam_y+cam_h/2-10,result_message,result_color,global.color_black,1,1,0,-1);
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 if cursor_hide=false { var mouse_alpha=1; } else { var mouse_alpha=0.5; }
 draw_sprite_general(sp_sheet,0,16*(mouse_cursor+1),16*0,16,16,mouse_x-5,mouse_y-5,1,1,0,c_white,c_white,c_white,c_white,mouse_alpha);
