@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "unused",
-    "path": "folders/Scripts/tech/unused.yy",
+    "name": "tech",
+    "path": "folders/Scripts/tech.yy",
   },
   "resourceVersion": "1.0",
-  "name": "sc_setmaincolor",
+  "name": "sc_config_load",
   "tags": [],
   "resourceType": "GMScript",
 }

@@ -98,5 +98,5 @@ tooltip_text="";
 if AI_report_toggle=true {
 	draw_set_halign(fa_left);
 	sc_drawrectangle(cam_x-2,cam_y-2,cam_x+cam_w+2,cam_y+cam_h+2,c_black,c_black,0,0.4,1,0);
-	sc_drawtext(4,0,AI_report,c_aqua,c_black,1,0.5,0,-1);
+	sc_drawtext(cam_x+4,cam_y,AI_report,c_aqua,c_black,1,0.5,0,-1);
 }

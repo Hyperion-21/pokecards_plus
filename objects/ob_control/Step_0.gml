@@ -278,13 +278,13 @@ if text_show!=text_string {
 	}
 	else { text_timer++; }
 	//
-	if sc_input("01",0) {
+	if keyboard_check_pressed(vk_space) {
 		//sc_playsound(sn_text,50,false,false,false);
 		text_show=text_string;
 	}
 }
 else if text_string!="" {
-	if sc_input("01",0) {
+	if keyboard_check_pressed(vk_space) {
 		text_string="";
 		text_show="";
 		text_charnum=1;

@@ -1,0 +1,35 @@
+function sc_config_save() {
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+var savemap=ds_map_create();
+//
+ds_map_add(savemap,"fullscreen",global.fullscreen);
+ds_map_add(savemap,"window_scaling",global.gamescaling);
+ds_map_add(savemap,"vsync",global.vsync);
+ds_map_add(savemap,"texture_redraw",global.textureredraw);
+ds_map_add(savemap,"texture_filter",global.texturefilter);
+ds_map_add(savemap,"weather_effects",global.weathereffects);
+ds_map_add(savemap,"music_level",global.musiclevel);
+ds_map_add(savemap,"sound_level",global.soundlevel);
+ds_map_add(savemap,"autosave",global.autosave);
+ds_map_add(savemap,"text_font",global.textfont);
+ds_map_add(savemap,"text_speed",global.textspeed);
+ds_map_add(savemap,"window_color",global.windowcolor_id);
+//
+ds_map_add(savemap,"key_01",global.k01);
+ds_map_add(savemap,"key_02",global.k02);
+ds_map_add(savemap,"key_03",global.k03);
+ds_map_add(savemap,"key_04",global.k04);
+ds_map_add(savemap,"key_05",global.k05);
+ds_map_add(savemap,"key_06",global.k06);
+ds_map_add(savemap,"key_07",global.k07);
+ds_map_add(savemap,"key_08",global.k08);
+ds_map_add(savemap,"key_09",global.k09);
+ds_map_add(savemap,"key_up",global.kup);
+ds_map_add(savemap,"key_down",global.kdown);
+ds_map_add(savemap,"key_left",global.kleft);
+ds_map_add(savemap,"key_right",global.kright);
+//
+ds_map_secure_save(savemap,config_file);
+ds_map_destroy(savemap);
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+}

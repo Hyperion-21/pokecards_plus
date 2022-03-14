@@ -17,9 +17,8 @@ effect_damaged=0;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if card_cat=0 {
 	do {
-		normal_id_max=251;
-		card_id=irandom_range(1,normal_id_max+1); //from 1 to max normal cards + secret cards
-		if card_id>normal_id_max { card_id+=2000-normal_id_max; } //secret cards
+		card_id=irandom_range(1,ob_main.normal_poke_id_max+1); //from 1 to max normal cards + secret cards
+		if card_id>ob_main.normal_poke_id_max { card_id+=2000-ob_main.normal_poke_id_max; } //secret cards
 		//
 		card_level=irandom_range(1,10);
 		//

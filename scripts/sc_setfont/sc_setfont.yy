@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "tech",
-    "path": "folders/Scripts/tech.yy",
+    "name": "unused",
+    "path": "folders/Scripts/tech/unused.yy",
   },
   "resourceVersion": "1.0",
   "name": "sc_setfont",

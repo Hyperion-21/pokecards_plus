@@ -1,5 +1,5 @@
 if !instance_exists(ob_control) {
-	var area_sp_x=area[roadmap_area], area_sp_y=0;
+	var area_sp_x=location_type[roadmap_area], area_sp_y=0;
 	if area_sp_x>=6 and area_sp_x<=11 { area_sp_x-=6; area_sp_y=1; }
 	else if area_sp_x>=12 and area_sp_x<=16 { area_sp_x-=12; area_sp_y=2; }
 	else if area_sp_x>=17 { area_sp_x-=17; area_sp_y=3; }
@@ -42,7 +42,7 @@ if !instance_exists(ob_control) {
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	draw_set_alpha(1);
 	//
-	var bar_amount=15;
+	var bar_amount=(roadmap_area*100)/roadmap_area_max;
 	draw_healthbar(win_x+2,win_y-17,win_x+237,win_y-14,bar_amount,global.color_progress_dark,global.color_progress_light,global.color_progress_light,0,true,false);
 	draw_sprite_general(sp_sheet,0,16*1,16*11,16,16,win_x-2+(bar_amount*235)/100,win_y-24,1,1,0,c_white,c_white,c_white,c_white,1);
 }

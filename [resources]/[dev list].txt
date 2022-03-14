@@ -17,15 +17,17 @@
 ✔	first turn selection
 ✔	roadmap setup
 ✔	roadmap generation
-win & lose
-save data
-deck construction
-map events
-evolution
+✔	win & lose
 starter decks
-card openings
-main menu
+deck menu
+deck construction
+save data
+win rewards
+event: card openings
+event: evolution
 options menu
+save config
+main menu
 glyphs
 stalemate solving
 pokemon data (gen 1&2)
