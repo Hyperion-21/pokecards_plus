@@ -1,10 +1,17 @@
 randomize(); //random seed
 game_name="Pocket Card League";
-game_version="v0.0.0.30";
+game_version="v0.0.0.31";
 window_set_caption(game_name + " (" + string(game_version) + ")");
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
-x+=512;
+//
+screen_options_x=0;
+screen_main_x=512;
+screen_deck_x=1024;
+x=screen_main_x;
+//
+screen_main_y=0;
+y=screen_main_y;
 //
 view_set_visible(view_camera[0],true);
 view_set_xport(view_camera[0],0);
@@ -17,8 +24,6 @@ camera_set_view_size(view_camera[0],512,288);
 //camera_set_view_border(view_camera[0],-1,-1);
 //camera_set_view_speed(view_camera[0],-1,-1);
 //
-cam_x=camera_get_view_x(view_camera[0]);
-cam_y=camera_get_view_y(view_camera[0]);
 cam_w=camera_get_view_width(view_camera[0]);
 cam_h=camera_get_view_height(view_camera[0]);
 //
@@ -55,13 +60,16 @@ global.color_background_tile=make_colour_rgb(64,62,58);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 mouse_cursor=0;
 cursor_hide=false;
+screen_transition=-1;
 //
-roadmap_create=true;
-roadmap_area=0;
 roadmap_area_max=8;
-//
 event_transition=-1; //0 enter battle, 1 victory, 2 defeat
 fade_black=0;
+//
+menu_options_hover=false;
+menu_deck_hover=false;
+menu_back_options_hover=false;
+menu_back_deck_hover=false;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 normal_poke_id_max=251; //normal (non-secret) poke cards
 //————————————————————————————————————————————————————————————————————————————————————————————————————

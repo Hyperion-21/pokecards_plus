@@ -2,8 +2,8 @@ depth=-1000;
 //
 cam_x=camera_get_view_x(view_camera[0]);
 cam_y=camera_get_view_y(view_camera[0]);
-cam_w=camera_get_view_width(view_camera[0]);
-cam_h=camera_get_view_height(view_camera[0]);
+cam_w=ob_main.cam_w;
+cam_h=ob_main.cam_h;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 instance_create_layer(cam_x-2,cam_y-2,"instances",ob_background);
 //
@@ -49,7 +49,7 @@ repeat (11) {
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-card_maindeck_total=50;
+card_maindeck_total=ob_main.maindeck_total;
 var i=0;
 repeat (card_maindeck_total) {
 	card_cat_creation=0;
@@ -58,7 +58,7 @@ repeat (card_maindeck_total) {
 	i++;
 }
 //
-card_berrydeck_total=999;
+card_berrydeck_total=ob_main.berrydeck_total;
 var i=0;
 repeat (card_berrydeck_total) {
 	card_cat_creation=1;

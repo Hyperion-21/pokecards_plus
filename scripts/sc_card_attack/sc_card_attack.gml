@@ -64,7 +64,7 @@ with (argument1) {
 				ob_main.event_transition=2;
 			}
 			if ob_control.enemy_hp>ob_control.hp_max*2 { ob_control.enemy_hp=ob_control.hp_max*2; }
-			else if ob_control.enemy_hp<0 {
+			else if ob_control.enemy_hp<=0 {
 				ob_control.enemy_hp=0;
 				ob_control.battler_turn=0;
 				ob_main.event_transition=1;
