@@ -82,74 +82,76 @@ else if event_transition=-1 and fade_black<=0 {
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if event_transition=-1 and screen_transition=-1 and cursor_hide=false and
-mouse_x>=screen_main_x+32-2 and mouse_y>=screen_main_y+126-2 and mouse_x<=screen_main_x+32+17 and mouse_y<=screen_main_y+126+17 {
-	menu_options_hover=true;
-	mouse_cursor=1;
-	if mouse_check_button_pressed(mb_left) {
-		screen_transition=0;
+if !instance_exists(ob_control) {
+	if event_transition=-1 and screen_transition=-1 and cursor_hide=false and
+	mouse_x>=screen_main_x+32-2 and mouse_y>=screen_main_y+126-2 and mouse_x<=screen_main_x+32+17 and mouse_y<=screen_main_y+126+17 {
+		menu_options_hover=true;
+		mouse_cursor=1;
+		if mouse_check_button_pressed(mb_left) {
+			screen_transition=0;
+		}
 	}
-}
-else {
-	menu_options_hover=false;
-}
-//
-if event_transition=-1 and screen_transition=-1  and cursor_hide=false and
-mouse_x>=screen_main_x+cam_w-48-2 and mouse_y>=screen_main_y+126-2 and mouse_x<=screen_main_x+cam_w-48+17 and mouse_y<=screen_main_y+126+17 {
-	menu_deck_hover=true;
-	mouse_cursor=1;
-	if mouse_check_button_pressed(mb_left) {
-		screen_transition=1;
+	else {
+		menu_options_hover=false;
 	}
-}
-else {
-	menu_deck_hover=false;
-}
-//
-if event_transition=-1 and screen_transition=-1  and cursor_hide=false and
-mouse_x>=screen_options_x+cam_w-48-2 and mouse_y>=screen_main_y+136-2 and mouse_x<=screen_options_x+cam_w-48+17 and mouse_y<=screen_main_y+136+17 {
-	menu_back_options_hover=true;
-	mouse_cursor=1;
-	if mouse_check_button_pressed(mb_left) {
-		screen_transition=2;
+	//
+	if event_transition=-1 and screen_transition=-1  and cursor_hide=false and
+	mouse_x>=screen_main_x+cam_w-48-2 and mouse_y>=screen_main_y+126-2 and mouse_x<=screen_main_x+cam_w-48+17 and mouse_y<=screen_main_y+126+17 {
+		menu_deck_hover=true;
+		mouse_cursor=1;
+		if mouse_check_button_pressed(mb_left) {
+			screen_transition=1;
+		}
 	}
-}
-else {
-	menu_back_options_hover=false;
-}
-//
-if event_transition=-1 and screen_transition=-1 and cursor_hide=false and
-mouse_x>=screen_deck_x+32-2 and mouse_y>=screen_main_y+136-2 and mouse_x<=screen_deck_x+32+17 and mouse_y<=screen_main_y+136+17 {
-	menu_back_deck_hover=true;
-	mouse_cursor=1;
-	if mouse_check_button_pressed(mb_left) {
-		screen_transition=2;
+	else {
+		menu_deck_hover=false;
 	}
-}
-else {
-	menu_back_deck_hover=false;
-}
-//————————————————————————————————————————————————————————————————————————————————————————————————————
-if screen_transition=0 {
-	if camera_get_view_x(view_camera[0])>screen_options_x {
-		camera_set_view_pos(view_camera[0],camera_get_view_x(view_camera[0])-16,y);
+	//
+	if event_transition=-1 and screen_transition=-1  and cursor_hide=false and
+	mouse_x>=screen_options_x+cam_w-48-2 and mouse_y>=screen_main_y+136-2 and mouse_x<=screen_options_x+cam_w-48+17 and mouse_y<=screen_main_y+136+17 {
+		menu_back_options_hover=true;
+		mouse_cursor=1;
+		if mouse_check_button_pressed(mb_left) {
+			screen_transition=2;
+		}
 	}
-	else { screen_transition=-1; }
-}
-//
-else if screen_transition=1 {
-	if camera_get_view_x(view_camera[0])<screen_deck_x {
-		camera_set_view_pos(view_camera[0],camera_get_view_x(view_camera[0])+16,y);
+	else {
+		menu_back_options_hover=false;
 	}
-	else { screen_transition=-1; }
-}
-//
-else if screen_transition=2 {
-	if camera_get_view_x(view_camera[0])<screen_main_x {
-		camera_set_view_pos(view_camera[0],camera_get_view_x(view_camera[0])+16,y);
+	//
+	if event_transition=-1 and screen_transition=-1 and cursor_hide=false and
+	mouse_x>=screen_deck_x+32-2 and mouse_y>=screen_main_y+136-2 and mouse_x<=screen_deck_x+32+17 and mouse_y<=screen_main_y+136+17 {
+		menu_back_deck_hover=true;
+		mouse_cursor=1;
+		if mouse_check_button_pressed(mb_left) {
+			screen_transition=2;
+		}
 	}
-	else if camera_get_view_x(view_camera[0])>screen_main_x {
-		camera_set_view_pos(view_camera[0],camera_get_view_x(view_camera[0])-16,y);
+	else {
+		menu_back_deck_hover=false;
 	}
-	else { screen_transition=-1; }
+	//————————————————————————————————————————————————————————————————————————————————————————————————————
+	if screen_transition=0 {
+		if camera_get_view_x(view_camera[0])>screen_options_x {
+			camera_set_view_pos(view_camera[0],camera_get_view_x(view_camera[0])-16,y);
+		}
+		else { screen_transition=-1; }
+	}
+	//
+	else if screen_transition=1 {
+		if camera_get_view_x(view_camera[0])<screen_deck_x {
+			camera_set_view_pos(view_camera[0],camera_get_view_x(view_camera[0])+16,y);
+		}
+		else { screen_transition=-1; }
+	}
+	//
+	else if screen_transition=2 {
+		if camera_get_view_x(view_camera[0])<screen_main_x {
+			camera_set_view_pos(view_camera[0],camera_get_view_x(view_camera[0])+16,y);
+		}
+		else if camera_get_view_x(view_camera[0])>screen_main_x {
+			camera_set_view_pos(view_camera[0],camera_get_view_x(view_camera[0])-16,y);
+		}
+		else { screen_transition=-1; }
+	}
 }

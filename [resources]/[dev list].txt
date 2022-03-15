@@ -18,10 +18,10 @@
 ✔	roadmap setup
 ✔	roadmap generation
 ✔	win & lose
-starter decks
+✔	save data
 deck menu
 deck construction
-save data
+starter decks
 win rewards
 event: card openings
 event: evolution
@@ -30,5 +30,7 @@ save config
 main menu
 glyphs
 stalemate solving
+trainer battles setup
+gym battles setup
 pokemon data (gen 1&2)
 full enemy AI

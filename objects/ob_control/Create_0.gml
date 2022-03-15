@@ -5,7 +5,7 @@ cam_y=camera_get_view_y(view_camera[0]);
 cam_w=ob_main.cam_w;
 cam_h=ob_main.cam_h;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-instance_create_layer(cam_x-2,cam_y-2,"instances",ob_background);
+instance_create_layer(cam_x,cam_y,"instances",ob_background);
 //
 var i=0;
 repeat (18) {
@@ -52,7 +52,16 @@ repeat (11) {
 card_maindeck_total=ob_main.maindeck_total;
 var i=0;
 repeat (card_maindeck_total) {
-	card_cat_creation=0;
+	create_card_cat=0;
+	create_card_id=ob_main.main_card_id[i];
+	//irandom_range(1,ob_main.normal_poke_id_max+1); //from 1 to max normal cards + secret cards
+	//if card_id>ob_main.normal_poke_id_max { card_id+=2000-ob_main.normal_poke_id_max; } //secret cards
+	create_card_level=ob_main.main_card_level[i];
+	//irandom_range(1,10);
+	create_card_glyph_a=ob_main.main_card_glyph_a[i];
+	create_card_glyph_b=ob_main.main_card_glyph_b[i];
+	create_card_glyph_c=ob_main.main_card_glyph_c[i];
+	//
 	card_maindeck[i]=instance_create_layer(cam_x+cam_w-67,cam_y+181,"instances",ob_card);
 	card_maindeck[i].num_in_maindeck=i;
 	i++;
@@ -61,7 +70,12 @@ repeat (card_maindeck_total) {
 card_berrydeck_total=ob_main.berrydeck_total;
 var i=0;
 repeat (card_berrydeck_total) {
-	card_cat_creation=1;
+	create_card_cat=1;
+	create_card_id=ob_main.berry_card_id[i];
+	//var card_berry_chance=irandom(999)+1;
+	//if card_berry_chance<=990 { card_id=choose(3000,3001,3002); }
+	//else { card_id=3003; }
+	//
 	card_berrydeck[i]=instance_create_layer(cam_x+10,cam_y+181,"instances",ob_card);
 	card_berrydeck[i].num_in_berrydeck=i;
 	i++;
@@ -78,9 +92,14 @@ repeat (card_hand_max+1) { //+1 to replace value when using last card when hand 
 enemycard_maindeck_total=50;
 var i=0;
 repeat (enemycard_maindeck_total) {
-	card_cat_creation=0;
+	create_card_cat=0;
+	create_card_id=10;
+	create_card_level=1;
+	create_card_glyph_a=-1;
+	create_card_glyph_b=-1;
+	create_card_glyph_c=-1;
+	//
 	enemycard_maindeck[i]=instance_create_layer(cam_x+cam_w-67,cam_y-100,"instances",ob_card);
-	//enemycard_maindeck[i].num_in_maindeck=i;
 	enemycard_maindeck[i].card_enemy=true;
 	i++;
 }
@@ -88,9 +107,10 @@ repeat (enemycard_maindeck_total) {
 enemycard_berrydeck_total=999;
 var i=0;
 repeat (enemycard_berrydeck_total) {
-	card_cat_creation=1;
+	create_card_cat=1;
+	create_card_id=3000;
+	//
 	enemycard_berrydeck[i]=instance_create_layer(cam_x+10,cam_y-100,"instances",ob_card);
-	//enemycard_berrydeck[i].num_in_berrydeck=i;
 	enemycard_berrydeck[i].card_enemy=true;
 	i++;
 }

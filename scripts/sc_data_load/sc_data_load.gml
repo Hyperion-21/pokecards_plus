@@ -4,9 +4,6 @@ area_zone=0;
 roadmap_area=0;
 roadmap_generated=false;
 //
-maindeck_total=50;
-berrydeck_total=999;
-//
 var i=0;
 repeat (3) {
 	var ii=0;
@@ -21,9 +18,22 @@ repeat (3) {
 	i++;
 }
 //
+maindeck_total=0;
+berrydeck_total=0;
+//
 var i=0;
-repeat (100) {
-	testvar[i]=-1;
+repeat (maindeck_total) {
+	main_card_id[i]=-1;
+	main_card_level[i]=-1;
+	main_card_glyph_a[i]=-1;
+	main_card_glyph_b[i]=-1;
+	main_card_glyph_c[i]=-1;
+	i++;
+}
+//
+var i=0;
+repeat (berrydeck_total) {
+	berry_card_id[i]=-1;
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -33,9 +43,6 @@ if file_exists(data_file) {
 	if !is_undefined(ds_map_find_value(savemap,"area_zone")) { area_zone=ds_map_find_value(savemap,"area_zone"); }
 	if !is_undefined(ds_map_find_value(savemap,"roadmap_area")) { roadmap_area=ds_map_find_value(savemap,"roadmap_area"); }
 	if !is_undefined(ds_map_find_value(savemap,"roadmap_generated")) { roadmap_generated=ds_map_find_value(savemap,"roadmap_generated"); }
-	//
-	if !is_undefined(ds_map_find_value(savemap,"maindeck_total")) { maindeck_total=ds_map_find_value(savemap,"maindeck_total"); }
-	if !is_undefined(ds_map_find_value(savemap,"berrydeck_total")) { berrydeck_total=ds_map_find_value(savemap,"berrydeck_total"); }
 	//
 	var i=0;
 	repeat (3) {
@@ -54,10 +61,28 @@ if file_exists(data_file) {
 		i++;
 	}
 	//
+	if !is_undefined(ds_map_find_value(savemap,"maindeck_total")) { maindeck_total=ds_map_find_value(savemap,"maindeck_total"); }
+	if !is_undefined(ds_map_find_value(savemap,"berrydeck_total")) { berrydeck_total=ds_map_find_value(savemap,"berrydeck_total"); }
+	//
 	var i=0;
-	repeat (100) {
-		var value_name="testvar_" + string(i);
-		if !is_undefined(ds_map_find_value(savemap,value_name)) { testvar[i]=ds_map_find_value(savemap,value_name); }
+	repeat (maindeck_total) {
+		var value_name="main_card_id_" + string(i);
+		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_id[i]=ds_map_find_value(savemap,value_name); }
+		var value_name="main_card_level_" + string(i);
+		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_level[i]=ds_map_find_value(savemap,value_name); }
+		var value_name="main_card_glyph_a_" + string(i);
+		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_glyph_a[i]=ds_map_find_value(savemap,value_name); }
+		var value_name="main_card_glyph_b_" + string(i);
+		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_glyph_b[i]=ds_map_find_value(savemap,value_name); }
+		var value_name="main_card_glyph_c_" + string(i);
+		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_glyph_c[i]=ds_map_find_value(savemap,value_name); }
+		i++;
+	}
+	//
+	var i=0;
+	repeat (berrydeck_total) {
+		var value_name="berry_card_id_" + string(i);
+		if !is_undefined(ds_map_find_value(savemap,value_name)) { berry_card_id[i]=ds_map_find_value(savemap,value_name); }
 		i++;
 	}
 	//
