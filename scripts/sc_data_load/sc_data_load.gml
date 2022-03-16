@@ -18,13 +18,13 @@ repeat (3) {
 	i++;
 }
 //
-maindeck_total=0;
-berrydeck_total=0;
+maindeck_total=50//0;
+berrydeck_total=50//0;
 //
 var i=0;
 repeat (maindeck_total) {
-	main_card_id[i]=-1;
-	main_card_level[i]=-1;
+	main_card_id[i]=1//-1;
+	main_card_level[i]=1//-1;
 	main_card_glyph_a[i]=-1;
 	main_card_glyph_b[i]=-1;
 	main_card_glyph_c[i]=-1;
@@ -33,7 +33,7 @@ repeat (maindeck_total) {
 //
 var i=0;
 repeat (berrydeck_total) {
-	berry_card_id[i]=-1;
+	berry_card_id[i]=3000//-1;
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

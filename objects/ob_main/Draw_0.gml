@@ -56,6 +56,7 @@ if !instance_exists(ob_control) {
 	draw_sprite_general(sp_sheet,0,16*8,16*9,16,16,screen_options_x+cam_w-48,screen_main_y+136,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	// DECK
+	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	if menu_back_deck_hover=true { var menu_alpha=1; } else { var menu_alpha=0.5; }
 	draw_sprite_general(sp_sheet,0,16*7,16*9,16,16,screen_deck_x+32,screen_main_y+136,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
 }

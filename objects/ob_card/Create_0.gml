@@ -1,12 +1,19 @@
-depth=200;
+if instance_exists(ob_control) {
+	var reference_id=ob_control;
+	depth=200;
+}
+else {
+	var reference_id=ob_deckbuild;
+	depth=-2100;
+}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 card_face=false;
 card_played=false;
 card_trash=false;
 card_enemy=false;
 //
-card_cat=ob_control.create_card_cat;
-card_id=ob_control.create_card_id;
+card_cat=reference_id.create_card_cat;
+card_id=reference_id.create_card_id;
 //
 num_in_maindeck=-1;
 num_in_berrydeck=-1;
@@ -19,10 +26,10 @@ effect_damaged=0;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if card_cat=0 {
 	do {
-		card_level=ob_control.create_card_level;
-		card_glyph_a=ob_control.create_card_glyph_a;
-		card_glyph_b=ob_control.create_card_glyph_b;
-		card_glyph_c=ob_control.create_card_glyph_c;
+		card_level=reference_id.create_card_level;
+		card_glyph_a=reference_id.create_card_glyph_a;
+		card_glyph_b=reference_id.create_card_glyph_b;
+		card_glyph_c=reference_id.create_card_glyph_c;
 		//
 		if card_id<=386 { card_sheet=sp_poke_a; }
 		else { card_sheet=sp_poke_b; }
