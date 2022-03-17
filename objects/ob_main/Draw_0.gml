@@ -1,14 +1,11 @@
 if !instance_exists(ob_control) {
+	//————————————————————————————————————————————————————————————————————————————————————————————————————
+	// MAIN
 	var area_sp_x=location_type[roadmap_area], area_sp_y=0;
 	if area_sp_x>=6 and area_sp_x<=11 { area_sp_x-=6; area_sp_y=1; }
 	else if area_sp_x>=12 and area_sp_x<=16 { area_sp_x-=12; area_sp_y=2; }
 	else if area_sp_x>=17 { area_sp_x-=17; area_sp_y=3; }
 	//
-	var cam_x=camera_get_view_x(view_camera[0]), cam_y=camera_get_view_y(view_camera[0]);
-	draw_sprite_general(sp_area,0,240*area_sp_x,112*area_sp_y,240,112,cam_x-104,cam_y-21,3,3,0,c_white,c_white,c_white,c_white,1);
-	sc_drawrectangle(cam_x-2,cam_y-2,cam_x+cam_w+2,cam_y+cam_h+2,global.color_black,c_white,0,0.97,1,0);
-	//————————————————————————————————————————————————————————————————————————————————————————————————————
-	// MAIN
 	var win_x=screen_main_x+136, win_y=screen_main_y+97;
 	//
 	sc_drawrectangle(win_x-2,win_y-2,win_x+240,win_y+112,c_white,global.color_white,2,0,1,0);
@@ -53,12 +50,12 @@ if !instance_exists(ob_control) {
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	// OPTIONS
 	if menu_back_options_hover=true { var menu_alpha=1; } else { var menu_alpha=0.5; }
-	draw_sprite_general(sp_sheet,0,16*8,16*9,16,16,screen_options_x+cam_w-48,screen_main_y+136,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
+	draw_sprite_general(sp_sheet,0,16*8,16*9,16,16,screen_options_x+cam_w-32,screen_main_y+136,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	// DECK
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	if menu_back_deck_hover=true { var menu_alpha=1; } else { var menu_alpha=0.5; }
-	draw_sprite_general(sp_sheet,0,16*7,16*9,16,16,screen_deck_x+32,screen_main_y+136,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
+	draw_sprite_general(sp_sheet,0,16*7,16*9,16,16,screen_deck_x+16,screen_main_y+136,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if fade_black>0 {

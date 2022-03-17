@@ -3,7 +3,7 @@ function sc_card_attack(argument0,argument1) {
 /// @param card_id
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 with (argument1) {
-	if already_attacked=false {
+	if already_attacked=false and card_environment=false {
 		var card_target=-1;
 		if (argument0=true and position_meeting(x+28,y-20,ob_card)) or (argument0=false and position_meeting(x+28,y+100,ob_card)) {
 			if argument0=true { card_target=instance_position(x+28,y-20,ob_card); }

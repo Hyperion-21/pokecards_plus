@@ -5,8 +5,6 @@ cam_y=camera_get_view_y(view_camera[0]);
 cam_w=ob_main.cam_w;
 cam_h=ob_main.cam_h;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-instance_create_layer(cam_x,cam_y,"instances",ob_background);
-//
 var i=0;
 repeat (18) {
 	var ii=0;
@@ -54,8 +52,9 @@ var i=0;
 repeat (card_maindeck_total) {
 	create_card_cat=0;
 	create_card_id=ob_main.main_card_id[i];
-	//irandom_range(1,ob_main.normal_poke_id_max+1); //from 1 to max normal cards + secret cards
-	//if card_id>ob_main.normal_poke_id_max { card_id+=2000-ob_main.normal_poke_id_max; } //secret cards
+	//irandom_range(1,ob_main.normal_poke_id_max+ob_main.secret_cards_total+ob_main.environment_cards_total); //from 1 to max normal cards + secret cards + environment cards
+	//if card_id>ob_main.normal_poke_id_max+ob_main.secret_cards_total { card_id+=2500-ob_main.normal_poke_id_max-ob_main.secret_cards_total; } //environment cards
+	//else if card_id>ob_main.normal_poke_id_max { card_id+=2000-ob_main.normal_poke_id_max; } //secret cards
 	create_card_level=ob_main.main_card_level[i];
 	//irandom_range(1,10);
 	create_card_glyph_a=ob_main.main_card_glyph_a[i];

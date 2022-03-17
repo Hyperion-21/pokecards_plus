@@ -1516,7 +1516,26 @@ switch (card_id) {
 		card_stage=1; card_secret=true;
 		card_type_a=05; card_type_b=00;
 		card_base_hp=33; card_base_atk=136+6; card_base_def=0+6;
-		card_grid_x=0; card_grid_y=0; break;
+		card_grid_x=1; card_grid_y=1; break;
+	//
+	case 2501:
+		card_name="Elm Tree";
+		card_stage=1; card_environment=true;
+		card_type_a=01; card_type_b=-1;
+		card_base_hp=225; card_base_atk=0; card_base_def=240;
+		card_grid_x=1; card_grid_y=14; break;
+	case 2502:
+		card_name="Spruce Tree";
+		card_stage=1; card_environment=true;
+		card_type_a=01; card_type_b=-1;
+		card_base_hp=200; card_base_atk=0; card_base_def=280;
+		card_grid_x=2; card_grid_y=14; break;
+	case 2503:
+		card_name="Rock";
+		card_stage=1; card_environment=true;
+		card_type_a=10; card_type_b=-1;
+		card_base_hp=125; card_base_atk=0; card_base_def=360;
+		card_grid_x=3; card_grid_y=14; break;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }

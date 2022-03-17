@@ -19,6 +19,7 @@
 ✔	roadmap generation
 ✔	win & lose
 ✔	save data
+✔	environment cards
 deck menu
 deck construction
 starter decks

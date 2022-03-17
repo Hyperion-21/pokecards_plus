@@ -61,13 +61,12 @@ else if event_transition>-1 and fade_black>=1 {
 		instance_create_layer(x,y,"instances",ob_control);
 	}
 	else if event_transition=1 or event_transition=2 {
-		//destroy everything except ob_main
+		//destroy everything except ob_main and ob_background
 		with (ob_control) { instance_destroy(); }
 		with (ob_card) { instance_destroy(); }
 		with (ob_card_space) { instance_destroy(); }
 		with (ob_button_16x16) { instance_destroy(); }
 		with (ob_button_31x24) { instance_destroy(); }
-		with (ob_background) { instance_destroy(); }
 		with (ob_background_tile) { instance_destroy(); }
 		with (ob_damage_num) { instance_destroy(); }
 		//
@@ -109,7 +108,7 @@ if !instance_exists(ob_control) {
 	}
 	//
 	if event_transition=-1 and screen_transition=-1  and cursor_hide=false and
-	mouse_x>=screen_options_x+cam_w-48-2 and mouse_y>=screen_main_y+136-2 and mouse_x<=screen_options_x+cam_w-48+17 and mouse_y<=screen_main_y+136+17 {
+	mouse_x>=screen_options_x+cam_w-32-2 and mouse_y>=screen_main_y+136-2 and mouse_x<=screen_options_x+cam_w-32+17 and mouse_y<=screen_main_y+136+17 {
 		menu_back_options_hover=true;
 		mouse_cursor=1;
 		if mouse_check_button_pressed(mb_left) {
@@ -121,7 +120,7 @@ if !instance_exists(ob_control) {
 	}
 	//
 	if event_transition=-1 and screen_transition=-1 and cursor_hide=false and
-	mouse_x>=screen_deck_x+32-2 and mouse_y>=screen_main_y+136-2 and mouse_x<=screen_deck_x+32+17 and mouse_y<=screen_main_y+136+17 {
+	mouse_x>=screen_deck_x+16-2 and mouse_y>=screen_main_y+136-2 and mouse_x<=screen_deck_x+16+17 and mouse_y<=screen_main_y+136+17 {
 		menu_back_deck_hover=true;
 		mouse_cursor=1;
 		if mouse_check_button_pressed(mb_left) {

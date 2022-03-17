@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Card League";
-game_version="v0.0.0.33";
+game_version="v0.0.0.34";
 window_set_caption(game_name + " (" + string(game_version) + ")");
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -71,7 +71,11 @@ menu_deck_hover=false;
 menu_back_options_hover=false;
 menu_back_deck_hover=false;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-normal_poke_id_max=251; //normal (non-secret) poke cards
+normal_poke_id_max=251; //normal (non-secret and non-environment) poke cards
+secret_cards_total=1;
+environment_cards_total=3;
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+instance_create_layer(screen_main_x,screen_main_y,"instances",ob_background);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 config_file="config.sav";
 data_file="data.sav";

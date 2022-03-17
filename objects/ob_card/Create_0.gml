@@ -1,13 +1,10 @@
-if instance_exists(ob_control) {
-	var reference_id=ob_control;
-	depth=200;
-}
-else {
-	var reference_id=ob_deckbuild;
-	depth=-2100;
-}
+depth=200;
+//
+if instance_exists(ob_control) { var reference_id=ob_control; }
+else { var reference_id=ob_deckbuild; }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-card_face=false;
+if instance_exists(ob_control) { card_face=false; }
+else { card_face=true; }
 card_played=false;
 card_trash=false;
 card_enemy=false;
@@ -32,7 +29,8 @@ if card_cat=0 {
 		card_glyph_c=reference_id.create_card_glyph_c;
 		//
 		if card_id<=386 { card_sheet=sp_poke_a; }
-		else { card_sheet=sp_poke_b; }
+		else if card_id<=2000 { card_sheet=sp_poke_b; }
+		else { card_sheet=sp_poke_c; }
 		var i=0;
 		repeat (8) {
 			card_evo[i]=-1;
@@ -40,6 +38,7 @@ if card_cat=0 {
 		}
 		card_enigma=false;
 		card_secret=false;
+		card_environment=false;
 		//
 		sc_pokelist();
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -115,6 +114,7 @@ if card_cat=0 {
 	else if card_full_hp+card_full_atk*2+card_full_def*2>=10 { card_cost_total=1; }
 	else { card_cost_total=0; }
 	if card_enigma=true { card_cost_total++; }
+	if card_environment=true { card_cost_total=0; }
 	//
 	var i=0;
 	repeat (3) {
