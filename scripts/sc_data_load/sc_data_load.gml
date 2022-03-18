@@ -23,7 +23,7 @@ berrydeck_total=100//0;
 //
 var i=0;
 repeat (maindeck_total) {
-	main_card_id[i]=1//-1;
+	main_card_id[i]=irandom_range(1,25)//-1;
 	main_card_level[i]=1//-1;
 	main_card_glyph_a[i]=-1;
 	main_card_glyph_b[i]=-1;

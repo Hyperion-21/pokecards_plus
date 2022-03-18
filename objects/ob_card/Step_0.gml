@@ -76,9 +76,15 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 	ob_main.mouse_cursor=1;
 	//
 	if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false {
-		if used_in_deck=false and ob_deckbuild.deck_build_used<ob_deckbuild.deck_build_used_max {
+		if used_in_deck=false and ob_deckbuild.deck_build_used_total<ob_deckbuild.deck_build_used_max {
+			used_in_deck=true;
+			ob_deckbuild.reorder_type=0;
+			ob_deckbuild.reorder_card_id=id;
 		}
 		else if used_in_deck=true {
+			used_in_deck=false;
+			ob_deckbuild.reorder_type=1;
+			ob_deckbuild.reorder_card_id=id;
 		}
 	}
 }

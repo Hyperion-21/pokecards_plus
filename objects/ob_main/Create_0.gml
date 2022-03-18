@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Card League";
-game_version="v0.0.0.35";
+game_version="v0.0.0.36";
 window_set_caption(game_name + " (" + string(game_version) + ")");
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
