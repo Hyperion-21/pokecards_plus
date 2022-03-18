@@ -14,6 +14,7 @@ card_id=reference_id.create_card_id;
 //
 num_in_maindeck=-1;
 num_in_berrydeck=-1;
+used_in_deck=false;
 //
 potential_x=x;
 potential_y=y;

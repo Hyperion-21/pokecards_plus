@@ -2,8 +2,13 @@ draw_set_alpha(1);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if effect_damaged>0 { var draw_x=x+irandom_range(-2,2), draw_y=y+irandom_range(-2,2); }
 else { var draw_x=x, draw_y=y; }
+//
+var in_view=false;
+if instance_exists(ob_control) or (instance_exists(ob_deckbuild) and x>=ob_main.screen_deck_x-60 and x<=ob_main.screen_deck_x+ob_main.cam_w+60) {
+	in_view=true;
+}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if card_cat=0 and card_face=true {
+if card_cat=0 and card_face=true and in_view=true {
 	var namebar_color=c_white;
 	if card_type_a=00 { namebar_color=make_colour_rgb(169,182,214); }
 	else if card_type_a=01 { namebar_color=make_colour_rgb(174,214,170); }
@@ -75,7 +80,7 @@ if card_cat=0 and card_face=true {
 	sc_drawtext(draw_x+53,draw_y+66,string(card_def),num_color,global.color_black,1,(1/1.7),0,-1);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-else if card_cat=1 and card_face=true {
+else if card_cat=1 and card_face=true and in_view=true {
 	draw_sprite_general(sp_sheet,0,16*9+4,16*0,sprite_width,sprite_height,draw_x,draw_y,1,1,0,c_white,c_white,c_white,c_white,1);
 	draw_sprite_general(sp_sheet,0,16*1,16*2,53,10,draw_x+2,draw_y+41,1,1,0,
 	global.color_card_dark,global.color_card_light,global.color_card_light,global.color_card_dark,1);

@@ -71,6 +71,17 @@ if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_hei
 		}
 	}
 }
+//
+else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height and instance_exists(ob_deckbuild) {
+	ob_main.mouse_cursor=1;
+	//
+	if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false {
+		if used_in_deck=false and ob_deckbuild.deck_build_used<ob_deckbuild.deck_build_used_max {
+		}
+		else if used_in_deck=true {
+		}
+	}
+}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if reference_id.card_focus=id and card_face=true and card_cat=0 and ob_main.cursor_hide=false {
 	if (mouse_x>=x+2 and mouse_y>=y+2 and mouse_x<=x+13 and mouse_y<=y+12) or

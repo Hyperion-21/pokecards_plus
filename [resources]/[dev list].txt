@@ -20,11 +20,10 @@
 ✔	win & lose
 ✔	save data
 ✔	environment cards
-deck menu
-deck construction
+deck menu & construction
+event: card openings
 starter decks
 win rewards
-event: card openings
 event: evolution
 options menu
 save config

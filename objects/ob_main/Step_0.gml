@@ -99,7 +99,7 @@ if !instance_exists(ob_control) {
 		menu_deck_hover=true;
 		mouse_cursor=1;
 		if mouse_check_button_pressed(mb_left) {
-			instance_create_layer(x,y,"instances",ob_deckbuild);
+			instance_create_layer(screen_deck_x,screen_main_y,"instances",ob_deckbuild);
 			screen_transition=1;
 		}
 	}
@@ -124,6 +124,8 @@ if !instance_exists(ob_control) {
 		menu_back_deck_hover=true;
 		mouse_cursor=1;
 		if mouse_check_button_pressed(mb_left) {
+			with (ob_deckbuild) { instance_destroy(); }
+			with (ob_card) { instance_destroy(); }
 			screen_transition=2;
 		}
 	}
@@ -153,8 +155,6 @@ if !instance_exists(ob_control) {
 			camera_set_view_pos(view_camera[0],camera_get_view_x(view_camera[0])-16,y);
 		}
 		else {
-			with (ob_deckbuild) { instance_destroy(); }
-			with (ob_card) { instance_destroy(); }
 			screen_transition=-1;
 		}
 	}

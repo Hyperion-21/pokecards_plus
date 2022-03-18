@@ -18,8 +18,8 @@ repeat (3) {
 	i++;
 }
 //
-maindeck_total=50//0;
-berrydeck_total=50//0;
+maindeck_total=100//0;
+berrydeck_total=100//0;
 //
 var i=0;
 repeat (maindeck_total) {
