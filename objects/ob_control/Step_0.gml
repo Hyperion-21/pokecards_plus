@@ -214,19 +214,19 @@ if button_sorthand=true and card_focus=-1 {
 		i++;
 	}
 	//
-	var i=1, ii=0;
+	var i=0, id_check=1;
 	do {
-		var iii=0;
+		var ii=0;
 		repeat (card_hand_total) {
-			if card_hand[iii].card_id=i and card_hand_pos_replace[ii]=-1 {
-				card_hand_pos_replace[ii]=card_hand[iii];
-				ii++;
+			if card_hand[ii].card_id=id_check and card_hand_pos_replace[i]=-1 {
+				card_hand_pos_replace[i]=card_hand[ii];
+				i++;
 			}
-			iii++;
+			ii++;
 		}
-		i++;
+		id_check++;
 	}
-	until (ii=card_hand_total);
+	until (i=card_hand_total);
 	//
 	var i=0;
 	repeat (card_hand_total) {

@@ -75,21 +75,33 @@ if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_hei
 else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height and instance_exists(ob_deckbuild) {
 	ob_main.mouse_cursor=1;
 	//
-	if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false {
-		if used_in_deck=false and ob_deckbuild.deck_build_used_total<ob_deckbuild.deck_build_used_max {
-			used_in_deck=true;
-			ob_deckbuild.reorder_type=0;
-			ob_deckbuild.reorder_card_id=id;
+	if card_cat=0 {
+		if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false {
+			if used_in_deck=false and ob_deckbuild.deck_build_used_total<ob_deckbuild.deck_build_used_max {
+				used_in_deck=true;
+				ob_deckbuild.reorder_type=1;
+			}
+			else if used_in_deck=true and ob_deckbuild.deck_build_used_total>ob_deckbuild.deck_build_used_min {
+				used_in_deck=false;
+				ob_deckbuild.reorder_type=2;
+			}
 		}
-		else if used_in_deck=true {
-			used_in_deck=false;
-			ob_deckbuild.reorder_type=1;
-			ob_deckbuild.reorder_card_id=id;
+	}
+	else if card_cat=1 {
+		if mouse_wheel_up() and ob_main.cursor_hide=false {
+			if ob_deckbuild.deck_berry_used[card_id-3000]<ob_deckbuild.deck_berry_total[card_id-3000] {
+				ob_deckbuild.deck_berry_used[card_id-3000]++;
+			}
+		}
+		else if mouse_wheel_down() and ob_main.cursor_hide=false {
+			if ob_deckbuild.deck_berry_used[card_id-3000]>0 {
+				ob_deckbuild.deck_berry_used[card_id-3000]--;
+			}
 		}
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if reference_id.card_focus=id and card_face=true and card_cat=0 and ob_main.cursor_hide=false {
+if ((instance_exists(ob_control) and ob_control.card_focus=id) or instance_exists(ob_deckbuild)) and card_face=true and card_cat=0 and ob_main.cursor_hide=false {
 	if (mouse_x>=x+2 and mouse_y>=y+2 and mouse_x<=x+13 and mouse_y<=y+12) or
 	(card_type_b>=0 and mouse_x>=x+2 and mouse_y>=y+12 and mouse_x<=x+13 and mouse_y<=y+22) {
 		if card_type_b>=0 and mouse_x>=x+2 and mouse_y>=y+12 and mouse_x<=x+13 and mouse_y<=y+22 { var switch_var=card_type_b; }

@@ -18,8 +18,8 @@ repeat (3) {
 	i++;
 }
 //
-maindeck_total=100//0;
-berrydeck_total=100//0;
+maindeck_total=2000//0;
+berrydeck_total=400//0;
 //
 var i=0;
 repeat (maindeck_total) {
@@ -33,7 +33,7 @@ repeat (maindeck_total) {
 //
 var i=0;
 repeat (berrydeck_total) {
-	berry_card_id[i]=3000//-1;
+	berry_card_id[i]=irandom_range(3000,3003)//-1;
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
