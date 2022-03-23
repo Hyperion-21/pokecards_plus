@@ -56,4 +56,4 @@ deck_build_stored_total=deck_build_all_total-deck_build_used_total;
 tooltip_text="";
 card_focus=-1; //id
 //
-reorder_type=0; //0 initial reorder, 1 stored to used, 2 used to stored
+reorder_type=0; //0 initial reorder, 1 stored to used, 2 used to stored, 3 delete

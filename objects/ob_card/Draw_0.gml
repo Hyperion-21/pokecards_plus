@@ -10,6 +10,8 @@ if instance_exists(ob_control) or (instance_exists(ob_deckbuild) and x>=ob_main.
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if card_cat=0 and card_face=true and in_view=true {
 	var card_color=c_white, namebar_color=c_white;
+	if card_delete_timer>0 { card_color=global.color_gray; }
+	//
 	if card_type_a=00 { namebar_color=make_colour_rgb(169,182,214); }
 	else if card_type_a=01 { namebar_color=make_colour_rgb(174,214,170); }
 	else if card_type_a=02 { namebar_color=make_colour_rgb(214,189,170); }
@@ -88,6 +90,12 @@ if card_cat=0 and card_face=true and in_view=true {
 	else if card_def>card_full_def { num_color=global.color_player; }
 	else { num_color=global.color_white; }
 	sc_drawtext(draw_x+53,draw_y+66,string(card_def),num_color,global.color_black,1,(1/1.7),0,-1);
+	//
+	//DELETE
+	if card_delete_timer>0 {
+		draw_sprite_general(sp_sheet,0,16*37+4,16*0,57,80,draw_x,draw_y,1,1,0,c_white,c_white,c_white,c_white,1);
+		draw_healthbar(draw_x+8,draw_y+55,draw_x+48,draw_y+58,card_delete_timer*100/card_delete_timer_max,global.color_black,global.color_damage,global.color_damage,0,true,false);
+	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if card_cat=1 and card_face=true and in_view=true {

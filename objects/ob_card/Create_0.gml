@@ -21,6 +21,9 @@ potential_y=y;
 //
 already_attacked=false;
 effect_damaged=0;
+//
+card_delete_timer=0;
+card_delete_timer_max=150;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if card_cat=0 {
 	do {

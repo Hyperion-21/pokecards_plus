@@ -1,13 +1,4 @@
 if reorder_type>-1 {
-	if reorder_type=1 {
-		deck_build_stored_total--;
-		deck_build_used_total++;
-	}
-	else if reorder_type=2 {
-		deck_build_stored_total++;
-		deck_build_used_total--;
-	}
-	//
 	var i=0, card_pos_replace;
 	repeat (deck_build_all_total) {
 		card_pos_replace[i]=-1;
@@ -18,20 +9,35 @@ if reorder_type>-1 {
 	do {
 		var ii=0;
 		repeat (deck_build_all_total) {
-			if deck_card_all[ii].card_id=id_check and card_pos_replace[i]=-1 {
-				card_pos_replace[i]=deck_card_all[ii];
-				i++;
+			if instance_exists(deck_card_all[ii]) {
+				if deck_card_all[ii].card_id=id_check and card_pos_replace[i]=-1 {
+					card_pos_replace[i]=deck_card_all[ii];
+					i++;
+				}
 			}
 			ii++;
 		}
 		id_check++;
 	}
-	until (i=deck_build_all_total);
+	until (i=deck_build_all_total or (reorder_type=3 and i=deck_build_all_total-1));
 	//
 	var i=0;
 	repeat (deck_build_all_total) {
 		deck_card_all[i]=card_pos_replace[i];
 		i++;
+	}
+	//
+	if reorder_type=1 {
+		deck_build_stored_total--;
+		deck_build_used_total++;
+	}
+	else if reorder_type=2 {
+		deck_build_stored_total++;
+		deck_build_used_total--;
+	}
+	else if reorder_type=3 {
+		deck_build_stored_total--;
+		deck_build_all_total--;
 	}
 	//
 	reorder_type=-1;

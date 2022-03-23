@@ -85,6 +85,17 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 				used_in_deck=false;
 				ob_deckbuild.reorder_type=2;
 			}
+			card_delete_timer=0;
+		}
+		else if mouse_check_button(mb_middle) and ob_deckbuild.deck_build_all_total>5 and used_in_deck=false and ob_main.cursor_hide=false {
+			card_delete_timer++;
+			if card_delete_timer=card_delete_timer_max {
+				ob_deckbuild.reorder_type=3;
+				instance_destroy();
+			}
+		}
+		else {
+			card_delete_timer=0;
 		}
 	}
 	else if card_cat=1 {
@@ -99,6 +110,9 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 			}
 		}
 	}
+}
+else {
+	card_delete_timer=0;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if ((instance_exists(ob_control) and ob_control.card_focus=id) or instance_exists(ob_deckbuild)) and card_face=true and card_cat=0 and ob_main.cursor_hide=false {

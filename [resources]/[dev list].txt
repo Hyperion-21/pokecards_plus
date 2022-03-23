@@ -20,11 +20,15 @@
 ✔	win & lose
 ✔	save data
 ✔	environment cards
-deck menu & construction
+✔	deck menu & construction
 event: card openings
 starter decks
+save deck
 win rewards
 event: evolution
+event: level up
+event: add glyph
+event: transfer glyph
 options menu
 save config
 main menu
