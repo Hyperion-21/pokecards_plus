@@ -21,6 +21,7 @@
 ✔	save data
 ✔	environment cards
 ✔	deck menu & construction
+✔	basic event system
 event: card openings
 starter decks
 save deck

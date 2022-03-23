@@ -1,9 +1,16 @@
-if event_physical=true and hp_curr>0 {
-	var sprite_color=c_white;
-	if hurt_cooldown>0 {
-		sprite_color=make_colour_rgb(255,200,200);
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+//ob_control, ob_event & ob_deckbuild
+if tooltip_text!="" {
+	draw_set_font(fn_m3x6);
+	if mouse_x+17+string_width(tooltip_text)<ob_main.screen_deck_x+ob_main.cam_w {
+		draw_set_halign(fa_left);
+		sc_drawrectangle(mouse_x+9,mouse_y-4,mouse_x+18+string_width(tooltip_text),mouse_y+12,global.color_black,global.color_white,1,0.8,1,0);
+		sc_drawtext(mouse_x+15,mouse_y-2,tooltip_text,global.color_white,global.color_black,1,0.5,0,-1);
 	}
-	draw_sprite_part_ext(sp_spritesheet01,0,(anim_set_x*16)+(anim_frame*16),(anim_set_y*16)+(anim_dir*16),16,16,x-8,y-12,1,1,sprite_color,1);
-	//
-	if tallgrass=true { draw_sprite_part_ext(sp_spritesheet01,0,(1*16)+(anim_frame*16),(1*16),16,16,x-8,y-11,1,1,c_white,1); }
+	else {
+		draw_set_halign(fa_right);
+		sc_drawrectangle(mouse_x-14-string_width(tooltip_text),mouse_y-4,mouse_x-5,mouse_y+12,global.color_black,global.color_white,1,0.8,1,0);
+		sc_drawtext(mouse_x-8,mouse_y-2,tooltip_text,global.color_white,global.color_black,1,0.5,0,-1);
+	}
 }
+tooltip_text="";

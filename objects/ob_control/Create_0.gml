@@ -52,11 +52,7 @@ var i=0;
 repeat (card_maindeck_total) {
 	create_card_cat=0;
 	create_card_id=ob_main.main_card_id[i];
-	//irandom_range(1,ob_main.normal_poke_id_max+ob_main.secret_cards_total+ob_main.environment_cards_total); //from 1 to max normal cards + secret cards + environment cards
-	//if card_id>ob_main.normal_poke_id_max+ob_main.secret_cards_total { card_id+=2500-ob_main.normal_poke_id_max-ob_main.secret_cards_total; } //environment cards
-	//else if card_id>ob_main.normal_poke_id_max { card_id+=2000-ob_main.normal_poke_id_max; } //secret cards
 	create_card_level=ob_main.main_card_level[i];
-	//irandom_range(1,10);
 	create_card_glyph_a=ob_main.main_card_glyph_a[i];
 	create_card_glyph_b=ob_main.main_card_glyph_b[i];
 	create_card_glyph_c=ob_main.main_card_glyph_c[i];
@@ -71,9 +67,6 @@ var i=0;
 repeat (card_berrydeck_total) {
 	create_card_cat=1;
 	create_card_id=ob_main.berry_card_id[i];
-	//var card_berry_chance=irandom(999)+1;
-	//if card_berry_chance<=990 { card_id=choose(3000,3001,3002); }
-	//else { card_id=3003; }
 	//
 	card_berrydeck[i]=instance_create_layer(cam_x+10,cam_y+181,"instances",ob_card);
 	card_berrydeck[i].num_in_berrydeck=i;

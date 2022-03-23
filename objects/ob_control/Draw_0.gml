@@ -81,7 +81,7 @@ sc_drawrectangle(dpboard_x,dpboard_y,dpboard_x+26,dpboard_y+15,global.color_blac
 sc_drawtext(dpboard_x+9,dpboard_y+1,string(card_draw_points),global.color_white,global.color_black,1,1,0,-1);
 draw_sprite_general(sp_sheet,0,16*2,16*12,16,16,dpboard_x+9,dpboard_y,1,1,0,c_white,c_white,c_white,c_white,1);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-//ob_control & ob_deckbuild
+//ob_control, ob_event & ob_deckbuild
 if tooltip_text!="" {
 	draw_set_font(fn_m3x6);
 	if mouse_x+17+string_width(tooltip_text)<cam_x+cam_w {

@@ -1,4 +1,4 @@
-if !instance_exists(ob_control) {
+if !instance_exists(ob_control) and !instance_exists(ob_event) {
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	// MAIN
 	var area_sp_x=location_type[roadmap_area], area_sp_y=0;
@@ -14,11 +14,11 @@ if !instance_exists(ob_control) {
 	draw_set_font(fn_matchup);
 	draw_set_halign(fa_center);
 	//
-	if event[2][roadmap_area]=-1 {
+	if event_kind[2][roadmap_area]=-1 {
 		var i=0;
 		repeat (2) {
 			sc_drawrectangle(win_x+55-9+(104*i),win_y+35-9,win_x+55+33+(104*i),win_y+35+33,global.color_black,global.color_white,2,0.8,0.5,0);
-			draw_sprite_general(sp_sheet,0,16*(1+event[i][roadmap_area]*2),16*13,26,26,win_x+55+(104*i),win_y+35,1,1,0,c_white,c_white,c_white,c_white,1);
+			draw_sprite_general(sp_sheet,0,16*(1+event_kind[i][roadmap_area]*2),16*13,26,26,win_x+55+(104*i),win_y+35,1,1,0,c_white,c_white,c_white,c_white,1);
 			sc_drawtext(win_x+55+13+(104*i),win_y+35+42,event_name[i][roadmap_area],global.color_white,global.color_black,1,1,0,-1);
 			i++;
 		}
@@ -27,7 +27,7 @@ if !instance_exists(ob_control) {
 		var i=0;
 		repeat (3) {
 			sc_drawrectangle(win_x+36-9+(71*i),win_y+35-9,win_x+36+33+(71*i),win_y+35+33,global.color_black,global.color_white,2,0.8,0.5,0);
-			draw_sprite_general(sp_sheet,0,16*(1+event[i][roadmap_area]*2),16*13,26,26,win_x+36+(71*i),win_y+35,1,1,0,c_white,c_white,c_white,c_white,1);
+			draw_sprite_general(sp_sheet,0,16*(1+event_kind[i][roadmap_area]*2),16*13,26,26,win_x+36+(71*i),win_y+35,1,1,0,c_white,c_white,c_white,c_white,1);
 			sc_drawtext(win_x+36+13+(71*i),win_y+35+42,event_name[i][roadmap_area],global.color_white,global.color_black,1,1,0,-1);
 			i++;
 		}

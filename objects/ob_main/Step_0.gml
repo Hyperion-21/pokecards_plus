@@ -12,8 +12,8 @@ if roadmap_generated=false {
 	repeat (3) {
 		var ii=0;
 		repeat (roadmap_area_max) {
-			if i<2 { event[i][ii]=irandom_range(0,1); }
-			else { event[i][ii]=irandom_range(-1,1); }
+			if i<2 { event_kind[i][ii]=irandom_range(0,1); }
+			else { event_kind[i][ii]=irandom_range(-1,1); }
 			//
 			if i=0 {
 				do {
@@ -26,9 +26,9 @@ if roadmap_generated=false {
 	}
 	//
 	if area_zone=0 {
-		event[0][0]=100;
-		event[1][0]=101;
-		event[2][0]=102;
+		event_kind[0][0]=100;
+		event_kind[1][0]=101;
+		event_kind[2][0]=102;
 		location_type[0]=13;
 	}
 	//
@@ -36,11 +36,11 @@ if roadmap_generated=false {
 	repeat (3) {
 		var ii=0;
 		repeat (roadmap_area_max) {
-			if event[i][ii]=0 { event_name[i][ii]="Battle"; }
-			else if event[i][ii]=1 { event_name[i][ii]="Card Pack"; }
-			else if event[i][ii]=100 { event_name[i][ii]="Bulbasaur\nDeck"; }
-			else if event[i][ii]=101 { event_name[i][ii]="Charmander\nDeck"; }
-			else if event[i][ii]=102 { event_name[i][ii]="Squirtle\nDeck"; }
+			if event_kind[i][ii]=0 { event_name[i][ii]="Battle"; }
+			else if event_kind[i][ii]=1 { event_name[i][ii]="Booster Pack"; }
+			else if event_kind[i][ii]=100 { event_name[i][ii]="Bulbasaur\nDeck"; }
+			else if event_kind[i][ii]=101 { event_name[i][ii]="Charmander\nDeck"; }
+			else if event_kind[i][ii]=102 { event_name[i][ii]="Squirtle\nDeck"; }
 			ii++;
 		}
 		i++;
@@ -50,8 +50,8 @@ if roadmap_generated=false {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if event_transition>-1 and fade_black<1 {
-	if event_transition=0 { fade_black+=0.02; }
-	else if event_transition=1 or event_transition=2 { fade_black+=0.005; }
+	if event_transition=1 or event_transition=2 { fade_black+=0.005; }
+	else { fade_black+=0.02; }
 }
 else if event_transition=-1 and fade_black>0 {
 	fade_black-=0.02;
@@ -73,15 +73,25 @@ else if event_transition>-1 and fade_black>=1 {
 		roadmap_area++;
 		//sc_data_save();
 	}
+	else if event_transition=3 {
+		if !instance_exists(ob_event) { instance_create_layer(x,y,"instances",ob_event); }
+		else {
+			with (ob_event) { instance_destroy(); }
+			with (ob_card) { instance_destroy(); }
+		}
+	}
 	event_transition=-1;
 }
 else if event_transition=-1 and fade_black<=0 {
 	if keyboard_check_pressed(vk_space) and !instance_exists(ob_control) and screen_transition=-1 {
 		event_transition=0;
 	}
+	else if keyboard_check_pressed(vk_backspace) and !instance_exists(ob_event) and screen_transition=-1 {
+		event_transition=3;
+	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if !instance_exists(ob_control) {
+if !instance_exists(ob_control) and !instance_exists(ob_event) {
 	if event_transition=-1 and screen_transition=-1 and cursor_hide=false and
 	mouse_x>=screen_main_x+32-2 and mouse_y>=screen_main_y+126-2 and mouse_x<=screen_main_x+32+17 and mouse_y<=screen_main_y+126+17 {
 		menu_options_hover=true;

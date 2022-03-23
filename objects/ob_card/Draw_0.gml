@@ -1,10 +1,14 @@
 draw_set_alpha(1);
+//
+if instance_exists(ob_control) { var reference_id=ob_control; }
+else if instance_exists(ob_deckbuild) { var reference_id=ob_deckbuild; }
+else if instance_exists(ob_event) { var reference_id=ob_event; }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if effect_damaged>0 { var draw_x=x+irandom_range(-2,2), draw_y=y+irandom_range(-2,2); }
 else { var draw_x=x, draw_y=y; }
 //
 var in_view=false;
-if instance_exists(ob_control) or (instance_exists(ob_deckbuild) and x>=ob_main.screen_deck_x-60 and x<=ob_main.screen_deck_x+ob_main.cam_w+60) {
+if reference_id=ob_control or reference_id=ob_event or (reference_id=ob_deckbuild and x>=ob_main.screen_deck_x-60 and x<=ob_main.screen_deck_x+ob_main.cam_w+60) {
 	in_view=true;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -100,7 +104,7 @@ if card_cat=0 and card_face=true and in_view=true {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if card_cat=1 and card_face=true and in_view=true {
 	var card_color=c_white;
-	if instance_exists(ob_deckbuild) and mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height { card_color=global.color_gray; }
+	if reference_id=ob_deckbuild and mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height { card_color=global.color_gray; }
 	//
 	draw_sprite_general(sp_sheet,0,16*9+4,16*0,sprite_width,sprite_height,draw_x,draw_y,1,1,0,card_color,card_color,card_color,card_color,1);
 	draw_sprite_general(sp_sheet,0,16*1,16*2,53,10,draw_x+2,draw_y+41,1,1,0,
@@ -116,7 +120,7 @@ else if card_cat=1 and card_face=true and in_view=true {
 	draw_set_font(fn_m6x11);
 	draw_set_halign(fa_right);
 	//
-	if ob_deckbuild.deck_berry_total[card_id-3000]>0 {
+	if reference_id=ob_deckbuild and ob_deckbuild.deck_berry_total[card_id-3000]>0 {
 		if ob_deckbuild.deck_berry_used[card_id-3000]=ob_deckbuild.deck_berry_total[card_id-3000] { var num_color=global.color_fullhp; }
 		else if ob_deckbuild.deck_berry_used[card_id-3000]=0 { var num_color=global.color_damage; }
 		else { var num_color=global.color_white; }

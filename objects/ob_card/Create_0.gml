@@ -1,16 +1,16 @@
 depth=200;
 //
 if instance_exists(ob_control) { var reference_id=ob_control; }
-else { var reference_id=ob_deckbuild; }
+else if instance_exists(ob_deckbuild) { var reference_id=ob_deckbuild; }
+else if instance_exists(ob_event) { var reference_id=ob_event; }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if instance_exists(ob_control) { card_face=false; }
+if reference_id=ob_control or reference_id=ob_event { card_face=false; }
 else { card_face=true; }
 card_played=false;
 card_trash=false;
 card_enemy=false;
 //
 card_cat=reference_id.create_card_cat;
-card_id=reference_id.create_card_id;
 //
 num_in_maindeck=-1;
 num_in_berrydeck=-1;
@@ -27,11 +27,24 @@ card_delete_timer_max=150;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if card_cat=0 {
 	do {
-		card_level=reference_id.create_card_level;
-		card_glyph_a=reference_id.create_card_glyph_a;
-		card_glyph_b=reference_id.create_card_glyph_b;
-		card_glyph_c=reference_id.create_card_glyph_c;
-		//
+		if reference_id=ob_event {
+			card_id=irandom_range(1,ob_main.normal_poke_id_max+ob_main.secret_cards_total+ob_main.environment_cards_total); //from 1 to max normal cards + secret cards + environment cards
+			if card_id>ob_main.normal_poke_id_max+ob_main.secret_cards_total { card_id+=2500-ob_main.normal_poke_id_max-ob_main.secret_cards_total; } //environment cards
+			else if card_id>ob_main.normal_poke_id_max { card_id+=2000-ob_main.normal_poke_id_max; } //secret cards
+			//
+			card_level=irandom_range(1,10);
+			card_glyph_a=-1;
+			card_glyph_b=-1;
+			card_glyph_c=-1;
+		}
+		else {
+			card_id=reference_id.create_card_id;
+			card_level=reference_id.create_card_level;
+			card_glyph_a=reference_id.create_card_glyph_a;
+			card_glyph_b=reference_id.create_card_glyph_b;
+			card_glyph_c=reference_id.create_card_glyph_c;
+		}
+		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		if card_id<=386 { card_sheet=sp_poke_a; }
 		else if card_id<=2000 { card_sheet=sp_poke_b; }
 		else { card_sheet=sp_poke_c; }
@@ -46,24 +59,26 @@ if card_cat=0 {
 		//
 		sc_pokelist();
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
-		//var card_glyph_chance=irandom(999)+1, card_glyph_total=0;
-		//if card_glyph_chance<=1 { card_glyph_total=3; } //0.1%
-		//else if card_glyph_chance<=11 { card_glyph_total=2; } //1%
-		//else if card_glyph_chance<=31 { card_glyph_total=1; } //2%
-		//if card_glyph_total>=1 and card_glyph_a=-1 {
-		//	card_glyph_a=irandom_range(0,17);
-		//}
-		//if card_glyph_total>=2 and card_glyph_b=-1 {
-		//	do {
-		//		card_glyph_b=irandom_range(0,17);
-		//	} until (card_glyph_b!=card_glyph_a);
-		//}
-		//if card_glyph_total=3 and card_glyph_c=-1 {
-		//	do {
-		//		card_glyph_c=irandom_range(0,17);
-		//	} until (card_glyph_c!=card_glyph_a and card_glyph_c!=card_glyph_b);
-		//}
-		//
+		if reference_id=ob_event {
+			var card_glyph_chance=irandom(999)+1, card_glyph_total=0;
+			if card_glyph_chance<=1 { card_glyph_total=3; } //0.1%
+			else if card_glyph_chance<=11 { card_glyph_total=2; } //1%
+			else if card_glyph_chance<=31 { card_glyph_total=1; } //2%
+			if card_glyph_total>=1 and card_glyph_a=-1 {
+				card_glyph_a=irandom_range(0,17);
+			}
+			if card_glyph_total>=2 and card_glyph_b=-1 {
+				do {
+					card_glyph_b=irandom_range(0,17);
+				} until (card_glyph_b!=card_glyph_a);
+			}
+			if card_glyph_total=3 and card_glyph_c=-1 {
+				do {
+					card_glyph_c=irandom_range(0,17);
+				} until (card_glyph_c!=card_glyph_a and card_glyph_c!=card_glyph_b);
+			}
+		}
+		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		card_full_hp=1+floor((card_base_hp*card_level)/30); //hp: 1/255 -> 1/9 to 1/86
 		card_full_atk=ceil((card_base_atk*card_level)/100); //atk: 20/~250 -> 1/2 to 2/25
 		card_full_def=floor((card_base_def*card_level)/300); //def: 35/460 -> 0/1 to 1/15
@@ -165,6 +180,15 @@ if card_cat=0 {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if card_cat=1 {
+	if reference_id=ob_event {
+		var card_berry_chance=irandom(999)+1;
+		if card_berry_chance<=990 { card_id=choose(3000,3001,3002); }
+		else { card_id=3003; }
+	}
+	else {
+		card_id=reference_id.create_card_id;
+	}
+	//
 	switch (card_id) {
 		case 3000:
 			card_name="Oran Berry"; break;

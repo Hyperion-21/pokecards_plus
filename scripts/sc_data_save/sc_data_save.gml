@@ -10,8 +10,8 @@ var i=0;
 repeat (3) {
 	var ii=0;
 	repeat (roadmap_area_max) {
-		var value_name="event_" + string(i) + "_" + string(ii);
-		ds_map_add(savemap,value_name,event[i][ii]);
+		var value_name="event_kind_" + string(i) + "_" + string(ii);
+		ds_map_add(savemap,value_name,event_kind[i][ii]);
 		var value_name="event_name_" + string(i) + "_" + string(ii);
 		ds_map_add(savemap,value_name,event_name[i][ii]);
 		if i=0 {

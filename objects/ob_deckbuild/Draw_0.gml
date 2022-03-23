@@ -23,7 +23,7 @@ if deck_build_all_total=ob_main.maindeck_total_max {
 	sc_drawtext(ob_main.screen_deck_x+6,ob_main.screen_main_y+stored_y+86,"max. number of cards",global.color_white,global.color_black,0.5,0.5,0,-1);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-//ob_control & ob_deckbuild
+//ob_control, ob_event & ob_deckbuild
 if tooltip_text!="" {
 	draw_set_font(fn_m3x6);
 	if mouse_x+17+string_width(tooltip_text)<ob_main.screen_deck_x+ob_main.cam_w {

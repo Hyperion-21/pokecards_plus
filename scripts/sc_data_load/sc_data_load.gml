@@ -8,7 +8,7 @@ var i=0;
 repeat (3) {
 	var ii=0;
 	repeat (roadmap_area_max) {
-		event[i][ii]=-1;
+		event_kind[i][ii]=-1;
 		event_name[i][ii]="";
 		if i=0 {
 			location_type[ii]=-1;
@@ -18,8 +18,8 @@ repeat (3) {
 	i++;
 }
 //
-maindeck_total=2000//0;
-berrydeck_total=400//0;
+maindeck_total=50//0;
+berrydeck_total=50//0;
 //
 var i=0;
 repeat (maindeck_total) {
@@ -48,8 +48,8 @@ if file_exists(data_file) {
 	repeat (3) {
 		var ii=0;
 		repeat (roadmap_area_max) {
-			var value_name="event_" + string(i) + "_" + string(ii);
-			if !is_undefined(ds_map_find_value(savemap,value_name)) { event[i][ii]=ds_map_find_value(savemap,value_name); }
+			var value_name="event_kind_" + string(i) + "_" + string(ii);
+			if !is_undefined(ds_map_find_value(savemap,value_name)) { event_kind[i][ii]=ds_map_find_value(savemap,value_name); }
 			var value_name="event_name_" + string(i) + "_" + string(ii);
 			if !is_undefined(ds_map_find_value(savemap,value_name)) { event_name[i][ii]=ds_map_find_value(savemap,value_name); }
 			if i=0 {
