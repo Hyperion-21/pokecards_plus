@@ -11,10 +11,11 @@ card_trash=false;
 card_enemy=false;
 //
 card_cat=reference_id.create_card_cat;
+if card_cat=1 or reference_id=ob_control or reference_id=ob_event { card_indeck=false; }
+else { card_indeck=reference_id.create_card_indeck; }
 //
 num_in_maindeck=-1;
 num_in_berrydeck=-1;
-used_in_deck=false;
 //
 potential_x=x;
 potential_y=y;

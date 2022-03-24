@@ -19,7 +19,7 @@ if reorder_type>-1 {
 		}
 		id_check++;
 	}
-	until (i=deck_build_all_total or (reorder_type=3 and i=deck_build_all_total-1));
+	until (i=deck_build_all_total or (reorder_type=1 and i=deck_build_all_total-1));
 	//
 	var i=0;
 	repeat (deck_build_all_total) {
@@ -28,31 +28,47 @@ if reorder_type>-1 {
 	}
 	//
 	if reorder_type=1 {
-		deck_build_stored_total--;
-		deck_build_used_total++;
-	}
-	else if reorder_type=2 {
-		deck_build_stored_total++;
-		deck_build_used_total--;
-	}
-	else if reorder_type=3 {
-		deck_build_stored_total--;
 		deck_build_all_total--;
 	}
 	//
 	reorder_type=-1;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+deck_build_stored_total=0;
+deck_build_used_total=0;
+//
 var i=0, ii=0, iii=0;
 repeat (deck_build_all_total) {
-	if deck_card_all[i].used_in_deck=false {
+	if deck_card_all[i].card_indeck=false {
 		deck_card_stored[ii]=deck_card_all[i];
+		deck_build_stored_total++;
 		ii++;
 	}
 	else {
 		deck_card_used[iii]=deck_card_all[i];
+		deck_build_used_total++;
 		iii++;
 	}
+	i++;
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+//SAVE DECK
+ob_main.maindeck_total=deck_build_all_total;
+var i=0;
+repeat (deck_build_all_total) {
+	ob_main.main_card_id[i]=deck_card_all[i].card_id;
+	ob_main.main_card_level[i]=deck_card_all[i].card_level;
+	ob_main.main_card_glyph_a[i]=deck_card_all[i].card_glyph_a;
+	ob_main.main_card_glyph_b[i]=deck_card_all[i].card_glyph_b;
+	ob_main.main_card_glyph_c[i]=deck_card_all[i].card_glyph_c;
+	ob_main.main_card_indeck[i]=deck_card_all[i].card_indeck;
+	i++;
+}
+//
+ob_main.berrydeck_total=card_berrydeck_total;
+var i=0;
+repeat (4) {
+	ob_main.berry_num_used[i]=deck_berry_used[i];
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

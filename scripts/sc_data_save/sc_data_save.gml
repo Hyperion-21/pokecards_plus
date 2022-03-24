@@ -38,6 +38,8 @@ repeat (maindeck_total) {
 	ds_map_add(savemap,value_name,main_card_glyph_b[i]);
 	var value_name="main_card_glyph_c_" + string(i);
 	ds_map_add(savemap,value_name,main_card_glyph_c[i]);
+	var value_name="main_card_indeck_" + string(i);
+	ds_map_add(savemap,value_name,main_card_indeck[i]);
 	i++;
 }
 //
@@ -45,6 +47,13 @@ var i=0;
 repeat (berrydeck_total) {
 	var value_name="berry_card_id_" + string(i);
 	ds_map_add(savemap,value_name,berry_card_id[i]);
+	i++;
+}
+//
+var i=0;
+repeat (4) {
+	var value_name="berry_num_used_" + string(i);
+	ds_map_add(savemap,value_name,berry_num_used[i]);
 	i++;
 }
 //

@@ -28,12 +28,19 @@ repeat (maindeck_total) {
 	main_card_glyph_a[i]=-1;
 	main_card_glyph_b[i]=-1;
 	main_card_glyph_c[i]=-1;
+	main_card_indeck[i]=false;
 	i++;
 }
 //
 var i=0;
 repeat (berrydeck_total) {
 	berry_card_id[i]=-1;
+	i++;
+}
+//
+var i=0;
+repeat (4) {
+	berry_num_used[i]=0;
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -76,6 +83,8 @@ if file_exists(data_file) {
 		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_glyph_b[i]=ds_map_find_value(savemap,value_name); }
 		var value_name="main_card_glyph_c_" + string(i);
 		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_glyph_c[i]=ds_map_find_value(savemap,value_name); }
+		var value_name="main_card_indeck_" + string(i);
+		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_indeck[i]=ds_map_find_value(savemap,value_name); }
 		i++;
 	}
 	//
@@ -83,6 +92,13 @@ if file_exists(data_file) {
 	repeat (berrydeck_total) {
 		var value_name="berry_card_id_" + string(i);
 		if !is_undefined(ds_map_find_value(savemap,value_name)) { berry_card_id[i]=ds_map_find_value(savemap,value_name); }
+		i++;
+	}
+	//
+	var i=0;
+	repeat (4) {
+		var value_name="berry_num_used_" + string(i);
+		if !is_undefined(ds_map_find_value(savemap,value_name)) { berry_num_used[i]=ds_map_find_value(savemap,value_name); }
 		i++;
 	}
 	//

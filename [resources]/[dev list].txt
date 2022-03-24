@@ -24,7 +24,8 @@
 ✔	basic event system
 ✔	event: card openings
 ✔	starter decks
-save deck
+✔	save deck
+deck shuffle
 win rewards
 event: evolution
 event: level up
