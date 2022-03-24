@@ -73,7 +73,7 @@ else if event_transition>-1 and fade_black>=1 {
 		roadmap_area++;
 		//sc_data_save();
 	}
-	else if event_transition=3 {
+	else if event_transition=3 or event_transition>=100 {
 		if !instance_exists(ob_event) { instance_create_layer(x,y,"instances",ob_event); }
 		else {
 			with (ob_event) { instance_destroy(); }
@@ -88,6 +88,15 @@ else if event_transition=-1 and fade_black<=0 {
 	}
 	else if keyboard_check_pressed(vk_backspace) and !instance_exists(ob_event) and screen_transition=-1 {
 		event_transition=3;
+	}
+	else if keyboard_check_pressed(vk_numpad1) and !instance_exists(ob_event) and screen_transition=-1 {
+		event_transition=100;
+	}
+	else if keyboard_check_pressed(vk_numpad2) and !instance_exists(ob_event) and screen_transition=-1 {
+		event_transition=101;
+	}
+	else if keyboard_check_pressed(vk_numpad3) and !instance_exists(ob_event) and screen_transition=-1 {
+		event_transition=102;
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

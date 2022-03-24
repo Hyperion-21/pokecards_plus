@@ -27,7 +27,9 @@ card_delete_timer_max=150;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if card_cat=0 {
 	do {
-		if reference_id=ob_event {
+		card_id=reference_id.create_card_id;
+		//
+		if card_id=-1 {
 			card_id=irandom_range(1,ob_main.normal_poke_id_max+ob_main.secret_cards_total+ob_main.environment_cards_total); //from 1 to max normal cards + secret cards + environment cards
 			if card_id>ob_main.normal_poke_id_max+ob_main.secret_cards_total { card_id+=2500-ob_main.normal_poke_id_max-ob_main.secret_cards_total; } //environment cards
 			else if card_id>ob_main.normal_poke_id_max { card_id+=2000-ob_main.normal_poke_id_max; } //secret cards
@@ -38,7 +40,6 @@ if card_cat=0 {
 			card_glyph_c=-1;
 		}
 		else {
-			card_id=reference_id.create_card_id;
 			card_level=reference_id.create_card_level;
 			card_glyph_a=reference_id.create_card_glyph_a;
 			card_glyph_b=reference_id.create_card_glyph_b;
@@ -59,7 +60,7 @@ if card_cat=0 {
 		//
 		sc_pokelist();
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
-		if reference_id=ob_event {
+		if card_id=-1 {
 			var card_glyph_chance=irandom(999)+1, card_glyph_total=0;
 			if card_glyph_chance<=1 { card_glyph_total=3; } //0.1%
 			else if card_glyph_chance<=11 { card_glyph_total=2; } //1%
@@ -102,6 +103,11 @@ if card_cat=0 {
 			if card_enigma=true and card_rarity_check=true { //2% stays
 				card_rarity_chance=irandom(99)+1;
 				if card_rarity_chance>=99 { card_rarity_check=true; }
+				else { card_rarity_check=false; }
+			}
+			if card_environment=true and card_rarity_check=true { //25% stays
+				card_rarity_chance=irandom(99)+1;
+				if card_rarity_chance>=76 { card_rarity_check=true; }
 				else { card_rarity_check=false; }
 			}
 			//
@@ -180,13 +186,12 @@ if card_cat=0 {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if card_cat=1 {
-	if reference_id=ob_event {
+	card_id=reference_id.create_card_id;
+	//
+	if card_id=-1 {
 		var card_berry_chance=irandom(999)+1;
 		if card_berry_chance<=990 { card_id=choose(3000,3001,3002); }
 		else { card_id=3003; }
-	}
-	else {
-		card_id=reference_id.create_card_id;
 	}
 	//
 	switch (card_id) {

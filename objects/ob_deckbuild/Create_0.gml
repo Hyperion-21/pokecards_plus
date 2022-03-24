@@ -39,14 +39,6 @@ repeat (card_berrydeck_total) {
 	deck_berry_total[ob_main.berry_card_id[i]-3000]++;
 	i++;
 }
-//delete this >>>
-var i=0;
-repeat (4) {
-	deck_berry_total[i]=ob_main.berrydeck_total_max;
-	deck_berry_used[i]=ob_main.berrydeck_total_max;
-	i++;
-}
-//<<<
 //
 deck_build_used_total=0;
 deck_build_used_max=50;

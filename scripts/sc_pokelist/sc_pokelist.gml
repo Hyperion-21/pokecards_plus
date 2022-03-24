@@ -275,17 +275,17 @@ switch (card_id) {
 		card_base_hp=75; card_base_atk=80+110; card_base_def=85+90;
 		card_grid_x=11; card_grid_y=5; break;
 	case 046:
-		card_name="";
-		card_stage=1; card_evo[0]=000;
-		card_type_a=00; card_type_b=-1;
-		card_base_hp=000; card_base_atk=000+000; card_base_def=000+000;
-		card_grid_x=000; card_grid_y=000; break;
+		card_name="Paras";
+		card_stage=1; card_evo[0]=047;
+		card_type_a=11; card_type_b=01;
+		card_base_hp=35; card_base_atk=70+45; card_base_def=55+55;
+		card_grid_x=12; card_grid_y=5; break;
 	case 047:
-		card_name="";
-		card_stage=1; card_evo[0]=000;
-		card_type_a=00; card_type_b=-1;
-		card_base_hp=000; card_base_atk=000+000; card_base_def=000+000;
-		card_grid_x=000; card_grid_y=000; break;
+		card_name="Parasect";
+		card_stage=2;
+		card_type_a=11; card_type_b=01;
+		card_base_hp=60; card_base_atk=95+60; card_base_def=80+80;
+		card_grid_x=13; card_grid_y=5; break;
 	case 048:
 		card_name="";
 		card_stage=1; card_evo[0]=000;

@@ -16,8 +16,10 @@ if ob_main.cam_w<(deck_build_used_total*60) {
 draw_set_font(fn_m3x6);
 draw_set_halign(fa_left);
 //
-var var_text="Deck: " + string(deck_build_used_total) + "/" + string(deck_build_used_max);
-sc_drawtext(ob_main.screen_deck_x+6,ob_main.screen_main_y+used_y-21,var_text,global.color_white,global.color_black,1,1,0,-1);
+if deck_build_used_total>0 {
+	var var_text="Deck: " + string(deck_build_used_total) + "/" + string(deck_build_used_max);
+	sc_drawtext(ob_main.screen_deck_x+6,ob_main.screen_main_y+used_y-21,var_text,global.color_white,global.color_black,1,1,0,-1);
+}
 //
 if deck_build_all_total=ob_main.maindeck_total_max {
 	sc_drawtext(ob_main.screen_deck_x+6,ob_main.screen_main_y+stored_y+86,"max. number of cards",global.color_white,global.color_black,0.5,0.5,0,-1);

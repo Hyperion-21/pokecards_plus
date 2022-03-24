@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Card League";
-game_version="v0.0.0.39";
+game_version="v0.0.0.40";
 window_set_caption(game_name + " (" + string(game_version) + ")");
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -63,7 +63,7 @@ cursor_hide=false;
 screen_transition=-1;
 //
 roadmap_area_max=8;
-event_transition=-1; //0 enter battle, 1 victory, 2 defeat, 3 booster pack
+event_transition=-1; //0 enter battle, 1 victory, 2 defeat, 3 booster pack, 100/101/102 starter packs
 fade_black=0;
 //
 menu_options_hover=false;

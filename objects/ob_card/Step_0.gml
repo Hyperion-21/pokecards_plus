@@ -80,16 +80,27 @@ if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_hei
 //
 else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height and reference_id=ob_event {
 	ob_main.mouse_cursor=1;
-	if card_cat=1 { window_set_caption(string(ob_event.deck_berry_total[card_id-3000])); }
 	//
 	if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false {
 		if card_face=false and
-		((card_cat=0 and ob_main.maindeck_total<ob_main.maindeck_total_max) or
-		(card_cat=1 and ob_event.deck_berry_total[card_id-3000]<ob_main.berrydeck_total_max)) {
+		((card_cat=0 and ob_main.maindeck_total<ob_main.maindeck_total_max) or card_cat=1) {
 			card_face=true;
 			effect_damaged=1;
 			//
-			//<< (add card)
+			//ADD CARD
+			if card_cat=0 {
+				ob_main.main_card_id[ob_main.maindeck_total]=card_id;
+				ob_main.main_card_level[ob_main.maindeck_total]=card_level;
+				ob_main.main_card_glyph_a[ob_main.maindeck_total]=card_glyph_a;
+				ob_main.main_card_glyph_b[ob_main.maindeck_total]=card_glyph_b;
+				ob_main.main_card_glyph_c[ob_main.maindeck_total]=card_glyph_c;
+				ob_main.maindeck_total++;
+			}
+			else if card_cat=1 and ob_event.deck_berry_total[card_id-3000]<ob_main.berrydeck_total_max {
+				ob_main.berry_card_id[ob_main.berrydeck_total]=card_id;
+				ob_main.berrydeck_total++;
+				ob_event.count_berries=true;
+			}
 		}
 		else {
 			potential_y=ob_main.screen_main_y+ob_main.cam_h+2;
@@ -124,7 +135,10 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 		}
 	}
 	else if card_cat=1 {
-		if mouse_wheel_up() and ob_main.cursor_hide=false {
+		if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false {
+			ob_deckbuild.deck_berry_used[card_id-3000]=ob_deckbuild.deck_berry_total[card_id-3000];
+		}
+		else if mouse_wheel_up() and ob_main.cursor_hide=false {
 			if ob_deckbuild.deck_berry_used[card_id-3000]<ob_deckbuild.deck_berry_total[card_id-3000] {
 				ob_deckbuild.deck_berry_used[card_id-3000]++;
 			}
