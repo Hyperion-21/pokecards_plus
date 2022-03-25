@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Card League";
-game_version="v0.0.0.42";
+game_version="v0.0.0.43";
 window_set_caption(game_name + " (" + string(game_version) + ")");
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -66,7 +66,7 @@ cursor_hide=false;
 screen_transition=-1;
 //
 roadmap_area_max=8;
-event_transition=-1; //0 enter battle, 1 victory, 2 defeat, 3 card pack, 100/101/102 starter packs
+event_transition=-1; //same as events, 300 victory, 301 defeat
 fade_black=0;
 //
 menu_options_hover=false;
@@ -82,14 +82,27 @@ maindeck_total_max=2000;
 berrydeck_total_max=100; //per berry
 //
 money_prize=0;
+ref_event_battle=0;
+ref_event_freecard=1;
+ref_event_cardpack=2;
+ref_event_levelup=3;
+ref_event_evolution=4;
+ref_event_glyph=5;
+ref_event_sacrifice=6;
+ref_event_grass=100;
+ref_event_fire=101;
+ref_event_water=102;
+ref_event_gymbattle=200;
+ref_event_victory=300; //only for transitions
+ref_event_defeat=301; //only for transitions
 //
 for (var i=0; i<=200; i++;) {
 	event_cost[i]=0;
 }
-event_cost[2]=50; //card pack
-event_cost[3]=25; //level up
-event_cost[4]=100; //evolution
-event_cost[5]=75; //add glyph
+event_cost[ref_event_cardpack]=50;
+event_cost[ref_event_levelup]=25;
+event_cost[ref_event_evolution]=100;
+event_cost[ref_event_glyph]=75;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 instance_create_layer(screen_main_x,screen_main_y,"instances",ob_background);
 //————————————————————————————————————————————————————————————————————————————————————————————————————

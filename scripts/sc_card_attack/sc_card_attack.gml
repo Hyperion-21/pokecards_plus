@@ -61,13 +61,13 @@ with (argument1) {
 			else if ob_control.player_hp<=0 {
 				ob_control.player_hp=0;
 				ob_control.battler_turn=0;
-				ob_main.event_transition=2;
+				ob_main.event_transition=ob_main.ref_event_defeat;
 			}
 			if ob_control.enemy_hp>ob_control.hp_max*2 { ob_control.enemy_hp=ob_control.hp_max*2; }
 			else if ob_control.enemy_hp<=0 {
 				ob_control.enemy_hp=0;
 				ob_control.battler_turn=0;
-				ob_main.event_transition=1;
+				ob_main.event_transition=ob_main.ref_event_victory;
 			}
 			//
 			damage_num_id.damage_num=card_atk;

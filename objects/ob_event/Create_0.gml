@@ -3,7 +3,7 @@ depth=-1000;
 count_berries=true;
 tooltip_text="";
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if ob_main.event_transition=3 { //card pack
+if ob_main.event_transition=ob_main.ref_event_cardpack {
 	card_spawn=5;
 	var i=0, main_amount=3, berry_amount=2;
 	repeat (card_spawn) {
@@ -19,15 +19,15 @@ if ob_main.event_transition=3 { //card pack
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-else if ob_main.event_transition>=100 { //starter pack
+else if ob_main.event_transition=ob_main.ref_event_grass or ob_main.event_transition=ob_main.ref_event_fire or ob_main.event_transition=ob_main.ref_event_water {
 	card_spawn=10;
 	var i=0;
 	repeat (card_spawn) {
 		if i<=4 {
 			create_card_cat=0;
-			if i=0 and ob_main.event_transition=100 { create_card_id=choose(001,152); } //grass starter
-			else if i=0 and ob_main.event_transition=101 { create_card_id=choose(004,155); } //fire starter
-			else if i=0 and ob_main.event_transition=102 { create_card_id=choose(007,158); } //water starter
+			if i=0 and ob_main.event_transition=ob_main.ref_event_grass { create_card_id=choose(001,152); } //grass starter
+			else if i=0 and ob_main.event_transition=ob_main.ref_event_fire { create_card_id=choose(004,155); } //fire starter
+			else if i=0 and ob_main.event_transition=ob_main.ref_event_water { create_card_id=choose(007,158); } //water starter
 			else if i=1 { create_card_id=016; } //pidgey
 			else if i=2 { create_card_id=019; } //rattata
 			else if i=3 { create_card_id=010; } //caterpie

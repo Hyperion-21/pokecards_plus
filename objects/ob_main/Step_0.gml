@@ -27,9 +27,9 @@ if roadmap_generated=false {
 	}
 	//
 	if area_zone=0 {
-		event_kind[0][0]=100;
-		event_kind[1][0]=101;
-		event_kind[2][0]=102;
+		event_kind[0][0]=ref_event_grass;
+		event_kind[1][0]=ref_event_fire;
+		event_kind[2][0]=ref_event_water;
 		location_type[0]=13;
 	}
 	//
@@ -37,17 +37,17 @@ if roadmap_generated=false {
 	repeat (3) {
 		var ii=0;
 		repeat (roadmap_area_max) {
-			if event_kind[i][ii]=0 { event_name[i][ii]="Trainer\nBattle"; }
-			else if event_kind[i][ii]=1 { event_name[i][ii]="Pick a Card\n(Free)"; }
-			else if event_kind[i][ii]=2 { event_name[i][ii]="Card Pack\n$" + string(event_cost[2]); }
-			else if event_kind[i][ii]=3 { event_name[i][ii]="Level Up\n$" + string(event_cost[3]); }
-			else if event_kind[i][ii]=4 { event_name[i][ii]="Evolution\n$" + string(event_cost[4]); }
-			else if event_kind[i][ii]=5 { event_name[i][ii]="Glyph\n$" + string(event_cost[5]); }
-			else if event_kind[i][ii]=6 { event_name[i][ii]="Sacrifice"; }
-			else if event_kind[i][ii]=100 { event_name[i][ii]="Grass\nSt. Deck"; }
-			else if event_kind[i][ii]=101 { event_name[i][ii]="Fire\nSt. Deck"; }
-			else if event_kind[i][ii]=102 { event_name[i][ii]="Water\nSt. Deck"; }
-			else if event_kind[i][ii]=200 { event_name[i][ii]="Gym\nBattle"; }
+			if event_kind[i][ii]=ref_event_battle { event_name[i][ii]="Trainer\nBattle"; }
+			else if event_kind[i][ii]=ref_event_freecard { event_name[i][ii]="Pick a Card\n(Free)"; }
+			else if event_kind[i][ii]=ref_event_cardpack { event_name[i][ii]="Card Pack\n$" + string(event_cost[ref_event_cardpack]); }
+			else if event_kind[i][ii]=ref_event_levelup { event_name[i][ii]="Level Up\n$" + string(event_cost[ref_event_levelup]); }
+			else if event_kind[i][ii]=ref_event_evolution { event_name[i][ii]="Evolution\n$" + string(event_cost[ref_event_evolution]); }
+			else if event_kind[i][ii]=ref_event_glyph { event_name[i][ii]="Glyph\n$" + string(event_cost[ref_event_glyph]); }
+			else if event_kind[i][ii]=ref_event_sacrifice { event_name[i][ii]="Sacrifice"; }
+			else if event_kind[i][ii]=ref_event_grass { event_name[i][ii]="Grass\nSt. Deck"; }
+			else if event_kind[i][ii]=ref_event_fire { event_name[i][ii]="Fire\nSt. Deck"; }
+			else if event_kind[i][ii]=ref_event_water { event_name[i][ii]="Water\nSt. Deck"; }
+			else if event_kind[i][ii]=ref_event_gymbattle { event_name[i][ii]="Gym\nBattle"; }
 			ii++;
 		}
 		i++;
@@ -82,18 +82,18 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if event_transition>-1 and fade_black<1 {
-	if event_transition=1 or event_transition=2 { fade_black+=0.005; }
+	if event_transition=ref_event_victory or event_transition=ref_event_defeat { fade_black+=0.005; }
 	else { fade_black+=0.02; }
 }
 else if event_transition=-1 and fade_black>0 {
 	fade_black-=0.02;
 }
 else if event_transition>-1 and fade_black>=1 {
-	if event_transition=0 {
+	if event_transition=ref_event_battle {
 		money_prize=75+irandom_range(-20,20);
 		instance_create_layer(x,y,"instances",ob_control);
 	}
-	else if event_transition=1 or event_transition=2 {
+	else if event_transition=ref_event_victory or event_transition=ref_event_defeat {
 		//destroy everything except ob_main and ob_background
 		with (ob_control) { instance_destroy(); }
 		with (ob_card) { instance_destroy(); }
@@ -103,13 +103,13 @@ else if event_transition>-1 and fade_black>=1 {
 		with (ob_background_tile) { instance_destroy(); }
 		with (ob_damage_num) { instance_destroy(); }
 		//
-		if event_transition=1 {
+		if event_transition=ref_event_victory {
 			money+=money_prize;
 		}
 		roadmap_area++;
 		//sc_data_save();
 	}
-	else if event_transition=3 or event_transition>=100 {
+	else if event_transition=ref_event_cardpack or event_transition=ref_event_grass or event_transition=ref_event_fire or event_transition=ref_event_water {
 		if !instance_exists(ob_event) {
 			instance_create_layer(x,y,"instances",ob_event);
 		}
@@ -123,23 +123,9 @@ else if event_transition>-1 and fade_black>=1 {
 	event_transition=-1;
 }
 else if event_transition=-1 and fade_black<=0 {
-	if mouse_check_button_pressed(mb_left) and mouse_in_event>-1 and screen_transition=-1 {
-		//event_transition=event_kind[mouse_in_event][roadmap_area];
-	}
-	if keyboard_check_pressed(vk_space) and !instance_exists(ob_control) and screen_transition=-1 {
-		event_transition=0;
-	}
-	else if keyboard_check_pressed(vk_backspace) and !instance_exists(ob_event) and screen_transition=-1 {
-		event_transition=3;
-	}
-	else if keyboard_check_pressed(vk_numpad1) and !instance_exists(ob_event) and screen_transition=-1 {
-		event_transition=100;
-	}
-	else if keyboard_check_pressed(vk_numpad2) and !instance_exists(ob_event) and screen_transition=-1 {
-		event_transition=101;
-	}
-	else if keyboard_check_pressed(vk_numpad3) and !instance_exists(ob_event) and screen_transition=-1 {
-		event_transition=102;
+	if mouse_check_button_pressed(mb_left) and mouse_in_event>-1 and money>=event_cost[event_kind[mouse_in_event][roadmap_area]] and screen_transition=-1 {
+		event_transition=event_kind[mouse_in_event][roadmap_area];
+		money-=event_cost[event_kind[mouse_in_event][roadmap_area]];
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

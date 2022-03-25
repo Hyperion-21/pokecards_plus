@@ -1,5 +1,5 @@
 if card_spawn=0 {
-	ob_main.event_transition=3;
+	ob_main.event_transition=ob_main.ref_event_cardpack;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if count_berries=true {

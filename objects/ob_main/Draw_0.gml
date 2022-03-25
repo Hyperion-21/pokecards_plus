@@ -67,16 +67,16 @@ if fade_black>0 {
 //if textbox_active=true { sc_drawrectangle(screen_main_x+4,screen_main_y+cam_h-52,screen_main_x+cam_w-6,screen_main_y+cam_h-6,c_black,c_white,1,0.5,1,1); }
 //if text_string!="" { sc_drawtext(screen_main_x+12,screen_main_y+cam_h-48,text_show,c_white,c_black,1,0.5,0,233); }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if event_transition=1 or event_transition=2 {
+if event_transition=ref_event_victory or event_transition=ref_event_defeat {
 	draw_set_halign(fa_center);
 	//
-	if event_transition=1 {
+	if event_transition=ref_event_victory {
 		draw_set_font(fn_m6x11_large);
 		sc_drawtext(screen_main_x+cam_w/2,screen_main_y+cam_h/2-17,"VICTORY",global.color_player,global.color_black,1,1,0,-1);
 		draw_set_font(fn_matchup);
 		sc_drawtext(screen_main_x+cam_w/2,screen_main_y+cam_h/2+5,"Received $" + string(money_prize),global.color_card_light,global.color_black,1,1,0,-1);
 	}
-	else if event_transition=2 {
+	else if event_transition=ref_event_defeat {
 		draw_set_font(fn_m6x11_large);
 		sc_drawtext(screen_main_x+cam_w/2,screen_main_y+cam_h/2-10,"DEFEAT",global.color_enemy,global.color_black,1,1,0,-1);
 	}
