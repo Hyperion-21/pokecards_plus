@@ -1019,17 +1019,17 @@ switch (card_id) {
 		card_base_hp=85; card_base_atk=90+70; card_base_def=80+80;
 		card_grid_x=4; card_grid_y=16; break;
 	case 170:
-		card_name="";
-		card_stage=1; card_evo[0]=000;
-		card_type_a=00; card_type_b=-1;
-		card_base_hp=000; card_base_atk=000+000; card_base_def=000+000;
-		card_grid_x=000; card_grid_y=000; break;
+		card_name="Chinchou";
+		card_stage=1; card_evo[0]=171;
+		card_type_a=03; card_type_b=04;
+		card_base_hp=75; card_base_atk=38+56; card_base_def=38+56;
+		card_grid_x=5; card_grid_y=16; break;
 	case 171:
-		card_name="";
-		card_stage=1; card_evo[0]=000;
-		card_type_a=00; card_type_b=-1;
-		card_base_hp=000; card_base_atk=000+000; card_base_def=000+000;
-		card_grid_x=000; card_grid_y=000; break;
+		card_name="Lanturn";
+		card_stage=2;
+		card_type_a=03; card_type_b=04;
+		card_base_hp=125; card_base_atk=58+76; card_base_def=58+76;
+		card_grid_x=6; card_grid_y=16; break;
 	case 172:
 		card_name="Pichu";
 		card_stage=0; card_evo[0]=025;
@@ -1049,17 +1049,17 @@ switch (card_id) {
 		card_base_hp=90; card_base_atk=30+40; card_base_def=15+20;
 		card_grid_x=10; card_grid_y=16; break;
 	case 175:
-		card_name="";
-		card_stage=1; card_evo[0]=000;
-		card_type_a=00; card_type_b=-1;
-		card_base_hp=000; card_base_atk=000+000; card_base_def=000+000;
-		card_grid_x=000; card_grid_y=000; break;
+		card_name="Togepi";
+		card_stage=0; card_evo[0]=176;
+		card_type_a=08; card_type_b=-1;
+		card_base_hp=35; card_base_atk=20+40; card_base_def=65+65;
+		card_grid_x=12; card_grid_y=16; break;
 	case 176:
-		card_name="";
-		card_stage=1; card_evo[0]=000;
-		card_type_a=00; card_type_b=-1;
-		card_base_hp=000; card_base_atk=000+000; card_base_def=000+000;
-		card_grid_x=000; card_grid_y=000; break;
+		card_name="Togetic";
+		card_stage=1; card_evo[0]=468;
+		card_type_a=08; card_type_b=05;
+		card_base_hp=55; card_base_atk=40+80; card_base_def=85+105;
+		card_grid_x=13; card_grid_y=16; break;
 	case 177:
 		card_name="";
 		card_stage=1; card_evo[0]=000;

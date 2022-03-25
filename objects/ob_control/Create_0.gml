@@ -64,7 +64,7 @@ repeat (card_maindeck_total) {
 		//
 		var ii=0;
 		repeat (i) {
-			if i!=ii and card_shuffle[i]=card_shuffle[ii] { shuffle_taken=true; }
+			if card_shuffle[i]=card_shuffle[ii] { shuffle_taken=true; }
 			ii++;
 		}
 	} until (shuffle_taken=false);
@@ -88,18 +88,45 @@ repeat (ob_main.maindeck_total) {
 	}
 	i++;
 }
-//
-card_berrydeck_total=ob_main.berrydeck_total;
-var i=0;
-repeat (card_berrydeck_total) {
-	create_card_cat=1;
-	create_card_id=ob_main.berry_card_id[i];
-	//
-	card_berrydeck[i]=instance_create_layer(cam_x+10,cam_y+181,"instances",ob_card);
-	card_berrydeck[i].num_in_berrydeck=i;
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+card_berrydeck_total=0;
+var i=0, berry_num;
+repeat (4) {
+	card_berrydeck_total+=ob_main.berry_num_used[i];
+	berry_num[i]=ob_main.berry_num_used[i];
 	i++;
 }
 //
+var i=0, card_shuffle;
+repeat (card_berrydeck_total) {
+	do {
+		var shuffle_taken=false;
+		card_shuffle[i]=irandom(card_berrydeck_total-1);
+		//
+		var ii=0;
+		repeat (i) {
+			if card_shuffle[i]=card_shuffle[ii] { shuffle_taken=true; }
+			ii++;
+		}
+	} until (shuffle_taken=false);
+	i++;
+}
+//
+var i=0, ii=0;
+repeat (ob_main.berrydeck_total) {
+	if berry_num[ob_main.berry_card_id[i]-3000]>0 {
+		create_card_cat=1;
+		create_card_id=ob_main.berry_card_id[i];
+		//
+		card_berrydeck[card_shuffle[ii]]=instance_create_layer(cam_x+10,cam_y+181,"instances",ob_card);
+		card_berrydeck[card_shuffle[ii]].num_in_berrydeck=card_shuffle[ii];
+		//
+		berry_num[ob_main.berry_card_id[i]-3000]--;
+		ii++;
+	}
+	i++;
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 card_hand_total=0;
 card_hand_max=12;
 var i=0;
@@ -108,7 +135,7 @@ repeat (card_hand_max+1) { //+1 to replace value when using last card when hand 
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-enemycard_maindeck_total=50;
+enemycard_maindeck_total=2;
 var i=0;
 repeat (enemycard_maindeck_total) {
 	create_card_cat=0;
@@ -163,6 +190,7 @@ enemy_turn_phase_attack=3;
 enemy_play_delay=0;
 //
 card_draw_points=0;
+card_draw_click=false; //to avoid drawing multiple cards with a single click when their number in deck is in descending order
 enemycard_draw_points=0;
 enemycard_playplan_id=-1;
 enemyspace_playplan=-1;

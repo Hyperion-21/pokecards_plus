@@ -12,14 +12,15 @@ if roadmap_generated=false {
 	repeat (3) {
 		var ii=0;
 		repeat (roadmap_area_max) {
-			if i<2 { event_kind[i][ii]=irandom_range(0,1); }
-			else { event_kind[i][ii]=irandom_range(-1,1); }
+			if i<2 { event_kind[i][ii]=irandom_range(0,6); }
+			else { event_kind[i][ii]=irandom_range(-1,6); }
 			//
 			if i=0 {
 				do {
 					location_type[ii]=irandom(21);
 				} until (location_type[ii]!=13 and location_type[ii]!=15); //lab & city
 			}
+			//
 			ii++;
 		}
 		i++;
@@ -36,17 +37,48 @@ if roadmap_generated=false {
 	repeat (3) {
 		var ii=0;
 		repeat (roadmap_area_max) {
-			if event_kind[i][ii]=0 { event_name[i][ii]="Battle"; }
-			else if event_kind[i][ii]=1 { event_name[i][ii]="Booster Pack"; }
-			else if event_kind[i][ii]=100 { event_name[i][ii]="Bulbasaur\nDeck"; }
-			else if event_kind[i][ii]=101 { event_name[i][ii]="Charmander\nDeck"; }
-			else if event_kind[i][ii]=102 { event_name[i][ii]="Squirtle\nDeck"; }
+			if event_kind[i][ii]=0 { event_name[i][ii]="Trainer\nBattle"; }
+			else if event_kind[i][ii]=1 { event_name[i][ii]="Pick a Card\n(Free)"; }
+			else if event_kind[i][ii]=2 { event_name[i][ii]="Card Pack\n$" + string(event_cost[2]); }
+			else if event_kind[i][ii]=3 { event_name[i][ii]="Level Up\n$" + string(event_cost[3]); }
+			else if event_kind[i][ii]=4 { event_name[i][ii]="Evolution\n$" + string(event_cost[4]); }
+			else if event_kind[i][ii]=5 { event_name[i][ii]="Glyph\n$" + string(event_cost[5]); }
+			else if event_kind[i][ii]=6 { event_name[i][ii]="Sacrifice"; }
+			else if event_kind[i][ii]=100 { event_name[i][ii]="Grass\nSt. Deck"; }
+			else if event_kind[i][ii]=101 { event_name[i][ii]="Fire\nSt. Deck"; }
+			else if event_kind[i][ii]=102 { event_name[i][ii]="Water\nSt. Deck"; }
+			else if event_kind[i][ii]=200 { event_name[i][ii]="Gym\nBattle"; }
 			ii++;
 		}
 		i++;
 	}
 	//
 	roadmap_generated=true;
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+var mouse_in_event=-1;
+//
+if !instance_exists(ob_control) and !instance_exists(ob_event) {
+	if event_kind[2][roadmap_area]=-1 {
+		for (var i=0; i<=1; i++;) {
+			event_button_x[i]=road_win_x+55-9+(104*i);
+			event_button_y[i]=road_win_y+35-9;
+			if mouse_x>event_button_x[i] and mouse_y>event_button_y[i] and mouse_x<=event_button_x[i]+42 and mouse_y<=event_button_y[i]+42 {
+				mouse_in_event=i;
+			}
+		}
+	}
+	else {
+		for (var i=0; i<=2; i++;) {
+			event_button_x[i]=road_win_x+36-9+(71*i);
+			event_button_y[i]=road_win_y+35-9;
+			if mouse_x>event_button_x[i] and mouse_y>event_button_y[i] and mouse_x<=event_button_x[i]+42 and mouse_y<=event_button_y[i]+42 {
+				mouse_in_event=i;
+			}
+		}
+	}
+	//
+	if mouse_in_event>-1 and cursor_hide=false { mouse_cursor=1; }
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if event_transition>-1 and fade_black<1 {
@@ -58,6 +90,7 @@ else if event_transition=-1 and fade_black>0 {
 }
 else if event_transition>-1 and fade_black>=1 {
 	if event_transition=0 {
+		money_prize=75+irandom_range(-20,20);
 		instance_create_layer(x,y,"instances",ob_control);
 	}
 	else if event_transition=1 or event_transition=2 {
@@ -70,19 +103,29 @@ else if event_transition>-1 and fade_black>=1 {
 		with (ob_background_tile) { instance_destroy(); }
 		with (ob_damage_num) { instance_destroy(); }
 		//
+		if event_transition=1 {
+			money+=money_prize;
+		}
 		roadmap_area++;
 		//sc_data_save();
 	}
 	else if event_transition=3 or event_transition>=100 {
-		if !instance_exists(ob_event) { instance_create_layer(x,y,"instances",ob_event); }
+		if !instance_exists(ob_event) {
+			instance_create_layer(x,y,"instances",ob_event);
+		}
 		else {
 			with (ob_event) { instance_destroy(); }
 			with (ob_card) { instance_destroy(); }
+			roadmap_area++;
+			//sc_data_save();
 		}
 	}
 	event_transition=-1;
 }
 else if event_transition=-1 and fade_black<=0 {
+	if mouse_check_button_pressed(mb_left) and mouse_in_event>-1 and screen_transition=-1 {
+		//event_transition=event_kind[mouse_in_event][roadmap_area];
+	}
 	if keyboard_check_pressed(vk_space) and !instance_exists(ob_control) and screen_transition=-1 {
 		event_transition=0;
 	}
@@ -145,7 +188,9 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 		if mouse_check_button_pressed(mb_left) {
 			with (ob_deckbuild) { instance_destroy(); }
 			with (ob_card) { instance_destroy(); }
+			with (ob_button_15x16) { instance_destroy(); }
 			screen_transition=2;
+			//sc_data_save();
 		}
 	}
 	else {

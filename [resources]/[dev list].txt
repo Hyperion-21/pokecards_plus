@@ -22,21 +22,26 @@
 ✔	environment cards
 ✔	deck menu & construction
 ✔	basic event system
-✔	event: card openings
+✔	event: card packs
 ✔	starter decks
 ✔	save deck
-deck shuffle
-win rewards
-event: evolution
-event: level up
-event: add glyph
-event: transfer glyph
-options menu
-save config
-main menu
-glyphs
-stalemate solving
-trainer battles setup
-gym battles setup
+✔	deck shuffle
+✔	money system
+✔	deck menu sorting
+25/3	event choosing
+26/3	event: pick card
+26/3	event: evolution
+26/3	event: level up
+27/3	event: add glyph
+27/3	event: transfer glyph
+27/3	roadmap generation plan
+28/3	options menu
+28/3	save config
+29/3	main menu
+30-31/3	glyphs
+2/4	stalemate solving
+3/4	trainer battles setup
+3/4	enemy deck shuffle
+4/4	gym battles setup
 pokemon data (gen 1&2)
 full enemy AI

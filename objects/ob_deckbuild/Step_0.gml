@@ -5,21 +5,37 @@ if reorder_type>-1 {
 		i++;
 	}
 	//
-	var i=0, id_check=1;
+	var i=0, order_check=0;
 	do {
 		var ii=0;
 		repeat (deck_build_all_total) {
 			if instance_exists(deck_card_all[ii]) {
-				if deck_card_all[ii].card_id=id_check and card_pos_replace[i]=-1 {
+				if reorder_type=0 and deck_card_all[ii].card_id=order_check and card_pos_replace[i]=-1 { //pokemon id
 					card_pos_replace[i]=deck_card_all[ii];
+					i++;
+				}
+				else if reorder_type=1 and deck_card_all[ii].card_level=order_check and card_pos_replace[deck_build_all_total-i-1]=-1 { //level
+					card_pos_replace[deck_build_all_total-i-1]=deck_card_all[ii];
+					i++;
+				}
+				else if reorder_type=2 and deck_card_all[ii].card_full_atk=order_check and card_pos_replace[deck_build_all_total-i-1]=-1 { //attack
+					card_pos_replace[deck_build_all_total-i-1]=deck_card_all[ii];
+					i++;
+				}
+				else if reorder_type=3 and deck_card_all[ii].card_full_def=order_check and card_pos_replace[deck_build_all_total-i-1]=-1 { //defense
+					card_pos_replace[deck_build_all_total-i-1]=deck_card_all[ii];
+					i++;
+				}
+				else if reorder_type=4 and deck_card_all[ii].card_full_hp=order_check and card_pos_replace[deck_build_all_total-i-1]=-1 { //hp
+					card_pos_replace[deck_build_all_total-i-1]=deck_card_all[ii];
 					i++;
 				}
 			}
 			ii++;
 		}
-		id_check++;
+		order_check++;
 	}
-	until (i=deck_build_all_total or (reorder_type=1 and i=deck_build_all_total-1));
+	until (i=deck_build_all_total or (reorder_type=5 and i=deck_build_all_total-1));
 	//
 	var i=0;
 	repeat (deck_build_all_total) {
@@ -27,7 +43,7 @@ if reorder_type>-1 {
 		i++;
 	}
 	//
-	if reorder_type=1 {
+	if reorder_type=5 {
 		deck_build_all_total--;
 	}
 	//

@@ -8,6 +8,13 @@ used_x=4;
 used_y=204;
 hold_used_bar=false;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+var i=0, button_create;
+repeat (5) {
+	button_create=instance_create_layer(ob_main.screen_deck_x+97,ob_main.screen_main_y+104+(i*16),"instances",ob_button_15x16);
+	button_create.button_id=i;
+	i++;
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 deck_build_all_total=ob_main.maindeck_total;
 var i=0;
 repeat (deck_build_all_total) {
@@ -47,4 +54,5 @@ deck_build_used_max=50;
 deck_build_used_min=5;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 tooltip_text="";
-reorder_type=0; //0 normal reorder, 1 delete card
+reorder_type=0; //0 pokemon id, 1 level, 2 attack, 3 defense, 4 hp, 5 delete card
+reorder_selected=0;
