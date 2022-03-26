@@ -1,5 +1,10 @@
-if card_spawn=0 {
-	ob_main.event_transition=ob_main.ref_event_cardpack;
+if show_deck=false {
+	if card_prize=0 {
+		ob_main.event_transition=ob_main.ref_event_cardpack;
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if count_berries=true {

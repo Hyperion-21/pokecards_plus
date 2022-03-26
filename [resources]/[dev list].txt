@@ -29,7 +29,7 @@
 ✔	money system
 ✔	deck menu sorting
 ✔	event choosing
-26/3	event: pick card
+✔	event: pick card
 26/3	event: evolution
 26/3	event: level up
 28/3	event: add glyph
