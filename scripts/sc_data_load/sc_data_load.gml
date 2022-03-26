@@ -3,7 +3,7 @@ function sc_data_load() {
 area_zone=0;
 roadmap_area=0;
 roadmap_generated=false;
-money=0;
+money=100;
 //
 var i=0;
 repeat (3) {

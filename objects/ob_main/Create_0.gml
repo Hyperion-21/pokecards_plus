@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Card League";
-game_version="v0.0.0.43";
+game_version="v0.0.0.44";
 window_set_caption(game_name + " (" + string(game_version) + ")");
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -65,7 +65,7 @@ mouse_cursor=0;
 cursor_hide=false;
 screen_transition=-1;
 //
-roadmap_area_max=8;
+roadmap_area_max=15;
 event_transition=-1; //same as events, 300 victory, 301 defeat
 fade_black=0;
 //
@@ -81,7 +81,9 @@ environment_cards_total=3;
 maindeck_total_max=2000;
 berrydeck_total_max=100; //per berry
 //
-money_prize=0;
+money_add=0;
+money_subtract=0;
+effect_money_error=0;
 ref_event_battle=0;
 ref_event_freecard=1;
 ref_event_cardpack=2;

@@ -7,13 +7,35 @@ if keyboard_check_pressed(vk_f4) { //< delete later, testing
 	if file_exists(data_file) { file_delete(data_file); }
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+if effect_money_error>0 { effect_money_error-=0.1; }
+//
+if !instance_exists(ob_control) and money_add>0 {
+	money++;
+	money_add--;
+}
+if money_subtract>0 {
+	money--;
+	money_subtract--;
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 if roadmap_generated=false {
+	var i=0, var_event_num;
+	repeat (roadmap_area_max) {
+		var_event_num[i]=choose(2,3,3,3,3);
+		i++;
+	}
+	//
 	var i=0;
 	repeat (3) {
 		var ii=0;
 		repeat (roadmap_area_max) {
-			if i<2 { event_kind[i][ii]=irandom_range(0,6); }
-			else { event_kind[i][ii]=irandom_range(-1,6); }
+			if var_event_num[ii]=2 {
+				if i<2 { event_kind[i][ii]=irandom_range(0,6); }
+				else { event_kind[i][ii]=-1; }
+			}
+			else if var_event_num[ii]=3 {
+				event_kind[i][ii]=irandom_range(0,6);
+			}
 			//
 			if i=0 {
 				do {
@@ -90,7 +112,7 @@ else if event_transition=-1 and fade_black>0 {
 }
 else if event_transition>-1 and fade_black>=1 {
 	if event_transition=ref_event_battle {
-		money_prize=75+irandom_range(-20,20);
+		money_add=irandom_range(75*0.9,75*1.1);
 		instance_create_layer(x,y,"instances",ob_control);
 	}
 	else if event_transition=ref_event_victory or event_transition=ref_event_defeat {
@@ -103,13 +125,11 @@ else if event_transition>-1 and fade_black>=1 {
 		with (ob_background_tile) { instance_destroy(); }
 		with (ob_damage_num) { instance_destroy(); }
 		//
-		if event_transition=ref_event_victory {
-			money+=money_prize;
-		}
+		if event_transition=ref_event_defeat { money_add=0; }
 		roadmap_area++;
 		//sc_data_save();
 	}
-	else if event_transition=ref_event_cardpack or event_transition=ref_event_grass or event_transition=ref_event_fire or event_transition=ref_event_water {
+	else {
 		if !instance_exists(ob_event) {
 			instance_create_layer(x,y,"instances",ob_event);
 		}
@@ -125,8 +145,21 @@ else if event_transition>-1 and fade_black>=1 {
 else if event_transition=-1 and fade_black<=0 {
 	if mouse_check_button_pressed(mb_left) and mouse_in_event>-1 and money>=event_cost[event_kind[mouse_in_event][roadmap_area]] and screen_transition=-1 {
 		event_transition=event_kind[mouse_in_event][roadmap_area];
-		money-=event_cost[event_kind[mouse_in_event][roadmap_area]];
+		money_subtract=event_cost[event_kind[mouse_in_event][roadmap_area]];
 	}
+	else if mouse_check_button_pressed(mb_left) and mouse_in_event>-1 and money<event_cost[event_kind[mouse_in_event][roadmap_area]] and screen_transition=-1 {
+		effect_money_error=1;
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+if keyboard_check_pressed(vk_up) and roadmap_area<roadmap_area_max-1 { roadmap_area++; } //< delete later, testing
+if keyboard_check_pressed(vk_right) { roadmap_area=roadmap_area_max; } //< delete later, testing
+if keyboard_check_pressed(vk_numpad0) { money_add+=1000; } //< delete later, testing
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+if roadmap_area=roadmap_area_max {
+	area_zone++;
+	roadmap_area=0;
+	roadmap_generated=false;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if !instance_exists(ob_control) and !instance_exists(ob_event) {

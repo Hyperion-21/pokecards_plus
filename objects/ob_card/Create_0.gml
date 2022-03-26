@@ -35,7 +35,7 @@ if card_cat=0 {
 			if card_id>ob_main.normal_poke_id_max+ob_main.secret_cards_total { card_id+=2500-ob_main.normal_poke_id_max-ob_main.secret_cards_total; } //environment cards
 			else if card_id>ob_main.normal_poke_id_max { card_id+=2000-ob_main.normal_poke_id_max; } //secret cards
 			//
-			card_level=irandom_range(1,10);
+			card_level=irandom_range(1,floor((ob_main.area_zone+1)/2)+1); //max: 1 2 2 3 3 4 4 5
 			card_glyph_a=-1;
 			card_glyph_b=-1;
 			card_glyph_c=-1;
@@ -90,7 +90,7 @@ if card_cat=0 {
 		card_hp=card_full_hp;
 		//
 		card_rarity=1+floor((card_base_hp*10)/30)+ceil((card_base_atk*10)/100)*2+floor((card_base_def*10)/300)*2;
-		card_rarity=card_rarity*(1+(1/9)*(card_level-1));
+		card_rarity=card_rarity*(1+(1/9)*(card_level-1)); //level rarity: x1 to x2
 		//
 		var card_rarity_chance=irandom(249)+1, card_rarity_check=false;
 		if card_rarity_chance>card_rarity {

@@ -32,11 +32,13 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 	}
 	//
 	draw_set_halign(fa_right);
-	sc_drawtext(road_win_x+237,road_win_y+2,"$" + string(money),global.color_card_light,global.color_black,1,1,0,-1);
+	var money_x=road_win_x+237, money_y=road_win_y+2, money_color=global.color_card_light;
+	if effect_money_error>0 { money_x+=irandom_range(-2,2); money_y+=irandom_range(-2,2); money_color=global.color_damage; }
+	sc_drawtext(money_x,money_y,"$" + string(money),money_color,global.color_black,1,1,0,-1);
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	draw_set_alpha(1);
 	//
-	var bar_amount=(roadmap_area*100)/roadmap_area_max;
+	var bar_amount=(roadmap_area*100)/(roadmap_area_max-1);
 	draw_healthbar(road_win_x+2,road_win_y-17,road_win_x+237,road_win_y-14,bar_amount,global.color_progress_dark,global.color_progress_light,global.color_progress_light,0,true,false);
 	draw_sprite_general(sp_sheet,0,16*1,16*11,16,16,road_win_x-2+(bar_amount*235)/100,road_win_y-24,1,1,0,c_white,c_white,c_white,c_white,1);
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -74,7 +76,7 @@ if event_transition=ref_event_victory or event_transition=ref_event_defeat {
 		draw_set_font(fn_m6x11_large);
 		sc_drawtext(screen_main_x+cam_w/2,screen_main_y+cam_h/2-17,"VICTORY",global.color_player,global.color_black,1,1,0,-1);
 		draw_set_font(fn_matchup);
-		sc_drawtext(screen_main_x+cam_w/2,screen_main_y+cam_h/2+5,"Received $" + string(money_prize),global.color_card_light,global.color_black,1,1,0,-1);
+		sc_drawtext(screen_main_x+cam_w/2,screen_main_y+cam_h/2+5,"Received $" + string(money_add),global.color_card_light,global.color_black,1,1,0,-1);
 	}
 	else if event_transition=ref_event_defeat {
 		draw_set_font(fn_m6x11_large);
