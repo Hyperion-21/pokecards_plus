@@ -111,6 +111,7 @@ repeat (4) {
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+// SCROLL BARS (ob_event & ob_deckbuild)
 if mouse_y>=ob_main.screen_main_y+stored_y and mouse_y<ob_main.screen_main_y+stored_y+80+8 and ob_main.cursor_hide=false {
 	if mouse_wheel_up() {
 		stored_x+=32;

@@ -8,7 +8,9 @@ if effect_damaged>0 { var draw_x=x+irandom_range(-2,2), draw_y=y+irandom_range(-
 else { var draw_x=x, draw_y=y; }
 //
 var in_view=false;
-if reference_id=ob_control or reference_id=ob_event or (reference_id=ob_deckbuild and x>=ob_main.screen_deck_x-60 and x<=ob_main.screen_deck_x+ob_main.cam_w+60) {
+if reference_id=ob_control or
+(reference_id=ob_event and x>=ob_main.screen_main_x-60 and x<=ob_main.screen_main_x+ob_main.cam_w+60) or
+(reference_id=ob_deckbuild and x>=ob_main.screen_deck_x-60 and x<=ob_main.screen_deck_x+ob_main.cam_w+60) {
 	in_view=true;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

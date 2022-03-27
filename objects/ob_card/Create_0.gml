@@ -4,8 +4,8 @@ if instance_exists(ob_control) { var reference_id=ob_control; }
 else if instance_exists(ob_deckbuild) { var reference_id=ob_deckbuild; }
 else if instance_exists(ob_event) { var reference_id=ob_event; }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if reference_id=ob_control or reference_id=ob_event { card_face=false; }
-else { card_face=true; }
+if reference_id=ob_deckbuild or (reference_id=ob_event and ob_event.show_deck=true) { card_face=true; }
+else { card_face=false; }
 card_played=false;
 card_trash=false;
 card_enemy=false;

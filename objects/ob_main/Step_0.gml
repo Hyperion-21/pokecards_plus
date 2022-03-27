@@ -104,6 +104,10 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if event_transition>-1 and fade_black<1 {
+	if money_add>0 {
+		money+=money_add;
+		money_add=0;
+	}
 	if event_transition=ref_event_victory or event_transition=ref_event_defeat { fade_black+=0.005; }
 	else { fade_black+=0.02; }
 }

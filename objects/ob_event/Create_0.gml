@@ -69,7 +69,7 @@ ob_main.event_transition=ob_main.ref_event_glyph or ob_main.event_transition=ob_
 	show_deck=true;
 	//
 	deck_x=4;
-	deck_y=4;
+	deck_y=204;
 	hold_deck_bar=false;
 	//
 	card_event_total=0;
@@ -91,7 +91,7 @@ ob_main.event_transition=ob_main.ref_event_glyph or ob_main.event_transition=ob_
 			create_card_glyph_b=ob_main.main_card_glyph_b[i];
 			create_card_glyph_c=ob_main.main_card_glyph_c[i];
 			//
-			card_event[ii]=instance_create_layer(cam_x+cam_w-67,cam_y+181,"instances",ob_card);
+			card_event[ii]=instance_create_layer(x,y,"instances",ob_card);
 			//
 			ii++;
 		}

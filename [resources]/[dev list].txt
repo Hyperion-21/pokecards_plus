@@ -30,18 +30,18 @@
 ✔	deck menu sorting
 ✔	event choosing
 ✔	event: pick card
-26/3	event: evolution
-26/3	event: level up
-28/3	event: add glyph
-28/3	event: transfer glyph
-28/3	roadmap generation plan
-29/3	options menu
-29/3	save config
-30/3	main menu
-31+/3	glyphs
-3/4	stalemate solving
-4/4	trainer battles setup
-4/4	enemy deck shuffle
-5/4	gym battles setup
+28/3	event: evolution
+28/3	event: level up
+29/3	event: add glyph
+29/3	event: transfer glyph
+29/3	roadmap generation plan
+30/3	options menu
+30/3	save config
+31/3	main menu
+2/4+	glyphs
+4/4	stalemate solving
+5/4	trainer battles setup
+5/4	enemy deck shuffle
+6/4	gym battles setup
 pokemon data (gen 1&2)
 full enemy AI
