@@ -30,10 +30,11 @@
 ✔	deck menu sorting
 ✔	event choosing
 ✔	event: pick card
+✔	card upgrade event system
 28/3	event: evolution
 28/3	event: level up
-29/3	event: add glyph
-29/3	event: transfer glyph
+28/3	event: add glyph
+29/3	event: sacrifice
 29/3	roadmap generation plan
 30/3	options menu
 30/3	save config

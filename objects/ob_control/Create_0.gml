@@ -34,11 +34,9 @@ var i=0;
 repeat (11) {
 	if i<=4 { //0-4 enemy side
 		card_space_id[i]=instance_create_layer(cam_x+100+64*(i),cam_y+44,"instances",ob_card_space);
-		card_space_id[i].trash=false;
 	}
 	else if i<=9 { //5-9 player side
 		card_space_id[i]=instance_create_layer(cam_x+100+64*(i-5),cam_y+134,"instances",ob_card_space);
-		card_space_id[i].trash=false;
 	}
 	else { //10 trash
 		card_space_id[i]=instance_create_layer(cam_x+10,cam_y+44,"instances",ob_card_space);

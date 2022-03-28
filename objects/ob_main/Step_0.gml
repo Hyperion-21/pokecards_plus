@@ -138,8 +138,15 @@ else if event_transition>-1 and fade_black>=1 {
 			instance_create_layer(x,y,"instances",ob_event);
 		}
 		else {
+			if event_transition=ref_event_freecard or event_transition=ref_event_cardpack or
+			event_transition=ref_event_grass or event_transition=ref_event_fire or event_transition=ref_event_water {
+				auto_deck_transition=true;
+			}
+			//
 			with (ob_event) { instance_destroy(); }
 			with (ob_card) { instance_destroy(); }
+			with (ob_card_space) { instance_destroy(); }
+			with (ob_button_31x24) { instance_destroy(); }
 			roadmap_area++;
 			//sc_data_save();
 		}
@@ -147,12 +154,14 @@ else if event_transition>-1 and fade_black>=1 {
 	event_transition=-1;
 }
 else if event_transition=-1 and fade_black<=0 {
-	if mouse_check_button_pressed(mb_left) and mouse_in_event>-1 and money>=event_cost[event_kind[mouse_in_event][roadmap_area]] and screen_transition=-1 {
-		event_transition=event_kind[mouse_in_event][roadmap_area];
-		money_subtract=event_cost[event_kind[mouse_in_event][roadmap_area]];
-	}
-	else if mouse_check_button_pressed(mb_left) and mouse_in_event>-1 and money<event_cost[event_kind[mouse_in_event][roadmap_area]] and screen_transition=-1 {
-		effect_money_error=1;
+	if mouse_check_button_pressed(mb_left) and mouse_in_event>-1 and screen_transition=-1 {
+		if money>=event_cost[event_kind[mouse_in_event][roadmap_area]] {
+			event_transition=event_kind[mouse_in_event][roadmap_area];
+			money_subtract=event_cost[event_kind[mouse_in_event][roadmap_area]];
+		}
+		else if money<event_cost[event_kind[mouse_in_event][roadmap_area]] {
+			effect_money_error=1;
+		}
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -179,13 +188,15 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 		menu_options_hover=false;
 	}
 	//
-	if event_transition=-1 and screen_transition=-1  and cursor_hide=false and
-	mouse_x>=screen_main_x+cam_w-48-2 and mouse_y>=screen_main_y+126-2 and mouse_x<=screen_main_x+cam_w-48+17 and mouse_y<=screen_main_y+126+17 {
+	if (event_transition=-1 and screen_transition=-1  and cursor_hide=false and
+	mouse_x>=screen_main_x+cam_w-48-2 and mouse_y>=screen_main_y+126-2 and mouse_x<=screen_main_x+cam_w-48+17 and mouse_y<=screen_main_y+126+17) or
+	auto_deck_transition=true {
 		menu_deck_hover=true;
 		mouse_cursor=1;
-		if mouse_check_button_pressed(mb_left) {
+		if mouse_check_button_pressed(mb_left) or auto_deck_transition=true {
 			instance_create_layer(screen_deck_x,screen_main_y,"instances",ob_deckbuild);
 			screen_transition=1;
+			auto_deck_transition=false;
 		}
 	}
 	else {

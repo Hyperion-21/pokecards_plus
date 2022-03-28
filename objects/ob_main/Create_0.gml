@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Card League";
-game_version="v0.0.0.46";
+game_version="v0.0.0.47";
 window_set_caption(game_name + " (" + string(game_version) + ")");
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -64,6 +64,7 @@ global.color_background_tile=make_colour_rgb(64,62,58);
 mouse_cursor=0;
 cursor_hide=false;
 screen_transition=-1;
+auto_deck_transition=false;
 //
 roadmap_area_max=15;
 event_transition=-1; //same as events, 300 victory, 301 defeat

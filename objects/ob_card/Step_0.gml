@@ -25,11 +25,13 @@ if potential_y!=y {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if effect_damaged>0 { effect_damaged-=0.1; }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if card_played=true and card_trash=false and y!=potential_y { //attacking
-	depth=-100;
-}
-else if card_played=true and card_trash=false and y=potential_y {
-	depth=200;
+if reference_id=ob_control {
+	if card_played=true and card_trash=false and y!=potential_y { //attacking
+		depth=-100;
+	}
+	else if card_played=true and card_trash=false and y=potential_y {
+		depth=200;
+	}
 }
 //
 if reference_id=ob_event and (y>ob_main.screen_main_y+ob_main.cam_h or y<ob_main.screen_main_y) { //getting card
@@ -83,33 +85,55 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 	ob_main.mouse_cursor=1;
 	//
 	if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false {
-		if card_face=false {
-			card_face=true;
-			effect_damaged=1;
-		}
-		else {
-			//ADD CARD
-			if card_cat=0 and ob_main.maindeck_total<ob_main.maindeck_total_max and ob_event.card_prize>0 {
-				ob_main.main_card_id[ob_main.maindeck_total]=card_id;
-				ob_main.main_card_level[ob_main.maindeck_total]=card_level;
-				ob_main.main_card_glyph_a[ob_main.maindeck_total]=card_glyph_a;
-				ob_main.main_card_glyph_b[ob_main.maindeck_total]=card_glyph_b;
-				ob_main.main_card_glyph_c[ob_main.maindeck_total]=card_glyph_c;
-				ob_main.main_card_indeck[ob_main.maindeck_total]=false;
-				ob_main.maindeck_total++;
-				potential_y=ob_main.screen_main_y+ob_main.cam_h+2;
-			}
-			else if card_cat=1 and ob_event.deck_berry_total[card_id-3000]<ob_main.berrydeck_total_max and ob_event.card_prize>0 {
-				ob_main.berry_card_id[ob_main.berrydeck_total]=card_id;
-				ob_main.berrydeck_total++;
-				ob_event.count_berries=true;
-				potential_y=ob_main.screen_main_y+ob_main.cam_h+2;
+		if ob_event.show_deck=false {
+			if card_face=false {
+				card_face=true;
+				effect_damaged=1;
 			}
 			else {
-				potential_y=ob_main.screen_main_y-82;
+				//ADD CARD
+				if card_cat=0 and ob_main.maindeck_total<ob_main.maindeck_total_max and ob_event.card_prize>0 {
+					ob_main.main_card_id[ob_main.maindeck_total]=card_id;
+					ob_main.main_card_level[ob_main.maindeck_total]=card_level;
+					ob_main.main_card_glyph_a[ob_main.maindeck_total]=card_glyph_a;
+					ob_main.main_card_glyph_b[ob_main.maindeck_total]=card_glyph_b;
+					ob_main.main_card_glyph_c[ob_main.maindeck_total]=card_glyph_c;
+					ob_main.main_card_indeck[ob_main.maindeck_total]=false;
+					ob_main.maindeck_total++;
+					potential_y=ob_main.screen_main_y+ob_main.cam_h+2;
+				}
+				else if card_cat=1 and ob_event.deck_berry_total[card_id-3000]<ob_main.berrydeck_total_max and ob_event.card_prize>0 {
+					ob_main.berry_card_id[ob_main.berrydeck_total]=card_id;
+					ob_main.berrydeck_total++;
+					ob_event.count_berries=true;
+					potential_y=ob_main.screen_main_y+ob_main.cam_h+2;
+				}
+				else {
+					potential_y=ob_main.screen_main_y-82;
+				}
+				//
+				ob_event.card_prize--;
 			}
-			//
-			ob_event.card_prize--;
+		}
+		else {
+			if card_played=false {
+				var i=0;
+				do {
+					if ob_event.event_space_id[i].occupied=false {
+						card_played=true;
+						potential_x=ob_event.event_space_id[i].x;
+						potential_y=ob_event.event_space_id[i].y;
+						ob_event.event_space_id[i].occupied=true;
+						ob_event.event_space_id[i].effect_use=1;
+						i=ob_event.event_space_total;
+					}
+					else { i++; }
+				} until (i=ob_event.event_space_total);
+			}
+			else {
+				card_played=false;
+				instance_position(x,y,ob_card_space).occupied=false;
+			}
 		}
 	}
 }

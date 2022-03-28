@@ -1,8 +1,10 @@
 if show_deck=true {
 	var i=0;
 	repeat (card_event_total) {
-		card_event[i].potential_x=ob_main.screen_main_x+deck_x+(60*i);
-		card_event[i].potential_y=ob_main.screen_main_y+deck_y;
+		if card_event[i].card_played=false {
+			card_event[i].potential_x=ob_main.screen_main_x+deck_x+(60*i);
+			card_event[i].potential_y=ob_main.screen_main_y+deck_y;
+		}
 		i++;
 	}
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -39,7 +41,7 @@ if show_deck=true {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else {
 	if card_prize=0 {
-		ob_main.event_transition=ob_main.ref_event_cardpack;
+		ob_main.event_transition=event_kind;
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -55,4 +57,9 @@ if count_berries=true {
 		i++;
 	}
 	count_berries=false;
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+if apply_event=true {
+	apply_event=false;
+	ob_main.event_transition=event_kind;
 }
