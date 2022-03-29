@@ -33,16 +33,17 @@
 ✔	card upgrade event system
 ✔	event: level up
 ✔	event: evolution
+✔	roadmap generation plan
 29/3	event: add glyph
 29/3	event: sacrifice
-29/3	roadmap generation plan
 30/3	options menu
 30/3	save config
-31/3	main menu
-1/4+	glyphs
+30/3	main menu
+31/4+	glyphs
 4/4	stalemate solving
-5/4	trainer battles setup
+4/4	trainer decks setup
 5/4	enemy deck shuffle
-6/4	gym battles setup
-pokemon data (gen 1&2)
-full enemy AI
+5/4	all trainer decks
+6/4	gym decks
+7/4+	pokemon data (gen 1&2)
+8/4+	full enemy AI

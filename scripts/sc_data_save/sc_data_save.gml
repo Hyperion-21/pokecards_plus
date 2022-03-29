@@ -8,17 +8,16 @@ ds_map_add(savemap,"roadmap_generated",roadmap_generated);
 ds_map_add(savemap,"money",money);
 //
 var i=0;
-repeat (3) {
+repeat (roadmap_area_max) {
+	var value_name="location_type_" + string(i);
+	ds_map_add(savemap,value_name,location_type[i]);
+	//
 	var ii=0;
-	repeat (roadmap_area_max) {
-		var value_name="event_kind_" + string(i) + "_" + string(ii);
-		ds_map_add(savemap,value_name,event_kind[i][ii]);
-		var value_name="event_name_" + string(i) + "_" + string(ii);
-		ds_map_add(savemap,value_name,event_name[i][ii]);
-		if i=0 {
-			var value_name="location_type_" + string(ii);
-			ds_map_add(savemap,value_name,location_type[ii]);
-		}
+	repeat (3) {
+		var value_name="event_kind_" + string(ii) + "_" + string(i);
+		ds_map_add(savemap,value_name,event_kind[ii][i]);
+		var value_name="event_name_" + string(ii) + "_" + string(i);
+		ds_map_add(savemap,value_name,event_name[ii][i]);
 		ii++;
 	}
 	i++;

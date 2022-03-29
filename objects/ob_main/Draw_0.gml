@@ -12,23 +12,20 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 	draw_set_font(fn_matchup);
 	draw_set_halign(fa_center);
 	//
-	if event_kind[2][roadmap_area]=-1 {
-		var i=0;
-		repeat (2) {
-			sc_drawrectangle(event_button_x[i],event_button_y[i],event_button_x[i]+42,event_button_y[i]+42,global.color_black,global.color_white,2,0.8,0.5,0);
-			draw_sprite_general(sp_sheet,0,16*(1+event_kind[i][roadmap_area]*2),16*13,26,26,event_button_x[i]+9,event_button_y[i]+9,1,1,0,c_white,c_white,c_white,c_white,1);
-			sc_drawtext(event_button_x[i]+22,event_button_y[i]+51,event_name[i][roadmap_area],global.color_white,global.color_black,1,1,0,-1);
-			i++;
-		}
-	}
-	else {
-		var i=0;
-		repeat (3) {
-			sc_drawrectangle(event_button_x[i],event_button_y[i],event_button_x[i]+42,event_button_y[i]+42,global.color_black,global.color_white,2,0.8,0.5,0);
-			draw_sprite_general(sp_sheet,0,16*(1+event_kind[i][roadmap_area]*2),16*13,26,26,event_button_x[i]+9,event_button_y[i]+9,1,1,0,c_white,c_white,c_white,c_white,1);
-			sc_drawtext(event_button_x[i]+22,event_button_y[i]+51,event_name[i][roadmap_area],global.color_white,global.color_black,1,1,0,-1);
-			i++;
-		}
+	if event_kind[2][roadmap_area]=-1 { var var_event_num=2; }
+	else { var var_event_num=3; }
+	//
+	var i=0;
+	repeat (var_event_num) {
+		var event_sprite_x=16*(1+event_kind[i][roadmap_area]*2);
+		if event_kind[i][roadmap_area]=ref_event_grass { event_sprite_x=16*(1+10*2); }
+		else if event_kind[i][roadmap_area]=ref_event_fire { event_sprite_x=16*(1+11*2); }
+		else if event_kind[i][roadmap_area]=ref_event_water { event_sprite_x=16*(1+12*2); }
+		//
+		sc_drawrectangle(event_button_x[i],event_button_y[i],event_button_x[i]+42,event_button_y[i]+42,global.color_black,global.color_white,2,0.8,0.5,0);
+		draw_sprite_general(sp_sheet,0,event_sprite_x,16*13,26,26,event_button_x[i]+9,event_button_y[i]+9,1,1,0,c_white,c_white,c_white,c_white,1);
+		sc_drawtext(event_button_x[i]+22,event_button_y[i]+51,event_name[i][roadmap_area],global.color_white,global.color_black,1,1,0,-1);
+		i++;
 	}
 	//
 	draw_set_halign(fa_right);

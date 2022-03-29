@@ -21,30 +21,40 @@ if money_subtract>0 {
 if roadmap_generated=false {
 	var i=0, var_event_num;
 	repeat (roadmap_area_max) {
-		var_event_num[i]=choose(2,3,3,3,3);
+		var_event_num[i]=choose(2,3,3);
 		i++;
 	}
 	//
 	var i=0;
-	repeat (3) {
-		var ii=0;
-		repeat (roadmap_area_max) {
-			if var_event_num[ii]=2 {
-				if i<2 { event_kind[i][ii]=irandom_range(0,6); }
-				else { event_kind[i][ii]=-1; }
+	repeat (roadmap_area_max) {
+		do {
+			location_type[i]=irandom(21);
+		} until (location_type[i]!=13 and location_type[i]!=15); //lab & city
+		//
+		do {
+			var ii=0, free_event=false;
+			repeat (3) {
+				if var_event_num[i]=2 {
+					if ii<2 { event_kind[ii][i]=irandom(99); }
+					else { event_kind[ii][i]=-1; }
+				}
+				else if var_event_num[i]=3 {
+					event_kind[ii][i]=irandom(99);
+				}
+				//
+				if event_kind[ii][i]=-1 { event_kind[ii][i]=-1; }
+				else if event_kind[ii][i]<30 { event_kind[ii][i]=ref_event_battle; free_event=true; }
+				else if event_kind[ii][i]<50 { event_kind[ii][i]=ref_event_freecard; free_event=true; }
+				else if event_kind[ii][i]<70 { event_kind[ii][i]=ref_event_cardpack; }
+				else if event_kind[ii][i]<85 { event_kind[ii][i]=ref_event_levelup; }
+				else if event_kind[ii][i]<90 { event_kind[ii][i]=ref_event_evolution; }
+				else if event_kind[ii][i]<95 { event_kind[ii][i]=ref_event_glyph; }
+				else if event_kind[ii][i]<100 { event_kind[ii][i]=ref_event_sacrifice; }
+				//
+				ii++;
 			}
-			else if var_event_num[ii]=3 {
-				event_kind[i][ii]=irandom_range(0,6);
-			}
-			//
-			if i=0 {
-				do {
-					location_type[ii]=irandom(21);
-				} until (location_type[ii]!=13 and location_type[ii]!=15); //lab & city
-			}
-			//
-			ii++;
-		}
+		} until (free_event=true and event_kind[0][i]!=event_kind[1][i] and event_kind[0][i]!=event_kind[2][i] and event_kind[1][i]!=event_kind[2][i]);
+		//
 		i++;
 	}
 	//
@@ -56,20 +66,20 @@ if roadmap_generated=false {
 	}
 	//
 	var i=0;
-	repeat (3) {
+	repeat (roadmap_area_max) {
 		var ii=0;
-		repeat (roadmap_area_max) {
-			if event_kind[i][ii]=ref_event_battle { event_name[i][ii]="Trainer\nBattle"; }
-			else if event_kind[i][ii]=ref_event_freecard { event_name[i][ii]="Pick a Card\n(Free)"; }
-			else if event_kind[i][ii]=ref_event_cardpack { event_name[i][ii]="Card Pack\n$" + string(event_cost[ref_event_cardpack]); }
-			else if event_kind[i][ii]=ref_event_levelup { event_name[i][ii]="Strengthen\n$" + string(event_cost[ref_event_levelup]); }
-			else if event_kind[i][ii]=ref_event_evolution { event_name[i][ii]="Evolution\n$" + string(event_cost[ref_event_evolution]); }
-			else if event_kind[i][ii]=ref_event_glyph { event_name[i][ii]="Glyph\n$" + string(event_cost[ref_event_glyph]); }
-			else if event_kind[i][ii]=ref_event_sacrifice { event_name[i][ii]="Sacrifice"; }
-			else if event_kind[i][ii]=ref_event_grass { event_name[i][ii]="Grass\nSt. Deck"; }
-			else if event_kind[i][ii]=ref_event_fire { event_name[i][ii]="Fire\nSt. Deck"; }
-			else if event_kind[i][ii]=ref_event_water { event_name[i][ii]="Water\nSt. Deck"; }
-			else if event_kind[i][ii]=ref_event_gymbattle { event_name[i][ii]="Gym\nBattle"; }
+		repeat (3) {
+			if event_kind[ii][i]=ref_event_battle { event_name[ii][i]="Trainer\nBattle"; }
+			else if event_kind[ii][i]=ref_event_freecard { event_name[ii][i]="Free Card"; }
+			else if event_kind[ii][i]=ref_event_cardpack { event_name[ii][i]="Card Pack\n$" + string(event_cost[ref_event_cardpack]); }
+			else if event_kind[ii][i]=ref_event_levelup { event_name[ii][i]="Level Up\n$" + string(event_cost[ref_event_levelup]); }
+			else if event_kind[ii][i]=ref_event_evolution { event_name[ii][i]="Evolution\n$" + string(event_cost[ref_event_evolution]); }
+			else if event_kind[ii][i]=ref_event_glyph { event_name[ii][i]="Glyph\n$" + string(event_cost[ref_event_glyph]); }
+			else if event_kind[ii][i]=ref_event_sacrifice { event_name[ii][i]="Sacrifice"; }
+			else if event_kind[ii][i]=ref_event_grass { event_name[ii][i]="Grass\nSt. Deck"; }
+			else if event_kind[ii][i]=ref_event_fire { event_name[ii][i]="Fire\nSt. Deck"; }
+			else if event_kind[ii][i]=ref_event_water { event_name[ii][i]="Water\nSt. Deck"; }
+			else if event_kind[ii][i]=ref_event_gymbattle { event_name[ii][i]="Gym\nBattle"; }
 			ii++;
 		}
 		i++;
@@ -109,10 +119,10 @@ if event_transition>-1 and fade_black<1 {
 		money_add=0;
 	}
 	if event_transition=ref_event_victory or event_transition=ref_event_defeat { fade_black+=0.005; }
-	else { fade_black+=0.02; }
+	else { fade_black+=0.04; }
 }
 else if event_transition=-1 and fade_black>0 {
-	fade_black-=0.02;
+	fade_black-=0.04;
 }
 else if event_transition>-1 and fade_black>=1 {
 	if event_transition=ref_event_battle {
