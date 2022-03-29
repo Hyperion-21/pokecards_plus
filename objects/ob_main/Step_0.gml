@@ -62,7 +62,7 @@ if roadmap_generated=false {
 			if event_kind[i][ii]=ref_event_battle { event_name[i][ii]="Trainer\nBattle"; }
 			else if event_kind[i][ii]=ref_event_freecard { event_name[i][ii]="Pick a Card\n(Free)"; }
 			else if event_kind[i][ii]=ref_event_cardpack { event_name[i][ii]="Card Pack\n$" + string(event_cost[ref_event_cardpack]); }
-			else if event_kind[i][ii]=ref_event_levelup { event_name[i][ii]="Level Up\n$" + string(event_cost[ref_event_levelup]); }
+			else if event_kind[i][ii]=ref_event_levelup { event_name[i][ii]="Strengthen\n$" + string(event_cost[ref_event_levelup]); }
 			else if event_kind[i][ii]=ref_event_evolution { event_name[i][ii]="Evolution\n$" + string(event_cost[ref_event_evolution]); }
 			else if event_kind[i][ii]=ref_event_glyph { event_name[i][ii]="Glyph\n$" + string(event_cost[ref_event_glyph]); }
 			else if event_kind[i][ii]=ref_event_sacrifice { event_name[i][ii]="Sacrifice"; }
@@ -104,7 +104,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if event_transition>-1 and fade_black<1 {
-	if money_add>0 {
+	if money_add>0 and !instance_exists(ob_control) {
 		money+=money_add;
 		money_add=0;
 	}
@@ -116,7 +116,7 @@ else if event_transition=-1 and fade_black>0 {
 }
 else if event_transition>-1 and fade_black>=1 {
 	if event_transition=ref_event_battle {
-		money_add=irandom_range(75*0.9,75*1.1);
+		money_add=irandom_range(150*0.8,150*1.2);
 		instance_create_layer(x,y,"instances",ob_control);
 	}
 	else if event_transition=ref_event_victory or event_transition=ref_event_defeat {

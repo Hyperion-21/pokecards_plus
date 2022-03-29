@@ -211,6 +211,7 @@ if ((reference_id=ob_control and ob_control.card_focus=id) or reference_id=ob_ev
 			case 16: reference_id.tooltip_text="Ghost"; break;
 			case 17: reference_id.tooltip_text="Dark"; break;
 		}
+		reference_id.tooltip_lines=1;
 	}
 	else if (card_glyph_a>=0 and mouse_x>=x+43 and mouse_y>=y+2 and mouse_x<=x+54 and mouse_y<=y+12) or
 	(card_glyph_b>=0 and mouse_x>=x+43 and mouse_y>=y+12 and mouse_x<=x+54 and mouse_y<=y+22) or
@@ -241,6 +242,7 @@ if ((reference_id=ob_control and ob_control.card_focus=id) or reference_id=ob_ev
 			case 18: reference_id.tooltip_text="MIST: while this card is active, glyphs have no effect."; break;
 			case 19: reference_id.tooltip_text="TRANSFORM: transforms into the opposing enemy Pokemon."; break;
 		}
+		reference_id.tooltip_lines=1;
 	}
 	else if card_cost_total>0 and mouse_x>=x+3 and mouse_y>=y+35 and mouse_x<=x+2+(4*card_cost_total) and mouse_y<=y+38 {
 		reference_id.tooltip_text="Cost: ";
@@ -260,5 +262,6 @@ if ((reference_id=ob_control and ob_control.card_focus=id) or reference_id=ob_ev
 			reference_id.tooltip_text=reference_id.tooltip_text + string(card_cost_total_type[3]) + "x Enigma";
 		}
 		reference_id.tooltip_text=reference_id.tooltip_text + ".";
+		reference_id.tooltip_lines=1;
 	}
 }

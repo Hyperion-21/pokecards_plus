@@ -54,5 +54,6 @@ deck_build_used_max=50;
 deck_build_used_min=5;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 tooltip_text="";
+tooltip_lines=0;
 reorder_type=0; //0 pokemon id, 1 level, 2 attack, 3 defense, 4 hp, 5 delete card
 reorder_selected=0;

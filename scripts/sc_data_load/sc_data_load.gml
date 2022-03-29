@@ -19,13 +19,13 @@ repeat (3) {
 	i++;
 }
 //
-maindeck_total=1000//0;
+maindeck_total=0;
 berrydeck_total=0;
 //
 var i=0;
 repeat (maindeck_total) {
-	main_card_id[i]=1//-1;
-	main_card_level[i]=1//-1;
+	main_card_id[i]=-1;
+	main_card_level[i]=-1;
 	main_card_glyph_a[i]=-1;
 	main_card_glyph_b[i]=-1;
 	main_card_glyph_c[i]=-1;

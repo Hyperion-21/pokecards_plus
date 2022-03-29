@@ -60,6 +60,50 @@ if count_berries=true {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if apply_event=true {
+	var i=0, card_id_space;
+	repeat (event_space_total) {
+		card_id_space[i]=-1;
+		if position_meeting(event_space_id[i].x,event_space_id[i].y,ob_card) {
+			var ii=0;
+			repeat (card_event_total) {
+				if card_event[ii]=instance_position(event_space_id[i].x,event_space_id[i].y,ob_card) {
+					card_id_space[i]=instance_position(event_space_id[i].x,event_space_id[i].y,ob_card);
+				}
+				ii++;
+			}
+		}
+		i++;
+	}
+	//
+	if event_kind=ob_main.ref_event_levelup and card_id_space[0]!=-1 {
+		if card_id_space[0].card_level<10 {
+			card_id_space[0].card_level++;
+			card_id_space[0].effect_damaged=1;
+			with (card_id_space[0]) {
+				sc_card_level_stats();
+			}
+			//
+			event_applied=true;
+			ob_main.main_card_level[card_id_space[0].num_in_all]=card_id_space[0].card_level;
+			ob_main.event_transition=event_kind;
+		}
+	}
+	else if event_kind=ob_main.ref_event_evolution and card_id_space[0]!=-1 {
+		if card_id_space[0].card_evo[0]!=-1 and card_id_space[0].card_evo[0]<=ob_main.normal_poke_id_max {
+			do {
+				card_id_space[0].card_id=card_id_space[0].card_evo[irandom(7)];
+			} until (card_id_space[0].card_id!=-1 and card_id_space[0].card_id<=ob_main.normal_poke_id_max);
+			card_id_space[0].effect_damaged=1;
+			with (card_id_space[0]) {
+				sc_pokelist();
+				sc_card_level_stats();
+			}
+			//
+			event_applied=true;
+			ob_main.main_card_id[card_id_space[0].num_in_all]=card_id_space[0].card_id;
+			ob_main.event_transition=event_kind;
+		}
+	}
+	//
 	apply_event=false;
-	ob_main.event_transition=event_kind;
 }

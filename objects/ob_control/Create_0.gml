@@ -167,6 +167,7 @@ repeat (card_hand_max+1) { //+1 to replace value when using last card when hand 
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 tooltip_text="";
+tooltip_lines=0;
 tooltip_timer=0;
 tooltip_timer_max=300;
 first_turn_attack_warning=false;

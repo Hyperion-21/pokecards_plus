@@ -3,8 +3,10 @@ depth=-1000;
 event_kind=ob_main.event_transition;
 count_berries=true;
 tooltip_text="";
+tooltip_lines=0;
 show_deck=false;
 apply_event=false;
+event_applied=false;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if event_kind=ob_main.ref_event_cardpack {
 	card_prize=5;
@@ -94,6 +96,7 @@ event_kind=ob_main.ref_event_glyph or event_kind=ob_main.ref_event_sacrifice {
 			create_card_glyph_c=ob_main.main_card_glyph_c[i];
 			//
 			card_event[ii]=instance_create_layer(x,y,"instances",ob_card);
+			card_event[ii].num_in_all=i;
 			//
 			ii++;
 		}
@@ -113,7 +116,10 @@ event_kind=ob_main.ref_event_glyph or event_kind=ob_main.ref_event_sacrifice {
 		}
 	}
 	//
-	var button_create;
-	button_create=instance_create_layer(ob_main.screen_main_x+240,ob_main.screen_main_y+155,"instances",ob_button_31x24);
-	button_create.button_id=0;
+	var i=0, button_create;
+	repeat (2) {
+		button_create=instance_create_layer(ob_main.screen_main_x+219+42*i,ob_main.screen_main_y+155,"instances",ob_button_31x24);
+		button_create.button_id=i;
+		i++;
+	}
 }
