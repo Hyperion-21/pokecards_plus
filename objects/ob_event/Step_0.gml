@@ -76,7 +76,7 @@ if apply_event=true {
 	}
 	//
 	if event_kind=ob_main.ref_event_levelup and card_id_space[0]!=-1 {
-		if card_id_space[0].card_level<10 {
+		if card_id_space[0].card_level<10 and card_id_space[0].card_innate>0 {
 			card_id_space[0].card_level++;
 			card_id_space[0].effect_damaged=1;
 			with (card_id_space[0]) {
@@ -89,7 +89,7 @@ if apply_event=true {
 		}
 	}
 	else if event_kind=ob_main.ref_event_evolution and card_id_space[0]!=-1 {
-		if card_id_space[0].card_evo[0]!=-1 and card_id_space[0].card_evo[0]<=ob_main.normal_poke_id_max {
+		if card_id_space[0].card_evo[0]!=-1 and card_id_space[0].card_evo[0]<=ob_main.normal_poke_id_max and card_id_space[0].card_innate>0 {
 			do {
 				card_id_space[0].card_id=card_id_space[0].card_evo[irandom(7)];
 			} until (card_id_space[0].card_id!=-1 and card_id_space[0].card_id<=ob_main.normal_poke_id_max);
@@ -105,7 +105,7 @@ if apply_event=true {
 		}
 	}
 	else if event_kind=ob_main.ref_event_glyph and card_id_space[0]!=-1 {
-		if card_id_space[0].card_glyph_c=-1 { //only checks third glyph slot
+		if card_id_space[0].card_glyph_c=-1 and card_id_space[0].card_innate>0 { //only checks third glyph slot
 			if card_id_space[0].card_glyph_a=-1 {
 				card_id_space[0].card_glyph_a=glyph_add_id;
 			}
@@ -124,10 +124,10 @@ if apply_event=true {
 			ob_main.event_transition=event_kind;
 		}
 	}
-	else if event_kind=ob_main.ref_event_sacrifice and card_id_space[0]!=-1 and card_id_space[1]!=-1 {
-		if card_id_space[0].card_souls>0 and card_id_space[1].card_souls<5 {
-			card_id_space[0].card_souls--;
-			card_id_space[1].card_souls++;
+	else if event_kind=ob_main.ref_event_tribute and card_id_space[0]!=-1 and card_id_space[1]!=-1 {
+		if card_id_space[0].card_innate>0 and card_id_space[1].card_innate<ob_main.innate_max {
+			card_id_space[0].card_innate--;
+			card_id_space[1].card_innate++;
 			card_id_space[0].effect_damaged=1;
 			card_id_space[1].effect_damaged=1;
 			with (card_id_space[0]) {
@@ -138,8 +138,8 @@ if apply_event=true {
 			}
 			//
 			event_applied=true;
-			ob_main.main_card_souls[card_id_space[0].num_in_all]=card_id_space[0].card_souls;
-			ob_main.main_card_souls[card_id_space[1].num_in_all]=card_id_space[1].card_souls;
+			ob_main.main_card_innate[card_id_space[0].num_in_all]=card_id_space[0].card_innate;
+			ob_main.main_card_innate[card_id_space[1].num_in_all]=card_id_space[1].card_innate;
 			ob_main.event_transition=event_kind;
 		}
 	}

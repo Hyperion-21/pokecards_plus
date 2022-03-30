@@ -27,7 +27,7 @@ repeat (maindeck_total) {
 	main_card_glyph_a[i]=-1;
 	main_card_glyph_b[i]=-1;
 	main_card_glyph_c[i]=-1;
-	main_card_souls[i]=-1;
+	main_card_innate[i]=-1;
 	main_card_indeck[i]=false;
 	i++;
 }
@@ -81,8 +81,8 @@ if file_exists(data_file) {
 		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_glyph_b[i]=ds_map_find_value(savemap,value_name); }
 		var value_name="main_card_glyph_c_" + string(i);
 		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_glyph_c[i]=ds_map_find_value(savemap,value_name); }
-		var value_name="main_card_souls_" + string(i);
-		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_souls[i]=ds_map_find_value(savemap,value_name); }
+		var value_name="main_card_innate_" + string(i);
+		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_innate[i]=ds_map_find_value(savemap,value_name); }
 		var value_name="main_card_indeck_" + string(i);
 		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_indeck[i]=ds_map_find_value(savemap,value_name); }
 		i++;

@@ -98,7 +98,7 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 					ob_main.main_card_glyph_a[ob_main.maindeck_total]=card_glyph_a;
 					ob_main.main_card_glyph_b[ob_main.maindeck_total]=card_glyph_b;
 					ob_main.main_card_glyph_c[ob_main.maindeck_total]=card_glyph_c;
-					ob_main.main_card_souls[ob_main.maindeck_total]=card_souls;
+					ob_main.main_card_innate[ob_main.maindeck_total]=card_innate;
 					ob_main.main_card_indeck[ob_main.maindeck_total]=false;
 					ob_main.maindeck_total++;
 					potential_y=ob_main.screen_main_y+ob_main.cam_h+2;

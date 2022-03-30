@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Card League";
-game_version="v0.0.0.50";
+game_version="v0.0.0.51";
 window_set_caption(game_name + " (" + string(game_version) + ")");
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -92,7 +92,7 @@ ref_event_cardpack=2;
 ref_event_levelup=3;
 ref_event_evolution=4;
 ref_event_glyph=5;
-ref_event_sacrifice=6;
+ref_event_tribute=6;
 ref_event_grass=100;
 ref_event_fire=101;
 ref_event_water=102;
@@ -111,6 +111,7 @@ event_cost[ref_event_glyph]=150;
 tooltip_text="";
 tooltip_lines=0;
 current_glyph_add=-1;
+innate_max=6;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 instance_create_layer(screen_main_x,screen_main_y,"instances",ob_background);
 //————————————————————————————————————————————————————————————————————————————————————————————————————

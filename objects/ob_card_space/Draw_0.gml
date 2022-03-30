@@ -7,7 +7,7 @@ else if trash=false {
 		if mouse_x>=x+4 and mouse_y>=y+4 and mouse_x<x+sprite_width-4 and mouse_y<y+sprite_height-4 { var var_event_alpha=1; }
 		else { var var_event_alpha=0.5; }
 		//
-		if ob_event.event_kind!=ob_main.ref_event_sacrifice or ob_event.event_space_id[1]!=id {
+		if ob_event.event_kind!=ob_main.ref_event_tribute or ob_event.event_space_id[1]!=id {
 			draw_sprite_general(sp_sheet,0,16*(1+ob_event.event_kind*2),16*15,26,26,x+16,y+26,1,1,0,c_white,c_white,c_white,c_white,var_event_alpha);
 		}
 		//

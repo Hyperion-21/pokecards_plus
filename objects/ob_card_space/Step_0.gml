@@ -38,8 +38,8 @@ else if instance_exists(ob_event) and occupied=false and ob_main.cursor_hide=fal
 			ob_event.tooltip_text=sc_glyph_text(ob_event.glyph_add_id);
 			ob_event.tooltip_lines=2;
 		}
-		else if ob_event.event_kind=ob_main.ref_event_sacrifice {
-			ob_event.tooltip_text="OFFERING: transfers the life force of one Pokemon into another...";
+		else if ob_event.event_kind=ob_main.ref_event_tribute {
+			ob_event.tooltip_text="TRIBUTE: transfers the innate strength of one Pokemon into another.";
 			ob_event.tooltip_lines=1;
 		}
 	}

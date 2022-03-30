@@ -77,7 +77,7 @@ repeat (deck_build_all_total) {
 	ob_main.main_card_glyph_a[i]=deck_card_all[i].card_glyph_a;
 	ob_main.main_card_glyph_b[i]=deck_card_all[i].card_glyph_b;
 	ob_main.main_card_glyph_c[i]=deck_card_all[i].card_glyph_c;
-	ob_main.main_card_souls[i]=deck_card_all[i].card_souls;
+	ob_main.main_card_innate[i]=deck_card_all[i].card_innate;
 	ob_main.main_card_indeck[i]=deck_card_all[i].card_indeck;
 	i++;
 }

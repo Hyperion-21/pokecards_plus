@@ -53,7 +53,7 @@ else if event_kind=ob_main.ref_event_grass or event_kind=ob_main.ref_event_fire 
 			create_card_glyph_a=-1;
 			create_card_glyph_b=-1;
 			create_card_glyph_c=-1;
-			create_card_souls=1;
+			create_card_innate=1;
 		}
 		else {
 			create_card_cat=1;
@@ -70,7 +70,7 @@ else if event_kind=ob_main.ref_event_grass or event_kind=ob_main.ref_event_fire 
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if event_kind=ob_main.ref_event_levelup or event_kind=ob_main.ref_event_evolution or
-event_kind=ob_main.ref_event_glyph or event_kind=ob_main.ref_event_sacrifice {
+event_kind=ob_main.ref_event_glyph or event_kind=ob_main.ref_event_tribute {
 	show_deck=true;
 	//
 	deck_x=4;
@@ -99,7 +99,7 @@ event_kind=ob_main.ref_event_glyph or event_kind=ob_main.ref_event_sacrifice {
 			create_card_glyph_a=ob_main.main_card_glyph_a[i];
 			create_card_glyph_b=ob_main.main_card_glyph_b[i];
 			create_card_glyph_c=ob_main.main_card_glyph_c[i];
-			create_card_souls=ob_main.main_card_souls[i];
+			create_card_innate=ob_main.main_card_innate[i];
 			//
 			card_event[ii]=instance_create_layer(x,y,"instances",ob_card);
 			card_event[ii].num_in_all=i;
@@ -109,7 +109,7 @@ event_kind=ob_main.ref_event_glyph or event_kind=ob_main.ref_event_sacrifice {
 		i++;
 	}
 	//
-	if event_kind=ob_main.ref_event_sacrifice {
+	if event_kind=ob_main.ref_event_tribute {
 		event_space_total=2;
 		for (var i=0; i<event_space_total; i++;) {
 			event_space_id[i]=instance_create_layer(ob_main.screen_main_x+227-35+71*i,ob_main.screen_main_y+59,"instances",ob_card_space);

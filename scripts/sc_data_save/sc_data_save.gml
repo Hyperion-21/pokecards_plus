@@ -36,8 +36,8 @@ repeat (maindeck_total) {
 	ds_map_add(savemap,value_name,main_card_glyph_b[i]);
 	var value_name="main_card_glyph_c_" + string(i);
 	ds_map_add(savemap,value_name,main_card_glyph_c[i]);
-	var value_name="main_card_souls_" + string(i);
-	ds_map_add(savemap,value_name,main_card_souls[i]);
+	var value_name="main_card_innate_" + string(i);
+	ds_map_add(savemap,value_name,main_card_innate[i]);
 	var value_name="main_card_indeck_" + string(i);
 	ds_map_add(savemap,value_name,main_card_indeck[i]);
 	i++;

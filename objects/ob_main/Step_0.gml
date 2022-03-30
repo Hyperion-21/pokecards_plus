@@ -49,7 +49,7 @@ if roadmap_generated=false {
 				else if event_kind[ii][i]<775 { event_kind[ii][i]=ref_event_levelup; } //20%
 				else if event_kind[ii][i]<825 { event_kind[ii][i]=ref_event_evolution; } //5%
 				else if event_kind[ii][i]<975 { event_kind[ii][i]=ref_event_glyph; } //15%
-				else if event_kind[ii][i]<1000 { event_kind[ii][i]=ref_event_sacrifice; } //2.5%
+				else if event_kind[ii][i]<1000 { event_kind[ii][i]=ref_event_tribute; } //2.5%
 				//
 				if event_kind[ii][i]=ref_event_glyph { event_glyph_add[ii][i]=sc_glyph_random(); }
 				else { event_glyph_add[ii][i]=-1; }
@@ -91,7 +91,7 @@ if roadmap_get_text=true {
 			else if event_kind[ii][i]=ref_event_cardpack { event_name[ii][i]="Card Pack\n$" + string(event_cost[ref_event_cardpack]); }
 			else if event_kind[ii][i]=ref_event_levelup { event_name[ii][i]="Level Up\n$" + string(event_cost[ref_event_levelup]); }
 			else if event_kind[ii][i]=ref_event_evolution { event_name[ii][i]="Evolution\n$" + string(event_cost[ref_event_evolution]); }
-			else if event_kind[ii][i]=ref_event_sacrifice { event_name[ii][i]="Offering"; }
+			else if event_kind[ii][i]=ref_event_tribute { event_name[ii][i]="Tribute"; }
 			else if event_kind[ii][i]=ref_event_grass { event_name[ii][i]="Grass\nSt. Deck"; }
 			else if event_kind[ii][i]=ref_event_fire { event_name[ii][i]="Fire\nSt. Deck"; }
 			else if event_kind[ii][i]=ref_event_water { event_name[ii][i]="Water\nSt. Deck"; }

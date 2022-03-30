@@ -40,14 +40,14 @@ if card_cat=0 {
 			card_glyph_a=-1;
 			card_glyph_b=-1;
 			card_glyph_c=-1;
-			card_souls=1;
+			card_innate=1;
 		}
 		else {
 			card_level=reference_id.create_card_level;
 			card_glyph_a=reference_id.create_card_glyph_a;
 			card_glyph_b=reference_id.create_card_glyph_b;
 			card_glyph_c=reference_id.create_card_glyph_c;
-			card_souls=reference_id.create_card_souls;
+			card_innate=reference_id.create_card_innate;
 		}
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		if card_id<=386 { card_sheet=sp_poke_a; }
