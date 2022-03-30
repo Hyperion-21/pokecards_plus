@@ -35,25 +35,35 @@ if roadmap_generated=false {
 			var ii=0, free_event=false;
 			repeat (3) {
 				if var_event_num[i]=2 {
-					if ii<2 { event_kind[ii][i]=irandom(99); }
+					if ii<2 { event_kind[ii][i]=irandom(999); }
 					else { event_kind[ii][i]=-1; }
 				}
 				else if var_event_num[i]=3 {
-					event_kind[ii][i]=irandom(99);
+					event_kind[ii][i]=irandom(999);
 				}
 				//
 				if event_kind[ii][i]=-1 { event_kind[ii][i]=-1; }
-				else if event_kind[ii][i]<30 { event_kind[ii][i]=ref_event_battle; free_event=true; }
-				else if event_kind[ii][i]<50 { event_kind[ii][i]=ref_event_freecard; free_event=true; }
-				else if event_kind[ii][i]<70 { event_kind[ii][i]=ref_event_cardpack; }
-				else if event_kind[ii][i]<85 { event_kind[ii][i]=ref_event_levelup; }
-				else if event_kind[ii][i]<90 { event_kind[ii][i]=ref_event_evolution; }
-				else if event_kind[ii][i]<95 { event_kind[ii][i]=ref_event_glyph; }
-				else if event_kind[ii][i]<100 { event_kind[ii][i]=ref_event_sacrifice; }
+				else if event_kind[ii][i]<225 { event_kind[ii][i]=ref_event_battle; free_event=true; } //22.5%
+				else if event_kind[ii][i]<375 { event_kind[ii][i]=ref_event_freecard; free_event=true; } //15%
+				else if event_kind[ii][i]<575 { event_kind[ii][i]=ref_event_cardpack; } //20%
+				else if event_kind[ii][i]<775 { event_kind[ii][i]=ref_event_levelup; } //20%
+				else if event_kind[ii][i]<825 { event_kind[ii][i]=ref_event_evolution; } //5%
+				else if event_kind[ii][i]<975 { event_kind[ii][i]=ref_event_glyph; } //15%
+				else if event_kind[ii][i]<1000 { event_kind[ii][i]=ref_event_sacrifice; } //2.5%
+				//
+				if event_kind[ii][i]=ref_event_glyph { event_glyph_add[ii][i]=sc_glyph_random(); }
+				else { event_glyph_add[ii][i]=-1; }
 				//
 				ii++;
 			}
-		} until (free_event=true and event_kind[0][i]!=event_kind[1][i] and event_kind[0][i]!=event_kind[2][i] and event_kind[1][i]!=event_kind[2][i]);
+			//
+			var repeating_event=true;
+			if (event_kind[0][i]!=event_kind[1][i] or event_glyph_add[0][i]!=event_glyph_add[1][i]) and
+			(event_kind[0][i]!=event_kind[2][i] or event_glyph_add[0][i]!=event_glyph_add[2][i]) and
+			(event_kind[1][i]!=event_kind[2][i] or event_glyph_add[1][i]!=event_glyph_add[2][i]) {
+				repeating_event=false;
+			}
+		} until (free_event=true and repeating_event=false);
 		//
 		i++;
 	}
@@ -65,27 +75,36 @@ if roadmap_generated=false {
 		location_type[0]=13;
 	}
 	//
+	roadmap_generated=true;
+	roadmap_get_text=true;
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+if roadmap_get_text=true {
 	var i=0;
 	repeat (roadmap_area_max) {
 		var ii=0;
 		repeat (3) {
+			event_description[ii][i]="";
+			//
 			if event_kind[ii][i]=ref_event_battle { event_name[ii][i]="Trainer\nBattle"; }
 			else if event_kind[ii][i]=ref_event_freecard { event_name[ii][i]="Free Card"; }
 			else if event_kind[ii][i]=ref_event_cardpack { event_name[ii][i]="Card Pack\n$" + string(event_cost[ref_event_cardpack]); }
 			else if event_kind[ii][i]=ref_event_levelup { event_name[ii][i]="Level Up\n$" + string(event_cost[ref_event_levelup]); }
 			else if event_kind[ii][i]=ref_event_evolution { event_name[ii][i]="Evolution\n$" + string(event_cost[ref_event_evolution]); }
-			else if event_kind[ii][i]=ref_event_glyph { event_name[ii][i]="Glyph\n$" + string(event_cost[ref_event_glyph]); }
-			else if event_kind[ii][i]=ref_event_sacrifice { event_name[ii][i]="Sacrifice"; }
+			else if event_kind[ii][i]=ref_event_sacrifice { event_name[ii][i]="Offering"; }
 			else if event_kind[ii][i]=ref_event_grass { event_name[ii][i]="Grass\nSt. Deck"; }
 			else if event_kind[ii][i]=ref_event_fire { event_name[ii][i]="Fire\nSt. Deck"; }
 			else if event_kind[ii][i]=ref_event_water { event_name[ii][i]="Water\nSt. Deck"; }
 			else if event_kind[ii][i]=ref_event_gymbattle { event_name[ii][i]="Gym\nBattle"; }
+			else if event_kind[ii][i]=ref_event_glyph {
+				event_name[ii][i]="Glyph\n$" + string(event_cost[ref_event_glyph]);
+				event_description[ii][i]=sc_glyph_text(event_glyph_add[ii][i]);
+			}
 			ii++;
 		}
 		i++;
 	}
-	//
-	roadmap_generated=true;
+roadmap_get_text=false;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var mouse_in_event=-1;
@@ -110,7 +129,12 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 		}
 	}
 	//
-	if mouse_in_event>-1 and cursor_hide=false { mouse_cursor=1; }
+	if mouse_in_event>-1 and cursor_hide=false {
+		mouse_cursor=1;
+		//
+		tooltip_text=event_description[mouse_in_event][roadmap_area];
+		tooltip_lines=2;
+	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if event_transition>-1 and fade_black<1 {
@@ -168,6 +192,8 @@ else if event_transition=-1 and fade_black<=0 {
 		if money>=event_cost[event_kind[mouse_in_event][roadmap_area]] {
 			event_transition=event_kind[mouse_in_event][roadmap_area];
 			money_subtract=event_cost[event_kind[mouse_in_event][roadmap_area]];
+			//
+			if event_transition=ref_event_glyph { current_glyph_add=event_glyph_add[mouse_in_event][roadmap_area]; }
 		}
 		else if money<event_cost[event_kind[mouse_in_event][roadmap_area]] {
 			effect_money_error=1;

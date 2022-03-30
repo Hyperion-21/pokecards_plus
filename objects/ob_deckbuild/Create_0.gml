@@ -24,6 +24,7 @@ repeat (deck_build_all_total) {
 	create_card_glyph_a=ob_main.main_card_glyph_a[i];
 	create_card_glyph_b=ob_main.main_card_glyph_b[i];
 	create_card_glyph_c=ob_main.main_card_glyph_c[i];
+	create_card_souls=ob_main.main_card_souls[i];
 	create_card_indeck=ob_main.main_card_indeck[i];
 	//
 	deck_card_all[i]=instance_create_layer(x,y,"instances",ob_card);

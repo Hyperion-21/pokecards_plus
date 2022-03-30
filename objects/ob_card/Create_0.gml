@@ -40,12 +40,14 @@ if card_cat=0 {
 			card_glyph_a=-1;
 			card_glyph_b=-1;
 			card_glyph_c=-1;
+			card_souls=1;
 		}
 		else {
 			card_level=reference_id.create_card_level;
 			card_glyph_a=reference_id.create_card_glyph_a;
 			card_glyph_b=reference_id.create_card_glyph_b;
 			card_glyph_c=reference_id.create_card_glyph_c;
+			card_souls=reference_id.create_card_souls;
 		}
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		if card_id<=386 { card_sheet=sp_poke_a; }
@@ -68,16 +70,16 @@ if card_cat=0 {
 			else if card_glyph_chance<=11 { card_glyph_total=2; } //1%
 			else if card_glyph_chance<=31 { card_glyph_total=1; } //2%
 			if card_glyph_total>=1 and card_glyph_a=-1 {
-				card_glyph_a=irandom_range(0,17);
+				card_glyph_a=sc_glyph_random();
 			}
 			if card_glyph_total>=2 and card_glyph_b=-1 {
 				do {
-					card_glyph_b=irandom_range(0,17);
+					card_glyph_b=sc_glyph_random();
 				} until (card_glyph_b!=card_glyph_a);
 			}
 			if card_glyph_total=3 and card_glyph_c=-1 {
 				do {
-					card_glyph_c=irandom_range(0,17);
+					card_glyph_c=sc_glyph_random();
 				} until (card_glyph_c!=card_glyph_a and card_glyph_c!=card_glyph_b);
 			}
 		}

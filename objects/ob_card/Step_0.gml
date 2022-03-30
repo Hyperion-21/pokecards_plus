@@ -98,6 +98,7 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 					ob_main.main_card_glyph_a[ob_main.maindeck_total]=card_glyph_a;
 					ob_main.main_card_glyph_b[ob_main.maindeck_total]=card_glyph_b;
 					ob_main.main_card_glyph_c[ob_main.maindeck_total]=card_glyph_c;
+					ob_main.main_card_souls[ob_main.maindeck_total]=card_souls;
 					ob_main.main_card_indeck[ob_main.maindeck_total]=false;
 					ob_main.maindeck_total++;
 					potential_y=ob_main.screen_main_y+ob_main.cam_h+2;
@@ -219,30 +220,8 @@ if ((reference_id=ob_control and ob_control.card_focus=id) or reference_id=ob_ev
 		if card_glyph_c>=0 and mouse_x>=x+43 and mouse_y>=y+22 and mouse_x<=x+54 and mouse_y<=y+32 { var switch_var=card_glyph_c; }
 		else if card_glyph_b>=0 and mouse_x>=x+43 and mouse_y>=y+12 and mouse_x<=x+54 and mouse_y<=y+22 { var switch_var=card_glyph_b; }
 		else if card_glyph_a>=0 and mouse_x>=x+43 and mouse_y>=y+2 and mouse_x<=x+54 and mouse_y<=y+12 { var switch_var=card_glyph_a; }
-		switch (switch_var) {
-			case 00: reference_id.tooltip_text="LUCKY: allows you to draw extra cards when played."; break;
-			case 01: reference_id.tooltip_text="HARVEST: all consumed berries return to your hand when fainting."; break;
-			case 02: reference_id.tooltip_text="WEAKNESS: the opposing Pokemon's attack is lowered."; break;
-			case 03: reference_id.tooltip_text="EXHAUSTION: the opposing Pokemon's defense is lowered."; break;
-			case 04: reference_id.tooltip_text="COURAGE: raises attack of nearby friendly Pokemon."; break;
-			case 05: reference_id.tooltip_text="SNEAK ATTACK: attacks the enemy trainer directly."; break;
-			case 06: reference_id.tooltip_text="COUNTERATTACK: when attacked, the enemy Pokemon is also hurt."; break;
-			case 07: reference_id.tooltip_text="FORCE FIELD: raises defense of nearby friendly Pokemon."; break;
-			case 08: reference_id.tooltip_text="MEDIC: fully heals all friendly Pokemon when played."; break;
-			case 09: reference_id.tooltip_text="TENACITY: when fainting, immediately returns to your hand."; break;
-			case 10: reference_id.tooltip_text="BULWARK: is protected by rocks on each side when played."; break;
-			case 11: reference_id.tooltip_text="FORK ATTACK: attacks enemies on both sides instead of straight ahead."; break;
-			case 12: reference_id.tooltip_text="TOXIC: poisons the enemy Pokemon when attacking."; break;
-			case 13: reference_id.tooltip_text="GUARD: moves in front of incoming direct attacks."; break;
-			case 14: reference_id.tooltip_text="CURSE: when fainting, the attacking enemy Pokemon also faints."; break;
-			case 15: reference_id.tooltip_text="QUICK DEFENSE: blocks opposing SNEAK ATTACKS for no damage."; break;
-			case 16: reference_id.tooltip_text="SUBSTITUTE: immediately replaces a fainted Pokemon when still in hand."; break;
-			case 17: reference_id.tooltip_text="MEMENTO: allows you to draw extra cards when fainting."; break;
-			//
-			case 18: reference_id.tooltip_text="MIST: while this card is active, glyphs have no effect."; break;
-			case 19: reference_id.tooltip_text="TRANSFORM: transforms into the opposing enemy Pokemon."; break;
-		}
-		reference_id.tooltip_lines=1;
+		reference_id.tooltip_text=sc_glyph_text(switch_var);
+		reference_id.tooltip_lines=2;
 	}
 	else if card_cost_total>0 and mouse_x>=x+3 and mouse_y>=y+35 and mouse_x<=x+2+(4*card_cost_total) and mouse_y<=y+38 {
 		reference_id.tooltip_text="Cost: ";

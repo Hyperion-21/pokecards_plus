@@ -47,7 +47,7 @@ if card_cat=0 and card_face=true and in_view=true {
 	draw_sprite_general(sp_sheet,0,16*1,16*2,53,10,draw_x+2,draw_y+41,1,1,0,namebar_color,global.color_white,global.color_white,namebar_color,1);
 	//
 	//SPRITE
-	draw_sprite_general(card_sheet,0,65*(card_grid_x-1)+1,33*(card_grid_y-1)+1,64,32,draw_x-4,draw_y+3,1,1,0,card_color,card_color,card_color,card_color,1);
+	draw_sprite_general(card_sheet,0,65*(card_grid_x-1)+1,33*(card_grid_y-1)+1,64,32,draw_x-4,draw_y+3,1,1,0,card_color,card_color,card_color,card_color,0.75+(card_souls*0.25));
 	//
 	//TYPES
 	draw_sprite_general(sp_sheet,0,16*(card_type_a+1),16*5,12,11,draw_x+2,draw_y+2,1,1,0,card_color,card_color,card_color,card_color,1);
@@ -81,7 +81,7 @@ if card_cat=0 and card_face=true and in_view=true {
 	draw_healthbar(draw_x+4,draw_y+56,draw_x+52,draw_y+57,0,global.color_card_dark,c_white,c_white,0,true,false);
 	sc_drawtext(draw_x+29,draw_y+39,card_name,global.color_white,global.color_black,1,(1/1.5),0,-1);
 	sc_drawtext(draw_x+29,draw_y+50,"lv " + string(card_level),global.color_gray,global.color_black,1,(1/1.7),0,-1);
-	//sc_drawtext(draw_x+29,draw_y+4,string(card_rarity),c_aqua,global.color_black,1,1,0,-1);
+	sc_drawtext(draw_x+29,draw_y+4,string(card_rarity) + "\n" + string(card_souls),c_aqua,global.color_black,1,1,0,-1);
 	//
 	var num_color=c_white;
 	draw_set_halign(fa_left);

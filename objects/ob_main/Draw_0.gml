@@ -25,6 +25,11 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 		sc_drawrectangle(event_button_x[i],event_button_y[i],event_button_x[i]+42,event_button_y[i]+42,global.color_black,global.color_white,2,0.8,0.5,0);
 		draw_sprite_general(sp_sheet,0,event_sprite_x,16*13,26,26,event_button_x[i]+9,event_button_y[i]+9,1,1,0,c_white,c_white,c_white,c_white,1);
 		sc_drawtext(event_button_x[i]+22,event_button_y[i]+51,event_name[i][roadmap_area],global.color_white,global.color_black,1,1,0,-1);
+		//
+		if event_kind[i][roadmap_area]=ref_event_glyph {
+			draw_sprite_general(sp_sheet,0,16*(event_glyph_add[i][roadmap_area]+1),16*6,12,11,event_button_x[i]+29,event_button_y[i]+3,1,1,0,c_white,c_white,c_white,c_white,0.8);
+		}
+		//
 		i++;
 	}
 	//
@@ -58,6 +63,8 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 	if menu_back_deck_hover=true { var menu_alpha=1; } else { var menu_alpha=0.5; }
 	draw_sprite_general(sp_sheet,0,16*7,16*9,16,16,screen_deck_x+16,screen_main_y+136,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
 }
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+sc_draw_tooltip_text(ob_main.screen_main_x+ob_main.cam_w);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if fade_black>0 {
 	sc_drawrectangle(-2,-2,room_width+2,room_height+2,global.color_black,c_white,0,fade_black,1,0);

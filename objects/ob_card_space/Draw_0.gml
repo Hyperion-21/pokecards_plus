@@ -6,7 +6,14 @@ else if trash=false {
 	if instance_exists(ob_event) {
 		if mouse_x>=x+4 and mouse_y>=y+4 and mouse_x<x+sprite_width-4 and mouse_y<y+sprite_height-4 { var var_event_alpha=1; }
 		else { var var_event_alpha=0.5; }
-		draw_sprite_general(sp_sheet,0,16*(1+ob_event.event_kind*2),16*15,26,26,x+16,y+26,1,1,0,c_white,c_white,c_white,c_white,var_event_alpha);
+		//
+		if ob_event.event_kind!=ob_main.ref_event_sacrifice or ob_event.event_space_id[1]!=id {
+			draw_sprite_general(sp_sheet,0,16*(1+ob_event.event_kind*2),16*15,26,26,x+16,y+26,1,1,0,c_white,c_white,c_white,c_white,var_event_alpha);
+		}
+		//
+		if ob_event.event_kind=ob_main.ref_event_glyph {
+			draw_sprite_general(sp_sheet,0,16*(ob_event.glyph_add_id+1),16*6,12,11,x+41,y+4,1,1,0,c_white,c_white,c_white,c_white,var_event_alpha);
+		}
 	}
 	//
 	draw_sprite_general(sp_sheet,0,16*33+4,16*0,sprite_width,sprite_height,x,y,1,1,0,c_white,c_white,c_white,c_white,1);

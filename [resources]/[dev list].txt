@@ -34,8 +34,8 @@
 ✔	event: level up
 ✔	event: evolution
 ✔	roadmap generation plan
-29/3	event: add glyph
-29/3	event: sacrifice
+✔	event: add glyph
+✔	event: offering & life force system
 30/3	options menu
 30/3	save config
 30/3	main menu

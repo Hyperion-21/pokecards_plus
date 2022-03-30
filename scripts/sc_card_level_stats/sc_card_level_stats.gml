@@ -4,6 +4,10 @@ card_full_hp=1+floor((card_base_hp*card_level)/30); //hp: 1/255 -> 1/9 to 1/86
 card_full_atk=ceil((card_base_atk*card_level)/100); //atk: 20/~250 -> 1/2 to 2/25
 card_full_def=floor((card_base_def*card_level)/300); //def: 35/460 -> 0/1 to 1/15
 //
+card_full_hp+=ceil(card_full_hp*((card_souls-1)/5)); //max x2 (5)
+card_full_atk+=ceil(card_full_atk*((card_souls-1)/5)); //max x2 (5)
+card_full_def+=ceil(card_full_def*((card_souls-1)/5)); //max x2 (5)
+//
 card_atk=card_full_atk;
 card_def=card_full_def;
 card_hp=card_full_hp;

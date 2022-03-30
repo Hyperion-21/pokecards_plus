@@ -12,7 +12,6 @@ repeat (roadmap_area_max) {
 	var ii=0;
 	repeat (3) {
 		event_kind[ii][i]=-1;
-		event_name[ii][i]="";
 		ii++;
 	}
 	i++;
@@ -28,6 +27,7 @@ repeat (maindeck_total) {
 	main_card_glyph_a[i]=-1;
 	main_card_glyph_b[i]=-1;
 	main_card_glyph_c[i]=-1;
+	main_card_souls[i]=-1;
 	main_card_indeck[i]=false;
 	i++;
 }
@@ -61,8 +61,6 @@ if file_exists(data_file) {
 		repeat (3) {
 			var value_name="event_kind_" + string(ii) + "_" + string(i);
 			if !is_undefined(ds_map_find_value(savemap,value_name)) { event_kind[ii][i]=ds_map_find_value(savemap,value_name); }
-			var value_name="event_name_" + string(ii) + "_" + string(i);
-			if !is_undefined(ds_map_find_value(savemap,value_name)) { event_name[ii][i]=ds_map_find_value(savemap,value_name); }
 			ii++;
 		}
 		i++;
@@ -83,6 +81,8 @@ if file_exists(data_file) {
 		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_glyph_b[i]=ds_map_find_value(savemap,value_name); }
 		var value_name="main_card_glyph_c_" + string(i);
 		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_glyph_c[i]=ds_map_find_value(savemap,value_name); }
+		var value_name="main_card_souls_" + string(i);
+		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_souls[i]=ds_map_find_value(savemap,value_name); }
 		var value_name="main_card_indeck_" + string(i);
 		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_indeck[i]=ds_map_find_value(savemap,value_name); }
 		i++;
