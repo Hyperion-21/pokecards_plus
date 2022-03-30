@@ -32,7 +32,7 @@ if card_cat=0 {
 		card_id=reference_id.create_card_id;
 		//
 		if card_id=-1 {
-			card_id=irandom_range(1,ob_main.normal_poke_id_max+ob_main.secret_cards_total+ob_main.environment_cards_total); //from 1 to max normal cards + secret cards + environment cards
+			card_id=irandom_range(1,ob_main.normal_poke_id_max+ob_main.secret_cards_total+ob_main.environment_cards_total); //from 1 to max normal + secret + environment cards
 			if card_id>ob_main.normal_poke_id_max+ob_main.secret_cards_total { card_id+=2500-ob_main.normal_poke_id_max-ob_main.secret_cards_total; } //environment cards
 			else if card_id>ob_main.normal_poke_id_max { card_id+=2000-ob_main.normal_poke_id_max; } //secret cards
 			//

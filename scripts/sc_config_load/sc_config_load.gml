@@ -1,69 +1,65 @@
 function sc_config_load() {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-global.sound_level=10;
-global.music_level=10;
-// ^new
-display_reset(0,false);
-global.vsync=false;
-window_set_fullscreen(false);
-global.fullscreen=false;
-global.gamescaling=2;
-global.textureredraw=0;
-global.texturefilter=false;
-global.weathereffects=true;
-global.musiclevel=5;
-global.soundlevel=10;
-global.autosave=true;
-global.textfont=0;
-global.textspeed=3;
-global.windowcolor_id=0;
+option_state[opt_fullscreen]=false;
+window_set_fullscreen(option_state[opt_fullscreen]);
+//
+option_state[opt_vsync]=true;
+display_reset(0,option_state[opt_vsync]);
+//
+var screen_w=display_get_width(), screen_h=display_get_height();
+var i=0, biggest_screen_size_found=false;
+do {
+	i++;
+	if 512*i>=screen_w or 288*i>=screen_h {
+		biggest_screen_size_found=true;
+	}
+} until (biggest_screen_size_found=true);
+window_set_size(512*(i-1),288*(i-1));
+option_state[opt_scaling]=i-1;
+//
+option_state[opt_music]=true;
+option_state[opt_sound]=true;
+option_state[opt_autodeck]=true;
+option_state[opt_bg_type]=0;
+//
+colorsetup_r[opt_bg_a]=59*bg_rgb_divisor;
+colorsetup_g[opt_bg_a]=57*bg_rgb_divisor;
+colorsetup_b[opt_bg_a]=53*bg_rgb_divisor;
+colorsetup_r[opt_bg_b]=59*bg_rgb_divisor;
+colorsetup_g[opt_bg_b]=57*bg_rgb_divisor;
+colorsetup_b[opt_bg_b]=53*bg_rgb_divisor;
+colorsetup_r[opt_bg_tile]=64*bg_rgb_divisor;
+colorsetup_g[opt_bg_tile]=62*bg_rgb_divisor;
+colorsetup_b[opt_bg_tile]=58*bg_rgb_divisor;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if file_exists(config_file) {
 	var savemap=ds_map_secure_load(config_file);
 	//
-	if !is_undefined(ds_map_find_value(savemap,"vsync")) {
-		if ds_map_find_value(savemap,"vsync")=true {
-			display_reset(0,true);
-			global.vsync=true;
-		}
-		else {
-			display_reset(0,false);
-			global.vsync=false;
-		}
-	}
 	if !is_undefined(ds_map_find_value(savemap,"fullscreen")) {
-		global.fullscreen=ds_map_find_value(savemap,"fullscreen");
-		if global.fullscreen=true {
-			window_set_fullscreen(true);
-		}
-		else {
-			window_set_fullscreen(false);
-		}
+		option_state[opt_fullscreen]=ds_map_find_value(savemap,"fullscreen");
+		window_set_fullscreen(option_state[opt_fullscreen]);
 	}
-	if !is_undefined(ds_map_find_value(savemap,"window_scaling")) { global.gamescaling=ds_map_find_value(savemap,"window_scaling"); }
-	if !is_undefined(ds_map_find_value(savemap,"texture_redraw")) { global.textureredraw=ds_map_find_value(savemap,"texture_redraw"); }
-	if !is_undefined(ds_map_find_value(savemap,"texture_filter")) { global.texturefilter=ds_map_find_value(savemap,"texture_filter"); }
-	if !is_undefined(ds_map_find_value(savemap,"weather_effects")) { global.weathereffects=ds_map_find_value(savemap,"weather_effects"); }
-	if !is_undefined(ds_map_find_value(savemap,"music_level")) { global.musiclevel=ds_map_find_value(savemap,"music_level"); }
-	if !is_undefined(ds_map_find_value(savemap,"sound_level")) { global.soundlevel=ds_map_find_value(savemap,"sound_level"); }
-	if !is_undefined(ds_map_find_value(savemap,"autosave")) { global.autosave=ds_map_find_value(savemap,"autosave"); }
-	if !is_undefined(ds_map_find_value(savemap,"text_font")) { global.textfont=ds_map_find_value(savemap,"text_font"); }
-	if !is_undefined(ds_map_find_value(savemap,"text_speed")) { global.textspeed=ds_map_find_value(savemap,"text_speed"); }
-	if !is_undefined(ds_map_find_value(savemap,"window_color")) { global.windowcolor_id=ds_map_find_value(savemap,"window_color"); }
 	//
-	if !is_undefined(ds_map_find_value(savemap,"key_01")) { global.k01=ds_map_find_value(savemap,"key_01"); }
-	if !is_undefined(ds_map_find_value(savemap,"key_02")) { global.k02=ds_map_find_value(savemap,"key_02"); }
-	if !is_undefined(ds_map_find_value(savemap,"key_03")) { global.k03=ds_map_find_value(savemap,"key_03"); }
-	if !is_undefined(ds_map_find_value(savemap,"key_04")) { global.k04=ds_map_find_value(savemap,"key_04"); }
-	if !is_undefined(ds_map_find_value(savemap,"key_05")) { global.k05=ds_map_find_value(savemap,"key_05"); }
-	if !is_undefined(ds_map_find_value(savemap,"key_06")) { global.k06=ds_map_find_value(savemap,"key_06"); }
-	if !is_undefined(ds_map_find_value(savemap,"key_07")) { global.k07=ds_map_find_value(savemap,"key_07"); }
-	if !is_undefined(ds_map_find_value(savemap,"key_08")) { global.k08=ds_map_find_value(savemap,"key_08"); }
-	if !is_undefined(ds_map_find_value(savemap,"key_09")) { global.k09=ds_map_find_value(savemap,"key_09"); }
-	if !is_undefined(ds_map_find_value(savemap,"key_up")) { global.kup=ds_map_find_value(savemap,"key_up"); }
-	if !is_undefined(ds_map_find_value(savemap,"key_down")) { global.kdown=ds_map_find_value(savemap,"key_down"); }
-	if !is_undefined(ds_map_find_value(savemap,"key_left")) { global.kleft=ds_map_find_value(savemap,"key_left"); }
-	if !is_undefined(ds_map_find_value(savemap,"key_right")) { global.kright=ds_map_find_value(savemap,"key_right"); }
+	if !is_undefined(ds_map_find_value(savemap,"vsync")) {
+		option_state[opt_vsync]=ds_map_find_value(savemap,"vsync");
+		display_reset(0,option_state[opt_vsync]);
+	}
+	//
+	if !is_undefined(ds_map_find_value(savemap,"window_scaling")) { option_state[opt_scaling]=ds_map_find_value(savemap,"window_scaling"); }
+	if !is_undefined(ds_map_find_value(savemap,"music")) { option_state[opt_music]=ds_map_find_value(savemap,"music"); }
+	if !is_undefined(ds_map_find_value(savemap,"sound")) { option_state[opt_sound]=ds_map_find_value(savemap,"sound"); }
+	if !is_undefined(ds_map_find_value(savemap,"autodeck")) { option_state[opt_autodeck]=ds_map_find_value(savemap,"autodeck"); }
+	if !is_undefined(ds_map_find_value(savemap,"background_type")) { option_state[opt_bg_type]=ds_map_find_value(savemap,"background_type"); }
+	//
+	if !is_undefined(ds_map_find_value(savemap,"color_a_r")) { colorsetup_r[opt_bg_a]=ds_map_find_value(savemap,"color_a_r"); }
+	if !is_undefined(ds_map_find_value(savemap,"color_a_g")) { colorsetup_g[opt_bg_a]=ds_map_find_value(savemap,"color_a_g"); }
+	if !is_undefined(ds_map_find_value(savemap,"color_a_b")) { colorsetup_b[opt_bg_a]=ds_map_find_value(savemap,"color_a_b"); }
+	if !is_undefined(ds_map_find_value(savemap,"color_b_r")) { colorsetup_r[opt_bg_b]=ds_map_find_value(savemap,"color_b_r"); }
+	if !is_undefined(ds_map_find_value(savemap,"color_b_g")) { colorsetup_g[opt_bg_b]=ds_map_find_value(savemap,"color_b_g"); }
+	if !is_undefined(ds_map_find_value(savemap,"color_b_b")) { colorsetup_b[opt_bg_b]=ds_map_find_value(savemap,"color_b_b"); }
+	if !is_undefined(ds_map_find_value(savemap,"color_tile_r")) { colorsetup_r[opt_bg_tile]=ds_map_find_value(savemap,"color_tile_r"); }
+	if !is_undefined(ds_map_find_value(savemap,"color_tile_g")) { colorsetup_g[opt_bg_tile]=ds_map_find_value(savemap,"color_tile_g"); }
+	if !is_undefined(ds_map_find_value(savemap,"color_tile_b")) { colorsetup_b[opt_bg_tile]=ds_map_find_value(savemap,"color_tile_b"); }
 	//
 	ds_map_destroy(savemap);
 }

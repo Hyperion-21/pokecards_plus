@@ -156,7 +156,7 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 			}
 			card_delete_timer=0;
 		}
-		else if mouse_check_button(mb_middle) and ob_deckbuild.deck_build_all_total>5 and card_indeck=false and ob_main.cursor_hide=false {
+		else if mouse_check_button(mb_right) and ob_deckbuild.deck_build_all_total>5 and card_indeck=false and ob_main.cursor_hide=false {
 			card_delete_timer++;
 			if card_delete_timer=card_delete_timer_max {
 				ob_deckbuild.reorder_type=5;
@@ -170,6 +170,9 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 	else if card_cat=1 {
 		if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false {
 			ob_deckbuild.deck_berry_used[card_id-3000]=ob_deckbuild.deck_berry_total[card_id-3000];
+		}
+		else if mouse_check_button_pressed(mb_right) and ob_main.cursor_hide=false {
+			ob_deckbuild.deck_berry_used[card_id-3000]=0;
 		}
 		else if mouse_wheel_up() and ob_main.cursor_hide=false {
 			if ob_deckbuild.deck_berry_used[card_id-3000]<ob_deckbuild.deck_berry_total[card_id-3000] {

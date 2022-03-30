@@ -1,4 +1,4 @@
-if mouse_check_button(mb_right) { cursor_hide=true; }
+if mouse_check_button(mb_middle) { cursor_hide=true; }
 else { cursor_hide=false; }
 //
 if keyboard_check_pressed(vk_f5) { game_restart(); } //< delete later, testing
@@ -72,16 +72,42 @@ if roadmap_generated=false {
 		event_kind[0][0]=ref_event_grass;
 		event_kind[1][0]=ref_event_fire;
 		event_kind[2][0]=ref_event_water;
-		location_type[0]=13;
+		location_type[0]=13; //lab
 	}
 	//
+	location_type[roadmap_area_max-1]=15; //city
+	//
 	roadmap_generated=true;
-	roadmap_get_text=true;
+	roadmap_get_details=true;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if roadmap_get_text=true {
+if roadmap_get_details=true {
 	var i=0;
 	repeat (roadmap_area_max) {
+		switch (location_type[i]) {
+			case 00: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //forest
+			case 01: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //cave (forest)
+			case 02: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //cave (rocky)
+			case 03: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //cave (dark)
+			case 04: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //cave (mountain)
+			case 05: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //factory
+			case 06: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //mansion ruins
+			case 07: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //cave (forest road)
+			case 08: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //cave (volcano)
+			case 09: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //forest (poison)
+			case 10: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //cave (ice)
+			case 11: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //warehouse
+			case 12: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //tower
+			case 14: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //grassland
+			case 16: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //cave (island 1)
+			case 17: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //cave (foggy)
+			case 18: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //forest (same a 00)
+			case 19: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //cave (island 2)
+			case 20: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //cave (ruins)
+			case 21: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //ancient ruins
+			default: trainer_kind[0][i]=-1; trainer_kind[1][i]=-1; trainer_kind[2][i]=-1;
+		}
+		//
 		var ii=0;
 		repeat (3) {
 			event_description[ii][i]="";
@@ -104,7 +130,7 @@ if roadmap_get_text=true {
 		}
 		i++;
 	}
-roadmap_get_text=false;
+roadmap_get_details=false;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var mouse_in_event=-1;
@@ -172,8 +198,8 @@ else if event_transition>-1 and fade_black>=1 {
 			instance_create_layer(x,y,"instances",ob_event);
 		}
 		else {
-			if event_transition=ref_event_freecard or event_transition=ref_event_cardpack or
-			event_transition=ref_event_grass or event_transition=ref_event_fire or event_transition=ref_event_water {
+			if option_state[opt_autodeck]=true and (event_transition=ref_event_freecard or event_transition=ref_event_cardpack or
+			event_transition=ref_event_grass or event_transition=ref_event_fire or event_transition=ref_event_water) {
 				auto_deck_transition=true;
 			}
 			//
@@ -293,3 +319,104 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 		}
 	}
 }
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+draw_set_font(fn_matchup);
+//
+var i=0;
+repeat (options_total) {
+	if mouse_x>=option_x[i] and mouse_y>=option_y[i]+2 and mouse_x<=option_x[i]+string_width(option_name[i] + option_state_text[i]) and mouse_y<=option_y[i]+10 and cursor_hide=false {
+		mouse_cursor=1;
+		option_focus[i]=true;
+		if mouse_check_button_pressed(mb_left) or mouse_check_button_pressed(mb_right) {
+			if i=opt_fullscreen {
+				if option_state[i]=false { option_state[i]=true; }
+				else { option_state[i]=false; }
+				window_set_fullscreen(option_state[i]);
+			}
+			else if i=opt_vsync {
+				if option_state[i]=false { option_state[i]=true; }
+				else { option_state[i]=false; }
+				display_reset(0,option_state[i]);
+			}
+			else if i=opt_scaling {
+				if mouse_check_button_pressed(mb_left) and 512*(option_state[i]+1)<display_get_width() and 288*(option_state[i]+1)<display_get_height() {
+					option_state[i]++;
+				}
+				else if mouse_check_button_pressed(mb_right) and option_state[i]>1 {
+					option_state[i]--;
+				}
+				window_set_size(512*(option_state[i]),288*(option_state[i]));
+			}
+			else if i=opt_autodeck or i=opt_music or i=opt_sound {
+				if option_state[i]=false { option_state[i]=true; }
+				else { option_state[i]=false; }
+			}
+			else if i=opt_bg_type {
+				if mouse_check_button_pressed(mb_left) {
+					option_state[i]++;
+					if option_state[i]>2 { option_state[i]=0; }
+				}
+				else if mouse_check_button_pressed(mb_right) {
+					option_state[i]--;
+					if option_state[i]<0 { option_state[i]=2; }
+				}
+			}
+		}
+	}
+	else { option_focus[i]=false; }
+	//
+	if i=opt_fullscreen or i=opt_vsync or i=opt_music or i=opt_sound {
+		if option_state[i]=true { option_state_text[i]=": ON"; }
+		else { option_state_text[i]=": OFF"; }
+	}
+	else if i=opt_scaling {
+		option_state_text[i]=": " + string(option_state[i]);
+	}
+	else if i=opt_autodeck {
+		if option_state[i]=true { option_state_text[i]=": GO TO DECK"; }
+		else { option_state_text[i]=": DO NOTHING"; }
+	}
+	else if i=opt_bg_type {
+		if option_state[i]=0 { option_state_text[i]=": MOVING TILES"; }
+		else if option_state[i]=1 { option_state_text[i]=": IDLE TILES"; }
+		else if option_state[i]=2 { option_state_text[i]=": LOCATION"; }
+	}
+	//
+	i++;
+}
+//
+var i=0;
+repeat (colorsetup_total) {
+	if mouse_x>=colorsetup_r_x[i] and mouse_y>=colorsetup_y[i]+2 and
+	mouse_x<=colorsetup_r_x[i]+string_width("R " + string(colorsetup_r[i])) and mouse_y<=colorsetup_y[i]+10 and option_state[opt_bg_type]!=2 and cursor_hide=false {
+		mouse_cursor=1;
+		colorsetup_focus_r[i]=true;
+		if mouse_check_button(mb_left) and colorsetup_r[i]<255 { colorsetup_r[i]++; }
+		else if mouse_check_button(mb_right) and colorsetup_r[i]>0 { colorsetup_r[i]--; }
+	}
+	else { colorsetup_focus_r[i]=false; }
+	//
+	if mouse_x>=colorsetup_g_x[i] and mouse_y>=colorsetup_y[i]+2 and
+	mouse_x<=colorsetup_g_x[i]+string_width("G " + string(colorsetup_g[i])) and mouse_y<=colorsetup_y[i]+10 and option_state[opt_bg_type]!=2 and cursor_hide=false {
+		mouse_cursor=1;
+		colorsetup_focus_g[i]=true;
+		if mouse_check_button(mb_left) and colorsetup_g[i]<255 { colorsetup_g[i]++; }
+		else if mouse_check_button(mb_right) and colorsetup_g[i]>0 { colorsetup_g[i]--; }
+	}
+	else { colorsetup_focus_g[i]=false; }
+	//
+	if mouse_x>=colorsetup_b_x[i] and mouse_y>=colorsetup_y[i]+2 and
+	mouse_x<=colorsetup_b_x[i]+string_width("B " + string(colorsetup_b[i])) and mouse_y<=colorsetup_y[i]+10 and option_state[opt_bg_type]!=2 and cursor_hide=false {
+		mouse_cursor=1;
+		colorsetup_focus_b[i]=true;
+		if mouse_check_button(mb_left) and colorsetup_b[i]<255 { colorsetup_b[i]++; }
+		else if mouse_check_button(mb_right) and colorsetup_b[i]>0 { colorsetup_b[i]--; }
+	}
+	else { colorsetup_focus_b[i]=false; }
+	//
+	i++;
+}
+//
+global.color_background_a=make_colour_rgb(colorsetup_r[opt_bg_a]/bg_rgb_divisor,colorsetup_g[opt_bg_a]/bg_rgb_divisor,colorsetup_b[opt_bg_a]/bg_rgb_divisor);
+global.color_background_b=make_colour_rgb(colorsetup_r[opt_bg_b]/bg_rgb_divisor,colorsetup_g[opt_bg_b]/bg_rgb_divisor,colorsetup_b[opt_bg_b]/bg_rgb_divisor);
+global.color_background_tile=make_colour_rgb(colorsetup_r[opt_bg_tile]/bg_rgb_divisor,colorsetup_g[opt_bg_tile]/bg_rgb_divisor,colorsetup_b[opt_bg_tile]/bg_rgb_divisor);

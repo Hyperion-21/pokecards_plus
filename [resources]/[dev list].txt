@@ -37,9 +37,9 @@
 ✔	event: add glyph
 ✔	event: tribute
 ✔	innate strength system
-30/3	options menu
-30/3	save config
-30/3	main menu
+✔	options menu
+✔	save config
+31/3	main menu
 31/4+	glyphs
 4/4	stalemate solving
 4/4	trainer decks setup

@@ -10,7 +10,7 @@ if reorder_type>-1 {
 		var ii=0;
 		repeat (deck_build_all_total) {
 			if instance_exists(deck_card_all[ii]) {
-				if reorder_type=0 and deck_card_all[ii].card_id=order_check and card_pos_replace[i]=-1 { //pokemon id
+				if (reorder_type=0 or reorder_type=5) and deck_card_all[ii].card_id=order_check and card_pos_replace[i]=-1 { //pokemon id
 					card_pos_replace[i]=deck_card_all[ii];
 					i++;
 				}

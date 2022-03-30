@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Card League";
-game_version="v0.0.0.51";
+game_version="v0.0.0.52";
 window_set_caption(game_name + " (" + string(game_version) + ")");
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -31,35 +31,6 @@ cam_w=camera_get_view_width(view_camera[0]);
 cam_h=camera_get_view_height(view_camera[0]);
 //
 surface_resize(application_surface,cam_w,cam_h);
-//
-var screen_w=display_get_width(), screen_h=display_get_height();
-var i=0, biggest_screen_size_found=false;
-do {
-	i++;
-	if 512*i>=screen_w or 288*i>=screen_h {
-		biggest_screen_size_found=true;
-	}
-} until (biggest_screen_size_found=true);
-window_set_size(512*(i-1),288*(i-1));
-//
-display_reset(0,true);
-window_set_fullscreen(false);
-//————————————————————————————————————————————————————————————————————————————————————————————————————
-global.color_white=make_colour_rgb(230,230,230);
-global.color_black=make_colour_rgb(40,40,40);
-global.color_gray=make_colour_rgb(190,190,190);
-global.color_card_light=make_colour_rgb(233,230,222);
-global.color_card_dark=make_colour_rgb(205,198,181);
-global.color_player=make_colour_rgb(160,193,225);
-global.color_enemy=make_colour_rgb(221,172,159);
-global.color_fullhp=make_colour_rgb(176,223,159);
-global.color_damage=make_colour_rgb(225,168,160);
-global.color_direct_damage=make_colour_rgb(226,204,161);
-global.color_progress_light=make_colour_rgb(180,218,255);
-global.color_progress_dark=make_colour_rgb(91,88,80);
-global.color_background_a=make_colour_rgb(59,57,53);
-global.color_background_b=make_colour_rgb(59,57,53);
-global.color_background_tile=make_colour_rgb(64,62,58);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 mouse_cursor=0;
 cursor_hide=false;
@@ -67,7 +38,7 @@ screen_transition=-1;
 auto_deck_transition=false;
 //
 roadmap_area_max=20;
-roadmap_get_text=true;
+roadmap_get_details=true;
 event_transition=-1; //same as events, 300 victory, 301 defeat
 fade_black=0;
 //
@@ -113,11 +84,74 @@ tooltip_lines=0;
 current_glyph_add=-1;
 innate_max=6;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+options_total=7;
+//
+opt_fullscreen=0;
+opt_vsync=1;
+opt_scaling=2;
+opt_music=3;
+opt_sound=4;
+opt_autodeck=5;
+opt_bg_type=6;
+//
+for (var i=0; i<options_total; i++;) {
+	if i=opt_fullscreen { option_name[i]="Fullscreen"; }
+	else if i=opt_vsync { option_name[i]="Vertical Synchronization"; }
+	else if i=opt_scaling { option_name[i]="Window Scaling"; }
+	else if i=opt_music { option_name[i]="Music"; }
+	else if i=opt_sound { option_name[i]="Sound Effects"; }
+	else if i=opt_autodeck { option_name[i]="New Cards"; }
+	else if i=opt_bg_type { option_name[i]="Battle Background Style"; }
+	//
+	option_x[i]=12;
+	option_y[i]=9+12*i;
+	option_focus[i]=false;
+	option_state_text[i]="";
+}
+//
+colorsetup_total=3;
+bg_rgb_divisor=2;
+//
+opt_bg_a=0;
+opt_bg_b=1;
+opt_bg_tile=2;
+//
+for (var i=0; i<colorsetup_total; i++;) {
+	if i=opt_bg_a { colorsetup_name[i]="Battle Background Color A"; }
+	else if i=opt_bg_b { colorsetup_name[i]="Battle Background Color B"; }
+	else if i=opt_bg_tile { colorsetup_name[i]="Battle Background Color C"; }
+	//
+	colorsetup_main_x[i]=12;
+	colorsetup_r_x[i]=178;
+	colorsetup_g_x[i]=216;
+	colorsetup_b_x[i]=254;
+	colorsetup_y[i]=9+12*(i+options_total);
+	colorsetup_focus_r[i]=false;
+	colorsetup_focus_g[i]=false;
+	colorsetup_focus_b[i]=false;
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 instance_create_layer(screen_main_x,screen_main_y,"instances",ob_background);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 config_file="config.sav";
 data_file="data.sav";
-//sc_config_load();
+sc_config_load();
 //sc_config_save();
 sc_data_load();
 //sc_data_save();
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+global.color_white=make_colour_rgb(230,230,230);
+global.color_black=make_colour_rgb(40,40,40);
+global.color_gray=make_colour_rgb(190,190,190);
+global.color_card_light=make_colour_rgb(233,230,222);
+global.color_card_dark=make_colour_rgb(205,198,181);
+global.color_player=make_colour_rgb(160,193,225);
+global.color_enemy=make_colour_rgb(221,172,159);
+global.color_fullhp=make_colour_rgb(176,223,159);
+global.color_damage=make_colour_rgb(225,168,160);
+global.color_direct_damage=make_colour_rgb(226,204,161);
+global.color_progress_light=make_colour_rgb(180,218,255);
+global.color_progress_dark=make_colour_rgb(91,88,80);
+global.color_background_a=make_colour_rgb(colorsetup_r[opt_bg_a]/bg_rgb_divisor,colorsetup_g[opt_bg_a]/bg_rgb_divisor,colorsetup_b[opt_bg_a]/bg_rgb_divisor);
+global.color_background_b=make_colour_rgb(colorsetup_r[opt_bg_b]/bg_rgb_divisor,colorsetup_g[opt_bg_b]/bg_rgb_divisor,colorsetup_b[opt_bg_b]/bg_rgb_divisor);
+global.color_background_tile=make_colour_rgb(colorsetup_r[opt_bg_tile]/bg_rgb_divisor,colorsetup_g[opt_bg_tile]/bg_rgb_divisor,colorsetup_b[opt_bg_tile]/bg_rgb_divisor);

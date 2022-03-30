@@ -125,7 +125,8 @@ if apply_event=true {
 		}
 	}
 	else if event_kind=ob_main.ref_event_tribute and card_id_space[0]!=-1 and card_id_space[1]!=-1 {
-		if card_id_space[0].card_innate>0 and card_id_space[1].card_innate<ob_main.innate_max {
+		if card_id_space[0].card_innate>0 and card_id_space[1].card_innate<ob_main.innate_max and
+		card_id_space[0].card_environment=false and card_id_space[1].card_environment=false {
 			card_id_space[0].card_innate--;
 			card_id_space[1].card_innate++;
 			card_id_space[0].effect_damaged=1;
