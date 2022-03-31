@@ -1,4 +1,4 @@
-if !instance_exists(ob_control) and !instance_exists(ob_event) {
+if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exists(ob_splash) {
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	// MAIN
 	var area_sp_x=location_type[roadmap_area], area_sp_y=0;
@@ -97,9 +97,11 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	if menu_back_deck_hover=true { var menu_alpha=1; } else { var menu_alpha=0.5; }
 	draw_sprite_general(sp_sheet,0,16*7,16*9,16,16,screen_deck_x+16,screen_main_y+136,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
+	//————————————————————————————————————————————————————————————————————————————————————————————————————
+	// TOOLTIP
+	//————————————————————————————————————————————————————————————————————————————————————————————————————
+	sc_draw_tooltip_text(ob_main.screen_main_x+ob_main.cam_w);
 }
-//————————————————————————————————————————————————————————————————————————————————————————————————————
-sc_draw_tooltip_text(ob_main.screen_main_x+ob_main.cam_w);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if fade_black>0 {
 	sc_drawrectangle(-2,-2,room_width+2,room_height+2,global.color_black,c_white,0,fade_black,1,0);

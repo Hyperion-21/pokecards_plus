@@ -1,7 +1,7 @@
 randomize(); //random seed
 game_name="Pocket Card League";
-game_version="v0.0.0.52";
-window_set_caption(game_name + " (" + string(game_version) + ")");
+game_version="v0.0.0.53";
+window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
 //
@@ -39,7 +39,7 @@ auto_deck_transition=false;
 //
 roadmap_area_max=20;
 roadmap_get_details=true;
-event_transition=-1; //same as events, 300 victory, 301 defeat
+event_transition=-1; //same as events, 300 victory, 301 defeat, 999 main menu
 fade_black=0;
 //
 menu_options_hover=false;
@@ -70,6 +70,7 @@ ref_event_water=102;
 ref_event_gymbattle=200;
 ref_event_victory=300; //only for transitions
 ref_event_defeat=301; //only for transitions
+ref_mainmenu=999; //only for transitions
 //
 for (var i=0; i<=200; i++;) {
 	event_cost[i]=0;
@@ -131,7 +132,22 @@ for (var i=0; i<colorsetup_total; i++;) {
 	colorsetup_focus_b[i]=false;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+instance_create_layer(screen_main_x,screen_main_y,"instances",ob_splash);
 instance_create_layer(screen_main_x,screen_main_y,"instances",ob_background);
+var i=0;
+repeat (18) {
+	var ii=0;
+	repeat (5) {
+		instance_create_layer(screen_main_x+i*32,screen_main_y+ii*64+(i mod 2)*32,"instances",ob_background_tile);
+		ii++;
+	}
+	i++;
+}
+var i=0;
+repeat (8) {
+	instance_create_layer(screen_main_x+i*85,screen_main_y+104,"instances",ob_card_splash);
+	i++;
+}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 config_file="config.sav";
 data_file="data.sav";

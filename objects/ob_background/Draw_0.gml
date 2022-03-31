@@ -1,6 +1,6 @@
 //ob_background
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if instance_exists(ob_control) and (ob_main.option_state[ob_main.opt_bg_type]=0 or ob_main.option_state[ob_main.opt_bg_type]=1) {
+if (instance_exists(ob_control) and (ob_main.option_state[ob_main.opt_bg_type]=0 or ob_main.option_state[ob_main.opt_bg_type]=1)) or instance_exists(ob_splash) {
 	draw_sprite_general(sprite_index,0,0,0,1,1,x-2,y-2,512+4,288+4,0,global.color_background_a,global.color_background_b,global.color_background_a,global.color_background_b,1);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

@@ -1,4 +1,4 @@
-if mouse_check_button(mb_middle) { cursor_hide=true; }
+if mouse_check_button(mb_middle) or instance_exists(ob_splash) { cursor_hide=true; }
 else { cursor_hide=false; }
 //
 if keyboard_check_pressed(vk_f5) { game_restart(); } //< delete later, testing
@@ -140,7 +140,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 		for (var i=0; i<=1; i++;) {
 			event_button_x[i]=road_win_x+55-9+(104*i);
 			event_button_y[i]=road_win_y+35-9;
-			if mouse_x>event_button_x[i] and mouse_y>event_button_y[i] and mouse_x<=event_button_x[i]+42 and mouse_y<=event_button_y[i]+42 {
+			if mouse_x>event_button_x[i] and mouse_y>event_button_y[i] and mouse_x<=event_button_x[i]+42 and mouse_y<=event_button_y[i]+42 and cursor_hide=false {
 				mouse_in_event=i;
 			}
 		}
@@ -149,13 +149,13 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 		for (var i=0; i<=2; i++;) {
 			event_button_x[i]=road_win_x+36-9+(71*i);
 			event_button_y[i]=road_win_y+35-9;
-			if mouse_x>event_button_x[i] and mouse_y>event_button_y[i] and mouse_x<=event_button_x[i]+42 and mouse_y<=event_button_y[i]+42 {
+			if mouse_x>event_button_x[i] and mouse_y>event_button_y[i] and mouse_x<=event_button_x[i]+42 and mouse_y<=event_button_y[i]+42 and cursor_hide=false {
 				mouse_in_event=i;
 			}
 		}
 	}
 	//
-	if mouse_in_event>-1 and cursor_hide=false {
+	if mouse_in_event>-1 {
 		mouse_cursor=1;
 		//
 		tooltip_text=event_description[mouse_in_event][roadmap_area];
@@ -169,13 +169,19 @@ if event_transition>-1 and fade_black<1 {
 		money_add=0;
 	}
 	if event_transition=ref_event_victory or event_transition=ref_event_defeat { fade_black+=0.005; }
+	else if event_transition=ref_mainmenu { fade_black+=0.01; }
 	else { fade_black+=0.04; }
 }
 else if event_transition=-1 and fade_black>0 {
 	fade_black-=0.04;
 }
 else if event_transition>-1 and fade_black>=1 {
-	if event_transition=ref_event_battle {
+	if event_transition=ref_mainmenu {
+		with (ob_splash) { instance_destroy(); }
+		with (ob_card_splash) { instance_destroy(); }
+		with (ob_background_tile) { instance_destroy(); }
+	}
+	else if event_transition=ref_event_battle {
 		money_add=irandom_range(150*0.8,150*1.2);
 		instance_create_layer(x,y,"instances",ob_control);
 	}
