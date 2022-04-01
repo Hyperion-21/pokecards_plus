@@ -40,7 +40,9 @@
 ✔	options menu
 ✔	save config
 ✔	main menu
-31/4+	glyphs
+✔	music
+1/4+	glyphs
+1/4+	gym area grinding
 4/4	stalemate solving
 4/4	trainer decks setup
 5/4	enemy deck shuffle
@@ -48,5 +50,4 @@
 6/4	gym decks
 7/4+	pokemon data (gen 1&2)
 8/4+	full enemy AI
-	music
 	sound effects

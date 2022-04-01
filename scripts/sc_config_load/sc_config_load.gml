@@ -20,6 +20,7 @@ option_state[opt_scaling]=i-1;
 option_state[opt_music]=true;
 option_state[opt_sound]=true;
 option_state[opt_autodeck]=true;
+option_state[opt_edge]=10;
 option_state[opt_bg_type]=0;
 //
 colorsetup_r[opt_bg_a]=59*bg_rgb_divisor;
@@ -49,6 +50,7 @@ if file_exists(config_file) {
 	if !is_undefined(ds_map_find_value(savemap,"music")) { option_state[opt_music]=ds_map_find_value(savemap,"music"); }
 	if !is_undefined(ds_map_find_value(savemap,"sound")) { option_state[opt_sound]=ds_map_find_value(savemap,"sound"); }
 	if !is_undefined(ds_map_find_value(savemap,"autodeck")) { option_state[opt_autodeck]=ds_map_find_value(savemap,"autodeck"); }
+	if !is_undefined(ds_map_find_value(savemap,"edge_shading")) { option_state[opt_edge]=ds_map_find_value(savemap,"edge_shading"); }
 	if !is_undefined(ds_map_find_value(savemap,"background_type")) { option_state[opt_bg_type]=ds_map_find_value(savemap,"background_type"); }
 	//
 	if !is_undefined(ds_map_find_value(savemap,"color_a_r")) { colorsetup_r[opt_bg_a]=ds_map_find_value(savemap,"color_a_r"); }

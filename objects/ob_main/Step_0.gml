@@ -1,12 +1,12 @@
 if mouse_check_button(mb_middle) or instance_exists(ob_splash) { cursor_hide=true; }
 else { cursor_hide=false; }
 //
-if !instance_exists(ob_splash) and audio_is_playing(ms_azalea_intro) {
+/*if !instance_exists(ob_splash) and audio_is_playing(ms_azalea_intro) {
 	var music_pos=audio_sound_get_track_position(ob_main.music_player), music_length=audio_sound_length(ob_main.music_player);
 	if music_pos<=music_length*0.005 {
 		music_player=sc_playsound(ms_azalea,100,true,true);
 	}
-}
+}*/
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if keyboard_check_pressed(vk_f5) { game_restart(); } //< delete later, testing
 if keyboard_check_pressed(vk_f4) { //< delete later, testing
@@ -16,8 +16,11 @@ if keyboard_check_pressed(vk_f4) { //< delete later, testing
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if effect_money_error>0 { effect_money_error-=0.1; }
 //
-moving_hud-=0.04;
-if moving_hud<=-1 { moving_hud=1; }
+if music_beat_margin>0 { music_beat_margin--; }
+if !instance_exists(ob_splash) and sc_music_sync()=true {
+	moving_hud--;
+	if moving_hud<=-1 { moving_hud=1; }
+}
 //
 if !instance_exists(ob_control) and money_add>0 {
 	money++;
@@ -53,13 +56,13 @@ if roadmap_generated=false {
 				}
 				//
 				if event_kind[ii][i]=-1 { event_kind[ii][i]=-1; }
-				else if event_kind[ii][i]<225 { event_kind[ii][i]=ref_event_battle; free_event=true; } //22.5%
-				else if event_kind[ii][i]<375 { event_kind[ii][i]=ref_event_freecard; free_event=true; } //15%
-				else if event_kind[ii][i]<575 { event_kind[ii][i]=ref_event_cardpack; } //20%
-				else if event_kind[ii][i]<775 { event_kind[ii][i]=ref_event_levelup; } //20%
-				else if event_kind[ii][i]<825 { event_kind[ii][i]=ref_event_evolution; } //5%
-				else if event_kind[ii][i]<975 { event_kind[ii][i]=ref_event_glyph; } //15%
-				else if event_kind[ii][i]<1000 { event_kind[ii][i]=ref_event_tribute; } //2.5%
+				else if event_kind[ii][i]<230 { event_kind[ii][i]=ref_event_battle; free_event=true; } //23%
+				else if event_kind[ii][i]<380 { event_kind[ii][i]=ref_event_freecard; free_event=true; } //15%
+				else if event_kind[ii][i]<580 { event_kind[ii][i]=ref_event_cardpack; } //20%
+				else if event_kind[ii][i]<780 { event_kind[ii][i]=ref_event_levelup; } //20%
+				else if event_kind[ii][i]<830 { event_kind[ii][i]=ref_event_evolution; } //5%
+				else if event_kind[ii][i]<980 { event_kind[ii][i]=ref_event_glyph; } //15%
+				else if event_kind[ii][i]<1000 { event_kind[ii][i]=ref_event_tribute; } //2%
 				//
 				if event_kind[ii][i]=ref_event_glyph { event_glyph_add[ii][i]=sc_glyph_random(); }
 				else { event_glyph_add[ii][i]=-1; }
@@ -83,6 +86,10 @@ if roadmap_generated=false {
 		event_kind[1][0]=ref_event_fire;
 		event_kind[2][0]=ref_event_water;
 		location_type[0]=13; //lab
+		event_kind[0][1]=ref_event_cardpack;
+		event_kind[1][1]=ref_event_battle;
+		event_kind[2][1]=ref_event_levelup;
+		location_type[1]=00; //forest
 	}
 	//
 	location_type[roadmap_area_max-1]=15; //city
@@ -178,8 +185,8 @@ if event_transition>-1 and fade_black<1 {
 		money+=money_add;
 		money_add=0;
 	}
-	if event_transition=ref_event_victory or event_transition=ref_event_defeat { fade_black+=0.005; }
-	else if event_transition=ref_mainmenu { fade_black+=0.01; }
+	if event_transition=ref_event_victory or event_transition=ref_event_defeat { fade_black+=0.0025; }
+	else if event_transition=ref_mainmenu or event_transition=ref_event_battle { fade_black+=0.012; }
 	else { fade_black+=0.04; }
 }
 else if event_transition=-1 and fade_black>0 {
@@ -194,6 +201,7 @@ else if event_transition>-1 and fade_black>=1 {
 	else if event_transition=ref_event_battle {
 		money_add=irandom_range(150*0.8,150*1.2);
 		instance_create_layer(x,y,"instances",ob_control);
+		music_player=sc_playsound(ms_battle,100,true,true);
 	}
 	else if event_transition=ref_event_victory or event_transition=ref_event_defeat {
 		//destroy everything except ob_main and ob_background
@@ -206,6 +214,7 @@ else if event_transition>-1 and fade_black>=1 {
 		with (ob_damage_num) { instance_destroy(); }
 		//
 		if event_transition=ref_event_defeat { money_add=0; }
+		music_player=sc_playsound(ms_main,100,true,true);
 		roadmap_area++;
 		//sc_data_save();
 	}
@@ -236,6 +245,7 @@ else if event_transition=-1 and fade_black<=0 {
 			money_subtract=event_cost[event_kind[mouse_in_event][roadmap_area]];
 			//
 			if event_transition=ref_event_glyph { current_glyph_add=event_glyph_add[mouse_in_event][roadmap_area]; }
+			if event_transition=ref_event_battle { music_player=sc_playsound(ms_battle_intro,100,false,true); }
 		}
 		else if money<event_cost[event_kind[mouse_in_event][roadmap_area]] {
 			effect_money_error=1;
@@ -363,9 +373,20 @@ repeat (options_total) {
 				}
 				window_set_size(512*(option_state[i]),288*(option_state[i]));
 			}
-			else if i=opt_autodeck or i=opt_music or i=opt_sound {
+			else if i=opt_autodeck or i=opt_sound {
 				if option_state[i]=false { option_state[i]=true; }
 				else { option_state[i]=false; }
+			}
+			else if i=opt_music {
+				if option_state[i]=false {
+					option_state[i]=true;
+					music_player=sc_playsound(ms_main,100,true,true);
+				}
+				else {
+					option_state[i]=false;
+					//still plays at volume 0 to keep the beat animations
+					music_player=sc_playsound(ms_main,100,true,true);
+				}
 			}
 			else if i=opt_bg_type {
 				if mouse_check_button_pressed(mb_left) {
@@ -375,6 +396,16 @@ repeat (options_total) {
 				else if mouse_check_button_pressed(mb_right) {
 					option_state[i]--;
 					if option_state[i]<0 { option_state[i]=2; }
+				}
+			}
+		}
+		else if mouse_check_button(mb_left) or mouse_check_button(mb_right) {
+			if i=opt_edge {
+				if mouse_check_button(mb_left) and option_state[i]<100 {
+					option_state[i]++;
+				}
+				else if mouse_check_button(mb_right) and option_state[i]>0 {
+					option_state[i]--;
 				}
 			}
 		}
@@ -391,6 +422,9 @@ repeat (options_total) {
 	else if i=opt_autodeck {
 		if option_state[i]=true { option_state_text[i]=": GO TO DECK"; }
 		else { option_state_text[i]=": DO NOTHING"; }
+	}
+	else if i=opt_edge {
+		option_state_text[i]=": " + string(option_state[i]) + "%";
 	}
 	else if i=opt_bg_type {
 		if option_state[i]=0 { option_state_text[i]=": MOVING TILES"; }

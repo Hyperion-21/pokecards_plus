@@ -62,12 +62,14 @@ with (argument1) {
 				ob_control.player_hp=0;
 				ob_control.battler_turn=0;
 				ob_main.event_transition=ob_main.ref_event_defeat;
+				ob_main.music_player=sc_playsound(ms_defeat,100,false,true);
 			}
 			if ob_control.enemy_hp>ob_control.hp_max*2 { ob_control.enemy_hp=ob_control.hp_max*2; }
 			else if ob_control.enemy_hp<=0 {
 				ob_control.enemy_hp=0;
 				ob_control.battler_turn=0;
 				ob_main.event_transition=ob_main.ref_event_victory;
+				ob_main.music_player=sc_playsound(ms_victory,100,false,true);
 			}
 			//
 			damage_num_id.damage_num=card_atk;

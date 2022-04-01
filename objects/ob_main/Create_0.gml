@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Card League";
-game_version="v0.0.0.54";
+game_version="v0.0.0.55";
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -86,7 +86,7 @@ tooltip_lines=0;
 current_glyph_add=-1;
 innate_max=6;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-options_total=7;
+options_total=8;
 //
 opt_fullscreen=0;
 opt_vsync=1;
@@ -94,7 +94,8 @@ opt_scaling=2;
 opt_music=3;
 opt_sound=4;
 opt_autodeck=5;
-opt_bg_type=6;
+opt_edge=6;
+opt_bg_type=7;
 //
 for (var i=0; i<options_total; i++;) {
 	if i=opt_fullscreen { option_name[i]="Fullscreen"; }
@@ -103,10 +104,11 @@ for (var i=0; i<options_total; i++;) {
 	else if i=opt_music { option_name[i]="Music"; }
 	else if i=opt_sound { option_name[i]="Sound Effects"; }
 	else if i=opt_autodeck { option_name[i]="New Cards"; }
+	else if i=opt_edge { option_name[i]="Edge Shading"; }
 	else if i=opt_bg_type { option_name[i]="Battle Background Style"; }
 	//
-	option_x[i]=12;
-	option_y[i]=9+12*i;
+	option_x[i]=20;
+	option_y[i]=17+20*i;
 	option_focus[i]=false;
 	option_state_text[i]="";
 }
@@ -123,17 +125,15 @@ for (var i=0; i<colorsetup_total; i++;) {
 	else if i=opt_bg_b { colorsetup_name[i]="Battle Background Color B"; }
 	else if i=opt_bg_tile { colorsetup_name[i]="Battle Background Color C"; }
 	//
-	colorsetup_main_x[i]=12;
-	colorsetup_r_x[i]=178;
-	colorsetup_g_x[i]=216;
-	colorsetup_b_x[i]=254;
-	colorsetup_y[i]=9+12*(i+options_total);
+	colorsetup_main_x[i]=20;
+	colorsetup_r_x[i]=colorsetup_main_x[i]+166;
+	colorsetup_g_x[i]=colorsetup_r_x[i]+38;
+	colorsetup_b_x[i]=colorsetup_g_x[i]+38;
+	colorsetup_y[i]=17+12*i+20*options_total;
 	colorsetup_focus_r[i]=false;
 	colorsetup_focus_g[i]=false;
 	colorsetup_focus_b[i]=false;
 }
-//————————————————————————————————————————————————————————————————————————————————————————————————————
-music_player=sc_playsound(ms_azalea_intro,100,true,true);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 instance_create_layer(screen_main_x,screen_main_y,"instances",ob_splash);
 instance_create_layer(screen_main_x,screen_main_y,"instances",ob_background);
@@ -148,7 +148,8 @@ repeat (18) {
 }
 var i=0;
 repeat (8) {
-	instance_create_layer(screen_main_x+i*85,screen_main_y+104,"instances",ob_card_splash);
+	var card_splash_id=instance_create_layer(screen_main_x+i*85,screen_main_y+104,"instances",ob_card_splash);
+	card_splash_id.beat_direction=i mod 2;
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -158,6 +159,9 @@ sc_config_load();
 //sc_config_save();
 sc_data_load();
 //sc_data_save();
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+music_player=sc_playsound(ms_main,100,true,true);
+music_beat_margin=0;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 global.color_white=make_colour_rgb(230,230,230);
 global.color_black=make_colour_rgb(40,40,40);

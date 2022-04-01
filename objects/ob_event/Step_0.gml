@@ -105,7 +105,8 @@ if apply_event=true {
 		}
 	}
 	else if event_kind=ob_main.ref_event_glyph and card_id_space[0]!=-1 {
-		if card_id_space[0].card_glyph_c=-1 and card_id_space[0].card_innate>0 { //only checks third glyph slot
+		if card_id_space[0].card_glyph_c=-1 and card_id_space[0].card_innate>0 and
+		card_id_space[0].card_glyph_a!=glyph_add_id and card_id_space[0].card_glyph_b!=glyph_add_id and card_id_space[0].card_glyph_c!=glyph_add_id {
 			if card_id_space[0].card_glyph_a=-1 {
 				card_id_space[0].card_glyph_a=glyph_add_id;
 			}

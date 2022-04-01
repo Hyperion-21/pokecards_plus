@@ -36,7 +36,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	}
 	//
 	draw_set_halign(fa_right);
-	var money_x=road_win_x+237, money_y=road_win_y+2, money_color=global.color_card_light;
+	var money_x=road_win_x+237, money_y=road_win_y+2+rel_hud, money_color=global.color_card_light;
 	if effect_money_error>0 { money_x+=irandom_range(-2,2); money_y+=irandom_range(-2,2); money_color=global.color_damage; }
 	sc_drawtext(money_x,money_y,"$" + string(money),money_color,global.color_black,1,1,0,-1);
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -127,6 +127,8 @@ if event_transition=ref_event_victory or event_transition=ref_event_defeat {
 		sc_drawtext(screen_main_x+cam_w/2,screen_main_y+cam_h/2-10,"DEFEAT",global.color_enemy,global.color_black,1,1,0,-1);
 	}
 }
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+draw_sprite_ext(sp_border_shading,0,camera_get_view_x(view_camera[0]),camera_get_view_y(view_camera[0]),1,1,0,c_white,option_state[opt_edge]/100);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if cursor_hide=false { var mouse_alpha=1; } else { var mouse_alpha=0.5; }
 draw_sprite_general(sp_sheet,0,16*(mouse_cursor+1),16*0,16,16,mouse_x-5,mouse_y-5,1,1,0,c_white,c_white,c_white,c_white,mouse_alpha);
