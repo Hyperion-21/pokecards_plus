@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Card League";
-game_version="v0.0.0.53";
+game_version="v0.0.0.54";
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -36,6 +36,7 @@ mouse_cursor=0;
 cursor_hide=false;
 screen_transition=-1;
 auto_deck_transition=false;
+moving_hud=0;
 //
 roadmap_area_max=20;
 roadmap_get_details=true;
@@ -131,6 +132,8 @@ for (var i=0; i<colorsetup_total; i++;) {
 	colorsetup_focus_g[i]=false;
 	colorsetup_focus_b[i]=false;
 }
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+music_player=sc_playsound(ms_azalea_intro,100,true,true);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 instance_create_layer(screen_main_x,screen_main_y,"instances",ob_splash);
 instance_create_layer(screen_main_x,screen_main_y,"instances",ob_background);

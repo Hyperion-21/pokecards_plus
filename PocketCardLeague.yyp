@@ -36,6 +36,7 @@
     {"id":{"name":"sp_area","path":"sprites/sp_area/sp_area.yy",},"order":5,},
     {"id":{"name":"sp_57x80","path":"sprites/sp_57x80/sp_57x80.yy",},"order":3,},
     {"id":{"name":"se_look","path":"scripts/se_look/se_look.yy",},"order":3,},
+    {"id":{"name":"ms_azalea_intro","path":"sounds/ms_azalea_intro/ms_azalea_intro.yy",},"order":0,},
     {"id":{"name":"sp_splash_title","path":"sprites/sp_splash_title/sp_splash_title.yy",},"order":6,},
     {"id":{"name":"sc_card_attack","path":"scripts/sc_card_attack/sc_card_attack.yy",},"order":3,},
     {"id":{"name":"fn_m6x11","path":"fonts/fn_m6x11/fn_m6x11.yy",},"order":2,},
@@ -62,6 +63,7 @@
     {"id":{"name":"ob_char","path":"objects/ob_char/ob_char.yy",},"order":15,},
     {"id":{"name":"ob_button_15x16","path":"objects/ob_button_15x16/ob_button_15x16.yy",},"order":8,},
     {"id":{"name":"ob_splash","path":"objects/ob_splash/ob_splash.yy",},"order":13,},
+    {"id":{"name":"ms_azalea","path":"sounds/ms_azalea/ms_azalea.yy",},"order":1,},
     {"id":{"name":"sc_glyph_text","path":"scripts/sc_glyph_text/sc_glyph_text.yy",},"order":5,},
     {"id":{"name":"sc_setmaincolor","path":"scripts/sc_setmaincolor/sc_setmaincolor.yy",},"order":4,},
     {"id":{"name":"ob_enemy","path":"objects/ob_enemy/ob_enemy.yy",},"order":18,},
@@ -74,7 +76,7 @@
     {"name":"Windows","path":"options/windows/options_windows.yy",},
     {"name":"operagx","path":"options/operagx/options_operagx.yy",},
   ],
-  "isDnDProject": false,
+  "defaultScriptType": 1,
   "isEcma": false,
   "configs": {
     "name": "Default",
@@ -109,11 +111,11 @@
     {"targets":-1,"resourceVersion":"1.3","name":"audiogroup_default","resourceType":"GMAudioGroup",},
   ],
   "TextureGroups": [
-    {"isScaled":true,"autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,"resourceVersion":"1.3","name":"Default","resourceType":"GMTextureGroup",},
+    {"isScaled":true,"compressFormat":"bz2","autocrop":true,"border":2,"mipsToGenerate":0,"groupParent":null,"targets":-1,"resourceVersion":"1.3","name":"Default","resourceType":"GMTextureGroup",},
   ],
   "IncludedFiles": [],
   "MetaData": {
-    "IDEVersion": "2022.2.1.618",
+    "IDEVersion": "2022.3.0.624",
   },
   "resourceVersion": "1.5",
   "name": "PocketCardLeague",

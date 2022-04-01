@@ -6,6 +6,8 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	else if area_sp_x>=12 and area_sp_x<=16 { area_sp_x-=12; area_sp_y=2; }
 	else if area_sp_x>=17 { area_sp_x-=17; area_sp_y=3; }
 	//
+	var rel_hud=ceil(moving_hud)*2;
+	//
 	sc_drawrectangle(road_win_x-2,road_win_y-2,road_win_x+240,road_win_y+112,c_white,global.color_white,2,0,1,0);
 	draw_sprite_general(sp_area,0,240*area_sp_x,112*area_sp_y,240,112,road_win_x,road_win_y,1,1,0,c_white,c_white,c_white,c_white,1);
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -41,22 +43,23 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	draw_set_alpha(1);
 	//
 	var bar_amount=(roadmap_area*100)/(roadmap_area_max-1);
-	draw_healthbar(road_win_x+2,road_win_y-17,road_win_x+237,road_win_y-14,bar_amount,global.color_progress_dark,global.color_progress_light,global.color_progress_light,0,true,false);
-	draw_sprite_general(sp_sheet,0,16*1,16*11,16,16,road_win_x-2+(bar_amount*235)/100,road_win_y-24,1,1,0,c_white,c_white,c_white,c_white,1);
+	draw_healthbar(road_win_x+2,road_win_y-17-rel_hud,road_win_x+237,road_win_y-14-rel_hud,bar_amount,
+	global.color_progress_dark,global.color_progress_light,global.color_progress_light,0,true,false);
+	draw_sprite_general(sp_sheet,0,16*1,16*11,16,16,road_win_x-2+(bar_amount*235)/100,road_win_y-24-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	draw_set_font(fn_m6x11);
 	draw_set_halign(fa_center);
 	//
 	if menu_options_hover=true { var menu_alpha=1; } else { var menu_alpha=0.5; }
-	draw_sprite_general(sp_sheet,0,16*7,16*9,16,16,screen_main_x+32,screen_main_y+126,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
-	sc_drawtext(screen_main_x+40,screen_main_y+126+21,"Options",global.color_white,global.color_black,menu_alpha,menu_alpha,0,-1);
+	draw_sprite_general(sp_sheet,0,16*7,16*9,16,16,screen_main_x+32-rel_hud,screen_main_y+126,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
+	sc_drawtext(screen_main_x+40-rel_hud,screen_main_y+126+21,"Options",global.color_white,global.color_black,menu_alpha,menu_alpha,0,-1);
 	if menu_deck_hover=true { var menu_alpha=1; } else { var menu_alpha=0.5; }
-	draw_sprite_general(sp_sheet,0,16*8,16*9,16,16,screen_main_x+cam_w-48,screen_main_y+126,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
-	sc_drawtext(screen_main_x+cam_w-39,screen_main_y+126+21,"Deck",global.color_white,global.color_black,menu_alpha,menu_alpha,0,-1);
+	draw_sprite_general(sp_sheet,0,16*8,16*9,16,16,screen_main_x+cam_w-48+rel_hud,screen_main_y+126,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
+	sc_drawtext(screen_main_x+cam_w-39+rel_hud,screen_main_y+126+21,"Deck",global.color_white,global.color_black,menu_alpha,menu_alpha,0,-1);
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	// OPTIONS
 	if menu_back_options_hover=true { var menu_alpha=1; } else { var menu_alpha=0.5; }
-	draw_sprite_general(sp_sheet,0,16*8,16*9,16,16,screen_options_x+cam_w-32,screen_main_y+136,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
+	draw_sprite_general(sp_sheet,0,16*8,16*9,16,16,screen_options_x+cam_w-32+rel_hud,screen_main_y+136,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	draw_set_font(fn_matchup); //must be the same font as in mouse check for string width
 	draw_set_halign(fa_left);
@@ -96,7 +99,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	// DECK
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	if menu_back_deck_hover=true { var menu_alpha=1; } else { var menu_alpha=0.5; }
-	draw_sprite_general(sp_sheet,0,16*7,16*9,16,16,screen_deck_x+16,screen_main_y+136,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
+	draw_sprite_general(sp_sheet,0,16*7,16*9,16,16,screen_deck_x+16-rel_hud,screen_main_y+136,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	// TOOLTIP
 	//————————————————————————————————————————————————————————————————————————————————————————————————————

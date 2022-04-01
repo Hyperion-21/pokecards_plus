@@ -1,6 +1,13 @@
 if mouse_check_button(mb_middle) or instance_exists(ob_splash) { cursor_hide=true; }
 else { cursor_hide=false; }
 //
+if !instance_exists(ob_splash) and audio_is_playing(ms_azalea_intro) {
+	var music_pos=audio_sound_get_track_position(ob_main.music_player), music_length=audio_sound_length(ob_main.music_player);
+	if music_pos<=music_length*0.005 {
+		music_player=sc_playsound(ms_azalea,100,true,true);
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 if keyboard_check_pressed(vk_f5) { game_restart(); } //< delete later, testing
 if keyboard_check_pressed(vk_f4) { //< delete later, testing
 	if file_exists(config_file) { file_delete(config_file); }
@@ -8,6 +15,9 @@ if keyboard_check_pressed(vk_f4) { //< delete later, testing
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if effect_money_error>0 { effect_money_error-=0.1; }
+//
+moving_hud-=0.04;
+if moving_hud<=-1 { moving_hud=1; }
 //
 if !instance_exists(ob_control) and money_add>0 {
 	money++;
