@@ -134,13 +134,13 @@ repeat (card_hand_max+1) { //+1 to replace value when using last card when hand 
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-enemycard_maindeck_total=2;
+enemycard_maindeck_total=3;
 var i=0;
 repeat (enemycard_maindeck_total) {
 	create_card_cat=0;
 	create_card_id=10;
 	create_card_level=1;
-	create_card_glyph_a=-1;
+	create_card_glyph_a=00//-1;
 	create_card_glyph_b=-1;
 	create_card_glyph_c=-1;
 	create_card_innate=1;

@@ -2,6 +2,6 @@ function sc_AI_report(argument0) {
 /// @param report_add
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 AI_report=argument0 + "\n" + AI_report;
-AI_report=string_delete(AI_report,1000,1000);
+AI_report=string_delete(AI_report,2000,2000);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }

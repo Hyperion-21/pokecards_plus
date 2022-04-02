@@ -1,6 +1,7 @@
 if ob_main.cursor_hide=true {
 	tooltip_timer=0;
 }
+window_set_caption(string(enemycard_draw_points))
 //
 if keyboard_check_pressed(vk_f1) {
 	if AI_report_toggle=false { AI_report_toggle=true; }
@@ -129,6 +130,10 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or ob_main.cursor_hide=true) 
 				card_hold.card_trash=true;
 			}
 			else if card_hold.card_cat=0 {
+				if card_hold.card_glyph_a=00 or card_hold.card_glyph_b=00 or card_hold.card_glyph_c=00 { //glyph: lucky
+					card_draw_points+=2;
+					tooltip_timer=tooltip_timer_max;
+				}
 				card_hold.potential_x=var_cardspace_id.x;
 				card_hold.potential_y=var_cardspace_id.y;
 				var_cardspace_id.berries_total_type[0]-=card_hold.card_cost_total_type[0];

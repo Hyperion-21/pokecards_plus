@@ -182,6 +182,9 @@ if enemycard_poke_playable=true or enemycard_justberry_playable=true or enemycar
 	else if enemycard_playplan_id!=-1 {
 		enemycard_playnow_id=enemycard_playplan_id;
 		//
+		if enemycard_playnow_id.card_glyph_a=00 or enemycard_playnow_id.card_glyph_b=00 or enemycard_playnow_id.card_glyph_c=00 { //glyph: lucky
+			enemycard_draw_points+=2;
+		}
 		enemycard_playnow_id.potential_x=card_space_id[enemyspace_playplan].x;
 		enemycard_playnow_id.potential_y=card_space_id[enemyspace_playplan].y;
 		card_space_id[enemyspace_playplan].berries_total_type[0]-=enemycard_playnow_id.card_cost_total_type[0];
