@@ -1,3 +1,5 @@
+var rel_hud=ceil(ob_main.moving_hud);
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 if ob_main.cam_w<(deck_build_stored_total*60) {
 	var stored_pos=stored_x-4, mouse_pos_max=ob_main.cam_w-16-10, stored_pos_max=ob_main.cam_w-(deck_build_stored_total*60)-5;
 	var stored_x_percent=stored_pos*100/stored_pos_max;
@@ -13,8 +15,8 @@ if ob_main.cam_w<(deck_build_used_total*60) {
 	sc_drawrectangle(used_bar_x,ob_main.screen_main_y+used_y-8,used_bar_x+16,ob_main.screen_main_y+used_y-4,global.color_white,c_white,0,0.5,0,0);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-draw_sprite_general(sp_sheet,0,16*13,16*9,48,32,ob_main.screen_deck_x+38,ob_main.screen_main_y+110,1,1,0,c_white,c_white,c_white,c_white,0.5);
-draw_sprite_general(sp_sheet,0,16*16,16*9,48,32,ob_main.screen_deck_x+38,ob_main.screen_main_y+110+36,1,1,0,c_white,c_white,c_white,c_white,0.5);
+draw_sprite_general(sp_sheet,0,16*13,16*9,48,32,ob_main.screen_deck_x+38,ob_main.screen_main_y+110-rel_hud*2,1,1,0,c_white,c_white,c_white,c_white,0.5);
+draw_sprite_general(sp_sheet,0,16*16,16*9,48,32,ob_main.screen_deck_x+38,ob_main.screen_main_y+110+36+rel_hud*2,1,1,0,c_white,c_white,c_white,c_white,0.5);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 draw_set_font(fn_m3x6);
 draw_set_halign(fa_left);

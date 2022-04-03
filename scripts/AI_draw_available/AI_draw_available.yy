@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "unused",
-    "path": "folders/Scripts/tech/unused.yy",
+    "name": "AI_draw",
+    "path": "folders/Scripts/AI/AI_draw.yy",
   },
   "resourceVersion": "1.0",
-  "name": "sc_input",
+  "name": "AI_draw_available",
   "tags": [],
   "resourceType": "GMScript",
 }

@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Card League";
-game_version="v0.0.0.56";
+game_version="v0.0.0.57";
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -98,14 +98,14 @@ opt_edge=6;
 opt_bg_type=7;
 //
 for (var i=0; i<options_total; i++;) {
-	if i=opt_fullscreen { option_name[i]="Fullscreen"; }
-	else if i=opt_vsync { option_name[i]="Vertical Synchronization"; }
-	else if i=opt_scaling { option_name[i]="Window Scaling"; }
-	else if i=opt_music { option_name[i]="Music"; }
-	else if i=opt_sound { option_name[i]="Sound Effects"; }
-	else if i=opt_autodeck { option_name[i]="New Cards"; }
-	else if i=opt_edge { option_name[i]="Edge Shading"; }
-	else if i=opt_bg_type { option_name[i]="Battle Background Style"; }
+	if i=opt_fullscreen { option_name[i]="Fullscreen: "; }
+	else if i=opt_vsync { option_name[i]="Vertical Synchronization: "; }
+	else if i=opt_scaling { option_name[i]="Window Scaling: "; }
+	else if i=opt_music { option_name[i]="Music: "; }
+	else if i=opt_sound { option_name[i]="Sound Effects: "; }
+	else if i=opt_autodeck { option_name[i]="New Cards: "; }
+	else if i=opt_edge { option_name[i]="Edge Shading: "; }
+	else if i=opt_bg_type { option_name[i]="Battle Background Style: "; }
 	//
 	option_x[i]=20;
 	option_y[i]=17+20*i;
@@ -121,9 +121,9 @@ opt_bg_b=1;
 opt_bg_tile=2;
 //
 for (var i=0; i<colorsetup_total; i++;) {
-	if i=opt_bg_a { colorsetup_name[i]="Battle Background Color A"; }
-	else if i=opt_bg_b { colorsetup_name[i]="Battle Background Color B"; }
-	else if i=opt_bg_tile { colorsetup_name[i]="Battle Background Color C"; }
+	if i=opt_bg_a { colorsetup_name[i]="Battle Background Color A: "; }
+	else if i=opt_bg_b { colorsetup_name[i]="Battle Background Color B: "; }
+	else if i=opt_bg_tile { colorsetup_name[i]="Battle Background Color C: "; }
 	//
 	colorsetup_main_x[i]=20;
 	colorsetup_r_x[i]=colorsetup_main_x[i]+166;

@@ -1,11 +1,13 @@
-function se_walk(argument0,argument1,argument2) {
-/// @param id
-/// @param x
-/// @param y
+function AI_draw_available(argument0) {
+/// @param cat
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if argument0.move_x=0 and argument0.move_y=0 {
-	argument0.move_x=argument1;
-	argument0.move_y=argument2;
+if argument0=0 {
+	if enemycard_draw_points>=card_drawcost_main and enemycard_maindeck[argument0]!=-1 { return true; }
+	else { return false; }
+}
+else {
+	if enemycard_draw_points>=card_drawcost_berry and enemycard_berrydeck[argument0]!=-1 { return true; }
+	else { return false; }
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }

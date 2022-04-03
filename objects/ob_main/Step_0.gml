@@ -413,23 +413,23 @@ repeat (options_total) {
 	else { option_focus[i]=false; }
 	//
 	if i=opt_fullscreen or i=opt_vsync or i=opt_music or i=opt_sound {
-		if option_state[i]=true { option_state_text[i]=": ON"; }
-		else { option_state_text[i]=": OFF"; }
+		if option_state[i]=true { option_state_text[i]="ON"; }
+		else { option_state_text[i]="OFF"; }
 	}
 	else if i=opt_scaling {
-		option_state_text[i]=": " + string(option_state[i]);
+		option_state_text[i]=string(option_state[i]);
 	}
 	else if i=opt_autodeck {
-		if option_state[i]=true { option_state_text[i]=": GO TO DECK"; }
-		else { option_state_text[i]=": DO NOTHING"; }
+		if option_state[i]=true { option_state_text[i]="GO TO DECK"; }
+		else { option_state_text[i]="DO NOTHING"; }
 	}
 	else if i=opt_edge {
-		option_state_text[i]=": " + string(option_state[i]) + "%";
+		option_state_text[i]=string(option_state[i]) + "%";
 	}
 	else if i=opt_bg_type {
-		if option_state[i]=0 { option_state_text[i]=": MOVING TILES"; }
-		else if option_state[i]=1 { option_state_text[i]=": IDLE TILES"; }
-		else if option_state[i]=2 { option_state_text[i]=": LOCATION"; }
+		if option_state[i]=0 { option_state_text[i]="MOVING TILES"; }
+		else if option_state[i]=1 { option_state_text[i]="IDLE TILES"; }
+		else if option_state[i]=2 { option_state_text[i]="LOCATION"; }
 	}
 	//
 	i++;

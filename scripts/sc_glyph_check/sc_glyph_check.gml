@@ -1,22 +1,9 @@
-function sc_keyrepcheck(argument0) {
+function sc_glyph_check(argument0,argument1) {
+/// @param card_id
+/// @param glyph
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if argument0=global.k01 or
-	argument0=global.k02 or
-	argument0=global.k03 or
-	argument0=global.k04 or
-	argument0=global.k05 or
-	argument0=global.k06 or
-	argument0=global.k07 or
-	argument0=global.k08 or
-	argument0=global.k09 or
-	argument0=global.kup or
-	argument0=global.kdown or
-	argument0=global.kleft or
-	argument0=global.kright {
-	return(true);
-}
-else {
-	return(false);
+if argument0.card_glyph_a=argument1 or argument0.card_glyph_b=argument1 or argument0.card_glyph_c=argument1 {
+	return true;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }

@@ -29,8 +29,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "unused",
+    "path": "folders/Objects/unused.yy",
   },
   "resourceVersion": "1.0",
   "name": "ob_event_old",

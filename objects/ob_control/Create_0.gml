@@ -184,19 +184,25 @@ enemy_effect_damaged=0;
 turn_num=1;
 battler_turn=0; //0 stand-by, 1 player, 2 enemy
 enemy_turn_timer=0;
-enemy_turn_phase=-1;
-enemy_turn_phase_draw=1;
-enemy_turn_phase_play=2;
-enemy_turn_phase_attack=3;
-enemy_play_delay=0;
+//enemy_turn_phase=-1;
+//enemy_ref_phase_draw=1;
+//enemy_ref_phase_play=2;
+//enemy_ref_phase_attack=3;
+//enemy_play_delay=0;
 //
 card_draw_points=0;
 card_draw_click=false; //to avoid drawing multiple cards with a single click when their number in deck is in descending order
 enemycard_draw_points=0;
-enemycard_playplan_id=-1;
-enemyspace_playplan=-1;
 card_drawcost_main=2;
 card_drawcost_berry=1;
+//
+enemycard_playplan_id=-1;
+enemycard_discardplan_id=-1;
+enemyspace_playplan_slot=-1;
+enemyberry_playplan[0]=0; //oran
+enemyberry_playplan[1]=0; //leppa
+enemyberry_playplan[2]=0; //lum
+enemyberry_playplan[3]=0; //enigma
 //
 card_focus=-1; //id
 card_hold=-1; //id
@@ -204,14 +210,6 @@ card_focus_hand=-1;
 //
 button_sorthand=false;
 button_nextturn=false;
-//
-AI_report="";
-AI_report_toggle=false;
-AI_threshold[0]=20;
-AI_threshold[1]=100;
-AI_threshold[2]=0;
-AI_threshold[3]=0;
-AI_threshold[4]=0;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 //event_active=false;
 //reset_objects=false;

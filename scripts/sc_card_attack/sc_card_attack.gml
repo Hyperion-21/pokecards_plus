@@ -36,8 +36,8 @@ with (argument1) {
 					ob_control.card_focus=-1;
 				}
 				else {
-					enemy_turn_timer=0;
-					ob_control.enemy_turn_phase=ob_control.enemy_turn_phase_play-1; //to replace defeated card if possible
+					//enemy_turn_timer=0;
+					//ob_control.enemy_turn_phase=ob_control.enemy_ref_phase_play-1; //to replace defeated card if possible
 				}
 			}
 		}

@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "AI",
-    "path": "folders/Scripts/AI.yy",
+    "name": "Scripts",
+    "path": "folders/Scripts.yy",
   },
   "resourceVersion": "1.0",
-  "name": "sc_AI_draw",
+  "name": "sc_glyph_check",
   "tags": [],
   "resourceType": "GMScript",
 }

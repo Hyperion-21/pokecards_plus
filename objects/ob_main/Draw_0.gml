@@ -6,7 +6,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	else if area_sp_x>=12 and area_sp_x<=16 { area_sp_x-=12; area_sp_y=2; }
 	else if area_sp_x>=17 { area_sp_x-=17; area_sp_y=3; }
 	//
-	var rel_hud=ceil(moving_hud)*2;
+	var rel_hud=ceil(moving_hud);
 	//
 	sc_drawrectangle(road_win_x-2,road_win_y-2,road_win_x+240,road_win_y+112,c_white,global.color_white,2,0,1,0);
 	draw_sprite_general(sp_area,0,240*area_sp_x,112*area_sp_y,240,112,road_win_x,road_win_y,1,1,0,c_white,c_white,c_white,c_white,1);
@@ -25,7 +25,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 		else if event_kind[i][roadmap_area]=ref_event_water { event_sprite_x=16*(1+12*2); }
 		//
 		sc_drawrectangle(event_button_x[i],event_button_y[i],event_button_x[i]+42,event_button_y[i]+42,global.color_black,global.color_white,2,0.8,0.5,0);
-		draw_sprite_general(sp_sheet,0,event_sprite_x,16*13,26,26,event_button_x[i]+9,event_button_y[i]+9,1,1,0,c_white,c_white,c_white,c_white,1);
+		draw_sprite_general(sp_sheet,0,event_sprite_x,16*13,26,26,event_button_x[i]+9,event_button_y[i]+9-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
 		sc_drawtext(event_button_x[i]+22,event_button_y[i]+51,event_name[i][roadmap_area],global.color_white,global.color_black,1,1,0,-1);
 		//
 		if event_kind[i][roadmap_area]=ref_event_glyph {
@@ -51,15 +51,15 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	draw_set_halign(fa_center);
 	//
 	if menu_options_hover=true { var menu_alpha=1; } else { var menu_alpha=0.5; }
-	draw_sprite_general(sp_sheet,0,16*7,16*9,16,16,screen_main_x+32-rel_hud,screen_main_y+126,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
-	sc_drawtext(screen_main_x+40-rel_hud,screen_main_y+126+21,"Options",global.color_white,global.color_black,menu_alpha,menu_alpha,0,-1);
+	draw_sprite_general(sp_sheet,0,16*7,16*9,16,16,screen_main_x+32-rel_hud*2,screen_main_y+126,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
+	sc_drawtext(screen_main_x+40-rel_hud*2,screen_main_y+126+21,"Options",global.color_white,global.color_black,menu_alpha,menu_alpha,0,-1);
 	if menu_deck_hover=true { var menu_alpha=1; } else { var menu_alpha=0.5; }
-	draw_sprite_general(sp_sheet,0,16*8,16*9,16,16,screen_main_x+cam_w-48+rel_hud,screen_main_y+126,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
-	sc_drawtext(screen_main_x+cam_w-39+rel_hud,screen_main_y+126+21,"Deck",global.color_white,global.color_black,menu_alpha,menu_alpha,0,-1);
+	draw_sprite_general(sp_sheet,0,16*8,16*9,16,16,screen_main_x+cam_w-48+rel_hud*2,screen_main_y+126,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
+	sc_drawtext(screen_main_x+cam_w-39+rel_hud*2,screen_main_y+126+21,"Deck",global.color_white,global.color_black,menu_alpha,menu_alpha,0,-1);
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	// OPTIONS
 	if menu_back_options_hover=true { var menu_alpha=1; } else { var menu_alpha=0.5; }
-	draw_sprite_general(sp_sheet,0,16*8,16*9,16,16,screen_options_x+cam_w-32+rel_hud,screen_main_y+136,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
+	draw_sprite_general(sp_sheet,0,16*8,16*9,16,16,screen_options_x+cam_w-32+rel_hud*2,screen_main_y+136,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	draw_set_font(fn_matchup); //must be the same font as in mouse check for string width
 	draw_set_halign(fa_left);
@@ -68,29 +68,30 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	repeat (options_total) {
 		if option_focus[i]=true { var option_alpha=1; }
 		else { var option_alpha=0.5; }
-		sc_drawtext(screen_options_x+option_x[i],screen_main_y+option_y[i],option_name[i] + option_state_text[i],
+		sc_drawtext(screen_options_x+option_x[i],screen_main_y+option_y[i],option_name[i],global.color_white,global.color_black,option_alpha,option_alpha,0,-1);
+		sc_drawtext(screen_options_x+option_x[i]+string_width(option_name[i])+rel_hud*2,screen_main_y+option_y[i],option_state_text[i],
 		global.color_white,global.color_black,option_alpha,option_alpha,0,-1);
 		i++;
 	}
 	//
 	var i=0;
 	repeat (colorsetup_total) {
-		sc_drawtext(screen_options_x+colorsetup_main_x[i],screen_main_y+colorsetup_y[i],colorsetup_name[i] + ": ",
+		sc_drawtext(screen_options_x+colorsetup_main_x[i],screen_main_y+colorsetup_y[i],colorsetup_name[i],
 		make_colour_rgb(colorsetup_r[i],colorsetup_g[i],colorsetup_b[i]),global.color_black,1,1,0,-1);
 		//
 		if colorsetup_focus_r[i]=true { var option_alpha=1; }
 		else { var option_alpha=0.5; }
-		sc_drawtext(screen_options_x+colorsetup_r_x[i],screen_main_y+colorsetup_y[i],"R " + string(colorsetup_r[i]),
+		sc_drawtext(screen_options_x+colorsetup_r_x[i]+rel_hud*2,screen_main_y+colorsetup_y[i],"R " + string(colorsetup_r[i]),
 		global.color_white,global.color_black,option_alpha,option_alpha,0,-1);
 		//
 		if colorsetup_focus_g[i]=true { var option_alpha=1; }
 		else { var option_alpha=0.5; }
-		sc_drawtext(screen_options_x+colorsetup_g_x[i],screen_main_y+colorsetup_y[i],"G " + string(colorsetup_g[i]),
+		sc_drawtext(screen_options_x+colorsetup_g_x[i]+rel_hud*2,screen_main_y+colorsetup_y[i],"G " + string(colorsetup_g[i]),
 		global.color_white,global.color_black,option_alpha,option_alpha,0,-1);
 		//
 		if colorsetup_focus_b[i]=true { var option_alpha=1; }
 		else { var option_alpha=0.5; }
-		sc_drawtext(screen_options_x+colorsetup_b_x[i],screen_main_y+colorsetup_y[i],"B " + string(colorsetup_b[i]),
+		sc_drawtext(screen_options_x+colorsetup_b_x[i]+rel_hud*2,screen_main_y+colorsetup_y[i],"B " + string(colorsetup_b[i]),
 		global.color_white,global.color_black,option_alpha,option_alpha,0,-1);
 		//
 		i++;
@@ -99,7 +100,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	// DECK
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	if menu_back_deck_hover=true { var menu_alpha=1; } else { var menu_alpha=0.5; }
-	draw_sprite_general(sp_sheet,0,16*7,16*9,16,16,screen_deck_x+16-rel_hud,screen_main_y+136,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
+	draw_sprite_general(sp_sheet,0,16*7,16*9,16,16,screen_deck_x+16-rel_hud*2,screen_main_y+136,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	// TOOLTIP
 	//————————————————————————————————————————————————————————————————————————————————————————————————————

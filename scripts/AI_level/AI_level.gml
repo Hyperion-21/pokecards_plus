@@ -1,7 +1,10 @@
-function sc_AI_report(argument0) {
-/// @param report_add
+function AI_level(argument0) {
+/// @param AI_value
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-AI_report=argument0 + "\n" + AI_report;
-AI_report=string_delete(AI_report,2000,2000);
+if argument0<=20 { return 0; }
+else if argument0<=100 { return 1; }
+else if argument0<=0 { return 2; }
+else if argument0<=0 { return 3; }
+else if argument0<=0 { return 4; }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }

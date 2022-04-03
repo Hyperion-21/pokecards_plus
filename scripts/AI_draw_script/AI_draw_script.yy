@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "AI",
-    "path": "folders/Scripts/AI.yy",
+    "name": "AI_draw",
+    "path": "folders/Scripts/AI/AI_draw.yy",
   },
   "resourceVersion": "1.0",
-  "name": "sc_AI_attack",
+  "name": "AI_draw_script",
   "tags": [],
   "resourceType": "GMScript",
 }

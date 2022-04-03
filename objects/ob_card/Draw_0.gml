@@ -7,6 +7,8 @@ else if instance_exists(ob_event) { var reference_id=ob_event; }
 if effect_damaged>0 { var draw_x=x+irandom_range(-2,2), draw_y=y+irandom_range(-2,2); }
 else { var draw_x=x, draw_y=y; }
 //
+var rel_hud=ceil(ob_main.moving_hud);
+//
 var in_view=false;
 if reference_id=ob_control or
 (reference_id=ob_event and x>=ob_main.screen_main_x-60 and x<=ob_main.screen_main_x+ob_main.cam_w+60) or
@@ -144,10 +146,10 @@ else if card_cat=1 and card_face=true and in_view=true {
 		else { var num_color=global.color_white; }
 		//
 		if ob_deckbuild.deck_berry_used[card_id-3000]<ob_deckbuild.deck_berry_total[card_id-3000] {
-			draw_sprite_general(sp_sheet,0,16*9,16*9,16,16,draw_x+42,draw_y+53,1,1,0,c_white,c_white,c_white,c_white,0.8);
+			draw_sprite_general(sp_sheet,0,16*9,16*9,16,16,draw_x+42,draw_y+53-rel_hud,1,1,0,c_white,c_white,c_white,c_white,0.8);
 		}
 		if ob_deckbuild.deck_berry_used[card_id-3000]>0 {
-			draw_sprite_general(sp_sheet,0,16*10,16*9,16,16,draw_x+42,draw_y+72,1,1,0,c_white,c_white,c_white,c_white,0.8);
+			draw_sprite_general(sp_sheet,0,16*10,16*9,16,16,draw_x+42,draw_y+72+rel_hud,1,1,0,c_white,c_white,c_white,c_white,0.8);
 		}
 		sc_drawtext(draw_x+54,draw_y+64,string(ob_deckbuild.deck_berry_used[card_id-3000]),num_color,global.color_black,1,0.8,0,-1);
 	}

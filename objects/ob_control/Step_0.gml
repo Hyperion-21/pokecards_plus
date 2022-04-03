@@ -1,12 +1,6 @@
 if ob_main.cursor_hide=true {
 	tooltip_timer=0;
 }
-window_set_caption(string(enemycard_draw_points))
-//
-if keyboard_check_pressed(vk_f1) {
-	if AI_report_toggle=false { AI_report_toggle=true; }
-	else { AI_report_toggle=false; }
-}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if player_effect_damaged>0 { player_effect_damaged-=0.08; }
 if enemy_effect_damaged>0 { enemy_effect_damaged-=0.08; }
@@ -130,7 +124,7 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or ob_main.cursor_hide=true) 
 				card_hold.card_trash=true;
 			}
 			else if card_hold.card_cat=0 {
-				if card_hold.card_glyph_a=00 or card_hold.card_glyph_b=00 or card_hold.card_glyph_c=00 { //glyph: lucky
+				if sc_glyph_check(card_hold,00) { //glyph: lucky
 					card_draw_points+=2;
 					tooltip_timer=tooltip_timer_max;
 				}
@@ -177,37 +171,57 @@ if battler_turn=2 {
 	if enemy_turn_timer>0 { enemy_turn_timer--; }
 	//
 	if enemy_turn_timer=0 {
-		enemy_turn_phase++;
-		if enemy_turn_phase=0 { enemy_turn_timer=irandom_range(30,60); }
-		else if enemy_turn_phase=enemy_turn_phase_draw { enemy_turn_timer=irandom_range(45,90); }
-		else if enemy_turn_phase=enemy_turn_phase_play { enemy_turn_timer=irandom_range(15,30); }
-		else { enemy_turn_timer=4; }
-	}
-	//
-	if enemy_turn_phase=enemy_turn_phase_draw {
+		//enemy_turn_phase++;
+		/*if enemy_turn_phase=0 { enemy_turn_timer=irandom_range(30,60); }
+		else if enemy_turn_phase=enemy_ref_phase_draw { enemy_turn_timer=irandom_range(45,90); }
+		else if enemy_turn_phase=enemy_ref_phase_play { enemy_turn_timer=irandom_range(15,30); }
+		else { enemy_turn_timer=4; }*/
 		if enemycard_draw_points>0 and enemycard_hand_total<card_hand_max and (enemycard_maindeck[0]!=-1 or enemycard_berrydeck[0]!=-1) {
-			sc_AI_draw(irandom(99)+1);
+			AI_draw_script(irandom(99)+1);
+		}
+		//
+		if enemycard_playplan_id=-1 and enemycard_discardplan_id=-1 and
+		enemyberry_playplan[0]<=0 and enemyberry_playplan[1]<=0 and enemyberry_playplan[2]<=0 and enemyberry_playplan[3]<=0 {
+			AI_play_script(irandom(99)+1);
+		}
+		else {
+			AI_play(enemycard_playplan_id,enemyberry_playplan[0],enemyberry_playplan[1],enemyberry_playplan[2],enemyberry_playplan[3],enemycard_discardplan_id);
+		}
+		//
+		if turn_num>2 {
+			AI_attack_script();
 		}
 	}
 	//
-	else if enemy_turn_phase=enemy_turn_phase_play {
+	if enemy_turn_timer=0 { //still 0 = took no action
+		button_nextturn=true;
+		button_nextturn_id.button_state=1;
+	}
+	//
+	/*if enemy_turn_phase=enemy_ref_phase_draw {
+		if enemycard_draw_points>0 and enemycard_hand_total<card_hand_max and (enemycard_maindeck[0]!=-1 or enemycard_berrydeck[0]!=-1) {
+			AI_draw_script(irandom(99)+1);
+		}
+	}
+	//
+	else if enemy_turn_phase=enemy_ref_phase_play {
 		if enemy_play_delay=0 {
-			sc_AI_play(irandom(99)+1);
+			AI_play_script(irandom(99)+1);
 		}
 		else { enemy_play_delay--; }
 	}
 	//
-	else if enemy_turn_phase>=enemy_turn_phase_attack and enemy_turn_phase<=enemy_turn_phase_attack+4 {
+	else if enemy_turn_phase>=enemy_ref_phase_attack and enemy_turn_phase<=enemy_ref_phase_attack+4 {
 		if turn_num>2 {
-			sc_AI_attack(irandom(99)+1);
+			AI_attack_script();
 		}
 		else { enemy_turn_timer=0; }
 	}
 	//
-	else if enemy_turn_phase=enemy_turn_phase_attack+5 {
+	else if enemy_turn_phase=enemy_ref_phase_attack+5 {
 		button_nextturn=true;
 		button_nextturn_id.button_state=1;
-	}
+	}*/
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 // BUTTONS
@@ -252,8 +266,7 @@ if button_nextturn=true {
 		else { enemycard_draw_points=3; }
 		card_draw_points=0;
 		enemy_turn_timer=0;
-		enemy_turn_phase=-1;
-		sc_AI_report("- NEW TURN -");
+		//enemy_turn_phase=-1;
 	}
 	else if battler_turn=2 {
 		battler_turn=1;

@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "events",
-    "path": "folders/Scripts/events.yy",
+    "name": "AI_misc",
+    "path": "folders/Scripts/AI/AI_misc.yy",
   },
   "resourceVersion": "1.0",
-  "name": "se_look",
+  "name": "AI_attack_script",
   "tags": [],
   "resourceType": "GMScript",
 }

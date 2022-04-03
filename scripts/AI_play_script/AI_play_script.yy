@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "unused",
-    "path": "folders/Scripts/tech/unused.yy",
+    "name": "AI_play",
+    "path": "folders/Scripts/AI/AI_play.yy",
   },
   "resourceVersion": "1.0",
-  "name": "sc_keyname",
+  "name": "AI_play_script",
   "tags": [],
   "resourceType": "GMScript",
 }
