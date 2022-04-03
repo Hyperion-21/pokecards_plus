@@ -35,10 +35,6 @@ with (argument1) {
 				if argument0=true {
 					ob_control.card_focus=-1;
 				}
-				else {
-					//enemy_turn_timer=0;
-					//ob_control.enemy_turn_phase=ob_control.enemy_ref_phase_play-1; //to replace defeated card if possible
-				}
 			}
 		}
 		else if (argument0=true and !position_meeting(x+28,y-20,ob_card)) or (argument0=false and !position_meeting(x+28,y+100,ob_card)) {

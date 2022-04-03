@@ -134,13 +134,13 @@ repeat (card_hand_max+1) { //+1 to replace value when using last card when hand 
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-enemycard_maindeck_total=3;
+enemycard_maindeck_total=7;
 var i=0;
 repeat (enemycard_maindeck_total) {
 	create_card_cat=0;
-	create_card_id=10;
+	create_card_id=choose(1,4,7,10,13);
 	create_card_level=1;
-	create_card_glyph_a=00//-1;
+	create_card_glyph_a=-1;
 	create_card_glyph_b=-1;
 	create_card_glyph_c=-1;
 	create_card_innate=1;
@@ -175,7 +175,7 @@ tooltip_timer_max=300;
 first_turn_attack_warning=false;
 hand_full_draw_warning=false;
 //
-hp_max=20;
+hp_max=20+ob_main.area_zone*10;
 player_hp=hp_max;
 enemy_hp=hp_max;
 player_effect_damaged=0;
@@ -184,11 +184,6 @@ enemy_effect_damaged=0;
 turn_num=1;
 battler_turn=0; //0 stand-by, 1 player, 2 enemy
 enemy_turn_timer=0;
-//enemy_turn_phase=-1;
-//enemy_ref_phase_draw=1;
-//enemy_ref_phase_play=2;
-//enemy_ref_phase_attack=3;
-//enemy_play_delay=0;
 //
 card_draw_points=0;
 card_draw_click=false; //to avoid drawing multiple cards with a single click when their number in deck is in descending order

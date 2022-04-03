@@ -10,7 +10,7 @@ else if argument0=1 {
 //
 enemycard_hand_total++;
 enemycard_hand[enemycard_hand_total-1]=var_card_selected;
-//var_card_selected.card_face=true; //cheat
+var_card_selected.card_face=true; //cheat
 //
 if argument0=0 {
 	enemycard_maindeck_total--;
@@ -23,6 +23,6 @@ else if argument0=1 {
 	enemycard_draw_points-=card_drawcost_berry;
 }
 //
-enemy_turn_timer=10;
+enemy_turn_timer=irandom_range(15,30);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }

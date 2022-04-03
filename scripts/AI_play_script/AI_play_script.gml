@@ -6,11 +6,12 @@ if enemycard_draw_points>0 and enemycard_hand_total=card_hand_max and (enemycard
 	fullhand_draw=true;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-var berries_held, enemycard_atk, enemycard_def, enemycard_hp, poke_playable_in_space;
-var anypoke_playable=false, anyberry_playable=false;
+var berries_held, berries_needed_fullhand, enemycard_hp, enemycard_atk, enemycard_def, enemycard_value, poke_playable_in_space;
+var anypoke_playable=false, anyberry_playable=false, all_spaces_occupied=true;
 //
 for (var i=0; i<=3; i++;) {
 	berries_held[i]=0;
+	berries_needed_fullhand[i]=0;
 }
 //
 for (var i=0; i<enemycard_hand_total; i++;) {
@@ -20,23 +21,33 @@ for (var i=0; i<enemycard_hand_total; i++;) {
 	if enemycard_hand[i].card_cat=1 {
 		berries_held[enemycard_hand[i].card_id-3000]++;
 	}
+	else if enemycard_hand[i].card_cat=0 {
+		for (var ii=0; ii<=3; ii++;) {
+			berries_needed_fullhand[ii]+=enemycard_hand[i].card_cost_total_type[ii];
+		}
+	}
 }
 //
 for (var i=0; i<=4; i++;) {
 	if card_space_id[i].berries_total<8 and card_space_id[i].occupied=false and (berries_held[0]>0 or berries_held[1]>0 or berries_held[2]>0) {
 		anyberry_playable=true; //no enigma
 	}
+	if card_space_id[i].occupied=false {
+		all_spaces_occupied=false;
+	}
 }
 //
 var i=0;
 repeat (enemycard_hand_total) {
+	enemycard_hp[i]=-1;
 	enemycard_atk[i]=-1;
 	enemycard_def[i]=-1;
-	enemycard_hp[i]=-1;
+	enemycard_value[i]=-1;
 	if enemycard_hand[i].card_cat=0 {
+		enemycard_hp[i]=enemycard_hand[i].card_hp;
 		enemycard_atk[i]=enemycard_hand[i].card_atk;
 		enemycard_def[i]=enemycard_hand[i].card_def;
-		enemycard_hp[i]=enemycard_hand[i].card_hp;
+		enemycard_value[i]=enemycard_hand[i].card_value;
 		//
 		var ii=0;
 		repeat (5) {
@@ -63,7 +74,7 @@ repeat (enemycard_hand_total) {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 // PLAY: RANDOM POKEMON IN RANDOM SPACE
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if AI_level(argument0)<=4 and anypoke_playable=true {
+if AI_level(argument0)<=9 and anypoke_playable=true {
 	do {
 		var enemycard_playplan_slot=irandom(enemycard_hand_total-1);
 		enemyspace_playplan_slot=irandom(4);
@@ -75,7 +86,7 @@ if AI_level(argument0)<=4 and anypoke_playable=true {
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-/*else if AI_level(argument0)<=4 and anypoke_playable=true {
+/*else if AI_level(argument0)<=9 and anypoke_playable=true {
 	var i=0, enemycard_playplan_slot=-1;
 	repeat (pokecard_hand_total) {
 		if enemycard_playplan_slot=-1 or (enemycard_atk[i]>enemycard_atk[enemycard_playplan_slot]) {
@@ -85,43 +96,105 @@ if AI_level(argument0)<=4 and anypoke_playable=true {
 	}
 }*/
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-// PLAY (FULL HAND): RANDOM BERRY IN RANDOM SPACE
+// PLAY (FULL HAND): RANDOM BERRY (NOT ENIGMA) IN RANDOM SPACE
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-else if AI_level(argument0)<=4 and anypoke_playable=false and anyberry_playable=true and fullhand_draw=true {
+else if AI_level(argument0)<=9 and anypoke_playable=false and anyberry_playable=true and fullhand_draw=true {
 	do {
-		var berry_kind=irandom(2);  //no enigma
+		var berry_kind=irandom(2);
 		enemyspace_playplan_slot=irandom(4);
 	} until (berries_held[berry_kind]>0 and card_space_id[enemyspace_playplan_slot].berries_total<8 and card_space_id[enemyspace_playplan_slot].occupied=false);
 	//
 	enemyberry_playplan[berry_kind]=1;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-// PLAY (DISCARD): RANDOM BERRY > RANDOM POKEMON
+// PLAY (DISCARD): RANDOM BERRY (NOT ENIGMA) > (IF EMPTY SPACES) > RANDOM POKEMON > ENIGMA BERRY
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-else if AI_level(argument0)<=4 and anypoke_playable=false and anyberry_playable=false and fullhand_draw=true {
-	if berries_held[0]+berries_held[1]+berries_held[2]>0 { //no enigma
+else if AI_level(argument0)<=0 and anypoke_playable=false and anyberry_playable=false and fullhand_draw=true {
+	if berries_held[0]+berries_held[1]+berries_held[2]>0 {
 		do {
 			enemycard_discardplan_id=enemycard_hand[irandom(enemycard_hand_total-1)];
-		} until (enemycard_discardplan_id.card_id=3000 or enemycard_discardplan_id.card_id=3001 or enemycard_discardplan_id.card_id=3002); //no enigma
+		} until (enemycard_discardplan_id.card_id=3000 or enemycard_discardplan_id.card_id=3001 or enemycard_discardplan_id.card_id=3002);
 	}
-	else {
+	//
+	else if all_spaces_occupied=false {
 		var i=0, any_discardable=false, card_discardable;
 		repeat (enemycard_hand_total) {
-			if enemycard_hp[i]>0 { //any pokemon (checks against all berries)
+			if enemycard_hand[i].card_cat=0 {
 				card_discardable[i]=true;
 				any_discardable=true;
 			}
 			else { card_discardable[i]=false; }
 			i++;
 		}
-		//
 		if any_discardable=true {
 			do {
 				var enemycard_discardplan_slot=irandom(enemycard_hand_total-1);
 			} until (card_discardable[enemycard_discardplan_slot]=true);
 			enemycard_discardplan_id=enemycard_hand[enemycard_discardplan_slot];
 		}
+		//
+		else if berries_held[3]>0 {
+			do {
+				enemycard_discardplan_id=enemycard_hand[irandom(enemycard_hand_total-1)];
+			} until (enemycard_discardplan_id.card_id=3003);
+		}
 	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+// PLAY (DISCARD): RANDOM UNNEEDED BERRY (NOT ENIGMA) > (IF EMPTY SPACES) > WEAKEST POKEMON (WEAK) > ENIGMA BERRY > WEAKEST POKEMON (ANY)
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else if AI_level(argument0)<=9 and anypoke_playable=false and anyberry_playable=false and fullhand_draw=true {
+	if berries_held[0]>berries_needed_fullhand[0] or berries_held[1]>berries_needed_fullhand[1] or berries_held[2]>berries_needed_fullhand[2] {
+		do {
+			enemycard_discardplan_id=enemycard_hand[irandom(enemycard_hand_total-1)];
+		} until ((berries_held[0]>berries_needed_fullhand[0] and enemycard_discardplan_id.card_id=3000) or
+		(berries_held[1]>berries_needed_fullhand[1] and enemycard_discardplan_id.card_id=3001) or
+		(berries_held[2]>berries_needed_fullhand[2] and enemycard_discardplan_id.card_id=3002));
+	}
+	//
+	else if all_spaces_occupied=false {
+		var i=0, any_discardable=false, lowest_value=999;
+		repeat (enemycard_hand_total) {
+			if enemycard_hand[i].card_cat=0 and enemycard_value[i]<=lowest_value and enemycard_value[i]<10 {
+				lowest_value=enemycard_value[i];
+				any_discardable=true;
+			}
+			i++;
+		}
+		if any_discardable=true {
+			do {
+				var enemycard_discardplan_slot=irandom(enemycard_hand_total-1);
+			} until (enemycard_value[enemycard_discardplan_slot]=lowest_value);
+			enemycard_discardplan_id=enemycard_hand[enemycard_discardplan_slot];
+		}
+		//
+		else if berries_held[3]>0 {
+			do {
+				enemycard_discardplan_id=enemycard_hand[irandom(enemycard_hand_total-1)];
+			} until (enemycard_discardplan_id.card_id=3003);
+		}
+		//
+		else {
+			var i=0, any_discardable=false, lowest_value=999;
+			repeat (enemycard_hand_total) {
+				if enemycard_hand[i].card_cat=0 and enemycard_value[i]<=lowest_value {
+					lowest_value=enemycard_value[i];
+					any_discardable=true;
+				}
+				i++;
+			}
+			if any_discardable=true {
+				do {
+					var enemycard_discardplan_slot=irandom(enemycard_hand_total-1);
+				} until (enemycard_value[enemycard_discardplan_slot]=lowest_value);
+				enemycard_discardplan_id=enemycard_hand[enemycard_discardplan_slot];
+			}
+		}
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+if enemycard_playplan_id!=-1 or enemycard_discardplan_id!=-1 or enemyberry_playplan[0]>0 or enemyberry_playplan[1]>0 or enemyberry_playplan[2]>0 or enemyberry_playplan[3]>0 {
+	enemy_turn_timer=1; //to avoid ending turn
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }

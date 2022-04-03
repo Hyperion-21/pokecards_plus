@@ -10,7 +10,7 @@ do {
 		if card_focus.already_attacked=false {
 			sc_card_attack(false,card_focus);
 			card_space_check_slot=5;
-			enemy_turn_timer=10;
+			enemy_turn_timer=8;
 		}
 		else { card_space_check_slot++; }
 	}

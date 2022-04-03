@@ -80,7 +80,7 @@ if apply_event=true {
 			card_id_space[0].card_level++;
 			card_id_space[0].effect_damaged=1;
 			with (card_id_space[0]) {
-				sc_card_level_stats();
+				sc_card_level_stats_all();
 			}
 			//
 			event_applied=true;
@@ -96,7 +96,7 @@ if apply_event=true {
 			card_id_space[0].effect_damaged=1;
 			with (card_id_space[0]) {
 				sc_pokelist();
-				sc_card_level_stats();
+				sc_card_level_stats_all();
 			}
 			//
 			event_applied=true;
@@ -133,10 +133,10 @@ if apply_event=true {
 			card_id_space[0].effect_damaged=1;
 			card_id_space[1].effect_damaged=1;
 			with (card_id_space[0]) {
-				sc_card_level_stats();
+				sc_card_level_stats_all();
 			}
 			with (card_id_space[1]) {
-				sc_card_level_stats();
+				sc_card_level_stats_all();
 			}
 			//
 			event_applied=true;

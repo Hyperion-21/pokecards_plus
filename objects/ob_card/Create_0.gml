@@ -84,11 +84,12 @@ if card_cat=0 {
 			}
 		}
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
-		card_rarity=1+floor((card_base_hp*10)/30)+ceil((card_base_atk*10)/100)*2+floor((card_base_def*10)/300)*2;
-		card_rarity=card_rarity*(1+(1/9)*(card_level-1)); //level rarity: x1 to x2
+		card_value=sc_card_level_stats_main(0)+sc_card_level_stats_main(1)*2+sc_card_level_stats_main(2)*2;
+		var card_rarity=card_value*(1+(1/9)*(card_level-1)); //level rarity: x1 to x2
+		//innate value is always 1 on random cards, so it's not considered for rarity
 		//
-		var card_rarity_chance=irandom(249)+1, card_rarity_check=false;
-		if card_rarity_chance>card_rarity {
+		var card_rarity_chance=irandom(199)+1, card_rarity_check=false;
+		if card_rarity_chance=200 or card_rarity_chance>card_rarity {
 			card_rarity_check=true;
 			//
 			if card_secret=true { //1% stays
@@ -131,7 +132,7 @@ if card_cat=0 {
 		}
 	} until (card_rarity_check=true and card_name!="");
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
-	sc_card_level_stats();
+	sc_card_level_stats_all();
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if card_cat=1 {

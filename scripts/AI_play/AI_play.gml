@@ -70,6 +70,6 @@ repeat (enemycard_hand_total) {
 }
 enemycard_hand_total--;
 //
-enemy_turn_timer=10;
+enemy_turn_timer=irandom_range(15,30);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }
