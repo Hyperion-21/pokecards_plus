@@ -9,6 +9,7 @@ with (argument1) {
 			if argument0=true { card_target=instance_position(x+28,y-20,ob_card); }
 			else { card_target=instance_position(x+28,y+100,ob_card); }
 			//
+			//basic formula (atk-def + type advantage) also used in AI when checking for damage, so tweak AI if changed
 			var damage_dealt=card_atk-card_target.card_def, damage_extra_dealt=0;
 			if damage_dealt<0 { damage_dealt=0; }
 			if sc_type_bonus(card_type_a,card_type_b,card_target.card_type_a,card_target.card_type_b)=true { damage_extra_dealt=1; }

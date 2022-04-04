@@ -171,13 +171,13 @@ if battler_turn=2 {
 	if enemy_turn_timer>0 { enemy_turn_timer--; }
 	//
 	if enemy_turn_timer=0 and enemycard_draw_points>0 and enemycard_hand_total<card_hand_max and (enemycard_maindeck[0]!=-1 or enemycard_berrydeck[0]!=-1) {
-		AI_draw_script(100)//irandom(99)+1);
+		AI_draw_script();
 	}
 	//
 	if enemy_turn_timer=0 {
 		if enemycard_playplan_id=-1 and enemycard_discardplan_id=-1 and
 		enemyberry_playplan[0]<=0 and enemyberry_playplan[1]<=0 and enemyberry_playplan[2]<=0 and enemyberry_playplan[3]<=0 {
-			AI_play_script(100)//irandom(99)+1);
+			AI_play_script();
 		}
 		else {
 			AI_play(enemycard_playplan_id,enemyberry_playplan[0],enemyberry_playplan[1],enemyberry_playplan[2],enemyberry_playplan[3],enemycard_discardplan_id);

@@ -1,5 +1,5 @@
 function sc_card_level_stats_main(argument0) {
-/// @param 0_hp/1_atk/2_def
+/// @param stat //0: hp, 1: atk, 2:def
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var return_value=0;
 //

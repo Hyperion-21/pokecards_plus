@@ -1,5 +1,5 @@
-function AI_draw_script(argument0) {
-/// @param AI_value
+function AI_draw_script() {//————————————————————————————————————————————————————————————————————————————————————————————————————
+var random_value=irandom(99);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var berries_held, berries_needed_fullhand;
 var poke_held=0;
@@ -23,7 +23,7 @@ for (var i=0; i<enemycard_hand_total; i++;) {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 // DRAW: RANDOM
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if AI_level(argument0)=0 {
+if random_value<10 {
 	do {
 		var enemy_draw_cat=irandom(1);
 	} until (AI_draw_available(enemy_draw_cat));
@@ -33,7 +33,7 @@ if AI_level(argument0)=0 {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 // DRAW: AT LEAST 2 POKEMON > BERRIES IF NEEDED > POKEMON > BERRIES
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-else if AI_level(argument0)<=9 {
+else if random_value<100 {
 	if poke_held<2 and AI_draw_available(0) {
 		AI_draw(0);
 	}

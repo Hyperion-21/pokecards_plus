@@ -1,4 +1,5 @@
-function AI_attack_script() {//————————————————————————————————————————————————————————————————————————————————————————————————————
+function AI_attack_script() {
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 var card_space_check_slot=0;
 do {
 	//checks with position_meeting instead of occupied=true, because if the timer is too quick, using occupied=true with instance_position afterwards can result in the game

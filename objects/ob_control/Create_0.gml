@@ -198,6 +198,7 @@ enemyberry_playplan[0]=0; //oran
 enemyberry_playplan[1]=0; //leppa
 enemyberry_playplan[2]=0; //lum
 enemyberry_playplan[3]=0; //enigma
+space_poke_possible[0][0]=false;
 //
 card_focus=-1; //id
 card_hold=-1; //id
