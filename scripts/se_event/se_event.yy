@@ -2,8 +2,8 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "events",
-    "path": "folders/Scripts/events.yy",
+    "name": "unused",
+    "path": "folders/Scripts/unused.yy",
   },
   "resourceVersion": "1.0",
   "name": "se_event",

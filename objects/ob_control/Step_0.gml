@@ -119,12 +119,12 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or ob_main.cursor_hide=true) 
 			playing_requirements=true;
 		}
 		//
-		if (var_cardspace_id.occupied=false and playing_requirements=true) or var_cardspace_id=card_space_id[10] {
+		if (var_cardspace_id.occupy_id=-1 and playing_requirements=true) or var_cardspace_id=card_space_id[10] {
 			if var_cardspace_id=card_space_id[10] {
 				card_hold.card_trash=true;
 			}
 			else if card_hold.card_cat=0 {
-				if sc_glyph_check(card_hold,00) { //glyph: lucky
+				if sc_glyph_check(card_hold,00,true) { //glyph: lucky
 					card_draw_points+=2;
 					tooltip_timer=tooltip_timer_max;
 				}
@@ -135,7 +135,7 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or ob_main.cursor_hide=true) 
 				var_cardspace_id.berries_total_type[2]-=card_hold.card_cost_total_type[2];
 				var_cardspace_id.berries_total_type[3]-=card_hold.card_cost_total_type[3];
 				var_cardspace_id.berries_total-=card_hold.card_cost_total;
-				var_cardspace_id.occupied=true;
+				var_cardspace_id.occupy_id=card_hold;
 			}
 			else if card_hold.card_cat=1 {
 				var_cardspace_id.berries_total++;

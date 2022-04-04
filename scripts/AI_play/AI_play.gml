@@ -39,7 +39,7 @@ else if argument1>0 or argument2>0 or argument3>0 or argument4>0 {
 else if argument0!=-1 {
 	playcard_id=argument0;
 	//
-	if sc_glyph_check(playcard_id,00) { //glyph: lucky
+	if sc_glyph_check(playcard_id,00,true) { //glyph: lucky
 		enemycard_draw_points+=2;
 	}
 	playcard_id.potential_x=card_space_id[enemyspace_playplan_slot].x;
@@ -51,7 +51,7 @@ else if argument0!=-1 {
 	card_space_id[enemyspace_playplan_slot].berries_total-=playcard_id.card_cost_total;
 	playcard_id.card_face=true;
 	playcard_id.card_played=true;
-	card_space_id[enemyspace_playplan_slot].occupied=true;
+	card_space_id[enemyspace_playplan_slot].occupy_id=playcard_id;
 	card_space_id[enemyspace_playplan_slot].effect_use=1;
 	//
 	enemycard_playplan_id=-1;

@@ -63,11 +63,11 @@ if apply_event=true {
 	var i=0, card_id_space;
 	repeat (event_space_total) {
 		card_id_space[i]=-1;
-		if position_meeting(event_space_id[i].x,event_space_id[i].y,ob_card) {
+		if event_space_id[i].occupy_id!=-1 {
 			var ii=0;
 			repeat (card_event_total) {
-				if card_event[ii]=instance_position(event_space_id[i].x,event_space_id[i].y,ob_card) {
-					card_id_space[i]=instance_position(event_space_id[i].x,event_space_id[i].y,ob_card);
+				if card_event[ii]=event_space_id[i].occupy_id {
+					card_id_space[i]=event_space_id[i].occupy_id;
 				}
 				ii++;
 			}
@@ -80,7 +80,7 @@ if apply_event=true {
 			card_id_space[0].card_level++;
 			card_id_space[0].effect_damaged=1;
 			with (card_id_space[0]) {
-				sc_card_level_stats_all();
+				sc_card_level_stats_all(true,true);
 			}
 			//
 			event_applied=true;
@@ -96,7 +96,7 @@ if apply_event=true {
 			card_id_space[0].effect_damaged=1;
 			with (card_id_space[0]) {
 				sc_pokelist();
-				sc_card_level_stats_all();
+				sc_card_level_stats_all(true,true);
 			}
 			//
 			event_applied=true;
@@ -133,10 +133,10 @@ if apply_event=true {
 			card_id_space[0].effect_damaged=1;
 			card_id_space[1].effect_damaged=1;
 			with (card_id_space[0]) {
-				sc_card_level_stats_all();
+				sc_card_level_stats_all(true,true);
 			}
 			with (card_id_space[1]) {
-				sc_card_level_stats_all();
+				sc_card_level_stats_all(true,true);
 			}
 			//
 			event_applied=true;

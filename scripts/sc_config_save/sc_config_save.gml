@@ -4,6 +4,7 @@ var savemap=ds_map_create();
 //
 ds_map_add(savemap,"fullscreen",option_state[opt_fullscreen]);
 ds_map_add(savemap,"vsync",option_state[opt_vsync]);
+ds_map_add(savemap,"filter",option_state[opt_filter]);
 ds_map_add(savemap,"window_scaling",option_state[opt_scaling]);
 ds_map_add(savemap,"music",option_state[opt_music]);
 ds_map_add(savemap,"sound",option_state[opt_sound]);

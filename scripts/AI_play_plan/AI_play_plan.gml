@@ -26,9 +26,9 @@ var space_target;
 for (var i=0; i<=4; i++;) {
 	space_target[i]=false;
 	//
-	if card_space_id[i].occupied=false and (argument2=-1 or
-	(argument2=0 and card_space_id[i+5].occupied=false) or
-	(argument2=1 and card_space_id[i+5].occupied=true)) {
+	if card_space_id[i].occupy_id=-1 and (argument2=-1 or
+	(argument2=0 and card_space_id[i+5].occupy_id=-1) or
+	(argument2=1 and card_space_id[i+5].occupy_id!=-1)) {
 		space_target[i]=true;
 	}
 }
@@ -46,22 +46,31 @@ do {
 		(argument0=3 and enemycard_hand[i].card_value=highest_value and enemycard_hand[i].card_value>=argument1)) {
 			for (var ii=0; ii<=4; ii++;) {
 				//
-				var opposing_card_id=-1, turns_to_defeat=-1, turns_to_faint=-1;
-				if card_space_id[ii+5].occupied=true {
-					var opposing_card_id=instance_position(card_space_id[ii+5].x,card_space_id[ii+5].y,ob_card);
+				var opposing_card_id=-1, bonus_dmg=false, vs_bonus_dmg=false, turns_to_defeat=-1, turns_to_faint=-1;
+				if card_space_id[ii+5].occupy_id!=-1 {
+					var opposing_card_id=card_space_id[ii+5].occupy_id;
+					//
+					if sc_glyph_check(opposing_card_id,17,true) { //glyph: transform (Ditto only)
+						bonus_dmg=sc_type_bonus(enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b,enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b);
+						vs_bonus_dmg=sc_type_bonus(enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b,enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b);
+					}
+					else if sc_glyph_check(enemycard_hand[i],17,true) {
+						bonus_dmg=sc_type_bonus(opposing_card_id.card_type_a,opposing_card_id.card_type_b,opposing_card_id.card_type_a,opposing_card_id.card_type_b);
+						vs_bonus_dmg=sc_type_bonus(opposing_card_id.card_type_a,opposing_card_id.card_type_b,opposing_card_id.card_type_a,opposing_card_id.card_type_b);
+					}
+					else {
+						bonus_dmg=sc_type_bonus(enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b,opposing_card_id.card_type_a,opposing_card_id.card_type_b);
+						vs_bonus_dmg=sc_type_bonus(opposing_card_id.card_type_a,opposing_card_id.card_type_b,enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b);
+					}
 					//
 					var var_imaginary_damage=enemycard_hand[i].card_atk-opposing_card_id.card_def;
 					if var_imaginary_damage<0 { var_imaginary_damage=0; }
-					if sc_type_bonus(enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b,opposing_card_id.card_type_a,opposing_card_id.card_type_b) {
-						var_imaginary_damage++;
-					}
+					if bonus_dmg=true { var_imaginary_damage++; }
 					if var_imaginary_damage>0 { turns_to_defeat=ceil(opposing_card_id.card_hp/var_imaginary_damage); }
 					//
 					var var_imaginary_damage=opposing_card_id.card_atk-enemycard_hand[i].card_def;
 					if var_imaginary_damage<0 { var_imaginary_damage=0; }
-					if sc_type_bonus(opposing_card_id.card_type_a,opposing_card_id.card_type_b,enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b) {
-						var_imaginary_damage++;
-					}
+					if vs_bonus_dmg=true { var_imaginary_damage++; }
 					if var_imaginary_damage>0 { turns_to_faint=ceil(enemycard_hand[i].card_hp/var_imaginary_damage); }
 				}
 				//
@@ -69,20 +78,16 @@ do {
 				if space_poke_possible[ii][i]=false or space_target[ii]=false {
 					all_conditions_met=false;
 				}
-				if argument3=true and ((opposing_card_id=-1) or (opposing_card_id!=-1 and
-				!sc_type_bonus(enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b,opposing_card_id.card_type_a,opposing_card_id.card_type_b))) {
+				if argument3=true and ((opposing_card_id=-1) or (opposing_card_id!=-1 and bonus_dmg=false)) {
 					all_conditions_met=false;
 				}
-				if argument4=true and opposing_card_id!=-1 and
-				sc_type_bonus(opposing_card_id.card_type_a,opposing_card_id.card_type_b,enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b) {
+				if argument4=true and opposing_card_id!=-1 and vs_bonus_dmg=true {
 					all_conditions_met=false;
 				}
-				if argument5=true and opposing_card_id!=-1 and enemycard_hand[i].card_atk-opposing_card_id.card_def<=0 and
-				!sc_type_bonus(enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b,opposing_card_id.card_type_a,opposing_card_id.card_type_b) {
+				if argument5=true and opposing_card_id!=-1 and enemycard_hand[i].card_atk-opposing_card_id.card_def<=0 and bonus_dmg=false {
 					all_conditions_met=false;
 				}
-				if argument6=true and opposing_card_id!=-1 and (opposing_card_id.card_atk-enemycard_hand[i].card_def>0 or
-				sc_type_bonus(opposing_card_id.card_type_a,opposing_card_id.card_type_b,enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b)) {
+				if argument6=true and opposing_card_id!=-1 and (opposing_card_id.card_atk-enemycard_hand[i].card_def>0 or vs_bonus_dmg=true) {
 					all_conditions_met=false;
 				}
 				if argument7=true and (opposing_card_id=-1 or turns_to_defeat=-1 or turns_to_faint<turns_to_defeat) {

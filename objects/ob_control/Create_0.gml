@@ -140,7 +140,7 @@ repeat (enemycard_maindeck_total) {
 	create_card_cat=0;
 	create_card_id=choose(1,4,7,10,13);
 	create_card_level=1;
-	create_card_glyph_a=17//-1;
+	create_card_glyph_a=15//-1;
 	create_card_glyph_b=-1;
 	create_card_glyph_c=-1;
 	create_card_innate=1;
@@ -175,7 +175,7 @@ tooltip_timer_max=300;
 first_turn_attack_warning=false;
 hand_full_draw_warning=false;
 //
-hp_max=20+ob_main.area_zone*10;
+hp_max=2000//20+ob_main.area_zone*10;
 player_hp=hp_max;
 enemy_hp=hp_max;
 player_effect_damaged=0;

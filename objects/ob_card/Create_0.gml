@@ -37,7 +37,7 @@ if card_cat=0 {
 			else if card_id>ob_main.normal_poke_id_max { card_id+=2000-ob_main.normal_poke_id_max; } //secret cards
 			//
 			card_level=irandom_range(1,floor((ob_main.area_zone+1)/2)+1); //max: 1 2 2 3 3 4 4 5
-			card_glyph_a=17//-1;
+			card_glyph_a=15//-1;
 			card_glyph_b=-1;
 			card_glyph_c=-1;
 			card_innate=1;
@@ -50,18 +50,6 @@ if card_cat=0 {
 			card_innate=reference_id.create_card_innate;
 		}
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
-		if card_id<=386 { card_sheet=sp_poke_a; }
-		else if card_id<=2000 { card_sheet=sp_poke_b; }
-		else { card_sheet=sp_poke_c; }
-		var i=0;
-		repeat (8) {
-			card_evo[i]=-1;
-			i++;
-		}
-		card_enigma=false;
-		card_secret=false;
-		card_environment=false;
-		//
 		sc_pokelist();
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		if card_id=-1 {
@@ -132,7 +120,7 @@ if card_cat=0 {
 		}
 	} until (card_rarity_check=true and card_name!="");
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
-	sc_card_level_stats_all();
+	sc_card_level_stats_all(true,true);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if card_cat=1 {

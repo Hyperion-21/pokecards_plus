@@ -30,13 +30,13 @@ for (var i=0; i<enemycard_hand_total; i++;) {
 }
 //
 for (var i=0; i<=4; i++;) {
-	if card_space_id[i].berries_total<8 and card_space_id[i].occupied=false and (berries_held[0]>0 or berries_held[1]>0 or berries_held[2]>0) {
+	if card_space_id[i].berries_total<8 and card_space_id[i].occupy_id=-1 and (berries_held[0]>0 or berries_held[1]>0 or berries_held[2]>0) {
 		commonberry_playable=true;
 	}
-	if card_space_id[i].berries_total<8 and card_space_id[i].occupied=false and (berries_held[3]>0) {
+	if card_space_id[i].berries_total<8 and card_space_id[i].occupy_id=-1 and (berries_held[3]>0) {
 		enigmaberry_playable=true;
 	}
-	if card_space_id[i].occupied=false {
+	if card_space_id[i].occupy_id=-1 {
 		all_spaces_occupied=false;
 	}
 }
@@ -52,7 +52,7 @@ repeat (enemycard_hand_total) {
 				if space_missing_berries[iii]<0 { space_missing_berries[iii]=0; }
 			}
 			//
-			if card_space_id[ii].occupied=false and
+			if card_space_id[ii].occupy_id=-1 and
 			enemycard_hand[i].card_cost_total_type[0]<=card_space_id[ii].berries_total_type[0]+berries_held[0] and
 			enemycard_hand[i].card_cost_total_type[1]<=card_space_id[ii].berries_total_type[1]+berries_held[1] and
 			enemycard_hand[i].card_cost_total_type[2]<=card_space_id[ii].berries_total_type[2]+berries_held[2] and
@@ -107,7 +107,7 @@ else if anypoke_playable=false and commonberry_playable=true and fullhand_draw=t
 	do {
 		var berry_kind=irandom(2);
 		enemyspace_playplan_slot=irandom(4);
-	} until (berries_held[berry_kind]>0 and card_space_id[enemyspace_playplan_slot].berries_total<8 and card_space_id[enemyspace_playplan_slot].occupied=false);
+	} until (berries_held[berry_kind]>0 and card_space_id[enemyspace_playplan_slot].berries_total<8 and card_space_id[enemyspace_playplan_slot].occupy_id=-1);
 	//
 	enemyberry_playplan[berry_kind]=1;
 }
@@ -116,7 +116,7 @@ else if anypoke_playable=false and commonberry_playable=false and enigmaberry_pl
 	do {
 		var berry_kind=3;
 		enemyspace_playplan_slot=irandom(4);
-	} until (card_space_id[enemyspace_playplan_slot].berries_total<8 and card_space_id[enemyspace_playplan_slot].occupied=false);
+	} until (card_space_id[enemyspace_playplan_slot].berries_total<8 and card_space_id[enemyspace_playplan_slot].occupy_id=-1);
 	//
 	enemyberry_playplan[berry_kind]=1;
 }

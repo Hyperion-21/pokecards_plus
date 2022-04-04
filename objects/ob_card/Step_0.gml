@@ -47,6 +47,44 @@ if card_trash=true {
 	depth=300;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+if reference_id=ob_control and card_cat=0 {
+	if sc_glyph_check(id,17,false) and card_played=true { //glyph: transform (Ditto only)
+		if card_enemy=true { var i=0; } else { var i=5; }
+		repeat (5) {
+			if ob_control.card_space_id[i].occupy_id=id {
+				var vs_card=-1;
+				if (card_enemy=false and ob_control.card_space_id[i-5].occupy_id!=-1) {
+					vs_card=ob_control.card_space_id[i-5].occupy_id;
+				}
+				if (card_enemy=true and ob_control.card_space_id[i+5].occupy_id!=-1) {
+					vs_card=ob_control.card_space_id[i+5].occupy_id;
+				}
+				if sc_glyph_check(id,17,true) and vs_card!=-1 and card_id!=vs_card.card_id { //transforms only if there's no mist
+					card_id=vs_card.card_id;
+					sc_pokelist();
+					sc_card_level_stats_all(false,false);
+					card_name="Ditto";
+					effect_damaged=1;
+				}
+				else if vs_card=-1 and card_id!=132 { //transforms back even if there's mist
+					card_id=132;
+					sc_pokelist();
+					sc_card_level_stats_all(false,false);
+					effect_damaged=1;
+				}
+			}
+			i++;
+		}
+	}
+	else if sc_glyph_check(id,17,false) and card_played=false {
+		if card_id!=132 {
+			card_id=132;
+			sc_pokelist();
+			sc_card_level_stats_all(false,false);
+		}
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height and card_trash=false and card_enemy=false and reference_id=ob_control {
 	if ob_control.card_hold=-1 { ob_main.mouse_cursor=1; }
 	else { ob_main.mouse_cursor=2; }
@@ -120,11 +158,11 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 			if card_played=false {
 				var i=0;
 				do {
-					if ob_event.event_space_id[i].occupied=false {
+					if ob_event.event_space_id[i].occupy_id=-1 {
 						card_played=true;
 						potential_x=ob_event.event_space_id[i].x;
 						potential_y=ob_event.event_space_id[i].y;
-						ob_event.event_space_id[i].occupied=true;
+						ob_event.event_space_id[i].occupy_id=id;
 						ob_event.event_space_id[i].effect_use=1;
 						i=ob_event.event_space_total;
 					}
@@ -133,7 +171,7 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 			}
 			else {
 				card_played=false;
-				instance_position(x,y,ob_card_space).occupied=false;
+				instance_position(x,y,ob_card_space).occupy_id=-1;
 			}
 		}
 	}

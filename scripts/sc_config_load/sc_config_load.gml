@@ -6,6 +6,9 @@ window_set_fullscreen(option_state[opt_fullscreen]);
 option_state[opt_vsync]=true;
 display_reset(0,option_state[opt_vsync]);
 //
+option_state[opt_filter]=false;
+gpu_set_tex_filter(false);
+//
 var screen_w=display_get_width(), screen_h=display_get_height();
 var i=0, biggest_screen_size_found=false;
 do {
@@ -44,6 +47,11 @@ if file_exists(config_file) {
 	if !is_undefined(ds_map_find_value(savemap,"vsync")) {
 		option_state[opt_vsync]=ds_map_find_value(savemap,"vsync");
 		display_reset(0,option_state[opt_vsync]);
+	}
+	//
+	if !is_undefined(ds_map_find_value(savemap,"filter")) {
+		option_state[opt_filter]=ds_map_find_value(savemap,"filter");
+		gpu_set_tex_filter(option_state[opt_filter]);
 	}
 	//
 	if !is_undefined(ds_map_find_value(savemap,"window_scaling")) { option_state[opt_scaling]=ds_map_find_value(savemap,"window_scaling"); }

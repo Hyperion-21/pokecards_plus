@@ -4,10 +4,18 @@ function sc_card_attack(argument0,argument1) {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 with (argument1) {
 	if already_attacked=false and card_environment=false {
-		var card_target=-1;
-		if (argument0=true and position_meeting(x+28,y-20,ob_card)) or (argument0=false and position_meeting(x+28,y+100,ob_card)) {
-			if argument0=true { card_target=instance_position(x+28,y-20,ob_card); }
-			else { card_target=instance_position(x+28,y+100,ob_card); }
+		var card_target=-1, card_space_slot=-1;
+		if card_enemy=true { var i=0; } else { var i=5; }
+		repeat (5) {
+			if ob_control.card_space_id[i].occupy_id=id {
+				card_space_slot=i;
+			}
+			i++;
+		}
+		//
+		if (argument0=true and ob_control.card_space_id[card_space_slot-5].occupy_id!=-1) or (argument0=false and ob_control.card_space_id[card_space_slot+5].occupy_id!=-1) {
+			if argument0=true { card_target=ob_control.card_space_id[card_space_slot-5].occupy_id; }
+			else { card_target=ob_control.card_space_id[card_space_slot+5].occupy_id; }
 			//
 			//basic formula (atk-def + type advantage) also used in AI when checking for damage, so tweak AI if changed
 			var damage_dealt=card_atk-card_target.card_def, damage_extra_dealt=0;
@@ -23,27 +31,27 @@ with (argument1) {
 			damage_num_id.text_color=global.color_damage;
 			//
 			if card_target.card_hp<=0 {
-				if sc_glyph_check(card_target,17) { //glyph: memento
+				if sc_glyph_check(card_target,15,true) { //glyph: memento
 					if card_target.card_enemy=false {
 						ob_control.card_draw_points+=2;
 					}
 					else { ob_control.enemycard_draw_points+=2; }
 				}
-				instance_position(card_target.x,card_target.y,ob_card_space).occupied=false;
+				instance_position(card_target.x,card_target.y,ob_card_space).occupy_id=-1;
 				instance_position(card_target.x,card_target.y,ob_card_space).effect_use=1;
 				ob_control.card_space_id[10].effect_use=1;
 				card_target.card_trash=true;
 			}
 			if card_hp<=0 {
-				if sc_glyph_check(id,17) { //glyph: memento
+				if sc_glyph_check(id,15,true) { //glyph: memento
 					if card_enemy=false {
 						ob_control.card_draw_points+=2;
 						ob_control.tooltip_timer=ob_control.tooltip_timer_max;
 					}
 					else { ob_control.enemycard_draw_points+=2; }
 				}
-				instance_position(x,y,ob_card_space).occupied=false;
-				instance_position(x,y,ob_card_space).effect_use=1;
+				ob_control.card_space_id[card_space_slot].occupy_id=-1;
+				ob_control.card_space_id[card_space_slot].effect_use=1;
 				ob_control.card_space_id[10].effect_use=1;
 				card_trash=true;
 				if argument0=true {
@@ -51,7 +59,7 @@ with (argument1) {
 				}
 			}
 		}
-		else if (argument0=true and !position_meeting(x+28,y-20,ob_card)) or (argument0=false and !position_meeting(x+28,y+100,ob_card)) {
+		else if (argument0=true and ob_control.card_space_id[card_space_slot-5].occupy_id=-1) or (argument0=false and ob_control.card_space_id[card_space_slot+5].occupy_id=-1) {
 			if argument0=true {
 				ob_control.enemy_hp-=card_atk;
 				ob_control.player_hp+=card_atk;

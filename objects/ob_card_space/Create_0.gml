@@ -1,6 +1,6 @@
 depth=300;
 //
-occupied=false;
+occupy_id=-1;
 trash=false;
 effect_use=0;
 berries_total=0;

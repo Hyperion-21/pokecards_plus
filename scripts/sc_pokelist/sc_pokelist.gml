@@ -3,6 +3,18 @@ function sc_pokelist() {
 //00 normal, 01 grass, 02 fire, 03 water, 04 electric, 05 flying, 06 fighting, 07 psychic, 08 fairy
 //09 ground, 10 rock, 11 bug, 12 poison, 13 ice, 14 dragon, 15 steel, 16 ghost, 17 dark
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+if card_id<=386 { card_sheet=sp_poke_a; }
+else if card_id<=2000 { card_sheet=sp_poke_b; }
+else { card_sheet=sp_poke_c; }
+var i=0;
+repeat (8) {
+	card_evo[i]=-1;
+	i++;
+}
+card_enigma=false;
+card_secret=false;
+card_environment=false;
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 switch (card_id) {
 	case 001:
 		card_name="Bulbasaur";
@@ -654,14 +666,14 @@ switch (card_id) {
 		card_grid_x=3; card_grid_y=11; break;
 	case 109:
 		card_name="Koffing";
-		card_stage=1; card_evo[0]=110; card_glyph_a=18;
+		card_stage=1; card_evo[0]=110; card_glyph_a=16;
 		card_type_a=12; card_type_b=-1;
 		card_base_hp=40; card_base_atk=65+60; card_base_def=95+45;
 		card_grid_x=4; card_grid_y=11; break;
 	case 110:
 		card_name="Weezing";
 		card_stage=2;
-		card_type_a=12; card_type_b=-1; card_glyph_a=18;
+		card_type_a=12; card_type_b=-1; card_glyph_a=16;
 		card_base_hp=65; card_base_atk=90+85; card_base_def=120+70;
 		card_grid_x=5; card_grid_y=11; break;
 	case 111:
@@ -793,7 +805,7 @@ switch (card_id) {
 	case 132:
 		card_name="Ditto";
 		card_stage=1;
-		card_type_a=00; card_type_b=-1; card_glyph_a=19;
+		card_type_a=00; card_type_b=-1; card_glyph_a=17;
 		card_base_hp=48; card_base_atk=48+48; card_base_def=48+48;
 		card_grid_x=15; card_grid_y=12; break;
 	case 133:

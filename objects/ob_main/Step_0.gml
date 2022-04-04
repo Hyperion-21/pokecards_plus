@@ -364,6 +364,11 @@ repeat (options_total) {
 				else { option_state[i]=false; }
 				display_reset(0,option_state[i]);
 			}
+			else if i=opt_filter {
+				if option_state[i]=false { option_state[i]=true; }
+				else { option_state[i]=false; }
+				gpu_set_tex_filter(option_state[i]);
+			}
 			else if i=opt_scaling {
 				if mouse_check_button_pressed(mb_left) and 512*(option_state[i]+1)<display_get_width() and 288*(option_state[i]+1)<display_get_height() {
 					option_state[i]++;
@@ -412,7 +417,7 @@ repeat (options_total) {
 	}
 	else { option_focus[i]=false; }
 	//
-	if i=opt_fullscreen or i=opt_vsync or i=opt_music or i=opt_sound {
+	if i=opt_fullscreen or i=opt_vsync or i=opt_filter or i=opt_music or i=opt_sound {
 		if option_state[i]=true { option_state_text[i]="ON"; }
 		else { option_state_text[i]="OFF"; }
 	}

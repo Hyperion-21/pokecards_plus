@@ -1,6 +1,6 @@
 randomize(); //random seed
-game_name="Pocket Card League";
-game_version="v0.0.0.60";
+game_name="Pocket Crystal League";
+game_version="v0.0.0.61";
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -86,20 +86,22 @@ tooltip_lines=0;
 current_glyph_add=-1;
 innate_max=6;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-options_total=8;
+options_total=9;
 //
 opt_fullscreen=0;
 opt_vsync=1;
-opt_scaling=2;
-opt_music=3;
-opt_sound=4;
-opt_autodeck=5;
-opt_edge=6;
-opt_bg_type=7;
+opt_filter=2;
+opt_scaling=3;
+opt_music=4;
+opt_sound=5;
+opt_autodeck=6;
+opt_edge=7;
+opt_bg_type=8;
 //
 for (var i=0; i<options_total; i++;) {
 	if i=opt_fullscreen { option_name[i]="Fullscreen: "; }
 	else if i=opt_vsync { option_name[i]="Vertical Synchronization: "; }
+	else if i=opt_filter { option_name[i]="Pixel Interpolation: "; }
 	else if i=opt_scaling { option_name[i]="Window Scaling: "; }
 	else if i=opt_music { option_name[i]="Music: "; }
 	else if i=opt_sound { option_name[i]="Sound Effects: "; }
