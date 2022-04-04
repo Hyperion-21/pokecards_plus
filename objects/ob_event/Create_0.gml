@@ -40,15 +40,19 @@ else if event_kind=ob_main.ref_event_grass or event_kind=ob_main.ref_event_fire 
 	card_prize=10;
 	var i=0;
 	repeat (card_prize) {
-		if i<=4 {
+		if i<=6 {
 			create_card_cat=0;
-			if i=0 and event_kind=ob_main.ref_event_grass { create_card_id=choose(001,152); } //grass starter
-			else if i=0 and event_kind=ob_main.ref_event_fire { create_card_id=choose(004,155); } //fire starter
-			else if i=0 and event_kind=ob_main.ref_event_water { create_card_id=choose(007,158); } //water starter
-			else if i=1 { create_card_id=016; } //pidgey
-			else if i=2 { create_card_id=019; } //rattata
-			else if i=3 { create_card_id=010; } //caterpie
-			else if i=4 { create_card_id=013; } //weedle
+			if i=0 and event_kind=ob_main.ref_event_grass { create_card_id=001; } //bulbasaur
+			else if i=1 and event_kind=ob_main.ref_event_grass { create_card_id=152; } //chikorita
+			else if i=0 and event_kind=ob_main.ref_event_fire { create_card_id=004; } //charmander
+			else if i=1 and event_kind=ob_main.ref_event_fire { create_card_id=155; } //cyndaquil
+			else if i=0 and event_kind=ob_main.ref_event_water { create_card_id=007; } //squirtle
+			else if i=1 and event_kind=ob_main.ref_event_water { create_card_id=158; } //totodile
+			else if i=2 { create_card_id=016; } //pidgey
+			else if i=3 { create_card_id=021; } //spearow
+			else if i=4 { create_card_id=019; } //rattata
+			else if i=5 { create_card_id=010; } //caterpie
+			else if i=6 { create_card_id=013; } //weedle
 			create_card_level=1;
 			create_card_glyph_a=-1;
 			create_card_glyph_b=-1;
@@ -57,8 +61,8 @@ else if event_kind=ob_main.ref_event_grass or event_kind=ob_main.ref_event_fire 
 		}
 		else {
 			create_card_cat=1;
-			if i<=6 { create_card_id=3000; } //oran
-			else if i<=8 { create_card_id=3001; } //leppa
+			if i=7 { create_card_id=3000; } //oran
+			else if i=8 { create_card_id=3001; } //leppa
 			else { create_card_id=3002; } //lum
 		}
 		//

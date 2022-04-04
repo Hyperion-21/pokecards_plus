@@ -1,4 +1,4 @@
-function AI_play_plan(argument0,argument1,argument2,argument3,argument4,argument5,argument6) {
+function AI_play_plan(argument0,argument1,argument2,argument3,argument4,argument5,argument6,argument7) {
 /// @param ref_stat_priority //-1: any poke, 0: hp, 1: atk, 2: def, 3: value
 /// @param stat_priority_min
 /// @param ref_space_type //-1: any space, 0: vs empty space, 1: vs occupied space
@@ -6,6 +6,7 @@ function AI_play_plan(argument0,argument1,argument2,argument3,argument4,argument
 /// @param receiving_no_type_advantage_only
 /// @param dealing_damage_only
 /// @param receiving_no_damage_only
+/// @param turn_advantage_only
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var highest_value=0;
 //
@@ -45,9 +46,23 @@ do {
 		(argument0=3 and enemycard_hand[i].card_value=highest_value and enemycard_hand[i].card_value>=argument1)) {
 			for (var ii=0; ii<=4; ii++;) {
 				//
-				var opposing_card_id=-1;
+				var opposing_card_id=-1, turns_to_defeat=-1, turns_to_faint=-1;
 				if card_space_id[ii+5].occupied=true {
 					var opposing_card_id=instance_position(card_space_id[ii+5].x,card_space_id[ii+5].y,ob_card);
+					//
+					var var_imaginary_damage=enemycard_hand[i].card_atk-opposing_card_id.card_def;
+					if var_imaginary_damage<0 { var_imaginary_damage=0; }
+					if sc_type_bonus(enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b,opposing_card_id.card_type_a,opposing_card_id.card_type_b) {
+						var_imaginary_damage++;
+					}
+					if var_imaginary_damage>0 { turns_to_defeat=ceil(opposing_card_id.card_hp/var_imaginary_damage); }
+					//
+					var var_imaginary_damage=opposing_card_id.card_atk-enemycard_hand[i].card_def;
+					if var_imaginary_damage<0 { var_imaginary_damage=0; }
+					if sc_type_bonus(opposing_card_id.card_type_a,opposing_card_id.card_type_b,enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b) {
+						var_imaginary_damage++;
+					}
+					if var_imaginary_damage>0 { turns_to_faint=ceil(enemycard_hand[i].card_hp/var_imaginary_damage); }
 				}
 				//
 				var all_conditions_met=true;
@@ -68,6 +83,9 @@ do {
 				}
 				if argument6=true and opposing_card_id!=-1 and (opposing_card_id.card_atk-enemycard_hand[i].card_def>0 or
 				sc_type_bonus(opposing_card_id.card_type_a,opposing_card_id.card_type_b,enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b)) {
+					all_conditions_met=false;
+				}
+				if argument7=true and (opposing_card_id=-1 or turns_to_defeat=-1 or turns_to_faint<turns_to_defeat) {
 					all_conditions_met=false;
 				}
 				//

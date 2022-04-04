@@ -1,6 +1,7 @@
 //ob_splash
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 draw_sprite_ext(sp_splash_title,0,x,y+text_rel_y,1,1,0,text_color,1);
+draw_sprite_ext(sp_splash_title_kana,0,x+(ob_main.cam_w/2-78),y+201,1,1,0,text_color,1);
 //
 draw_set_halign(fa_right);
 draw_set_font(fn_m3x6);

@@ -37,7 +37,7 @@ if card_cat=0 {
 			else if card_id>ob_main.normal_poke_id_max { card_id+=2000-ob_main.normal_poke_id_max; } //secret cards
 			//
 			card_level=irandom_range(1,floor((ob_main.area_zone+1)/2)+1); //max: 1 2 2 3 3 4 4 5
-			card_glyph_a=00//-1;
+			card_glyph_a=17//-1;
 			card_glyph_b=-1;
 			card_glyph_c=-1;
 			card_innate=1;

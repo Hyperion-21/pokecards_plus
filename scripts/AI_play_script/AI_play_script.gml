@@ -71,27 +71,33 @@ repeat (enemycard_hand_total) {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if anypoke_playable=true {
 	if random_value<40 { //AGGRESIVE: DIRECT
-		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,0,false,false,false,false); } //HIGHEST ATK VS EMPTY SPACE
-		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,true,true,true,false); } //HIGHEST ATK VS DEALING TYPE ADVANTAGE BONUS AND RECEIVING NO TYPE ADVANTAGE BONUS DAMAGE FROM POKEMON
-		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,true,false,true,false); } //HIGHEST ATK VS DEALING TYPE ADVANTAGE BONUS
-		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,1,false,false,false,true); } //HIGHEST DEF VS RECEIVING NO DAMAGE FROM POKEMON
-		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,1,false,true,false,false); } //HIGHEST DEF VS RECEIVING NO TYPE ADVANTAGE BONUS DAMAGE FROM POKEMON
+		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,0,false,false,false,false,false); } //HIGHEST ATK > EMPTY
+		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,true,true,true,false,true); } //HIGHEST ATK > VS > DEAL BONUS, RECEIVE NO BONUS AND TURN ADVANTAGE
+		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,true,false,true,false,true); } //HIGHEST ATK > VS > DEAL BONUS AND TURN ADVANTAGE
+		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,true,true,true,false,false); } //HIGHEST ATK > VS > DEAL BONUS AND RECEIVE NO BONUS
+		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,true,false,true,false,false); } //HIGHEST ATK > VS > DEAL BONUS
+		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,1,false,false,false,true,false); } //HIGHEST DEF > VS > RECEIVE NO DAMAGE
+		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,1,false,true,false,false,false); } //HIGHEST DEF > VS > RECEIVE NO BONUS
 	}
 	else if random_value<80 { //AGGRESIVE: VS POKEMON
-		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,true,true,true,false); } //HIGHEST ATK VS DEALING TYPE ADVANTAGE BONUS AND RECEIVING NO TYPE ADVANTAGE BONUS DAMAGE FROM POKEMON
-		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,true,false,true,false); } //HIGHEST ATK VS DEALING TYPE ADVANTAGE BONUS
-		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,0,false,false,false,false); } //HIGHEST ATK VS EMPTY SPACE
-		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,1,false,false,false,true); } //HIGHEST DEF VS RECEIVING NO DAMAGE FROM POKEMON
-		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,1,false,true,false,false); } //HIGHEST DEF VS RECEIVING NO TYPE ADVANTAGE BONUS DAMAGE FROM POKEMON
+		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,true,true,true,false,true); } //HIGHEST ATK > VS > DEAL BONUS, RECEIVE NO BONUS AND TURN ADVANTAGE
+		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,true,false,true,false,true); } //HIGHEST ATK > VS > DEAL BONUS AND TURN ADVANTAGE
+		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,true,true,true,false,false); } //HIGHEST ATK > VS > DEAL BONUS AND RECEIVE NO BONUS
+		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,true,false,true,false,false); } //HIGHEST ATK > VS > DEAL BONUS
+		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,0,false,false,false,false,false); } //HIGHEST ATK > EMPTY
+		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,1,false,false,false,true,false); } //HIGHEST DEF > VS > RECEIVE NO DAMAGE
+		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,1,false,true,false,false,false); } //HIGHEST DEF > VS > RECEIVE NO BONUS
 	}
 	else if random_value<100 { //DEFENSIVE
-		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,1,false,false,false,true); } //HIGHEST DEF VS RECEIVING NO DAMAGE FROM POKEMON
-		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,1,false,true,false,false); } //HIGHEST DEF VS RECEIVING NO TYPE ADVANTAGE BONUS DAMAGE FROM POKEMON
-		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,true,true,true,false); } //HIGHEST ATK VS DEALING TYPE ADVANTAGE BONUS AND RECEIVING NO TYPE ADVANTAGE BONUS DAMAGE FROM POKEMON
-		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,true,false,true,false); } //HIGHEST ATK VS DEALING TYPE ADVANTAGE BONUS
-		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,0,false,false,false,false); } //HIGHEST ATK VS EMPTY SPACE
+		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,1,false,false,false,true,false); } //HIGHEST DEF > VS > RECEIVE NO DAMAGE
+		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,1,false,true,false,false,false); } //HIGHEST DEF > VS > RECEIVE NO BONUS
+		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,true,true,true,false,true); } //HIGHEST ATK > VS > DEAL BONUS, RECEIVE NO BONUS AND TURN ADVANTAGE
+		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,true,false,true,false,true); } //HIGHEST ATK > VS > DEAL BONUS AND TURN ADVANTAGE
+		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,true,true,true,false,false); } //HIGHEST ATK > VS > DEAL BONUS AND RECEIVE NO BONUS
+		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,true,false,true,false,false); } //HIGHEST ATK > VS > DEAL BONUS
+		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,0,false,false,false,false,false); } //HIGHEST ATK > EMPTY
 	}
-	if enemycard_playplan_id=-1 { AI_play_plan(3,-1,-1,false,false,false,false); } //HIGHEST VALUE IN RANDOM SPACE
+	if enemycard_playplan_id=-1 { AI_play_plan(3,-1,-1,false,false,false,false,false); } //HIGHEST VALUE > RANDOM SPACE
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 // PLAY (FULL HAND)

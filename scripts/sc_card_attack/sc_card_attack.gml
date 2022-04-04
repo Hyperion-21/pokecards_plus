@@ -23,12 +23,25 @@ with (argument1) {
 			damage_num_id.text_color=global.color_damage;
 			//
 			if card_target.card_hp<=0 {
+				if sc_glyph_check(card_target,17) { //glyph: memento
+					if card_target.card_enemy=false {
+						ob_control.card_draw_points+=2;
+					}
+					else { ob_control.enemycard_draw_points+=2; }
+				}
 				instance_position(card_target.x,card_target.y,ob_card_space).occupied=false;
 				instance_position(card_target.x,card_target.y,ob_card_space).effect_use=1;
 				ob_control.card_space_id[10].effect_use=1;
 				card_target.card_trash=true;
 			}
 			if card_hp<=0 {
+				if sc_glyph_check(id,17) { //glyph: memento
+					if card_enemy=false {
+						ob_control.card_draw_points+=2;
+						ob_control.tooltip_timer=ob_control.tooltip_timer_max;
+					}
+					else { ob_control.enemycard_draw_points+=2; }
+				}
 				instance_position(x,y,ob_card_space).occupied=false;
 				instance_position(x,y,ob_card_space).effect_use=1;
 				ob_control.card_space_id[10].effect_use=1;
