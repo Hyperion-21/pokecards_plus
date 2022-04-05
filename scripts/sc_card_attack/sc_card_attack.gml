@@ -30,59 +30,67 @@ with (argument1) {
 			damage_num_id.text_alpha=damage_num_id.text_alpha_full;
 			damage_num_id.text_color=global.color_damage;
 			//
-			if card_target.card_hp<=0 {
-				if sc_glyph_check(card_target,01,true) { //glyph: harvest
-					if card_target.card_enemy=false {
-						for (var i=0; i<=3; i++;) {
-							ob_control.berry_spawn[i]+=card_target.card_cost_total_type[i];
+			var i=0;
+			repeat (2) {
+				if i=0 { var card_faint_check=card_target; }
+				else { var card_faint_check=id; } //for counterattacks and such
+				//
+				if card_faint_check.card_hp<=0 {
+					if sc_glyph_check(card_faint_check,01,true) { //glyph: harvest
+						if card_faint_check.card_enemy=false {
+							for (var ii=0; ii<=3; ii++;) {
+								ob_control.berry_spawn[i]+=card_faint_check.card_cost_total_type[i];
+							}
 						}
+						else {
+							for (var ii=0; ii<=3; ii++;) {
+								ob_control.enemyberry_spawn[i]+=card_faint_check.card_cost_total_type[i];
+							}
+						}
+					}
+					//
+					if sc_glyph_check(card_faint_check,15,true) { //glyph: memento
+						if card_faint_check.card_enemy=false {
+							ob_control.card_draw_points+=2;
+							if card_faint_check=id { ob_control.tooltip_timer=ob_control.tooltip_timer_max; }
+						}
+						else { ob_control.enemycard_draw_points+=2; }
+					}
+					//
+					if sc_glyph_check(card_faint_check,09,true) and
+					((card_faint_check.card_enemy=false and ob_control.card_hand_total<ob_control.card_hand_max) or
+					(card_faint_check.card_enemy=true and ob_control.enemycard_hand_total<ob_control.card_hand_max)) { //glyph: tenacity
+						if card_faint_check.card_enemy=false {
+							ob_control.card_hand_total++;
+							ob_control.card_hand[ob_control.card_hand_total-1]=card_faint_check;
+						}
+						else {
+							ob_control.enemycard_hand_total++;
+							ob_control.enemycard_hand[ob_control.enemycard_hand_total-1]=card_faint_check;
+							card_faint_check.card_face=false;
+						}
+						card_faint_check.card_hp=card_faint_check.card_full_hp;
+						card_faint_check.card_played=false;
 					}
 					else {
-						for (var i=0; i<=3; i++;) {
-							ob_control.enemyberry_spawn[i]+=card_target.card_cost_total_type[i];
+						ob_control.card_space_id[10].effect_use=1;
+						card_faint_check.card_trash=true;
+						if card_faint_check=id and argument0=true {
+							ob_control.card_focus=-1;
 						}
 					}
-				}
-				//
-				if sc_glyph_check(card_target,15,true) { //glyph: memento
-					if card_target.card_enemy=false { ob_control.card_draw_points+=2; }
-					else { ob_control.enemycard_draw_points+=2; }
-				}
-				//
-				instance_position(card_target.x,card_target.y,ob_card_space).occupy_id=-1;
-				instance_position(card_target.x,card_target.y,ob_card_space).effect_use=1;
-				ob_control.card_space_id[10].effect_use=1;
-				card_target.card_trash=true;
-			}
-			if card_hp<=0 {
-				if sc_glyph_check(id,01,true) { //glyph: harvest
-					if card_enemy=false {
-						for (var i=0; i<=3; i++;) {
-							ob_control.berry_spawn[i]+=card_cost_total_type[i];
-						}
+					//
+					if card_faint_check=id {
+						ob_control.card_space_id[card_space_slot].occupy_id=-1;
+						ob_control.card_space_id[card_space_slot].effect_use=1;
 					}
 					else {
-						for (var i=0; i<=3; i++;) {
-							ob_control.enemyberry_spawn[i]+=card_cost_total_type[i];
-						}
+						instance_position(card_target.x,card_target.y,ob_card_space).occupy_id=-1;
+						instance_position(card_target.x,card_target.y,ob_card_space).effect_use=1;
 					}
 				}
 				//
-				if sc_glyph_check(id,15,true) { //glyph: memento
-					if card_enemy=false {
-						ob_control.card_draw_points+=2;
-						ob_control.tooltip_timer=ob_control.tooltip_timer_max;
-					}
-					else { ob_control.enemycard_draw_points+=2; }
-				}
-				//
-				ob_control.card_space_id[card_space_slot].occupy_id=-1;
-				ob_control.card_space_id[card_space_slot].effect_use=1;
-				ob_control.card_space_id[10].effect_use=1;
-				card_trash=true;
-				if argument0=true {
-					ob_control.card_focus=-1;
-				}
+				i++;
 			}
 		}
 		else if (argument0=true and ob_control.card_space_id[card_space_slot-5].occupy_id=-1) or (argument0=false and ob_control.card_space_id[card_space_slot+5].occupy_id=-1) {

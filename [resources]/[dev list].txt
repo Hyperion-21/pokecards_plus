@@ -43,7 +43,8 @@
 ✔	music
 ✔	event: berry shops
 2/4+	advanced enemy AI
-2/4+	glyphs [/////-------------]
+2/4+	glyphs [//////------------]
+5/4	system: mist
 7/4	event: gym area loop around
 7/4	stalemate solving
 9/4	trainer decks setup

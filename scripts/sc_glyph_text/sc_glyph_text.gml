@@ -7,11 +7,11 @@ switch (argument0) {
 		case 02: return "// WEAKNESS //\nThe opposing Pokemon's attack is lowered."; break;
 		case 03: return "// EXHAUSTION //\nThe opposing Pokemon's defense is lowered."; break;
 		case 04: return "// COURAGE //\nRaises attack of nearby friendly Pokemon."; break;
-		case 05: return "// PIERCING ATTACK //\nAttacks the enemy trainer directly."; break;
+		case 05: return "// PIERCING ATTACK //\nAlways attacks the enemy trainer directly."; break;
 		case 06: return "// COUNTERATTACK //\nWhen attacked, the enemy Pokemon is also hurt."; break;
 		case 07: return "// FORCE FIELD //\nRaises defense of nearby friendly Pokemon."; break;
 		case 08: return "// MEDIC //\nFully heals all friendly Pokemon when played."; break;
-		case 09: return "// TENACITY //\nWhen fainting, returns to your hand (if not full)."; break;
+		case 09: return "// TENACITY //\n50% chance: when fainting, returns to your hand (if not full)."; break;
 		case 10: return "// BULWARK //\nSummons rocks on each empty side when played."; break;
 		case 11: return "// FORK ATTACK //\nAttacks enemies on both sides instead of straight ahead."; break;
 		case 12: return "// VAMPIRE //\nHeals itself by absorbing life when attacking."; break;
