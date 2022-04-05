@@ -4,7 +4,7 @@ function sc_card_level_stats_main(argument0) {
 var return_value=0;
 //
 if argument0=0 { //HP
-	return_value=1+floor((card_base_hp*card_level)/30); //hp: 1/255 -> 1/9 to 1/86
+	return_value=1+floor((card_base_hp*card_level)/35); //hp: 1/255 -> 1/8 to 1/73
 	return_value+=ceil(return_value*((card_innate-1)/(ob_main.innate_max-1))); //max x2
 }
 else if argument0=1 { //ATK

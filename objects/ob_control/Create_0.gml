@@ -139,8 +139,8 @@ var i=0;
 repeat (enemycard_maindeck_total) {
 	create_card_cat=0;
 	create_card_id=choose(1,4,7,10,13);
-	create_card_level=1;
-	create_card_glyph_a=15//-1;
+	create_card_level=5//1;
+	create_card_glyph_a=01//-1;
 	create_card_glyph_b=-1;
 	create_card_glyph_c=-1;
 	create_card_innate=1;
@@ -154,7 +154,7 @@ enemycard_berrydeck_total=999;
 var i=0;
 repeat (enemycard_berrydeck_total) {
 	create_card_cat=1;
-	create_card_id=3000;
+	create_card_id=irandom_range(3000,3002);
 	//
 	enemycard_berrydeck[i]=instance_create_layer(cam_x+10,cam_y-100,"instances",ob_card);
 	enemycard_berrydeck[i].card_enemy=true;
@@ -199,6 +199,11 @@ enemyberry_playplan[1]=0; //leppa
 enemyberry_playplan[2]=0; //lum
 enemyberry_playplan[3]=0; //enigma
 space_poke_possible[0][0]=false;
+//
+for (var i=0; i<=3; i++;) {
+	berry_spawn[i]=0;
+	enemyberry_spawn[i]=0;
+}
 //
 card_focus=-1; //id
 card_hold=-1; //id

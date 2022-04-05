@@ -11,6 +11,46 @@ else if tooltip_timer=0 {
 	hand_full_draw_warning=false;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+do { //glyph: harvest
+	if card_hand_total<card_hand_max {
+		for (var i=0; i<=3; i++;) {
+			if berry_spawn[i]>0 {
+				create_card_cat=1;
+				create_card_id=3000+i;
+				var berry_spawn_id=instance_create_layer(card_space_id[10].x,card_space_id[10].y,"instances",ob_card);
+				berry_spawn_id.card_face=true;
+				//
+				ob_control.berry_spawn[i]--;
+				ob_control.card_hand_total++;
+				ob_control.card_hand[ob_control.card_hand_total-1]=berry_spawn_id;
+			}
+		}
+	}
+} until ((berry_spawn[0]=0 and berry_spawn[1]=0 and berry_spawn[2]=0 and berry_spawn[3]=0) or card_hand_total=card_hand_max);
+//
+do {
+	if enemycard_hand_total<card_hand_max {
+		for (var i=0; i<=3; i++;) {
+			if enemyberry_spawn[i]>0 {
+				create_card_cat=1;
+				create_card_id=3000+i;
+				var berry_spawn_id=instance_create_layer(card_space_id[10].x,card_space_id[10].y,"instances",ob_card);
+				berry_spawn_id.card_enemy=true;
+				//berry_spawn_id.card_face=true; //cheat
+				//
+				ob_control.enemyberry_spawn[i]--;
+				ob_control.enemycard_hand_total++;
+				ob_control.enemycard_hand[ob_control.enemycard_hand_total-1]=berry_spawn_id;
+			}
+		}
+	}
+} until ((enemyberry_spawn[0]=0 and enemyberry_spawn[1]=0 and enemyberry_spawn[2]=0 and enemyberry_spawn[3]=0) or enemycard_hand_total=card_hand_max);
+//
+for (var i=0; i<=3; i++;) {
+	berry_spawn[i]=0;
+	enemyberry_spawn[i]=0;
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 var i=0;
 repeat (card_hand_total) { //sets x coordinate in hand
 	var ii=0;

@@ -56,12 +56,14 @@ if roadmap_generated=false {
 				}
 				//
 				if event_kind[ii][i]=-1 { event_kind[ii][i]=-1; }
-				else if event_kind[ii][i]<230 { event_kind[ii][i]=ref_event_battle; free_event=true; } //23%
-				else if event_kind[ii][i]<380 { event_kind[ii][i]=ref_event_freecard; free_event=true; } //15%
-				else if event_kind[ii][i]<580 { event_kind[ii][i]=ref_event_cardpack; } //20%
-				else if event_kind[ii][i]<780 { event_kind[ii][i]=ref_event_levelup; } //20%
-				else if event_kind[ii][i]<830 { event_kind[ii][i]=ref_event_evolution; } //5%
-				else if event_kind[ii][i]<980 { event_kind[ii][i]=ref_event_glyph; } //15%
+				else if event_kind[ii][i]<400 and i=0 { event_kind[ii][i]=ref_event_battle; free_event=true; } //40% (same as battle+freecard, ensures at least 1 battle in zone)
+				else if event_kind[ii][i]<300 { event_kind[ii][i]=ref_event_battle; free_event=true; } //30%
+				else if event_kind[ii][i]<400 { event_kind[ii][i]=ref_event_freecard; free_event=true; } //10%
+				else if event_kind[ii][i]<550 { event_kind[ii][i]=ref_event_cardpack; } //15%
+				else if event_kind[ii][i]<650 { event_kind[ii][i]=ref_event_berry; } //10%
+				else if event_kind[ii][i]<800 { event_kind[ii][i]=ref_event_levelup; } //15%
+				else if event_kind[ii][i]<850 { event_kind[ii][i]=ref_event_evolution; } //5%
+				else if event_kind[ii][i]<980 { event_kind[ii][i]=ref_event_glyph; } //13%
 				else if event_kind[ii][i]<1000 { event_kind[ii][i]=ref_event_tribute; } //2%
 				//
 				if event_kind[ii][i]=ref_event_glyph { event_glyph_add[ii][i]=sc_glyph_random(); }
@@ -132,6 +134,7 @@ if roadmap_get_details=true {
 			if event_kind[ii][i]=ref_event_battle { event_name[ii][i]="Trainer\nBattle"; }
 			else if event_kind[ii][i]=ref_event_freecard { event_name[ii][i]="Free Card"; }
 			else if event_kind[ii][i]=ref_event_cardpack { event_name[ii][i]="Card Pack\n$" + string(event_cost[ref_event_cardpack]); }
+			else if event_kind[ii][i]=ref_event_berry { event_name[ii][i]="Berry Pack\n$" + string(event_cost[ref_event_berry]); }
 			else if event_kind[ii][i]=ref_event_levelup { event_name[ii][i]="Level Up\n$" + string(event_cost[ref_event_levelup]); }
 			else if event_kind[ii][i]=ref_event_evolution { event_name[ii][i]="Evolution\n$" + string(event_cost[ref_event_evolution]); }
 			else if event_kind[ii][i]=ref_event_tribute { event_name[ii][i]="Tribute"; }
@@ -223,7 +226,7 @@ else if event_transition>-1 and fade_black>=1 {
 			instance_create_layer(x,y,"instances",ob_event);
 		}
 		else {
-			if option_state[opt_autodeck]=true and (event_transition=ref_event_freecard or event_transition=ref_event_cardpack or
+			if option_state[opt_autodeck]=true and (event_transition=ref_event_freecard or event_transition=ref_event_cardpack or event_transition=ref_event_berry or
 			event_transition=ref_event_grass or event_transition=ref_event_fire or event_transition=ref_event_water) {
 				auto_deck_transition=true;
 			}

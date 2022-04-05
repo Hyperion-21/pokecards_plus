@@ -41,15 +41,16 @@
 ✔	save config
 ✔	main menu
 ✔	music
+✔	event: berry shops
 2/4+	advanced enemy AI
-2/4+	glyphs [////--------------]
-4/4	event: berry trees
-6/4	event: gym area loop around
-6/4	stalemate solving
-7/4	trainer decks setup
-7/4	enemy deck shuffle
-8/4+	all trainer decks
-10/4	gym decks
-11/4	tutorial
-12/4+	pokemon data (gen 1&2)
+2/4+	glyphs [/////-------------]
+7/4	event: gym area loop around
+7/4	stalemate solving
+9/4	trainer decks setup
+9/4	enemy deck shuffle
+10/4+	all trainer decks
+11/4	gym decks
+12/4	tutorial
+13/4+	pokemon data (gen 1&2)
+	extra visual effects
 	sound effects

@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Crystal League";
-game_version="v0.0.0.61";
+game_version="v0.0.0.62";
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -61,10 +61,11 @@ effect_money_error=0;
 ref_event_battle=0;
 ref_event_freecard=1;
 ref_event_cardpack=2;
-ref_event_levelup=3;
-ref_event_evolution=4;
-ref_event_glyph=5;
-ref_event_tribute=6;
+ref_event_berry=3;
+ref_event_levelup=4;
+ref_event_evolution=5;
+ref_event_glyph=6;
+ref_event_tribute=7;
 ref_event_grass=100;
 ref_event_fire=101;
 ref_event_water=102;
@@ -77,6 +78,7 @@ for (var i=0; i<=200; i++;) {
 	event_cost[i]=0;
 }
 event_cost[ref_event_cardpack]=100;
+event_cost[ref_event_berry]=50;
 event_cost[ref_event_levelup]=100;
 event_cost[ref_event_evolution]=200;
 event_cost[ref_event_glyph]=150;

@@ -31,18 +31,43 @@ with (argument1) {
 			damage_num_id.text_color=global.color_damage;
 			//
 			if card_target.card_hp<=0 {
-				if sc_glyph_check(card_target,15,true) { //glyph: memento
+				if sc_glyph_check(card_target,01,true) { //glyph: harvest
 					if card_target.card_enemy=false {
-						ob_control.card_draw_points+=2;
+						for (var i=0; i<=3; i++;) {
+							ob_control.berry_spawn[i]+=card_target.card_cost_total_type[i];
+						}
 					}
+					else {
+						for (var i=0; i<=3; i++;) {
+							ob_control.enemyberry_spawn[i]+=card_target.card_cost_total_type[i];
+						}
+					}
+				}
+				//
+				if sc_glyph_check(card_target,15,true) { //glyph: memento
+					if card_target.card_enemy=false { ob_control.card_draw_points+=2; }
 					else { ob_control.enemycard_draw_points+=2; }
 				}
+				//
 				instance_position(card_target.x,card_target.y,ob_card_space).occupy_id=-1;
 				instance_position(card_target.x,card_target.y,ob_card_space).effect_use=1;
 				ob_control.card_space_id[10].effect_use=1;
 				card_target.card_trash=true;
 			}
 			if card_hp<=0 {
+				if sc_glyph_check(id,01,true) { //glyph: harvest
+					if card_enemy=false {
+						for (var i=0; i<=3; i++;) {
+							ob_control.berry_spawn[i]+=card_cost_total_type[i];
+						}
+					}
+					else {
+						for (var i=0; i<=3; i++;) {
+							ob_control.enemyberry_spawn[i]+=card_cost_total_type[i];
+						}
+					}
+				}
+				//
 				if sc_glyph_check(id,15,true) { //glyph: memento
 					if card_enemy=false {
 						ob_control.card_draw_points+=2;
@@ -50,6 +75,7 @@ with (argument1) {
 					}
 					else { ob_control.enemycard_draw_points+=2; }
 				}
+				//
 				ob_control.card_space_id[card_space_slot].occupy_id=-1;
 				ob_control.card_space_id[card_space_slot].effect_use=1;
 				ob_control.card_space_id[10].effect_use=1;

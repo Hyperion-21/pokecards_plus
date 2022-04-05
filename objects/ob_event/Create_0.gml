@@ -8,9 +8,16 @@ show_deck=false;
 apply_event=false;
 event_applied=false;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if event_kind=ob_main.ref_event_cardpack {
-	card_prize=5;
-	var i=0, main_amount=3, berry_amount=2;
+if event_kind=ob_main.ref_event_cardpack or event_kind=ob_main.ref_event_berry {
+	if event_kind=ob_main.ref_event_cardpack {
+		card_prize=4;
+		var main_amount=3, berry_amount=1;
+	}
+	else if event_kind=ob_main.ref_event_berry {
+		card_prize=4;
+		var main_amount=0, berry_amount=4;
+	}
+	var i=0;
 	repeat (card_prize) {
 		if main_amount>0 and berry_amount>0 { create_card_cat=choose(0,1); }
 		else if main_amount>0 and berry_amount=0 { create_card_cat=0; }
@@ -19,7 +26,7 @@ if event_kind=ob_main.ref_event_cardpack {
 		else { berry_amount--; }
 		create_card_id=-1;
 		//
-		instance_create_layer(ob_main.screen_main_x+83+(72*i),ob_main.screen_main_y+104,"instances",ob_card);
+		instance_create_layer(ob_main.screen_main_x+118+(73*i),ob_main.screen_main_y+104,"instances",ob_card);
 		i++;
 	}
 }
