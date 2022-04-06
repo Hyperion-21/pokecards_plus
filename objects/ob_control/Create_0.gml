@@ -139,8 +139,8 @@ var i=0;
 repeat (enemycard_maindeck_total) {
 	create_card_cat=0;
 	create_card_id=choose(1,4,7,10,13);
-	create_card_level=irandom(9)+1//1;
-	create_card_glyph_a=10//-1;
+	create_card_level=1;
+	create_card_glyph_a=13//-1;
 	create_card_glyph_b=-1;
 	create_card_glyph_c=-1;
 	create_card_innate=1;

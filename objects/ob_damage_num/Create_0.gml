@@ -7,4 +7,5 @@ damage_extra=0;
 text_alpha_full=2;
 text_alpha=0;
 text_color=c_white;
+big_font=false;
 damage_direct_unique=false;

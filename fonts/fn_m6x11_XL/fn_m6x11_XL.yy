@@ -133,7 +133,7 @@
     "path": "folders/Fonts.yy",
   },
   "resourceVersion": "1.0",
-  "name": "fn_m6x11_large",
+  "name": "fn_m6x11_XL",
   "tags": [],
   "resourceType": "GMFont",
 }

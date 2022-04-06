@@ -19,7 +19,7 @@ if reference_id=ob_control or
 if card_cat=0 and card_face=true and in_view=true {
 	var card_color=c_white, namebar_color=c_white;
 	if card_innate=0 { card_color=global.color_card_light; }
-	else if card_innate=ob_main.innate_max { card_color=global.color_direct_damage; }
+	else if card_innate=ob_main.innate_max { card_color=global.color_card_gold; }
 	else if card_delete_timer>0 { card_color=global.color_gray; }
 	//
 	if card_type_a=00 { namebar_color=make_colour_rgb(169,182,214); }

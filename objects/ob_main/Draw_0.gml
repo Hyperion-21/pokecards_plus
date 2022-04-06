@@ -118,13 +118,13 @@ if event_transition=ref_event_victory or event_transition=ref_event_defeat {
 	draw_set_halign(fa_center);
 	//
 	if event_transition=ref_event_victory {
-		draw_set_font(fn_m6x11_large);
+		draw_set_font(fn_m6x11_XL);
 		sc_drawtext(screen_main_x+cam_w/2,screen_main_y+cam_h/2-17,"VICTORY",global.color_player,global.color_black,1,1,0,-1);
 		draw_set_font(fn_matchup);
 		sc_drawtext(screen_main_x+cam_w/2,screen_main_y+cam_h/2+5,"Received $" + string(money_add),global.color_card_light,global.color_black,1,1,0,-1);
 	}
 	else if event_transition=ref_event_defeat {
-		draw_set_font(fn_m6x11_large);
+		draw_set_font(fn_m6x11_XL);
 		sc_drawtext(screen_main_x+cam_w/2,screen_main_y+cam_h/2-10,"DEFEAT",global.color_enemy,global.color_black,1,1,0,-1);
 	}
 }

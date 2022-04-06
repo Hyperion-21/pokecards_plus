@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Crystal League";
-game_version="v0.0.0.64";
+game_version="v0.0.0.65";
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -172,11 +172,12 @@ global.color_black=make_colour_rgb(40,40,40);
 global.color_gray=make_colour_rgb(190,190,190);
 global.color_card_light=make_colour_rgb(233,230,222);
 global.color_card_dark=make_colour_rgb(205,198,181);
+global.color_card_gold=make_colour_rgb(226,204,161);
 global.color_player=make_colour_rgb(160,193,225);
 global.color_enemy=make_colour_rgb(221,172,159);
 global.color_fullhp=make_colour_rgb(176,223,159);
 global.color_damage=make_colour_rgb(225,168,160);
-global.color_direct_damage=make_colour_rgb(226,204,161);
+global.color_direct_damage=make_colour_rgb(205,162,227);
 global.color_progress_light=make_colour_rgb(180,218,255);
 global.color_progress_dark=make_colour_rgb(91,88,80);
 global.color_background_a=make_colour_rgb(colorsetup_r[opt_bg_a]/bg_rgb_divisor,colorsetup_g[opt_bg_a]/bg_rgb_divisor,colorsetup_b[opt_bg_a]/bg_rgb_divisor);
