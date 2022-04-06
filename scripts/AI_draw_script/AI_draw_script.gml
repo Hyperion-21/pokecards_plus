@@ -37,7 +37,7 @@ else if random_value<100 {
 	if poke_held<2 and AI_draw_available(0) {
 		AI_draw(0);
 	}
-	else if ((berries_needed_fullhand[0]>berries_held[0]) or (berries_needed_fullhand[1]>berries_held[1]) or (berries_needed_fullhand[2]>berries_held[2])) and AI_draw_available(1) {
+	else if (berries_needed_fullhand[0]>berries_held[0] or berries_needed_fullhand[1]>berries_held[1] or berries_needed_fullhand[2]>berries_held[2]) and AI_draw_available(1) {
 		AI_draw(1);
 	}
 	else if AI_draw_available(0) {

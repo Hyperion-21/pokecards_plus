@@ -70,12 +70,12 @@ if card_cat=0 and card_face=true and in_view=true {
 	if card_type_b>=0 { draw_sprite_general(sp_sheet,0,16*(card_type_b+1),16*5,12,11,draw_x+2,draw_y+12,1,1,0,card_color,card_color,card_color,card_color,1); }
 	//
 	//GLYPHS
-	if card_glyph_a>=0 and card_glyph_a<=15 { draw_sprite_general(sp_sheet,0,16*(card_glyph_a+1),16*6,12,11,draw_x+43,draw_y+2,1,1,0,card_color,card_color,card_color,card_color,1); }
-	else if card_glyph_a>=16 { draw_sprite_general(sp_sheet,0,16*(16+1),16*6,12,11,draw_x+43,draw_y+2,1,1,0,card_color,card_color,card_color,card_color,1); }
-	if card_glyph_b>=0 and card_glyph_b<=15 { draw_sprite_general(sp_sheet,0,16*(card_glyph_b+1),16*6,12,11,draw_x+43,draw_y+12,1,1,0,card_color,card_color,card_color,card_color,1); }
-	else if card_glyph_b>=16 { draw_sprite_general(sp_sheet,0,16*(16+1),16*6,12,11,draw_x+43,draw_y+12,1,1,0,card_color,card_color,card_color,card_color,1); }
-	if card_glyph_c>=0 and card_glyph_c<=15 { draw_sprite_general(sp_sheet,0,16*(card_glyph_c+1),16*6,12,11,draw_x+43,draw_y+22,1,1,0,card_color,card_color,card_color,card_color,1); }
-	else if card_glyph_c>=16 { draw_sprite_general(sp_sheet,0,16*(16+1),16*6,12,11,draw_x+43,draw_y+22,1,1,0,card_color,card_color,card_color,card_color,1); }
+	if card_glyph_a>=0 and card_glyph_a<=14 { draw_sprite_general(sp_sheet,0,16*(card_glyph_a+1),16*6,12,11,draw_x+43,draw_y+2,1,1,0,card_color,card_color,card_color,card_color,1); }
+	else if card_glyph_a>=15 { draw_sprite_general(sp_sheet,0,16*(15+1),16*6,12,11,draw_x+43,draw_y+2,1,1,0,card_color,card_color,card_color,card_color,1); }
+	if card_glyph_b>=0 and card_glyph_b<=14 { draw_sprite_general(sp_sheet,0,16*(card_glyph_b+1),16*6,12,11,draw_x+43,draw_y+12,1,1,0,card_color,card_color,card_color,card_color,1); }
+	else if card_glyph_b>=15 { draw_sprite_general(sp_sheet,0,16*(15+1),16*6,12,11,draw_x+43,draw_y+12,1,1,0,card_color,card_color,card_color,card_color,1); }
+	if card_glyph_c>=0 and card_glyph_c<=14 { draw_sprite_general(sp_sheet,0,16*(card_glyph_c+1),16*6,12,11,draw_x+43,draw_y+22,1,1,0,card_color,card_color,card_color,card_color,1); }
+	else if card_glyph_c>=15 { draw_sprite_general(sp_sheet,0,16*(15+1),16*6,12,11,draw_x+43,draw_y+22,1,1,0,card_color,card_color,card_color,card_color,1); }
 	//
 	//COST
 	var i=0;

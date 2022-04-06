@@ -49,7 +49,7 @@ with (argument1) {
 						}
 					}
 					//
-					if sc_glyph_check(card_faint_check,15,true) { //glyph: memento
+					if sc_glyph_check(card_faint_check,14,true) { //glyph: memento
 						if card_faint_check.card_enemy=false {
 							ob_control.card_draw_points+=2;
 							if card_faint_check=id { ob_control.tooltip_timer=ob_control.tooltip_timer_max; }
@@ -57,7 +57,8 @@ with (argument1) {
 						else { ob_control.enemycard_draw_points+=2; }
 					}
 					//
-					if sc_glyph_check(card_faint_check,09,true) and
+					var chance_tenacity=choose(true,false);
+					if sc_glyph_check(card_faint_check,09,true) and chance_tenacity=true and
 					((card_faint_check.card_enemy=false and ob_control.card_hand_total<ob_control.card_hand_max) or
 					(card_faint_check.card_enemy=true and ob_control.enemycard_hand_total<ob_control.card_hand_max)) { //glyph: tenacity
 						if card_faint_check.card_enemy=false {

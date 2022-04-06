@@ -50,11 +50,11 @@ do {
 				if card_space_id[ii+5].occupy_id!=-1 {
 					var opposing_card_id=card_space_id[ii+5].occupy_id;
 					//
-					if sc_glyph_check(opposing_card_id,17,true) { //glyph: transform (Ditto only)
+					if sc_glyph_check(opposing_card_id,16,true) { //glyph: transform (Ditto only)
 						bonus_dmg=sc_type_bonus(enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b,enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b);
 						vs_bonus_dmg=sc_type_bonus(enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b,enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b);
 					}
-					else if sc_glyph_check(enemycard_hand[i],17,true) {
+					else if sc_glyph_check(enemycard_hand[i],16,true) {
 						bonus_dmg=sc_type_bonus(opposing_card_id.card_type_a,opposing_card_id.card_type_b,opposing_card_id.card_type_a,opposing_card_id.card_type_b);
 						vs_bonus_dmg=sc_type_bonus(opposing_card_id.card_type_a,opposing_card_id.card_type_b,opposing_card_id.card_type_a,opposing_card_id.card_type_b);
 					}

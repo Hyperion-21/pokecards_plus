@@ -168,6 +168,42 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or ob_main.cursor_hide=true) 
 					card_draw_points+=2;
 					tooltip_timer=tooltip_timer_max;
 				}
+				//
+				if sc_glyph_check(card_hold,10,true) { //glyph: bulwark
+					var i=0;
+					repeat (2) {
+						var rock_cardspace_id=-1;
+						if var_cardspace_id=card_space_id[5] and card_space_id[6].occupy_id=-1 and i=1 { rock_cardspace_id=card_space_id[6]; }
+						else if var_cardspace_id=card_space_id[6] and card_space_id[5].occupy_id=-1 and i=0 { rock_cardspace_id=card_space_id[5]; }
+						else if var_cardspace_id=card_space_id[6] and card_space_id[7].occupy_id=-1 and i=1 { rock_cardspace_id=card_space_id[7]; }
+						else if var_cardspace_id=card_space_id[7] and card_space_id[6].occupy_id=-1 and i=0 { rock_cardspace_id=card_space_id[6]; }
+						else if var_cardspace_id=card_space_id[7] and card_space_id[8].occupy_id=-1 and i=1 { rock_cardspace_id=card_space_id[8]; }
+						else if var_cardspace_id=card_space_id[8] and card_space_id[7].occupy_id=-1 and i=0 { rock_cardspace_id=card_space_id[7]; }
+						else if var_cardspace_id=card_space_id[8] and card_space_id[9].occupy_id=-1 and i=1 { rock_cardspace_id=card_space_id[9]; }
+						else if var_cardspace_id=card_space_id[9] and card_space_id[8].occupy_id=-1 and i=0 { rock_cardspace_id=card_space_id[8]; }
+						//
+						if rock_cardspace_id!=-1 {
+							create_card_cat=0;
+							create_card_id=2503; //rock
+							create_card_level=card_hold.card_level;
+							create_card_glyph_a=-1;
+							create_card_glyph_b=-1;
+							create_card_glyph_c=-1;
+							create_card_innate=1;
+							//
+							var rock_spawn_id=instance_create_layer(var_cardspace_id.x,var_cardspace_id.y,"instances",ob_card);
+							rock_spawn_id.potential_x=rock_cardspace_id.x;
+							rock_spawn_id.potential_y=rock_cardspace_id.y;
+							rock_spawn_id.card_face=true;
+							rock_spawn_id.card_played=true;
+							rock_cardspace_id.occupy_id=rock_spawn_id;
+							rock_cardspace_id.effect_use=1;
+						}
+						//
+						i++;
+					}
+				}
+				//
 				card_hold.potential_x=var_cardspace_id.x;
 				card_hold.potential_y=var_cardspace_id.y;
 				var_cardspace_id.berries_total_type[0]-=card_hold.card_cost_total_type[0];

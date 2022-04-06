@@ -124,8 +124,9 @@ else if anypoke_playable=false and commonberry_playable=false and enigmaberry_pl
 // PLAY (DISCARD)
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if anypoke_playable=false and commonberry_playable=false and enigmaberry_playable=false and fullhand_draw=true {
-	//RANDOM UNNEEDED BERRY (NOT ENIGMA) > (IF EMPTY SPACES) > WEAKEST POKEMON (WEAK) > ENIGMA BERRY > WEAKEST POKEMON (ANY)
-	if berries_held[0]>berries_needed_fullhand[0] or berries_held[1]>berries_needed_fullhand[1] or berries_held[2]>berries_needed_fullhand[2] {
+	//RANDOM UNNEEDED BERRY (NOT ENIGMA) IF BERRIES NEEDED > (IF EMPTY SPACES) > WEAKEST POKEMON (WEAK) > ENIGMA BERRY > WEAKEST POKEMON (ANY)
+	if (berries_held[0]>berries_needed_fullhand[0] or berries_held[1]>berries_needed_fullhand[1] or berries_held[2]>berries_needed_fullhand[2]) and
+	(berries_needed_fullhand[0]>berries_held[0] or berries_needed_fullhand[1]>berries_held[1] or berries_needed_fullhand[2]>berries_held[2]) {
 		do {
 			enemycard_discardplan_id=enemycard_hand[irandom(enemycard_hand_total-1)];
 		} until ((berries_held[0]>berries_needed_fullhand[0] and enemycard_discardplan_id.card_id=3000) or
