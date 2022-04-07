@@ -43,6 +43,19 @@ else if argument0!=-1 {
 		enemycard_draw_points+=2;
 	}
 	//
+	if sc_glyph_check(playcard_id,ob_main.ref_glyph_medic,true) { //glyph: medic
+		for (var i=0; i<=4; i++;) {
+			if card_space_id[i].occupy_id!=-1 {
+				var card_to_heal=card_space_id[i].occupy_id;
+				card_to_heal.card_hp=card_to_heal.card_full_hp;
+				var heal_num_id=instance_create_layer(card_to_heal.x+29,card_to_heal.y+18+15,"instances",ob_damage_num);
+				heal_num_id.damage_num=card_to_heal.card_full_hp;
+				heal_num_id.text_alpha=heal_num_id.text_alpha_full;
+				heal_num_id.text_color=global.color_fullhp;
+			}
+		}
+	}
+	//
 	if sc_glyph_check(playcard_id,ob_main.ref_glyph_bulwark,true) { //glyph: bulwark
 		var i=0;
 		repeat (2) {

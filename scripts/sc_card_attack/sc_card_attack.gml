@@ -4,7 +4,7 @@ function sc_card_attack(argument0,argument1) {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 with (argument1) {
 	if already_attacked=false and card_environment=false {
-		var card_target=-1, card_target_fork_a=-1, card_target_fork_b=-1; //target -1: empty space (direct attack), -2: unassigned (skip)
+		var card_target=-1, card_target_fork_a=-1, card_target_fork_b=-1; //target -1: empty space (direct/piercing attack), -2: unassigned (skip)
 		var card_space_slot=-1, attack_cycle=1;
 		if card_enemy=true { var i=0; } else { var i=5; }
 		repeat (5) {
@@ -16,30 +16,30 @@ with (argument1) {
 		//
 		if sc_glyph_check(id,ob_main.ref_glyph_fork,true) { //glyph: fork attack
 			attack_cycle=2;
-			if (argument0=true and card_space_slot>5 and ob_control.card_space_id[card_space_slot-6].occupy_id!=-1) or
-			(argument0=false and card_space_slot>0 and ob_control.card_space_id[card_space_slot+4].occupy_id!=-1) {
-				if argument0=true { card_target_fork_a=ob_control.card_space_id[card_space_slot-6].occupy_id; }
-				else { card_target_fork_a=ob_control.card_space_id[card_space_slot+4].occupy_id; }
+			if !sc_glyph_check(id,ob_main.ref_glyph_piercing,true) { //glyph: piercing attack (if not)
+				if (argument0=true and card_space_slot>5 and ob_control.card_space_id[card_space_slot-6].occupy_id!=-1) or
+				(argument0=false and card_space_slot>0 and ob_control.card_space_id[card_space_slot+4].occupy_id!=-1) {
+					if argument0=true { card_target_fork_a=ob_control.card_space_id[card_space_slot-6].occupy_id; }
+					else { card_target_fork_a=ob_control.card_space_id[card_space_slot+4].occupy_id; }
+				}
+				if (argument0=true and card_space_slot<9 and ob_control.card_space_id[card_space_slot-4].occupy_id!=-1) or
+				(argument0=false and card_space_slot<4 and ob_control.card_space_id[card_space_slot+6].occupy_id!=-1) {
+					if argument0=true { card_target_fork_b=ob_control.card_space_id[card_space_slot-4].occupy_id; }
+					else { card_target_fork_b=ob_control.card_space_id[card_space_slot+6].occupy_id; }
+				}
 			}
-			else {
-				if argument0=true and card_space_slot=5 { card_target_fork_a=-2; }
-				else if argument0=false and card_space_slot=0 { card_target_fork_a=-2; }
-			}
-			if (argument0=true and card_space_slot<9 and ob_control.card_space_id[card_space_slot-4].occupy_id!=-1) or
-			(argument0=false and card_space_slot<4 and ob_control.card_space_id[card_space_slot+6].occupy_id!=-1) {
-				if argument0=true { card_target_fork_b=ob_control.card_space_id[card_space_slot-4].occupy_id; }
-				else { card_target_fork_b=ob_control.card_space_id[card_space_slot+6].occupy_id; }
-			}
-			else {
-				if argument0=true and card_space_slot=9 { card_target_fork_b=-2; }
-				else if argument0=false and card_space_slot=4 { card_target_fork_b=-2; }
-			}
+			if argument0=true and card_space_slot=5 { card_target_fork_a=-2; }
+			else if argument0=false and card_space_slot=0 { card_target_fork_a=-2; }
+			if argument0=true and card_space_slot=9 { card_target_fork_b=-2; }
+			else if argument0=false and card_space_slot=4 { card_target_fork_b=-2; }
 		}
 		else {
-			if (argument0=true and ob_control.card_space_id[card_space_slot-5].occupy_id!=-1) or
-			(argument0=false and ob_control.card_space_id[card_space_slot+5].occupy_id!=-1) {
-				if argument0=true { card_target=ob_control.card_space_id[card_space_slot-5].occupy_id; }
-				else { card_target=ob_control.card_space_id[card_space_slot+5].occupy_id; }
+			if !sc_glyph_check(id,ob_main.ref_glyph_piercing,true) { //glyph: piercing attack (if not)
+				if (argument0=true and ob_control.card_space_id[card_space_slot-5].occupy_id!=-1) or
+				(argument0=false and ob_control.card_space_id[card_space_slot+5].occupy_id!=-1) {
+					if argument0=true { card_target=ob_control.card_space_id[card_space_slot-5].occupy_id; }
+					else { card_target=ob_control.card_space_id[card_space_slot+5].occupy_id; }
+				}
 			}
 		}
 		//
@@ -62,6 +62,21 @@ with (argument1) {
 				damage_num_id.damage_extra=damage_extra_dealt;
 				damage_num_id.text_alpha=damage_num_id.text_alpha_full;
 				damage_num_id.text_color=global.color_damage;
+				//
+				if sc_glyph_check(card_target,ob_main.ref_glyph_counter,true) { //glyph: counterattack
+					var damage_num_id=instance_create_layer(x+29,y+18,"instances",ob_damage_num);
+					if card_hp-(damage_dealt-damage_extra_dealt)>0 { //bonus damage not included
+						damage_num_id.damage_num=damage_dealt-damage_extra_dealt;
+						card_hp-=damage_dealt-damage_extra_dealt;
+					}
+					else {
+						damage_num_id.damage_num=card_hp-1;
+						card_hp=1;
+					}
+					damage_num_id.text_alpha=damage_num_id.text_alpha_full;
+					damage_num_id.text_color=global.color_damage;
+					effect_damaged=1;
+				}
 				//
 				if sc_glyph_check(id,ob_main.ref_glyph_vampire,true) { //glyph: vampire
 					card_hp+=floor(damage_dealt/2);

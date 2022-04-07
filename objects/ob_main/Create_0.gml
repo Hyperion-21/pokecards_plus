@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Crystal League";
-game_version="v0.0.0.66";
+game_version="v0.0.0.67";
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -38,7 +38,7 @@ screen_transition=-1;
 auto_deck_transition=false;
 moving_hud=0;
 //
-roadmap_area_max=20;
+roadmap_area_max=16;
 roadmap_get_details=true;
 event_transition=-1; //same as events, 300 victory, 301 defeat, 999 main menu
 fade_black=0;

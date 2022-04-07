@@ -11,6 +11,11 @@ if text_alpha>0 {
 		global.color_black,global.color_black,1,text_alpha/2,text_alpha/2,0);
 	}*/
 	//
+	draw_set_color(global.color_black);
+	draw_set_alpha(text_alpha/2);
+	draw_set_circle_precision(16);
+	draw_circle(x-1,y+6,10,false);
+	//
 	draw_set_halign(fa_center);
 	sc_drawtext(x,y,damage_text,text_color,global.color_black,text_alpha,text_alpha/1.5,0,-1);
 }

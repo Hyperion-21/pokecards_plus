@@ -59,7 +59,8 @@ if reference_id=ob_control and card_cat=0 {
 				if (card_enemy=true and ob_control.card_space_id[i+5].occupy_id!=-1) {
 					vs_card=ob_control.card_space_id[i+5].occupy_id;
 				}
-				if sc_glyph_check(id,ob_main.ref_glyph_transform,true) and vs_card!=-1 and card_id!=vs_card.card_id { //transforms only if there's no mist
+				if sc_glyph_check(id,ob_main.ref_glyph_transform,true) and vs_card!=-1 and card_id!=vs_card.card_id and vs_card.card_environment=false {
+					//transforms only if there's no mist
 					card_id=vs_card.card_id;
 					sc_pokelist();
 					sc_card_level_stats_all(false,false);

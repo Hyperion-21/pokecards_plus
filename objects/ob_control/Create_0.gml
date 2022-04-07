@@ -140,8 +140,8 @@ repeat (enemycard_maindeck_total) {
 	create_card_cat=0;
 	create_card_id=choose(1,4,7,10,13);
 	create_card_level=1;
-	create_card_glyph_a=ob_main.ref_glyph_vampire//-1;
-	create_card_glyph_b=-1;
+	create_card_glyph_a=ob_main.ref_glyph_piercing//-1;
+	create_card_glyph_b=choose(-1,ob_main.ref_glyph_fork)//-1;
 	create_card_glyph_c=-1;
 	create_card_innate=1;
 	//
