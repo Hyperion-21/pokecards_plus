@@ -1,12 +1,19 @@
-function AI_play_plan(argument0,argument1,argument2,argument3,argument4,argument5,argument6,argument7) {
+function AI_play_plan(argument0,argument1,argument2,argument3,argument4,argument5,argument6,argument7,argument8,argument9,argument10,argument11,argument12,argument13,argument14) {
 /// @param ref_stat_priority //-1: any poke, 0: hp, 1: atk, 2: def, 3: value
-/// @param stat_priority_min
+/// @param stat_min
 /// @param ref_space_type //-1: any space, 0: vs empty space, 1: vs occupied space
-/// @param type_advantage_only
-/// @param receiving_no_type_advantage_only
-/// @param dealing_damage_only
-/// @param receiving_no_damage_only
+/// @param type_bonus_only
+/// @param vs_no_type_bonus_only
+/// @param deals_dmg_only
+/// @param receives_no_dmg_only
 /// @param turn_advantage_only
+/// @param 1HKO
+/// @param any_card_hurt
+/// @param glyph_check
+/// @param y/n
+/// @param vs_glyph_check
+/// @param y/n
+/// @param ignore_if_fork/piercing
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var highest_value=0;
 //
@@ -46,15 +53,15 @@ do {
 		(argument0=3 and enemycard_hand[i].card_value=highest_value and enemycard_hand[i].card_value>=argument1)) {
 			for (var ii=0; ii<=4; ii++;) {
 				//
-				var opposing_card_id=-1, bonus_dmg=false, vs_bonus_dmg=false, turns_to_defeat=-1, turns_to_faint=-1;
+				var opposing_card_id=-1, bonus_dmg=false, vs_bonus_dmg=false, turns_to_defeat=-1, turns_to_faint=-1, any_card_hurt=false;
 				if card_space_id[ii+5].occupy_id!=-1 {
 					var opposing_card_id=card_space_id[ii+5].occupy_id;
 					//
-					if sc_glyph_check(opposing_card_id,16,true) { //glyph: transform (Ditto only)
+					if sc_glyph_check(opposing_card_id,ob_main.ref_glyph_transform,true) { //glyph: transform (Ditto only)
 						bonus_dmg=sc_type_bonus(enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b,enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b);
 						vs_bonus_dmg=sc_type_bonus(enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b,enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b);
 					}
-					else if sc_glyph_check(enemycard_hand[i],16,true) {
+					else if sc_glyph_check(enemycard_hand[i],ob_main.ref_glyph_transform,true) {
 						bonus_dmg=sc_type_bonus(opposing_card_id.card_type_a,opposing_card_id.card_type_b,opposing_card_id.card_type_a,opposing_card_id.card_type_b);
 						vs_bonus_dmg=sc_type_bonus(opposing_card_id.card_type_a,opposing_card_id.card_type_b,opposing_card_id.card_type_a,opposing_card_id.card_type_b);
 					}
@@ -72,6 +79,12 @@ do {
 					if var_imaginary_damage<0 { var_imaginary_damage=0; }
 					if vs_bonus_dmg=true { var_imaginary_damage++; }
 					if var_imaginary_damage>0 { turns_to_faint=ceil(enemycard_hand[i].card_hp/var_imaginary_damage); }
+					//
+					for (var iii=0; iii<=4; iii++;) {
+						if card_space_id[iii].occupy_id!=-1 and card_space_id[iii].occupy_id.card_hp<card_space_id[iii].occupy_id.card_full_hp {
+							any_card_hurt=true;
+						}
+					}
 				}
 				//
 				var all_conditions_met=true;
@@ -91,6 +104,28 @@ do {
 					all_conditions_met=false;
 				}
 				if argument7=true and (opposing_card_id=-1 or turns_to_defeat=-1 or turns_to_faint<turns_to_defeat) {
+					all_conditions_met=false;
+				}
+				if argument8=true and turns_to_defeat>1 {
+					all_conditions_met=false;
+				}
+				if argument9=true and any_card_hurt=false {
+					all_conditions_met=false;
+				}
+				if argument10!=-1 {
+					if (argument11=true and !sc_glyph_check(enemycard_hand[i],argument10,true)) or
+					(argument11=false and sc_glyph_check(enemycard_hand[i],argument10,true)) {
+					all_conditions_met=false;
+					}
+				}
+				if argument12!=-1 {
+					if (argument13=true and (opposing_card_id=-1 or !sc_glyph_check(opposing_card_id,argument12,true))) or
+					(argument13=false and opposing_card_id!=-1 and sc_glyph_check(opposing_card_id,argument12,true)) {
+					all_conditions_met=false;
+					}
+				}
+				if argument14=true and //glyph: fork attack / piercing attack
+				(sc_glyph_check(enemycard_hand[i],ob_main.ref_glyph_fork,true) or sc_glyph_check(enemycard_hand[i],ob_main.ref_glyph_piercing,true)) {
 					all_conditions_met=false;
 				}
 				//

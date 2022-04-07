@@ -666,14 +666,14 @@ switch (card_id) {
 		card_grid_x=3; card_grid_y=11; break;
 	case 109:
 		card_name="Koffing";
-		card_stage=1; card_evo[0]=110; card_glyph_a=15;
+		card_stage=1; card_evo[0]=110; card_glyph_a=ob_main.ref_glyph_mist;
 		card_type_a=12; card_type_b=-1;
 		card_base_hp=40; card_base_atk=65+60; card_base_def=95+45;
 		card_grid_x=4; card_grid_y=11; break;
 	case 110:
 		card_name="Weezing";
 		card_stage=2;
-		card_type_a=12; card_type_b=-1; card_glyph_a=15;
+		card_type_a=12; card_type_b=-1; card_glyph_a=ob_main.ref_glyph_mist;
 		card_base_hp=65; card_base_atk=90+85; card_base_def=120+70;
 		card_grid_x=5; card_grid_y=11; break;
 	case 111:
@@ -805,7 +805,7 @@ switch (card_id) {
 	case 132:
 		card_name="Ditto";
 		card_stage=1;
-		card_type_a=00; card_type_b=-1; card_glyph_a=16;
+		card_type_a=00; card_type_b=-1; card_glyph_a=ob_main.ref_glyph_transform;
 		card_base_hp=48; card_base_atk=48+48; card_base_def=48+48;
 		card_grid_x=15; card_grid_y=12; break;
 	case 133:

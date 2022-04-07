@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Crystal League";
-game_version="v0.0.0.65";
+game_version="v0.0.0.66";
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -87,6 +87,27 @@ tooltip_text="";
 tooltip_lines=0;
 current_glyph_add=-1;
 innate_max=6;
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+glyph_common_amount=15;
+//
+ref_glyph_lucky=00;
+ref_glyph_harvest=01;
+ref_glyph_weakness=02;
+ref_glyph_ruthless=03;
+ref_glyph_courage=04;
+ref_glyph_piercing=05;
+ref_glyph_counter=06;
+ref_glyph_shield=07;
+ref_glyph_medic=08;
+ref_glyph_tenacity=09;
+ref_glyph_bulwark=10;
+ref_glyph_fork=11;
+ref_glyph_vampire=12;
+ref_glyph_curse=13;
+ref_glyph_memento=14;
+//
+ref_glyph_mist=15;
+ref_glyph_transform=16;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 options_total=9;
 //

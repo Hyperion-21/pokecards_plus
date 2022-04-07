@@ -14,7 +14,7 @@ with (argument1) {
 			i++;
 		}
 		//
-		if sc_glyph_check(id,11,true) { //glyph: fork attack
+		if sc_glyph_check(id,ob_main.ref_glyph_fork,true) { //glyph: fork attack
 			attack_cycle=2;
 			if (argument0=true and card_space_slot>5 and ob_control.card_space_id[card_space_slot-6].occupy_id!=-1) or
 			(argument0=false and card_space_slot>0 and ob_control.card_space_id[card_space_slot+4].occupy_id!=-1) {
@@ -44,7 +44,7 @@ with (argument1) {
 		}
 		//
 		do {
-			if sc_glyph_check(id,11,true) { //glyph: fork attack
+			if sc_glyph_check(id,ob_main.ref_glyph_fork,true) { //glyph: fork attack
 				if attack_cycle=2 { card_target=card_target_fork_a; }
 				else if attack_cycle=1 { card_target=card_target_fork_b; }
 			}
@@ -63,8 +63,17 @@ with (argument1) {
 				damage_num_id.text_alpha=damage_num_id.text_alpha_full;
 				damage_num_id.text_color=global.color_damage;
 				//
+				if sc_glyph_check(id,ob_main.ref_glyph_vampire,true) { //glyph: vampire
+					card_hp+=floor(damage_dealt/2);
+					if card_hp>card_full_hp { card_hp=card_full_hp; }
+					var damage_num_id=instance_create_layer(x+29,y+18+15,"instances",ob_damage_num);
+					damage_num_id.damage_num=floor(damage_dealt/2);
+					damage_num_id.text_alpha=damage_num_id.text_alpha_full;
+					damage_num_id.text_color=global.color_fullhp;
+				}
+				//
 				if card_target.card_hp<=0 {
-					if sc_glyph_check(card_target,01,true) { //glyph: harvest
+					if sc_glyph_check(card_target,ob_main.ref_glyph_harvest,true) { //glyph: harvest
 						if card_target.card_enemy=false {
 							for (var i=0; i<=3; i++;) {
 								ob_control.berry_spawn[i]+=card_target.card_cost_total_type[i];
@@ -77,20 +86,24 @@ with (argument1) {
 						}
 					}
 					//
-					if sc_glyph_check(card_target,13,true) { //glyph: curse
+					if sc_glyph_check(card_target,ob_main.ref_glyph_curse,true) { //glyph: curse
+						var damage_num_id=instance_create_layer(x+29,y+18,"instances",ob_damage_num);
+						damage_num_id.damage_num=card_hp-1;
+						damage_num_id.text_alpha=damage_num_id.text_alpha_full;
+						damage_num_id.text_color=global.color_damage;
 						card_hp=1;
+						effect_damaged=1;
 					}
 					//
-					if sc_glyph_check(card_target,14,true) { //glyph: memento
+					if sc_glyph_check(card_target,ob_main.ref_glyph_memento,true) { //glyph: memento
 						if card_target.card_enemy=false {
 							ob_control.card_draw_points+=2;
-							//if card_target=id { ob_control.tooltip_timer=ob_control.tooltip_timer_max; }
 						}
 						else { ob_control.enemycard_draw_points+=2; }
 					}
 					//
 					var chance_tenacity=choose(true,false);
-					if sc_glyph_check(card_target,09,true) and chance_tenacity=true and
+					if sc_glyph_check(card_target,ob_main.ref_glyph_tenacity,true) and chance_tenacity=true and
 					((card_target.card_enemy=false and ob_control.card_hand_total<ob_control.card_hand_max) or
 					(card_target.card_enemy=true and ob_control.enemycard_hand_total<ob_control.card_hand_max)) { //glyph: tenacity
 						if card_target.card_enemy=false {
@@ -108,17 +121,10 @@ with (argument1) {
 					else {
 						ob_control.card_space_id[10].effect_use=1;
 						card_target.card_trash=true;
-						//if card_target=id and argument0=true { ob_control.card_focus=-1; }
 					}
 					//
-					/*if card_target=id {
-						ob_control.card_space_id[card_space_slot].occupy_id=-1;
-						ob_control.card_space_id[card_space_slot].effect_use=1;
-					}
-					else {*/
 					instance_position(card_target.x,card_target.y,ob_card_space).occupy_id=-1;
 					instance_position(card_target.x,card_target.y,ob_card_space).effect_use=1;
-					//}
 				}
 			}
 			else if card_target=-1 {
@@ -135,7 +141,7 @@ with (argument1) {
 				//
 				var damage_num_id_a=-1, damage_num_id_b=-1;
 				//
-				if sc_glyph_check(id,11,true) { //glyph: fork attack
+				if sc_glyph_check(id,ob_main.ref_glyph_fork,true) { //glyph: fork attack
 					if attack_cycle=2 and argument0=true {
 						damage_num_id_a=instance_create_layer(x+29-64,y-57,"instances",ob_damage_num);
 						damage_num_id_b=ob_control.enemy_directdamage_id;

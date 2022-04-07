@@ -48,7 +48,7 @@ if card_trash=true {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if reference_id=ob_control and card_cat=0 {
-	if sc_glyph_check(id,16,false) and card_played=true { //glyph: transform (Ditto only)
+	if sc_glyph_check(id,ob_main.ref_glyph_transform,false) and card_played=true { //glyph: transform (Ditto only)
 		if card_enemy=true { var i=0; } else { var i=5; }
 		repeat (5) {
 			if ob_control.card_space_id[i].occupy_id=id {
@@ -59,7 +59,7 @@ if reference_id=ob_control and card_cat=0 {
 				if (card_enemy=true and ob_control.card_space_id[i+5].occupy_id!=-1) {
 					vs_card=ob_control.card_space_id[i+5].occupy_id;
 				}
-				if sc_glyph_check(id,16,true) and vs_card!=-1 and card_id!=vs_card.card_id { //transforms only if there's no mist
+				if sc_glyph_check(id,ob_main.ref_glyph_transform,true) and vs_card!=-1 and card_id!=vs_card.card_id { //transforms only if there's no mist
 					card_id=vs_card.card_id;
 					sc_pokelist();
 					sc_card_level_stats_all(false,false);
@@ -76,7 +76,7 @@ if reference_id=ob_control and card_cat=0 {
 			i++;
 		}
 	}
-	else if sc_glyph_check(id,16,false) and card_played=false {
+	else if sc_glyph_check(id,ob_main.ref_glyph_transform,false) and card_played=false {
 		if card_id!=132 {
 			card_id=132;
 			sc_pokelist();

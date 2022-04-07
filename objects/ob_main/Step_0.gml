@@ -60,10 +60,10 @@ if roadmap_generated=false {
 				else if event_kind[ii][i]<300 { event_kind[ii][i]=ref_event_battle; free_event=true; } //30%
 				else if event_kind[ii][i]<400 { event_kind[ii][i]=ref_event_freecard; free_event=true; } //10%
 				else if event_kind[ii][i]<550 { event_kind[ii][i]=ref_event_cardpack; } //15%
-				else if event_kind[ii][i]<650 { event_kind[ii][i]=ref_event_berry; } //10%
-				else if event_kind[ii][i]<800 { event_kind[ii][i]=ref_event_levelup; } //15%
-				else if event_kind[ii][i]<850 { event_kind[ii][i]=ref_event_evolution; } //5%
-				else if event_kind[ii][i]<980 { event_kind[ii][i]=ref_event_glyph; } //13%
+				else if event_kind[ii][i]<680 { event_kind[ii][i]=ref_event_berry; } //13%
+				else if event_kind[ii][i]<830 { event_kind[ii][i]=ref_event_levelup; } //15%
+				else if event_kind[ii][i]<880 { event_kind[ii][i]=ref_event_evolution; } //5%
+				else if event_kind[ii][i]<980 { event_kind[ii][i]=ref_event_glyph; } //10%
 				else if event_kind[ii][i]<1000 { event_kind[ii][i]=ref_event_tribute; } //2%
 				//
 				if event_kind[ii][i]=ref_event_glyph { event_glyph_add[ii][i]=sc_glyph_random(); }

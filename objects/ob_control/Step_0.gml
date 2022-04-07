@@ -164,12 +164,12 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or ob_main.cursor_hide=true) 
 				card_hold.card_trash=true;
 			}
 			else if card_hold.card_cat=0 {
-				if sc_glyph_check(card_hold,00,true) { //glyph: lucky
+				if sc_glyph_check(card_hold,ob_main.ref_glyph_lucky,true) { //glyph: lucky
 					card_draw_points+=2;
 					tooltip_timer=tooltip_timer_max;
 				}
 				//
-				if sc_glyph_check(card_hold,10,true) { //glyph: bulwark
+				if sc_glyph_check(card_hold,ob_main.ref_glyph_bulwark,true) { //glyph: bulwark
 					var i=0;
 					repeat (2) {
 						var rock_cardspace_id=-1;

@@ -39,11 +39,11 @@ else if argument1>0 or argument2>0 or argument3>0 or argument4>0 {
 else if argument0!=-1 {
 	playcard_id=argument0;
 	//
-	if sc_glyph_check(playcard_id,00,true) { //glyph: lucky
+	if sc_glyph_check(playcard_id,ob_main.ref_glyph_lucky,true) { //glyph: lucky
 		enemycard_draw_points+=2;
 	}
 	//
-	if sc_glyph_check(playcard_id,10,true) { //glyph: bulwark
+	if sc_glyph_check(playcard_id,ob_main.ref_glyph_bulwark,true) { //glyph: bulwark
 		var i=0;
 		repeat (2) {
 			var rock_cardspace_id=-1;

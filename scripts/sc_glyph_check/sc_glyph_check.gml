@@ -10,7 +10,7 @@ if argument2=true {
 	repeat (10) {
 		if ob_control.card_space_id[i].occupy_id!=-1 {
 			var card_check=ob_control.card_space_id[i].occupy_id;
-			if card_check.card_glyph_a=15 or card_check.card_glyph_b=15 or card_check.card_glyph_c=15 {
+			if card_check.card_glyph_a=ob_main.ref_glyph_mist or card_check.card_glyph_b=ob_main.ref_glyph_mist or card_check.card_glyph_c=ob_main.ref_glyph_mist {
 				var_mist=true; //glyph: mist
 			}
 		}

@@ -43,7 +43,7 @@
 ✔	music
 ✔	event: berry shops
 2/4+	advanced enemy AI
-2/4+	glyphs [////////---------]
+2/4+	glyphs [/////////--------]
 7/4	event: gym area loop around
 7/4	stalemate solving
 8/4+	pokemon data (gen 1&2)
