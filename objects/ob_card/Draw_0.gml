@@ -99,7 +99,18 @@ if card_cat=0 and card_face=true and in_view=true {
 	//ATTACK
 	if reference_id=ob_control {
 		if already_attacked=false and card_environment=false and card_played=true and card_trash=false and card_enemy=false and ob_control.battler_turn=1 and ob_control.turn_num>2 {
-			draw_sprite_general(sp_sheet,0,16*1,16*12,16,16,draw_x+20,draw_y-8,1,1,0,card_color,card_color,card_color,card_color,1);
+			var opposite_card=-1;
+			for (var i=5; i<=9; i++;) {
+				if ob_control.card_space_id[i].occupy_id=id and ob_control.card_space_id[i-5].occupy_id!=-1 {
+					opposite_card=ob_control.card_space_id[i-5].occupy_id;
+				}
+			}
+			if opposite_card!=-1 and sc_type_bonus(card_type_a,card_type_b,opposite_card.card_type_a,opposite_card.card_type_b) {
+				draw_sprite_general(sp_sheet,0,16*2,16*12,16,16,draw_x+20,draw_y-8,1,1,0,card_color,card_color,card_color,card_color,1);
+			}
+			else {
+				draw_sprite_general(sp_sheet,0,16*1,16*12,16,16,draw_x+20,draw_y-8,1,1,0,card_color,card_color,card_color,card_color,1);
+			}
 		}
 	}
 	//

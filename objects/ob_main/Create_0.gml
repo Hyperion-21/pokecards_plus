@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Crystal League";
-game_version="v0.0.0.67";
+game_version="v0.0.0.68";
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -42,6 +42,7 @@ roadmap_area_max=16;
 roadmap_get_details=true;
 event_transition=-1; //same as events, 300 victory, 301 defeat, 999 main menu
 fade_black=0;
+fade_black_exit_battle=0;
 //
 menu_options_hover=false;
 menu_deck_hover=false;
@@ -66,12 +67,14 @@ ref_event_levelup=4;
 ref_event_evolution=5;
 ref_event_glyph=6;
 ref_event_tribute=7;
+ref_event_loop=8;
 ref_event_grass=100;
 ref_event_fire=101;
 ref_event_water=102;
 ref_event_gymbattle=200;
 ref_event_victory=300; //only for transitions
 ref_event_defeat=301; //only for transitions
+ref_event_exitbattle=302; //only for transitions
 ref_mainmenu=999; //only for transitions
 //
 for (var i=0; i<=200; i++;) {

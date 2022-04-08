@@ -1,7 +1,7 @@
 function AI_play_plan(argument0,argument1,argument2,argument3,argument4,argument5,argument6,argument7,argument8,argument9,argument10,argument11,argument12,argument13,argument14) {
 /// @param ref_stat_priority //-1: any poke, 0: hp, 1: atk, 2: def, 3: value
 /// @param stat_min
-/// @param ref_space_type //-1: any space, 0: vs empty space, 1: vs occupied space
+/// @param ref_space_type //-1: any space, 0: vs empty space, 1: vs occupied space, 2: next to friendly card
 /// @param type_bonus_only
 /// @param vs_no_type_bonus_only
 /// @param deals_dmg_only
@@ -28,32 +28,50 @@ if argument0!=-1 {
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-var space_target;
+var space_conditions;
 //
 for (var i=0; i<=4; i++;) {
-	space_target[i]=false;
+	space_conditions[i]=false;
 	//
 	if card_space_id[i].occupy_id=-1 and (argument2=-1 or
 	(argument2=0 and card_space_id[i+5].occupy_id=-1) or
-	(argument2=1 and card_space_id[i+5].occupy_id!=-1)) {
-		space_target[i]=true;
+	(argument2=1 and card_space_id[i+5].occupy_id!=-1) or
+	(argument2=2 and i>0 and card_space_id[i-1].occupy_id!=-1) or
+	(argument2=2 and i<4 and card_space_id[i+1].occupy_id!=-1)) {
+		space_conditions[i]=true;
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-var any_playable=false, card_target;
+var space_poke_target;
+for (var i=0; i<enemycard_hand_total; i++;) {
+	for (var ii=0; ii<=4; ii++;) {
+		space_poke_target[ii][i]=false;
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+var any_playable=false;
 //
 do {
 	for (var i=0; i<enemycard_hand_total; i++;) {
-		card_target[i]=false;
-		//
 		if enemycard_hand[i].card_cat=0 and ((argument0=-1) or
 		(argument0=0 and enemycard_hand[i].card_hp=highest_value and enemycard_hand[i].card_hp>=argument1) or
 		(argument0=1 and enemycard_hand[i].card_atk=highest_value and enemycard_hand[i].card_atk>=argument1) or
 		(argument0=2 and enemycard_hand[i].card_def=highest_value and enemycard_hand[i].card_def>=argument1) or
 		(argument0=3 and enemycard_hand[i].card_value=highest_value and enemycard_hand[i].card_value>=argument1)) {
 			for (var ii=0; ii<=4; ii++;) {
-				//
 				var opposing_card_id=-1, bonus_dmg=false, vs_bonus_dmg=false, turns_to_defeat=-1, turns_to_faint=-1, any_card_hurt=false;
+				//
+				if enemycard_hand[i].card_environment=false {
+					var own_atk=enemycard_hand[i].card_atk+card_space_id[ii].card_bonus_atk-card_space_id[ii].card_penalty_atk;
+					var own_def=enemycard_hand[i].card_def+card_space_id[ii].card_bonus_def-card_space_id[ii].card_penalty_def;
+				}
+				else {
+					var own_atk=enemycard_hand[i].card_atk-card_space_id[ii].card_penalty_atk;
+					var own_def=enemycard_hand[i].card_def-card_space_id[ii].card_penalty_def;
+				}
+				if own_atk<0 { own_atk=0; }
+				if own_def<0 { own_def=0; }
+				//
 				if card_space_id[ii+5].occupy_id!=-1 {
 					var opposing_card_id=card_space_id[ii+5].occupy_id;
 					//
@@ -70,12 +88,12 @@ do {
 						vs_bonus_dmg=sc_type_bonus(opposing_card_id.card_type_a,opposing_card_id.card_type_b,enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b);
 					}
 					//
-					var var_imaginary_damage=enemycard_hand[i].card_atk-opposing_card_id.card_def;
+					var var_imaginary_damage=own_atk-opposing_card_id.card_def;
 					if var_imaginary_damage<0 { var_imaginary_damage=0; }
 					if bonus_dmg=true { var_imaginary_damage++; }
 					if var_imaginary_damage>0 { turns_to_defeat=ceil(opposing_card_id.card_hp/var_imaginary_damage); }
 					//
-					var var_imaginary_damage=opposing_card_id.card_atk-enemycard_hand[i].card_def;
+					var var_imaginary_damage=opposing_card_id.card_atk-own_def;
 					if var_imaginary_damage<0 { var_imaginary_damage=0; }
 					if vs_bonus_dmg=true { var_imaginary_damage++; }
 					if var_imaginary_damage>0 { turns_to_faint=ceil(enemycard_hand[i].card_hp/var_imaginary_damage); }
@@ -88,7 +106,7 @@ do {
 				}
 				//
 				var all_conditions_met=true;
-				if space_poke_possible[ii][i]=false or space_target[ii]=false {
+				if space_poke_possible[ii][i]=false or space_conditions[ii]=false {
 					all_conditions_met=false;
 				}
 				if argument3=true and ((opposing_card_id=-1) or (opposing_card_id!=-1 and bonus_dmg=false)) {
@@ -97,10 +115,10 @@ do {
 				if argument4=true and opposing_card_id!=-1 and vs_bonus_dmg=true {
 					all_conditions_met=false;
 				}
-				if argument5=true and opposing_card_id!=-1 and enemycard_hand[i].card_atk-opposing_card_id.card_def<=0 and bonus_dmg=false {
+				if argument5=true and opposing_card_id!=-1 and own_atk-opposing_card_id.card_def<=0 and bonus_dmg=false {
 					all_conditions_met=false;
 				}
-				if argument6=true and opposing_card_id!=-1 and (opposing_card_id.card_atk-enemycard_hand[i].card_def>0 or vs_bonus_dmg=true) {
+				if argument6=true and opposing_card_id!=-1 and (opposing_card_id.card_atk-own_def>0 or vs_bonus_dmg=true) {
 					all_conditions_met=false;
 				}
 				if argument7=true and (opposing_card_id=-1 or turns_to_defeat=-1 or turns_to_faint<turns_to_defeat) {
@@ -130,7 +148,7 @@ do {
 				}
 				//
 				if all_conditions_met=true {
-					card_target[i]=true;
+					space_poke_target[ii][i]=true;
 					any_playable=true;
 				}
 			}
@@ -143,7 +161,7 @@ if any_playable=true {
 	do {
 		var enemycard_playplan_slot=irandom(enemycard_hand_total-1);
 		enemyspace_playplan_slot=irandom(4);
-	} until (space_poke_possible[enemyspace_playplan_slot][enemycard_playplan_slot]=true and card_target[enemycard_playplan_slot]=true and space_target[enemyspace_playplan_slot]=true);
+	} until (space_poke_possible[enemyspace_playplan_slot][enemycard_playplan_slot]=true and space_poke_target[enemyspace_playplan_slot][enemycard_playplan_slot]=true);
 	//
 	enemycard_playplan_id=enemycard_hand[enemycard_playplan_slot];
 	for (var i=0; i<=3; i++;) {

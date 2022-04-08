@@ -299,17 +299,17 @@ switch (card_id) {
 		card_base_hp=60; card_base_atk=95+60; card_base_def=80+80;
 		card_grid_x=13; card_grid_y=5; break;
 	case 048:
-		card_name="";
-		card_stage=1; card_evo[0]=000;
-		card_type_a=00; card_type_b=-1;
-		card_base_hp=000; card_base_atk=000+000; card_base_def=000+000;
-		card_grid_x=000; card_grid_y=000; break;
+		card_name="Venonat";
+		card_stage=1; card_evo[0]=049;
+		card_type_a=11; card_type_b=12;
+		card_base_hp=60; card_base_atk=55+40; card_base_def=50+55;
+		card_grid_x=14; card_grid_y=5; break;
 	case 049:
-		card_name="";
-		card_stage=1; card_evo[0]=000;
-		card_type_a=00; card_type_b=-1;
-		card_base_hp=000; card_base_atk=000+000; card_base_def=000+000;
-		card_grid_x=000; card_grid_y=000; break;
+		card_name="Venomoth";
+		card_stage=2;
+		card_type_a=11; card_type_b=12;
+		card_base_hp=70; card_base_atk=65+90; card_base_def=60+75;
+		card_grid_x=15; card_grid_y=5; break;
 	case 050:
 		card_name="Diglett";
 		card_stage=1; card_evo[0]=051;
@@ -323,17 +323,17 @@ switch (card_id) {
 		card_base_hp=35; card_base_atk=100+50; card_base_def=50+70;
 		card_grid_x=3; card_grid_y=6; break;
 	case 052:
-		card_name="";
-		card_stage=1; card_evo[0]=000;
+		card_name="Meowth";
+		card_stage=1; card_evo[0]=053;
 		card_type_a=00; card_type_b=-1;
-		card_base_hp=000; card_base_atk=000+000; card_base_def=000+000;
-		card_grid_x=000; card_grid_y=000; break;
+		card_base_hp=40; card_base_atk=45+40; card_base_def=35+40;
+		card_grid_x=6; card_grid_y=6; break;
 	case 053:
-		card_name="";
-		card_stage=1; card_evo[0]=000;
+		card_name="Persian";
+		card_stage=2;
 		card_type_a=00; card_type_b=-1;
-		card_base_hp=000; card_base_atk=000+000; card_base_def=000+000;
-		card_grid_x=000; card_grid_y=000; break;
+		card_base_hp=65; card_base_atk=70+65; card_base_def=60+65;
+		card_grid_x=8; card_grid_y=6; break;
 	case 054:
 		card_name="";
 		card_stage=1; card_evo[0]=000;

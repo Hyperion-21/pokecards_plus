@@ -18,8 +18,10 @@ repeat (18) {
 var button_create;
 button_nextturn_id=instance_create_layer(cam_x+cam_w-76,cam_y+134,"instances",ob_button_31x24);
 button_nextturn_id.button_id=0;
-button_create=instance_create_layer(cam_x+76,cam_y+197,"instances",ob_button_16x16); //cam_w-91
+button_create=instance_create_layer(cam_x+76,cam_y+197,"instances",ob_button_16x16);
 button_create.button_id=1;
+button_create=instance_create_layer(cam_x+cam_w-20,cam_y+4,"instances",ob_button_16x16);
+button_create.button_id=2;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 instance_create_layer(cam_x+cam_w/2-24,cam_y+cam_h/2-24,"instances",ob_coin);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -140,8 +142,8 @@ repeat (enemycard_maindeck_total) {
 	create_card_cat=0;
 	create_card_id=choose(1,4,7,10,13);
 	create_card_level=1;
-	create_card_glyph_a=ob_main.ref_glyph_piercing//-1;
-	create_card_glyph_b=choose(-1,ob_main.ref_glyph_fork)//-1;
+	create_card_glyph_a=-1;
+	create_card_glyph_b=-1;
 	create_card_glyph_c=-1;
 	create_card_innate=1;
 	//
@@ -175,7 +177,7 @@ tooltip_timer_max=300;
 first_turn_attack_warning=false;
 hand_full_draw_warning=false;
 //
-hp_max=2000//20+ob_main.area_zone*10;
+hp_max=20+ob_main.area_zone*10;
 player_hp=hp_max;
 enemy_hp=hp_max;
 player_effect_damaged=0;

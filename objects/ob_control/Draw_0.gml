@@ -79,6 +79,6 @@ var dpboard_y=button_nextturn_id.y+3;
 draw_set_halign(fa_right);
 sc_drawrectangle(dpboard_x,dpboard_y,dpboard_x+26,dpboard_y+15,global.color_black,global.color_white,1,0.25,0.5,0);
 sc_drawtext(dpboard_x+9,dpboard_y+1,string(card_draw_points),global.color_white,global.color_black,1,1,0,-1);
-draw_sprite_general(sp_sheet,0,16*2,16*12,16,16,dpboard_x+9,dpboard_y,1,1,0,c_white,c_white,c_white,c_white,1);
+draw_sprite_general(sp_sheet,0,16*3,16*12,16,16,dpboard_x+9,dpboard_y,1,1,0,c_white,c_white,c_white,c_white,1);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 sc_draw_tooltip_text(cam_x+cam_w);

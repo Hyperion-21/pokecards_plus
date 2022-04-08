@@ -70,16 +70,23 @@ repeat (enemycard_hand_total) {
 // PLAY
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if anypoke_playable=true {
+	var var_courage=ob_main.ref_glyph_courage;
 	var var_piercing=ob_main.ref_glyph_piercing;
+	var var_shield=ob_main.ref_glyph_shield;
 	var var_medic=ob_main.ref_glyph_medic;
 	var var_fork=ob_main.ref_glyph_fork;
 	//
-	if random_value<40 { //AGGRESIVE: DIRECT
+	if turn_num<=2 {
+		if enemycard_playplan_id=-1 { AI_play_plan(3,-1,-1,0,0,0,1,0,0,0,-1,0,-1,0,0); } //HIGHEST VALUE > ANY > RECEIVE NO DAMAGE
+	}
+	else if random_value<40 { //AGGRESIVE: DIRECT
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,0,0,0,0,0,0,0,0,-1,0,-1,0,1); } //HIGHEST ATK > EMPTY
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,0,0,1,0,0,1,0,-1,0,-1,0,1); } //*HIGHEST ATK > VS > 1HKO
 		if enemycard_playplan_id=-1 { AI_play_plan(3,-1,1,0,0,1,0,0,0,0,-1,0,var_fork,1,1); } //HIGHEST VALUE > VS > FORK ATTACK
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,-1,0,0,0,1,0,0,1,var_medic,1,-1,0,0); } //MEDIC, HIGHEST ATK, IF ANY HURT > ANY > RECEIVE NO DAMAGE
 		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,-1,0,0,0,0,0,0,1,var_medic,1,-1,0,0); } //MEDIC, HIGHEST DEF, IF ANY HURT > ANY > RANDOM SPACE
+		if enemycard_playplan_id=-1 { AI_play_plan(3,-1,2,0,0,0,0,0,0,0,var_courage,1,-1,0,0); } //COURAGE, HIGHEST VALUE > NEXT TO FRIENDLY
+		if enemycard_playplan_id=-1 { AI_play_plan(3,-1,2,0,0,0,0,0,0,0,var_shield,1,-1,0,0); } //SHIELD, HIGHEST VALUE > NEXT TO FRIENDLY
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,1,1,1,0,1,0,0,-1,0,-1,0,1); } //HIGHEST ATK > VS > DEAL BONUS, RECEIVE NO BONUS AND TURN ADVANTAGE
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,1,0,1,0,1,0,0,-1,0,-1,0,1); } //HIGHEST ATK > VS > DEAL BONUS AND TURN ADVANTAGE
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,1,1,1,0,0,0,0,-1,0,-1,0,1); } //HIGHEST ATK > VS > DEAL BONUS AND RECEIVE NO BONUS
@@ -88,12 +95,15 @@ if anypoke_playable=true {
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,-1,0,0,0,1,0,0,0,var_piercing,1,-1,0,0); } //PIERCING ATTACK, HIGHEST ATK > ANY > RECEIVE NO DAMAGE
 		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,1,0,0,0,1,0,0,0,-1,0,-1,0,0); } //HIGHEST DEF > VS > RECEIVE NO DAMAGE
 		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,1,0,1,0,0,0,0,0,-1,0,-1,0,1); } //HIGHEST DEF > VS > RECEIVE NO BONUS
+		if enemycard_playplan_id=-1 { AI_play_plan(3,-1,-1,0,0,0,0,0,0,0,-1,0,-1,0,0); } //HIGHEST VALUE > ANY > RANDOM SPACE
 	}
 	else if random_value<80 { //AGGRESIVE: VS POKEMON
 		if enemycard_playplan_id=-1 { AI_play_plan(3,-1,1,0,0,1,0,0,1,0,-1,0,-1,0,1); } //*HIGHEST VALUE > VS > 1HKO
 		if enemycard_playplan_id=-1 { AI_play_plan(3,-1,1,0,0,1,0,0,0,0,-1,0,var_fork,1,1); } //HIGHEST VALUE > VS > FORK ATTACK
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,-1,0,0,0,1,0,0,1,var_medic,1,-1,0,0); } //MEDIC, HIGHEST ATK, IF ANY HURT > ANY > RECEIVE NO DAMAGE
 		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,-1,0,0,0,0,0,0,1,var_medic,1,-1,0,0); } //MEDIC, HIGHEST DEF, IF ANY HURT > ANY > RANDOM SPACE
+		if enemycard_playplan_id=-1 { AI_play_plan(3,-1,2,0,0,0,0,0,0,0,var_courage,1,-1,0,0); } //COURAGE, HIGHEST VALUE > NEXT TO FRIENDLY
+		if enemycard_playplan_id=-1 { AI_play_plan(3,-1,2,0,0,0,0,0,0,0,var_shield,1,-1,0,0); } //SHIELD, HIGHEST VALUE > NEXT TO FRIENDLY
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,1,1,1,0,1,0,0,-1,0,-1,0,1); } //HIGHEST ATK > VS > DEAL BONUS, RECEIVE NO BONUS AND TURN ADVANTAGE
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,1,0,1,0,1,0,0,-1,0,-1,0,1); } //HIGHEST ATK > VS > DEAL BONUS AND TURN ADVANTAGE
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,1,1,1,0,0,0,0,-1,0,-1,0,1); } //HIGHEST ATK > VS > DEAL BONUS AND RECEIVE NO BONUS
@@ -103,14 +113,17 @@ if anypoke_playable=true {
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,-1,0,0,0,1,0,0,0,var_piercing,1,-1,0,0); } //PIERCING ATTACK, HIGHEST ATK > ANY > RECEIVE NO DAMAGE
 		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,1,0,0,0,1,0,0,0,-1,0,-1,0,0); } //HIGHEST DEF > VS > RECEIVE NO DAMAGE
 		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,1,0,1,0,0,0,0,0,-1,0,-1,0,1); } //HIGHEST DEF > VS > RECEIVE NO BONUS
+		if enemycard_playplan_id=-1 { AI_play_plan(3,-1,-1,0,0,0,0,0,0,0,-1,0,-1,0,0); } //HIGHEST VALUE > ANY > RANDOM SPACE
 	}
 	else if random_value<100 { //DEFENSIVE
 		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,1,0,0,1,0,0,1,0,-1,0,-1,0,1); } //*HIGHEST DEF > VS > 1HKO
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,-1,0,0,0,1,0,0,1,var_medic,1,-1,0,0); } //MEDIC, HIGHEST ATK, IF ANY HURT > ANY > RECEIVE NO DAMAGE
 		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,-1,0,0,0,0,0,0,1,var_medic,1,-1,0,0); } //MEDIC, HIGHEST DEF, IF ANY HURT > ANY > RANDOM SPACE
+		if enemycard_playplan_id=-1 { AI_play_plan(3,-1,2,0,0,0,0,0,0,0,var_shield,1,-1,0,0); } //SHIELD, HIGHEST VALUE > NEXT TO FRIENDLY
 		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,1,0,0,0,1,0,0,0,-1,0,-1,0,0); } //HIGHEST DEF > VS > RECEIVE NO DAMAGE
 		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,1,0,1,0,0,0,0,0,-1,0,-1,0,1); } //HIGHEST DEF > VS > RECEIVE NO BONUS
 		if enemycard_playplan_id=-1 { AI_play_plan(3,-1,1,0,0,1,0,0,0,0,-1,0,var_fork,1,1); } //HIGHEST VALUE > VS > FORK ATTACK
+		if enemycard_playplan_id=-1 { AI_play_plan(3,-1,2,0,0,0,0,0,0,0,var_courage,1,-1,0,0); } //COURAGE, HIGHEST VALUE > NEXT TO FRIENDLY
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,1,1,1,0,1,0,0,-1,0,-1,0,1); } //HIGHEST ATK > VS > DEAL BONUS, RECEIVE NO BONUS AND TURN ADVANTAGE
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,1,0,1,0,1,0,0,-1,0,-1,0,1); } //HIGHEST ATK > VS > DEAL BONUS AND TURN ADVANTAGE
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,1,1,1,0,0,0,0,-1,0,-1,0,1); } //HIGHEST ATK > VS > DEAL BONUS AND RECEIVE NO BONUS
@@ -118,8 +131,8 @@ if anypoke_playable=true {
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,0,0,0,0,0,0,0,0,-1,0,-1,0,1); } //HIGHEST ATK > EMPTY
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,-1,0,0,0,1,0,0,0,var_fork,1,-1,0,0); } //FORK ATTACK, HIGHEST ATK > ANY > RECEIVE NO DAMAGE
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,-1,0,0,0,1,0,0,0,var_piercing,1,-1,0,0); } //PIERCING ATTACK, HIGHEST ATK > ANY > RECEIVE NO DAMAGE
+		if enemycard_playplan_id=-1 { AI_play_plan(3,-1,-1,0,0,0,0,0,0,0,-1,0,-1,0,0); } //HIGHEST VALUE > ANY > RANDOM SPACE
 	}
-	if enemycard_playplan_id=-1 { AI_play_plan(3,-1,-1,0,0,0,0,0,0,0,-1,0,-1,0,0); } //HIGHEST VALUE > ANY > RANDOM SPACE
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 // PLAY (FULL HAND)

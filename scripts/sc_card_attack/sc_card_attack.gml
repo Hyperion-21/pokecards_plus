@@ -206,6 +206,10 @@ with (argument1) {
 				damage_num_id_a.text_alpha=damage_num_id_a.text_alpha_full;
 				damage_num_id_a.text_color=global.color_direct_damage;
 				//
+				if damage_num_id_b.ref_turn_num!=ob_control.turn_num {
+					damage_num_id_b.ref_turn_num=ob_control.turn_num;
+					damage_num_id_b.damage_num=0;
+				}
 				damage_num_id_b.damage_num+=card_atk;
 				damage_num_id_b.damage_direct_color=true;
 				damage_num_id_b.text_alpha=damage_num_id_b.text_alpha_full;

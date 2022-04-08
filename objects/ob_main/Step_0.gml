@@ -83,7 +83,7 @@ if roadmap_generated=false {
 		i++;
 	}
 	//
-	if area_zone=0 {
+	if area_zone=0 and first_zone_start=true {
 		event_kind[0][0]=ref_event_grass;
 		event_kind[1][0]=ref_event_fire;
 		event_kind[2][0]=ref_event_water;
@@ -92,8 +92,13 @@ if roadmap_generated=false {
 		event_kind[1][1]=ref_event_battle;
 		event_kind[2][1]=ref_event_levelup;
 		location_type[1]=00; //forest
+		//
+		first_zone_start=false;
 	}
 	//
+	event_kind[0][roadmap_area_max-1]=ref_event_battle;
+	event_kind[1][roadmap_area_max-1]=ref_event_loop;
+	event_kind[2][roadmap_area_max-1]=-1;
 	location_type[roadmap_area_max-1]=15; //city
 	//
 	roadmap_generated=true;
@@ -138,6 +143,7 @@ if roadmap_get_details=true {
 			else if event_kind[ii][i]=ref_event_levelup { event_name[ii][i]="Level Up\n$" + string(event_cost[ref_event_levelup]); }
 			else if event_kind[ii][i]=ref_event_evolution { event_name[ii][i]="Evolution\n$" + string(event_cost[ref_event_evolution]); }
 			else if event_kind[ii][i]=ref_event_tribute { event_name[ii][i]="Tribute"; }
+			else if event_kind[ii][i]=ref_event_loop { event_name[ii][i]="Not\nReady"; }
 			else if event_kind[ii][i]=ref_event_grass { event_name[ii][i]="Grass\nSt. Deck"; }
 			else if event_kind[ii][i]=ref_event_fire { event_name[ii][i]="Fire\nSt. Deck"; }
 			else if event_kind[ii][i]=ref_event_water { event_name[ii][i]="Water\nSt. Deck"; }
@@ -188,8 +194,8 @@ if event_transition>-1 and fade_black<1 {
 		money+=money_add;
 		money_add=0;
 	}
-	if event_transition=ref_event_victory or event_transition=ref_event_defeat { fade_black+=0.0025; }
-	else if event_transition=ref_mainmenu or event_transition=ref_event_battle { fade_black+=0.012; }
+	if event_transition=ref_event_victory or event_transition=ref_event_defeat or event_transition=ref_event_exitbattle { fade_black+=0.0025; }
+	else if event_transition=ref_mainmenu or event_transition=ref_event_battle or event_transition=ref_event_loop { fade_black+=0.012; }
 	else { fade_black+=0.04; }
 }
 else if event_transition=-1 and fade_black>0 {
@@ -201,12 +207,17 @@ else if event_transition>-1 and fade_black>=1 {
 		with (ob_card_splash) { instance_destroy(); }
 		with (ob_background_tile) { instance_destroy(); }
 	}
+	else if event_transition=ref_event_loop {
+		roadmap_area=0;
+		roadmap_generated=false;
+		//sc_data_save();
+	}
 	else if event_transition=ref_event_battle {
 		money_add=irandom_range(150*0.8,150*1.2);
 		instance_create_layer(x,y,"instances",ob_control);
 		music_player=sc_playsound(ms_battle,100,true,true);
 	}
-	else if event_transition=ref_event_victory or event_transition=ref_event_defeat {
+	else if event_transition=ref_event_victory or event_transition=ref_event_defeat or event_transition=ref_event_exitbattle {
 		//destroy everything except ob_main and ob_background
 		with (ob_control) { instance_destroy(); }
 		with (ob_card) { instance_destroy(); }
@@ -216,9 +227,10 @@ else if event_transition>-1 and fade_black>=1 {
 		with (ob_background_tile) { instance_destroy(); }
 		with (ob_damage_num) { instance_destroy(); }
 		//
-		if event_transition=ref_event_defeat { money_add=0; }
+		if event_transition=ref_event_defeat or event_transition=ref_event_exitbattle { money_add=0; }
+		if event_transition!=ref_event_exitbattle { roadmap_area++; }
 		music_player=sc_playsound(ms_main,100,true,true);
-		roadmap_area++;
+		fade_black_exit_battle=0;
 		//sc_data_save();
 	}
 	else {

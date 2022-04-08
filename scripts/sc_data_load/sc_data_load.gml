@@ -1,6 +1,7 @@
 function sc_data_load() {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 area_zone=0;
+first_zone_start=true;
 roadmap_area=0;
 roadmap_generated=false;
 money=100;
@@ -48,6 +49,7 @@ if file_exists(data_file) {
 	var savemap=ds_map_secure_load(data_file);
 	//
 	if !is_undefined(ds_map_find_value(savemap,"area_zone")) { area_zone=ds_map_find_value(savemap,"area_zone"); }
+	if !is_undefined(ds_map_find_value(savemap,"first_zone_start")) { first_zone_start=ds_map_find_value(savemap,"first_zone_start"); }
 	if !is_undefined(ds_map_find_value(savemap,"roadmap_area")) { roadmap_area=ds_map_find_value(savemap,"roadmap_area"); }
 	if !is_undefined(ds_map_find_value(savemap,"roadmap_generated")) { roadmap_generated=ds_map_find_value(savemap,"roadmap_generated"); }
 	if !is_undefined(ds_map_find_value(savemap,"money")) { money=ds_map_find_value(savemap,"money"); }

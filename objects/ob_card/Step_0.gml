@@ -86,6 +86,25 @@ if reference_id=ob_control and card_cat=0 {
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+if card_played=true and card_trash=false {
+	if card_enemy=true { var i=0; } else { var i=5; }
+	repeat (5) {
+		if ob_control.card_space_id[i].occupy_id=id {
+			if card_environment=false {
+				card_atk=card_full_atk+ob_control.card_space_id[i].card_bonus_atk-ob_control.card_space_id[i].card_penalty_atk;
+				card_def=card_full_def+ob_control.card_space_id[i].card_bonus_def-ob_control.card_space_id[i].card_penalty_def;
+			}
+			else {
+				card_atk=card_full_atk-ob_control.card_space_id[i].card_penalty_atk;
+				card_def=card_full_def-ob_control.card_space_id[i].card_penalty_def;
+			}
+			if card_atk<0 { card_atk=0; }
+			if card_def<0 { card_def=0; }
+		}
+		i++;
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height and card_trash=false and card_enemy=false and reference_id=ob_control {
 	if ob_control.card_hold=-1 { ob_main.mouse_cursor=1; }
 	else { ob_main.mouse_cursor=2; }

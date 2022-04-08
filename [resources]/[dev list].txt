@@ -42,10 +42,10 @@
 ✔	main menu
 ✔	music
 ✔	event: berry shops
-2/4+	advanced enemy AI
-2/4+	glyphs [/////////////----]
-7/4	event: gym area loop around
-7/4	leave battle
+✔	advanced enemy AI
+✔	glyphs [/////////////////]
+✔	event: gym area loop around
+✔	leave battle
 8/4+	pokemon data (gen 1&2)
 10/4	trainer decks setup
 10/4	enemy deck shuffle
