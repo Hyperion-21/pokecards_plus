@@ -223,6 +223,7 @@ else if event_transition>-1 and fade_black>=1 {
 		with (ob_card) { instance_destroy(); }
 		with (ob_card_space) { instance_destroy(); }
 		with (ob_button_16x16) { instance_destroy(); }
+		with (ob_button_15x16) { instance_destroy(); }
 		with (ob_button_31x24) { instance_destroy(); }
 		with (ob_background_tile) { instance_destroy(); }
 		with (ob_damage_num) { instance_destroy(); }
@@ -325,6 +326,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 		if mouse_check_button_pressed(mb_left) {
 			with (ob_deckbuild) { instance_destroy(); }
 			with (ob_card) { instance_destroy(); }
+			with (ob_button_16x16) { instance_destroy(); }
 			with (ob_button_15x16) { instance_destroy(); }
 			screen_transition=2;
 			//sc_data_save();

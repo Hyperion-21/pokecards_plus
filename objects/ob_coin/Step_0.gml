@@ -22,11 +22,11 @@ else {
 	if final_timer=0 {
 		if floor(coin_state)=0 {
 			ob_control.battler_turn=1;
-			ob_control.card_draw_points=3;
+			ob_control.card_draw_points=5;
 		}
 		else {
 			ob_control.battler_turn=2;
-			ob_control.enemycard_draw_points=3;
+			ob_control.enemycard_draw_points=5;
 		}
 		ob_control.tooltip_timer=ob_control.tooltip_timer_max;
 		//

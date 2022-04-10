@@ -322,14 +322,14 @@ if button_nextturn=true {
 	if battler_turn=1 {
 		battler_turn=2;
 		if turn_num>1 { enemycard_draw_points+=2; }
-		else { enemycard_draw_points+=3; }
+		else { enemycard_draw_points+=5; }
 		card_draw_points=0;
 		enemy_turn_timer=irandom_range(30,60);
 	}
 	else if battler_turn=2 {
 		battler_turn=1;
 		if turn_num>1 { card_draw_points+=2; }
-		else { card_draw_points+=3; }
+		else { card_draw_points+=5; }
 		enemycard_draw_points=0;
 	}
 	//

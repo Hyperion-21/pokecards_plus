@@ -2,7 +2,7 @@ function sc_glyph_text(argument0) {
 /// @param glyph
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 switch (argument0) {
-	case ob_main.ref_glyph_lucky: return "// LUCKY //\Grants 2 DP (Draw Points) when played."; break;
+	case ob_main.ref_glyph_lucky: return "// LUCKY //\nGrants 2 DP (Draw Points) when played."; break;
 	case ob_main.ref_glyph_harvest: return "// HARVEST //\nConsumed berries return to hand (if not full) when fainting."; break;
 	case ob_main.ref_glyph_weakness: return "// WEAKNESS //\nThe opposing card's attack is lowered by 1."; break;
 	case ob_main.ref_glyph_ruthless: return "// RUTHLESS //\nThe opposing card's defense is lowered by 2."; break;
@@ -16,7 +16,8 @@ switch (argument0) {
 	case ob_main.ref_glyph_fork: return "// FORK ATTACK //\nAttacks diagonally to its sides instead of straight ahead."; break;
 	case ob_main.ref_glyph_vampire: return "// VAMPIRE //\nWhen attacking another card, half of the damage is absorbed."; break;
 	case ob_main.ref_glyph_curse: return "// CURSE //\nWhen fainting, the enemy card is left with 1 HP."; break;
-	case ob_main.ref_glyph_memento: return "// MEMENTO //\Grants 2 DP (Draw Points) when fainting."; break;
+	case ob_main.ref_glyph_memento: return "// MEMENTO //\nGrants 2 DP (Draw Points) when fainting."; break;
+	case ob_main.ref_glyph_berserk: return "// BERSERK //\nWhen HP is 1, base attack is doubled."; break;
 	//
 	case ob_main.ref_glyph_mist: return "// MIST //\nWhile this card is active, glyphs have no effect."; break;
 	case ob_main.ref_glyph_transform: return "// TRANSFORM //\nTransforms into the opposing enemy Pokemon."; break;

@@ -1,6 +1,6 @@
 function sc_glyph_random() {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-var var_random=irandom(799);
+var var_random=irandom(819);
 //
 if var_random<75 { return ob_main.ref_glyph_lucky; } //75 lucky
 else if var_random<175 { return ob_main.ref_glyph_harvest; } //100 harvest
@@ -12,10 +12,11 @@ else if var_random<510 { return ob_main.ref_glyph_counter; } //20 counterattack
 else if var_random<585 { return ob_main.ref_glyph_shield; } //75 shield
 else if var_random<605 { return ob_main.ref_glyph_medic; } //20 medic
 else if var_random<615 { return ob_main.ref_glyph_tenacity; } //10 tenacity
-else if var_random<655 { return ob_main.ref_glyph_bulwark; } //40 bulwark
-else if var_random<695 { return ob_main.ref_glyph_fork; } //40 fork attack
-else if var_random<715 { return ob_main.ref_glyph_vampire; } //20 vampire
-else if var_random<725 { return ob_main.ref_glyph_curse; } //10 curse
-else if var_random<800 { return ob_main.ref_glyph_memento; } //75 memento
+else if var_random<635 { return ob_main.ref_glyph_bulwark; } //20 bulwark
+else if var_random<675 { return ob_main.ref_glyph_fork; } //40 fork attack
+else if var_random<695 { return ob_main.ref_glyph_vampire; } //20 vampire
+else if var_random<705 { return ob_main.ref_glyph_curse; } //10 curse
+else if var_random<780 { return ob_main.ref_glyph_memento; } //75 memento
+else if var_random<820 { return ob_main.ref_glyph_berserk; } //40 berserk
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }

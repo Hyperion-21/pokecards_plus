@@ -50,7 +50,7 @@ repeat (11) {
 card_maindeck_total=0;
 var i=0;
 repeat (ob_main.maindeck_total) {
-	if ob_main.main_card_indeck[i]=true {
+	if ob_main.main_card_indeck[i][0]=true {
 		card_maindeck_total++;
 	}
 	i++;
@@ -73,7 +73,7 @@ repeat (card_maindeck_total) {
 //
 var i=0, ii=0;
 repeat (ob_main.maindeck_total) {
-	if ob_main.main_card_indeck[i]=true {
+	if ob_main.main_card_indeck[i][0]=true {
 		create_card_cat=0;
 		create_card_id=ob_main.main_card_id[i];
 		create_card_level=ob_main.main_card_level[i];
@@ -93,8 +93,8 @@ repeat (ob_main.maindeck_total) {
 card_berrydeck_total=0;
 var i=0, berry_num;
 repeat (4) {
-	card_berrydeck_total+=ob_main.berry_num_used[i];
-	berry_num[i]=ob_main.berry_num_used[i];
+	card_berrydeck_total+=ob_main.berry_num_used[i][0];
+	berry_num[i]=ob_main.berry_num_used[i][0];
 	i++;
 }
 //

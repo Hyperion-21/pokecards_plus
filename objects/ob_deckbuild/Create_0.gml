@@ -14,6 +14,16 @@ repeat (5) {
 	button_create.button_id=i;
 	i++;
 }
+repeat (5) {
+	button_create=instance_create_layer(ob_main.screen_deck_x+400,ob_main.screen_main_y+104+((i-5)*16),"instances",ob_button_16x16);
+	button_create.button_id=i;
+	i++;
+}
+repeat (5) {
+	button_create=instance_create_layer(ob_main.screen_deck_x+416,ob_main.screen_main_y+104+((i-10)*16),"instances",ob_button_16x16);
+	button_create.button_id=i;
+	i++;
+}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 deck_build_all_total=ob_main.maindeck_total;
 var i=0;
@@ -25,7 +35,10 @@ repeat (deck_build_all_total) {
 	create_card_glyph_b=ob_main.main_card_glyph_b[i];
 	create_card_glyph_c=ob_main.main_card_glyph_c[i];
 	create_card_innate=ob_main.main_card_innate[i];
-	create_card_indeck=ob_main.main_card_indeck[i];
+	//
+	for (var ii=0; ii<=ob_main.deck_setup_max; ii++;) {
+		create_card_indeck[ii]=ob_main.main_card_indeck[i][ii];
+	}
 	//
 	deck_card_all[i]=instance_create_layer(x,y,"instances",ob_card);
 	i++;
@@ -35,7 +48,7 @@ card_berrydeck_total=ob_main.berrydeck_total;
 var i=0;
 repeat (4) {
 	deck_berry_total[i]=0;
-	deck_berry_used[i]=ob_main.berry_num_used[i];
+	deck_berry_used[i]=ob_main.berry_num_used[i][0];
 	i++;
 }
 var i=0;
@@ -52,7 +65,9 @@ repeat (card_berrydeck_total) {
 deck_build_stored_total=0;
 deck_build_used_total=0;
 deck_build_used_max=50;
-deck_build_used_min=5;
+//
+deck_setup_load=-1; //value 0 not used, because current setup is always saved
+deck_setup_save=-1; //value 0 not used, because current setup is always saved
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 tooltip_text="";
 tooltip_lines=0;

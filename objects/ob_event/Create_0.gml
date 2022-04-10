@@ -95,7 +95,7 @@ event_kind=ob_main.ref_event_glyph or event_kind=ob_main.ref_event_tribute {
 	card_event_total=0;
 	var i=0;
 	repeat (ob_main.maindeck_total) {
-		if ob_main.main_card_indeck[i]=true {
+		if ob_main.main_card_indeck[i][0]=true {
 			card_event_total++;
 		}
 		i++;
@@ -103,7 +103,7 @@ event_kind=ob_main.ref_event_glyph or event_kind=ob_main.ref_event_tribute {
 	//
 	var i=0, ii=0;
 	repeat (ob_main.maindeck_total) {
-		if ob_main.main_card_indeck[i]=true {
+		if ob_main.main_card_indeck[i][0]=true {
 			create_card_cat=0;
 			create_card_id=ob_main.main_card_id[i];
 			create_card_level=ob_main.main_card_level[i];

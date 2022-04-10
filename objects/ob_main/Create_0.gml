@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Crystal League";
-game_version="v0.0.0.68";
+game_version="v0.0.0.69";
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -53,6 +53,7 @@ normal_poke_id_max=251; //normal (non-secret and non-environment) poke cards
 secret_cards_total=1;
 environment_cards_total=3;
 //
+deck_setup_max=5; //0: current (always), 1-5: saved setups
 maindeck_total_max=2000;
 berrydeck_total_max=100; //per berry
 //
@@ -91,7 +92,7 @@ tooltip_lines=0;
 current_glyph_add=-1;
 innate_max=6;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-glyph_common_amount=15;
+glyph_common_amount=16;
 //
 ref_glyph_lucky=00;
 ref_glyph_harvest=01;
@@ -108,9 +109,10 @@ ref_glyph_fork=11;
 ref_glyph_vampire=12;
 ref_glyph_curse=13;
 ref_glyph_memento=14;
+ref_glyph_berserk=15;
 //
-ref_glyph_mist=15;
-ref_glyph_transform=16;
+ref_glyph_mist=16;
+ref_glyph_transform=17;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 options_total=9;
 //

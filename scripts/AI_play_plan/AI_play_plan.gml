@@ -88,12 +88,22 @@ do {
 						vs_bonus_dmg=sc_type_bonus(opposing_card_id.card_type_a,opposing_card_id.card_type_b,enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b);
 					}
 					//
-					var var_imaginary_damage=own_atk-opposing_card_id.card_def;
+					if sc_glyph_check(enemycard_hand[i],ob_main.ref_glyph_weakness,true) { var imaginary_penalty_atk=1; } //glyph: weakness
+					else { var imaginary_penalty_atk=0; }
+					if sc_glyph_check(enemycard_hand[i],ob_main.ref_glyph_ruthless,true) { var imaginary_penalty_def=2; } //glyph: ruthless
+					else { var imaginary_penalty_def=0; }
+					//
+					var vs_atk=opposing_card_id.card_atk-imaginary_penalty_atk;
+					var vs_def=opposing_card_id.card_def-imaginary_penalty_def;
+					if vs_atk<0 { vs_atk=0; }
+					if vs_def<0 { vs_def=0; }
+					//
+					var var_imaginary_damage=own_atk-vs_def;
 					if var_imaginary_damage<0 { var_imaginary_damage=0; }
 					if bonus_dmg=true { var_imaginary_damage++; }
 					if var_imaginary_damage>0 { turns_to_defeat=ceil(opposing_card_id.card_hp/var_imaginary_damage); }
 					//
-					var var_imaginary_damage=opposing_card_id.card_atk-own_def;
+					var var_imaginary_damage=vs_atk-own_def;
 					if var_imaginary_damage<0 { var_imaginary_damage=0; }
 					if vs_bonus_dmg=true { var_imaginary_damage++; }
 					if var_imaginary_damage>0 { turns_to_faint=ceil(enemycard_hand[i].card_hp/var_imaginary_damage); }
@@ -115,10 +125,10 @@ do {
 				if argument4=true and opposing_card_id!=-1 and vs_bonus_dmg=true {
 					all_conditions_met=false;
 				}
-				if argument5=true and opposing_card_id!=-1 and own_atk-opposing_card_id.card_def<=0 and bonus_dmg=false {
+				if argument5=true and opposing_card_id!=-1 and own_atk-vs_def<=0 and bonus_dmg=false {
 					all_conditions_met=false;
 				}
-				if argument6=true and opposing_card_id!=-1 and (opposing_card_id.card_atk-own_def>0 or vs_bonus_dmg=true) {
+				if argument6=true and opposing_card_id!=-1 and (vs_atk-own_def>0 or vs_bonus_dmg=true) {
 					all_conditions_met=false;
 				}
 				if argument7=true and (opposing_card_id=-1 or turns_to_defeat=-1 or turns_to_faint<turns_to_defeat) {

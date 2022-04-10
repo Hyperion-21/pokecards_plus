@@ -19,7 +19,7 @@ repeat (roadmap_area_max) {
 }
 //
 maindeck_total=0;
-berrydeck_total=0;
+berrydeck_total=200//0;
 //
 var i=0;
 repeat (maindeck_total) {
@@ -29,19 +29,28 @@ repeat (maindeck_total) {
 	main_card_glyph_b[i]=-1;
 	main_card_glyph_c[i]=-1;
 	main_card_innate[i]=-1;
-	main_card_indeck[i]=false;
+	//
+	var ii=0;
+	repeat (deck_setup_max+1) {
+		main_card_indeck[i][ii]=false;
+		ii++;
+	}
 	i++;
 }
 //
 var i=0;
 repeat (berrydeck_total) {
-	berry_card_id[i]=-1;
+	berry_card_id[i]=irandom_range(3000,3003)//-1;
 	i++;
 }
 //
 var i=0;
 repeat (4) {
-	berry_num_used[i]=0;
+	var ii=0;
+	repeat (deck_setup_max+1) {
+		berry_num_used[i][ii]=0;
+		ii++;
+	}
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -85,8 +94,13 @@ if file_exists(data_file) {
 		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_glyph_c[i]=ds_map_find_value(savemap,value_name); }
 		var value_name="main_card_innate_" + string(i);
 		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_innate[i]=ds_map_find_value(savemap,value_name); }
-		var value_name="main_card_indeck_" + string(i);
-		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_indeck[i]=ds_map_find_value(savemap,value_name); }
+		//
+		var ii=0;
+		repeat (deck_setup_max+1) {
+			var value_name="main_card_indeck_" + string(i) + "_" + string(ii);
+			if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_indeck[i][ii]=ds_map_find_value(savemap,value_name); }
+			ii++;
+		}
 		i++;
 	}
 	//
@@ -99,8 +113,12 @@ if file_exists(data_file) {
 	//
 	var i=0;
 	repeat (4) {
-		var value_name="berry_num_used_" + string(i);
-		if !is_undefined(ds_map_find_value(savemap,value_name)) { berry_num_used[i]=ds_map_find_value(savemap,value_name); }
+		var ii=0;
+		repeat (deck_setup_max+1) {
+			var value_name="berry_num_used_" + string(i) + "_" + string(ii);
+			if !is_undefined(ds_map_find_value(savemap,value_name)) { berry_num_used[i][ii]=ds_map_find_value(savemap,value_name); }
+			ii++;
+		}
 		i++;
 	}
 	//

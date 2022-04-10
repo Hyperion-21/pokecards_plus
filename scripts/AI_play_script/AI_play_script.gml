@@ -78,6 +78,7 @@ if anypoke_playable=true {
 	//
 	if turn_num<=2 {
 		if enemycard_playplan_id=-1 { AI_play_plan(3,-1,-1,0,0,0,1,0,0,0,-1,0,-1,0,0); } //HIGHEST VALUE > ANY > RECEIVE NO DAMAGE
+		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,1,0,0,1,0,1,0,0,-1,0,-1,0,1); } //HIGHEST DEF > VS > TURN ADVANTAGE
 	}
 	else if random_value<40 { //AGGRESIVE: DIRECT
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,0,0,0,0,0,0,0,0,-1,0,-1,0,1); } //HIGHEST ATK > EMPTY
@@ -89,6 +90,7 @@ if anypoke_playable=true {
 		if enemycard_playplan_id=-1 { AI_play_plan(3,-1,2,0,0,0,0,0,0,0,var_shield,1,-1,0,0); } //SHIELD, HIGHEST VALUE > NEXT TO FRIENDLY
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,1,1,1,0,1,0,0,-1,0,-1,0,1); } //HIGHEST ATK > VS > DEAL BONUS, RECEIVE NO BONUS AND TURN ADVANTAGE
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,1,0,1,0,1,0,0,-1,0,-1,0,1); } //HIGHEST ATK > VS > DEAL BONUS AND TURN ADVANTAGE
+		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,0,0,1,0,1,0,0,-1,0,-1,0,1); } //*HIGHEST ATK > VS > TURN ADVANTAGE
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,1,1,1,0,0,0,0,-1,0,-1,0,1); } //HIGHEST ATK > VS > DEAL BONUS AND RECEIVE NO BONUS
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,1,0,1,0,0,0,0,-1,0,-1,0,1); } //HIGHEST ATK > VS > DEAL BONUS
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,-1,0,0,0,1,0,0,0,var_fork,1,-1,0,0); } //FORK ATTACK, HIGHEST ATK > ANY > RECEIVE NO DAMAGE
@@ -106,6 +108,7 @@ if anypoke_playable=true {
 		if enemycard_playplan_id=-1 { AI_play_plan(3,-1,2,0,0,0,0,0,0,0,var_shield,1,-1,0,0); } //SHIELD, HIGHEST VALUE > NEXT TO FRIENDLY
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,1,1,1,0,1,0,0,-1,0,-1,0,1); } //HIGHEST ATK > VS > DEAL BONUS, RECEIVE NO BONUS AND TURN ADVANTAGE
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,1,0,1,0,1,0,0,-1,0,-1,0,1); } //HIGHEST ATK > VS > DEAL BONUS AND TURN ADVANTAGE
+		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,0,0,1,0,1,0,0,-1,0,-1,0,1); } //*HIGHEST ATK > VS > TURN ADVANTAGE
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,1,1,1,0,0,0,0,-1,0,-1,0,1); } //HIGHEST ATK > VS > DEAL BONUS AND RECEIVE NO BONUS
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,1,0,1,0,0,0,0,-1,0,-1,0,1); } //HIGHEST ATK > VS > DEAL BONUS
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,0,0,0,0,0,0,0,0,-1,0,-1,0,1); } //HIGHEST ATK > EMPTY
@@ -126,6 +129,7 @@ if anypoke_playable=true {
 		if enemycard_playplan_id=-1 { AI_play_plan(3,-1,2,0,0,0,0,0,0,0,var_courage,1,-1,0,0); } //COURAGE, HIGHEST VALUE > NEXT TO FRIENDLY
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,1,1,1,0,1,0,0,-1,0,-1,0,1); } //HIGHEST ATK > VS > DEAL BONUS, RECEIVE NO BONUS AND TURN ADVANTAGE
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,1,0,1,0,1,0,0,-1,0,-1,0,1); } //HIGHEST ATK > VS > DEAL BONUS AND TURN ADVANTAGE
+		if enemycard_playplan_id=-1 { AI_play_plan(2,-1,1,0,0,1,0,1,0,0,-1,0,-1,0,1); } //*HIGHEST DEF > VS > TURN ADVANTAGE
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,1,1,1,0,0,0,0,-1,0,-1,0,1); } //HIGHEST ATK > VS > DEAL BONUS AND RECEIVE NO BONUS
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,1,1,0,1,0,0,0,0,-1,0,-1,0,1); } //HIGHEST ATK > VS > DEAL BONUS
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,0,0,0,0,0,0,0,0,-1,0,-1,0,1); } //HIGHEST ATK > EMPTY

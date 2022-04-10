@@ -86,22 +86,30 @@ if reference_id=ob_control and card_cat=0 {
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if card_played=true and card_trash=false {
-	if card_enemy=true { var i=0; } else { var i=5; }
-	repeat (5) {
-		if ob_control.card_space_id[i].occupy_id=id {
-			if card_environment=false {
-				card_atk=card_full_atk+ob_control.card_space_id[i].card_bonus_atk-ob_control.card_space_id[i].card_penalty_atk;
-				card_def=card_full_def+ob_control.card_space_id[i].card_bonus_def-ob_control.card_space_id[i].card_penalty_def;
+if reference_id=ob_control and card_cat=0 {
+	if sc_glyph_check(id,ob_main.ref_glyph_berserk,true) and card_hp=1 { var base_atk_multiplier=2; } //glyph: berserk
+	else { var base_atk_multiplier=1; }
+	//
+	if card_played=false and card_trash=false {
+		card_atk=card_full_atk*base_atk_multiplier;
+	}
+	else if card_played=true and card_trash=false {
+		if card_enemy=true { var i=0; } else { var i=5; }
+		repeat (5) {
+			if ob_control.card_space_id[i].occupy_id=id {
+				if card_environment=false {
+					card_atk=(card_full_atk*base_atk_multiplier)+ob_control.card_space_id[i].card_bonus_atk-ob_control.card_space_id[i].card_penalty_atk;
+					card_def=card_full_def+ob_control.card_space_id[i].card_bonus_def-ob_control.card_space_id[i].card_penalty_def;
+				}
+				else {
+					card_atk=(card_full_atk*base_atk_multiplier)-ob_control.card_space_id[i].card_penalty_atk;
+					card_def=card_full_def-ob_control.card_space_id[i].card_penalty_def;
+				}
+				if card_atk<0 { card_atk=0; }
+				if card_def<0 { card_def=0; }
 			}
-			else {
-				card_atk=card_full_atk-ob_control.card_space_id[i].card_penalty_atk;
-				card_def=card_full_def-ob_control.card_space_id[i].card_penalty_def;
-			}
-			if card_atk<0 { card_atk=0; }
-			if card_def<0 { card_def=0; }
+			i++;
 		}
-		i++;
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -157,7 +165,9 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 					ob_main.main_card_glyph_b[ob_main.maindeck_total]=card_glyph_b;
 					ob_main.main_card_glyph_c[ob_main.maindeck_total]=card_glyph_c;
 					ob_main.main_card_innate[ob_main.maindeck_total]=card_innate;
-					ob_main.main_card_indeck[ob_main.maindeck_total]=false;
+					for (var i=0; i<=ob_main.deck_setup_max; i++;) {
+						ob_main.main_card_indeck[ob_main.maindeck_total][i]=false;
+					}
 					ob_main.maindeck_total++;
 					potential_y=ob_main.screen_main_y+ob_main.cam_h+2;
 				}
@@ -202,19 +212,19 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 	//
 	if card_cat=0 {
 		if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false {
-			if card_indeck=false and ob_deckbuild.deck_build_used_total<ob_deckbuild.deck_build_used_max {
-				card_indeck=true;
+			if card_indeck[0]=false and ob_deckbuild.deck_build_used_total<ob_deckbuild.deck_build_used_max {
+				card_indeck[0]=true;
 				ob_deckbuild.reorder_selected=0; //pokemon id
 				ob_deckbuild.reorder_type=ob_deckbuild.reorder_selected;
 			}
-			else if card_indeck=true and ob_deckbuild.deck_build_used_total>ob_deckbuild.deck_build_used_min {
-				card_indeck=false;
+			else if card_indeck[0]=true {
+				card_indeck[0]=false;
 				ob_deckbuild.reorder_selected=0; //pokemon id
 				ob_deckbuild.reorder_type=ob_deckbuild.reorder_selected;
 			}
 			card_delete_timer=0;
 		}
-		else if mouse_check_button(mb_right) and ob_deckbuild.deck_build_all_total>5 and card_indeck=false and ob_main.cursor_hide=false {
+		else if mouse_check_button(mb_right) and ob_deckbuild.deck_build_all_total>5 and card_indeck[0]=false and ob_main.cursor_hide=false {
 			card_delete_timer++;
 			if card_delete_timer=card_delete_timer_max {
 				ob_deckbuild.reorder_type=5;

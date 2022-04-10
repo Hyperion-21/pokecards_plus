@@ -45,9 +45,37 @@ if reorder_type>-1 {
 	//
 	if reorder_type=5 {
 		deck_build_all_total--;
+		//
+		var i=0;
+		repeat (deck_build_all_total) {
+			for (var ii=1; ii<=ob_main.deck_setup_max; ii++;) { //re-save decks
+				ob_main.main_card_indeck[i][ii]=deck_card_all[i].card_indeck[ii];
+			}
+			i++;
+		}
+		for (var i=1; i<=ob_main.deck_setup_max; i++;) { //unnecessary, but just in case
+			ob_main.main_card_indeck[deck_build_all_total][i]=false;
+		}
 	}
 	//
 	reorder_type=-1;
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+//LOAD DECKS
+if deck_setup_load>-1 {
+	var i=0;
+	repeat (deck_build_all_total) {
+		deck_card_all[i].card_indeck[0]=ob_main.main_card_indeck[i][deck_setup_load];
+		i++;
+	}
+	//
+	var i=0;
+	repeat (4) {
+		deck_berry_used[i]=ob_main.berry_num_used[i][deck_setup_load];
+		i++;
+	}
+	//
+	deck_setup_load=-1;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 deck_build_stored_total=0;
@@ -55,7 +83,7 @@ deck_build_used_total=0;
 //
 var i=0, ii=0, iii=0;
 repeat (deck_build_all_total) {
-	if deck_card_all[i].card_indeck=false {
+	if deck_card_all[i].card_indeck[0]=false {
 		deck_card_stored[ii]=deck_card_all[i];
 		deck_build_stored_total++;
 		ii++;
@@ -68,7 +96,7 @@ repeat (deck_build_all_total) {
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-//SAVE DECK
+//SAVE DECKS
 ob_main.maindeck_total=deck_build_all_total;
 var i=0;
 repeat (deck_build_all_total) {
@@ -78,16 +106,28 @@ repeat (deck_build_all_total) {
 	ob_main.main_card_glyph_b[i]=deck_card_all[i].card_glyph_b;
 	ob_main.main_card_glyph_c[i]=deck_card_all[i].card_glyph_c;
 	ob_main.main_card_innate[i]=deck_card_all[i].card_innate;
-	ob_main.main_card_indeck[i]=deck_card_all[i].card_indeck;
+	//
+	ob_main.main_card_indeck[i][0]=deck_card_all[i].card_indeck[0];
+	if deck_setup_save>-1 {
+		deck_card_all[i].card_indeck[deck_setup_save]=deck_card_all[i].card_indeck[0];
+		ob_main.main_card_indeck[i][deck_setup_save]=deck_card_all[i].card_indeck[deck_setup_save];
+	}
+	//
 	i++;
 }
 //
 ob_main.berrydeck_total=card_berrydeck_total;
 var i=0;
 repeat (4) {
-	ob_main.berry_num_used[i]=deck_berry_used[i];
+	ob_main.berry_num_used[i][0]=deck_berry_used[i];
+	if deck_setup_save>-1 {
+		ob_main.berry_num_used[i][deck_setup_save]=deck_berry_used[i];
+	}
+	//
 	i++;
 }
+//
+deck_setup_save=-1;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var i=0;
 repeat (deck_build_stored_total) {

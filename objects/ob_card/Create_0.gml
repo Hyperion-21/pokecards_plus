@@ -11,8 +11,10 @@ card_trash=false;
 card_enemy=false;
 //
 card_cat=reference_id.create_card_cat;
-if card_cat=1 or reference_id=ob_control or reference_id=ob_event { card_indeck=false; }
-else { card_indeck=reference_id.create_card_indeck; }
+for (var i=0; i<=ob_main.deck_setup_max; i++;) {
+	if card_cat=1 or reference_id=ob_control or reference_id=ob_event { card_indeck[i]=false; }
+	else { card_indeck[i]=reference_id.create_card_indeck[i]; }
+}
 //
 num_in_maindeck=-1;
 num_in_berrydeck=-1;
@@ -36,7 +38,7 @@ if card_cat=0 {
 			if card_id>ob_main.normal_poke_id_max+ob_main.secret_cards_total { card_id+=2500-ob_main.normal_poke_id_max-ob_main.secret_cards_total; } //environment cards
 			else if card_id>ob_main.normal_poke_id_max { card_id+=2000-ob_main.normal_poke_id_max; } //secret cards
 			//
-			//card_id=choose(52,53)//
+			//card_id=1//
 			card_level=irandom_range(1,floor((ob_main.area_zone+1)/2)+1); //max: 1 2 2 3 3 4 4 5
 			card_glyph_a=-1;
 			card_glyph_b=-1;

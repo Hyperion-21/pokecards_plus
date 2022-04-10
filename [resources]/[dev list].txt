@@ -43,14 +43,15 @@
 ✔	music
 ✔	event: berry shops
 ✔	advanced enemy AI
-✔	glyphs [/////////////////]
+✔	glyphs [//////////////////]
 ✔	event: gym area loop around
 ✔	leave battle
+✔	multiple decks
 8/4+	pokemon data (gen 1&2)
+10/4	trainer types and sprites
 10/4	trainer decks setup
-10/4	enemy deck shuffle
-11/4+	all trainer decks
-12/4	gym decks
-13/4	tutorial
+12/4	enemy deck shuffle
+12/4+	all trainer & gym decks
+14/4	tutorial
 	extra visual effects
 	sound effects
