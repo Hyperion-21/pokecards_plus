@@ -65,6 +65,7 @@ else if event_kind=ob_main.ref_event_grass or event_kind=ob_main.ref_event_fire 
 			create_card_glyph_b=-1;
 			create_card_glyph_c=-1;
 			create_card_innate=1;
+			create_card_form_value=0;
 		}
 		else {
 			create_card_cat=1;
@@ -111,6 +112,7 @@ event_kind=ob_main.ref_event_glyph or event_kind=ob_main.ref_event_tribute {
 			create_card_glyph_b=ob_main.main_card_glyph_b[i];
 			create_card_glyph_c=ob_main.main_card_glyph_c[i];
 			create_card_innate=ob_main.main_card_innate[i];
+			create_card_form_value=ob_main.main_card_form_value[i];
 			//
 			card_event[ii]=instance_create_layer(x,y,"instances",ob_card);
 			card_event[ii].num_in_all=i;

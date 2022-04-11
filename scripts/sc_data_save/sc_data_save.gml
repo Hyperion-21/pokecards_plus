@@ -24,6 +24,7 @@ repeat (roadmap_area_max) {
 //
 ds_map_add(savemap,"maindeck_total",maindeck_total);
 ds_map_add(savemap,"berrydeck_total",berrydeck_total);
+ds_map_add(savemap,"serial_count",serial_count);
 //
 var i=0;
 repeat (maindeck_total) {
@@ -39,6 +40,10 @@ repeat (maindeck_total) {
 	ds_map_add(savemap,value_name,main_card_glyph_c[i]);
 	var value_name="main_card_innate_" + string(i);
 	ds_map_add(savemap,value_name,main_card_innate[i]);
+	var value_name="main_card_form_value_" + string(i);
+	ds_map_add(savemap,value_name,main_card_form_value[i]);
+	var value_name="main_card_serial_" + string(i);
+	ds_map_add(savemap,value_name,main_card_serial[i]);
 	//
 	var ii=0;
 	repeat (deck_setup_max+1) {

@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Crystal League";
-game_version="v0.0.0.69";
+game_version="v0.0.0.70";
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -50,7 +50,7 @@ menu_back_options_hover=false;
 menu_back_deck_hover=false;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 normal_poke_id_max=251; //normal (non-secret and non-environment) poke cards
-secret_cards_total=1;
+secret_cards_total=2;
 environment_cards_total=3;
 //
 deck_setup_max=5; //0: current (always), 1-5: saved setups

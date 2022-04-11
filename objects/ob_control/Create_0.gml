@@ -81,6 +81,7 @@ repeat (ob_main.maindeck_total) {
 		create_card_glyph_b=ob_main.main_card_glyph_b[i];
 		create_card_glyph_c=ob_main.main_card_glyph_c[i];
 		create_card_innate=ob_main.main_card_innate[i];
+		create_card_form_value=ob_main.main_card_form_value[i];
 		//
 		card_maindeck[card_shuffle[ii]]=instance_create_layer(cam_x+cam_w-67,cam_y+181,"instances",ob_card);
 		card_maindeck[card_shuffle[ii]].num_in_maindeck=card_shuffle[ii];
@@ -146,6 +147,7 @@ repeat (enemycard_maindeck_total) {
 	create_card_glyph_b=-1;
 	create_card_glyph_c=-1;
 	create_card_innate=1;
+	create_card_form_value=irandom(999);
 	//
 	enemycard_maindeck[i]=instance_create_layer(cam_x+cam_w-67,cam_y-100,"instances",ob_card);
 	enemycard_maindeck[i].card_enemy=true;

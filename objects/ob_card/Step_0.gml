@@ -165,9 +165,14 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 					ob_main.main_card_glyph_b[ob_main.maindeck_total]=card_glyph_b;
 					ob_main.main_card_glyph_c[ob_main.maindeck_total]=card_glyph_c;
 					ob_main.main_card_innate[ob_main.maindeck_total]=card_innate;
+					ob_main.main_card_form_value[ob_main.maindeck_total]=card_form_value;
 					for (var i=0; i<=ob_main.deck_setup_max; i++;) {
 						ob_main.main_card_indeck[ob_main.maindeck_total][i]=false;
 					}
+					//
+					ob_main.main_card_serial[ob_main.maindeck_total]=ob_main.serial_count;
+					ob_main.serial_count++;
+					//
 					ob_main.maindeck_total++;
 					potential_y=ob_main.screen_main_y+ob_main.cam_h+2;
 				}

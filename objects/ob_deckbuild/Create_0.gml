@@ -35,6 +35,8 @@ repeat (deck_build_all_total) {
 	create_card_glyph_b=ob_main.main_card_glyph_b[i];
 	create_card_glyph_c=ob_main.main_card_glyph_c[i];
 	create_card_innate=ob_main.main_card_innate[i];
+	create_card_form_value=ob_main.main_card_form_value[i];
+	create_card_serial=ob_main.main_card_serial[i];
 	//
 	for (var ii=0; ii<=ob_main.deck_setup_max; ii++;) {
 		create_card_indeck[ii]=ob_main.main_card_indeck[i][ii];
