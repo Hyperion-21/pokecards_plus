@@ -50,10 +50,10 @@
 ✔	card serials (sorting)
 ✔	basic card forms (unown)
 8/4+	pokemon data (gen 1&2)
-12/4	trainer types and sprites
-12/4	trainer decks setup
+13/4	trainer types and sprites
+13/4	trainer decks setup
 13/4	enemy deck shuffle
-13/4+	all trainer & gym decks
-15/4	tutorial
+14/4+	all trainer & gym decks
+16/4	tutorial
 	extra visual effects
 	sound effects

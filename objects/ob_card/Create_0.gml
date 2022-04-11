@@ -54,7 +54,7 @@ if card_cat=0 {
 				random_id_chance=irandom(99); if random_id_chance<5 { allow_id_stage_3=true; } //5% stage 3 allowed
 			}
 			//
-			//card_id=choose(); allow_id_enigma=true; allow_id_baby=true; allow_id_stage_2=true; allow_id_stage_3=true; //cheat
+			//card_id=irandom_range(95,103); allow_id_enigma=true; allow_id_baby=true; allow_id_stage_2=true; allow_id_stage_3=true; //cheat
 			card_level=irandom_range(1,floor((ob_main.area_zone+1)/1.5)+1); //max: 1 2 3 3 4 5 5 6
 			card_glyph_a=-1;
 			card_glyph_b=-1;
