@@ -44,7 +44,7 @@ else if event_kind=ob_main.ref_event_freecard {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if event_kind=ob_main.ref_event_grass or event_kind=ob_main.ref_event_fire or event_kind=ob_main.ref_event_water {
-	card_prize=10;
+	card_prize=15;
 	var i=0;
 	repeat (card_prize) {
 		if i<=6 {
@@ -69,13 +69,13 @@ else if event_kind=ob_main.ref_event_grass or event_kind=ob_main.ref_event_fire 
 		}
 		else {
 			create_card_cat=1;
-			if i=7 { create_card_id=3000; } //oran
-			else if i=8 { create_card_id=3001; } //leppa
+			if i<=11 { create_card_id=3000; } //oran
+			else if i<=13 { create_card_id=3001; } //leppa
 			else { create_card_id=3002; } //lum
 		}
 		//
-		if i<=4 { var card_x=ob_main.screen_main_x+83+(72*i), card_y=ob_main.screen_main_y+104-47; }
-		else { var card_x=ob_main.screen_main_x+83+(72*(i-5)), card_y=ob_main.screen_main_y+104+47; }
+		if i<=6 { var card_x=ob_main.screen_main_x+47+(60*i), card_y=ob_main.screen_main_y+104-47; }
+		else { var card_x=ob_main.screen_main_x+17+(60*(i-7)), card_y=ob_main.screen_main_y+104+47; }
 		instance_create_layer(card_x,card_y,"instances",ob_card);
 		i++;
 	}

@@ -54,7 +54,7 @@ if card_cat=0 {
 				random_id_chance=irandom(99); if random_id_chance<5 { allow_id_stage_3=true; } //5% stage 3 allowed
 			}
 			//
-			//card_id=irandom_range(95,103); allow_id_enigma=true; allow_id_baby=true; allow_id_stage_2=true; allow_id_stage_3=true; //cheat
+			//card_id=irandom_range(116,117); allow_id_enigma=true; allow_id_baby=true; allow_id_stage_2=true; allow_id_stage_3=true; //cheat
 			card_level=irandom_range(1,floor((ob_main.area_zone+1)/1.5)+1); //max: 1 2 3 3 4 5 5 6
 			card_glyph_a=-1;
 			card_glyph_b=-1;
@@ -75,9 +75,9 @@ if card_cat=0 {
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		if random_card=true {
 			var card_glyph_chance=irandom(999), card_glyph_total=0;
-			if card_glyph_chance<1 { card_glyph_total=3; } //0.1%
-			else if card_glyph_chance<6 { card_glyph_total=2; } //0.5%
-			else if card_glyph_chance<16 { card_glyph_total=1; } //1%
+			if card_glyph_chance<5 { card_glyph_total=2; } //0.5%
+			else if card_glyph_chance<15 { card_glyph_total=1; } //1%
+			//
 			if card_glyph_total>=1 and card_glyph_a=-1 {
 				card_glyph_a=sc_glyph_random();
 			}
@@ -86,11 +86,11 @@ if card_cat=0 {
 					card_glyph_b=sc_glyph_random();
 				} until (card_glyph_b!=card_glyph_a);
 			}
-			if card_glyph_total=3 and card_glyph_c=-1 {
+			/*if card_glyph_total=3 and card_glyph_c=-1 {
 				do {
 					card_glyph_c=sc_glyph_random();
 				} until (card_glyph_c!=card_glyph_a and card_glyph_c!=card_glyph_b);
-			}
+			}*/
 		}
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		card_value=sc_card_level_stats_main(0)+sc_card_level_stats_main(1)*2+sc_card_level_stats_main(2)*2;
@@ -98,8 +98,8 @@ if card_cat=0 {
 		//innate value is always 1 on random cards, so it's not considered for rarity
 		//
 		if random_card=true {
-			var card_rarity_chance=irandom(199)+1, card_rarity_check=false;
-			if card_rarity_chance>card_rarity or card_rarity_chance=200 {
+			var card_rarity_chance=irandom(149)+1, card_rarity_check=false;
+			if card_rarity_chance>card_rarity or card_rarity_chance=150 {
 				card_rarity_check=true;
 				//
 				if card_enigma=true and allow_id_enigma=false { card_rarity_check=false; }

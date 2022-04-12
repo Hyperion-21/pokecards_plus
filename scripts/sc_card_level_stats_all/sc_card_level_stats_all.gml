@@ -11,8 +11,8 @@ card_atk=card_full_atk;
 card_def=card_full_def;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if argument1=true {
-	if card_full_hp+card_full_atk*2+card_full_def*2>=50 { card_cost_total=2; }
-	else if card_full_hp+card_full_atk*2+card_full_def*2>=10 { card_cost_total=1; }
+	if card_full_hp+card_full_atk*2+card_full_def*2>=40 { card_cost_total=2; }
+	else if card_full_hp+card_full_atk*2+card_full_def*2>=4 { card_cost_total=1; }
 	else { card_cost_total=0; }
 	if card_enigma=true { card_cost_total++; }
 	if card_environment=true { card_cost_total=0; }
