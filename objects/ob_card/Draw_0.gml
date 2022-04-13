@@ -18,13 +18,10 @@ if reference_id=ob_control or
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if card_cat=0 and card_face=true and in_view=true {
 	var card_color=c_white, namebar_color=c_white;
-	if card_innate=0 { card_color=global.color_card_light; }
-	else if card_innate=ob_main.innate_max { card_color=global.color_card_gold; }
-	else if card_delete_timer>0 { card_color=global.color_gray; }
 	//
 	if card_type_a=00 { namebar_color=make_colour_rgb(169,182,214); }
 	else if card_type_a=01 { namebar_color=make_colour_rgb(174,214,170); }
-	else if card_type_a=02 { namebar_color=make_colour_rgb(214,189,170); }
+	else if card_type_a=02 { namebar_color=make_colour_rgb(219,181,174); }
 	else if card_type_a=03 { namebar_color=make_colour_rgb(170,191,214); }
 	else if card_type_a=04 { namebar_color=make_colour_rgb(214,207,170); }
 	else if card_type_a=05 { namebar_color=make_colour_rgb(170,177,214); }
@@ -40,6 +37,10 @@ if card_cat=0 and card_face=true and in_view=true {
 	else if card_type_a=15 { namebar_color=make_colour_rgb(175,205,214); }
 	else if card_type_a=16 { namebar_color=make_colour_rgb(176,186,214); }
 	else if card_type_a=17 { namebar_color=make_colour_rgb(191,177,214); }
+	//
+	if card_innate=0 { card_color=global.color_card_light; }
+	else if card_innate=ob_main.innate_max { card_color=namebar_color; }
+	else if card_delete_timer>0 { card_color=global.color_gray; }
 	//
 	//CARD BASE
 	if card_enigma=false and card_secret=false {
@@ -66,33 +67,33 @@ if card_cat=0 and card_face=true and in_view=true {
 	draw_sprite_general(card_sheet,0,65*(card_grid_x-1)+1,33*(card_grid_y-1)+1,64,32,draw_x-4,draw_y+3,1,1,0,c_white,c_white,c_white,c_white,1);
 	//
 	//TYPES
-	draw_sprite_general(sp_sheet,0,16*(card_type_a+1),16*5,12,11,draw_x+2,draw_y+2,1,1,0,card_color,card_color,card_color,card_color,1);
-	if card_type_b>=0 { draw_sprite_general(sp_sheet,0,16*(card_type_b+1),16*5,12,11,draw_x+2,draw_y+12,1,1,0,card_color,card_color,card_color,card_color,1); }
+	draw_sprite_general(sp_sheet,0,16*(card_type_a+1),16*5,12,11,draw_x+2,draw_y+2,1,1,0,c_white,c_white,c_white,c_white,1);
+	if card_type_b>=0 { draw_sprite_general(sp_sheet,0,16*(card_type_b+1),16*5,12,11,draw_x+2,draw_y+12,1,1,0,c_white,c_white,c_white,c_white,1); }
 	//
 	//GLYPHS
 	if card_glyph_a>=0 and card_glyph_a<ob_main.glyph_common_amount {
-		draw_sprite_general(sp_sheet,0,16*(card_glyph_a+1),16*6,12,11,draw_x+43,draw_y+2,1,1,0,card_color,card_color,card_color,card_color,1);
+		draw_sprite_general(sp_sheet,0,16*(card_glyph_a+1),16*6,12,11,draw_x+43,draw_y+2,1,1,0,c_white,c_white,c_white,c_white,1);
 	}
 	else if card_glyph_a>=ob_main.glyph_common_amount {
-		draw_sprite_general(sp_sheet,0,16*(ob_main.glyph_common_amount+1),16*6,12,11,draw_x+43,draw_y+2,1,1,0,card_color,card_color,card_color,card_color,1);
+		draw_sprite_general(sp_sheet,0,16*(ob_main.glyph_common_amount+1),16*6,12,11,draw_x+43,draw_y+2,1,1,0,c_white,c_white,c_white,c_white,1);
 	}
 	if card_glyph_b>=0 and card_glyph_b<ob_main.glyph_common_amount {
-		draw_sprite_general(sp_sheet,0,16*(card_glyph_b+1),16*6,12,11,draw_x+43,draw_y+12,1,1,0,card_color,card_color,card_color,card_color,1);
+		draw_sprite_general(sp_sheet,0,16*(card_glyph_b+1),16*6,12,11,draw_x+43,draw_y+12,1,1,0,c_white,c_white,c_white,c_white,1);
 	}
 	else if card_glyph_b>=ob_main.glyph_common_amount {
-		draw_sprite_general(sp_sheet,0,16*(ob_main.glyph_common_amount+1),16*6,12,11,draw_x+43,draw_y+12,1,1,0,card_color,card_color,card_color,card_color,1);
+		draw_sprite_general(sp_sheet,0,16*(ob_main.glyph_common_amount+1),16*6,12,11,draw_x+43,draw_y+12,1,1,0,c_white,c_white,c_white,c_white,1);
 	}
 	if card_glyph_c>=0 and card_glyph_c<ob_main.glyph_common_amount {
-		draw_sprite_general(sp_sheet,0,16*(card_glyph_c+1),16*6,12,11,draw_x+43,draw_y+22,1,1,0,card_color,card_color,card_color,card_color,1);
+		draw_sprite_general(sp_sheet,0,16*(card_glyph_c+1),16*6,12,11,draw_x+43,draw_y+22,1,1,0,c_white,c_white,c_white,c_white,1);
 	}
 	else if card_glyph_c>=ob_main.glyph_common_amount {
-		draw_sprite_general(sp_sheet,0,16*(ob_main.glyph_common_amount+1),16*6,12,11,draw_x+43,draw_y+22,1,1,0,card_color,card_color,card_color,card_color,1);
+		draw_sprite_general(sp_sheet,0,16*(ob_main.glyph_common_amount+1),16*6,12,11,draw_x+43,draw_y+22,1,1,0,c_white,c_white,c_white,c_white,1);
 	}
 	//
 	//COST
 	var i=0;
 	repeat (3) {
-		if card_cost[i]>=0 { draw_sprite_general(sp_sheet,0,16*(card_cost[i]+1),16*3,4,4,draw_x+3+4*i,draw_y+35,1,1,0,card_color,card_color,card_color,card_color,1); }
+		if card_cost[i]>=0 { draw_sprite_general(sp_sheet,0,16*(card_cost[i]+1),16*3,4,4,draw_x+3+4*i,draw_y+35,1,1,0,c_white,c_white,c_white,c_white,1); }
 		i++;
 	}
 	//
@@ -106,10 +107,10 @@ if card_cat=0 and card_face=true and in_view=true {
 				}
 			}
 			if opposite_card!=-1 and sc_type_bonus(card_type_a,card_type_b,opposite_card.card_type_a,opposite_card.card_type_b) {
-				draw_sprite_general(sp_sheet,0,16*2,16*12,16,16,draw_x+20,draw_y-8,1,1,0,card_color,card_color,card_color,card_color,1);
+				draw_sprite_general(sp_sheet,0,16*2,16*12,16,16,draw_x+20,draw_y-8,1,1,0,c_white,c_white,c_white,c_white,1);
 			}
 			else {
-				draw_sprite_general(sp_sheet,0,16*1,16*12,16,16,draw_x+20,draw_y-8,1,1,0,card_color,card_color,card_color,card_color,1);
+				draw_sprite_general(sp_sheet,0,16*1,16*12,16,16,draw_x+20,draw_y-8,1,1,0,c_white,c_white,c_white,c_white,1);
 			}
 		}
 	}

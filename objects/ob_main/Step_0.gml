@@ -56,14 +56,15 @@ if roadmap_generated=false {
 				}
 				//
 				if event_kind[ii][i]=-1 { event_kind[ii][i]=-1; }
-				else if event_kind[ii][i]<400 and i=0 { event_kind[ii][i]=ref_event_battle; free_event=true; } //40% (same as battle+freecard, ensures at least 1 battle in zone)
+				else if event_kind[ii][i]<400 and i=0 { event_kind[ii][i]=ref_event_battle; free_event=true; } //40% (ensures at least 1 battle in zone)
 				else if event_kind[ii][i]<300 { event_kind[ii][i]=ref_event_battle; free_event=true; } //30%
-				else if event_kind[ii][i]<400 { event_kind[ii][i]=ref_event_freecard; free_event=true; } //10%
+				else if event_kind[ii][i]<350 { event_kind[ii][i]=ref_event_payoff; free_event=true; } //5%
+				else if event_kind[ii][i]<400 { event_kind[ii][i]=ref_event_freecard; free_event=true; } //5%
 				else if event_kind[ii][i]<550 { event_kind[ii][i]=ref_event_cardpack; } //15%
-				else if event_kind[ii][i]<680 { event_kind[ii][i]=ref_event_berry; } //13%
-				else if event_kind[ii][i]<830 { event_kind[ii][i]=ref_event_levelup; } //15%
-				else if event_kind[ii][i]<880 { event_kind[ii][i]=ref_event_evolution; } //5%
-				else if event_kind[ii][i]<980 { event_kind[ii][i]=ref_event_glyph; } //10%
+				else if event_kind[ii][i]<700 { event_kind[ii][i]=ref_event_berry; } //15%
+				else if event_kind[ii][i]<850 { event_kind[ii][i]=ref_event_levelup; } //15%
+				else if event_kind[ii][i]<900 { event_kind[ii][i]=ref_event_evolution; } //5%
+				else if event_kind[ii][i]<980 { event_kind[ii][i]=ref_event_glyph; } //8%
 				else if event_kind[ii][i]<1000 { event_kind[ii][i]=ref_event_tribute; } //2%
 				//
 				if event_kind[ii][i]=ref_event_glyph { event_glyph_add[ii][i]=sc_glyph_random(); }
@@ -138,6 +139,7 @@ if roadmap_get_details=true {
 			//
 			if event_kind[ii][i]=ref_event_battle { event_name[ii][i]="Trainer\nBattle"; }
 			else if event_kind[ii][i]=ref_event_freecard { event_name[ii][i]="Free Card"; }
+			else if event_kind[ii][i]=ref_event_payoff { event_name[ii][i]="Payoff"; }
 			else if event_kind[ii][i]=ref_event_cardpack { event_name[ii][i]="Card Pack\n$" + string(event_cost[ref_event_cardpack]); }
 			else if event_kind[ii][i]=ref_event_berry { event_name[ii][i]="Berry Pack\n$" + string(event_cost[ref_event_berry]); }
 			else if event_kind[ii][i]=ref_event_levelup { event_name[ii][i]="Level Up\n$" + string(event_cost[ref_event_levelup]); }

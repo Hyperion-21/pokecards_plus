@@ -43,14 +43,15 @@
 ✔	music
 ✔	event: berry shops
 ✔	advanced enemy AI
-✔	glyphs [//////////////////]
+✔	glyphs [//////////////////-]
 ✔	event: gym area loop around
 ✔	leave battle
 ✔	multiple decks
 ✔	card serials (sorting)
 ✔	basic card forms (unown)
-8/4+	pokemon data (gen 1&2)
-12/4	event: money prize
+✔	pokemon data (gen 1&2)
+13/4	event: payoff
+13/4	player sprites
 14/4	trainer types and sprites
 14/4	trainer decks setup
 14/4	enemy deck shuffle

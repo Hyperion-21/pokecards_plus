@@ -1,6 +1,6 @@
 randomize(); //random seed
 game_name="Pocket Crystal League";
-game_version="v0.0.0.72";
+game_version="v0.0.0.73";
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -61,14 +61,15 @@ money_add=0;
 money_subtract=0;
 effect_money_error=0;
 ref_event_battle=0;
-ref_event_freecard=1;
-ref_event_cardpack=2;
-ref_event_berry=3;
-ref_event_levelup=4;
-ref_event_evolution=5;
-ref_event_glyph=6;
-ref_event_tribute=7;
-ref_event_loop=8;
+ref_event_payoff=1;
+ref_event_freecard=2;
+ref_event_cardpack=3;
+ref_event_berry=4;
+ref_event_levelup=5;
+ref_event_evolution=6;
+ref_event_glyph=7;
+ref_event_tribute=8;
+ref_event_loop=9;
 ref_event_grass=100;
 ref_event_fire=101;
 ref_event_water=102;
@@ -92,7 +93,7 @@ tooltip_lines=0;
 current_glyph_add=-1;
 innate_max=6;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-glyph_common_amount=16;
+glyph_common_amount=17;
 //
 ref_glyph_lucky=00;
 ref_glyph_harvest=01;
@@ -110,9 +111,10 @@ ref_glyph_vampire=12;
 ref_glyph_curse=13;
 ref_glyph_memento=14;
 ref_glyph_berserk=15;
+ref_glyph_adaptability=16;
 //
-ref_glyph_mist=16;
-ref_glyph_transform=17;
+ref_glyph_mist=17;
+ref_glyph_transform=18;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 options_total=9;
 //
@@ -198,7 +200,7 @@ global.color_black=make_colour_rgb(40,40,40);
 global.color_gray=make_colour_rgb(190,190,190);
 global.color_card_light=make_colour_rgb(233,230,222);
 global.color_card_dark=make_colour_rgb(205,198,181);
-global.color_card_gold=make_colour_rgb(226,204,161);
+//global.color_card_gold=make_colour_rgb(226,204,161);
 global.color_player=make_colour_rgb(160,193,225);
 global.color_enemy=make_colour_rgb(221,172,159);
 global.color_fullhp=make_colour_rgb(176,223,159);

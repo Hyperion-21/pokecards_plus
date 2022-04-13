@@ -2,9 +2,9 @@ function sc_card_level_stats_all(argument0,argument1) {
 /// @param update_hp
 /// @param update_costs
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if argument0=true { card_full_hp=sc_card_level_stats_main(0); }
-card_full_atk=sc_card_level_stats_main(1);
-card_full_def=sc_card_level_stats_main(2);
+if argument0=true { card_full_hp=sc_card_level_stats_main(0,card_level); }
+card_full_atk=sc_card_level_stats_main(1,card_level);
+card_full_def=sc_card_level_stats_main(2,card_level);
 //
 if argument0=true { card_hp=card_full_hp; }
 card_atk=card_full_atk;

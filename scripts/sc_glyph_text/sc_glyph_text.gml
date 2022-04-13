@@ -18,6 +18,7 @@ switch (argument0) {
 	case ob_main.ref_glyph_curse: return "// CURSE //\nWhen fainting, the enemy card is left with 1 HP."; break;
 	case ob_main.ref_glyph_memento: return "// MEMENTO //\nGrants 2 DP (Draw Points) when fainting."; break;
 	case ob_main.ref_glyph_berserk: return "// BERSERK //\nWhen HP is 1, base attack is doubled."; break;
+	case ob_main.ref_glyph_adaptability: return "// ADAPTABILITY //\nType advantage deals 2 extra damage instead of 1."; break;
 	//
 	case ob_main.ref_glyph_mist: return "// MIST //\nWhile this card is active, glyphs have no effect."; break;
 	case ob_main.ref_glyph_transform: return "// TRANSFORM //\nTransforms into the opposing enemy Pokemon."; break;

@@ -45,7 +45,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	var bar_amount=(roadmap_area*100)/(roadmap_area_max-1);
 	draw_healthbar(road_win_x+2,road_win_y-17-rel_hud,road_win_x+237,road_win_y-14-rel_hud,bar_amount,
 	global.color_progress_dark,global.color_progress_light,global.color_progress_light,0,true,false);
-	draw_sprite_general(sp_sheet,0,16*2,16*11,16,16,road_win_x-2+(100*228)/100,road_win_y-24-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
+	draw_sprite_general(sp_sheet,0,16*4,16*12,16,16,road_win_x-2+(100*228)/100,road_win_y-24-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
 	draw_sprite_general(sp_sheet,0,16*1,16*11,16,16,road_win_x-2+(bar_amount*228)/100,road_win_y-24-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	draw_set_font(fn_m6x11);

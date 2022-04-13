@@ -1,6 +1,6 @@
 function sc_glyph_random() {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-var var_random=irandom(819);
+var var_random=irandom(859);
 //
 if var_random<75 { return ob_main.ref_glyph_lucky; } //75 lucky
 else if var_random<175 { return ob_main.ref_glyph_harvest; } //100 harvest
@@ -18,5 +18,6 @@ else if var_random<695 { return ob_main.ref_glyph_vampire; } //20 vampire
 else if var_random<705 { return ob_main.ref_glyph_curse; } //10 curse
 else if var_random<780 { return ob_main.ref_glyph_memento; } //75 memento
 else if var_random<820 { return ob_main.ref_glyph_berserk; } //40 berserk
+else if var_random<860 { return ob_main.ref_glyph_adaptability; } //40 adaptability
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }
