@@ -1,20 +1,20 @@
 randomize(); //random seed
-game_name="Pocket Crystal League";
-game_version="v0.0.0.73";
+#macro game_name "Pocket Crystal League"
+#macro game_version "v0.0.0.74"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
 //
-screen_options_x=0;
-screen_main_x=512;
-screen_deck_x=1024;
+#macro screen_options_x 0
+#macro screen_main_x 512
+#macro screen_deck_x 1024
 x=screen_main_x;
 //
-screen_main_y=0;
+#macro screen_main_y 0
 y=screen_main_y;
 //
-road_win_x=screen_main_x+136;
-road_win_y=screen_main_y+97;
+#macro road_win_x screen_main_x+136
+#macro road_win_y screen_main_y+97
 //
 view_set_visible(view_camera[0],true);
 view_set_xport(view_camera[0],0);
@@ -27,8 +27,8 @@ camera_set_view_size(view_camera[0],512,288);
 //camera_set_view_border(view_camera[0],-1,-1);
 //camera_set_view_speed(view_camera[0],-1,-1);
 //
-cam_w=camera_get_view_width(view_camera[0]);
-cam_h=camera_get_view_height(view_camera[0]);
+#macro cam_w camera_get_view_width(view_camera[0])
+#macro cam_h camera_get_view_height(view_camera[0])
 //
 surface_resize(application_surface,cam_w,cam_h);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -38,7 +38,7 @@ screen_transition=-1;
 auto_deck_transition=false;
 moving_hud=0;
 //
-roadmap_area_max=16;
+roadmap_area_max=8;
 roadmap_get_details=true;
 event_transition=-1; //same as events, 300 victory, 301 defeat, 999 main menu
 fade_black=0;
@@ -48,38 +48,46 @@ menu_options_hover=false;
 menu_deck_hover=false;
 menu_back_options_hover=false;
 menu_back_deck_hover=false;
+//
+card_level_player_limit=0;
+card_level_spawn_limit=0;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-normal_poke_id_max=251; //normal (non-secret and non-environment) poke cards
-secret_cards_total=2;
-environment_cards_total=3;
+#macro normal_poke_id_max 251 //normal (non-secret and non-environment) poke cards
+#macro secret_cards_total 2
+#macro environment_cards_total 3
 //
-deck_setup_max=5; //0: current (always), 1-5: saved setups
-maindeck_total_max=2000;
-berrydeck_total_max=100; //per berry
+#macro deck_setup_max 5 //0: current (always), 1-5: saved setups
+#macro maindeck_total_max 2000
+#macro berrydeck_total_max 100 //per berry
 //
-money_add=0;
-money_subtract=0;
+#macro money_add_base 75
+#macro money_add_area_bonus 25
+//
+money_show=0;
+money_prize=0;
 effect_money_error=0;
-ref_event_battle=0;
-ref_event_payoff=1;
-ref_event_freecard=2;
-ref_event_cardpack=3;
-ref_event_berry=4;
-ref_event_levelup=5;
-ref_event_evolution=6;
-ref_event_glyph=7;
-ref_event_tribute=8;
-ref_event_loop=9;
-ref_event_grass=100;
-ref_event_fire=101;
-ref_event_water=102;
-ref_event_gymbattle=200;
-ref_event_victory=300; //only for transitions
-ref_event_defeat=301; //only for transitions
-ref_event_exitbattle=302; //only for transitions
-ref_mainmenu=999; //only for transitions
+event_cost_standby=0;
+#macro ref_event_battle 0
+#macro ref_event_payoff 1
+#macro ref_event_freecard 2
+#macro ref_event_cardpack 3
+#macro ref_event_berry 4
+#macro ref_event_levelup 5
+#macro ref_event_evolution 6
+#macro ref_event_glyph 7
+#macro ref_event_tribute 8
+#macro ref_event_loop 9
+#macro ref_event_grass 100
+#macro ref_event_fire 101
+#macro ref_event_water 102
+#macro ref_event_gymbattle 200
+#macro ref_event_tutorial 250
+#macro ref_event_victory 300 //only for transitions
+#macro ref_event_defeat 301 //only for transitions
+#macro ref_event_exitbattle 302 //only for transitions
+#macro ref_mainmenu 999 //only for transitions
 //
-for (var i=0; i<=200; i++;) {
+for (var i=0; i<=999; i++;) {
 	event_cost[i]=0;
 }
 event_cost[ref_event_cardpack]=100;
@@ -88,45 +96,46 @@ event_cost[ref_event_levelup]=100;
 event_cost[ref_event_evolution]=200;
 event_cost[ref_event_glyph]=150;
 //
+#macro innate_max 6 //failure chance uses manual values in ob_event
+current_glyph_add=-1;
 tooltip_text="";
 tooltip_lines=0;
-current_glyph_add=-1;
-innate_max=6;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-glyph_common_amount=17;
+#macro glyph_common_amount 17
 //
-ref_glyph_lucky=00;
-ref_glyph_harvest=01;
-ref_glyph_weakness=02;
-ref_glyph_ruthless=03;
-ref_glyph_courage=04;
-ref_glyph_piercing=05;
-ref_glyph_counter=06;
-ref_glyph_shield=07;
-ref_glyph_medic=08;
-ref_glyph_tenacity=09;
-ref_glyph_bulwark=10;
-ref_glyph_fork=11;
-ref_glyph_vampire=12;
-ref_glyph_curse=13;
-ref_glyph_memento=14;
-ref_glyph_berserk=15;
-ref_glyph_adaptability=16;
+#macro ref_glyph_lucky 00
+#macro ref_glyph_harvest 01
+#macro ref_glyph_weakness 02
+#macro ref_glyph_ruthless 03
+#macro ref_glyph_courage 04
+#macro ref_glyph_piercing 05
+#macro ref_glyph_counter 06
+#macro ref_glyph_shield 07
+#macro ref_glyph_medic 08
+#macro ref_glyph_tenacity 09
+#macro ref_glyph_bulwark 10
+#macro ref_glyph_fork 11
+#macro ref_glyph_vampire 12
+#macro ref_glyph_curse 13
+#macro ref_glyph_memento 14
+#macro ref_glyph_berserk 15
+#macro ref_glyph_adaptability 16
 //
-ref_glyph_mist=17;
-ref_glyph_transform=18;
+#macro ref_glyph_mist 17
+#macro ref_glyph_transform 18
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-options_total=9;
+#macro options_total 10
 //
-opt_fullscreen=0;
-opt_vsync=1;
-opt_filter=2;
-opt_scaling=3;
-opt_music=4;
-opt_sound=5;
-opt_autodeck=6;
-opt_edge=7;
-opt_bg_type=8;
+#macro opt_fullscreen 0
+#macro opt_vsync 1
+#macro opt_filter 2
+#macro opt_scaling 3
+#macro opt_music 4
+#macro opt_sound 5
+#macro opt_autodeck 6
+#macro opt_playericon 7
+#macro opt_edge 8
+#macro opt_bg_type 9
 //
 for (var i=0; i<options_total; i++;) {
 	if i=opt_fullscreen { option_name[i]="Fullscreen: "; }
@@ -136,32 +145,33 @@ for (var i=0; i<options_total; i++;) {
 	else if i=opt_music { option_name[i]="Music: "; }
 	else if i=opt_sound { option_name[i]="Sound Effects: "; }
 	else if i=opt_autodeck { option_name[i]="New Cards: "; }
+	else if i=opt_playericon { option_name[i]="Player Icon: "; }
 	else if i=opt_edge { option_name[i]="Edge Shading: "; }
 	else if i=opt_bg_type { option_name[i]="Battle Background Style: "; }
 	//
-	option_x[i]=20;
-	option_y[i]=17+20*i;
+	option_x[i]=28;
+	option_y[i]=25+20*i;
 	option_focus[i]=false;
 	option_state_text[i]="";
 }
 //
-colorsetup_total=3;
-bg_rgb_divisor=2;
+#macro colorsetup_total 3
+#macro bg_rgb_divisor 2
 //
-opt_bg_a=0;
-opt_bg_b=1;
-opt_bg_tile=2;
+#macro opt_bg_a 0
+#macro opt_bg_b 1
+#macro opt_bg_tile 2
 //
 for (var i=0; i<colorsetup_total; i++;) {
 	if i=opt_bg_a { colorsetup_name[i]="Battle Background Color A: "; }
 	else if i=opt_bg_b { colorsetup_name[i]="Battle Background Color B: "; }
 	else if i=opt_bg_tile { colorsetup_name[i]="Battle Background Color C: "; }
 	//
-	colorsetup_main_x[i]=20;
+	colorsetup_main_x[i]=28;
 	colorsetup_r_x[i]=colorsetup_main_x[i]+166;
 	colorsetup_g_x[i]=colorsetup_r_x[i]+38;
 	colorsetup_b_x[i]=colorsetup_g_x[i]+38;
-	colorsetup_y[i]=17+12*i+20*options_total;
+	colorsetup_y[i]=25+12*i+20*options_total;
 	colorsetup_focus_r[i]=false;
 	colorsetup_focus_g[i]=false;
 	colorsetup_focus_b[i]=false;
@@ -185,8 +195,8 @@ repeat (8) {
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-config_file="config.sav";
-data_file="data.sav";
+#macro config_file "config.sav"
+#macro data_file "data.sav"
 sc_config_load();
 //sc_config_save();
 sc_data_load();

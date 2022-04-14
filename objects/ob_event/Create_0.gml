@@ -7,13 +7,14 @@ tooltip_lines=0;
 show_deck=false;
 apply_event=false;
 event_applied=false;
+event_cancelled=false;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if event_kind=ob_main.ref_event_cardpack or event_kind=ob_main.ref_event_berry {
-	if event_kind=ob_main.ref_event_cardpack {
+if event_kind=ref_event_cardpack or event_kind=ref_event_berry {
+	if event_kind=ref_event_cardpack {
 		card_prize=4;
 		var main_amount=3, berry_amount=1;
 	}
-	else if event_kind=ob_main.ref_event_berry {
+	else if event_kind=ref_event_berry {
 		card_prize=4;
 		var main_amount=0, berry_amount=4;
 	}
@@ -26,35 +27,35 @@ if event_kind=ob_main.ref_event_cardpack or event_kind=ob_main.ref_event_berry {
 		else { berry_amount--; }
 		create_card_id=-1;
 		//
-		instance_create_layer(ob_main.screen_main_x+118+(73*i),ob_main.screen_main_y+104,"instances",ob_card);
+		instance_create_layer(screen_main_x+118+(73*i),screen_main_y+104,"instances",ob_card);
 		i++;
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-else if event_kind=ob_main.ref_event_freecard {
+else if event_kind=ref_event_freecard {
 	card_prize=1;
 	var i=0;
 	repeat (3) {
 		create_card_cat=0;
 		create_card_id=-1;
 		//
-		instance_create_layer(ob_main.screen_main_x+155+(72*i),ob_main.screen_main_y+104,"instances",ob_card);
+		instance_create_layer(screen_main_x+155+(72*i),screen_main_y+104,"instances",ob_card);
 		i++;
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-else if event_kind=ob_main.ref_event_grass or event_kind=ob_main.ref_event_fire or event_kind=ob_main.ref_event_water {
+else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=ref_event_water {
 	card_prize=15;
 	var i=0;
 	repeat (card_prize) {
 		if i<=6 {
 			create_card_cat=0;
-			if i=0 and event_kind=ob_main.ref_event_grass { create_card_id=001; } //bulbasaur
-			else if i=1 and event_kind=ob_main.ref_event_grass { create_card_id=152; } //chikorita
-			else if i=0 and event_kind=ob_main.ref_event_fire { create_card_id=004; } //charmander
-			else if i=1 and event_kind=ob_main.ref_event_fire { create_card_id=155; } //cyndaquil
-			else if i=0 and event_kind=ob_main.ref_event_water { create_card_id=007; } //squirtle
-			else if i=1 and event_kind=ob_main.ref_event_water { create_card_id=158; } //totodile
+			if i=0 and event_kind=ref_event_grass { create_card_id=001; } //bulbasaur
+			else if i=1 and event_kind=ref_event_grass { create_card_id=152; } //chikorita
+			else if i=0 and event_kind=ref_event_fire { create_card_id=004; } //charmander
+			else if i=1 and event_kind=ref_event_fire { create_card_id=155; } //cyndaquil
+			else if i=0 and event_kind=ref_event_water { create_card_id=007; } //squirtle
+			else if i=1 and event_kind=ref_event_water { create_card_id=158; } //totodile
 			else if i=2 { create_card_id=016; } //pidgey
 			else if i=3 { create_card_id=021; } //spearow
 			else if i=4 { create_card_id=019; } //rattata
@@ -74,22 +75,22 @@ else if event_kind=ob_main.ref_event_grass or event_kind=ob_main.ref_event_fire 
 			else { create_card_id=3002; } //lum
 		}
 		//
-		if i<=6 { var card_x=ob_main.screen_main_x+47+(60*i), card_y=ob_main.screen_main_y+104-47; }
-		else { var card_x=ob_main.screen_main_x+17+(60*(i-7)), card_y=ob_main.screen_main_y+104+47; }
+		if i<=6 { var card_x=screen_main_x+47+(60*i), card_y=screen_main_y+104-47; }
+		else { var card_x=screen_main_x+17+(60*(i-7)), card_y=screen_main_y+104+47; }
 		instance_create_layer(card_x,card_y,"instances",ob_card);
 		i++;
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-else if event_kind=ob_main.ref_event_levelup or event_kind=ob_main.ref_event_evolution or
-event_kind=ob_main.ref_event_glyph or event_kind=ob_main.ref_event_tribute {
+else if event_kind=ref_event_levelup or event_kind=ref_event_evolution or
+event_kind=ref_event_glyph or event_kind=ref_event_tribute {
 	show_deck=true;
 	//
 	deck_x=4;
 	deck_y=204;
 	hold_deck_bar=false;
 	//
-	if event_kind=ob_main.ref_event_glyph {
+	if event_kind=ref_event_glyph {
 		glyph_add_id=ob_main.current_glyph_add;
 	}
 	//
@@ -122,22 +123,22 @@ event_kind=ob_main.ref_event_glyph or event_kind=ob_main.ref_event_tribute {
 		i++;
 	}
 	//
-	if event_kind=ob_main.ref_event_tribute {
+	if event_kind=ref_event_tribute {
 		event_space_total=2;
 		for (var i=0; i<event_space_total; i++;) {
-			event_space_id[i]=instance_create_layer(ob_main.screen_main_x+227-35+71*i,ob_main.screen_main_y+59,"instances",ob_card_space);
+			event_space_id[i]=instance_create_layer(screen_main_x+227-35+71*i,screen_main_y+59,"instances",ob_card_space);
 		}
 	}
 	else {
 		event_space_total=1;
 		for (var i=0; i<event_space_total; i++;) {
-			event_space_id[i]=instance_create_layer(ob_main.screen_main_x+227,ob_main.screen_main_y+59,"instances",ob_card_space);
+			event_space_id[i]=instance_create_layer(screen_main_x+227,screen_main_y+59,"instances",ob_card_space);
 		}
 	}
 	//
 	var i=0, button_create;
 	repeat (2) {
-		button_create=instance_create_layer(ob_main.screen_main_x+219+42*i,ob_main.screen_main_y+155,"instances",ob_button_31x24);
+		button_create=instance_create_layer(screen_main_x+219+42*i,screen_main_y+155,"instances",ob_button_31x24);
 		button_create.button_id=i;
 		i++;
 	}

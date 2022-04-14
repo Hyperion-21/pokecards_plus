@@ -4,7 +4,7 @@ area_zone=0;
 first_zone_start=true;
 roadmap_area=0;
 roadmap_generated=false;
-money=100;
+money=200;
 //
 var i=0;
 repeat (roadmap_area_max) {

@@ -164,12 +164,12 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or ob_main.cursor_hide=true) 
 				card_hold.card_trash=true;
 			}
 			else if card_hold.card_cat=0 {
-				if sc_glyph_check(card_hold,ob_main.ref_glyph_lucky,true) { //glyph: lucky
+				if sc_glyph_check(card_hold,ref_glyph_lucky,true) { //glyph: lucky
 					card_draw_points+=2;
 					tooltip_timer=tooltip_timer_max;
 				}
 				//
-				if sc_glyph_check(card_hold,ob_main.ref_glyph_medic,true) { //glyph: medic
+				if sc_glyph_check(card_hold,ref_glyph_medic,true) { //glyph: medic
 					for (var i=5; i<=9; i++;) {
 						if card_space_id[i].occupy_id!=-1 {
 							var card_to_heal=card_space_id[i].occupy_id;
@@ -182,7 +182,7 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or ob_main.cursor_hide=true) 
 					}
 				}
 				//
-				if sc_glyph_check(card_hold,ob_main.ref_glyph_bulwark,true) { //glyph: bulwark
+				if sc_glyph_check(card_hold,ref_glyph_bulwark,true) { //glyph: bulwark
 					var i=0;
 					repeat (2) {
 						var rock_cardspace_id=-1;
@@ -322,14 +322,14 @@ if keyboard_check_pressed(vk_space) and !mouse_check_button(mb_left) and battler
 if button_nextturn=true {
 	if battler_turn=1 {
 		battler_turn=2;
-		if turn_num>1 { enemycard_draw_points+=2; }
+		if turn_num>1 { enemycard_draw_points+=3; }
 		else { enemycard_draw_points+=5; }
 		card_draw_points=0;
 		enemy_turn_timer=irandom_range(30,60);
 	}
 	else if battler_turn=2 {
 		battler_turn=1;
-		if turn_num>1 { card_draw_points+=2; }
+		if turn_num>1 { card_draw_points+=3; }
 		else { card_draw_points+=5; }
 		enemycard_draw_points=0;
 	}

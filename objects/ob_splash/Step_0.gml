@@ -1,7 +1,7 @@
 //ob_splash
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if mouse_check_button_pressed(mb_any) or keyboard_check_pressed(vk_anykey) and ob_main.fade_black<=0 {
-	ob_main.event_transition=ob_main.ref_mainmenu;
+	ob_main.event_transition=ref_mainmenu;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if sc_music_sync()=true {

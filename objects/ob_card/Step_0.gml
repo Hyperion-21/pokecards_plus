@@ -34,7 +34,7 @@ if reference_id=ob_control {
 	}
 }
 //
-if reference_id=ob_event and (y>ob_main.screen_main_y+ob_main.cam_h or y<ob_main.screen_main_y) { //getting card
+if reference_id=ob_event and (y>screen_main_y+cam_h or y<screen_main_y) { //getting card
 	instance_destroy();
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -48,7 +48,7 @@ if card_trash=true {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if reference_id=ob_control and card_cat=0 {
-	if sc_glyph_check(id,ob_main.ref_glyph_transform,false) and card_played=true { //glyph: transform (Ditto only)
+	if sc_glyph_check(id,ref_glyph_transform,false) and card_played=true { //glyph: transform (Ditto only)
 		if card_enemy=true { var i=0; } else { var i=5; }
 		repeat (5) {
 			if ob_control.card_space_id[i].occupy_id=id {
@@ -59,7 +59,7 @@ if reference_id=ob_control and card_cat=0 {
 				if (card_enemy=true and ob_control.card_space_id[i+5].occupy_id!=-1) {
 					vs_card=ob_control.card_space_id[i+5].occupy_id;
 				}
-				if sc_glyph_check(id,ob_main.ref_glyph_transform,true) and vs_card!=-1 and card_id!=vs_card.card_id and vs_card.card_environment=false {
+				if sc_glyph_check(id,ref_glyph_transform,true) and vs_card!=-1 and card_id!=vs_card.card_id and vs_card.card_environment=false {
 					//transforms only if there's no mist
 					card_id=vs_card.card_id;
 					sc_pokelist();
@@ -77,7 +77,7 @@ if reference_id=ob_control and card_cat=0 {
 			i++;
 		}
 	}
-	else if sc_glyph_check(id,ob_main.ref_glyph_transform,false) and card_played=false {
+	else if sc_glyph_check(id,ref_glyph_transform,false) and card_played=false {
 		if card_id!=132 {
 			card_id=132;
 			sc_pokelist();
@@ -87,7 +87,7 @@ if reference_id=ob_control and card_cat=0 {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if reference_id=ob_control and card_cat=0 {
-	if sc_glyph_check(id,ob_main.ref_glyph_berserk,true) and card_hp=1 { var base_atk_multiplier=2; } //glyph: berserk
+	if sc_glyph_check(id,ref_glyph_berserk,true) and card_hp=1 { var base_atk_multiplier=2; } //glyph: berserk
 	else { var base_atk_multiplier=1; }
 	//
 	if card_played=false and card_trash=false {
@@ -158,7 +158,7 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 			}
 			else {
 				//ADD CARD
-				if card_cat=0 and ob_main.maindeck_total<ob_main.maindeck_total_max and ob_event.card_prize>0 {
+				if card_cat=0 and ob_main.maindeck_total<maindeck_total_max and ob_event.card_prize>0 {
 					ob_main.main_card_id[ob_main.maindeck_total]=card_id;
 					ob_main.main_card_level[ob_main.maindeck_total]=card_level;
 					ob_main.main_card_glyph_a[ob_main.maindeck_total]=card_glyph_a;
@@ -166,7 +166,7 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 					ob_main.main_card_glyph_c[ob_main.maindeck_total]=card_glyph_c;
 					ob_main.main_card_innate[ob_main.maindeck_total]=card_innate;
 					ob_main.main_card_form_value[ob_main.maindeck_total]=card_form_value;
-					for (var i=0; i<=ob_main.deck_setup_max; i++;) {
+					for (var i=0; i<=deck_setup_max; i++;) {
 						ob_main.main_card_indeck[ob_main.maindeck_total][i]=false;
 					}
 					//
@@ -174,16 +174,16 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 					ob_main.serial_count++;
 					//
 					ob_main.maindeck_total++;
-					potential_y=ob_main.screen_main_y+ob_main.cam_h+2;
+					potential_y=screen_main_y+cam_h+2;
 				}
-				else if card_cat=1 and ob_event.deck_berry_total[card_id-3000]<ob_main.berrydeck_total_max and ob_event.card_prize>0 {
+				else if card_cat=1 and ob_event.deck_berry_total[card_id-3000]<berrydeck_total_max and ob_event.card_prize>0 {
 					ob_main.berry_card_id[ob_main.berrydeck_total]=card_id;
 					ob_main.berrydeck_total++;
 					ob_event.count_berries=true;
-					potential_y=ob_main.screen_main_y+ob_main.cam_h+2;
+					potential_y=screen_main_y+cam_h+2;
 				}
 				else {
-					potential_y=ob_main.screen_main_y-82;
+					potential_y=screen_main_y-82;
 				}
 				//
 				ob_event.card_prize--;

@@ -14,9 +14,9 @@ with (argument1) {
 			i++;
 		}
 		//
-		if sc_glyph_check(id,ob_main.ref_glyph_fork,true) { //glyph: fork attack
+		if sc_glyph_check(id,ref_glyph_fork,true) { //glyph: fork attack
 			attack_cycle=2;
-			if !sc_glyph_check(id,ob_main.ref_glyph_piercing,true) { //glyph: piercing attack (if not)
+			if !sc_glyph_check(id,ref_glyph_piercing,true) { //glyph: piercing attack (if not)
 				if (argument0=true and card_space_slot>5 and ob_control.card_space_id[card_space_slot-6].occupy_id!=-1) or
 				(argument0=false and card_space_slot>0 and ob_control.card_space_id[card_space_slot+4].occupy_id!=-1) {
 					if argument0=true { card_target_fork_a=ob_control.card_space_id[card_space_slot-6].occupy_id; }
@@ -34,7 +34,7 @@ with (argument1) {
 			else if argument0=false and card_space_slot=4 { card_target_fork_b=-2; }
 		}
 		else {
-			if !sc_glyph_check(id,ob_main.ref_glyph_piercing,true) { //glyph: piercing attack (if not)
+			if !sc_glyph_check(id,ref_glyph_piercing,true) { //glyph: piercing attack (if not)
 				if (argument0=true and ob_control.card_space_id[card_space_slot-5].occupy_id!=-1) or
 				(argument0=false and ob_control.card_space_id[card_space_slot+5].occupy_id!=-1) {
 					if argument0=true { card_target=ob_control.card_space_id[card_space_slot-5].occupy_id; }
@@ -44,7 +44,7 @@ with (argument1) {
 		}
 		//
 		do {
-			if sc_glyph_check(id,ob_main.ref_glyph_fork,true) { //glyph: fork attack
+			if sc_glyph_check(id,ref_glyph_fork,true) { //glyph: fork attack
 				if attack_cycle=2 { card_target=card_target_fork_a; }
 				else if attack_cycle=1 { card_target=card_target_fork_b; }
 			}
@@ -53,7 +53,10 @@ with (argument1) {
 				//basic formula (atk-def + type advantage) also used in AI when checking for damage, so tweak AI if changed
 				var damage_dealt=card_atk-card_target.card_def, damage_extra_dealt=0;
 				if damage_dealt<0 { damage_dealt=0; }
-				if sc_type_bonus(card_type_a,card_type_b,card_target.card_type_a,card_target.card_type_b)=true { damage_extra_dealt=1; }
+				if sc_type_bonus(card_type_a,card_type_b,card_target.card_type_a,card_target.card_type_b)=true and sc_glyph_check(id,ref_glyph_adaptability,true) {
+					damage_extra_dealt=2; } //glyph: adaptability
+				else if sc_type_bonus(card_type_a,card_type_b,card_target.card_type_a,card_target.card_type_b)=true and !sc_glyph_check(id,ref_glyph_adaptability,true) {
+					damage_extra_dealt=1; }
 				damage_dealt+=damage_extra_dealt;
 				card_target.card_hp-=damage_dealt;
 				card_target.effect_damaged=1;
@@ -63,7 +66,7 @@ with (argument1) {
 				damage_num_id.text_alpha=damage_num_id.text_alpha_full;
 				damage_num_id.text_color=global.color_damage;
 				//
-				if sc_glyph_check(card_target,ob_main.ref_glyph_counter,true) { //glyph: counterattack
+				if sc_glyph_check(card_target,ref_glyph_counter,true) { //glyph: counterattack
 					var damage_num_id=instance_create_layer(x+29,y+18,"instances",ob_damage_num);
 					if card_hp-(damage_dealt-damage_extra_dealt)>0 { //bonus damage not included
 						damage_num_id.damage_num=damage_dealt-damage_extra_dealt;
@@ -78,7 +81,7 @@ with (argument1) {
 					effect_damaged=1;
 				}
 				//
-				if sc_glyph_check(id,ob_main.ref_glyph_vampire,true) { //glyph: vampire
+				if sc_glyph_check(id,ref_glyph_vampire,true) { //glyph: vampire
 					card_hp+=floor(damage_dealt/2);
 					if card_hp>card_full_hp { card_hp=card_full_hp; }
 					var damage_num_id=instance_create_layer(x+29,y+18+15,"instances",ob_damage_num);
@@ -88,7 +91,7 @@ with (argument1) {
 				}
 				//
 				if card_target.card_hp<=0 {
-					if sc_glyph_check(card_target,ob_main.ref_glyph_harvest,true) { //glyph: harvest
+					if sc_glyph_check(card_target,ref_glyph_harvest,true) { //glyph: harvest
 						if card_target.card_enemy=false {
 							for (var i=0; i<=3; i++;) {
 								ob_control.berry_spawn[i]+=card_target.card_cost_total_type[i];
@@ -101,7 +104,7 @@ with (argument1) {
 						}
 					}
 					//
-					if sc_glyph_check(card_target,ob_main.ref_glyph_curse,true) { //glyph: curse
+					if sc_glyph_check(card_target,ref_glyph_curse,true) { //glyph: curse
 						var damage_num_id=instance_create_layer(x+29,y+18,"instances",ob_damage_num);
 						damage_num_id.damage_num=card_hp-1;
 						damage_num_id.text_alpha=damage_num_id.text_alpha_full;
@@ -110,7 +113,7 @@ with (argument1) {
 						effect_damaged=1;
 					}
 					//
-					if sc_glyph_check(card_target,ob_main.ref_glyph_memento,true) { //glyph: memento
+					if sc_glyph_check(card_target,ref_glyph_memento,true) { //glyph: memento
 						if card_target.card_enemy=false {
 							ob_control.card_draw_points+=2;
 						}
@@ -118,7 +121,7 @@ with (argument1) {
 					}
 					//
 					var chance_tenacity=choose(true,false);
-					if sc_glyph_check(card_target,ob_main.ref_glyph_tenacity,true) and chance_tenacity=true and
+					if sc_glyph_check(card_target,ref_glyph_tenacity,true) and chance_tenacity=true and
 					((card_target.card_enemy=false and ob_control.card_hand_total<ob_control.card_hand_max) or
 					(card_target.card_enemy=true and ob_control.enemycard_hand_total<ob_control.card_hand_max)) { //glyph: tenacity
 						if card_target.card_enemy=false {
@@ -156,7 +159,7 @@ with (argument1) {
 				//
 				var damage_num_id_a=-1, damage_num_id_b=-1;
 				//
-				if sc_glyph_check(id,ob_main.ref_glyph_fork,true) { //glyph: fork attack
+				if sc_glyph_check(id,ref_glyph_fork,true) { //glyph: fork attack
 					if attack_cycle=2 and argument0=true {
 						damage_num_id_a=instance_create_layer(x+29-64,y-57,"instances",ob_damage_num);
 						damage_num_id_b=ob_control.enemy_directdamage_id;
@@ -189,14 +192,14 @@ with (argument1) {
 				else if ob_control.player_hp<=0 {
 					ob_control.player_hp=0;
 					ob_control.battler_turn=0;
-					ob_main.event_transition=ob_main.ref_event_defeat;
+					ob_main.event_transition=ref_event_defeat;
 					ob_main.music_player=sc_playsound(ms_defeat,100,false,true);
 				}
 				if ob_control.enemy_hp>ob_control.hp_max*2 { ob_control.enemy_hp=ob_control.hp_max*2; }
 				else if ob_control.enemy_hp<=0 {
 					ob_control.enemy_hp=0;
 					ob_control.battler_turn=0;
-					ob_main.event_transition=ob_main.ref_event_victory;
+					ob_main.event_transition=ref_event_victory;
 					ob_main.music_player=sc_playsound(ms_victory,100,false,true);
 				}
 				//

@@ -22,14 +22,16 @@ if !instance_exists(ob_splash) and sc_music_sync()=true {
 	if moving_hud<=-1 { moving_hud=1; }
 }
 //
-if !instance_exists(ob_control) and money_add>0 {
-	money++;
-	money_add--;
+if !instance_exists(ob_control) {
+	if money_show<money-100 { money_show+=2; }
+	else if money_show>money+100 { money_show-=2; }
+	else if money_show<money { money_show++; }
+	else if money_show>money { money_show--; }
 }
-if money_subtract>0 {
-	money--;
-	money_subtract--;
-}
+//
+card_level_player_limit=ob_main.area_zone+3; //3 4 5 6 7 8 9 10 (10)
+if card_level_player_limit>10 { card_level_player_limit=10; }
+card_level_spawn_limit=floor((ob_main.area_zone+1)/1.5)+1; //1 2 3 3 4 5 5 6 (7)
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if roadmap_generated=false {
 	var i=0, var_event_num;
@@ -89,15 +91,19 @@ if roadmap_generated=false {
 		event_kind[1][0]=ref_event_fire;
 		event_kind[2][0]=ref_event_water;
 		location_type[0]=13; //lab
-		event_kind[0][1]=ref_event_cardpack;
-		event_kind[1][1]=ref_event_battle;
-		event_kind[2][1]=ref_event_levelup;
-		location_type[1]=00; //forest
+		event_kind[0][1]=ref_event_tutorial;
+		event_kind[1][1]=ref_event_payoff;
+		event_kind[2][1]=-1;
+		location_type[1]=13; //lab
+		event_kind[0][2]=ref_event_berry;
+		event_kind[1][2]=ref_event_cardpack;
+		event_kind[2][2]=ref_event_levelup;
+		location_type[2]=00; //forest (only time there are no free events)
 		//
 		first_zone_start=false;
 	}
 	//
-	event_kind[0][roadmap_area_max-1]=ref_event_battle;
+	event_kind[0][roadmap_area_max-1]=ref_event_gymbattle;
 	event_kind[1][roadmap_area_max-1]=ref_event_loop;
 	event_kind[2][roadmap_area_max-1]=-1;
 	location_type[roadmap_area_max-1]=15; //city
@@ -138,8 +144,8 @@ if roadmap_get_details=true {
 			event_description[ii][i]="";
 			//
 			if event_kind[ii][i]=ref_event_battle { event_name[ii][i]="Trainer\nBattle"; }
-			else if event_kind[ii][i]=ref_event_freecard { event_name[ii][i]="Free Card"; }
 			else if event_kind[ii][i]=ref_event_payoff { event_name[ii][i]="Payoff"; }
+			else if event_kind[ii][i]=ref_event_freecard { event_name[ii][i]="Free Card"; }
 			else if event_kind[ii][i]=ref_event_cardpack { event_name[ii][i]="Card Pack\n$" + string(event_cost[ref_event_cardpack]); }
 			else if event_kind[ii][i]=ref_event_berry { event_name[ii][i]="Berry Pack\n$" + string(event_cost[ref_event_berry]); }
 			else if event_kind[ii][i]=ref_event_levelup { event_name[ii][i]="Level Up\n$" + string(event_cost[ref_event_levelup]); }
@@ -150,6 +156,7 @@ if roadmap_get_details=true {
 			else if event_kind[ii][i]=ref_event_fire { event_name[ii][i]="Fire\nSt. Deck"; }
 			else if event_kind[ii][i]=ref_event_water { event_name[ii][i]="Water\nSt. Deck"; }
 			else if event_kind[ii][i]=ref_event_gymbattle { event_name[ii][i]="Gym\nBattle"; }
+			else if event_kind[ii][i]=ref_event_tutorial { event_name[ii][i]="Tutorial\nBattle"; }
 			else if event_kind[ii][i]=ref_event_glyph {
 				event_name[ii][i]="Glyph\n$" + string(event_cost[ref_event_glyph]);
 				event_description[ii][i]=sc_glyph_text(event_glyph_add[ii][i]);
@@ -192,18 +199,20 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if event_transition>-1 and fade_black<1 {
-	if money_add>0 and !instance_exists(ob_control) {
-		money+=money_add;
-		money_add=0;
-	}
 	if event_transition=ref_event_victory or event_transition=ref_event_defeat or event_transition=ref_event_exitbattle { fade_black+=0.0025; }
-	else if event_transition=ref_mainmenu or event_transition=ref_event_battle or event_transition=ref_event_loop { fade_black+=0.012; }
+	else if event_transition=ref_mainmenu or event_transition=ref_event_battle or event_transition=ref_event_gymbattle or event_transition=ref_event_tutorial
+	or event_transition=ref_event_loop { fade_black+=0.012; }
 	else { fade_black+=0.04; }
 }
 else if event_transition=-1 and fade_black>0 {
 	fade_black-=0.04;
 }
 else if event_transition>-1 and fade_black>=1 {
+	if instance_exists(ob_event) {
+		if ob_event.event_cancelled=false { money-=event_cost_standby; }
+		event_cost_standby=0;
+	}
+	//
 	if event_transition=ref_mainmenu {
 		with (ob_splash) { instance_destroy(); }
 		with (ob_card_splash) { instance_destroy(); }
@@ -214,10 +223,17 @@ else if event_transition>-1 and fade_black>=1 {
 		roadmap_generated=false;
 		//sc_data_save();
 	}
-	else if event_transition=ref_event_battle {
-		money_add=irandom_range(150*0.8,150*1.2);
+	else if event_transition=ref_event_payoff {
+		money+=round((money_add_base+money_add_area_bonus*area_zone)*0.8);
+		roadmap_area++;
+		//sc_data_save();
+	}
+	else if event_transition=ref_event_battle or event_transition=ref_event_gymbattle or event_transition=ref_event_tutorial {
 		instance_create_layer(x,y,"instances",ob_control);
-		music_player=sc_playsound(ms_battle,100,true,true);
+		money_prize=irandom_range((money_add_base+money_add_area_bonus*area_zone)*0.9,(money_add_base+money_add_area_bonus*area_zone)*1.1);
+		if event_transition=ref_event_battle { music_player=sc_playsound(ms_battle,100,true,true); }
+		else if event_transition=ref_event_gymbattle { music_player=sc_playsound(ms_battle_2,100,true,true); }
+		else if event_transition=ref_event_tutorial { music_player=sc_playsound(ms_tutorial,100,true,true); }
 	}
 	else if event_transition=ref_event_victory or event_transition=ref_event_defeat or event_transition=ref_event_exitbattle {
 		//destroy everything except ob_main and ob_background
@@ -230,9 +246,10 @@ else if event_transition>-1 and fade_black>=1 {
 		with (ob_background_tile) { instance_destroy(); }
 		with (ob_damage_num) { instance_destroy(); }
 		//
-		if event_transition=ref_event_defeat or event_transition=ref_event_exitbattle { money_add=0; }
+		if event_transition=ref_event_victory { money+=money_prize; }
 		if event_transition!=ref_event_exitbattle { roadmap_area++; }
 		music_player=sc_playsound(ms_main,100,true,true);
+		money_prize=0;
 		fade_black_exit_battle=0;
 		//sc_data_save();
 	}
@@ -254,16 +271,18 @@ else if event_transition>-1 and fade_black>=1 {
 			//sc_data_save();
 		}
 	}
+	//
 	event_transition=-1;
 }
 else if event_transition=-1 and fade_black<=0 {
 	if mouse_check_button_pressed(mb_left) and mouse_in_event>-1 and screen_transition=-1 {
 		if money>=event_cost[event_kind[mouse_in_event][roadmap_area]] {
 			event_transition=event_kind[mouse_in_event][roadmap_area];
-			money_subtract=event_cost[event_kind[mouse_in_event][roadmap_area]];
+			event_cost_standby=event_cost[event_kind[mouse_in_event][roadmap_area]];
 			//
 			if event_transition=ref_event_glyph { current_glyph_add=event_glyph_add[mouse_in_event][roadmap_area]; }
-			if event_transition=ref_event_battle { music_player=sc_playsound(ms_battle_intro,100,false,true); }
+			if event_transition=ref_event_battle or event_transition=ref_event_gymbattle or event_transition=ref_event_tutorial {
+				music_player=sc_playsound(ms_battle_intro,100,false,true); }
 		}
 		else if money<event_cost[event_kind[mouse_in_event][roadmap_area]] {
 			effect_money_error=1;
@@ -273,7 +292,7 @@ else if event_transition=-1 and fade_black<=0 {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if keyboard_check_pressed(vk_up) and roadmap_area<roadmap_area_max-1 { roadmap_area++; } //< delete later, testing
 if keyboard_check_pressed(vk_right) { roadmap_area=roadmap_area_max; } //< delete later, testing
-if keyboard_check_pressed(vk_numpad0) { money_add+=1000; } //< delete later, testing
+if keyboard_check_pressed(vk_numpad0) { money+=(money_add_base+money_add_area_bonus*area_zone)*10; } //< delete later, testing
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if roadmap_area=roadmap_area_max {
 	area_zone++;
@@ -401,6 +420,16 @@ repeat (options_total) {
 				if option_state[i]=false { option_state[i]=true; }
 				else { option_state[i]=false; }
 			}
+			else if i=opt_playericon {
+				if mouse_check_button_pressed(mb_left) {
+					option_state[i]++;
+					if option_state[i]>7 { option_state[i]=0; }
+				}
+				else if mouse_check_button_pressed(mb_right) {
+					option_state[i]--;
+					if option_state[i]<0 { option_state[i]=7; }
+				}
+			}
 			else if i=opt_music {
 				if option_state[i]=false {
 					option_state[i]=true;
@@ -447,13 +476,16 @@ repeat (options_total) {
 		if option_state[i]=true { option_state_text[i]="GO TO DECK"; }
 		else { option_state_text[i]="DO NOTHING"; }
 	}
+	else if i=opt_playericon {
+		option_state_text[i]="   ";
+	}
 	else if i=opt_edge {
 		option_state_text[i]=string(option_state[i]) + "%";
 	}
 	else if i=opt_bg_type {
 		if option_state[i]=0 { option_state_text[i]="MOVING TILES"; }
 		else if option_state[i]=1 { option_state_text[i]="IDLE TILES"; }
-		else if option_state[i]=2 { option_state_text[i]="LOCATION"; }
+		else if option_state[i]=2 { option_state_text[i]="LOCATION"; } //also referenced in draw for alpha of bg preview
 	}
 	//
 	i++;

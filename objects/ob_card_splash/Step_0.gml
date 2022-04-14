@@ -1,7 +1,7 @@
 //ob_card_splash
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 x+=1;
-if x>=ob_main.screen_main_x+ob_main.cam_w+84 { x-=512+168; }
+if x>=screen_main_x+cam_w+84 { x-=512+168; }
 //
 if potential_y!=y {
 	if potential_y>y {

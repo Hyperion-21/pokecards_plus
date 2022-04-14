@@ -10,17 +10,17 @@ hold_used_bar=false;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var i=0, button_create;
 repeat (5) {
-	button_create=instance_create_layer(ob_main.screen_deck_x+97,ob_main.screen_main_y+104+(i*16),"instances",ob_button_15x16);
+	button_create=instance_create_layer(screen_deck_x+97,screen_main_y+104+(i*16),"instances",ob_button_15x16);
 	button_create.button_id=i;
 	i++;
 }
 repeat (5) {
-	button_create=instance_create_layer(ob_main.screen_deck_x+400,ob_main.screen_main_y+104+((i-5)*16),"instances",ob_button_16x16);
+	button_create=instance_create_layer(screen_deck_x+400,screen_main_y+104+((i-5)*16),"instances",ob_button_16x16);
 	button_create.button_id=i;
 	i++;
 }
 repeat (5) {
-	button_create=instance_create_layer(ob_main.screen_deck_x+416,ob_main.screen_main_y+104+((i-10)*16),"instances",ob_button_16x16);
+	button_create=instance_create_layer(screen_deck_x+416,screen_main_y+104+((i-10)*16),"instances",ob_button_16x16);
 	button_create.button_id=i;
 	i++;
 }
@@ -38,7 +38,7 @@ repeat (deck_build_all_total) {
 	create_card_form_value=ob_main.main_card_form_value[i];
 	create_card_serial=ob_main.main_card_serial[i];
 	//
-	for (var ii=0; ii<=ob_main.deck_setup_max; ii++;) {
+	for (var ii=0; ii<=deck_setup_max; ii++;) {
 		create_card_indeck[ii]=ob_main.main_card_indeck[i][ii];
 	}
 	//

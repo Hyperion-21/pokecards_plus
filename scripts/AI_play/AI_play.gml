@@ -39,11 +39,11 @@ else if argument1>0 or argument2>0 or argument3>0 or argument4>0 {
 else if argument0!=-1 {
 	playcard_id=argument0;
 	//
-	if sc_glyph_check(playcard_id,ob_main.ref_glyph_lucky,true) { //glyph: lucky
+	if sc_glyph_check(playcard_id,ref_glyph_lucky,true) { //glyph: lucky
 		enemycard_draw_points+=2;
 	}
 	//
-	if sc_glyph_check(playcard_id,ob_main.ref_glyph_medic,true) { //glyph: medic
+	if sc_glyph_check(playcard_id,ref_glyph_medic,true) { //glyph: medic
 		for (var i=0; i<=4; i++;) {
 			if card_space_id[i].occupy_id!=-1 {
 				var card_to_heal=card_space_id[i].occupy_id;
@@ -56,7 +56,7 @@ else if argument0!=-1 {
 		}
 	}
 	//
-	if sc_glyph_check(playcard_id,ob_main.ref_glyph_bulwark,true) { //glyph: bulwark
+	if sc_glyph_check(playcard_id,ref_glyph_bulwark,true) { //glyph: bulwark
 		var i=0;
 		repeat (2) {
 			var rock_cardspace_id=-1;

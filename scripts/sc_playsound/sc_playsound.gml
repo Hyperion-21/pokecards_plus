@@ -7,22 +7,26 @@ function sc_playsound(argument0,argument1,argument2,argument3) {
 var sound_volume=0, random_pitch=false;
 //
 switch (argument0) {
-	case ms_main: sound_volume=ob_main.option_state[ob_main.opt_music]; break;
-	case ms_battle_intro: sound_volume=ob_main.option_state[ob_main.opt_music]; break;
-	case ms_battle: sound_volume=ob_main.option_state[ob_main.opt_music]; break;
-	case ms_battle_2: sound_volume=ob_main.option_state[ob_main.opt_music]; break;
-	case ms_battle_3: sound_volume=ob_main.option_state[ob_main.opt_music]; break;
-	case ms_victory: sound_volume=ob_main.option_state[ob_main.opt_music]; break;
-	case ms_defeat: sound_volume=ob_main.option_state[ob_main.opt_music]; break;
-	default: sound_volume=ob_main.option_state[ob_main.opt_sound];
+	case ms_main: sound_volume=ob_main.option_state[opt_music]; break;
+	case ms_league: sound_volume=ob_main.option_state[opt_music]; break;
+	case ms_battle_intro: sound_volume=ob_main.option_state[opt_music]; break;
+	case ms_battle: sound_volume=ob_main.option_state[opt_music]; break;
+	case ms_battle_2: sound_volume=ob_main.option_state[opt_music]; break;
+	case ms_battle_3: sound_volume=ob_main.option_state[opt_music]; break;
+	case ms_tutorial: sound_volume=ob_main.option_state[opt_music]; break;
+	case ms_victory: sound_volume=ob_main.option_state[opt_music]; break;
+	case ms_defeat: sound_volume=ob_main.option_state[opt_music]; break;
+	default: sound_volume=ob_main.option_state[opt_sound];
 }
 //
 if argument3=true {
 	audio_stop_sound(ms_main);
+	audio_stop_sound(ms_league);
 	audio_stop_sound(ms_battle_intro);
 	audio_stop_sound(ms_battle);
 	audio_stop_sound(ms_battle_2);
 	audio_stop_sound(ms_battle_3);
+	audio_stop_sound(ms_tutorial);
 	audio_stop_sound(ms_victory);
 	audio_stop_sound(ms_defeat);
 }

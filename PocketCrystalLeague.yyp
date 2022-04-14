@@ -1,5 +1,6 @@
 {
   "resources": [
+    {"id":{"name":"ms_tutorial","path":"sounds/ms_tutorial/ms_tutorial.yy",},"order":6,},
     {"id":{"name":"AI_draw_available","path":"scripts/AI_draw_available/AI_draw_available.yy",},"order":1,},
     {"id":{"name":"fn_m3x6","path":"fonts/fn_m3x6/fn_m3x6.yy",},"order":0,},
     {"id":{"name":"sc_pokelist","path":"scripts/sc_pokelist/sc_pokelist.yy",},"order":0,},
@@ -10,7 +11,7 @@
     {"id":{"name":"sc_config_load","path":"scripts/sc_config_load/sc_config_load.yy",},"order":0,},
     {"id":{"name":"ob_background_tile","path":"objects/ob_background_tile/ob_background_tile.yy",},"order":14,},
     {"id":{"name":"sp_poke_b","path":"sprites/sp_poke_b/sp_poke_b.yy",},"order":2,},
-    {"id":{"name":"ms_victory","path":"sounds/ms_victory/ms_victory.yy",},"order":6,},
+    {"id":{"name":"ms_victory","path":"sounds/ms_victory/ms_victory.yy",},"order":7,},
     {"id":{"name":"sp_31x24","path":"sprites/sp_31x24/sp_31x24.yy",},"order":1,},
     {"id":{"name":"sp_poke_c","path":"sprites/sp_poke_c/sp_poke_c.yy",},"order":3,},
     {"id":{"name":"sp_berries","path":"sprites/sp_berries/sp_berries.yy",},"order":4,},
@@ -61,7 +62,7 @@
     {"id":{"name":"ob_card","path":"objects/ob_card/ob_card.yy",},"order":4,},
     {"id":{"name":"AI_play_script","path":"scripts/AI_play_script/AI_play_script.yy",},"order":0,},
     {"id":{"name":"sc_playsound","path":"scripts/sc_playsound/sc_playsound.yy",},"order":7,},
-    {"id":{"name":"ms_defeat","path":"sounds/ms_defeat/ms_defeat.yy",},"order":7,},
+    {"id":{"name":"ms_defeat","path":"sounds/ms_defeat/ms_defeat.yy",},"order":8,},
     {"id":{"name":"sp_sheet","path":"sprites/sp_sheet/sp_sheet.yy",},"order":0,},
     {"id":{"name":"ms_battle_2","path":"sounds/ms_battle_2/ms_battle_2.yy",},"order":4,},
     {"id":{"name":"ob_button_15x16","path":"objects/ob_button_15x16/ob_button_15x16.yy",},"order":7,},

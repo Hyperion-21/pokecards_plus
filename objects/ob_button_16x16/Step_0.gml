@@ -16,6 +16,7 @@ if button_id!=2 or !instance_exists(ob_control) {
 				}
 				else if button_id=1 {
 					ob_main.event_transition=ob_event.event_kind;
+					ob_event.event_cancelled=true;
 				}
 			}
 			else if instance_exists(ob_deckbuild) {
@@ -50,7 +51,7 @@ else {
 			button_state+=0.005;
 			if button_state=1 {
 				ob_control.battler_turn=0;
-				ob_main.event_transition=ob_main.ref_event_exitbattle;
+				ob_main.event_transition=ref_event_exitbattle;
 				ob_main.fade_black=1;
 			}
 		}

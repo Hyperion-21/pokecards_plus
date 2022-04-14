@@ -11,37 +11,37 @@ if instance_exists(ob_control) {
 	//
 	//glyph: courage
 	if ((space_slot>0 and space_slot<=4) or (space_slot>5 and space_slot<=9)) and
-	ob_control.card_space_id[space_slot-1].occupy_id!=-1 and sc_glyph_check(ob_control.card_space_id[space_slot-1].occupy_id,ob_main.ref_glyph_courage,true) {
+	ob_control.card_space_id[space_slot-1].occupy_id!=-1 and sc_glyph_check(ob_control.card_space_id[space_slot-1].occupy_id,ref_glyph_courage,true) {
 		card_bonus_atk+=2;
 	}
 	if ((space_slot>=0 and space_slot<4) or (space_slot>=5 and space_slot<9)) and
-	ob_control.card_space_id[space_slot+1].occupy_id!=-1 and sc_glyph_check(ob_control.card_space_id[space_slot+1].occupy_id,ob_main.ref_glyph_courage,true) {
+	ob_control.card_space_id[space_slot+1].occupy_id!=-1 and sc_glyph_check(ob_control.card_space_id[space_slot+1].occupy_id,ref_glyph_courage,true) {
 		card_bonus_atk+=2;
 	}
 	//
 	//glyph: shield
 	if ((space_slot>0 and space_slot<=4) or (space_slot>5 and space_slot<=9)) and
-	ob_control.card_space_id[space_slot-1].occupy_id!=-1 and sc_glyph_check(ob_control.card_space_id[space_slot-1].occupy_id,ob_main.ref_glyph_shield,true) {
+	ob_control.card_space_id[space_slot-1].occupy_id!=-1 and sc_glyph_check(ob_control.card_space_id[space_slot-1].occupy_id,ref_glyph_shield,true) {
 		card_bonus_def+=1;
 	}
 	if ((space_slot>=0 and space_slot<4) or (space_slot>=5 and space_slot<9)) and
-	ob_control.card_space_id[space_slot+1].occupy_id!=-1 and sc_glyph_check(ob_control.card_space_id[space_slot+1].occupy_id,ob_main.ref_glyph_shield,true) {
+	ob_control.card_space_id[space_slot+1].occupy_id!=-1 and sc_glyph_check(ob_control.card_space_id[space_slot+1].occupy_id,ref_glyph_shield,true) {
 		card_bonus_def+=1;
 	}
 	//
 	//glyph: weakness
 	if (space_slot>=0 and space_slot<=4 and ob_control.card_space_id[space_slot+5].occupy_id!=-1 and
-	sc_glyph_check(ob_control.card_space_id[space_slot+5].occupy_id,ob_main.ref_glyph_weakness,true)) or
+	sc_glyph_check(ob_control.card_space_id[space_slot+5].occupy_id,ref_glyph_weakness,true)) or
 	(space_slot>=5 and space_slot<=9 and ob_control.card_space_id[space_slot-5].occupy_id!=-1 and
-	sc_glyph_check(ob_control.card_space_id[space_slot-5].occupy_id,ob_main.ref_glyph_weakness,true)) {
+	sc_glyph_check(ob_control.card_space_id[space_slot-5].occupy_id,ref_glyph_weakness,true)) {
 		card_penalty_atk+=1;
 	}
 	//
 	//glyph: ruthless
 	if (space_slot>=0 and space_slot<=4 and ob_control.card_space_id[space_slot+5].occupy_id!=-1 and
-	sc_glyph_check(ob_control.card_space_id[space_slot+5].occupy_id,ob_main.ref_glyph_ruthless,true)) or
+	sc_glyph_check(ob_control.card_space_id[space_slot+5].occupy_id,ref_glyph_ruthless,true)) or
 	(space_slot>=5 and space_slot<=9 and ob_control.card_space_id[space_slot-5].occupy_id!=-1 and
-	sc_glyph_check(ob_control.card_space_id[space_slot-5].occupy_id,ob_main.ref_glyph_ruthless,true)) {
+	sc_glyph_check(ob_control.card_space_id[space_slot-5].occupy_id,ref_glyph_ruthless,true)) {
 		card_penalty_def+=2;
 	}
 }

@@ -11,62 +11,67 @@ repeat (8) {
 	card_evo[i]=-1;
 	i++;
 }
+//
 card_enigma=false;
+card_pseudo=false;
+card_fossil=false;
+card_starter=false;
+//
 card_secret=false;
 card_environment=false;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 switch (card_id) {
 	case 001:
 		card_name="Bulbasaur";
-		card_stage=1; card_evo[0]=002;
+		card_stage=1; card_evo[0]=002; card_starter=true;
 		card_type_a=01; card_type_b=12;
 		card_base_hp=45; card_base_atk=49+65; card_base_def=49+65;
 		card_grid_x=1; card_grid_y=1; break;
 	case 002:
 		card_name="Ivysaur";
-		card_stage=2; card_evo[0]=003;
+		card_stage=2; card_evo[0]=003; card_starter=true;
 		card_type_a=01; card_type_b=12;
 		card_base_hp=60; card_base_atk=62+80; card_base_def=63+80;
 		card_grid_x=2; card_grid_y=1; break;
 	case 003:
 		card_name="Venusaur";
-		card_stage=3;
+		card_stage=3; card_starter=true;
 		card_type_a=01; card_type_b=12;
 		card_base_hp=80; card_base_atk=82+100; card_base_def=83+100;
 		card_grid_x=3; card_grid_y=1; break;
 	case 004:
 		card_name="Charmander";
-		card_stage=1; card_evo[0]=005;
+		card_stage=1; card_evo[0]=005; card_starter=true;
 		card_type_a=02; card_type_b=-1;
 		card_base_hp=39; card_base_atk=52+60; card_base_def=43+50;
 		card_grid_x=5; card_grid_y=1; break;
 	case 005:
 		card_name="Charmeleon";
-		card_stage=2; card_evo[0]=006;
+		card_stage=2; card_evo[0]=006; card_starter=true;
 		card_type_a=02; card_type_b=-1;
 		card_base_hp=58; card_base_atk=64+80; card_base_def=58+65;
 		card_grid_x=6; card_grid_y=1; break;
 	case 006:
 		card_name="Charizard";
-		card_stage=3;
+		card_stage=3; card_starter=true;
 		card_type_a=02; card_type_b=05;
 		card_base_hp=78; card_base_atk=84+109; card_base_def=78+85;
 		card_grid_x=7; card_grid_y=1; break;
 	case 007:
 		card_name="Squirtle";
-		card_stage=1; card_evo[0]=008;
+		card_stage=1; card_evo[0]=008; card_starter=true;
 		card_type_a=03; card_type_b=-1;
 		card_base_hp=44; card_base_atk=48+50; card_base_def=65+64;
 		card_grid_x=10; card_grid_y=1; break;
 	case 008:
 		card_name="Wartortle";
-		card_stage=2; card_evo[0]=009;
+		card_stage=2; card_evo[0]=009; card_starter=true;
 		card_type_a=03; card_type_b=-1;
 		card_base_hp=59; card_base_atk=63+65; card_base_def=80+80;
 		card_grid_x=11; card_grid_y=1; break;
 	case 009:
 		card_name="Blastoise";
-		card_stage=3;
+		card_stage=3; card_starter=true;
 		card_type_a=03; card_type_b=-1;
 		card_base_hp=79; card_base_atk=83+85; card_base_def=100+105;
 		card_grid_x=12; card_grid_y=1; break;
@@ -840,31 +845,31 @@ switch (card_id) {
 		card_grid_x=5; card_grid_y=13; break;
 	case 138:
 		card_name="Omanyte";
-		card_stage=1; card_evo[0]=139;
+		card_stage=1; card_evo[0]=139; card_fossil=true;
 		card_type_a=10; card_type_b=03;
 		card_base_hp=35; card_base_atk=40+90; card_base_def=100+55;
 		card_grid_x=6; card_grid_y=13; break;
 	case 139:
 		card_name="Omastar";
-		card_stage=2;
+		card_stage=2; card_fossil=true;
 		card_type_a=10; card_type_b=03;
 		card_base_hp=70; card_base_atk=60+115; card_base_def=125+70;
 		card_grid_x=7; card_grid_y=13; break;
 	case 140:
 		card_name="Kabuto";
-		card_stage=1; card_evo[0]=141;
+		card_stage=1; card_evo[0]=141; card_fossil=true;
 		card_type_a=10; card_type_b=03;
 		card_base_hp=30; card_base_atk=80+55; card_base_def=90+45;
 		card_grid_x=8; card_grid_y=13; break;
 	case 141:
 		card_name="Kabutops";
-		card_stage=2;
+		card_stage=2; card_fossil=true;
 		card_type_a=10; card_type_b=03;
 		card_base_hp=60; card_base_atk=115+65; card_base_def=105+70;
 		card_grid_x=9; card_grid_y=13; break;
 	case 142:
 		card_name="Aerodactyl";
-		card_stage=1;
+		card_stage=1; card_fossil=true;
 		card_type_a=10; card_type_b=05;
 		card_base_hp=80; card_base_atk=105+60; card_base_def=65+75;
 		card_grid_x=10; card_grid_y=13; break;
@@ -894,19 +899,19 @@ switch (card_id) {
 		card_grid_x=15; card_grid_y=13; break;
 	case 147:
 		card_name="Dratini";
-		card_stage=1; card_evo[0]=148;
+		card_stage=1; card_evo[0]=148; card_pseudo=true;
 		card_type_a=14; card_type_b=-1;
 		card_base_hp=41; card_base_atk=64+50; card_base_def=45+50;
 		card_grid_x=1; card_grid_y=14; break;
 	case 148:
 		card_name="Dragonair";
-		card_stage=2; card_evo[0]=149;
+		card_stage=2; card_evo[0]=149; card_pseudo=true;
 		card_type_a=14; card_type_b=-1;
 		card_base_hp=61; card_base_atk=84+70; card_base_def=65+70;
 		card_grid_x=2; card_grid_y=14; break;
 	case 149:
 		card_name="Dragonite";
-		card_stage=3;
+		card_stage=3; card_pseudo=true;
 		card_type_a=14; card_type_b=05;
 		card_base_hp=91; card_base_atk=134+100; card_base_def=95+100;
 		card_grid_x=3; card_grid_y=14; break;
@@ -924,55 +929,55 @@ switch (card_id) {
 		card_grid_x=7; card_grid_y=14; break;
 	case 152:
 		card_name="Chikorita";
-		card_stage=1; card_evo[0]=153;
+		card_stage=1; card_evo[0]=153; card_starter=true;
 		card_type_a=01; card_type_b=-1;
 		card_base_hp=45; card_base_atk=49+49; card_base_def=65+65;
 		card_grid_x=1; card_grid_y=15; break;
 	case 153:
 		card_name="Bayleef";
-		card_stage=2; card_evo[0]=154;
+		card_stage=2; card_evo[0]=154; card_starter=true;
 		card_type_a=01; card_type_b=-1;
 		card_base_hp=60; card_base_atk=62+63; card_base_def=80+80;
 		card_grid_x=2; card_grid_y=15; break;
 	case 154:
 		card_name="Meganium";
-		card_stage=3;
+		card_stage=3; card_starter=true;
 		card_type_a=01; card_type_b=-1;
 		card_base_hp=80; card_base_atk=82+83; card_base_def=100+100;
 		card_grid_x=3; card_grid_y=15; break;
 	case 155:
 		card_name="Cyndaquil";
-		card_stage=1; card_evo[0]=156;
+		card_stage=1; card_evo[0]=156; card_starter=true;
 		card_type_a=02; card_type_b=-1;
 		card_base_hp=39; card_base_atk=52+60; card_base_def=43+50;
 		card_grid_x=4; card_grid_y=15; break;
 	case 156:
 		card_name="Quilava";
-		card_stage=2; card_evo[0]=157;
+		card_stage=2; card_evo[0]=157; card_starter=true;
 		card_type_a=02; card_type_b=-1;
 		card_base_hp=58; card_base_atk=64+80; card_base_def=58+65;
 		card_grid_x=5; card_grid_y=15; break;
 	case 157:
 		card_name="Typhlosion";
-		card_stage=3;
+		card_stage=3; card_starter=true;
 		card_type_a=02; card_type_b=-1;
 		card_base_hp=78; card_base_atk=84+109; card_base_def=78+85;
 		card_grid_x=6; card_grid_y=15; break;
 	case 158:
 		card_name="Totodile";
-		card_stage=1; card_evo[0]=159;
+		card_stage=1; card_evo[0]=159; card_starter=true;
 		card_type_a=03; card_type_b=-1;
 		card_base_hp=50; card_base_atk=65+44; card_base_def=64+48;
 		card_grid_x=7; card_grid_y=15; break;
 	case 159:
 		card_name="Croconaw";
-		card_stage=2; card_evo[0]=160;
+		card_stage=2; card_evo[0]=160; card_starter=true;
 		card_type_a=03; card_type_b=-1;
 		card_base_hp=65; card_base_atk=80+59; card_base_def=80+63;
 		card_grid_x=8; card_grid_y=15; break;
 	case 160:
 		card_name="Feraligatr";
-		card_stage=3;
+		card_stage=3; card_starter=true;
 		card_type_a=03; card_type_b=-1;
 		card_base_hp=85; card_base_atk=105+79; card_base_def=100+83;
 		card_grid_x=10; card_grid_y=15; break;
@@ -1516,19 +1521,19 @@ switch (card_id) {
 		card_grid_x=15; card_grid_y=24; break;
 	case 246:
 		card_name="Larvitar";
-		card_stage=1; card_evo[0]=247;
+		card_stage=1; card_evo[0]=247; card_pseudo=true;
 		card_type_a=10; card_type_b=09;
 		card_base_hp=50; card_base_atk=64+45; card_base_def=50+50;
 		card_grid_x=1; card_grid_y=25; break;
 	case 247:
 		card_name="Pupitar";
-		card_stage=2; card_evo[0]=248;
+		card_stage=2; card_evo[0]=248; card_pseudo=true;
 		card_type_a=10; card_type_b=09;
 		card_base_hp=70; card_base_atk=84+65; card_base_def=70+70;
 		card_grid_x=2; card_grid_y=25; break;
 	case 248:
 		card_name="Tyranitar";
-		card_stage=3;
+		card_stage=3; card_pseudo=true;
 		card_type_a=10; card_type_b=17;
 		card_base_hp=100; card_base_atk=134+95; card_base_def=110+100;
 		card_grid_x=3; card_grid_y=25; break;

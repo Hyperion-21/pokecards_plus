@@ -9,6 +9,7 @@ ds_map_add(savemap,"window_scaling",option_state[opt_scaling]);
 ds_map_add(savemap,"music",option_state[opt_music]);
 ds_map_add(savemap,"sound",option_state[opt_sound]);
 ds_map_add(savemap,"autodeck",option_state[opt_autodeck]);
+ds_map_add(savemap,"player_icon",option_state[opt_playericon]);
 ds_map_add(savemap,"edge_shading",option_state[opt_edge]);
 ds_map_add(savemap,"background_type",option_state[opt_bg_type]);
 //
