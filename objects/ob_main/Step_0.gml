@@ -32,6 +32,7 @@ if !instance_exists(ob_control) {
 card_level_player_limit=ob_main.area_zone+3; //3 4 5 6 7 8 9 10 (10)
 if card_level_player_limit>10 { card_level_player_limit=10; }
 card_level_spawn_limit=floor((ob_main.area_zone+1)/1.5)+1; //1 2 3 3 4 5 5 6 (7)
+card_level_enemy_min=ob_main.area_zone+1; //1 2 3 4 5 6 7 8 (9)
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if roadmap_generated=false {
 	var i=0, var_event_num;
@@ -45,6 +46,33 @@ if roadmap_generated=false {
 		do {
 			location_type[i]=irandom(21);
 		} until (location_type[i]!=13 and location_type[i]!=15); //lab & city
+		//
+		trainer_sprite[i]=irandom(playericon_max);
+		trainer_skin[i]=floor(irandom(8)/8);
+		trainer_hair_color[i]=make_colour_rgb(irandom_range(140,240),irandom_range(140,240),irandom_range(140,240));
+		//
+		switch (location_type[i]) {
+			case 00: trainer_kind[i]=choose(00,00,00); break; //forest
+			case 01: trainer_kind[i]=choose(00,00,00); break; //cave (forest)
+			case 02: trainer_kind[i]=choose(00,00,00); break; //cave (rocky)
+			case 03: trainer_kind[i]=choose(00,00,00); break; //cave (dark)
+			case 04: trainer_kind[i]=choose(00,00,00); break; //cave (mountain)
+			case 05: trainer_kind[i]=choose(00,00,00); break; //factory
+			case 06: trainer_kind[i]=choose(00,00,00); break; //mansion ruins
+			case 07: trainer_kind[i]=choose(00,00,00); break; //cave (forest road)
+			case 08: trainer_kind[i]=choose(00,00,00); break; //cave (volcano)
+			case 09: trainer_kind[i]=choose(00,00,00); break; //forest (poison)
+			case 10: trainer_kind[i]=choose(00,00,00); break; //cave (ice)
+			case 11: trainer_kind[i]=choose(00,00,00); break; //warehouse
+			case 12: trainer_kind[i]=choose(00,00,00); break; //tower
+			case 14: trainer_kind[i]=choose(00,00,00); break; //grassland
+			case 16: trainer_kind[i]=choose(00,00,00); break; //cave (island 1)
+			case 17: trainer_kind[i]=choose(00,00,00); break; //cave (foggy)
+			case 18: trainer_kind[i]=choose(00,00,00); break; //forest (same a 00)
+			case 19: trainer_kind[i]=choose(00,00,00); break; //cave (island 2)
+			case 20: trainer_kind[i]=choose(00,00,00); break; //cave (ruins)
+			case 21: trainer_kind[i]=choose(00,00,00); break; //ancient ruins
+		}
 		//
 		do {
 			var ii=0, free_event=false;
@@ -95,6 +123,7 @@ if roadmap_generated=false {
 		event_kind[1][1]=ref_event_payoff;
 		event_kind[2][1]=-1;
 		location_type[1]=13; //lab
+		trainer_sprite[1]=playericon_max+1;
 		event_kind[0][2]=ref_event_berry;
 		event_kind[1][2]=ref_event_cardpack;
 		event_kind[2][2]=ref_event_levelup;
@@ -108,6 +137,8 @@ if roadmap_generated=false {
 	event_kind[2][roadmap_area_max-1]=-1;
 	location_type[roadmap_area_max-1]=15; //city
 	//
+	trainer_sprite[roadmap_area_max-1]=area_zone+playericon_max+2;
+	//
 	roadmap_generated=true;
 	roadmap_get_details=true;
 }
@@ -115,30 +146,6 @@ if roadmap_generated=false {
 if roadmap_get_details=true {
 	var i=0;
 	repeat (roadmap_area_max) {
-		switch (location_type[i]) {
-			case 00: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //forest
-			case 01: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //cave (forest)
-			case 02: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //cave (rocky)
-			case 03: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //cave (dark)
-			case 04: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //cave (mountain)
-			case 05: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //factory
-			case 06: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //mansion ruins
-			case 07: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //cave (forest road)
-			case 08: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //cave (volcano)
-			case 09: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //forest (poison)
-			case 10: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //cave (ice)
-			case 11: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //warehouse
-			case 12: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //tower
-			case 14: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //grassland
-			case 16: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //cave (island 1)
-			case 17: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //cave (foggy)
-			case 18: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //forest (same a 00)
-			case 19: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //cave (island 2)
-			case 20: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //cave (ruins)
-			case 21: trainer_kind[0][i]=00; trainer_kind[1][i]=00; trainer_kind[2][i]=00; break; //ancient ruins
-			default: trainer_kind[0][i]=-1; trainer_kind[1][i]=-1; trainer_kind[2][i]=-1;
-		}
-		//
 		var ii=0;
 		repeat (3) {
 			event_description[ii][i]="";
@@ -262,12 +269,12 @@ else if event_transition>-1 and fade_black>=1 {
 			event_transition=ref_event_grass or event_transition=ref_event_fire or event_transition=ref_event_water) {
 				auto_deck_transition=true;
 			}
+			if ob_event.event_cancelled=false { roadmap_area++; }
 			//
 			with (ob_event) { instance_destroy(); }
 			with (ob_card) { instance_destroy(); }
 			with (ob_card_space) { instance_destroy(); }
 			with (ob_button_31x24) { instance_destroy(); }
-			roadmap_area++;
 			//sc_data_save();
 		}
 	}
@@ -423,11 +430,11 @@ repeat (options_total) {
 			else if i=opt_playericon {
 				if mouse_check_button_pressed(mb_left) {
 					option_state[i]++;
-					if option_state[i]>7 { option_state[i]=0; }
+					if option_state[i]>playericon_max { option_state[i]=0; }
 				}
 				else if mouse_check_button_pressed(mb_right) {
 					option_state[i]--;
-					if option_state[i]<0 { option_state[i]=7; }
+					if option_state[i]<0 { option_state[i]=playericon_max; }
 				}
 			}
 			else if i=opt_music {
@@ -444,11 +451,11 @@ repeat (options_total) {
 			else if i=opt_bg_type {
 				if mouse_check_button_pressed(mb_left) {
 					option_state[i]++;
-					if option_state[i]>2 { option_state[i]=0; }
+					if option_state[i]>3 { option_state[i]=0; }
 				}
 				else if mouse_check_button_pressed(mb_right) {
 					option_state[i]--;
-					if option_state[i]<0 { option_state[i]=2; }
+					if option_state[i]<0 { option_state[i]=3; }
 				}
 			}
 		}
@@ -483,9 +490,10 @@ repeat (options_total) {
 		option_state_text[i]=string(option_state[i]) + "%";
 	}
 	else if i=opt_bg_type {
-		if option_state[i]=0 { option_state_text[i]="MOVING TILES"; }
-		else if option_state[i]=1 { option_state_text[i]="IDLE TILES"; }
-		else if option_state[i]=2 { option_state_text[i]="LOCATION"; } //also referenced in draw for alpha of bg preview
+		if option_state[i]=0 { option_state_text[i]="MOVING TILES (HORIZONTAL)"; }
+		else if option_state[i]=1 { option_state_text[i]="MOVING TILES (VERTICAL)"; }
+		else if option_state[i]=2 { option_state_text[i]="IDLE TILES"; }
+		else if option_state[i]=3 { option_state_text[i]="LOCATION"; } //also referenced in draw for alpha of bg preview
 	}
 	//
 	i++;
@@ -494,7 +502,7 @@ repeat (options_total) {
 var i=0;
 repeat (colorsetup_total) {
 	if mouse_x>=colorsetup_r_x[i] and mouse_y>=colorsetup_y[i]+2 and
-	mouse_x<=colorsetup_r_x[i]+string_width("R " + string(colorsetup_r[i])) and mouse_y<=colorsetup_y[i]+10 and option_state[opt_bg_type]!=2 and cursor_hide=false {
+	mouse_x<=colorsetup_r_x[i]+string_width("R " + string(colorsetup_r[i])) and mouse_y<=colorsetup_y[i]+10 and cursor_hide=false {
 		mouse_cursor=1;
 		colorsetup_focus_r[i]=true;
 		if mouse_check_button(mb_left) and colorsetup_r[i]<255 { colorsetup_r[i]++; }
@@ -503,7 +511,7 @@ repeat (colorsetup_total) {
 	else { colorsetup_focus_r[i]=false; }
 	//
 	if mouse_x>=colorsetup_g_x[i] and mouse_y>=colorsetup_y[i]+2 and
-	mouse_x<=colorsetup_g_x[i]+string_width("G " + string(colorsetup_g[i])) and mouse_y<=colorsetup_y[i]+10 and option_state[opt_bg_type]!=2 and cursor_hide=false {
+	mouse_x<=colorsetup_g_x[i]+string_width("G " + string(colorsetup_g[i])) and mouse_y<=colorsetup_y[i]+10 and cursor_hide=false {
 		mouse_cursor=1;
 		colorsetup_focus_g[i]=true;
 		if mouse_check_button(mb_left) and colorsetup_g[i]<255 { colorsetup_g[i]++; }
@@ -512,7 +520,7 @@ repeat (colorsetup_total) {
 	else { colorsetup_focus_g[i]=false; }
 	//
 	if mouse_x>=colorsetup_b_x[i] and mouse_y>=colorsetup_y[i]+2 and
-	mouse_x<=colorsetup_b_x[i]+string_width("B " + string(colorsetup_b[i])) and mouse_y<=colorsetup_y[i]+10 and option_state[opt_bg_type]!=2 and cursor_hide=false {
+	mouse_x<=colorsetup_b_x[i]+string_width("B " + string(colorsetup_b[i])) and mouse_y<=colorsetup_y[i]+10 and cursor_hide=false {
 		mouse_cursor=1;
 		colorsetup_focus_b[i]=true;
 		if mouse_check_button(mb_left) and colorsetup_b[i]<255 { colorsetup_b[i]++; }
@@ -526,3 +534,10 @@ repeat (colorsetup_total) {
 global.color_background_a=make_colour_rgb(colorsetup_r[opt_bg_a]/bg_rgb_divisor,colorsetup_g[opt_bg_a]/bg_rgb_divisor,colorsetup_b[opt_bg_a]/bg_rgb_divisor);
 global.color_background_b=make_colour_rgb(colorsetup_r[opt_bg_b]/bg_rgb_divisor,colorsetup_g[opt_bg_b]/bg_rgb_divisor,colorsetup_b[opt_bg_b]/bg_rgb_divisor);
 global.color_background_tile=make_colour_rgb(colorsetup_r[opt_bg_tile]/bg_rgb_divisor,colorsetup_g[opt_bg_tile]/bg_rgb_divisor,colorsetup_b[opt_bg_tile]/bg_rgb_divisor);
+global.color_character=make_colour_rgb(colorsetup_r[opt_c_char],colorsetup_g[opt_c_char],colorsetup_b[opt_c_char]);
+//
+var progress_r=colorsetup_r[opt_c_char]*1.5, progress_g=colorsetup_g[opt_c_char]*1.5, progress_b=colorsetup_b[opt_c_char]*1.5;
+if progress_r>255 { progress_r=255; }
+if progress_g>255 { progress_g=255; }
+if progress_b>255 { progress_b=255; }
+global.color_roadmap_bar=make_colour_rgb(progress_r,progress_g,progress_b);

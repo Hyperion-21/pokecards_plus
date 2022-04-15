@@ -66,7 +66,6 @@ repeat (card_berrydeck_total) {
 //
 deck_build_stored_total=0;
 deck_build_used_total=0;
-deck_build_used_max=50;
 //
 deck_setup_load=-1; //value 0 not used, because current setup is always saved
 deck_setup_save=-1; //value 0 not used, because current setup is always saved

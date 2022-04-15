@@ -12,6 +12,14 @@ var i=0;
 repeat (roadmap_area_max) {
 	var value_name="location_type_" + string(i);
 	ds_map_add(savemap,value_name,location_type[i]);
+	var value_name="trainer_kind_" + string(i);
+	ds_map_add(savemap,value_name,trainer_kind[i]);
+	var value_name="trainer_sprite_" + string(i);
+	ds_map_add(savemap,value_name,trainer_sprite[i]);
+	var value_name="trainer_skin_" + string(i);
+	ds_map_add(savemap,value_name,trainer_skin[i]);
+	var value_name="trainer_hair_color_" + string(i);
+	ds_map_add(savemap,value_name,trainer_hair_color[i]);
 	//
 	var ii=0;
 	repeat (3) {

@@ -22,6 +22,9 @@ ds_map_add(savemap,"color_b_b",colorsetup_b[opt_bg_b]);
 ds_map_add(savemap,"color_tile_r",colorsetup_r[opt_bg_tile]);
 ds_map_add(savemap,"color_tile_g",colorsetup_g[opt_bg_tile]);
 ds_map_add(savemap,"color_tile_b",colorsetup_b[opt_bg_tile]);
+ds_map_add(savemap,"color_char_r",colorsetup_r[opt_c_char]);
+ds_map_add(savemap,"color_char_g",colorsetup_g[opt_c_char]);
+ds_map_add(savemap,"color_char_b",colorsetup_b[opt_c_char]);
 //
 ds_map_secure_save(savemap,config_file);
 ds_map_destroy(savemap);

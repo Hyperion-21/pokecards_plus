@@ -80,6 +80,7 @@ repeat (ob_main.maindeck_total) {
 		create_card_glyph_c=ob_main.main_card_glyph_c[i];
 		create_card_innate=ob_main.main_card_innate[i];
 		create_card_form_value=ob_main.main_card_form_value[i];
+		create_enemy_randomizer=false;
 		//
 		card_maindeck[card_shuffle[ii]]=instance_create_layer(cam_x+cam_w-67,cam_y+181,"instances",ob_card);
 		card_maindeck[card_shuffle[ii]].num_in_maindeck=card_shuffle[ii];
@@ -135,28 +136,29 @@ repeat (card_hand_max+1) { //+1 to replace value when using last card when hand 
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-enemycard_maindeck_total=10;
+sc_enemy_deck(ob_main.trainer_kind[ob_main.roadmap_area]);
+//
 var i=0;
 repeat (enemycard_maindeck_total) {
 	create_card_cat=0;
-	create_card_id=-1;
-	create_card_level=-1;
-	create_card_glyph_a=-1;
-	create_card_glyph_b=-1;
-	create_card_glyph_c=-1;
-	create_card_innate=1;
-	create_card_form_value=irandom(999);
+	create_card_id=enemy_card_id[i];
+	create_card_level=enemy_card_level[i];
+	create_card_glyph_a=enemy_card_glyph_a[i];
+	create_card_glyph_b=enemy_card_glyph_b[i];
+	create_card_glyph_c=enemy_card_glyph_c[i];
+	create_card_innate=enemy_card_innate[i];
+	create_card_form_value=enemy_card_form_value[i];
+	create_enemy_randomizer=true;
 	//
 	enemycard_maindeck[i]=instance_create_layer(cam_x+cam_w-67,cam_y-100,"instances",ob_card);
 	enemycard_maindeck[i].card_enemy=true;
 	i++;
 }
 //
-enemycard_berrydeck_total=999;
 var i=0;
 repeat (enemycard_berrydeck_total) {
 	create_card_cat=1;
-	create_card_id=irandom_range(3000,3002);
+	create_card_id=enemy_berry_id[i];
 	//
 	enemycard_berrydeck[i]=instance_create_layer(cam_x+10,cam_y-100,"instances",ob_card);
 	enemycard_berrydeck[i].card_enemy=true;

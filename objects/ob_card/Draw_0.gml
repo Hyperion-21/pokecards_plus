@@ -107,10 +107,10 @@ if card_cat=0 and card_face=true and in_view=true {
 				}
 			}
 			if opposite_card!=-1 and sc_type_bonus(card_type_a,card_type_b,opposite_card.card_type_a,opposite_card.card_type_b) {
-				draw_sprite_general(sp_sheet,0,16*2,16*12,16,16,draw_x+20,draw_y-8,1,1,0,c_white,c_white,c_white,c_white,1);
+				draw_sprite_general(sp_sheet,0,16*2,16*15,16,16,draw_x+20,draw_y-8,1,1,0,c_white,c_white,c_white,c_white,1);
 			}
 			else {
-				draw_sprite_general(sp_sheet,0,16*1,16*12,16,16,draw_x+20,draw_y-8,1,1,0,c_white,c_white,c_white,c_white,1);
+				draw_sprite_general(sp_sheet,0,16*1,16*15,16,16,draw_x+20,draw_y-8,1,1,0,c_white,c_white,c_white,c_white,1);
 			}
 		}
 	}

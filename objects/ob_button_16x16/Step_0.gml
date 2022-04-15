@@ -18,6 +18,11 @@ if button_id!=2 or !instance_exists(ob_control) {
 					ob_main.event_transition=ob_event.event_kind;
 					ob_event.event_cancelled=true;
 				}
+				else if button_id=2 {
+					with (ob_card) {
+						auto_turn_add=true;
+					}
+				}
 			}
 			else if instance_exists(ob_deckbuild) {
 				if button_id<=4 {

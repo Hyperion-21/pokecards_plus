@@ -20,15 +20,30 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	var i=0;
 	repeat (var_event_num) {
 		var event_sprite_x=16*(1+event_kind[i][roadmap_area]*2);
-		if event_kind[i][roadmap_area]=ref_event_gymbattle or event_kind[i][roadmap_area]=ref_event_tutorial { event_sprite_x=16*(1+0*2); }
+		if event_kind[i][roadmap_area]=ref_event_gymbattle { event_sprite_x=16*(1+13*2); }
+		else if event_kind[i][roadmap_area]=ref_event_tutorial { event_sprite_x=16*(1+0*2); }
 		else if event_kind[i][roadmap_area]=ref_event_grass { event_sprite_x=16*(1+10*2); }
 		else if event_kind[i][roadmap_area]=ref_event_fire { event_sprite_x=16*(1+11*2); }
 		else if event_kind[i][roadmap_area]=ref_event_water { event_sprite_x=16*(1+12*2); }
 		//
 		sc_drawrectangle(event_button_x[i],event_button_y[i],event_button_x[i]+42,event_button_y[i]+42,global.color_black,global.color_white,2,0.8,0.5,0);
-		draw_sprite_general(sp_sheet,0,event_sprite_x,16*13,26,26,event_button_x[i]+9,event_button_y[i]+9-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
+		draw_sprite_general(sp_sheet,0,event_sprite_x,16*13,26,27,event_button_x[i]+9,event_button_y[i]+9-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
 		sc_drawtext(event_button_x[i]+22,event_button_y[i]+51,event_name[i][roadmap_area],global.color_white,global.color_black,1,1,0,-1);
 		//
+		if event_kind[i][roadmap_area]=ref_event_battle or event_kind[i][roadmap_area]=ref_event_gymbattle or event_kind[i][roadmap_area]=ref_event_tutorial {
+			if trainer_sprite[roadmap_area]<=playericon_max {
+				draw_sprite_general(sp_sheet,0,16*((trainer_sprite[roadmap_area] mod 2)+1),16*(11+trainer_skin[roadmap_area]),16,16,
+				event_button_x[i]+25,event_button_y[i]+27,1,1,0,c_white,c_white,c_white,c_white,1);
+				draw_sprite_general(sp_sheet,0,16*(trainer_sprite[roadmap_area]+3),16*11,16,16,event_button_x[i]+25,event_button_y[i]+27,1,1,0,
+				trainer_hair_color[roadmap_area],trainer_hair_color[roadmap_area],trainer_hair_color[roadmap_area],trainer_hair_color[roadmap_area],1);
+				draw_sprite_general(sp_sheet,0,16*(trainer_sprite[roadmap_area]+3),16*12,16,16,event_button_x[i]+25,event_button_y[i]+27,1,1,0,
+				c_white,c_white,c_white,c_white,1);
+			}
+			else {
+				draw_sprite_general(sp_sheet,0,16*(trainer_sprite[roadmap_area]+3),16*11,16,16,event_button_x[i]+25,event_button_y[i]+27,1,1,0,
+				c_white,c_white,c_white,c_white,1);
+			}
+		}
 		if event_kind[i][roadmap_area]=ref_event_glyph {
 			draw_sprite_general(sp_sheet,0,16*(event_glyph_add[i][roadmap_area]+1),16*6,12,11,event_button_x[i]+29,event_button_y[i]+3,1,1,0,c_white,c_white,c_white,c_white,0.8);
 		}
@@ -45,9 +60,14 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	//
 	var bar_amount=(roadmap_area*100)/(roadmap_area_max-1);
 	draw_healthbar(road_win_x+2,road_win_y-17-rel_hud,road_win_x+237,road_win_y-14-rel_hud,bar_amount,
-	global.color_progress_dark,global.color_progress_light,global.color_progress_light,0,true,false);
-	draw_sprite_general(sp_sheet,0,16*4,16*12,16,16,road_win_x-2+(100*228)/100,road_win_y-24-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
-	draw_sprite_general(sp_sheet,0,16*(option_state[opt_playericon]+1),16*11,16,16,road_win_x-2+(bar_amount*228)/100,road_win_y-24-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
+	global.color_roadmap_bar_back,global.color_roadmap_bar,global.color_roadmap_bar,0,true,false);
+	//
+	draw_sprite_general(sp_sheet,0,16*4,16*15,16,16,road_win_x-2+(100*228)/100,road_win_y-24-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
+	draw_sprite_general(sp_sheet,0,16*((option_state[opt_playericon] mod 2)+1),16*11,16,16,road_win_x-2+(bar_amount*228)/100,road_win_y-23-rel_hud,1,1,0,
+	c_white,c_white,c_white,c_white,1);
+	draw_sprite_general(sp_sheet,0,16*(option_state[opt_playericon]+3),16*11,16,16,road_win_x-2+(bar_amount*228)/100,road_win_y-23-rel_hud,1,1,0,
+	global.color_character,global.color_character,global.color_character,global.color_character,1);
+	draw_sprite_general(sp_sheet,0,16*(option_state[opt_playericon]+3),16*12,16,16,road_win_x-2+(bar_amount*228)/100,road_win_y-23-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	draw_set_font(fn_m6x11);
 	draw_set_halign(fa_center);
@@ -74,8 +94,13 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 		sc_drawtext(screen_options_x+option_x[i]+string_width(option_name[i])+rel_hud*2,screen_main_y+option_y[i],option_state_text[i],
 		global.color_white,global.color_black,option_alpha,option_alpha,0,-1);
 		if i=opt_playericon {
-			draw_sprite_general(sp_sheet,0,16*(option_state[i]+1),16*11,16,16,
-			screen_options_x+option_x[i]+string_width(option_name[i])+rel_hud*2,screen_main_y+option_y[i]-2,1,1,0,c_white,c_white,c_white,c_white,option_alpha);
+			draw_sprite_general(sp_sheet,0,16*((option_state[i] mod 2)+1),16*11,16,16,
+			screen_options_x+option_x[i]+string_width(option_name[i])+rel_hud*2,screen_main_y+option_y[i]-1,1,1,0,c_white,c_white,c_white,c_white,1);
+			draw_sprite_general(sp_sheet,0,16*(option_state[i]+3),16*11,16,16,
+			screen_options_x+option_x[i]+string_width(option_name[i])+rel_hud*2,screen_main_y+option_y[i]-1,1,1,0,
+			global.color_character,global.color_character,global.color_character,global.color_character,1);
+			draw_sprite_general(sp_sheet,0,16*(option_state[i]+3),16*12,16,16,
+			screen_options_x+option_x[i]+string_width(option_name[i])+rel_hud*2,screen_main_y+option_y[i]-1,1,1,0,c_white,c_white,c_white,c_white,1);
 		}
 		i++;
 	}
@@ -103,9 +128,9 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 		i++;
 	}
 	//
-	if option_state[opt_bg_type]!=2 { var option_alpha=1; }
+	if option_state[opt_bg_type]!=3 { var option_alpha=1; }
 	else { var option_alpha=0.5; }
-	var bg_preview_x=screen_options_x+358, bg_preview_y=screen_main_y+option_y[opt_bg_type]-10;
+	var bg_preview_x=screen_options_x+355, bg_preview_y=screen_main_y+option_y[opt_bg_type]+5;
 	sc_drawrectangle(bg_preview_x-2,bg_preview_y-2,bg_preview_x+96,bg_preview_y+64,global.color_black,c_white,0,option_alpha,0,0);
 	draw_sprite_general(sp_back_pixel,0,0,0,1,1,bg_preview_x,bg_preview_y,96,64,0,
 	global.color_background_a,global.color_background_b,global.color_background_a,global.color_background_b,option_alpha);

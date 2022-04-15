@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.74"
+#macro game_version "v0.0.0.75"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -38,7 +38,9 @@ screen_transition=-1;
 auto_deck_transition=false;
 moving_hud=0;
 //
-roadmap_area_max=8;
+//#macro area_zone_max 9
+#macro roadmap_area_max 8
+//#macro league_area_max 5
 roadmap_get_details=true;
 event_transition=-1; //same as events, 300 victory, 301 defeat, 999 main menu
 fade_black=0;
@@ -51,6 +53,7 @@ menu_back_deck_hover=false;
 //
 card_level_player_limit=0;
 card_level_spawn_limit=0;
+card_level_enemy_min=0;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 #macro normal_poke_id_max 251 //normal (non-secret and non-environment) poke cards
 #macro secret_cards_total 2
@@ -59,6 +62,7 @@ card_level_spawn_limit=0;
 #macro deck_setup_max 5 //0: current (always), 1-5: saved setups
 #macro maindeck_total_max 2000
 #macro berrydeck_total_max 100 //per berry
+#macro maindeck_used_max 50
 //
 #macro money_add_base 75
 #macro money_add_area_bonus 25
@@ -96,7 +100,7 @@ event_cost[ref_event_levelup]=100;
 event_cost[ref_event_evolution]=200;
 event_cost[ref_event_glyph]=150;
 //
-#macro innate_max 6 //failure chance uses manual values in ob_event
+#macro innate_max 6 //failure chance uses manual values in ob_event, enemy innate uses manual values in ob_card
 current_glyph_add=-1;
 tooltip_text="";
 tooltip_lines=0;
@@ -125,6 +129,7 @@ tooltip_lines=0;
 #macro ref_glyph_transform 18
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 #macro options_total 10
+#macro playericon_max 15
 //
 #macro opt_fullscreen 0
 #macro opt_vsync 1
@@ -149,29 +154,31 @@ for (var i=0; i<options_total; i++;) {
 	else if i=opt_edge { option_name[i]="Edge Shading: "; }
 	else if i=opt_bg_type { option_name[i]="Battle Background Style: "; }
 	//
-	option_x[i]=28;
-	option_y[i]=25+20*i;
+	option_x[i]=21;
+	option_y[i]=18+20*i;
 	option_focus[i]=false;
 	option_state_text[i]="";
 }
 //
-#macro colorsetup_total 3
+#macro colorsetup_total 4
 #macro bg_rgb_divisor 2
 //
 #macro opt_bg_a 0
 #macro opt_bg_b 1
 #macro opt_bg_tile 2
+#macro opt_c_char 3
 //
 for (var i=0; i<colorsetup_total; i++;) {
 	if i=opt_bg_a { colorsetup_name[i]="Battle Background Color A: "; }
 	else if i=opt_bg_b { colorsetup_name[i]="Battle Background Color B: "; }
 	else if i=opt_bg_tile { colorsetup_name[i]="Battle Background Color C: "; }
+	else if i=opt_c_char { colorsetup_name[i]="Character Color: "; }
 	//
-	colorsetup_main_x[i]=28;
+	colorsetup_main_x[i]=21;
 	colorsetup_r_x[i]=colorsetup_main_x[i]+166;
 	colorsetup_g_x[i]=colorsetup_r_x[i]+38;
 	colorsetup_b_x[i]=colorsetup_g_x[i]+38;
-	colorsetup_y[i]=25+12*i+20*options_total;
+	colorsetup_y[i]=18+13*i+20*options_total;
 	colorsetup_focus_r[i]=false;
 	colorsetup_focus_g[i]=false;
 	colorsetup_focus_b[i]=false;
@@ -216,8 +223,14 @@ global.color_enemy=make_colour_rgb(221,172,159);
 global.color_fullhp=make_colour_rgb(176,223,159);
 global.color_damage=make_colour_rgb(225,168,160);
 global.color_direct_damage=make_colour_rgb(205,162,227);
-global.color_progress_light=make_colour_rgb(180,218,255);
-global.color_progress_dark=make_colour_rgb(91,88,80);
+global.color_roadmap_bar_back=make_colour_rgb(91,88,80);
 global.color_background_a=make_colour_rgb(colorsetup_r[opt_bg_a]/bg_rgb_divisor,colorsetup_g[opt_bg_a]/bg_rgb_divisor,colorsetup_b[opt_bg_a]/bg_rgb_divisor);
 global.color_background_b=make_colour_rgb(colorsetup_r[opt_bg_b]/bg_rgb_divisor,colorsetup_g[opt_bg_b]/bg_rgb_divisor,colorsetup_b[opt_bg_b]/bg_rgb_divisor);
 global.color_background_tile=make_colour_rgb(colorsetup_r[opt_bg_tile]/bg_rgb_divisor,colorsetup_g[opt_bg_tile]/bg_rgb_divisor,colorsetup_b[opt_bg_tile]/bg_rgb_divisor);
+global.color_character=make_colour_rgb(colorsetup_r[opt_c_char],colorsetup_g[opt_c_char],colorsetup_b[opt_c_char]);
+//
+var progress_r=colorsetup_r[opt_c_char]*1.5, progress_g=colorsetup_g[opt_c_char]*1.5, progress_b=colorsetup_b[opt_c_char]*1.5;
+if progress_r>255 { progress_r=255; }
+if progress_g>255 { progress_g=255; }
+if progress_b>255 { progress_b=255; }
+global.color_roadmap_bar=make_colour_rgb(progress_r,progress_g,progress_b);

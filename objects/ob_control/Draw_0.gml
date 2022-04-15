@@ -22,6 +22,25 @@ sc_drawtext(scoreboard_x+52+enemy_hp_draw_x,scoreboard_y+9+enemy_hp_draw_y,strin
 var bar_amount=((player_hp)*100)/(hp_max*2);
 draw_healthbar(scoreboard_x+2,scoreboard_y+2,scoreboard_x+65,scoreboard_y+5,bar_amount,global.color_enemy,global.color_player,global.color_player,0,true,false);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+var trainer_sprite=ob_main.trainer_sprite[ob_main.roadmap_area];
+var trainer_skin=ob_main.trainer_skin[ob_main.roadmap_area];
+var trainer_color=ob_main.trainer_hair_color[ob_main.roadmap_area];
+var player_icon=ob_main.option_state[opt_playericon];
+//
+if trainer_sprite<=playericon_max {
+	draw_sprite_general(sp_sheet,0,16*((trainer_sprite mod 2)+1),16*(11+trainer_skin),16,16,scoreboard_x+42,scoreboard_y-17,1,1,0,c_white,c_white,c_white,c_white,1);
+	draw_sprite_general(sp_sheet,0,16*(trainer_sprite+3),16*11,16,16,scoreboard_x+42,scoreboard_y-17,1,1,0,trainer_color,trainer_color,trainer_color,trainer_color,1);
+	draw_sprite_general(sp_sheet,0,16*(trainer_sprite+3),16*12,16,16,scoreboard_x+42,scoreboard_y-17,1,1,0,c_white,c_white,c_white,c_white,1);
+}
+else {
+	draw_sprite_general(sp_sheet,0,16*(trainer_sprite+3),16*11,16,16,scoreboard_x+42,scoreboard_y-17,1,1,0,c_white,c_white,c_white,c_white,1);
+}
+//
+draw_sprite_general(sp_sheet,0,16*((player_icon mod 2)+1),16*11,16,16,scoreboard_x+10,scoreboard_y-17,1,1,0,c_white,c_white,c_white,c_white,1);
+draw_sprite_general(sp_sheet,0,16*(player_icon+3),16*11,16,16,scoreboard_x+10,scoreboard_y-17,1,1,0,
+global.color_character,global.color_character,global.color_character,global.color_character,1);
+draw_sprite_general(sp_sheet,0,16*(player_icon+3),16*12,16,16,scoreboard_x+10,scoreboard_y-17,1,1,0,c_white,c_white,c_white,c_white,1);
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 draw_set_font(fn_m3x6);
 //
 draw_set_halign(fa_left);
@@ -79,6 +98,6 @@ var dpboard_y=button_nextturn_id.y+3;
 draw_set_halign(fa_right);
 sc_drawrectangle(dpboard_x,dpboard_y,dpboard_x+26,dpboard_y+15,global.color_black,global.color_white,1,0.25,0.5,0);
 sc_drawtext(dpboard_x+9,dpboard_y+1,string(card_draw_points),global.color_white,global.color_black,1,1,0,-1);
-draw_sprite_general(sp_sheet,0,16*3,16*12,16,16,dpboard_x+9,dpboard_y,1,1,0,c_white,c_white,c_white,c_white,1);
+draw_sprite_general(sp_sheet,0,16*3,16*15,16,16,dpboard_x+9,dpboard_y,1,1,0,c_white,c_white,c_white,c_white,1);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 sc_draw_tooltip_text(cam_x+cam_w);

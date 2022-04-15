@@ -30,6 +30,9 @@ if event_kind=ref_event_cardpack or event_kind=ref_event_berry {
 		instance_create_layer(screen_main_x+118+(73*i),screen_main_y+104,"instances",ob_card);
 		i++;
 	}
+	//
+	button_create=instance_create_layer(screen_main_x+cam_w-24,screen_main_y+cam_h-24,"instances",ob_button_16x16);
+	button_create.button_id=2;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if event_kind=ref_event_freecard {
@@ -80,6 +83,9 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 		instance_create_layer(card_x,card_y,"instances",ob_card);
 		i++;
 	}
+	//
+	button_create=instance_create_layer(screen_main_x+cam_w-24,screen_main_y+cam_h-24,"instances",ob_button_16x16);
+	button_create.button_id=2;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if event_kind=ref_event_levelup or event_kind=ref_event_evolution or

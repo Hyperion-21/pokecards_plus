@@ -27,7 +27,7 @@ option_state[opt_playericon]=0;
 option_state[opt_edge]=10;
 option_state[opt_bg_type]=0;
 //
-colorsetup_r[opt_bg_a]=59*bg_rgb_divisor;
+/*colorsetup_r[opt_bg_a]=59*bg_rgb_divisor;
 colorsetup_g[opt_bg_a]=57*bg_rgb_divisor;
 colorsetup_b[opt_bg_a]=53*bg_rgb_divisor;
 colorsetup_r[opt_bg_b]=59*bg_rgb_divisor;
@@ -35,7 +35,19 @@ colorsetup_g[opt_bg_b]=57*bg_rgb_divisor;
 colorsetup_b[opt_bg_b]=53*bg_rgb_divisor;
 colorsetup_r[opt_bg_tile]=64*bg_rgb_divisor;
 colorsetup_g[opt_bg_tile]=62*bg_rgb_divisor;
-colorsetup_b[opt_bg_tile]=58*bg_rgb_divisor;
+colorsetup_b[opt_bg_tile]=58*bg_rgb_divisor;*/
+colorsetup_r[opt_bg_a]=67*bg_rgb_divisor;
+colorsetup_g[opt_bg_a]=73*bg_rgb_divisor;
+colorsetup_b[opt_bg_a]=77*bg_rgb_divisor;
+colorsetup_r[opt_bg_b]=67*bg_rgb_divisor;
+colorsetup_g[opt_bg_b]=73*bg_rgb_divisor;
+colorsetup_b[opt_bg_b]=77*bg_rgb_divisor;
+colorsetup_r[opt_bg_tile]=75*bg_rgb_divisor;
+colorsetup_g[opt_bg_tile]=81*bg_rgb_divisor;
+colorsetup_b[opt_bg_tile]=86*bg_rgb_divisor;
+colorsetup_r[opt_c_char]=118;
+colorsetup_g[opt_c_char]=145;
+colorsetup_b[opt_c_char]=172;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if file_exists(config_file) {
 	var savemap=ds_map_secure_load(config_file);
@@ -72,6 +84,9 @@ if file_exists(config_file) {
 	if !is_undefined(ds_map_find_value(savemap,"color_tile_r")) { colorsetup_r[opt_bg_tile]=ds_map_find_value(savemap,"color_tile_r"); }
 	if !is_undefined(ds_map_find_value(savemap,"color_tile_g")) { colorsetup_g[opt_bg_tile]=ds_map_find_value(savemap,"color_tile_g"); }
 	if !is_undefined(ds_map_find_value(savemap,"color_tile_b")) { colorsetup_b[opt_bg_tile]=ds_map_find_value(savemap,"color_tile_b"); }
+	if !is_undefined(ds_map_find_value(savemap,"color_char_r")) { colorsetup_r[opt_c_char]=ds_map_find_value(savemap,"color_char_r"); }
+	if !is_undefined(ds_map_find_value(savemap,"color_char_g")) { colorsetup_g[opt_c_char]=ds_map_find_value(savemap,"color_char_g"); }
+	if !is_undefined(ds_map_find_value(savemap,"color_char_b")) { colorsetup_b[opt_c_char]=ds_map_find_value(savemap,"color_char_b"); }
 	//
 	ds_map_destroy(savemap);
 }

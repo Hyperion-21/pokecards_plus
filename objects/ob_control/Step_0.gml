@@ -204,6 +204,7 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or ob_main.cursor_hide=true) 
 							create_card_glyph_c=-1;
 							create_card_innate=1;
 							create_card_form_value=0;
+							create_enemy_randomizer=false;
 							//
 							var rock_spawn_id=instance_create_layer(var_cardspace_id.x,var_cardspace_id.y,"instances",ob_card);
 							rock_spawn_id.potential_x=rock_cardspace_id.x;

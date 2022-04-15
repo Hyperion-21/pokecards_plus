@@ -9,6 +9,10 @@ money=200;
 var i=0;
 repeat (roadmap_area_max) {
 	location_type[i]=-1;
+	trainer_kind[i]=-1;
+	trainer_sprite[i]=-1;
+	trainer_skin[i]=-1;
+	trainer_hair_color[i]=c_white;
 	//
 	var ii=0;
 	repeat (3) {
@@ -70,6 +74,14 @@ if file_exists(data_file) {
 	repeat (roadmap_area_max) {
 		var value_name="location_type_" + string(i);
 		if !is_undefined(ds_map_find_value(savemap,value_name)) { location_type[i]=ds_map_find_value(savemap,value_name); }
+		var value_name="trainer_kind_" + string(i);
+		if !is_undefined(ds_map_find_value(savemap,value_name)) { trainer_kind[i]=ds_map_find_value(savemap,value_name); }
+		var value_name="trainer_sprite_" + string(i);
+		if !is_undefined(ds_map_find_value(savemap,value_name)) { trainer_sprite[i]=ds_map_find_value(savemap,value_name); }
+		var value_name="trainer_skin_" + string(i);
+		if !is_undefined(ds_map_find_value(savemap,value_name)) { trainer_skin[i]=ds_map_find_value(savemap,value_name); }
+		var value_name="trainer_hair_color_" + string(i);
+		if !is_undefined(ds_map_find_value(savemap,value_name)) { trainer_hair_color[i]=ds_map_find_value(savemap,value_name); }
 		//
 		var ii=0;
 		repeat (3) {

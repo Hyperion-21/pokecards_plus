@@ -147,10 +147,10 @@ if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_hei
 	else if !mouse_check_button_pressed(mb_left) { ob_control.card_draw_click=false; }
 }
 //
-else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height and reference_id=ob_event {
+else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height) or auto_turn_add=true) and reference_id=ob_event {
 	ob_main.mouse_cursor=1;
 	//
-	if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false {
+	if ((mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false) or auto_turn_add=true) {
 		if ob_event.show_deck=false {
 			if card_face=false {
 				card_face=true;
@@ -210,6 +210,8 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 			}
 		}
 	}
+	//
+	auto_turn_add=false;
 }
 //
 else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height and reference_id=ob_deckbuild {
@@ -217,7 +219,7 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 	//
 	if card_cat=0 {
 		if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false {
-			if card_indeck[0]=false and ob_deckbuild.deck_build_used_total<ob_deckbuild.deck_build_used_max {
+			if card_indeck[0]=false and ob_deckbuild.deck_build_used_total<maindeck_used_max {
 				card_indeck[0]=true;
 				ob_deckbuild.reorder_selected=0; //pokemon id
 				ob_deckbuild.reorder_type=ob_deckbuild.reorder_selected;

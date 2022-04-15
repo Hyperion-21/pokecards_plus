@@ -16,7 +16,9 @@ else if trash=false {
 		}
 	}
 	//
-	draw_sprite_general(sp_sheet,0,16*33+4,16*0,sprite_width,sprite_height,x,y,1,1,0,c_white,c_white,c_white,c_white,1);
+	draw_sprite_general(sp_sheet,0,16*33+4,16*0,sprite_width,sprite_height,x,y,1,1,0,
+	global.color_background_tile,global.color_background_tile,global.color_background_tile,global.color_background_tile,1);
+	draw_sprite_general(sp_sheet,0,16*33+4,16*0,sprite_width,sprite_height,x,y,1,1,0,c_white,c_white,c_white,c_white,0.4); //to lighten color
 	if effect_use>0 { draw_sprite_general(sp_sheet,0,16*33+4,16*5,sprite_width,sprite_height,x,y,1,1,0,c_white,c_white,c_white,c_white,effect_use); }
 	//
 	var i=0, var_berries_total;
