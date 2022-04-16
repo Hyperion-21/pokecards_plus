@@ -54,10 +54,10 @@
 ✔	player sprites
 ✔	battle background preview
 ✔	trainer sprites
-T 14/4+	trainer decks setup
+✔	trainer classes setup
+✔	all trainer classes
 F 15/4	enemy deck shuffle
-F 15/4+	all trainer decks
-F 15/4+	all gym decks
+F 16/4+	all gym decks
 S 17/4	type advantage guide
 S 17/4	tutorial
 M 18/4	area names

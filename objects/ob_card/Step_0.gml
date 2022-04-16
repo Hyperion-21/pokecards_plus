@@ -150,7 +150,7 @@ if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_hei
 else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height) or auto_turn_add=true) and reference_id=ob_event {
 	ob_main.mouse_cursor=1;
 	//
-	if ((mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false) or auto_turn_add=true) {
+	if ((mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false) or auto_turn_add=true) and y=potential_y {
 		if ob_event.show_deck=false {
 			if card_face=false {
 				card_face=true;

@@ -48,10 +48,10 @@ else if event_kind=ref_event_freecard {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=ref_event_water {
-	card_prize=15;
+	card_prize=10;
 	var i=0;
 	repeat (card_prize) {
-		if i<=6 {
+		if i<=4 {
 			create_card_cat=0;
 			if i=0 and event_kind=ref_event_grass { create_card_id=001; } //bulbasaur
 			else if i=1 and event_kind=ref_event_grass { create_card_id=152; } //chikorita
@@ -62,8 +62,6 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 			else if i=2 { create_card_id=016; } //pidgey
 			else if i=3 { create_card_id=021; } //spearow
 			else if i=4 { create_card_id=019; } //rattata
-			else if i=5 { create_card_id=010; } //caterpie
-			else if i=6 { create_card_id=013; } //weedle
 			create_card_level=1;
 			create_card_glyph_a=-1;
 			create_card_glyph_b=-1;
@@ -73,13 +71,13 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 		}
 		else {
 			create_card_cat=1;
-			if i<=11 { create_card_id=3000; } //oran
-			else if i<=13 { create_card_id=3001; } //leppa
-			else { create_card_id=3002; } //lum
+			if i<=9 { create_card_id=3000; } //oran
+			//else { create_card_id=3001; } //leppa
+			//else { create_card_id=3002; } //lum
 		}
 		//
-		if i<=6 { var card_x=screen_main_x+47+(60*i), card_y=screen_main_y+104-47; }
-		else { var card_x=screen_main_x+17+(60*(i-7)), card_y=screen_main_y+104+47; }
+		if i<=4 { var card_x=screen_main_x+83+(72*i), card_y=screen_main_y+104-47; }
+		else { var card_x=screen_main_x+83+(72*(i-5)), card_y=screen_main_y+104+47; }
 		instance_create_layer(card_x,card_y,"instances",ob_card);
 		i++;
 	}

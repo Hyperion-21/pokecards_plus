@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.75"
+#macro game_version "v0.0.0.76"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -39,7 +39,7 @@ auto_deck_transition=false;
 moving_hud=0;
 //
 //#macro area_zone_max 9
-#macro roadmap_area_max 8
+#macro roadmap_area_max 12
 //#macro league_area_max 5
 roadmap_get_details=true;
 event_transition=-1; //same as events, 300 victory, 301 defeat, 999 main menu
@@ -54,6 +54,7 @@ menu_back_deck_hover=false;
 card_level_player_limit=0;
 card_level_spawn_limit=0;
 card_level_enemy_min=0;
+card_level_enemy_limit=0;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 #macro normal_poke_id_max 251 //normal (non-secret and non-environment) poke cards
 #macro secret_cards_total 2

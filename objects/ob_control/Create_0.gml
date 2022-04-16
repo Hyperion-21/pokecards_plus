@@ -148,6 +148,7 @@ repeat (enemycard_maindeck_total) {
 	create_card_glyph_c=enemy_card_glyph_c[i];
 	create_card_innate=enemy_card_innate[i];
 	create_card_form_value=enemy_card_form_value[i];
+	//
 	create_enemy_randomizer=true;
 	//
 	enemycard_maindeck[i]=instance_create_layer(cam_x+cam_w-67,cam_y-100,"instances",ob_card);

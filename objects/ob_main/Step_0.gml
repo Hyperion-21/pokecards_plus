@@ -23,16 +23,19 @@ if !instance_exists(ob_splash) and sc_music_sync()=true {
 }
 //
 if !instance_exists(ob_control) {
-	if money_show<money-100 { money_show+=2; }
-	else if money_show>money+100 { money_show-=2; }
-	else if money_show<money { money_show++; }
-	else if money_show>money { money_show--; }
+	if money_show<money { var money_speed=ceil((money-money_show)/100); }
+	if money_show>money { var money_speed=ceil((money_show-money)/100); }
+	//
+	if money_show<money { money_show+=money_speed; }
+	else if money_show>money { money_show-=money_speed; }
 }
 //
 card_level_player_limit=ob_main.area_zone+3; //3 4 5 6 7 8 9 10 (10)
 if card_level_player_limit>10 { card_level_player_limit=10; }
 card_level_spawn_limit=floor((ob_main.area_zone+1)/1.5)+1; //1 2 3 3 4 5 5 6 (7)
+//
 card_level_enemy_min=ob_main.area_zone+1; //1 2 3 4 5 6 7 8 (9)
+card_level_enemy_limit=ob_main.area_zone+2; //2 3 4 5 6 7 8 9 (10)
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if roadmap_generated=false {
 	var i=0, var_event_num;
@@ -51,27 +54,51 @@ if roadmap_generated=false {
 		trainer_skin[i]=floor(irandom(8)/8);
 		trainer_hair_color[i]=make_colour_rgb(irandom_range(140,240),irandom_range(140,240),irandom_range(140,240));
 		//
-		switch (location_type[i]) {
-			case 00: trainer_kind[i]=choose(00,00,00); break; //forest
-			case 01: trainer_kind[i]=choose(00,00,00); break; //cave (forest)
-			case 02: trainer_kind[i]=choose(00,00,00); break; //cave (rocky)
-			case 03: trainer_kind[i]=choose(00,00,00); break; //cave (dark)
-			case 04: trainer_kind[i]=choose(00,00,00); break; //cave (mountain)
-			case 05: trainer_kind[i]=choose(00,00,00); break; //factory
-			case 06: trainer_kind[i]=choose(00,00,00); break; //mansion ruins
-			case 07: trainer_kind[i]=choose(00,00,00); break; //cave (forest road)
-			case 08: trainer_kind[i]=choose(00,00,00); break; //cave (volcano)
-			case 09: trainer_kind[i]=choose(00,00,00); break; //forest (poison)
-			case 10: trainer_kind[i]=choose(00,00,00); break; //cave (ice)
-			case 11: trainer_kind[i]=choose(00,00,00); break; //warehouse
-			case 12: trainer_kind[i]=choose(00,00,00); break; //tower
-			case 14: trainer_kind[i]=choose(00,00,00); break; //grassland
-			case 16: trainer_kind[i]=choose(00,00,00); break; //cave (island 1)
-			case 17: trainer_kind[i]=choose(00,00,00); break; //cave (foggy)
-			case 18: trainer_kind[i]=choose(00,00,00); break; //forest (same a 00)
-			case 19: trainer_kind[i]=choose(00,00,00); break; //cave (island 2)
-			case 20: trainer_kind[i]=choose(00,00,00); break; //cave (ruins)
-			case 21: trainer_kind[i]=choose(00,00,00); break; //ancient ruins
+		var ace_trainer_chance=irandom(9);
+		if ace_trainer_chance=0 { trainer_kind[i]=100; } //ACE TRAINER (10%)
+		else {
+			switch (location_type[i]) {
+				//forest: CAMPER/PICNICKER, FISHER, BUG CATCHER, BIRD KEEPER, YOUNGSTER, LAD/LASS, AROMA MAN/AROMA LADY, RANGER
+					case 00: trainer_kind[i]=choose(00,01,03,05,08,09,24,25); break;
+				//cave (forest): CAMPER/PICNICKER, HIKER, BUG CATCHER, BIRD KEEPER, BLACK BELT, RANGER
+					case 01: trainer_kind[i]=choose(00,02,03,05,15,25); break;
+				//cave (rocky): CAMPER/PICNICKER, FISHER, HIKER
+					case 02: trainer_kind[i]=choose(00,01,02); break;
+				//cave (dark forest): BUG CATCHER, ROUGHNECK, PSYCHIC, CHANNELER
+					case 03: trainer_kind[i]=choose(03,11,14,20); break;
+				//cave (mountain): CAMPER/PICNICKER, HIKER
+					case 04: trainer_kind[i]=choose(00,02); break;
+				//factory: SUPER NERD, PUNK GUY/PUNK GIRL, GUITARIST, SCIENTIST, BURGLAR, ENGINEER
+					case 05: trainer_kind[i]=choose(07,12,13,16,18,19); break;
+				//mansion ruins: YOUNGSTER, LAD/LASS, ROUGHNECK, PSYCHIC, RUIN MANIAC, BURGLAR, CHANNELER
+					case 06: trainer_kind[i]=choose(08,09,11,14,17,18,20); break;
+				//cave (forest road): CAMPER/PICNICKER, FISHER, HIKER, BUG CATCHER, BIRD KEEPER, YOUNGSTER, LAD/LASS, RANGER
+					case 07: trainer_kind[i]=choose(00,01,02,03,05,08,09,25); break;
+				//cave (volcano): HIKER, BIKER, ROUGHNECK, DRAGON TAMER, KINDLER
+					case 08: trainer_kind[i]=choose(02,10,11,21,23); break;
+				//forest (poison): CAMPER/PICNICKER, FISHER, BUG CATCHER, BIRD KEEPER, YOUNGSTER, LAD/LASS, PSYCHIC, AROMA MAN/AROMA LADY, RANGER
+					case 09: trainer_kind[i]=choose(00,01,03,05,08,09,14,24,25); break;
+				//cave (ice): CAMPER/PICNICKER, FISHER, HIKER, SKIER
+					case 10: trainer_kind[i]=choose(00,01,02,06); break;
+				//warehouse: SUPER NERD, ROUGHNECK, PUNK GUY/PUNK GIRL, SCIENTIST, BURGLAR, ENGINEER
+					case 11: trainer_kind[i]=choose(07,11,12,16,18,19); break;
+				//tower: BIKER, ROUGHNECK, PSYCHIC, BLACK BELT, RUIN MANIAC
+					case 12: trainer_kind[i]=choose(10,11,14,15,17); break;
+				//grassland: CAMPER/PICNICKER, FISHER, BUG CATCHER, BIRD KEEPER, YOUNGSTER, LAD/LASS, KINDLER, RANGER
+					case 14: trainer_kind[i]=choose(00,01,03,05,08,09,23,25); break;
+				//cave (island 1): FISHER, HIKER, SWIMMER
+					case 16: trainer_kind[i]=choose(01,02,04); break;
+				//cave (foggy): FISHER, HIKER, SWIMMER, BLACK BELT
+					case 17: trainer_kind[i]=choose(01,02,04,15); break;
+				//forest (same a 00): CAMPER/PICNICKER, FISHER, BUG CATCHER, BIRD KEEPER, YOUNGSTER, LAD/LASS, SPRITE BOY/FAIRY GIRL, AROMA MAN/AROMA LADY, RANGER
+					case 18: trainer_kind[i]=choose(00,01,03,05,08,09,22,24,25); break;
+				//cave (island 2): FISHER, HIKER, SWIMMER
+					case 19: trainer_kind[i]=choose(01,02,04); break;
+				//cave (ruins): CAMPER/PICNICKER, HIKER, BIKER, BLACK BELT
+					case 20: trainer_kind[i]=choose(00,02,10,15); break;
+				//ancient ruins: HIKER, RUIN MANIAC
+					case 21: trainer_kind[i]=choose(02,17); break;
+			}
 		}
 		//
 		do {
@@ -88,8 +115,8 @@ if roadmap_generated=false {
 				if event_kind[ii][i]=-1 { event_kind[ii][i]=-1; }
 				else if event_kind[ii][i]<400 and i=0 { event_kind[ii][i]=ref_event_battle; free_event=true; } //40% (ensures at least 1 battle in zone)
 				else if event_kind[ii][i]<300 { event_kind[ii][i]=ref_event_battle; free_event=true; } //30%
-				else if event_kind[ii][i]<350 { event_kind[ii][i]=ref_event_payoff; free_event=true; } //5%
-				else if event_kind[ii][i]<400 { event_kind[ii][i]=ref_event_freecard; free_event=true; } //5%
+				else if event_kind[ii][i]<375 { event_kind[ii][i]=ref_event_payoff; free_event=true; } //7.5%
+				else if event_kind[ii][i]<400 { event_kind[ii][i]=ref_event_freecard; free_event=true; } //2.5%
 				else if event_kind[ii][i]<550 { event_kind[ii][i]=ref_event_cardpack; } //15%
 				else if event_kind[ii][i]<700 { event_kind[ii][i]=ref_event_berry; } //15%
 				else if event_kind[ii][i]<850 { event_kind[ii][i]=ref_event_levelup; } //15%
@@ -119,15 +146,24 @@ if roadmap_generated=false {
 		event_kind[1][0]=ref_event_fire;
 		event_kind[2][0]=ref_event_water;
 		location_type[0]=13; //lab
+		//
 		event_kind[0][1]=ref_event_tutorial;
 		event_kind[1][1]=ref_event_payoff;
 		event_kind[2][1]=-1;
 		location_type[1]=13; //lab
 		trainer_sprite[1]=playericon_max+1;
-		event_kind[0][2]=ref_event_berry;
+		//
+		event_kind[0][2]=ref_event_freecard;
 		event_kind[1][2]=ref_event_cardpack;
 		event_kind[2][2]=ref_event_levelup;
-		location_type[2]=00; //forest (only time there are no free events)
+		location_type[2]=13; //lab
+		//
+		event_kind[0][3]=ref_event_glyph;
+		event_glyph_add[0][3]=ref_glyph_harvest;
+		event_kind[1][3]=ref_event_battle;
+		event_kind[2][3]=ref_event_berry;
+		location_type[3]=00; //forest
+		trainer_kind[3]=03; //BUG CATCHER
 		//
 		first_zone_start=false;
 	}
@@ -146,11 +182,52 @@ if roadmap_generated=false {
 if roadmap_get_details=true {
 	var i=0;
 	repeat (roadmap_area_max) {
+		var trainer_name;
+		switch (trainer_kind[i]) {
+			case 00:
+				if (trainer_sprite[i] mod 2)=0 { trainer_name[i]="Camper"; }
+				else if (trainer_sprite[i] mod 2)=1 { trainer_name[i]="Picnicker"; } break;
+			case 01: trainer_name[i]="Fisher"; break;
+			case 02: trainer_name[i]="Hiker"; break;
+			case 03: trainer_name[i]="Bug Catcher"; break;
+			case 04: trainer_name[i]="Swimmer"; break;
+			case 05: trainer_name[i]="Bird Keeper"; break;
+			case 06: trainer_name[i]="Skier"; break;
+			case 07: trainer_name[i]="Super Nerd"; break;
+			case 08: trainer_name[i]="Youngster"; break;
+			case 09:
+				if (trainer_sprite[i] mod 2)=0 { trainer_name[i]="Lad"; }
+				else if (trainer_sprite[i] mod 2)=1 { trainer_name[i]="Lass"; } break;
+			case 10: trainer_name[i]="Biker"; break;
+			case 11: trainer_name[i]="Roughneck"; break;
+			case 12:
+				if (trainer_sprite[i] mod 2)=0 { trainer_name[i]="Punk Guy"; }
+				else if (trainer_sprite[i] mod 2)=1 { trainer_name[i]="Punk Girl"; } break;
+			case 13: trainer_name[i]="Guitarist"; break;
+			case 14: trainer_name[i]="Psychic"; break;
+			case 15: trainer_name[i]="Black Belt"; break;
+			case 16: trainer_name[i]="Scientist"; break;
+			case 17: trainer_name[i]="Ruin Maniac"; break;
+			case 18: trainer_name[i]="Burglar"; break;
+			case 19: trainer_name[i]="Engineer"; break;
+			case 20: trainer_name[i]="Channeler"; break;
+			case 21: trainer_name[i]="Dragon Tamer"; break;
+			case 22:
+				if (trainer_sprite[i] mod 2)=0 { trainer_name[i]="Sprite Boy"; }
+				else if (trainer_sprite[i] mod 2)=1 { trainer_name[i]="Fairy Girl"; } break;
+			case 23: trainer_name[i]="Kindler"; break;
+			case 24:
+				if (trainer_sprite[i] mod 2)=0 { trainer_name[i]="Aroma Man"; }
+				else if (trainer_sprite[i] mod 2)=1 { trainer_name[i]="Aroma Lady"; } break;
+			case 25: trainer_name[i]="Ranger"; break;
+			case 100: trainer_name[i]="Ace Trainer"; break;
+		}
+		//
 		var ii=0;
 		repeat (3) {
 			event_description[ii][i]="";
 			//
-			if event_kind[ii][i]=ref_event_battle { event_name[ii][i]="Trainer\nBattle"; }
+			if event_kind[ii][i]=ref_event_battle { event_name[ii][i]="Battle:\n" + trainer_name[i]; }
 			else if event_kind[ii][i]=ref_event_payoff { event_name[ii][i]="Payoff"; }
 			else if event_kind[ii][i]=ref_event_freecard { event_name[ii][i]="Free Card"; }
 			else if event_kind[ii][i]=ref_event_cardpack { event_name[ii][i]="Card Pack\n$" + string(event_cost[ref_event_cardpack]); }
@@ -162,8 +239,8 @@ if roadmap_get_details=true {
 			else if event_kind[ii][i]=ref_event_grass { event_name[ii][i]="Grass\nSt. Deck"; }
 			else if event_kind[ii][i]=ref_event_fire { event_name[ii][i]="Fire\nSt. Deck"; }
 			else if event_kind[ii][i]=ref_event_water { event_name[ii][i]="Water\nSt. Deck"; }
-			else if event_kind[ii][i]=ref_event_gymbattle { event_name[ii][i]="Gym\nBattle"; }
-			else if event_kind[ii][i]=ref_event_tutorial { event_name[ii][i]="Tutorial\nBattle"; }
+			else if event_kind[ii][i]=ref_event_gymbattle { event_name[ii][i]="Gym Battle:\n" + trainer_name[i]; }
+			else if event_kind[ii][i]=ref_event_tutorial { event_name[ii][i]="Battle:\nTutorial"; }
 			else if event_kind[ii][i]=ref_event_glyph {
 				event_name[ii][i]="Glyph\n$" + string(event_cost[ref_event_glyph]);
 				event_description[ii][i]=sc_glyph_text(event_glyph_add[ii][i]);
@@ -477,7 +554,7 @@ repeat (options_total) {
 		else { option_state_text[i]="OFF"; }
 	}
 	else if i=opt_scaling {
-		option_state_text[i]=string(option_state[i]);
+		option_state_text[i]="x" + string(option_state[i]);
 	}
 	else if i=opt_autodeck {
 		if option_state[i]=true { option_state_text[i]="GO TO DECK"; }
