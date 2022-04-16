@@ -1,6 +1,9 @@
 if ob_main.cursor_hide=true {
 	tooltip_timer=0;
 }
+if type_chart=true and (mouse_check_button(mb_right) or ob_main.cursor_hide=true) {
+	type_chart=false;
+}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if player_effect_damaged>0 { player_effect_damaged-=0.08; }
 if enemy_effect_damaged>0 { enemy_effect_damaged-=0.08; }

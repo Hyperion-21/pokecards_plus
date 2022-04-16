@@ -36,19 +36,20 @@ if card_cat=0 and reference_id=ob_control { enemy_randomizer=reference_id.create
 else { enemy_randomizer=false; }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if card_cat=0 {
+	var random_group_chance=irandom(9999);
+	//
 	do {
 		card_id=reference_id.create_card_id;
 		if card_id=-1 { var random_card=true; } else { var random_card=false; }
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		if random_card=true and enemy_randomizer=false {
-			var random_id_chance=irandom(9999);
 			var allow_id_enigma=false, allow_id_pseudo=false, allow_id_fossil=false, allow_id_starter=false, allow_id_baby=false, allow_id_stage_2=false, allow_id_stage_3=false;
 			//
-			if random_id_chance<1 { //0.01% secret card
+			if random_group_chance<1 { //0.01% secret card
 				card_id=irandom_range(1,secret_cards_total)+2000;
 				card_innate=1;
 			}
-			else if random_id_chance<101 { //1% environment card
+			else if random_group_chance<101 { //1% environment card
 				card_id=irandom_range(1,environment_cards_total)+2500;
 				card_innate=1;
 			}
@@ -56,13 +57,13 @@ if card_cat=0 {
 				card_id=irandom_range(1,normal_poke_id_max);
 				card_innate=1;
 				//
-				random_id_chance=irandom(99); if random_id_chance<5 { allow_id_enigma=true; } //5% enigma allowed
-				random_id_chance=irandom(99); if random_id_chance<50 { allow_id_pseudo=true; } //50% pseudo allowed
-				random_id_chance=irandom(99); if random_id_chance<50 { allow_id_fossil=true; } //50% fossil allowed
-				random_id_chance=irandom(99); if random_id_chance<25 { allow_id_starter=true; } //25% starter allowed
-				random_id_chance=irandom(99); if random_id_chance<25 { allow_id_baby=true; } //25% baby allowed
-				random_id_chance=irandom(99); if random_id_chance<10 { allow_id_stage_2=true; } //10% stage 2 allowed
-				random_id_chance=irandom(99); if random_id_chance<5 { allow_id_stage_3=true; } //5% stage 3 allowed
+				var random_id_chance=irandom(99); if random_id_chance<5 { allow_id_enigma=true; } //5% enigma allowed
+				var random_id_chance=irandom(99); if random_id_chance<50 { allow_id_pseudo=true; } //50% pseudo allowed
+				var random_id_chance=irandom(99); if random_id_chance<50 { allow_id_fossil=true; } //50% fossil allowed
+				var random_id_chance=irandom(99); if random_id_chance<25 { allow_id_starter=true; } //25% starter allowed
+				var random_id_chance=irandom(99); if random_id_chance<25 { allow_id_baby=true; } //25% baby allowed
+				var random_id_chance=irandom(99); if random_id_chance<10 { allow_id_stage_2=true; } //10% stage 2 allowed
+				var random_id_chance=irandom(99); if random_id_chance<5 { allow_id_stage_3=true; } //5% stage 3 allowed
 			}
 			//
 			//card_id=irandom_range(000,000); //cheat
@@ -75,10 +76,9 @@ if card_cat=0 {
 		}
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		else if random_card=true and enemy_randomizer=true {
-			var random_id_chance=irandom(9999);
 			var allow_id_enigma=false, allow_id_pseudo=false, allow_id_fossil=false, allow_id_starter=false, allow_id_baby=false, allow_id_stage_2=false, allow_id_stage_3=false;
 			//
-			if random_id_chance<500 { //5% environment card
+			if random_group_chance<500 { //5% environment card
 				card_id=irandom_range(1,environment_cards_total)+2500;
 				card_innate=1;
 			}
@@ -93,13 +93,13 @@ if card_cat=0 {
 				else if card_enemy_innate_value<38 { card_innate=2; } //2%
 				else if card_enemy_innate_value<1000 { card_innate=1; } //96.2%
 				//
-				//random_id_chance=irandom(99); if random_id_chance<0 { allow_id_enigma=true; } //0% enigma allowed
-				random_id_chance=irandom(99); if random_id_chance<90 { allow_id_pseudo=true; } //90% pseudo allowed
-				random_id_chance=irandom(99); if random_id_chance<75 { allow_id_fossil=true; } //75% fossil allowed
-				random_id_chance=irandom(99); if random_id_chance<75 { allow_id_starter=true; } //75% starter allowed
-				random_id_chance=irandom(99); if random_id_chance<50 { allow_id_baby=true; } //50% baby allowed
-				random_id_chance=irandom(99); if random_id_chance<90 { allow_id_stage_2=true; } //90% stage 2 allowed
-				random_id_chance=irandom(99); if random_id_chance<80 { allow_id_stage_3=true; } //80% stage 3 allowed
+				//var random_id_chance=irandom(99); if random_id_chance<0 { allow_id_enigma=true; } //0% enigma allowed
+				var random_id_chance=irandom(99); if random_id_chance<90 { allow_id_pseudo=true; } //90% pseudo allowed
+				var random_id_chance=irandom(99); if random_id_chance<75 { allow_id_fossil=true; } //75% fossil allowed
+				var random_id_chance=irandom(99); if random_id_chance<75 { allow_id_starter=true; } //75% starter allowed
+				var random_id_chance=irandom(99); if random_id_chance<50 { allow_id_baby=true; } //50% baby allowed
+				var random_id_chance=irandom(99); if random_id_chance<90 { allow_id_stage_2=true; } //90% stage 2 allowed
+				var random_id_chance=irandom(99); if random_id_chance<80 { allow_id_stage_3=true; } //80% stage 3 allowed
 			}
 			//
 			//card_id=irandom_range(000,000); //cheat

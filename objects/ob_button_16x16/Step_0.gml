@@ -9,6 +9,9 @@ if button_id!=2 or !instance_exists(ob_control) {
 				else if button_id=1 {
 					ob_control.button_sorthand=true;
 				}
+				else if button_id=3 {
+					ob_control.type_chart=true;
+				}
 			}
 			else if instance_exists(ob_event) {
 				if button_id=0 and ob_event.event_applied=false {

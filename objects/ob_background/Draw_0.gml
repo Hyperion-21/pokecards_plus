@@ -16,5 +16,5 @@ else if !instance_exists(ob_control) or ob_main.option_state[opt_bg_type]=3 {
 	else { var back_alpha=0.9; }
 	//
 	draw_sprite_general(sp_area,0,240*area_sp_x,112*area_sp_y,240,112,cam_x-104,cam_y-21,3,3,0,c_white,c_white,c_white,c_white,1);
-	sc_drawrectangle(cam_x-2,cam_y-2,cam_x+512+2,cam_y+288+2,global.color_black,c_white,0,back_alpha,1,0);
+	sc_drawrectangle(cam_x-2,cam_y-2,cam_x+cam_w+2,cam_y+cam_h+2,global.color_black,c_white,0,back_alpha,1,0);
 }

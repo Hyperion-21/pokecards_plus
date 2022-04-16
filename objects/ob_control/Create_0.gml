@@ -20,6 +20,8 @@ button_create=instance_create_layer(cam_x+76,cam_y+197,"instances",ob_button_16x
 button_create.button_id=1;
 button_create=instance_create_layer(cam_x+cam_w-20,cam_y+4,"instances",ob_button_16x16);
 button_create.button_id=2;
+button_create=instance_create_layer(cam_x+76,cam_y+180,"instances",ob_button_16x16);
+button_create.button_id=3;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 instance_create_layer(cam_x+cam_w/2-24,cam_y+cam_h/2-24,"instances",ob_coin);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -138,16 +140,31 @@ repeat (card_hand_max+1) { //+1 to replace value when using last card when hand 
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 sc_enemy_deck(ob_main.trainer_kind[ob_main.roadmap_area]);
 //
+var i=0, card_shuffle;
+repeat (enemycard_maindeck_total) {
+	do {
+		var shuffle_taken=false;
+		card_shuffle[i]=irandom(enemycard_maindeck_total-1);
+		//
+		var ii=0;
+		repeat (i) {
+			if card_shuffle[i]=card_shuffle[ii] { shuffle_taken=true; }
+			ii++;
+		}
+	} until (shuffle_taken=false);
+	i++;
+}
+//
 var i=0;
 repeat (enemycard_maindeck_total) {
 	create_card_cat=0;
-	create_card_id=enemy_card_id[i];
-	create_card_level=enemy_card_level[i];
-	create_card_glyph_a=enemy_card_glyph_a[i];
-	create_card_glyph_b=enemy_card_glyph_b[i];
-	create_card_glyph_c=enemy_card_glyph_c[i];
-	create_card_innate=enemy_card_innate[i];
-	create_card_form_value=enemy_card_form_value[i];
+	create_card_id=enemy_card_id[card_shuffle[i]];
+	create_card_level=enemy_card_level[card_shuffle[i]];
+	create_card_glyph_a=enemy_card_glyph_a[card_shuffle[i]];
+	create_card_glyph_b=enemy_card_glyph_b[card_shuffle[i]];
+	create_card_glyph_c=enemy_card_glyph_c[card_shuffle[i]];
+	create_card_innate=enemy_card_innate[card_shuffle[i]];
+	create_card_form_value=enemy_card_form_value[card_shuffle[i]];
 	//
 	create_enemy_randomizer=true;
 	//
@@ -155,17 +172,32 @@ repeat (enemycard_maindeck_total) {
 	enemycard_maindeck[i].card_enemy=true;
 	i++;
 }
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+var i=0, card_shuffle;
+repeat (enemycard_berrydeck_total) {
+	do {
+		var shuffle_taken=false;
+		card_shuffle[i]=irandom(enemycard_berrydeck_total-1);
+		//
+		var ii=0;
+		repeat (i) {
+			if card_shuffle[i]=card_shuffle[ii] { shuffle_taken=true; }
+			ii++;
+		}
+	} until (shuffle_taken=false);
+	i++;
+}
 //
 var i=0;
 repeat (enemycard_berrydeck_total) {
 	create_card_cat=1;
-	create_card_id=enemy_berry_id[i];
+	create_card_id=enemy_berry_id[card_shuffle[i]];
 	//
 	enemycard_berrydeck[i]=instance_create_layer(cam_x+10,cam_y-100,"instances",ob_card);
 	enemycard_berrydeck[i].card_enemy=true;
 	i++;
 }
-//
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 enemycard_hand_total=0;
 var i=0;
 repeat (card_hand_max+1) { //+1 to replace value when using last card when hand is full
@@ -180,7 +212,14 @@ tooltip_timer_max=300;
 first_turn_attack_warning=false;
 hand_full_draw_warning=false;
 //
-hp_max=20+ob_main.area_zone*10;
+if ob_main.area_zone=area_zone_max-1 {
+	hp_max=100; //league: 100
+}
+else {
+	if ob_main.roadmap_area<roadmap_area_max-1 { hp_max=10+ob_main.area_zone*10; } //10 20 30 40 50 60 70 80
+	else { hp_max=20+ob_main.area_zone*10; } //gyms: 20 30 40 50 60 70 80 90
+}
+//
 player_hp=hp_max;
 enemy_hp=hp_max;
 player_effect_damaged=0;
@@ -214,6 +253,7 @@ card_focus=-1; //id
 card_hold=-1; //id
 card_focus_hand=-1;
 //
+type_chart=false;
 button_sorthand=false;
 button_nextturn=false;
 //————————————————————————————————————————————————————————————————————————————————————————————————————

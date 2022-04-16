@@ -152,6 +152,7 @@ if roadmap_generated=false {
 		event_kind[2][1]=-1;
 		location_type[1]=13; //lab
 		trainer_sprite[1]=playericon_max+1;
+		trainer_kind[1]=101; //TUTORIAL
 		//
 		event_kind[0][2]=ref_event_freecard;
 		event_kind[1][2]=ref_event_cardpack;
@@ -172,6 +173,7 @@ if roadmap_generated=false {
 	event_kind[1][roadmap_area_max-1]=ref_event_loop;
 	event_kind[2][roadmap_area_max-1]=-1;
 	location_type[roadmap_area_max-1]=15; //city
+	trainer_kind[roadmap_area_max-1]=200+area_zone; //GYM LEADER
 	//
 	trainer_sprite[roadmap_area_max-1]=area_zone+playericon_max+2;
 	//
@@ -221,6 +223,21 @@ if roadmap_get_details=true {
 				else if (trainer_sprite[i] mod 2)=1 { trainer_name[i]="Aroma Lady"; } break;
 			case 25: trainer_name[i]="Ranger"; break;
 			case 100: trainer_name[i]="Ace Trainer"; break;
+			//
+			case 101: trainer_name[i]="Tutorial"; break;
+			case 200: trainer_name[i]=""; break;
+			case 201: trainer_name[i]=""; break;
+			case 202: trainer_name[i]=""; break;
+			case 203: trainer_name[i]=""; break;
+			case 204: trainer_name[i]=""; break;
+			case 205: trainer_name[i]=""; break;
+			case 206: trainer_name[i]=""; break;
+			case 207: trainer_name[i]=""; break;
+			case 208: trainer_name[i]=""; break;
+			case 209: trainer_name[i]=""; break;
+			case 210: trainer_name[i]=""; break;
+			case 211: trainer_name[i]=""; break;
+			case 212: trainer_name[i]=""; break;
 		}
 		//
 		var ii=0;
@@ -240,7 +257,7 @@ if roadmap_get_details=true {
 			else if event_kind[ii][i]=ref_event_fire { event_name[ii][i]="Fire\nSt. Deck"; }
 			else if event_kind[ii][i]=ref_event_water { event_name[ii][i]="Water\nSt. Deck"; }
 			else if event_kind[ii][i]=ref_event_gymbattle { event_name[ii][i]="Gym Battle:\n" + trainer_name[i]; }
-			else if event_kind[ii][i]=ref_event_tutorial { event_name[ii][i]="Battle:\nTutorial"; }
+			else if event_kind[ii][i]=ref_event_tutorial { event_name[ii][i]="Battle:\n" + trainer_name[i]; }
 			else if event_kind[ii][i]=ref_event_glyph {
 				event_name[ii][i]="Glyph\n$" + string(event_cost[ref_event_glyph]);
 				event_description[ii][i]=sc_glyph_text(event_glyph_add[ii][i]);

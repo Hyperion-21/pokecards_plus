@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.76"
+#macro game_version "v0.0.0.77"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -38,7 +38,7 @@ screen_transition=-1;
 auto_deck_transition=false;
 moving_hud=0;
 //
-//#macro area_zone_max 9
+#macro area_zone_max 9
 #macro roadmap_area_max 12
 //#macro league_area_max 5
 roadmap_get_details=true;

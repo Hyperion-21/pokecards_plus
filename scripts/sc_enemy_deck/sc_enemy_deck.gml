@@ -2,9 +2,8 @@ function sc_enemy_deck(argument0) {
 /// @param trainer_kind
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 for (var i=0; i<=17; i++;) {
-	enemy_type_chance[i]=0;
+	enemy_type_chance[i]=1; //1% minimum
 }
-enemy_type_chance[00]=1; //normal (1% minimum)
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if argument0<=100 {
 	if argument0=-1 { //-
@@ -224,10 +223,34 @@ if argument0<=100 {
 	//
 	var i=0;
 	repeat (enemycard_berrydeck_total) {
-		enemy_berry_id[i]=irandom_range(3000,3002);
-		//if i<berrydeck_total_max { enemy_berry_id[i]=3000; }
-		//else if i<berrydeck_total_max*2 { enemy_berry_id[i]=3001; }
-		//else if i<berrydeck_total_max*3 { enemy_berry_id[i]=3002; }
+		if i<berrydeck_total_max { enemy_berry_id[i]=3000; }
+		else if i<berrydeck_total_max*2 { enemy_berry_id[i]=3001; }
+		else if i<berrydeck_total_max*3 { enemy_berry_id[i]=3002; }
+		i++;
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else if argument0=101 { //tutorial
+	enemycard_maindeck_total=5;
+	//
+	var i=0;
+	repeat (enemycard_maindeck_total) {
+		enemy_card_id[i]=choose(010,011,013,014,016,019); //caterpie, metapod, weedle, kakuna, pidgey, rattata
+		enemy_card_level[i]=1;
+		enemy_card_glyph_a[i]=-1;
+		enemy_card_glyph_b[i]=-1;
+		enemy_card_glyph_c[i]=-1;
+		enemy_card_innate[i]=1;
+		enemy_card_form_value[i]=0;
+		i++;
+	}
+	//
+	enemycard_berrydeck_total=10;
+	//
+	var i=0;
+	repeat (enemycard_berrydeck_total) {
+		if i<=4 { enemy_berry_id[i]=3000; }
+		else { enemy_berry_id[i]=3001; }
 		i++;
 	}
 }
