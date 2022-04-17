@@ -226,7 +226,7 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 	//
 	if card_cat=0 {
 		if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false {
-			if card_indeck[0]=false and ob_deckbuild.deck_build_used_total<maindeck_used_max {
+			if card_indeck[0]=false and ob_deckbuild.deck_build_used_total<ob_main.maindeck_size_max {
 				card_indeck[0]=true;
 				ob_deckbuild.reorder_selected=0; //pokemon id
 				ob_deckbuild.reorder_type=ob_deckbuild.reorder_selected;

@@ -153,6 +153,11 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	sc_draw_tooltip_text(screen_main_x+cam_w);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+if type_chart=true {
+	sc_drawrectangle(-2,-2,room_width+2,room_height+2,global.color_black,c_white,0,0.9,0,0);
+	draw_sprite_ext(sp_type_chart,0,camera_get_view_x(view_camera[0])+102,camera_get_view_y(view_camera[0])+26,1,1,0,c_white,1);
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 if fade_black>0 {
 	sc_drawrectangle(-2,-2,room_width+2,room_height+2,global.color_black,c_white,0,fade_black,1,0);
 }

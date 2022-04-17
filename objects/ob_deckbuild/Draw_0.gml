@@ -22,7 +22,7 @@ draw_set_font(fn_m3x6);
 draw_set_halign(fa_left);
 //
 if deck_build_used_total>0 {
-	var var_text="Deck: " + string(deck_build_used_total) + "/" + string(maindeck_used_max);
+	var var_text="Deck: " + string(deck_build_used_total) + "/" + string(ob_main.maindeck_size_max);
 	sc_drawtext(screen_deck_x+6,screen_main_y+used_y-21,var_text,global.color_white,global.color_black,1,1,0,-1);
 }
 //

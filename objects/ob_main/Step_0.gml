@@ -1,4 +1,12 @@
-if mouse_check_button(mb_middle) or instance_exists(ob_splash) { cursor_hide=true; }
+if type_chart_toggle=true {
+	type_chart=true;
+	type_chart_toggle=false;
+}
+else if type_chart=true and (mouse_check_button_pressed(mb_left) or mouse_check_button_pressed(mb_right)) {
+	type_chart=false;
+}
+//
+if mouse_check_button(mb_middle) or instance_exists(ob_splash) or type_chart=true { cursor_hide=true; }
 else { cursor_hide=false; }
 //
 /*if !instance_exists(ob_splash) and audio_is_playing(ms_azalea_intro) {
@@ -7,12 +15,6 @@ else { cursor_hide=false; }
 		music_player=sc_playsound(ms_azalea,100,true,true);
 	}
 }*/
-//————————————————————————————————————————————————————————————————————————————————————————————————————
-if keyboard_check_pressed(vk_f5) { game_restart(); } //< delete later, testing
-if keyboard_check_pressed(vk_f4) { //< delete later, testing
-	if file_exists(config_file) { file_delete(config_file); }
-	if file_exists(data_file) { file_delete(data_file); }
-}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if effect_money_error>0 { effect_money_error-=0.1; }
 //
@@ -30,12 +32,20 @@ if !instance_exists(ob_control) {
 	else if money_show>money { money_show-=money_speed; }
 }
 //
-card_level_player_limit=ob_main.area_zone+3; //3 4 5 6 7 8 9 10 (10)
-if card_level_player_limit>10 { card_level_player_limit=10; }
-card_level_spawn_limit=floor((ob_main.area_zone+1)/1.5)+1; //1 2 3 3 4 5 5 6 (7)
+if first_zone_lap=true and roadmap_area=roadmap_area_max-1 {
+	first_zone_lap=false;
+}
 //
-card_level_enemy_min=ob_main.area_zone+1; //1 2 3 4 5 6 7 8 (9)
-card_level_enemy_limit=ob_main.area_zone+2; //2 3 4 5 6 7 8 9 (10)
+card_level_player_limit=area_zone+3; //3 4 5 6 7 8 9 10 (10)
+if card_level_player_limit>10 { card_level_player_limit=10; }
+card_level_spawn_limit=floor((area_zone+1)/1.5)+1; //1 2 3 3 4 5 5 6 (7)
+//
+card_level_enemy_min=area_zone+1; //1 2 3 4 5 6 7 8 (9)
+if first_zone_lap=false { card_level_enemy_limit=area_zone+2; } //2 3 4 5 6 7 8 9 (10)
+else { card_level_enemy_limit=card_level_enemy_min; }
+//
+maindeck_size_max=(area_zone+1)*10;
+if maindeck_size_max>50 { maindeck_size_max=50; }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if roadmap_generated=false {
 	var i=0, var_event_num;
@@ -141,7 +151,7 @@ if roadmap_generated=false {
 		i++;
 	}
 	//
-	if area_zone=0 and first_zone_start=true {
+	if area_zone=0 and first_zone_lap=true {
 		event_kind[0][0]=ref_event_grass;
 		event_kind[1][0]=ref_event_fire;
 		event_kind[2][0]=ref_event_water;
@@ -165,8 +175,6 @@ if roadmap_generated=false {
 		event_kind[2][3]=ref_event_berry;
 		location_type[3]=00; //forest
 		trainer_kind[3]=03; //BUG CATCHER
-		//
-		first_zone_start=false;
 	}
 	//
 	event_kind[0][roadmap_area_max-1]=ref_event_gymbattle;
@@ -348,10 +356,13 @@ else if event_transition>-1 and fade_black>=1 {
 		with (ob_damage_num) { instance_destroy(); }
 		//
 		if event_transition=ref_event_victory { money+=money_prize; }
-		if event_transition!=ref_event_exitbattle { roadmap_area++; }
+		if event_transition!=ref_event_exitbattle and ((event_transition=ref_event_victory and roadmap_area=roadmap_area_max-1) or roadmap_area<roadmap_area_max-1) {
+			roadmap_area++;
+		}
 		music_player=sc_playsound(ms_main,100,true,true);
 		money_prize=0;
 		fade_black_exit_battle=0;
+		type_chart=false;
 		//sc_data_save();
 	}
 	else {
@@ -391,9 +402,15 @@ else if event_transition=-1 and fade_black<=0 {
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if keyboard_check_pressed(vk_up) and roadmap_area<roadmap_area_max-1 { roadmap_area++; } //< delete later, testing
-if keyboard_check_pressed(vk_right) { roadmap_area=roadmap_area_max; } //< delete later, testing
-if keyboard_check_pressed(vk_numpad0) { money+=(money_add_base+money_add_area_bonus*area_zone)*10; } //< delete later, testing
+//CHEATS
+if keyboard_check_pressed(vk_multiply) { game_restart(); }
+if keyboard_check_pressed(vk_divide) {
+	if file_exists(config_file) { file_delete(config_file); }
+	if file_exists(data_file) { file_delete(data_file); }
+}
+//
+if keyboard_check_pressed(vk_add) { roadmap_area++; }
+if keyboard_check_pressed(vk_numpad0) { money+=10000; }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if roadmap_area=roadmap_area_max {
 	area_zone++;

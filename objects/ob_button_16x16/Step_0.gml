@@ -10,7 +10,7 @@ if button_id!=2 or !instance_exists(ob_control) {
 					ob_control.button_sorthand=true;
 				}
 				else if button_id=3 {
-					ob_control.type_chart=true;
+					ob_main.type_chart_toggle=true;
 				}
 			}
 			else if instance_exists(ob_event) {

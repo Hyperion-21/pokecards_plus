@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.78"
+#macro game_version "v0.0.0.79"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -37,6 +37,8 @@ cursor_hide=false;
 screen_transition=-1;
 auto_deck_transition=false;
 moving_hud=0;
+type_chart=false;
+type_chart_toggle=false;
 //
 #macro area_zone_max 9
 #macro roadmap_area_max 12
@@ -55,6 +57,8 @@ card_level_player_limit=0;
 card_level_spawn_limit=0;
 card_level_enemy_min=0;
 card_level_enemy_limit=0;
+//
+maindeck_size_max=0;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 #macro normal_poke_id_max 251 //normal (non-secret and non-environment) poke cards
 #macro secret_cards_total 2
@@ -63,7 +67,6 @@ card_level_enemy_limit=0;
 #macro deck_setup_max 5 //0: current (always), 1-5: saved setups
 #macro maindeck_total_max 2000
 #macro berrydeck_total_max 200 //per berry
-#macro maindeck_used_max 50
 //
 #macro money_add_base 75
 #macro money_add_area_bonus 25

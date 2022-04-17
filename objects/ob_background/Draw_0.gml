@@ -1,7 +1,7 @@
 //ob_background
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if (instance_exists(ob_control) and (ob_main.option_state[opt_bg_type]=0 or ob_main.option_state[opt_bg_type]=1 or ob_main.option_state[opt_bg_type]=2)) or instance_exists(ob_splash) {
-	draw_sprite_general(sprite_index,0,0,0,1,1,x-2,y-2,512+4,288+4,0,global.color_background_a,global.color_background_b,global.color_background_a,global.color_background_b,1);
+	draw_sprite_general(sprite_index,0,0,0,1,1,x-2,y-2,cam_w+4,cam_h+4,0,global.color_background_a,global.color_background_b,global.color_background_a,global.color_background_b,1);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if !instance_exists(ob_control) or ob_main.option_state[opt_bg_type]=3 {

@@ -1,9 +1,6 @@
 if ob_main.cursor_hide=true {
 	tooltip_timer=0;
 }
-if type_chart=true and (mouse_check_button(mb_right) or ob_main.cursor_hide=true) {
-	type_chart=false;
-}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if player_effect_damaged>0 { player_effect_damaged-=0.08; }
 if enemy_effect_damaged>0 { enemy_effect_damaged-=0.08; }
@@ -320,7 +317,7 @@ if button_sorthand=true and card_focus=-1 {
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if keyboard_check_pressed(vk_space) and !mouse_check_button(mb_left) and battler_turn=1 and card_hold=-1 {
+if keyboard_check_pressed(vk_space) and !mouse_check_button(mb_left) and battler_turn=1 and card_hold=-1 and ob_main.cursor_hide=false {
 	button_nextturn=true;
 	button_nextturn_id.button_state=1;
 }

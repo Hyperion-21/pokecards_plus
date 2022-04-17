@@ -203,9 +203,8 @@ if argument0<=100 {
 		enemy_type_chance[17]=100; //dark
 	}
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
-	enemycard_maindeck_total=(ob_main.area_zone+1)*10; //9-11, 18-22, 27-33, 36-44, 45-50, 50
-	enemycard_maindeck_total=irandom_range(enemycard_maindeck_total*0.9,enemycard_maindeck_total*1.1);
-	if enemycard_maindeck_total>maindeck_used_max { enemycard_maindeck_total=maindeck_used_max; }
+	if ob_main.first_zone_lap=false { enemycard_maindeck_total=ob_main.maindeck_size_max; }
+	else { enemycard_maindeck_total=irandom_range(ob_main.maindeck_size_max/1.5,ob_main.maindeck_size_max); }
 	//
 	var i=0;
 	repeat (enemycard_maindeck_total) {

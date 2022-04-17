@@ -1,3 +1,0 @@
--deck size
--level enemy first lap
-gym lose roadmap

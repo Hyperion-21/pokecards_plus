@@ -261,7 +261,6 @@ card_focus=-1; //id
 card_hold=-1; //id
 card_focus_hand=-1;
 //
-type_chart=false;
 button_sorthand=false;
 button_nextturn=false;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
