@@ -41,21 +41,25 @@ if argument1=true {
 		if card_cost[i]=00 or card_cost[i]=01 or card_cost[i]=02 or card_cost[i]=03 or card_cost[i]=04 or card_cost[i]=05 {
 			card_cost[i]=0; //oran
 			card_cost_total_type[0]++;
+			if enemy_costcount=true { ob_control.enemy_deck_fullcost[0]++; }
 		}
 		//psychic, fairy, bug, poison, ghost, dark
 		else if card_cost[i]=07 or card_cost[i]=08 or card_cost[i]=11 or card_cost[i]=12 or card_cost[i]=16 or card_cost[i]=17 {
 			card_cost[i]=1; //leppa
 			card_cost_total_type[1]++;
+			if enemy_costcount=true { ob_control.enemy_deck_fullcost[1]++; }
 		}
 		//fighting, ground, rock, ice, dragon, steel
 		else if card_cost[i]=06 or card_cost[i]=09 or card_cost[i]=10 or card_cost[i]=13 or card_cost[i]=14 or card_cost[i]=15 {
 			card_cost[i]=2; //lum
 			card_cost_total_type[2]++;
+			if enemy_costcount=true { ob_control.enemy_deck_fullcost[2]++; }
 		}
 		//enigma
 		else if card_cost[i]=20 {
 			card_cost[i]=3; //enigma
 			card_cost_total_type[3]++;
+			if enemy_costcount=true { ob_control.enemy_deck_fullcost[3]++; }
 		}
 		i++;
 	}

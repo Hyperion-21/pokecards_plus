@@ -7,10 +7,11 @@ if enemycard_draw_points>0 and enemycard_hand_total=card_hand_max and (enemycard
 	fullhand_draw=true;
 }
 //
-var maindeck_empty=false;
-if enemycard_maindeck[0]=-1 {
-	maindeck_empty=true;
+var i=0, no_more_main=true;
+repeat (enemycard_hand_total) {
+	if enemycard_hand[i].card_cat=0 { no_more_main=false; }
 }
+if enemycard_maindeck[0]!=-1 { no_more_main=false; }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var berries_held, berries_needed_fullhand;
 var anypoke_playable=false, commonberry_playable=false, enigmaberry_playable=false, all_spaces_occupied=true;
@@ -146,7 +147,7 @@ if anypoke_playable=true {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 // PLAY (FULL HAND)
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-else if anypoke_playable=false and commonberry_playable=true and fullhand_draw=true and maindeck_empty=false {
+else if anypoke_playable=false and commonberry_playable=true and fullhand_draw=true and no_more_main=false {
 	//RANDOM BERRY (NOT ENIGMA) IN RANDOM SPACE
 	do {
 		var berry_kind=irandom(2);
@@ -155,7 +156,7 @@ else if anypoke_playable=false and commonberry_playable=true and fullhand_draw=t
 	//
 	enemyberry_playplan[berry_kind]=1;
 }
-else if anypoke_playable=false and commonberry_playable=false and enigmaberry_playable=true and fullhand_draw=true and maindeck_empty=false {
+else if anypoke_playable=false and commonberry_playable=false and enigmaberry_playable=true and fullhand_draw=true and no_more_main=false {
 	//ENIGMA BERRY IN RANDOM SPACE
 	do {
 		var berry_kind=3;
@@ -167,7 +168,7 @@ else if anypoke_playable=false and commonberry_playable=false and enigmaberry_pl
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 // PLAY (DISCARD)
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-else if anypoke_playable=false and commonberry_playable=false and enigmaberry_playable=false and fullhand_draw=true and maindeck_empty=false {
+else if anypoke_playable=false and commonberry_playable=false and enigmaberry_playable=false and fullhand_draw=true and no_more_main=false {
 	//RANDOM UNNEEDED BERRY (NOT ENIGMA) IF BERRIES NEEDED > (IF EMPTY SPACES) > WEAKEST POKEMON (WEAK) > ENIGMA BERRY > WEAKEST POKEMON (ANY)
 	if (berries_held[0]>berries_needed_fullhand[0] or berries_held[1]>berries_needed_fullhand[1] or berries_held[2]>berries_needed_fullhand[2]) and
 	(berries_needed_fullhand[0]>berries_held[0] or berries_needed_fullhand[1]>berries_held[1] or berries_needed_fullhand[2]>berries_held[2]) {

@@ -27,15 +27,6 @@ option_state[opt_playericon]=0;
 option_state[opt_edge]=10;
 option_state[opt_bg_type]=0;
 //
-/*colorsetup_r[opt_bg_a]=59*bg_rgb_divisor;
-colorsetup_g[opt_bg_a]=57*bg_rgb_divisor;
-colorsetup_b[opt_bg_a]=53*bg_rgb_divisor;
-colorsetup_r[opt_bg_b]=59*bg_rgb_divisor;
-colorsetup_g[opt_bg_b]=57*bg_rgb_divisor;
-colorsetup_b[opt_bg_b]=53*bg_rgb_divisor;
-colorsetup_r[opt_bg_tile]=64*bg_rgb_divisor;
-colorsetup_g[opt_bg_tile]=62*bg_rgb_divisor;
-colorsetup_b[opt_bg_tile]=58*bg_rgb_divisor;*/
 colorsetup_r[opt_bg_a]=67*bg_rgb_divisor;
 colorsetup_g[opt_bg_a]=73*bg_rgb_divisor;
 colorsetup_b[opt_bg_a]=77*bg_rgb_divisor;

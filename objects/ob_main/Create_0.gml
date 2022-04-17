@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.77"
+#macro game_version "v0.0.0.78"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -62,7 +62,7 @@ card_level_enemy_limit=0;
 //
 #macro deck_setup_max 5 //0: current (always), 1-5: saved setups
 #macro maindeck_total_max 2000
-#macro berrydeck_total_max 100 //per berry
+#macro berrydeck_total_max 200 //per berry
 #macro maindeck_used_max 50
 //
 #macro money_add_base 75

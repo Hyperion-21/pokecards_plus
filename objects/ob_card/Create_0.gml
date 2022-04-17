@@ -34,6 +34,8 @@ card_delete_timer_max=150;
 auto_turn_add=false;
 if card_cat=0 and reference_id=ob_control { enemy_randomizer=reference_id.create_enemy_randomizer; }
 else { enemy_randomizer=false; }
+if card_cat=0 and reference_id=ob_control { enemy_costcount=reference_id.create_enemy_costcount; }
+else { enemy_costcount=false; }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if card_cat=0 {
 	var random_group_chance=irandom(9999);
@@ -170,20 +172,20 @@ if card_cat=0 {
 		//innate value is always 1 on random cards, so it's not considered for rarity
 		//
 		if random_card=true {
-			if enemy_randomizer=false { var card_rarity_chance=irandom(79)+1; } //80
+			if enemy_randomizer=false { var card_rarity_chance=irandom(74)+1; } //75
 			else {
 				if card_environment=false {
 					var enemy_rarity_max=34+ob_main.area_zone*15;
-					if enemy_rarity_max>79 { enemy_rarity_max=79; }
-					var card_rarity_chance=irandom(enemy_rarity_max)+1; //35 (above lowest normal-type and dragon-type), 50, 65, 80
+					if enemy_rarity_max>74 { enemy_rarity_max=74; }
+					var card_rarity_chance=irandom(enemy_rarity_max)+1; //35 (above lowest normal-type and dragon-type), 50, 65, 75
 				}
 				else {
-					var card_rarity_chance=irandom(79)+1; //80
+					var card_rarity_chance=irandom(74)+1; //75
 				}
 			}
 			//
 			var card_rarity_check=false;
-			if card_rarity_chance>card_rarity or card_rarity_chance=80 {
+			if card_rarity_chance>card_rarity or card_rarity_chance=75 {
 				card_rarity_check=true;
 				//
 				if card_enigma=true and allow_id_enigma=false { card_rarity_check=false; }

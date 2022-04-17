@@ -82,7 +82,9 @@ repeat (ob_main.maindeck_total) {
 		create_card_glyph_c=ob_main.main_card_glyph_c[i];
 		create_card_innate=ob_main.main_card_innate[i];
 		create_card_form_value=ob_main.main_card_form_value[i];
+		//
 		create_enemy_randomizer=false;
+		create_enemy_costcount=false;
 		//
 		card_maindeck[card_shuffle[ii]]=instance_create_layer(cam_x+cam_w-67,cam_y+181,"instances",ob_card);
 		card_maindeck[card_shuffle[ii]].num_in_maindeck=card_shuffle[ii];
@@ -139,6 +141,9 @@ repeat (card_hand_max+1) { //+1 to replace value when using last card when hand 
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 sc_enemy_deck(ob_main.trainer_kind[ob_main.roadmap_area]);
+for (var i=0; i<=3; i++;) {
+	enemy_deck_fullcost[i]=0;
+}
 //
 var i=0, card_shuffle;
 repeat (enemycard_maindeck_total) {
@@ -167,12 +172,15 @@ repeat (enemycard_maindeck_total) {
 	create_card_form_value=enemy_card_form_value[card_shuffle[i]];
 	//
 	create_enemy_randomizer=true;
+	create_enemy_costcount=true;
 	//
 	enemycard_maindeck[i]=instance_create_layer(cam_x+cam_w-67,cam_y-100,"instances",ob_card);
 	enemycard_maindeck[i].card_enemy=true;
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+sc_enemy_berry_deck();
+//
 var i=0, card_shuffle;
 repeat (enemycard_berrydeck_total) {
 	do {

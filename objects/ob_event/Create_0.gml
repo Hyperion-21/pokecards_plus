@@ -1,13 +1,20 @@
 depth=-1000;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 event_kind=ob_main.event_transition;
-count_berries=true;
 tooltip_text="";
 tooltip_lines=0;
 show_deck=false;
 apply_event=false;
 event_applied=false;
 event_cancelled=false;
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+//count berries (same as ob_card)
+for (var i=0; i<=3; i++;) {
+	deck_berry_total[i]=0;
+}
+for (var i=0; i<ob_main.berrydeck_total; i++;) {
+	deck_berry_total[ob_main.berry_card_id[i]-3000]++;
+}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if event_kind=ref_event_cardpack or event_kind=ref_event_berry {
 	if event_kind=ref_event_cardpack {

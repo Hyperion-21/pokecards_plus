@@ -73,6 +73,7 @@ else if argument0!=-1 {
 				create_card_innate=1;
 				create_card_form_value=0;
 				create_enemy_randomizer=false;
+				create_enemy_costcount=false;
 				//
 				var rock_spawn_id=instance_create_layer(card_space_id[enemyspace_playplan_slot].x,card_space_id[enemyspace_playplan_slot].y,"instances",ob_card);
 				rock_spawn_id.potential_x=rock_cardspace_id.x;

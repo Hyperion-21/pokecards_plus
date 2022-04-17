@@ -57,8 +57,9 @@
 ✔	trainer classes setup
 ✔	all trainer classes
 ✔	enemy deck shuffle
+✔	enemy berry deck build count
 S 16/4	type advantage guide
-S 16/4	area/towns and character names
+S 17/4	area/towns and character names
 S 17/4	show area names
 S 17/4+	all gym decks
 M 18/4	gyms/league battle intro dialogue

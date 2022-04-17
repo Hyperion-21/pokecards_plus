@@ -179,8 +179,15 @@ else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spr
 				else if card_cat=1 and ob_event.deck_berry_total[card_id-3000]<berrydeck_total_max and ob_event.card_prize>0 {
 					ob_main.berry_card_id[ob_main.berrydeck_total]=card_id;
 					ob_main.berrydeck_total++;
-					ob_event.count_berries=true;
 					potential_y=screen_main_y+cam_h+2;
+					//
+					//count berries (same as ob_event)
+					for (var i=0; i<=3; i++;) {
+						ob_event.deck_berry_total[i]=0;
+					}
+					for (var i=0; i<ob_main.berrydeck_total; i++;) {
+						ob_event.deck_berry_total[ob_main.berry_card_id[i]-3000]++;
+					}
 				}
 				else {
 					potential_y=screen_main_y-82;

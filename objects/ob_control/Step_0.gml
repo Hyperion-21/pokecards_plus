@@ -208,6 +208,7 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or ob_main.cursor_hide=true) 
 							create_card_innate=1;
 							create_card_form_value=0;
 							create_enemy_randomizer=false;
+							create_enemy_costcount=false;
 							//
 							var rock_spawn_id=instance_create_layer(var_cardspace_id.x,var_cardspace_id.y,"instances",ob_card);
 							rock_spawn_id.potential_x=rock_cardspace_id.x;
@@ -264,7 +265,8 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or ob_main.cursor_hide=true) 
 if battler_turn=2 {
 	if enemy_turn_timer>0 { enemy_turn_timer--; }
 	//
-	if enemy_turn_timer=0 and enemycard_draw_points>0 and enemycard_hand_total<card_hand_max and (enemycard_maindeck[0]!=-1 or enemycard_berrydeck[0]!=-1) {
+	if enemy_turn_timer=0 and enemycard_hand_total<card_hand_max and
+	((enemycard_draw_points>=card_drawcost_main and enemycard_maindeck[0]!=-1) or (enemycard_draw_points>=card_drawcost_berry and enemycard_berrydeck[0]!=-1)) {
 		AI_draw_script();
 	}
 	//

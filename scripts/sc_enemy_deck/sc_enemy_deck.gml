@@ -218,16 +218,6 @@ if argument0<=100 {
 		enemy_card_form_value[i]=-1;
 		i++;
 	}
-	//
-	enemycard_berrydeck_total=berrydeck_total_max*3;
-	//
-	var i=0;
-	repeat (enemycard_berrydeck_total) {
-		if i<berrydeck_total_max { enemy_berry_id[i]=3000; }
-		else if i<berrydeck_total_max*2 { enemy_berry_id[i]=3001; }
-		else if i<berrydeck_total_max*3 { enemy_berry_id[i]=3002; }
-		i++;
-	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if argument0=101 { //tutorial
@@ -242,15 +232,6 @@ else if argument0=101 { //tutorial
 		enemy_card_glyph_c[i]=-1;
 		enemy_card_innate[i]=1;
 		enemy_card_form_value[i]=0;
-		i++;
-	}
-	//
-	enemycard_berrydeck_total=10;
-	//
-	var i=0;
-	repeat (enemycard_berrydeck_total) {
-		if i<=4 { enemy_berry_id[i]=3000; }
-		else { enemy_berry_id[i]=3001; }
 		i++;
 	}
 }

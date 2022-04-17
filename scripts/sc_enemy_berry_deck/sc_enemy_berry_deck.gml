@@ -1,13 +1,14 @@
-function AI_draw_available(argument0) {
-/// @param cat
+function sc_enemy_berry_deck() {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if argument0=0 {
-	if enemycard_draw_points>=card_drawcost_main and enemycard_maindeck[0]!=-1 { return true; }
-	else { return false; }
-}
-else {
-	if enemycard_draw_points>=card_drawcost_berry and enemycard_berrydeck[0]!=-1 { return true; }
-	else { return false; }
+enemycard_berrydeck_total=enemy_deck_fullcost[0]*2+enemy_deck_fullcost[1]*2+enemy_deck_fullcost[2]*2+enemy_deck_fullcost[3]*2; //none over berrydeck_total_max
+//
+var i=0;
+repeat (enemycard_berrydeck_total) {
+	if i<enemy_deck_fullcost[0]*2 { enemy_berry_id[i]=3000; } //oran
+	else if i<enemy_deck_fullcost[0]*2+enemy_deck_fullcost[1]*2 { enemy_berry_id[i]=3001; } //leppa
+	else if i<enemy_deck_fullcost[0]*2+enemy_deck_fullcost[1]*2+enemy_deck_fullcost[2]*2 { enemy_berry_id[i]=3002; } //lum
+	else { enemy_berry_id[i]=3003; } //enigma
+	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }
