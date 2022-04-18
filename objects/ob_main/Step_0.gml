@@ -432,6 +432,15 @@ if keyboard_check_pressed(vk_divide) {
 //
 if keyboard_check_pressed(vk_add) { roadmap_area++; }
 if keyboard_check_pressed(vk_numpad0) { money+=10000; }
+//
+if instance_exists(ob_control) and keyboard_check_pressed(vk_numpad8) {
+	ob_control.player_hp++;
+	ob_control.enemy_hp--;
+}
+if instance_exists(ob_control) and keyboard_check_pressed(vk_numpad7) {
+	ob_control.player_hp--;
+	ob_control.enemy_hp++;
+}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if roadmap_area=roadmap_current_max {
 	area_zone++;

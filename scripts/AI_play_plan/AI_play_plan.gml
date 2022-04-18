@@ -1,6 +1,6 @@
-function AI_play_plan(argument0,argument1,argument2,argument3,argument4,argument5,argument6,argument7,argument8,argument9,argument10,argument11,argument12,argument13,argument14) {
+function AI_play_plan(argument0,argument1,argument2,argument3,argument4,argument5,argument6,argument7,
+argument8,argument9,argument10,argument11,argument12,argument13,argument14,argument15) {
 /// @param ref_stat_priority //-1: any poke, 0: hp, 1: atk, 2: def, 3: value
-/// @param stat_min
 /// @param ref_space_type //-1: any space, 0: vs empty space, 1: vs occupied space, 2: next to friendly card
 /// @param type_bonus_only
 /// @param vs_no_type_bonus_only
@@ -9,11 +9,15 @@ function AI_play_plan(argument0,argument1,argument2,argument3,argument4,argument
 /// @param turn_advantage_only
 /// @param 1HKO
 /// @param any_card_hurt
+/// @param block_vs_win_only
+/// @param win_attack_only
 /// @param glyph_check
 /// @param y/n
 /// @param vs_glyph_check
 /// @param y/n
 /// @param ignore_if_fork/piercing
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+var stat_min=-1; //used to be an argument, but there's no more space (and it wasn't being used anyway)
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var highest_value=0;
 //
@@ -33,11 +37,11 @@ var space_conditions;
 for (var i=0; i<=4; i++;) {
 	space_conditions[i]=false;
 	//
-	if card_space_id[i].occupy_id=-1 and (argument2=-1 or
-	(argument2=0 and card_space_id[i+5].occupy_id=-1) or
-	(argument2=1 and card_space_id[i+5].occupy_id!=-1) or
-	(argument2=2 and i>0 and card_space_id[i-1].occupy_id!=-1) or
-	(argument2=2 and i<4 and card_space_id[i+1].occupy_id!=-1)) {
+	if card_space_id[i].occupy_id=-1 and (argument1=-1 or
+	(argument1=0 and card_space_id[i+5].occupy_id=-1) or
+	(argument1=1 and card_space_id[i+5].occupy_id!=-1) or
+	(argument1=2 and i>0 and card_space_id[i-1].occupy_id!=-1) or
+	(argument1=2 and i<4 and card_space_id[i+1].occupy_id!=-1)) {
 		space_conditions[i]=true;
 	}
 }
@@ -54,10 +58,10 @@ var any_playable=false;
 do {
 	for (var i=0; i<enemycard_hand_total; i++;) {
 		if enemycard_hand[i].card_cat=0 and ((argument0=-1) or
-		(argument0=0 and enemycard_hand[i].card_hp=highest_value and enemycard_hand[i].card_hp>=argument1) or
-		(argument0=1 and enemycard_hand[i].card_atk=highest_value and enemycard_hand[i].card_atk>=argument1) or
-		(argument0=2 and enemycard_hand[i].card_def=highest_value and enemycard_hand[i].card_def>=argument1) or
-		(argument0=3 and enemycard_hand[i].card_value=highest_value and enemycard_hand[i].card_value>=argument1)) {
+		(argument0=0 and enemycard_hand[i].card_hp=highest_value and enemycard_hand[i].card_hp>=stat_min) or
+		(argument0=1 and enemycard_hand[i].card_atk=highest_value and enemycard_hand[i].card_atk>=stat_min) or
+		(argument0=2 and enemycard_hand[i].card_def=highest_value and enemycard_hand[i].card_def>=stat_min) or
+		(argument0=3 and enemycard_hand[i].card_value=highest_value and enemycard_hand[i].card_value>=stat_min)) {
 			for (var ii=0; ii<=4; ii++;) {
 				var opposing_card_id=-1, bonus_dmg=false, vs_bonus_dmg=false, turns_to_defeat=-1, turns_to_faint=-1, any_card_hurt=false;
 				//
@@ -121,40 +125,48 @@ do {
 				if space_poke_possible[ii][i]=false or space_conditions[ii]=false {
 					all_conditions_met=false;
 				}
-				if argument3=true and ((opposing_card_id=-1) or (opposing_card_id!=-1 and bonus_dmg=false)) {
+				if argument2=true and ((opposing_card_id=-1) or (opposing_card_id!=-1 and bonus_dmg=false)) {
 					all_conditions_met=false;
 				}
-				if argument4=true and opposing_card_id!=-1 and vs_bonus_dmg=true {
+				if argument3=true and opposing_card_id!=-1 and vs_bonus_dmg=true {
 					all_conditions_met=false;
 				}
-				if argument5=true and opposing_card_id!=-1 and own_atk-vs_def<=0 and bonus_dmg=false {
+				if argument4=true and opposing_card_id!=-1 and own_atk-vs_def<=0 and bonus_dmg=false {
 					all_conditions_met=false;
 				}
-				if argument6=true and opposing_card_id!=-1 and (vs_atk-own_def>0 or vs_bonus_dmg=true) {
+				if argument5=true and opposing_card_id!=-1 and (vs_atk-own_def>0 or vs_bonus_dmg=true) {
 					all_conditions_met=false;
 				}
-				if argument7=true and (opposing_card_id=-1 or turns_to_defeat=-1 or turns_to_faint<turns_to_defeat) {
+				if argument6=true and (opposing_card_id=-1 or turns_to_defeat=-1 or turns_to_faint<turns_to_defeat) {
 					all_conditions_met=false;
 				}
-				if argument8=true and turns_to_defeat>1 {
+				if argument7=true and turns_to_defeat>1 {
 					all_conditions_met=false;
 				}
-				if argument9=true and any_card_hurt=false {
+				if argument8=true and any_card_hurt=false {
 					all_conditions_met=false;
 				}
-				if argument10!=-1 {
-					if (argument11=true and !sc_glyph_check(enemycard_hand[i],argument10,true)) or
-					(argument11=false and sc_glyph_check(enemycard_hand[i],argument10,true)) {
+				if argument9=true and (opposing_card_id=-1 or (opposing_card_id!=-1 and opposing_card_id.card_atk<enemy_hp)) {
+					//checks with card_atk instead of vs_atk because penalty wouldn't be applied if not played
+					all_conditions_met=false;
+				}
+				if argument10=true and (own_atk<player_hp or (opposing_card_id!=-1 and !sc_glyph_check(enemycard_hand[i],ref_glyph_piercing,true))) {
+					//glyph: piercing attack (if not)
+					all_conditions_met=false;
+				}
+				if argument11!=-1 {
+					if (argument12=true and !sc_glyph_check(enemycard_hand[i],argument11,true)) or
+					(argument12=false and sc_glyph_check(enemycard_hand[i],argument11,true)) {
 					all_conditions_met=false;
 					}
 				}
-				if argument12!=-1 {
-					if (argument13=true and (opposing_card_id=-1 or !sc_glyph_check(opposing_card_id,argument12,true))) or
-					(argument13=false and opposing_card_id!=-1 and sc_glyph_check(opposing_card_id,argument12,true)) {
+				if argument13!=-1 {
+					if (argument14=true and (opposing_card_id=-1 or !sc_glyph_check(opposing_card_id,argument13,true))) or
+					(argument14=false and opposing_card_id!=-1 and sc_glyph_check(opposing_card_id,argument13,true)) {
 					all_conditions_met=false;
 					}
 				}
-				if argument14=true and //glyph: fork attack / piercing attack
+				if argument15=true and //glyph: fork attack / piercing attack
 				(sc_glyph_check(enemycard_hand[i],ref_glyph_fork,true) or sc_glyph_check(enemycard_hand[i],ref_glyph_piercing,true)) {
 					all_conditions_met=false;
 				}
