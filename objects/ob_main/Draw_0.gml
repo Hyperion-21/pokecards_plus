@@ -55,10 +55,17 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	var money_x=road_win_x+237, money_y=road_win_y+2+rel_hud, money_color=global.color_card_light;
 	if effect_money_error>0 { money_x+=irandom_range(-2,2); money_y+=irandom_range(-2,2); money_color=global.color_damage; }
 	sc_drawtext(money_x,money_y,"$" + string(money_show),money_color,global.color_black,1,1,0,-1);
+	//
+	draw_set_halign(fa_center);
+	var zone_name_text="";
+	if roadmap_area=roadmap_current_max-1 or area_zone=area_zone_max-1 or (area_zone=0 and roadmap_area<=2 and zone_first_lap=true) { zone_name_text=zone_name; }
+	else if zone_first_lap=true { zone_name_text="Road to: " + zone_name; }
+	else if zone_first_lap=false { zone_name_text="Outskirts: " + zone_name; }
+	sc_drawtext(road_win_x+120,road_win_y+120,zone_name_text,global.color_white,global.color_black,0.5,0.5,0,-1);
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	draw_set_alpha(1);
 	//
-	var bar_amount=(roadmap_area*100)/(roadmap_area_max-1);
+	var bar_amount=(roadmap_area*100)/(roadmap_current_max-1);
 	draw_healthbar(road_win_x+2,road_win_y-17-rel_hud,road_win_x+237,road_win_y-14-rel_hud,bar_amount,
 	global.color_roadmap_bar_back,global.color_roadmap_bar,global.color_roadmap_bar,0,true,false);
 	//

@@ -203,8 +203,7 @@ if argument0<=100 {
 		enemy_type_chance[17]=100; //dark
 	}
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
-	if ob_main.first_zone_lap=false { enemycard_maindeck_total=ob_main.maindeck_size_max; }
-	else { enemycard_maindeck_total=irandom_range(ob_main.maindeck_size_max/1.5,ob_main.maindeck_size_max); }
+	enemycard_maindeck_total=ob_main.enemy_maindeck_size;
 	//
 	var i=0;
 	repeat (enemycard_maindeck_total) {

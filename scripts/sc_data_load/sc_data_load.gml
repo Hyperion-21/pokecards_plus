@@ -1,13 +1,13 @@
 function sc_data_load() {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 area_zone=0;
-first_zone_lap=true;
+zone_first_lap=true;
 roadmap_area=0;
 roadmap_generated=false;
 money=200;
 //
 var i=0;
-repeat (roadmap_area_max) {
+repeat (roadmap_current_max) {
 	location_type[i]=-1;
 	trainer_kind[i]=-1;
 	trainer_sprite[i]=-1;
@@ -65,13 +65,13 @@ if file_exists(data_file) {
 	var savemap=ds_map_secure_load(data_file);
 	//
 	if !is_undefined(ds_map_find_value(savemap,"area_zone")) { area_zone=ds_map_find_value(savemap,"area_zone"); }
-	if !is_undefined(ds_map_find_value(savemap,"first_zone_lap")) { first_zone_lap=ds_map_find_value(savemap,"first_zone_lap"); }
+	if !is_undefined(ds_map_find_value(savemap,"zone_first_lap")) { zone_first_lap=ds_map_find_value(savemap,"zone_first_lap"); }
 	if !is_undefined(ds_map_find_value(savemap,"roadmap_area")) { roadmap_area=ds_map_find_value(savemap,"roadmap_area"); }
 	if !is_undefined(ds_map_find_value(savemap,"roadmap_generated")) { roadmap_generated=ds_map_find_value(savemap,"roadmap_generated"); }
 	if !is_undefined(ds_map_find_value(savemap,"money")) { money=ds_map_find_value(savemap,"money"); }
 	//
 	var i=0;
-	repeat (roadmap_area_max) {
+	repeat (roadmap_current_max) {
 		var value_name="location_type_" + string(i);
 		if !is_undefined(ds_map_find_value(savemap,value_name)) { location_type[i]=ds_map_find_value(savemap,value_name); }
 		var value_name="trainer_kind_" + string(i);

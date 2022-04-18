@@ -31,31 +31,39 @@ if !instance_exists(ob_control) {
 	if money_show<money { money_show+=money_speed; }
 	else if money_show>money { money_show-=money_speed; }
 }
-//
-if first_zone_lap=true and roadmap_area=roadmap_area_max-1 {
-	first_zone_lap=false;
-}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+if area_zone=area_zone_max-1 { roadmap_current_max=roadmap_league_max; }
+else if zone_first_lap=true { roadmap_current_max=roadmap_road_max; }
+else if zone_first_lap=false { roadmap_current_max=roadmap_outskirts_max; }
 //
 card_level_player_limit=area_zone+3; //3 4 5 6 7 8 9 10 (10)
 if card_level_player_limit>10 { card_level_player_limit=10; }
 card_level_spawn_limit=floor((area_zone+1)/1.5)+1; //1 2 3 3 4 5 5 6 (7)
 //
 card_level_enemy_min=area_zone+1; //1 2 3 4 5 6 7 8 (9)
-if first_zone_lap=false { card_level_enemy_limit=area_zone+2; } //2 3 4 5 6 7 8 9 (10)
+if area_zone>0 or zone_first_lap=false or roadmap_area=roadmap_current_max-1 { card_level_enemy_limit=area_zone+2; } //2 3 4 5 6 7 8 9 (10)
 else { card_level_enemy_limit=card_level_enemy_min; }
-//
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 maindeck_size_max=(area_zone+1)*10;
-if maindeck_size_max>50 { maindeck_size_max=50; }
+if zone_first_lap=false or roadmap_area=roadmap_current_max-1 { enemy_maindeck_size=maindeck_size_max; }
+else {
+	enemy_maindeck_size=round((maindeck_size_max-10)+(10*roadmap_area/(roadmap_current_max-1)));
+	if enemy_maindeck_size<5 { enemy_maindeck_size=5; }
+}
+if maindeck_size_max>50 {
+	maindeck_size_max=50;
+	enemy_maindeck_size=50;
+}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if roadmap_generated=false {
 	var i=0, var_event_num;
-	repeat (roadmap_area_max) {
+	repeat (roadmap_current_max) {
 		var_event_num[i]=choose(2,3,3);
 		i++;
 	}
 	//
 	var i=0;
-	repeat (roadmap_area_max) {
+	repeat (roadmap_current_max) {
 		do {
 			location_type[i]=irandom(21);
 		} until (location_type[i]!=13 and location_type[i]!=15); //lab & city
@@ -151,39 +159,39 @@ if roadmap_generated=false {
 		i++;
 	}
 	//
-	if area_zone=0 and first_zone_lap=true {
+	if area_zone=0 and zone_first_lap=true {
 		event_kind[0][0]=ref_event_grass;
 		event_kind[1][0]=ref_event_fire;
 		event_kind[2][0]=ref_event_water;
 		location_type[0]=13; //lab
 		//
 		event_kind[0][1]=ref_event_tutorial;
+		trainer_sprite[1]=playericon_max+1;
+		trainer_kind[1]=101; //TUTORIAL
 		event_kind[1][1]=ref_event_payoff;
 		event_kind[2][1]=-1;
 		location_type[1]=13; //lab
-		trainer_sprite[1]=playericon_max+1;
-		trainer_kind[1]=101; //TUTORIAL
 		//
-		event_kind[0][2]=ref_event_freecard;
+		event_kind[0][2]=ref_event_levelup;
 		event_kind[1][2]=ref_event_cardpack;
-		event_kind[2][2]=ref_event_levelup;
+		event_kind[2][2]=ref_event_freecard;
 		location_type[2]=13; //lab
 		//
 		event_kind[0][3]=ref_event_glyph;
 		event_glyph_add[0][3]=ref_glyph_harvest;
 		event_kind[1][3]=ref_event_battle;
+		trainer_kind[3]=03; //BUG CATCHER
 		event_kind[2][3]=ref_event_berry;
 		location_type[3]=00; //forest
-		trainer_kind[3]=03; //BUG CATCHER
 	}
 	//
-	event_kind[0][roadmap_area_max-1]=ref_event_gymbattle;
-	event_kind[1][roadmap_area_max-1]=ref_event_loop;
-	event_kind[2][roadmap_area_max-1]=-1;
-	location_type[roadmap_area_max-1]=15; //city
-	trainer_kind[roadmap_area_max-1]=200+area_zone; //GYM LEADER
+	event_kind[0][roadmap_current_max-1]=ref_event_gymbattle;
+	event_kind[1][roadmap_current_max-1]=ref_event_loop;
+	event_kind[2][roadmap_current_max-1]=-1;
+	location_type[roadmap_current_max-1]=15; //city
+	trainer_kind[roadmap_current_max-1]=200+area_zone; //GYM LEADER
 	//
-	trainer_sprite[roadmap_area_max-1]=area_zone+playericon_max+2;
+	trainer_sprite[roadmap_current_max-1]=area_zone+playericon_max+2;
 	//
 	roadmap_generated=true;
 	roadmap_get_details=true;
@@ -191,7 +199,7 @@ if roadmap_generated=false {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if roadmap_get_details=true {
 	var i=0;
-	repeat (roadmap_area_max) {
+	repeat (roadmap_current_max) {
 		var trainer_name;
 		switch (trainer_kind[i]) {
 			case 00:
@@ -232,20 +240,20 @@ if roadmap_get_details=true {
 			case 25: trainer_name[i]="Ranger"; break;
 			case 100: trainer_name[i]="Ace Trainer"; break;
 			//
-			case 101: trainer_name[i]="Tutorial"; break;
-			case 200: trainer_name[i]=""; break;
-			case 201: trainer_name[i]=""; break;
-			case 202: trainer_name[i]=""; break;
-			case 203: trainer_name[i]=""; break;
-			case 204: trainer_name[i]=""; break;
-			case 205: trainer_name[i]=""; break;
-			case 206: trainer_name[i]=""; break;
-			case 207: trainer_name[i]=""; break;
-			case 208: trainer_name[i]=""; break;
-			case 209: trainer_name[i]=""; break;
-			case 210: trainer_name[i]=""; break;
-			case 211: trainer_name[i]=""; break;
-			case 212: trainer_name[i]=""; break;
+			case 101: trainer_name[i]="Prof. Aspen"; break;
+			case 200: trainer_name[i]="Ian"; break;
+			case 201: trainer_name[i]="Cammie"; break;
+			case 202: trainer_name[i]="Benny"; break;
+			case 203: trainer_name[i]="Madison"; break;
+			case 204: trainer_name[i]="Zoe"; break;
+			case 205: trainer_name[i]="Vincent"; break;
+			case 206: trainer_name[i]="Penny"; break;
+			case 207: trainer_name[i]="Lake"; break;
+			case 208: trainer_name[i]="Emily"; break;
+			case 209: trainer_name[i]="Finn"; break;
+			case 210: trainer_name[i]="Dion"; break;
+			case 211: trainer_name[i]="April"; break;
+			case 212: trainer_name[i]="Duncan"; break;
 		}
 		//
 		var ii=0;
@@ -265,7 +273,7 @@ if roadmap_get_details=true {
 			else if event_kind[ii][i]=ref_event_fire { event_name[ii][i]="Fire\nSt. Deck"; }
 			else if event_kind[ii][i]=ref_event_water { event_name[ii][i]="Water\nSt. Deck"; }
 			else if event_kind[ii][i]=ref_event_gymbattle { event_name[ii][i]="Gym Battle:\n" + trainer_name[i]; }
-			else if event_kind[ii][i]=ref_event_tutorial { event_name[ii][i]="Battle:\n" + trainer_name[i]; }
+			else if event_kind[ii][i]=ref_event_tutorial { event_name[ii][i]="Tutorial:\n" + trainer_name[i]; }
 			else if event_kind[ii][i]=ref_event_glyph {
 				event_name[ii][i]="Glyph\n$" + string(event_cost[ref_event_glyph]);
 				event_description[ii][i]=sc_glyph_text(event_glyph_add[ii][i]);
@@ -274,8 +282,20 @@ if roadmap_get_details=true {
 		}
 		i++;
 	}
-roadmap_get_details=false;
+	//
+	roadmap_get_details=false;
 }
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+if area_zone=0 and roadmap_area<=2 and zone_first_lap=true { zone_name="Whitebud Town: Prof. Aspen's Lab"; }
+else if area_zone=0 { zone_name="Iris Town"; }
+else if area_zone=1 { zone_name="Camellia City"; }
+else if area_zone=2 { zone_name="Bluestar City"; }
+else if area_zone=3 { zone_name="Marigold City"; }
+else if area_zone=4 { zone_name="Zinnia Town"; }
+else if area_zone=5 { zone_name="Verbena City"; }
+else if area_zone=6 { zone_name="Candytuft City"; }
+else if area_zone=7 { zone_name="Lupine City"; }
+else if area_zone=8 { zone_name="Crystal League"; }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var mouse_in_event=-1;
 //
@@ -330,6 +350,7 @@ else if event_transition>-1 and fade_black>=1 {
 	else if event_transition=ref_event_loop {
 		roadmap_area=0;
 		roadmap_generated=false;
+		zone_first_lap=false;
 		//sc_data_save();
 	}
 	else if event_transition=ref_event_payoff {
@@ -356,7 +377,7 @@ else if event_transition>-1 and fade_black>=1 {
 		with (ob_damage_num) { instance_destroy(); }
 		//
 		if event_transition=ref_event_victory { money+=money_prize; }
-		if event_transition!=ref_event_exitbattle and ((event_transition=ref_event_victory and roadmap_area=roadmap_area_max-1) or roadmap_area<roadmap_area_max-1) {
+		if (event_transition=ref_event_victory and roadmap_area=roadmap_current_max-1) or roadmap_area<roadmap_current_max-1 {
 			roadmap_area++;
 		}
 		music_player=sc_playsound(ms_main,100,true,true);
@@ -412,10 +433,11 @@ if keyboard_check_pressed(vk_divide) {
 if keyboard_check_pressed(vk_add) { roadmap_area++; }
 if keyboard_check_pressed(vk_numpad0) { money+=10000; }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if roadmap_area=roadmap_area_max {
+if roadmap_area=roadmap_current_max {
 	area_zone++;
 	roadmap_area=0;
 	roadmap_generated=false;
+	zone_first_lap=true;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if !instance_exists(ob_control) and !instance_exists(ob_event) {

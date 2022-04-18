@@ -59,11 +59,10 @@
 ✔	enemy deck shuffle
 ✔	enemy berry deck build count
 ✔	type advantage guide
-S 17/4	area/towns and character names
-S 17/4	show area names
-S 17/4+	all gym decks
+✔	show area names
+M 18/4+	all gym decks
 M 18/4	gyms/league battle intro dialogue
-T 19/4	tutorial
-W 20/4	extra visual effects
-W 20/4	sound effects
-T 21/4	credits
+W 20/4	tutorial
+T 21/4	extra visual effects
+T 21/4	sound effects
+F 22/4	credits

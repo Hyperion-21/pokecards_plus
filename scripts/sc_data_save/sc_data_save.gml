@@ -3,13 +3,13 @@ function sc_data_save() {
 var savemap=ds_map_create();
 //
 ds_map_add(savemap,"area_zone",area_zone);
-ds_map_add(savemap,"first_zone_lap",first_zone_lap);
+ds_map_add(savemap,"zone_first_lap",zone_first_lap);
 ds_map_add(savemap,"roadmap_area",roadmap_area);
 ds_map_add(savemap,"roadmap_generated",roadmap_generated);
 ds_map_add(savemap,"money",money);
 //
 var i=0;
-repeat (roadmap_area_max) {
+repeat (roadmap_current_max) {
 	var value_name="location_type_" + string(i);
 	ds_map_add(savemap,value_name,location_type[i]);
 	var value_name="trainer_kind_" + string(i);

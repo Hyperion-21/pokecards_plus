@@ -1,16 +1,16 @@
 //00 normal, 01 grass, 02 fire, 03 water, 04 electric, 05 flying, 06 fighting, 07 psychic, 08 fairy
 //09 ground, 10 rock, 11 bug, 12 poison, 13 ice, 14 dragon, 15 steel, 16 ghost, 17 dark
 
-GYM 1	normal/flying			
-GYM 2	grass/rock/ground		
-GYM 3	water/bug/ice			
-GYM 4	fire/fighting			
-GYM 5	electric			
-GYM 6	fighting/steel/rock		
-GYM 7	psychic/fairy/ghost		
-GYM 8	all				
-ELITE 1	normal/ghost/psychic		
-ELITE 2	poison/dark/bug			
-ELITE 3	flying/ground/fighting/rock	
-ELITE 4	dragon/steel/ice/flying		
-CHAMP	all				
+GYM 1	normal/flying			IAN		IRIS TOWN
+GYM 2	grass/rock/ground		CAMMIE		CAMELLIA CITY
+GYM 3	water/bug/ice			BENNY		BLUESTAR CITY
+GYM 4	fire/fighting			MADISON		MARIGOLD CITY
+GYM 5	electric			ZOE		ZINNIA TOWN
+GYM 6	fighting/steel/rock		VINCENT		VERBENA CITY
+GYM 7	psychic/fairy/ghost		PENNY		CANDYTUFT CITY
+GYM 8	all				LAKE		LUPINE CITY
+ELITE 1	normal/ghost/psychic		EMILY
+ELITE 2	poison/dark/bug			FINN
+ELITE 3	flying/ground/fighting/rock	DION
+ELITE 4	dragon/steel/ice/flying		APRIL
+CHAMP	all				DUNCAN
