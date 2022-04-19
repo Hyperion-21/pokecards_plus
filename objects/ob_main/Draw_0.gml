@@ -58,7 +58,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	//
 	draw_set_halign(fa_center);
 	var zone_name_text="";
-	if roadmap_area=roadmap_current_max-1 or area_zone=area_zone_max-1 or (area_zone=0 and roadmap_area<=2 and zone_first_lap=true) { zone_name_text=zone_name; }
+	if roadmap_area=roadmap_current_max-1 or area_zone=area_zone_max-1 or (area_zone=0 and roadmap_area<roadmap_lab_max and zone_first_lap=true) { zone_name_text=zone_name; }
 	else if zone_first_lap=true { zone_name_text="Road to: " + zone_name; }
 	else if zone_first_lap=false { zone_name_text="Outskirts: " + zone_name; }
 	sc_drawtext(road_win_x+120,road_win_y+120,zone_name_text,global.color_white,global.color_black,0.5,0.5,0,-1);

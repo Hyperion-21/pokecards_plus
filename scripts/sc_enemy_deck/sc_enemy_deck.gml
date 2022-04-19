@@ -6,7 +6,7 @@ for (var i=0; i<=17; i++;) {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if argument0<=100 {
-	if argument0=-1 { //-
+	if argument0=-1 { //(TEMPLATE)
 		enemy_type_chance[00]=00; //normal
 		enemy_type_chance[01]=00; //grass
 		enemy_type_chance[02]=00; //fire
@@ -205,32 +205,185 @@ if argument0<=100 {
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	enemycard_maindeck_total=ob_main.enemy_maindeck_size;
 	//
-	var i=0;
-	repeat (enemycard_maindeck_total) {
-		enemy_card_id[i]=-1;
-		enemy_card_level[i]=-1;
-		enemy_card_glyph_a[i]=-1;
-		enemy_card_glyph_b[i]=-1;
-		enemy_card_glyph_c[i]=-1;
-		enemy_card_innate[i]=-1;
-		enemy_card_form_value[i]=-1;
-		i++;
+	for (var i=0; i<enemycard_maindeck_total; i++;) {
+		sc_enemy_deck_addcard(i,-1,-1,-1,-1,-1,-1,-1);
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-else if argument0=101 { //tutorial
+else if argument0=101 { //TUTORIAL (PROF. ASPEN)
 	enemycard_maindeck_total=5;
 	//
-	var i=0;
-	repeat (enemycard_maindeck_total) {
-		enemy_card_id[i]=choose(010,011,013,014,016,019); //caterpie, metapod, weedle, kakuna, pidgey, rattata
-		enemy_card_level[i]=1;
-		enemy_card_glyph_a[i]=-1;
-		enemy_card_glyph_b[i]=-1;
-		enemy_card_glyph_c[i]=-1;
-		enemy_card_innate[i]=1;
-		enemy_card_form_value[i]=0;
-		i++;
+	for (var i=0; i<enemycard_maindeck_total; i++;) {
+		if i=0 { sc_enemy_deck_addcard(i,016,1,-1,-1,-1,1,0); } //PIDGEY, LV 1, IN 1
+		else if i=1 { sc_enemy_deck_addcard(i,019,1,-1,-1,-1,1,0); } //RATTATA, LV 1, IN 1
+		else if i=2 { sc_enemy_deck_addcard(i,019,1,-1,-1,-1,1,0); } //RATTATA, LV 1, IN 1
+		else if i=3 { sc_enemy_deck_addcard(i,010,1,-1,-1,-1,1,0); } //CATERPIE, LV 1, IN 1
+		else if i=4 { sc_enemy_deck_addcard(i,011,1,ref_glyph_weakness,-1,-1,1,0); } //METAPOD, LV 1, IN 1, WEAKNESS
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else if argument0=200 { //GYM 1: IAN (NORMAL/flying)
+	enemycard_maindeck_total=ob_main.maindeck_size_max;
+	//
+	//enemy_type_chance[00]=100; //normal
+	//enemy_type_chance[05]=75; //flying
+	//
+	for (var i=0; i<enemycard_maindeck_total; i++;) {
+		if i=0 { sc_enemy_deck_addcard(i,162,3,ref_glyph_ruthless,-1,-1,1,0); } //FURRET, LV 3 (max+1), IN 1, RUTHLESS
+		else if i=1 { sc_enemy_deck_addcard(i,017,2,ref_glyph_weakness,-1,-1,1,0); } //PIDGEOTTO, LV 2, IN 1, WEAKNESS
+		else if i=2 { sc_enemy_deck_addcard(i,133,2,-1,-1,-1,2,0); } //EEVEE, LV 2, IN 2
+		else if i=3 { sc_enemy_deck_addcard(i,020,1,-1,-1,-1,1,0); } //RATICATE, LV 1, IN 1
+		else if i=4 { sc_enemy_deck_addcard(i,083,1,-1,-1,-1,1,0); } //FARFETCH'D, LV 1, IN 1
+		else if i=5 { sc_enemy_deck_addcard(i,190,1,-1,-1,-1,1,0); } //AIPOM, LV 1, IN 1
+		else if i=6 { sc_enemy_deck_addcard(i,052,1,-1,-1,-1,1,0); } //MEOWTH, LV 1, IN 1
+		else if i=7 { sc_enemy_deck_addcard(i,021,1,-1,-1,-1,1,0); } //SPEAROW, LV 1, IN 1
+		else if i=8 { sc_enemy_deck_addcard(i,163,1,-1,-1,-1,1,0); } //HOOTHOOT, LV 1, IN 1
+		else if i=9 { sc_enemy_deck_addcard(i,216,1,-1,-1,-1,1,0); } //TEDDIURSA, LV 1, IN 1
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else if argument0=201 { //GYM 2: CAMMIE (GRASS/ground/rock)
+	enemycard_maindeck_total=ob_main.maindeck_size_max;
+	//
+	//enemy_type_chance[01]=100; //grass
+	//enemy_type_chance[09]=75; //ground
+	//enemy_type_chance[10]=75; //rock
+	//
+	for (var i=0; i<enemycard_maindeck_total; i++;) {
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else if argument0=202 { //GYM 3: BENNY (WATER/ice)
+	enemycard_maindeck_total=ob_main.maindeck_size_max;
+	//
+	//enemy_type_chance[03]=100; //water
+	//enemy_type_chance[13]=75; //ice
+	//
+	for (var i=0; i<enemycard_maindeck_total; i++;) {
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else if argument0=203 { //GYM 4: MADISON (FIRE/steel)
+	enemycard_maindeck_total=ob_main.maindeck_size_max;
+	//
+	//enemy_type_chance[02]=100; //fire
+	//enemy_type_chance[15]=75; //steel
+	//
+	for (var i=0; i<enemycard_maindeck_total; i++;) {
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else if argument0=204 { //GYM 5: ZOE (ELECTRIC)
+	enemycard_maindeck_total=ob_main.maindeck_size_max;
+	//
+	//enemy_type_chance[04]=100; //electric
+	//
+	for (var i=0; i<enemycard_maindeck_total; i++;) {
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else if argument0=205 { //GYM 6: VINCENT (FIGHTING/dark)
+	enemycard_maindeck_total=ob_main.maindeck_size_max;
+	//
+	//enemy_type_chance[06]=100; //fighting
+	//enemy_type_chance[17]=75; //dark
+	//
+	for (var i=0; i<enemycard_maindeck_total; i++;) {
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else if argument0=206 { //GYM 7: PENNY (PSYCHIC/fairy/ghost)
+	enemycard_maindeck_total=ob_main.maindeck_size_max;
+	//
+	//enemy_type_chance[07]=100; //psychic
+	//enemy_type_chance[08]=75; //fairy
+	//enemy_type_chance[16]=75; //ghost
+	//
+	for (var i=0; i<enemycard_maindeck_total; i++;) {
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else if argument0=207 { //GYM 8: LAKE (GRASS/FIRE/WATER)
+	enemycard_maindeck_total=ob_main.maindeck_size_max;
+	//
+	//enemy_type_chance[01]=100; //grass
+	//enemy_type_chance[02]=100; //fire
+	//enemy_type_chance[03]=100; //water
+	//
+	for (var i=0; i<enemycard_maindeck_total; i++;) {
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else if argument0=208 { //ELITE 1: EMILY (FIRE/dark, psychic/ghost)
+	enemycard_maindeck_total=ob_main.maindeck_size_max;
+	//
+	//enemy_type_chance[02]=100; //fire
+	//enemy_type_chance[07]=50; //psychic
+	//enemy_type_chance[16]=50; //ghost
+	//enemy_type_chance[17]=75; //dark
+	//
+	for (var i=0; i<enemycard_maindeck_total; i++;) {
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else if argument0=209 { //ELITE 2: FINN (POISON/bug, ground/rock)
+	enemycard_maindeck_total=ob_main.maindeck_size_max;
+	//
+	//enemy_type_chance[09]=50; //ground
+	//enemy_type_chance[10]=50; //rock
+	//enemy_type_chance[11]=75; //bug
+	//enemy_type_chance[12]=100; //poison
+	//
+	for (var i=0; i<enemycard_maindeck_total; i++;) {
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else if argument0=210 { //ELITE 3: DION (FLYING/fighting, grass)
+	enemycard_maindeck_total=ob_main.maindeck_size_max;
+	//
+	//enemy_type_chance[01]=50; //grass
+	//enemy_type_chance[05]=100; //flying
+	//enemy_type_chance[06]=75; //fighting
+	//
+	for (var i=0; i<enemycard_maindeck_total; i++;) {
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else if argument0=211 { //ELITE 4: APRIL (DRAGON/ice, steel, water)
+	enemycard_maindeck_total=ob_main.maindeck_size_max;
+	//
+	//enemy_type_chance[03]=10; //water
+	//enemy_type_chance[13]=75; //ice
+	//enemy_type_chance[14]=100; //dragon
+	//enemy_type_chance[15]=50; //steel
+	//
+	for (var i=0; i<enemycard_maindeck_total; i++;) {
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else if argument0=212 { //CHAMPION: DUNCAN (ALL)
+	enemycard_maindeck_total=ob_main.maindeck_size_max;
+	//
+	//enemy_type_chance[00]=100; //normal
+	//enemy_type_chance[01]=100; //grass
+	//enemy_type_chance[02]=100; //fire
+	//enemy_type_chance[03]=100; //water
+	//enemy_type_chance[04]=100; //electric
+	//enemy_type_chance[05]=100; //flying
+	//enemy_type_chance[06]=100; //fighting
+	//enemy_type_chance[07]=100; //psychic
+	//enemy_type_chance[08]=100; //fairy
+	//enemy_type_chance[09]=100; //ground
+	//enemy_type_chance[10]=100; //rock
+	//enemy_type_chance[11]=100; //bug
+	//enemy_type_chance[12]=100; //poison
+	//enemy_type_chance[13]=100; //ice
+	//enemy_type_chance[14]=100; //dragon
+	//enemy_type_chance[15]=100; //steel
+	//enemy_type_chance[16]=100; //ghost
+	//enemy_type_chance[17]=100; //dark
+	//
+	for (var i=0; i<enemycard_maindeck_total; i++;) {
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

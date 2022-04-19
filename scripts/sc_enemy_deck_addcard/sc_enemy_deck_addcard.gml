@@ -1,13 +1,19 @@
-function sc_music_sync() {
+function sc_enemy_deck_addcard(argument0,argument1,argument2,argument3,argument4,argument5,argument6,argument7) {
+/// @param array_value
+/// @param card_id
+/// @param level
+/// @param glyph_a
+/// @param glyph_b
+/// @param glyph_c
+/// @param innate
+/// @param form_value
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-var music_pos=audio_sound_get_track_position(ob_main.music_player), music_length=audio_sound_length(ob_main.music_player);
-if audio_is_playing(ms_main) { var music_total_beats=80; }
-else if audio_is_playing(ms_league) { var music_total_beats=64; }
-else { return false; }
-//
-if ob_main.music_beat_margin=0 and music_pos mod (music_length/music_total_beats)<=0.05 {
-	ob_main.music_beat_margin=15;
-	return true;
-}
+enemy_card_id[argument0]=argument1;
+enemy_card_level[argument0]=argument2;
+enemy_card_glyph_a[argument0]=argument3;
+enemy_card_glyph_b[argument0]=argument4;
+enemy_card_glyph_c[argument0]=argument5;
+enemy_card_innate[argument0]=argument6;
+enemy_card_form_value[argument0]=argument7;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }

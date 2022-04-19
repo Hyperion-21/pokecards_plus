@@ -220,14 +220,7 @@ tooltip_timer_max=300;
 first_turn_attack_warning=false;
 hand_full_draw_warning=false;
 //
-if ob_main.area_zone=area_zone_max-1 {
-	hp_max=100; //league: 100
-}
-else {
-	if ob_main.roadmap_area<ob_main.roadmap_current_max-1 { hp_max=10+ob_main.area_zone*10; } //10 20 30 40 50 60 70 80
-	else { hp_max=20+ob_main.area_zone*10; } //gyms: 20 30 40 50 60 70 80 90
-}
-//
+hp_max=ob_main.battle_hp;
 player_hp=hp_max;
 enemy_hp=hp_max;
 player_effect_damaged=0;

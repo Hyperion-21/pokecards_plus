@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.81"
+#macro game_version "v0.0.0.82"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -44,7 +44,8 @@ type_chart_toggle=false;
 roadmap_road_max=12;
 roadmap_outskirts_max=6;
 roadmap_league_max=5;
-roadmap_current_max=roadmap_road_max;
+roadmap_lab_max=3;
+roadmap_current_max=0;
 //
 roadmap_get_details=true;
 zone_name="";
@@ -73,11 +74,13 @@ enemy_maindeck_size=0;
 #macro maindeck_total_max 2000
 #macro berrydeck_total_max 200 //per berry
 //
-#macro money_add_base 75
-#macro money_add_area_bonus 25
+#macro money_add_base 28 //28 37 46 55 64 73 82 91 100
+#macro money_add_area_bonus 9
 //
+battle_hp=0;
 money_show=0;
 money_prize=0;
+money_payoff=0;
 effect_money_error=0;
 event_cost_standby=0;
 #macro ref_event_battle 0
@@ -104,7 +107,7 @@ for (var i=0; i<=999; i++;) {
 	event_cost[i]=0;
 }
 event_cost[ref_event_cardpack]=100;
-event_cost[ref_event_berry]=50;
+event_cost[ref_event_berry]=25;
 event_cost[ref_event_levelup]=100;
 event_cost[ref_event_evolution]=200;
 event_cost[ref_event_glyph]=150;
@@ -214,9 +217,9 @@ repeat (8) {
 #macro config_file "config.sav"
 #macro data_file "data.sav"
 sc_config_load();
-//sc_config_save();
+sc_config_save();
 sc_data_load();
-//sc_data_save();
+sc_data_save();
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 music_player=sc_playsound(ms_main,100,true,true);
 music_beat_margin=0;

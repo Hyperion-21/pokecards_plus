@@ -144,7 +144,7 @@ if card_cat=0 {
 			}
 			else {
 				var card_glyph_chance=irandom(9999), card_glyph_total=0;
-				if card_glyph_chance<625*(ob_main.area_zone+1) { //6.25%, 12.5%, 18.75%, 25%, 31.25%, 37.5%, 43.75%, 50%, (56.25%)
+				if card_glyph_chance<370*(ob_main.area_zone+1) { //3.7%, 7.4%, 11.1%, 14.8%, 18.5%, 22.2%, 25.9%, 29.6%, (33.3%)
 					card_glyph_chance=irandom(99);
 					if card_glyph_chance<5 { card_glyph_total=3; } //5%
 					else if card_glyph_chance<30 { card_glyph_total=2; } //25%
