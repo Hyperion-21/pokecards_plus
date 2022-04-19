@@ -24,13 +24,6 @@ if !instance_exists(ob_control) {
 	if money_show<money { money_show+=money_speed; }
 	else if money_show>money { money_show-=money_speed; }
 }
-//
-if audio_is_playing(ms_main) and area_zone=area_zone_max-1 and roadmap_area>=roadmap_current_max-roadmap_league_max {
-	music_player=sc_playsound(ms_league,100,true,true);
-}
-else if audio_is_playing(ms_league) and !(area_zone=area_zone_max-1 and roadmap_area>=roadmap_current_max-roadmap_league_max) {
-	music_player=sc_playsound(ms_main,100,true,true);
-}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if area_zone=area_zone_max-1 and zone_first_lap=true { roadmap_current_max=roadmap_road_max+roadmap_league_max; }
 else if area_zone=area_zone_max-1 and zone_first_lap=false { roadmap_current_max=roadmap_outskirts_max+roadmap_league_max; }
@@ -45,6 +38,13 @@ card_level_spawn_limit=floor((area_zone+1)/1.5)+1; //1 2 3 3 4 5 5 6 (7)
 card_level_enemy_min=area_zone+1; //1 2 3 4 5 6 7 8 (9)
 if area_zone>0 or zone_first_lap=false or roadmap_area=roadmap_current_max-1 { card_level_enemy_limit=card_level_player_limit; }
 else { card_level_enemy_limit=card_level_enemy_min; }
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+if audio_is_playing(ms_main) and area_zone=area_zone_max-1 and roadmap_area>=roadmap_current_max-roadmap_league_max {
+	music_player=sc_playsound(ms_league,100,true,true);
+}
+else if audio_is_playing(ms_league) and !(area_zone=area_zone_max-1 and roadmap_area>=roadmap_current_max-roadmap_league_max) {
+	music_player=sc_playsound(ms_main,100,true,true);
+}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 maindeck_size_max=10+area_zone*5; //10 15 20 25 30 35 40 45 (50)
 if zone_first_lap=false { enemy_maindeck_size=maindeck_size_max; }

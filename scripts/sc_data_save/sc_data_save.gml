@@ -9,7 +9,7 @@ ds_map_add(savemap,"roadmap_generated",roadmap_generated);
 ds_map_add(savemap,"money",money);
 //
 var i=0;
-repeat (roadmap_current_max) {
+repeat (roadmap_full_max) {
 	var value_name="location_type_" + string(i);
 	ds_map_add(savemap,value_name,location_type[i]);
 	var value_name="trainer_kind_" + string(i);
@@ -25,6 +25,8 @@ repeat (roadmap_current_max) {
 	repeat (3) {
 		var value_name="event_kind_" + string(ii) + "_" + string(i);
 		ds_map_add(savemap,value_name,event_kind[ii][i]);
+		var value_name="event_glyph_add_" + string(ii) + "_" + string(i);
+		ds_map_add(savemap,value_name,event_glyph_add[ii][i]);
 		ii++;
 	}
 	i++;
