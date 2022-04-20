@@ -197,14 +197,24 @@ if roadmap_generated=false {
 	}
 	//
 	if area_zone=area_zone_max-1 {
+		event_kind[0][roadmap_current_max-5]=ref_event_gymbattle;
+		trainer_kind[roadmap_current_max-5]=208; //ELITE
 		location_type[roadmap_current_max-5]=15; //city
 		//
+		event_kind[0][roadmap_current_max-4]=ref_event_gymbattle;
+		trainer_kind[roadmap_current_max-4]=209; //ELITE
 		location_type[roadmap_current_max-4]=15; //city
 		//
+		event_kind[0][roadmap_current_max-3]=ref_event_gymbattle;
+		trainer_kind[roadmap_current_max-3]=210; //ELITE
 		location_type[roadmap_current_max-3]=15; //city
 		//
+		event_kind[0][roadmap_current_max-2]=ref_event_gymbattle;
+		trainer_kind[roadmap_current_max-2]=211; //ELITE
 		location_type[roadmap_current_max-2]=15; //city
 		//
+		event_kind[0][roadmap_current_max-1]=ref_event_gymbattle;
+		trainer_kind[roadmap_current_max-1]=212; //ELITE
 		location_type[roadmap_current_max-1]=15; //city
 	}
 	else {
