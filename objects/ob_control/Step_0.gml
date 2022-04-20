@@ -127,9 +127,11 @@ if card_focus!=-1 {
 		card_focus=-1;
 		card_focus_hand=-1;
 	}
-	//
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+if card_focus!=-1 { //click played card
 	if mouse_check_button_pressed(mb_left) and battler_turn=1 and card_hold=-1 and ob_main.cursor_hide=false and
-	card_focus.card_played=true and card_focus.card_enemy=false { //click played card
+	card_focus.card_played=true and card_focus.card_enemy=false {
 		if turn_num>2 { sc_card_attack(true,card_focus); }
 		else {
 			first_turn_attack_warning=true;

@@ -61,9 +61,9 @@
 ✔	type advantage guide
 ✔	show area names
 M 18/4+	all gym decks
-W 20/4	battle intro dialogue
-W 20/4	league roadmap
-T 21/4	tutorial
-F 22/4+	extra visual effects
-F 22/4+	sound effects
-S 24/4	credits
+W 20/4+	battle intro dialogue
+W 20/4+	league roadmap
+S 23/4	tutorial
+S 24/4	extra visual effects
+S 24/4	sound effects
+M 25/4	credits

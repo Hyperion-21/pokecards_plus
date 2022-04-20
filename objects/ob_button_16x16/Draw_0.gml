@@ -14,3 +14,8 @@ else if instance_exists(ob_deckbuild) {
 	if button_id<10 { draw_sprite_general(sp_sheet,0,16*(13+button_id),16*(7+ceil(button_state)),16,16,x,y,1,1,0,c_white,c_white,c_white,c_white,1); }
 	else { draw_sprite_general(sp_sheet,0,16*(13+10),16*(7+ceil(button_state)),16,16,x,y,1,1,0,c_white,c_white,c_white,c_white,1); }
 }
+else {
+	if button_id=100 { draw_sprite_general(sp_sheet,0,16*2,16*(7+(ceil(button_state)*2)),16,16,x,y,1,1,0,c_white,c_white,c_white,c_white,1); }
+	else if button_id=101 { draw_sprite_general(sp_sheet,0,16*24,16*(7+ceil(button_state)),16,16,x,y,1,1,0,c_white,c_white,c_white,c_white,1); }
+	else if button_id=102 { draw_sprite_general(sp_sheet,0,16*25,16*(7+ceil(button_state)),16,16,x,y,1,1,0,c_white,c_white,c_white,c_white,1); }
+}

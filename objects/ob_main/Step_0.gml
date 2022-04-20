@@ -35,9 +35,10 @@ card_level_player_limit=area_zone+2; //2 3 4 5 6 7 8 9 (10)
 if card_level_player_limit>10 { card_level_player_limit=10; }
 card_level_spawn_limit=floor((area_zone+1)/1.5)+1; //1 2 3 3 4 5 5 6 (7)
 //
-card_level_enemy_min=area_zone+1; //1 2 3 4 5 6 7 8 (9)
+card_level_enemy_min=area_zone; //1 1 2 3 4 5 6 7 (8)
+if card_level_enemy_min<=0 { card_level_enemy_min=1; }
 if area_zone>0 or zone_first_lap=false or roadmap_area=roadmap_current_max-1 { card_level_enemy_limit=card_level_player_limit; }
-else { card_level_enemy_limit=card_level_enemy_min; }
+else { card_level_enemy_limit=1; } //first zone, first lap
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if audio_is_playing(ms_main) and area_zone=area_zone_max-1 and roadmap_area>=roadmap_current_max-roadmap_league_max {
 	music_player=sc_playsound(ms_league,100,true,true);
@@ -57,7 +58,7 @@ if maindeck_size_max>50 { //not possible anymore, but just in case
 	enemy_maindeck_size=50;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-money_payoff=floor((money_add_base+money_add_area_bonus*area_zone)*0.75/5)*5; //(from: base 28 + bonus 9): 20 25 30 40 45 50 60 65 75
+money_payoff=money_payoff_base+money_payoff_area_bonus*area_zone;
 //
 if area_zone=area_zone_max-1 { battle_hp=100; } //victory road & league: 100
 else {
@@ -324,17 +325,15 @@ else if area_zone=8 { zone_name="Crystal League"; }
 var mouse_in_event=-1;
 //
 if !instance_exists(ob_control) and !instance_exists(ob_event) {
-	if event_kind[2][roadmap_area]=-1 {
-		for (var i=0; i<=1; i++;) {
+	for (var i=0; i<=2; i++;) {
+		if event_kind[2][roadmap_area]=-1 {
 			event_button_x[i]=road_win_x+55-9+(104*i);
 			event_button_y[i]=road_win_y+35-9;
-			if mouse_x>event_button_x[i] and mouse_y>event_button_y[i] and mouse_x<=event_button_x[i]+42 and mouse_y<=event_button_y[i]+42 and cursor_hide=false {
+			if i<2 and mouse_x>event_button_x[i] and mouse_y>event_button_y[i] and mouse_x<=event_button_x[i]+42 and mouse_y<=event_button_y[i]+42 and cursor_hide=false {
 				mouse_in_event=i;
 			}
 		}
-	}
-	else {
-		for (var i=0; i<=2; i++;) {
+		else {
 			event_button_x[i]=road_win_x+36-9+(71*i);
 			event_button_y[i]=road_win_y+35-9;
 			if mouse_x>event_button_x[i] and mouse_y>event_button_y[i] and mouse_x<=event_button_x[i]+42 and mouse_y<=event_button_y[i]+42 and cursor_hide=false {
@@ -407,12 +406,10 @@ else if event_transition>-1 and fade_black>=1 {
 			roadmap_area++;
 		}
 		//
-		if area_zone=area_zone_max-1 and roadmap_area>=roadmap_current_max-roadmap_league_max { music_player=sc_playsound(ms_league,100,true,true); }
-		else { music_player=sc_playsound(ms_main,100,true,true); }
-		//
+		music_player=sc_playsound(ms_main,100,true,true);
 		if event_transition=ref_event_victory { money+=money_prize; }
 		money_prize=0;
-		fade_black_exit_battle=0;
+		fade_black_exit=0;
 		type_chart=false;
 		if roadmap_area<roadmap_current_max { sc_data_save(); }
 	}
@@ -454,7 +451,6 @@ else if event_transition=-1 and fade_black<=0 {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 //CHEATS
-if keyboard_check_pressed(vk_multiply) { game_restart(); }
 if keyboard_check_pressed(vk_add) { roadmap_area++; }
 if keyboard_check_pressed(vk_numpad0) { money+=10000; }
 //
@@ -475,11 +471,19 @@ if roadmap_area=roadmap_current_max {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if !instance_exists(ob_control) and !instance_exists(ob_event) {
-	if event_transition=-1 and screen_transition=-1 and cursor_hide=false and
-	mouse_x>=screen_main_x+32-2 and mouse_y>=screen_main_y+126-2 and mouse_x<=screen_main_x+32+17 and mouse_y<=screen_main_y+126+17 {
+	var screen_x=camera_get_view_x(view_camera[0]);
+	//
+	if screen_x=screen_main_x and event_transition=-1 and screen_transition=-1 and cursor_hide=false and (keyboard_check_pressed(vk_left) or keyboard_check_pressed(ord("A")) or
+	(mouse_x>=screen_main_x+32-2 and mouse_y>=screen_main_y+126-2 and mouse_x<=screen_main_x+32+17 and mouse_y<=screen_main_y+126+17)) {
 		menu_options_hover=true;
 		mouse_cursor=1;
-		if mouse_check_button_pressed(mb_left) {
+		if mouse_check_button_pressed(mb_left) or keyboard_check_pressed(vk_left) or keyboard_check_pressed(ord("A")) {
+			button_exit_game=instance_create_layer(screen_options_x+cam_w-20,screen_main_y+4,"instances",ob_button_16x16);
+			button_exit_game.button_id=100;
+			button_reset_config=instance_create_layer(screen_options_x+cam_w-40,screen_main_y+4,"instances",ob_button_16x16);
+			button_reset_config.button_id=101;
+			button_delete_data=instance_create_layer(screen_options_x+cam_w-60,screen_main_y+4,"instances",ob_button_16x16);
+			button_delete_data.button_id=102;
 			screen_transition=0;
 		}
 	}
@@ -487,12 +491,11 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 		menu_options_hover=false;
 	}
 	//
-	if (event_transition=-1 and screen_transition=-1  and cursor_hide=false and
-	mouse_x>=screen_main_x+cam_w-48-2 and mouse_y>=screen_main_y+126-2 and mouse_x<=screen_main_x+cam_w-48+17 and mouse_y<=screen_main_y+126+17) or
-	auto_deck_transition=true {
+	if screen_x=screen_main_x and ((event_transition=-1 and screen_transition=-1 and cursor_hide=false and (keyboard_check_pressed(vk_right) or keyboard_check_pressed(ord("D")) or
+	(mouse_x>=screen_main_x+cam_w-48-2 and mouse_y>=screen_main_y+126-2 and mouse_x<=screen_main_x+cam_w-48+17 and mouse_y<=screen_main_y+126+17))) or auto_deck_transition=true) {
 		menu_deck_hover=true;
 		mouse_cursor=1;
-		if mouse_check_button_pressed(mb_left) or auto_deck_transition=true {
+		if mouse_check_button_pressed(mb_left) or keyboard_check_pressed(vk_right) or keyboard_check_pressed(ord("D")) or auto_deck_transition=true {
 			instance_create_layer(screen_deck_x,screen_main_y,"instances",ob_deckbuild);
 			screen_transition=1;
 			auto_deck_transition=false;
@@ -502,11 +505,17 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 		menu_deck_hover=false;
 	}
 	//
-	if event_transition=-1 and screen_transition=-1  and cursor_hide=false and
-	mouse_x>=screen_options_x+cam_w-32-2 and mouse_y>=screen_main_y+136-2 and mouse_x<=screen_options_x+cam_w-32+17 and mouse_y<=screen_main_y+136+17 {
+	if screen_x=screen_options_x and event_transition=-1 and screen_transition=-1 and cursor_hide=false and (keyboard_check_pressed(vk_right) or keyboard_check_pressed(ord("D")) or
+	(mouse_x>=screen_options_x+cam_w-32-2 and mouse_y>=screen_main_y+136-2 and mouse_x<=screen_options_x+cam_w-32+17 and mouse_y<=screen_main_y+136+17)) {
 		menu_back_options_hover=true;
 		mouse_cursor=1;
-		if mouse_check_button_pressed(mb_left) {
+		if mouse_check_button_pressed(mb_left) or keyboard_check_pressed(vk_right) or keyboard_check_pressed(ord("D")) {
+			with (ob_button_16x16) { instance_destroy(); }
+			button_exit_game=-1;
+			button_reset_config=-1;
+			button_delete_data=-1;
+			fade_black_exit=0;
+			fade_red_delete=0;
 			screen_transition=2;
 			sc_config_save();
 		}
@@ -515,11 +524,11 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 		menu_back_options_hover=false;
 	}
 	//
-	if event_transition=-1 and screen_transition=-1 and cursor_hide=false and
-	mouse_x>=screen_deck_x+16-2 and mouse_y>=screen_main_y+136-2 and mouse_x<=screen_deck_x+16+17 and mouse_y<=screen_main_y+136+17 {
+	if screen_x=screen_deck_x and event_transition=-1 and screen_transition=-1 and cursor_hide=false and (keyboard_check_pressed(vk_left) or keyboard_check_pressed(ord("A")) or
+	(mouse_x>=screen_deck_x+16-2 and mouse_y>=screen_main_y+136-2 and mouse_x<=screen_deck_x+16+17 and mouse_y<=screen_main_y+136+17)) {
 		menu_back_deck_hover=true;
 		mouse_cursor=1;
-		if mouse_check_button_pressed(mb_left) {
+		if mouse_check_button_pressed(mb_left) or keyboard_check_pressed(vk_left) or keyboard_check_pressed(ord("A")) {
 			with (ob_deckbuild) { instance_destroy(); }
 			with (ob_card) { instance_destroy(); }
 			with (ob_button_16x16) { instance_destroy(); }
@@ -533,29 +542,54 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 	}
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	if screen_transition=0 {
-		if camera_get_view_x(view_camera[0])>screen_options_x {
-			camera_set_view_pos(view_camera[0],camera_get_view_x(view_camera[0])-16,y);
+		if screen_x>screen_options_x {
+			camera_set_view_pos(view_camera[0],screen_x-16,y);
 		}
 		else { screen_transition=-1; }
 	}
 	//
 	else if screen_transition=1 {
-		if camera_get_view_x(view_camera[0])<screen_deck_x {
-			camera_set_view_pos(view_camera[0],camera_get_view_x(view_camera[0])+16,y);
+		if screen_x<screen_deck_x {
+			camera_set_view_pos(view_camera[0],screen_x+16,y);
 		}
 		else { screen_transition=-1; }
 	}
 	//
 	else if screen_transition=2 {
-		if camera_get_view_x(view_camera[0])<screen_main_x {
-			camera_set_view_pos(view_camera[0],camera_get_view_x(view_camera[0])+16,y);
+		if screen_x<screen_main_x {
+			camera_set_view_pos(view_camera[0],screen_x+16,y);
 		}
-		else if camera_get_view_x(view_camera[0])>screen_main_x {
-			camera_set_view_pos(view_camera[0],camera_get_view_x(view_camera[0])-16,y);
+		else if screen_x>screen_main_x {
+			camera_set_view_pos(view_camera[0],screen_x-16,y);
 		}
 		else {
 			screen_transition=-1;
 		}
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+if button_exit_game!=-1 {
+	if button_exit_game.button_state>=1 {
+		sc_config_save();
+		game_end();
+	}
+}
+if button_reset_config!=-1 {
+	if button_reset_config.button_state>=1 {
+		var restart_music=false;
+		if option_state[opt_music]=false { restart_music=true; }
+		//
+		if file_exists(config_file) { file_delete(config_file); }
+		sc_config_load();
+		sc_config_save();
+		//
+		if restart_music=true { music_player=sc_playsound(ms_main,100,true,true); }
+	}
+}
+if button_delete_data!=-1 {
+	if button_delete_data.button_state>=1 {
+		if file_exists(data_file) { file_delete(data_file); }
+		game_restart();
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -571,6 +605,7 @@ repeat (options_total) {
 				if option_state[i]=false { option_state[i]=true; }
 				else { option_state[i]=false; }
 				window_set_fullscreen(option_state[i]);
+				window_set_size(512*(option_state[opt_scaling]),288*(option_state[opt_scaling]));
 			}
 			else if i=opt_vsync {
 				if option_state[i]=false { option_state[i]=true; }
@@ -613,8 +648,7 @@ repeat (options_total) {
 					option_state[i]=false;
 				}
 				//still plays at volume 0 to keep the beat animations
-				if area_zone=area_zone_max-1 and roadmap_area>=roadmap_current_max-roadmap_league_max { music_player=sc_playsound(ms_league,100,true,true); }
-				else { music_player=sc_playsound(ms_main,100,true,true); }
+				music_player=sc_playsound(ms_main,100,true,true);
 			}
 			else if i=opt_bg_type {
 				if mouse_check_button_pressed(mb_left) {

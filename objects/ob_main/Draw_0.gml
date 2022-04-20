@@ -157,7 +157,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	// TOOLTIP
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
-	sc_draw_tooltip_text(screen_main_x+cam_w);
+	sc_draw_tooltip_text(camera_get_view_x(view_camera[0])+cam_w);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if type_chart=true {
@@ -168,8 +168,11 @@ if type_chart=true {
 if fade_black>0 {
 	sc_drawrectangle(-2,-2,room_width+2,room_height+2,global.color_black,c_white,0,fade_black,1,0);
 }
-if fade_black_exit_battle>0 {
-	sc_drawrectangle(-2,-2,room_width+2,room_height+2,global.color_black,c_white,0,fade_black_exit_battle,1,0);
+if fade_black_exit>0 {
+	sc_drawrectangle(-2,-2,room_width+2,room_height+2,global.color_black,c_white,0,fade_black_exit,1,0);
+}
+if fade_red_delete>0 {
+	sc_drawrectangle(-2,-2,room_width+2,room_height+2,global.color_damage,c_white,0,fade_red_delete,1,0);
 }
 //
 //if textbox_active=true { sc_drawrectangle(screen_main_x+4,screen_main_y+cam_h-52,screen_main_x+cam_w-6,screen_main_y+cam_h-6,c_black,c_white,1,0.5,1,1); }

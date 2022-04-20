@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.83"
+#macro game_version "v0.0.0.84"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -52,7 +52,8 @@ roadmap_get_details=true;
 zone_name="";
 event_transition=-1; //same as events, 300 victory, 301 defeat, 999 main menu
 fade_black=0;
-fade_black_exit_battle=0;
+fade_black_exit=0;
+fade_red_delete=0;
 //
 menu_options_hover=false;
 menu_deck_hover=false;
@@ -75,8 +76,10 @@ enemy_maindeck_size=0;
 #macro maindeck_total_max 2000
 #macro berrydeck_total_max 200 //per berry
 //
-#macro money_add_base 28 //28 37 46 55 64 73 82 91 100
+#macro money_add_base 78 //78 87 96 105 114 123 132 141 150
 #macro money_add_area_bonus 9
+#macro money_payoff_base 50 //50 60 70 80 90 100 110 120 130
+#macro money_payoff_area_bonus 10
 //
 battle_hp=0;
 money_show=0;
@@ -107,11 +110,11 @@ event_cost_standby=0;
 for (var i=0; i<=999; i++;) {
 	event_cost[i]=0;
 }
-event_cost[ref_event_cardpack]=100;
-event_cost[ref_event_berry]=25;
+event_cost[ref_event_cardpack]=200;
+event_cost[ref_event_berry]=50;
 event_cost[ref_event_levelup]=100;
 event_cost[ref_event_evolution]=200;
-event_cost[ref_event_glyph]=150;
+event_cost[ref_event_glyph]=200;
 //
 #macro innate_max 6 //failure chance uses manual values in ob_event, enemy innate uses manual values in ob_card
 current_glyph_add=-1;
@@ -199,6 +202,7 @@ for (var i=0; i<colorsetup_total; i++;) {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 instance_create_layer(screen_main_x,screen_main_y,"instances",ob_splash);
 instance_create_layer(screen_main_x,screen_main_y,"instances",ob_background);
+//
 var i=0;
 repeat (18) {
 	var ii=0;
@@ -224,6 +228,9 @@ sc_data_save();
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 music_player=sc_playsound(ms_main,100,true,true);
 music_beat_margin=0;
+button_exit_game=-1;
+button_reset_config=-1;
+button_delete_data=-1;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 global.color_white=make_colour_rgb(230,230,230);
 global.color_black=make_colour_rgb(40,40,40);

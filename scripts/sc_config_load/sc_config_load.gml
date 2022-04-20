@@ -58,7 +58,11 @@ if file_exists(config_file) {
 		gpu_set_tex_filter(option_state[opt_filter]);
 	}
 	//
-	if !is_undefined(ds_map_find_value(savemap,"window_scaling")) { option_state[opt_scaling]=ds_map_find_value(savemap,"window_scaling"); }
+	if !is_undefined(ds_map_find_value(savemap,"window_scaling")) {
+		option_state[opt_scaling]=ds_map_find_value(savemap,"window_scaling");
+		window_set_size(512*(option_state[opt_scaling]),288*(option_state[opt_scaling]));
+	}
+	//
 	if !is_undefined(ds_map_find_value(savemap,"music")) { option_state[opt_music]=ds_map_find_value(savemap,"music"); }
 	if !is_undefined(ds_map_find_value(savemap,"sound")) { option_state[opt_sound]=ds_map_find_value(savemap,"sound"); }
 	if !is_undefined(ds_map_find_value(savemap,"autodeck")) { option_state[opt_autodeck]=ds_map_find_value(savemap,"autodeck"); }

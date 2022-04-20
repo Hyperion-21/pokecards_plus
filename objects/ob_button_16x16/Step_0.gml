@@ -1,4 +1,52 @@
-if button_id!=2 or !instance_exists(ob_control) {
+if instance_exists(ob_control) and button_id=2 { //exit battle
+	if mouse_x>=x and mouse_y>=y+2 and mouse_x<x+sprite_width and mouse_y<y+sprite_height-2 and ob_main.mouse_cursor=0 and ob_control.battler_turn!=0 {
+		ob_main.mouse_cursor=1;
+		if mouse_check_button(mb_left) and ob_main.cursor_hide=false and button_state<1 {
+			button_state+=0.005;
+			if button_state=1 {
+				ob_control.battler_turn=0;
+				ob_main.event_transition=ref_event_exitbattle;
+				ob_main.fade_black=1;
+			}
+		}
+		else { button_state-=0.05; }
+	}
+	else { button_state-=0.05; }
+	//
+	if button_state<0 { button_state=0; }
+	ob_main.fade_black_exit=button_state;
+	//
+	if ob_main.cursor_hide=false and mouse_x>=x and mouse_y>=y+2 and mouse_x<x+sprite_width and mouse_y<y+sprite_height-2 {
+		ob_control.tooltip_text="Exit battle (hold).";
+		ob_control.tooltip_lines=1;
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else if button_id=100 or button_id=102 { //exit game & delete save data
+	if mouse_x>=x and mouse_y>=y+2 and mouse_x<x+sprite_width and mouse_y<y+sprite_height-2 and ob_main.mouse_cursor=0 {
+		ob_main.mouse_cursor=1;
+		if mouse_check_button(mb_left) and ob_main.cursor_hide=false and button_state<1 {
+			if button_id=100 { button_state+=0.01; }
+			else if button_id=102 { button_state+=0.005; }
+		}
+		else { button_state-=0.05; }
+	}
+	else { button_state-=0.05; }
+	//
+	if button_state<0 { button_state=0; }
+	if button_id=100 { ob_main.fade_black_exit=button_state; }
+	else if button_id=102 { ob_main.fade_red_delete=button_state; }
+	//
+	if ob_main.cursor_hide=false and mouse_x>=x and mouse_y>=y+2 and mouse_x<x+sprite_width and mouse_y<y+sprite_height-2 {
+		switch (button_id) {
+			case 100: ob_main.tooltip_text="Exit game (hold)."; break;
+			case 102: ob_main.tooltip_text="Delete all save data (hold)."; break;
+		}
+		ob_main.tooltip_lines=1;
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else { //all other buttons
 	if mouse_x>=x and mouse_y>=y+2 and mouse_x<x+sprite_width and mouse_y<y+sprite_height-2 and ob_main.mouse_cursor=0 {
 		ob_main.mouse_cursor=1;
 		if mouse_check_button_pressed(mb_left) and button_state=0 and ob_main.cursor_hide=false {
@@ -43,6 +91,11 @@ if button_id!=2 or !instance_exists(ob_control) {
 					ob_deckbuild.reorder_type=ob_deckbuild.reorder_selected;
 				}
 			}
+			else {
+				if button_id=101 {
+					//do nothing, only button_state=1 is needed
+				}
+			}
 			button_state=1;
 		}
 		else { button_state-=0.1; }
@@ -50,46 +103,33 @@ if button_id!=2 or !instance_exists(ob_control) {
 	else { button_state-=0.1; }
 	//
 	if button_state<0 { button_state=0; }
-}
-//————————————————————————————————————————————————————————————————————————————————————————————————————
-else {
-	if mouse_x>=x and mouse_y>=y+2 and mouse_x<x+sprite_width and mouse_y<y+sprite_height-2 and ob_main.mouse_cursor=0 and ob_control.battler_turn!=0 {
-		ob_main.mouse_cursor=1;
-		if mouse_check_button(mb_left) and ob_main.cursor_hide=false {
-			button_state+=0.005;
-			if button_state=1 {
-				ob_control.battler_turn=0;
-				ob_main.event_transition=ref_event_exitbattle;
-				ob_main.fade_black=1;
-			}
-		}
-		else { button_state-=0.05; }
-	}
-	else { button_state-=0.05; }
 	//
-	if button_state<0 { button_state=0; }
-	ob_main.fade_black_exit_battle=button_state;
-}
-//————————————————————————————————————————————————————————————————————————————————————————————————————
-if instance_exists(ob_deckbuild) and ob_main.cursor_hide=false {
-	if mouse_x>=x and mouse_y>=y+2 and mouse_x<x+sprite_width and mouse_y<y+sprite_height-2 {
-		switch (button_id) {
-			case 00: ob_deckbuild.tooltip_text="Sort cards by number."; break;
-			case 01: ob_deckbuild.tooltip_text="Sort cards by level."; break;
-			case 02: ob_deckbuild.tooltip_text="Sort cards by attack points."; break;
-			case 03: ob_deckbuild.tooltip_text="Sort cards by defense points."; break;
-			case 04: ob_deckbuild.tooltip_text="Sort cards by hit points."; break;
-			case 05: ob_deckbuild.tooltip_text="Load deck setup 1."; break;
-			case 06: ob_deckbuild.tooltip_text="Load deck setup 2."; break;
-			case 07: ob_deckbuild.tooltip_text="Load deck setup 3."; break;
-			case 08: ob_deckbuild.tooltip_text="Load deck setup 4."; break;
-			case 09: ob_deckbuild.tooltip_text="Load deck setup 5."; break;
-			case 10: ob_deckbuild.tooltip_text="Save deck setup 1."; break;
-			case 11: ob_deckbuild.tooltip_text="Save deck setup 2."; break;
-			case 12: ob_deckbuild.tooltip_text="Save deck setup 3."; break;
-			case 13: ob_deckbuild.tooltip_text="Save deck setup 4."; break;
-			case 14: ob_deckbuild.tooltip_text="Save deck setup 5."; break;
+	if ob_main.cursor_hide=false and mouse_x>=x and mouse_y>=y+2 and mouse_x<x+sprite_width and mouse_y<y+sprite_height-2 {
+		if instance_exists(ob_deckbuild) {
+			switch (button_id) {
+				case 00: ob_deckbuild.tooltip_text="Sort cards by number."; break;
+				case 01: ob_deckbuild.tooltip_text="Sort cards by level."; break;
+				case 02: ob_deckbuild.tooltip_text="Sort cards by attack points."; break;
+				case 03: ob_deckbuild.tooltip_text="Sort cards by defense points."; break;
+				case 04: ob_deckbuild.tooltip_text="Sort cards by hit points."; break;
+				case 05: ob_deckbuild.tooltip_text="Load deck setup 1."; break;
+				case 06: ob_deckbuild.tooltip_text="Load deck setup 2."; break;
+				case 07: ob_deckbuild.tooltip_text="Load deck setup 3."; break;
+				case 08: ob_deckbuild.tooltip_text="Load deck setup 4."; break;
+				case 09: ob_deckbuild.tooltip_text="Load deck setup 5."; break;
+				case 10: ob_deckbuild.tooltip_text="Save deck setup 1."; break;
+				case 11: ob_deckbuild.tooltip_text="Save deck setup 2."; break;
+				case 12: ob_deckbuild.tooltip_text="Save deck setup 3."; break;
+				case 13: ob_deckbuild.tooltip_text="Save deck setup 4."; break;
+				case 14: ob_deckbuild.tooltip_text="Save deck setup 5."; break;
+			}
+			ob_deckbuild.tooltip_lines=1;
 		}
-		ob_deckbuild.tooltip_lines=1;
+		else if button_id>=100 {
+			switch (button_id) {
+				case 101: ob_main.tooltip_text="Reset all options."; break;
+			}
+			ob_main.tooltip_lines=1;
+		}
 	}
 }
