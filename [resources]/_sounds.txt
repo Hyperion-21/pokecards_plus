@@ -1,0 +1,13 @@
+text ticks
+money ticks
+no money error
+coin bounce
+click options/buttons
+click event
+apply powerup
+grab/play cards
+attack
+faint
+get card: common
+get card: rare
+get card: super rare

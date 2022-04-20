@@ -174,9 +174,6 @@ if fade_black_exit>0 {
 if fade_red_delete>0 {
 	sc_drawrectangle(-2,-2,room_width+2,room_height+2,global.color_damage,c_white,0,fade_red_delete,1,0);
 }
-//
-//if textbox_active=true { sc_drawrectangle(screen_main_x+4,screen_main_y+cam_h-52,screen_main_x+cam_w-6,screen_main_y+cam_h-6,c_black,c_white,1,0.5,1,1); }
-//if text_string!="" { sc_drawtext(screen_main_x+12,screen_main_y+cam_h-48,text_show,c_white,c_black,1,0.5,0,233); }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if event_transition=ref_event_victory or event_transition=ref_event_defeat {
 	draw_set_halign(fa_center);
@@ -191,6 +188,14 @@ if event_transition=ref_event_victory or event_transition=ref_event_defeat {
 		draw_set_font(fn_m6x11_XL);
 		sc_drawtext(screen_main_x+cam_w/2,screen_main_y+cam_h/2-10,"DEFEAT",global.color_enemy,global.color_black,1,1,0,-1);
 	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+if textbox_string[textbox_current]!="" {
+	draw_set_font(fn_matchup);
+	draw_set_halign(fa_left);
+	//
+	sc_drawrectangle(screen_main_x+5,screen_main_y+cam_h-51,screen_main_x+cam_w-6,screen_main_y+cam_h-6,global.color_black,global.color_character,1,0.5,1,1);
+	sc_drawtext(screen_main_x+12,screen_main_y+cam_h-47,textbox_show,global.color_white,global.color_black,1,0.5,0,490);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 draw_sprite_ext(sp_border_shading,0,camera_get_view_x(view_camera[0]),camera_get_view_y(view_camera[0]),1,1,0,c_white,option_state[opt_edge]/100);

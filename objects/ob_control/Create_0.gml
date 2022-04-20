@@ -256,14 +256,3 @@ card_focus_hand=-1;
 //
 button_sorthand=false;
 button_nextturn=false;
-//————————————————————————————————————————————————————————————————————————————————————————————————————
-//event_active=false;
-//reset_objects=false;
-//
-textbox_active=false;
-text_string="";
-text_show="";
-text_charnum=1;
-text_timer=0;
-text_timermax=1;
-text_next=false;

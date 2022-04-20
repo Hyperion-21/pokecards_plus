@@ -6,7 +6,7 @@ else if type_chart=true and (mouse_check_button_pressed(mb_left) or mouse_check_
 	type_chart=false;
 }
 //
-if mouse_check_button(mb_middle) or instance_exists(ob_splash) or type_chart=true { cursor_hide=true; }
+if mouse_check_button(mb_middle) or instance_exists(ob_splash) or type_chart=true or textbox_string[textbox_current]!="" { cursor_hide=true; }
 else { cursor_hide=false; }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if effect_money_error>0 { effect_money_error-=0.1; }
@@ -58,12 +58,45 @@ if maindeck_size_max>50 { //not possible anymore, but just in case
 	enemy_maindeck_size=50;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-money_payoff=money_payoff_base+money_payoff_area_bonus*area_zone;
+money_payout=money_payout_base+money_payout_area_bonus*area_zone;
 //
 if area_zone=area_zone_max-1 { battle_hp=100; } //victory road & league: 100
 else {
 	if roadmap_area<roadmap_current_max-1 { battle_hp=10+area_zone*10; } //10 20 30 40 50 60 70 80
 	else { battle_hp=20+area_zone*10; } //gyms: 20 30 40 50 60 70 80 90
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+if textbox_string[textbox_current]!="" {
+	if textbox_show!=textbox_string[textbox_current] {
+		if textbox_timer=textbox_timer_max {
+			//sc_playsound(sn_text,50,false,false,false);
+			textbox_char_pos++;
+			textbox_show=textbox_show+string_char_at(textbox_string[textbox_current],textbox_char_pos);
+			//
+			textbox_timer=0;
+		}
+		else { textbox_timer++; }
+		//
+		if mouse_check_button_pressed(mb_left) or mouse_check_button_pressed(mb_right) {
+			//sc_playsound(sn_text,50,false,false,false);
+			textbox_show=textbox_string[textbox_current];
+		}
+	}
+	else {
+		if mouse_check_button_pressed(mb_left) or mouse_check_button_pressed(mb_right) {
+			textbox_show="";
+			textbox_char_pos=0;
+			textbox_timer=0;
+			textbox_current++;
+			//
+			if textbox_string[textbox_current]="" {
+				for (var i=0; i<=textbox_total; i++;) {
+					textbox_string[i]="";
+				}
+				textbox_current=0;
+			}
+		}
+	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if roadmap_generated=false {
@@ -144,7 +177,7 @@ if roadmap_generated=false {
 				if event_kind[ii][i]=-1 { event_kind[ii][i]=-1; }
 				else if event_kind[ii][i]<400 and i=0 { event_kind[ii][i]=ref_event_battle; free_event=true; } //40% (ensures at least 1 battle in zone)
 				else if event_kind[ii][i]<300 { event_kind[ii][i]=ref_event_battle; free_event=true; } //30%
-				else if event_kind[ii][i]<375 { event_kind[ii][i]=ref_event_payoff; free_event=true; } //7.5%
+				else if event_kind[ii][i]<375 { event_kind[ii][i]=ref_event_payout; free_event=true; } //7.5%
 				else if event_kind[ii][i]<400 { event_kind[ii][i]=ref_event_freecard; free_event=true; } //2.5%
 				else if event_kind[ii][i]<550 { event_kind[ii][i]=ref_event_cardpack; } //15%
 				else if event_kind[ii][i]<700 { event_kind[ii][i]=ref_event_berry; } //15%
@@ -179,7 +212,7 @@ if roadmap_generated=false {
 		event_kind[0][1]=ref_event_tutorial;
 		trainer_sprite[1]=playericon_max+1;
 		trainer_kind[1]=101; //TUTORIAL
-		event_kind[1][1]=ref_event_payoff;
+		event_kind[1][1]=ref_event_payout;
 		event_kind[2][1]=-1;
 		location_type[1]=13; //lab
 		//
@@ -295,7 +328,7 @@ if roadmap_get_details=true {
 			event_description[ii][i]="";
 			//
 			if event_kind[ii][i]=ref_event_battle { event_name[ii][i]="Battle:\n" + trainer_name[i]; }
-			else if event_kind[ii][i]=ref_event_payoff { event_name[ii][i]="Payoff\n($" + string(money_payoff) + ")"; }
+			else if event_kind[ii][i]=ref_event_payout { event_name[ii][i]="Payout\n($" + string(money_payout) + ")"; }
 			else if event_kind[ii][i]=ref_event_freecard { event_name[ii][i]="Free Card"; }
 			else if event_kind[ii][i]=ref_event_cardpack { event_name[ii][i]="Card Pack\n$" + string(event_cost[ref_event_cardpack]); }
 			else if event_kind[ii][i]=ref_event_berry { event_name[ii][i]="Berry Pack\n$" + string(event_cost[ref_event_berry]); }
@@ -379,6 +412,12 @@ else if event_transition>-1 and fade_black>=1 {
 		with (ob_splash) { instance_destroy(); }
 		with (ob_card_splash) { instance_destroy(); }
 		with (ob_background_tile) { instance_destroy(); }
+		//
+		if area_zone=0 and roadmap_area=0 {
+			textbox_string[0]="Welcome to the world of Pokemon cards!";
+			textbox_string[1]="I am Prof. Aspen of the Hourou region, here to help you with the basics.";
+			textbox_string[2]="Do you think you have what it takes to be a Crystal League Champion? Well, let's start from the beginning! Pick your Starter Deck.";
+		}
 	}
 	else if event_transition=ref_event_loop {
 		roadmap_area=0;
@@ -386,8 +425,8 @@ else if event_transition>-1 and fade_black>=1 {
 		zone_first_lap=false;
 		sc_data_save();
 	}
-	else if event_transition=ref_event_payoff {
-		money+=money_payoff;
+	else if event_transition=ref_event_payout {
+		money+=money_payout;
 		roadmap_area++;
 		sc_data_save();
 	}
@@ -428,8 +467,12 @@ else if event_transition>-1 and fade_black>=1 {
 			instance_create_layer(x,y,"instances",ob_event);
 		}
 		else {
-			if option_state[opt_autodeck]=true and (event_transition=ref_event_freecard or event_transition=ref_event_cardpack or event_transition=ref_event_berry or
-			event_transition=ref_event_grass or event_transition=ref_event_fire or event_transition=ref_event_water) {
+			if event_transition=ref_event_grass or event_transition=ref_event_fire or event_transition=ref_event_water {
+				textbox_string[0]="Excellent choice! Now go to your deck and equip your newly acquired cards. Make sure to include all of your berries too, you'll need them!";
+				textbox_string[1]="When you're done, come back here and let's get things started. Or, if you're already familiar with the rules," +
+				" feel free to get a Payout instead!";
+			}
+			else if option_state[opt_autodeck]=true and (event_transition=ref_event_freecard or event_transition=ref_event_cardpack or event_transition=ref_event_berry) {
 				auto_deck_transition=true;
 			}
 			if ob_event.event_cancelled=false { roadmap_area++; }
@@ -447,12 +490,27 @@ else if event_transition>-1 and fade_black>=1 {
 else if event_transition=-1 and fade_black<=0 {
 	if mouse_check_button_pressed(mb_left) and mouse_in_event>-1 and screen_transition=-1 {
 		if money>=event_cost[event_kind[mouse_in_event][roadmap_area]] {
-			event_transition=event_kind[mouse_in_event][roadmap_area];
-			event_cost_standby=event_cost[event_kind[mouse_in_event][roadmap_area]];
+			var battle_conditions=true;
+			if event_kind[mouse_in_event][roadmap_area]=ref_event_tutorial {
+				for (var i=0; i<5; i++;) {
+					if main_card_indeck[i][0]=false { battle_conditions=false; }
+				}
+				if berry_num_used[0][0]<5 { battle_conditions=false; }
+			}
 			//
-			if event_transition=ref_event_glyph { current_glyph_add=event_glyph_add[mouse_in_event][roadmap_area]; }
-			if event_transition=ref_event_battle or event_transition=ref_event_gymbattle or event_transition=ref_event_tutorial {
-				music_player=sc_playsound(ms_battle_intro,100,false,true); }
+			if battle_conditions=true {
+				event_transition=event_kind[mouse_in_event][roadmap_area];
+				event_cost_standby=event_cost[event_kind[mouse_in_event][roadmap_area]];
+				//
+				if event_transition=ref_event_glyph { current_glyph_add=event_glyph_add[mouse_in_event][roadmap_area]; }
+				if event_transition=ref_event_battle or event_transition=ref_event_gymbattle or event_transition=ref_event_tutorial {
+					music_player=sc_playsound(ms_battle_intro,100,false,true); }
+			}
+			else {
+				if event_kind[mouse_in_event][roadmap_area]=ref_event_tutorial {
+					textbox_string[0]="Please go to your deck and equip all of your newly acquired cards!";
+				}
+			}
 		}
 		else if money<event_cost[event_kind[mouse_in_event][roadmap_area]] {
 			effect_money_error=1;
@@ -598,6 +656,7 @@ if button_reset_config!=-1 {
 }
 if button_delete_data!=-1 {
 	if button_delete_data.button_state>=1 {
+		sc_config_save();
 		if file_exists(data_file) { file_delete(data_file); }
 		game_restart();
 	}

@@ -349,31 +349,5 @@ if button_nextturn=true {
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-text_next=false;
-//
-if text_show!=text_string {
-	if text_timer=text_timermax {
-		//sc_playsound(sn_text,50,false,false,false);
-		text_show=text_show+string_char_at(text_string,text_charnum);
-		text_charnum++;
-		text_timer=0;
-	}
-	else { text_timer++; }
-	//
-	if keyboard_check_pressed(vk_space) {
-		//sc_playsound(sn_text,50,false,false,false);
-		text_show=text_string;
-	}
-}
-else if text_string!="" {
-	if keyboard_check_pressed(vk_space) {
-		text_string="";
-		text_show="";
-		text_charnum=1;
-		text_timer=0;
-		text_next=true;
-	}
-}
-//————————————————————————————————————————————————————————————————————————————————————————————————————
 button_sorthand=false;
 button_nextturn=false;

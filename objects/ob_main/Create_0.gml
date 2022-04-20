@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.85"
+#macro game_version "v0.0.0.86"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -68,6 +68,16 @@ card_level_enemy_limit=0;
 maindeck_size_max=0;
 enemy_maindeck_size=0;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+#macro textbox_total 10
+for (var i=0; i<=textbox_total; i++;) { //<= so that an extra empty one is created
+	textbox_string[i]="";
+}
+textbox_show="";
+textbox_current=0;
+textbox_timer=0;
+textbox_timer_max=1;
+textbox_char_pos=0;
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 #macro normal_poke_id_max 251 //normal (non-secret and non-environment) poke cards
 #macro secret_cards_total 2
 #macro environment_cards_total 3
@@ -78,17 +88,17 @@ enemy_maindeck_size=0;
 //
 #macro money_add_base 78 //78 87 96 105 114 123 132 141 150
 #macro money_add_area_bonus 9
-#macro money_payoff_base 50 //50 60 70 80 90 100 110 120 130
-#macro money_payoff_area_bonus 10
+#macro money_payout_base 50 //50 60 70 80 90 100 110 120 130
+#macro money_payout_area_bonus 10
 //
 battle_hp=0;
 money_show=0;
 money_prize=0;
-money_payoff=0;
+money_payout=0;
 effect_money_error=0;
 event_cost_standby=0;
 #macro ref_event_battle 0
-#macro ref_event_payoff 1
+#macro ref_event_payout 1
 #macro ref_event_freecard 2
 #macro ref_event_cardpack 3
 #macro ref_event_berry 4
