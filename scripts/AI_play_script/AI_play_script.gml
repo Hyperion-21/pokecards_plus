@@ -160,6 +160,10 @@ if anypoke_playable=true and ob_main.playing_tutorial=false {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if anypoke_playable=true and ob_main.playing_tutorial=true {
 	if turn_num=2 and enemycard_playplan_id=-1 { AI_play_plan(-1,0,0,0,0,0,0,0,0,0,0,-1,0,-1,0,0); } //ANY CARD > EMPTY SPACE
+	else if turn_num=4 and enemycard_playplan_id=-1 { AI_play_plan(-1,1,0,0,0,0,0,0,0,0,0,-1,0,-1,0,0); } //ANY CARD > VS
+	else if turn_num=6 and enemycard_playplan_id=-1 { AI_play_plan(-1,0,0,0,0,0,0,0,0,0,0,-1,0,-1,0,0); } //ANY CARD > EMPTY SPACE
+	else if turn_num=10 and enemycard_playplan_id=-1 { AI_play_plan(-1,0,0,0,0,0,0,0,0,0,0,-1,0,-1,0,0); } //ANY CARD > EMPTY SPACE
+	else if turn_num=12 and enemycard_playplan_id=-1 { AI_play_plan(-1,-1,0,0,0,0,0,0,0,0,0,-1,0,-1,0,0); } //ANY CARD > ANY > RANDOM SPACE
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 // PLAY (FULL HAND)

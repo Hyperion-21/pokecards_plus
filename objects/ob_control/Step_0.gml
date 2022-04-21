@@ -375,8 +375,8 @@ if ob_main.playing_tutorial=true {
 		}
 	}
 	//
-	if battler_turn=1 and (tutorial_textbox_line_newturn_seen=false or (card_draw_points=0 and tutorial_textbox_line_drawn_seen=false) or
-	(any_card_played=true and all_cards_attacked=true and tutorial_textbox_line_attacked_seen=false)) {
+	if battler_turn=1 and tutorial_textbox_line_current<=tutorial_textbox_line_max and (tutorial_textbox_line_newturn_seen=false or
+	(card_draw_points=0 and tutorial_textbox_line_drawn_seen=false) or (any_card_played=true and all_cards_attacked=true and tutorial_textbox_line_attacked_seen=false)) {
 		sc_textbox(tutorial_textbox_line_current);
 		tutorial_textbox_line_current++;
 		//

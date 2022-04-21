@@ -1,5 +1,0 @@
-pidgey rattata oran		rattata oran oran oran
-gen1				pidgey
-spearow				bellsprout
-gen2				rattata
-				eevee

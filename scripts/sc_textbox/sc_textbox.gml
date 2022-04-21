@@ -16,26 +16,55 @@ else if argument0=2 {
 else if argument0=3 {
 	ob_main.textbox_string[0]="Alright, here we go! Are you ready?";
 }
-else if argument0=4 { //new turn
-	ob_main.textbox_string[0]="Welcome to card battling! Don't worry if it seems complicated at first, the rules are actually quite simple!";
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else if argument0=4 { //tutorial: new turn
+	ob_main.textbox_string[0]="Welcome to your very first card battle! Don't worry if it seems complicated at first, the rules are actually quite simple!";
 	ob_main.textbox_string[1]="It's your turn first, so let's start by drawing cards.\nOn your first turn, you always get 5 Draw Points, or \"DP\". These are used to draw Pokemon and berries from your decks.";
 	ob_main.textbox_string[2]="Drawing a Pokemon (from the deck on your right) costs 2 DP, while drawing berries (from the deck on your left) costs only 1 DP. Berries are necessary to play your Pokemon, so both are important.";
 	ob_main.textbox_string[3]="Anyway, you have 5 DP, which means you can draw right now! Go ahead and draw, let's say, 2 Pokemon and 1 berry.";
 }
-else if argument0=5 { //drawn
+else if argument0=5 { //tutorial: drawn
 	ob_main.textbox_string[0]="Good! It seems both of your Pokemon require 1 Oran Berry to be played, you can see the little berry icon next to their picture. Play the Oran Berry you just got anywhere you want, and then play your Rattata on top of it.";
 	ob_main.textbox_string[1]="Pokemon can't attack during your first turn, so once your Rattata is played, click the big green button to end your turn.";
 }
-else if argument0=6 { //new turn
-	ob_main.textbox_string[0]="I played my Rattata as well, but since it was my first turn, I couldn't attack either.";
+else if argument0=6 { //tutorial: new turn
+	ob_main.textbox_string[0]="I played my Sentret, but since it was my first turn, I couldn't attack either.";
 	ob_main.textbox_string[1]="It is now your turn again! You get 2 DP on all turns after your first. Go ahead and draw two more berries, so that you can play your Pidgey!";
 }
-else if argument0=7 { //drawn
-	ob_main.textbox_string[0]="Good! Play your Pidgey in front of my Rattata, blocking it. Then, attack with both your Pokemon by clicking on them!";
+else if argument0=7 { //tutorial: drawn
+	ob_main.textbox_string[0]="Good! Play your Pidgey in front of my Sentret, blocking them. Then, attack with both your Pokemon by clicking on them!";
 }
-else if argument0=8 { //attacked
-	ob_main.textbox_string[0]="Good job! Your Pidgey attacked my Rattata, dealing damage equal to your Pidgey's attack minus my Rattata's defense. And your Rattata was unopposed, attacking my Hit Points directly.";
-	ob_main.textbox_string[1]="As you can see on the right, the Hit Points bar is now tipped in your favor. Each point of damage dealt directly reduces your opponent's Hit Points while increasing your own. You already took an early step towards victory!";
+else if argument0=8 { //tutorial: attacked
+	ob_main.textbox_string[0]="Good job! Your Pidgey attacked my Sentret, dealing damage equal to your Pidgey's attack minus my Sentret's defense. And your Rattata was unopposed, dealing damage to my Hit Points directly.";
+	ob_main.textbox_string[1]="As you can see on the right, the Hit Points bar is now tipped in your favor. Each point of damage dealt directly reduces your opponent's Hit Points while increasing your own.";
+	ob_main.textbox_string[2]="When your opponent's Hit Points reach 0, you win! You already took an early step towards victory!";
 }
+else if argument0=9 { //tutorial: new turn
+	ob_main.textbox_string[0]="It's your turn again! You have a berry on your hand, but no Pokemon to play. You should draw another one next, then play it and attack once more!";
+}
+else if argument0=12 { //tutorial: new turn
+	ob_main.textbox_string[0]="Next turn! You have no cards to play right now. Draw a Pokemon, then attack with the ones already on the battlefield!";
+}
+else if argument0=15 { //tutorial: new turn
+	ob_main.textbox_string[0]="What a lucky draw, your Spearow has a type advantage over the Bellsprout I played! This is the perfect time to draw some more berries.";
+}
+else if argument0=16 { //tutorial: drawn
+	ob_main.textbox_string[0]="Excellent! When a Pokemon has a type advantage over another, their attacks will always deal 1 extra point of damage, even if the receiving Pokemon has a higher defense!";
+	ob_main.textbox_string[1]="Contrary to real Pokemon though, type advantages in cards only deal bonus damage. This means there are no type resistances or immunities, and Pokemon that are weak to a certain type will always receive more damage from it!";
+	ob_main.textbox_string[2]="This makes it so that, for example, Bulbasaur (a grass/poison Pokemon) will always deal bonus damage to other Bulbasaurs, since Grass is weak against Poison attacks!";
+	ob_main.textbox_string[3]="But anyway, go ahead and play your Spearow right in front of my Bellsprout, then attack to take them out in one hit!";
+}
+else if argument0=17 { //tutorial: attacked
+	ob_main.textbox_string[0]="Ouch! I wasn't expecting our battle to go this way, but it's definitely a good lesson! For both of us.";
+}
+else if argument0=18 { //tutorial: new turn
+	ob_main.textbox_string[0]="My Eevee has a glyph! Glyphs are unique abilities that can be added to cards. This one makes it so that my Eevee's attack is doubled when their HP is almost gone.";
+	ob_main.textbox_string[1]="You can see what any glyph does by placing your mouse over its icon. There are many of them out there, so look around!";
+	ob_main.textbox_string[2]="But anyway! Draw your last Pokemon from your deck and play it in front of my Pidgey to take them out. Then attack with the rest of your Pokemon as well!";
+}
+else if argument0=21 { //tutorial: new turn
+	ob_main.textbox_string[0]="It seems our battle is almost over! Attack once more with your Pokemon to deal the final blow and take me down.";
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }

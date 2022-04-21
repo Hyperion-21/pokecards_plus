@@ -56,6 +56,11 @@ else if ob_main.playing_tutorial=true {
 		if poke_held=0 { AI_draw(0); }
 		else { AI_draw(1); }
 	}
+	if turn_num=4 { AI_draw(0); }
+	if turn_num=6 { AI_draw(0); }
+	if turn_num=8 { AI_draw(0); }
+	if turn_num=10 { AI_draw(1); }
+	if turn_num=12 { AI_draw(0); }
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }

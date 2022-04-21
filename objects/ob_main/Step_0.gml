@@ -62,7 +62,8 @@ money_payout=money_payout_base+money_payout_area_bonus*area_zone;
 //
 if area_zone=area_zone_max-1 { battle_hp=100; } //victory road & league: 100
 else {
-	if roadmap_area<roadmap_current_max-1 { battle_hp=10+area_zone*10; } //10 20 30 40 50 60 70 80
+	if playing_tutorial=true { battle_hp=5; }
+	else if roadmap_area<roadmap_current_max-1 { battle_hp=10+area_zone*10; } //10 20 30 40 50 60 70 80
 	else { battle_hp=20+area_zone*10; } //gyms: 20 30 40 50 60 70 80 90
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
