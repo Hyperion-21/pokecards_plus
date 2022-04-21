@@ -58,16 +58,25 @@ repeat (ob_main.maindeck_total) {
 //
 var i=0, card_shuffle;
 repeat (card_maindeck_total) {
-	do {
-		var shuffle_taken=false;
-		card_shuffle[i]=irandom(card_maindeck_total-1);
-		//
-		var ii=0;
-		repeat (i) {
-			if card_shuffle[i]=card_shuffle[ii] { shuffle_taken=true; }
-			ii++;
-		}
-	} until (shuffle_taken=false);
+	if ob_main.playing_tutorial=true {
+		if ob_main.main_card_id[i]=001 or ob_main.main_card_id[i]=004 or ob_main.main_card_id[i]=007 { card_shuffle[i]=2; } //bulbasaur, charmander, squirtle
+		else if ob_main.main_card_id[i]=152 or ob_main.main_card_id[i]=155 or ob_main.main_card_id[i]=158 { card_shuffle[i]=0; } //chikorita, cyndaquil, totodile
+		else if ob_main.main_card_id[i]=016 { card_shuffle[i]=4; } //pidgey
+		else if ob_main.main_card_id[i]=021 { card_shuffle[i]=1; } //spearow
+		else if ob_main.main_card_id[i]=019 { card_shuffle[i]=3; } //rattata
+	}
+	else {
+		do {
+			var shuffle_taken=false;
+			card_shuffle[i]=irandom(card_maindeck_total-1);
+			//
+			var ii=0;
+			repeat (i) {
+				if card_shuffle[i]=card_shuffle[ii] { shuffle_taken=true; }
+				ii++;
+			}
+		} until (shuffle_taken=false);
+	}
 	i++;
 }
 //
@@ -147,16 +156,21 @@ for (var i=0; i<=3; i++;) {
 //
 var i=0, card_shuffle;
 repeat (enemycard_maindeck_total) {
-	do {
-		var shuffle_taken=false;
-		card_shuffle[i]=irandom(enemycard_maindeck_total-1);
-		//
-		var ii=0;
-		repeat (i) {
-			if card_shuffle[i]=card_shuffle[ii] { shuffle_taken=true; }
-			ii++;
-		}
-	} until (shuffle_taken=false);
+	if ob_main.playing_tutorial=true {
+		card_shuffle[i]=enemycard_maindeck_total-1-i;
+	}
+	else {
+		do {
+			var shuffle_taken=false;
+			card_shuffle[i]=irandom(enemycard_maindeck_total-1);
+			//
+			var ii=0;
+			repeat (i) {
+				if card_shuffle[i]=card_shuffle[ii] { shuffle_taken=true; }
+				ii++;
+			}
+		} until (shuffle_taken=false);
+	}
 	i++;
 }
 //
@@ -219,6 +233,11 @@ tooltip_timer=0;
 tooltip_timer_max=300;
 first_turn_attack_warning=false;
 hand_full_draw_warning=false;
+//
+tutorial_textbox_line_current=4; //first tutorial line in battle
+tutorial_textbox_line_newturn_seen=false;
+tutorial_textbox_line_drawn_seen=false;
+tutorial_textbox_line_attacked_seen=false;
 //
 hp_max=ob_main.battle_hp;
 player_hp=hp_max;

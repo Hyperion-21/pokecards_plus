@@ -122,21 +122,24 @@ if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_hei
 	(num_in_berrydeck>=0 and num_in_berrydeck=ob_control.card_berrydeck_total-1 and ob_control.card_draw_points>=ob_control.card_drawcost_berry)) {
 		ob_control.card_draw_click=true;
 		if ob_control.card_hand_total<ob_control.card_hand_max {
-			ob_control.card_hand_total++;
-			ob_control.card_hand[ob_control.card_hand_total-1]=id;
-			card_face=true;
-			//
-			if num_in_maindeck>=0 and num_in_maindeck=ob_control.card_maindeck_total-1 {
-				ob_control.card_maindeck_total--;
-				ob_control.card_maindeck[num_in_maindeck]=-1;
-				num_in_maindeck=-1;
-				ob_control.card_draw_points-=ob_control.card_drawcost_main;
-			}
-			else if num_in_berrydeck>=0 and num_in_berrydeck=ob_control.card_berrydeck_total-1 {
-				ob_control.card_berrydeck_total--;
-				ob_control.card_berrydeck[num_in_berrydeck]=-1;
-				num_in_berrydeck=-1;
-				ob_control.card_draw_points-=ob_control.card_drawcost_berry;
+			if ob_main.playing_tutorial=false or (ob_main.playing_tutorial=true and
+			((num_in_maindeck>=0 and sc_tutorial_conditions(1,-1)) or (num_in_berrydeck>=0 and sc_tutorial_conditions(2,-1)))) {
+				ob_control.card_hand_total++;
+				ob_control.card_hand[ob_control.card_hand_total-1]=id;
+				card_face=true;
+				//
+				if num_in_maindeck>=0 and num_in_maindeck=ob_control.card_maindeck_total-1 {
+					ob_control.card_maindeck_total--;
+					ob_control.card_maindeck[num_in_maindeck]=-1;
+					num_in_maindeck=-1;
+					ob_control.card_draw_points-=ob_control.card_drawcost_main;
+				}
+				else if num_in_berrydeck>=0 and num_in_berrydeck=ob_control.card_berrydeck_total-1 {
+					ob_control.card_berrydeck_total--;
+					ob_control.card_berrydeck[num_in_berrydeck]=-1;
+					num_in_berrydeck=-1;
+					ob_control.card_draw_points-=ob_control.card_drawcost_berry;
+				}
 			}
 		}
 		else {

@@ -75,7 +75,7 @@ repeat (enemycard_hand_total) {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 // PLAY
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if anypoke_playable=true {
+if anypoke_playable=true and ob_main.playing_tutorial=false {
 	var var_courage=ref_glyph_courage;
 	var var_piercing=ref_glyph_piercing;
 	var var_shield=ref_glyph_shield;
@@ -154,6 +154,12 @@ if anypoke_playable=true {
 		if enemycard_playplan_id=-1 { AI_play_plan(1,-1,0,0,0,1,0,0,0,0,0,var_piercing,1,-1,0,0); } //PIERCING ATTACK, HIGHEST ATK > ANY > RECEIVE NO DAMAGE
 		if enemycard_playplan_id=-1 { AI_play_plan(3,-1,0,0,0,0,0,0,0,0,0,-1,0,-1,0,0); } //HIGHEST VALUE > ANY > RANDOM SPACE
 	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+// PLAY: TUTORIAL
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+if anypoke_playable=true and ob_main.playing_tutorial=true {
+	if turn_num=2 and enemycard_playplan_id=-1 { AI_play_plan(-1,0,0,0,0,0,0,0,0,0,0,-1,0,-1,0,0); } //ANY CARD > EMPTY SPACE
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 // PLAY (FULL HAND)

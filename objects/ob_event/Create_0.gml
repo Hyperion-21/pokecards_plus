@@ -55,7 +55,10 @@ else if event_kind=ref_event_freecard {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=ref_event_water {
-	card_prize=10; //exact amount of cards and berries is also checked manually when entering tutorial
+	//specific pokemon ids are checked manually when creating deck in tutorial
+	//exact amount of cards and berries is also checked manually when entering tutorial
+	//
+	card_prize=10;
 	var i=0;
 	repeat (card_prize) {
 		if i<=4 {

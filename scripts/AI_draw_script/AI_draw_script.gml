@@ -24,7 +24,7 @@ for (var i=0; i<enemycard_hand_total; i++;) {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 // DRAW: RANDOM
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if random_value<10 {
+if random_value<10 and ob_main.playing_tutorial=false {
 	do {
 		var enemy_draw_cat=irandom(1);
 	} until (AI_draw_available(enemy_draw_cat));
@@ -34,7 +34,7 @@ if random_value<10 {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 // DRAW: AT LEAST 2 POKEMON > BERRIES IF NEEDED > POKEMON > BERRIES
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-else if random_value<100 {
+else if random_value<100 and ob_main.playing_tutorial=false {
 	if poke_held<2 and AI_draw_available(0) {
 		AI_draw(0);
 	}
@@ -46,6 +46,15 @@ else if random_value<100 {
 	}
 	else if AI_draw_available(1) {
 		AI_draw(1);
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+// DRAW: TUTORIAL
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else if ob_main.playing_tutorial=true {
+	if turn_num=2 {
+		if poke_held=0 { AI_draw(0); }
+		else { AI_draw(1); }
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

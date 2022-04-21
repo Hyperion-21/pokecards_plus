@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.86"
+#macro game_version "v0.0.0.87"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -51,6 +51,7 @@ roadmap_lab_max=3;
 roadmap_get_details=true;
 zone_name="";
 event_transition=-1; //same as events, 300 victory, 301 defeat, 999 main menu
+event_transition_standby=-1;
 fade_black=0;
 fade_black_exit=0;
 fade_red_delete=0;
@@ -67,6 +68,8 @@ card_level_enemy_limit=0;
 //
 maindeck_size_max=0;
 enemy_maindeck_size=0;
+//
+playing_tutorial=false;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 #macro textbox_total 10
 for (var i=0; i<=textbox_total; i++;) { //<= so that an extra empty one is created

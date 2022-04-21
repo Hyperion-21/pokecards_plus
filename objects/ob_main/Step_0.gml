@@ -77,7 +77,7 @@ if textbox_string[textbox_current]!="" {
 		}
 		else { textbox_timer++; }
 		//
-		if mouse_check_button_pressed(mb_left) or mouse_check_button_pressed(mb_right) {
+		if textbox_char_pos>10 and (mouse_check_button_pressed(mb_left) or mouse_check_button_pressed(mb_right)) {
 			//sc_playsound(sn_text,50,false,false,false);
 			textbox_show=textbox_string[textbox_current];
 		}
@@ -94,6 +94,14 @@ if textbox_string[textbox_current]!="" {
 					textbox_string[i]="";
 				}
 				textbox_current=0;
+			}
+			//
+			if event_transition_standby!=-1 {
+				event_transition=event_transition_standby;
+				event_transition_standby=-1;
+				//
+				if event_transition=ref_event_tutorial { playing_tutorial=true; }
+				if event_transition=ref_event_gymbattle or event_transition=ref_event_tutorial { music_player=sc_playsound(ms_battle_intro,100,false,true); }
 			}
 		}
 	}
@@ -399,7 +407,7 @@ if event_transition>-1 and fade_black<1 {
 	or event_transition=ref_event_loop { fade_black+=0.012; }
 	else { fade_black+=0.04; }
 }
-else if event_transition=-1 and fade_black>0 {
+else if event_transition=-1 and event_transition_standby=-1 and fade_black>0 {
 	fade_black-=0.04;
 }
 else if event_transition>-1 and fade_black>=1 {
@@ -413,11 +421,7 @@ else if event_transition>-1 and fade_black>=1 {
 		with (ob_card_splash) { instance_destroy(); }
 		with (ob_background_tile) { instance_destroy(); }
 		//
-		if area_zone=0 and roadmap_area=0 {
-			textbox_string[0]="Welcome to the world of Pokemon cards!";
-			textbox_string[1]="I am Prof. Aspen of the Hourou region, here to help you with the basics.";
-			textbox_string[2]="Do you think you have what it takes to be a Crystal League Champion? Well, let's start from the beginning! Pick your Starter Deck.";
-		}
+		if area_zone=0 and roadmap_area=0 { sc_textbox(0); }
 	}
 	else if event_transition=ref_event_loop {
 		roadmap_area=0;
@@ -460,6 +464,7 @@ else if event_transition>-1 and fade_black>=1 {
 		money_prize=0;
 		fade_black_exit=0;
 		type_chart=false;
+		if playing_tutorial=true { playing_tutorial=false; }
 		if roadmap_area<roadmap_current_max { sc_data_save(); }
 	}
 	else {
@@ -467,11 +472,7 @@ else if event_transition>-1 and fade_black>=1 {
 			instance_create_layer(x,y,"instances",ob_event);
 		}
 		else {
-			if event_transition=ref_event_grass or event_transition=ref_event_fire or event_transition=ref_event_water {
-				textbox_string[0]="Excellent choice! Now go to your deck and equip your newly acquired cards. Make sure to include all of your berries too, you'll need them!";
-				textbox_string[1]="When you're done, come back here and let's get things started. Or, if you're already familiar with the rules," +
-				" feel free to get a Payout instead!";
-			}
+			if event_transition=ref_event_grass or event_transition=ref_event_fire or event_transition=ref_event_water { sc_textbox(1); }
 			else if option_state[opt_autodeck]=true and (event_transition=ref_event_freecard or event_transition=ref_event_cardpack or event_transition=ref_event_berry) {
 				auto_deck_transition=true;
 			}
@@ -487,29 +488,33 @@ else if event_transition>-1 and fade_black>=1 {
 	//
 	event_transition=-1;
 }
-else if event_transition=-1 and fade_black<=0 {
+else if event_transition=-1 and event_transition_standby=-1 and fade_black<=0 {
 	if mouse_check_button_pressed(mb_left) and mouse_in_event>-1 and screen_transition=-1 {
 		if money>=event_cost[event_kind[mouse_in_event][roadmap_area]] {
-			var battle_conditions=true;
+			var event_conditions=true;
 			if event_kind[mouse_in_event][roadmap_area]=ref_event_tutorial {
 				for (var i=0; i<5; i++;) {
-					if main_card_indeck[i][0]=false { battle_conditions=false; }
+					if main_card_indeck[i][0]=false { event_conditions=false; }
 				}
-				if berry_num_used[0][0]<5 { battle_conditions=false; }
+				if berry_num_used[0][0]<5 { event_conditions=false; }
 			}
 			//
-			if battle_conditions=true {
-				event_transition=event_kind[mouse_in_event][roadmap_area];
+			if event_conditions=true {
 				event_cost_standby=event_cost[event_kind[mouse_in_event][roadmap_area]];
+				event_transition_standby=event_kind[mouse_in_event][roadmap_area];
 				//
-				if event_transition=ref_event_glyph { current_glyph_add=event_glyph_add[mouse_in_event][roadmap_area]; }
-				if event_transition=ref_event_battle or event_transition=ref_event_gymbattle or event_transition=ref_event_tutorial {
-					music_player=sc_playsound(ms_battle_intro,100,false,true); }
+				if event_transition_standby=ref_event_tutorial { sc_textbox(3); }
+				else if event_transition_standby=ref_event_gymbattle { sc_textbox(); }
+				else {
+					event_transition=event_transition_standby;
+					event_transition_standby=-1;
+					//
+					if event_transition=ref_event_glyph { current_glyph_add=event_glyph_add[mouse_in_event][roadmap_area]; }
+					if event_transition=ref_event_battle { music_player=sc_playsound(ms_battle_intro,100,false,true); }
+				}
 			}
 			else {
-				if event_kind[mouse_in_event][roadmap_area]=ref_event_tutorial {
-					textbox_string[0]="Please go to your deck and equip all of your newly acquired cards!";
-				}
+				if event_kind[mouse_in_event][roadmap_area]=ref_event_tutorial { sc_textbox(2); }
 			}
 		}
 		else if money<event_cost[event_kind[mouse_in_event][roadmap_area]] {
@@ -519,6 +524,7 @@ else if event_transition=-1 and fade_black<=0 {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 //CHEATS
+if keyboard_check_pressed(vk_multiply) { game_restart(); }
 if keyboard_check_pressed(vk_add) { roadmap_area++; }
 if keyboard_check_pressed(vk_numpad0) { money+=10000; }
 //
@@ -541,7 +547,8 @@ if roadmap_area=roadmap_current_max {
 if !instance_exists(ob_control) and !instance_exists(ob_event) {
 	var screen_x=camera_get_view_x(view_camera[0]);
 	//
-	if screen_x=screen_main_x and event_transition=-1 and screen_transition=-1 and cursor_hide=false and (keyboard_check_pressed(vk_left) or keyboard_check_pressed(ord("A")) or
+	if screen_x=screen_main_x and event_transition=-1 and event_transition_standby=-1 and screen_transition=-1 and cursor_hide=false and
+	(keyboard_check_pressed(vk_left) or keyboard_check_pressed(ord("A")) or
 	(mouse_x>=screen_main_x+32-2 and mouse_y>=screen_main_y+126-2 and mouse_x<=screen_main_x+32+17 and mouse_y<=screen_main_y+126+17)) {
 		menu_options_hover=true;
 		mouse_cursor=1;
@@ -559,7 +566,8 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 		menu_options_hover=false;
 	}
 	//
-	if screen_x=screen_main_x and ((event_transition=-1 and screen_transition=-1 and cursor_hide=false and (keyboard_check_pressed(vk_right) or keyboard_check_pressed(ord("D")) or
+	if screen_x=screen_main_x and ((event_transition=-1 and event_transition_standby=-1 and screen_transition=-1 and cursor_hide=false and
+	(keyboard_check_pressed(vk_right) or keyboard_check_pressed(ord("D")) or
 	(mouse_x>=screen_main_x+cam_w-48-2 and mouse_y>=screen_main_y+126-2 and mouse_x<=screen_main_x+cam_w-48+17 and mouse_y<=screen_main_y+126+17))) or auto_deck_transition=true) {
 		menu_deck_hover=true;
 		mouse_cursor=1;
@@ -573,7 +581,8 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 		menu_deck_hover=false;
 	}
 	//
-	if screen_x=screen_options_x and event_transition=-1 and screen_transition=-1 and cursor_hide=false and (keyboard_check_pressed(vk_right) or keyboard_check_pressed(ord("D")) or
+	if screen_x=screen_options_x and event_transition=-1 and event_transition_standby=-1 and screen_transition=-1 and cursor_hide=false and
+	(keyboard_check_pressed(vk_right) or keyboard_check_pressed(ord("D")) or
 	(mouse_x>=screen_options_x+cam_w-32-2 and mouse_y>=screen_main_y+136-2 and mouse_x<=screen_options_x+cam_w-32+17 and mouse_y<=screen_main_y+136+17)) {
 		menu_back_options_hover=true;
 		mouse_cursor=1;
@@ -592,7 +601,8 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 		menu_back_options_hover=false;
 	}
 	//
-	if screen_x=screen_deck_x and event_transition=-1 and screen_transition=-1 and cursor_hide=false and (keyboard_check_pressed(vk_left) or keyboard_check_pressed(ord("A")) or
+	if screen_x=screen_deck_x and event_transition=-1 and event_transition_standby=-1 and screen_transition=-1 and cursor_hide=false and
+	(keyboard_check_pressed(vk_left) or keyboard_check_pressed(ord("A")) or
 	(mouse_x>=screen_deck_x+16-2 and mouse_y>=screen_main_y+136-2 and mouse_x<=screen_deck_x+16+17 and mouse_y<=screen_main_y+136+17)) {
 		menu_back_deck_hover=true;
 		mouse_cursor=1;

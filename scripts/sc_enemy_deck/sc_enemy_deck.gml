@@ -218,11 +218,12 @@ else if argument0=101 { //TUTORIAL (PROF. ASPEN)
 	enemycard_maindeck_total=5;
 	//
 	for (var i=0; i<enemycard_maindeck_total; i++;) {
-		if i<1 { sc_enemy_deck_addcard(i,016,1,-1,-1,-1,1,0); } //PIDGEY, LV 1
-		else if i<2 { sc_enemy_deck_addcard(i,019,1,-1,-1,-1,1,0); } //RATTATA, LV 1
-		else if i<3 { sc_enemy_deck_addcard(i,019,1,-1,-1,-1,1,0); } //RATTATA, LV 1
-		else if i<4 { sc_enemy_deck_addcard(i,010,1,-1,-1,-1,1,0); } //CATERPIE, LV 1
-		else if i<5 { sc_enemy_deck_addcard(i,011,1,ref_glyph_weakness,-1,-1,1,0); } //METAPOD, LV 1
+		//all use the same berries, to avoid berry deck shuffle issues
+		if i<1 { sc_enemy_deck_addcard(i,019,1,-1,-1,-1,1,0); } //RATTATA, LV 1 (IN 1)
+		else if i<2 { sc_enemy_deck_addcard(i,016,1,-1,-1,-1,1,0); } //PIDGEY, LV 1 (IN 1)
+		else if i<3 { sc_enemy_deck_addcard(i,069,1,-1,-1,-1,1,0); } //BELLSPROUT, LV 1 (IN 1)
+		else if i<4 { sc_enemy_deck_addcard(i,019,1,-1,-1,-1,1,0); } //RATTATA, LV 1 (IN 1)
+		else if i<5 { sc_enemy_deck_addcard(i,133,1,ref_glyph_courage,-1,-1,1,0); } //EEVEE, LV 1 (IN 1)
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

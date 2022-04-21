@@ -62,10 +62,10 @@
 ✔	show area names
 ✔	all gym decks
 ✔	textbox system
-W 20/4	tutorial
+W 20/4+	tutorial
 T 21/4	battle intro dialogues
-T 21/4	credits
-T 21/4	league roadmap
-F 22/4+	extra visual effects
-F 22/4+	sound effects
+F 22/4	credits
+F 22/4	league roadmap
+S 23/4+	extra visual effects
+S 23/4+	sound effects
 S 24/4	ending
