@@ -1,3 +1,6 @@
+if mouse_check_button(mb_middle) or instance_exists(ob_splash) or type_chart=true or credits_screen=true or textbox_string[textbox_current]!="" { cursor_hide=true; }
+else { cursor_hide=false; }
+//
 if type_chart_toggle=true {
 	type_chart=true;
 	type_chart_toggle=false;
@@ -6,8 +9,13 @@ else if type_chart=true and (mouse_check_button_pressed(mb_left) or mouse_check_
 	type_chart=false;
 }
 //
-if mouse_check_button(mb_middle) or instance_exists(ob_splash) or type_chart=true or textbox_string[textbox_current]!="" { cursor_hide=true; }
-else { cursor_hide=false; }
+if credits_screen_toggle=true {
+	credits_screen=true;
+	credits_screen_toggle=false;
+}
+else if credits_screen=true and (mouse_check_button_pressed(mb_left) or mouse_check_button_pressed(mb_right)) {
+	credits_screen=false;
+}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if effect_money_error>0 { effect_money_error-=0.1; }
 //
@@ -37,7 +45,7 @@ card_level_spawn_limit=floor((area_zone+1)/1.5)+1; //1 2 3 3 4 5 5 6 (7)
 //
 card_level_enemy_min=area_zone; //1 1 2 3 4 5 6 7 (8)
 if card_level_enemy_min<=0 { card_level_enemy_min=1; }
-if area_zone>0 or zone_first_lap=false or roadmap_area=roadmap_current_max-1 { card_level_enemy_limit=card_level_player_limit; }
+if area_zone>0 or zone_first_lap=false or playing_gym=true { card_level_enemy_limit=card_level_player_limit; }
 else { card_level_enemy_limit=1; } //first zone, first lap
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if audio_is_playing(ms_main) and area_zone=area_zone_max-1 and roadmap_area>=roadmap_current_max-roadmap_league_max {
@@ -48,7 +56,7 @@ else if audio_is_playing(ms_league) and !(area_zone=area_zone_max-1 and roadmap_
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 maindeck_size_max=10+area_zone*5; //10 15 20 25 30 35 40 45 (50)
-if zone_first_lap=false { enemy_maindeck_size=maindeck_size_max; }
+if zone_first_lap=false or playing_gym=true or playing_elite=true { enemy_maindeck_size=maindeck_size_max; }
 else {
 	enemy_maindeck_size=round((maindeck_size_max-5)+(5*roadmap_area/(roadmap_current_max-1)));
 	if enemy_maindeck_size<5 { enemy_maindeck_size=5; } //not possible anymore, but just in case
@@ -60,12 +68,9 @@ if maindeck_size_max>50 { //not possible anymore, but just in case
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 money_payout=money_payout_base+money_payout_area_bonus*area_zone;
 //
-if area_zone=area_zone_max-1 { battle_hp=100; } //victory road & league: 100
-else {
-	if playing_tutorial=true { battle_hp=5; }
-	else if roadmap_area<roadmap_current_max-1 { battle_hp=10+area_zone*10; } //10 20 30 40 50 60 70 80
-	else { battle_hp=20+area_zone*10; } //gyms: 20 30 40 50 60 70 80 90
-}
+if playing_tutorial=true { battle_hp=5; }
+else if playing_gym=false and playing_elite=false { battle_hp=10+area_zone*10; } //10 20 30 40 50 60 70 80 (90)
+else { battle_hp=20+area_zone*10; } //gyms: 20 30 40 50 60 70 80 90 (100)
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if textbox_string[textbox_current]!="" {
 	if textbox_show!=textbox_string[textbox_current] {
@@ -101,8 +106,13 @@ if textbox_string[textbox_current]!="" {
 				event_transition=event_transition_standby;
 				event_transition_standby=-1;
 				//
+				if event_transition=ref_event_gymbattle { playing_gym=true; }
+				if event_transition=ref_event_elitebattle or event_transition=ref_event_championbattle { playing_elite=true; }
 				if event_transition=ref_event_tutorial { playing_tutorial=true; }
-				if event_transition=ref_event_gymbattle or event_transition=ref_event_tutorial { music_player=sc_playsound(ms_battle_intro,100,false,true); }
+				if event_transition=ref_event_gymbattle or event_transition=ref_event_elitebattle or event_transition=ref_event_championbattle or
+				event_transition=ref_event_tutorial {
+					music_player=sc_playsound(ms_battle_intro,100,false,true);
+				}
 			}
 		}
 	}
@@ -225,6 +235,7 @@ if roadmap_generated=false {
 		event_kind[2][1]=-1;
 		location_type[1]=13; //lab
 		//
+		//events referenced in dialogue after tutorial
 		event_kind[0][2]=ref_event_levelup;
 		event_kind[1][2]=ref_event_cardpack;
 		event_kind[2][2]=ref_event_freecard;
@@ -239,24 +250,39 @@ if roadmap_generated=false {
 	}
 	//
 	if area_zone=area_zone_max-1 {
-		event_kind[0][roadmap_current_max-5]=ref_event_gymbattle;
+		event_kind[0][roadmap_current_max-5]=ref_event_elitebattle;
 		trainer_kind[roadmap_current_max-5]=208; //ELITE
+		trainer_sprite[roadmap_current_max-5]=playericon_max+10+0;
+		event_kind[1][roadmap_current_max-5]=ref_event_loop;
+		event_kind[2][roadmap_current_max-5]=-1;
 		location_type[roadmap_current_max-5]=15; //city
 		//
-		event_kind[0][roadmap_current_max-4]=ref_event_gymbattle;
+		event_kind[0][roadmap_current_max-4]=ref_event_elitebattle;
+		trainer_sprite[roadmap_current_max-4]=playericon_max+10+1;
 		trainer_kind[roadmap_current_max-4]=209; //ELITE
+		event_kind[1][roadmap_current_max-4]=ref_event_loop;
+		event_kind[2][roadmap_current_max-4]=-1;
 		location_type[roadmap_current_max-4]=15; //city
 		//
-		event_kind[0][roadmap_current_max-3]=ref_event_gymbattle;
+		event_kind[0][roadmap_current_max-3]=ref_event_elitebattle;
+		trainer_sprite[roadmap_current_max-3]=playericon_max+10+2;
 		trainer_kind[roadmap_current_max-3]=210; //ELITE
+		event_kind[1][roadmap_current_max-3]=ref_event_loop;
+		event_kind[2][roadmap_current_max-3]=-1;
 		location_type[roadmap_current_max-3]=15; //city
 		//
-		event_kind[0][roadmap_current_max-2]=ref_event_gymbattle;
+		event_kind[0][roadmap_current_max-2]=ref_event_elitebattle;
+		trainer_sprite[roadmap_current_max-2]=playericon_max+10+3;
 		trainer_kind[roadmap_current_max-2]=211; //ELITE
+		event_kind[1][roadmap_current_max-2]=ref_event_loop;
+		event_kind[2][roadmap_current_max-2]=-1;
 		location_type[roadmap_current_max-2]=15; //city
 		//
-		event_kind[0][roadmap_current_max-1]=ref_event_gymbattle;
-		trainer_kind[roadmap_current_max-1]=212; //ELITE
+		event_kind[0][roadmap_current_max-1]=ref_event_championbattle;
+		trainer_sprite[roadmap_current_max-1]=playericon_max+10+4;
+		trainer_kind[roadmap_current_max-1]=212; //CHAMPION
+		event_kind[1][roadmap_current_max-1]=ref_event_loop;
+		event_kind[2][roadmap_current_max-1]=-1;
 		location_type[roadmap_current_max-1]=15; //city
 	}
 	else {
@@ -319,7 +345,7 @@ if roadmap_get_details=true {
 			case 101: trainer_name[i]="Prof. Aspen"; break;
 			case 200: trainer_name[i]="Ian"; break;
 			case 201: trainer_name[i]="Cammie"; break;
-			case 202: trainer_name[i]="Benny"; break;
+			case 202: trainer_name[i]="Walker"; break;
 			case 203: trainer_name[i]="Madison"; break;
 			case 204: trainer_name[i]="Zoe"; break;
 			case 205: trainer_name[i]="Vincent"; break;
@@ -349,6 +375,8 @@ if roadmap_get_details=true {
 			else if event_kind[ii][i]=ref_event_fire { event_name[ii][i]="Fire\nSt. Deck"; }
 			else if event_kind[ii][i]=ref_event_water { event_name[ii][i]="Water\nSt. Deck"; }
 			else if event_kind[ii][i]=ref_event_gymbattle { event_name[ii][i]="Gym Battle:\n" + trainer_name[i]; }
+			else if event_kind[ii][i]=ref_event_elitebattle { event_name[ii][i]="Elite Battle:\n" + trainer_name[i]; }
+			else if event_kind[ii][i]=ref_event_championbattle { event_name[ii][i]="Final Battle:\n" + trainer_name[i]; }
 			else if event_kind[ii][i]=ref_event_tutorial { event_name[ii][i]="Tutorial:\n" + trainer_name[i]; }
 			else if event_kind[ii][i]=ref_event_glyph {
 				event_name[ii][i]="Glyph\n$" + string(event_cost[ref_event_glyph]);
@@ -403,10 +431,16 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if event_transition>-1 and fade_black<1 {
-	if event_transition=ref_event_victory or event_transition=ref_event_defeat or event_transition=ref_event_exitbattle { fade_black+=0.0025; }
-	else if event_transition=ref_mainmenu or event_transition=ref_event_battle or event_transition=ref_event_gymbattle or event_transition=ref_event_tutorial
-	or event_transition=ref_event_loop { fade_black+=0.012; }
-	else { fade_black+=0.04; }
+	if event_transition=ref_event_victory or event_transition=ref_event_defeat or event_transition=ref_event_exitbattle {
+		fade_black+=0.0025;
+	}
+	else if event_transition=ref_event_battle or event_transition=ref_event_gymbattle or event_transition=ref_event_elitebattle or event_transition=ref_event_championbattle or
+	event_transition=ref_event_tutorial or event_transition=ref_event_loop or event_transition=ref_mainmenu {
+		fade_black+=0.012;
+	}
+	else {
+		fade_black+=0.04;
+	}
 }
 else if event_transition=-1 and event_transition_standby=-1 and fade_black>0 {
 	fade_black-=0.04;
@@ -422,12 +456,17 @@ else if event_transition>-1 and fade_black>=1 {
 		with (ob_card_splash) { instance_destroy(); }
 		with (ob_background_tile) { instance_destroy(); }
 		//
-		if area_zone=0 and roadmap_area=0 { sc_textbox(0); }
+		if area_zone=0 and roadmap_area=0 and zone_first_lap=true { sc_textbox(0); }
 	}
 	else if event_transition=ref_event_loop {
-		roadmap_area=0;
-		roadmap_generated=false;
-		zone_first_lap=false;
+		if area_zone=area_zone_max-1 and roadmap_area>roadmap_current_max-roadmap_league_max {
+			roadmap_area=roadmap_current_max-roadmap_league_max;
+		}
+		else {
+			roadmap_area=0;
+			roadmap_generated=false;
+			zone_first_lap=false;
+		}
 		sc_data_save();
 	}
 	else if event_transition=ref_event_payout {
@@ -435,12 +474,27 @@ else if event_transition>-1 and fade_black>=1 {
 		roadmap_area++;
 		sc_data_save();
 	}
-	else if event_transition=ref_event_battle or event_transition=ref_event_gymbattle or event_transition=ref_event_tutorial {
+	else if event_transition=ref_event_battle or event_transition=ref_event_gymbattle or event_transition=ref_event_elitebattle or event_transition=ref_event_championbattle or
+	event_transition=ref_event_tutorial {
 		instance_create_layer(x,y,"instances",ob_control);
-		money_prize=irandom_range((money_add_base+money_add_area_bonus*area_zone)*0.9,(money_add_base+money_add_area_bonus*area_zone)*1.1);
-		if event_transition=ref_event_battle { music_player=sc_playsound(ms_battle,100,true,true); }
-		else if event_transition=ref_event_gymbattle { music_player=sc_playsound(ms_battle_2,100,true,true); }
-		else if event_transition=ref_event_tutorial { music_player=sc_playsound(ms_tutorial,100,true,true); }
+		if playing_tutorial=true { money_prize=money_payout; }
+		else { money_prize=irandom_range((money_add_base+money_add_area_bonus*area_zone)*0.9,(money_add_base+money_add_area_bonus*area_zone)*1.1); }
+		//
+		if event_transition=ref_event_battle {
+			music_player=sc_playsound(ms_battle,100,true,true);
+		}
+		else if event_transition=ref_event_gymbattle {
+			music_player=sc_playsound(ms_battle_2,100,true,true);
+		}
+		else if event_transition=ref_event_elitebattle {
+			music_player=sc_playsound(ms_battle_3,100,true,true);
+		}
+		else if event_transition=ref_event_championbattle {
+			music_player=sc_playsound(ms_battle_4,100,true,true);
+		}
+		else if event_transition=ref_event_tutorial {
+			music_player=sc_playsound(ms_tutorial,100,true,true);
+		}
 	}
 	else if event_transition=ref_event_victory or event_transition=ref_event_defeat or event_transition=ref_event_exitbattle {
 		//destroy everything except ob_main and ob_background
@@ -453,10 +507,10 @@ else if event_transition>-1 and fade_black>=1 {
 		with (ob_background_tile) { instance_destroy(); }
 		with (ob_damage_num) { instance_destroy(); }
 		//
-		if event_transition!=ref_event_victory and area_zone=area_zone_max-1 and roadmap_area>=roadmap_current_max-roadmap_league_max {
+		if event_transition!=ref_event_victory and playing_elite=true {
 			roadmap_area=roadmap_current_max-roadmap_league_max;
 		}
-		else if (event_transition=ref_event_victory and roadmap_area=roadmap_current_max-1) or roadmap_area<roadmap_current_max-1 {
+		else if (event_transition=ref_event_victory and (playing_gym=true or playing_elite=true)) or (playing_gym=false and playing_elite=false) {
 			roadmap_area++;
 		}
 		//
@@ -465,7 +519,13 @@ else if event_transition>-1 and fade_black>=1 {
 		money_prize=0;
 		fade_black_exit=0;
 		type_chart=false;
-		if playing_tutorial=true { playing_tutorial=false; }
+		//
+		if playing_tutorial=true {
+			sc_textbox(22);
+			playing_tutorial=false;
+		}
+		if playing_gym=true { playing_gym=false; }
+		if playing_elite=true { playing_elite=false; }
 		if roadmap_area<roadmap_current_max { sc_data_save(); }
 	}
 	else {
@@ -505,7 +565,10 @@ else if event_transition=-1 and event_transition_standby=-1 and fade_black<=0 {
 				event_transition_standby=event_kind[mouse_in_event][roadmap_area];
 				//
 				if event_transition_standby=ref_event_tutorial { sc_textbox(3); }
-				else if event_transition_standby=ref_event_gymbattle { sc_textbox(); }
+				else if event_transition_standby=ref_event_gymbattle { sc_textbox(30+area_zone); }
+				else if event_transition_standby=ref_event_elitebattle or event_transition_standby=ref_event_championbattle {
+					sc_textbox(40+(roadmap_area-(roadmap_current_max-roadmap_league_max)));
+				}
 				else {
 					event_transition=event_transition_standby;
 					event_transition_standby=-1;
@@ -560,6 +623,11 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 			button_reset_config.button_id=101;
 			button_delete_data=instance_create_layer(screen_options_x+cam_w-60,screen_main_y+4,"instances",ob_button_16x16);
 			button_delete_data.button_id=102;
+			var button_create;
+			button_create=instance_create_layer(screen_options_x+cam_w-80,screen_main_y+4,"instances",ob_button_16x16);
+			button_create.button_id=103;
+			button_create=instance_create_layer(screen_options_x+cam_w-100,screen_main_y+4,"instances",ob_button_16x16);
+			button_create.button_id=104;
 			screen_transition=0;
 		}
 	}

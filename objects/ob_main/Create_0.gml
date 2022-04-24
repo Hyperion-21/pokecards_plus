@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.88"
+#macro game_version "v0.0.0.89"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -39,6 +39,8 @@ auto_deck_transition=false;
 moving_hud=0;
 type_chart=false;
 type_chart_toggle=false;
+credits_screen=false;
+credits_screen_toggle=false;
 //
 #macro area_zone_max 9
 #macro roadmap_full_max 30 //save/load, needs to be bigger than the rest (and their sum, just in case)
@@ -69,6 +71,8 @@ card_level_enemy_limit=0;
 maindeck_size_max=0;
 enemy_maindeck_size=0;
 //
+playing_gym=false;
+playing_elite=false;
 playing_tutorial=false;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 #macro textbox_total 10
@@ -114,6 +118,8 @@ event_cost_standby=0;
 #macro ref_event_fire 101
 #macro ref_event_water 102
 #macro ref_event_gymbattle 200
+#macro ref_event_elitebattle 210
+#macro ref_event_championbattle 220
 #macro ref_event_tutorial 250
 #macro ref_event_victory 300 //only for transitions
 #macro ref_event_defeat 301 //only for transitions

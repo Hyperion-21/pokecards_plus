@@ -261,7 +261,7 @@ else if argument0=201 { //GYM 2: CAMMIE (GRASS/ground/rock)
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-else if argument0=202 { //GYM 3: BENNY (WATER/ice)
+else if argument0=202 { //GYM 3: WALKER (WATER/ice)
 	enemycard_maindeck_total=ob_main.maindeck_size_max;
 	//
 	enemy_type_chance[03]=100; //water

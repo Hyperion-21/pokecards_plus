@@ -20,7 +20,8 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	var i=0;
 	repeat (var_event_num) {
 		var event_sprite_x=16*(1+event_kind[i][roadmap_area]*2);
-		if event_kind[i][roadmap_area]=ref_event_gymbattle { event_sprite_x=16*(1+13*2); }
+		if event_kind[i][roadmap_area]=ref_event_gymbattle or event_kind[i][roadmap_area]=ref_event_elitebattle or event_kind[i][roadmap_area]=ref_event_championbattle {
+			event_sprite_x=16*(1+13*2); }
 		else if event_kind[i][roadmap_area]=ref_event_tutorial { event_sprite_x=16*(1+0*2); }
 		else if event_kind[i][roadmap_area]=ref_event_grass { event_sprite_x=16*(1+10*2); }
 		else if event_kind[i][roadmap_area]=ref_event_fire { event_sprite_x=16*(1+11*2); }
@@ -30,7 +31,8 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 		draw_sprite_general(sp_sheet,0,event_sprite_x,16*13,26,27,event_button_x[i]+9,event_button_y[i]+9-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
 		sc_drawtext(event_button_x[i]+22,event_button_y[i]+51,event_name[i][roadmap_area],global.color_white,global.color_black,1,1,0,-1);
 		//
-		if event_kind[i][roadmap_area]=ref_event_battle or event_kind[i][roadmap_area]=ref_event_gymbattle or event_kind[i][roadmap_area]=ref_event_tutorial {
+		if event_kind[i][roadmap_area]=ref_event_battle or event_kind[i][roadmap_area]=ref_event_gymbattle or event_kind[i][roadmap_area]=ref_event_elitebattle or
+		event_kind[i][roadmap_area]=ref_event_championbattle or event_kind[i][roadmap_area]=ref_event_tutorial {
 			if trainer_sprite[roadmap_area]<=playericon_max {
 				draw_sprite_general(sp_sheet,0,16*((trainer_sprite[roadmap_area] mod 2)+1),16*(11+trainer_skin[roadmap_area]),16,16,
 				event_button_x[i]+25,event_button_y[i]+27,1,1,0,c_white,c_white,c_white,c_white,1);
@@ -69,7 +71,14 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	draw_healthbar(road_win_x+2,road_win_y-17-rel_hud,road_win_x+237,road_win_y-14-rel_hud,bar_amount,
 	global.color_roadmap_bar_back,global.color_roadmap_bar,global.color_roadmap_bar,0,true,false);
 	//
+	if area_zone=area_zone_max-1 {
+		for (var i=4; i>=1; i--;) {
+			var elite_pos_percentage=((roadmap_current_max-i-1)*100)/(roadmap_current_max-1);
+			draw_sprite_general(sp_sheet,0,16*4,16*15,16,16,road_win_x-2+(elite_pos_percentage*228)/100,road_win_y-24-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
+		}
+	}
 	draw_sprite_general(sp_sheet,0,16*4,16*15,16,16,road_win_x-2+(100*228)/100,road_win_y-24-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
+	//
 	draw_sprite_general(sp_sheet,0,16*((option_state[opt_playericon] mod 2)+1),16*11,16,16,road_win_x-2+(bar_amount*228)/100,road_win_y-23-rel_hud,1,1,0,
 	c_white,c_white,c_white,c_white,1);
 	draw_sprite_general(sp_sheet,0,16*(option_state[opt_playericon]+3),16*11,16,16,road_win_x-2+(bar_amount*228)/100,road_win_y-23-rel_hud,1,1,0,
@@ -163,6 +172,25 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 if type_chart=true {
 	sc_drawrectangle(-2,-2,room_width+2,room_height+2,global.color_black,c_white,0,0.9,0,0);
 	draw_sprite_ext(sp_type_chart,0,camera_get_view_x(view_camera[0])+102,camera_get_view_y(view_camera[0])+26,1,1,0,c_white,1);
+}
+//
+if credits_screen=true {
+	draw_set_halign(fa_center);
+	draw_set_font(fn_matchup);
+	//
+	sc_drawrectangle(-2,-2,room_width+2,room_height+2,global.color_black,c_white,0,0.9,0,0);
+	sc_drawtext(screen_options_x+cam_w/2,screen_main_y+59,
+	"Pokemon belongs to Nintendo and The Pokemon Company." + "\n" +
+	"This is a fangame made just for fun and it's in no way related to Nintendo." + "\n\n" +
+	"Official art/sprites by GAME FREAK." + "\n" +
+	"Official music by HUDSON SOFT." + "\n" +
+	"Custom art/sprites by MOODYTAIL." + "\n" +
+	"Sound effects by MOODYTAIL and TOM VIAN." + "\n" +
+	"Fonts by DANIEL LINSSEN and EEVE SOMEPX." + "\n\n" +
+	"Created by MOODYTAIL." + "\n" +
+	"https://moodytail.itch.io/" + "\n\n" +
+	"Special thanks to all my friends, testers and supporters. <3",
+	global.color_white,global.color_black,1,1,0,-1);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if fade_black>0 {

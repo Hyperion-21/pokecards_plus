@@ -18,8 +18,10 @@ button_nextturn_id=instance_create_layer(cam_x+cam_w-76,cam_y+134,"instances",ob
 button_nextturn_id.button_id=0;
 button_create=instance_create_layer(cam_x+76,cam_y+197,"instances",ob_button_16x16);
 button_create.button_id=1;
-button_create=instance_create_layer(cam_x+cam_w-20,cam_y+4,"instances",ob_button_16x16);
-button_create.button_id=2;
+if ob_main.playing_tutorial=false {
+	button_create=instance_create_layer(cam_x+cam_w-20,cam_y+4,"instances",ob_button_16x16);
+	button_create.button_id=2;
+}
 button_create=instance_create_layer(cam_x+76,cam_y+180,"instances",ob_button_16x16);
 button_create.button_id=3;
 //————————————————————————————————————————————————————————————————————————————————————————————————————

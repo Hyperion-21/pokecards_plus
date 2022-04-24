@@ -179,15 +179,19 @@ if card_cat=0 {
 		//innate value is always 1 on random cards, so it's not considered for rarity
 		//
 		if random_card=true {
-			if enemy_randomizer=false { var card_rarity_chance=irandom(74)+1; } //75
+			var card_rarity_chance=0;
+			//
+			if enemy_randomizer=false {
+				card_rarity_chance=irandom(74)+1; //75
+			}
 			else {
-				if card_environment=true or ob_main.roadmap_area=ob_main.roadmap_current_max-1 { //to ensure all gyms and environment have no restrictions
-					var card_rarity_chance=irandom(74)+1; //75
+				if card_environment=true or ob_main.playing_gym=true or ob_main.playing_elite=true {
+					card_rarity_chance=irandom(74)+1; //75
 				}
 				else {
 					var enemy_rarity_max=34+ob_main.area_zone*15;
 					if enemy_rarity_max>74 { enemy_rarity_max=74; }
-					var card_rarity_chance=irandom(enemy_rarity_max)+1; //35 (above lowest normal-type and dragon-type), 50, 65, 75
+					card_rarity_chance=irandom(enemy_rarity_max)+1; //35 (above lowest normal-type and dragon-type), 50, 65, 75
 				}
 			}
 			//

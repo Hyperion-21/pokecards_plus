@@ -66,5 +66,55 @@ else if argument0=21 { //tutorial: new turn
 	ob_main.textbox_string[0]="It seems our battle is almost over! Attack once more with your Pokemon to deal the final blow and take me down.";
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+else if argument0=22 {
+	ob_main.textbox_string[0]="That was a great battle! You clearly have a talent for cards. But, talent is nothing without practice!";
+	ob_main.textbox_string[1]="To be able to battle the Crystal League, you first need to build up your team and gain experience. Your goal is to travel through Hourou, and challenge each of the gym leaders from the eight major cities in the region.";
+	ob_main.textbox_string[2]="Along the way, you'll be presented with numerous choices to strengthen your cards and battle other trainers.";
+	ob_main.textbox_string[3]="Here's your first set of choices: you can either level up one of your cards, get a card pack with three new cards and a random berry, or pick up a free card from a random set of three. The choice is yours!";
+	ob_main.textbox_string[4]="After that, your first stop will be to challenge Gym Leader Ian in Iris Town. It will be hard, but don't give up!";
+	ob_main.textbox_string[5]="Safe travels, kid! I believe in you!";
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else if argument0=30 { //IAN
+	ob_main.textbox_string[0]="GYM LEADER: Ian.\nGYM LOCATION: Iris Town.\nMAIN TYPE: Normal.";
+	//ob_main.textbox_string[1]="People think normal-type and flying-type Pokemon are weak, but I'm delighted to prove them wrong. Get ready!";
+}
+else if argument0=31 { //CAMMIE
+	ob_main.textbox_string[0]="GYM LEADER: Cammie.\nGYM LOCATION: Camellia City.\nMAIN TYPE: Grass.";
+}
+else if argument0=32 { //WALKER
+	ob_main.textbox_string[0]="GYM LEADER: Walker.\nGYM LOCATION: Bluestar City.\nMAIN TYPE: Water.";
+}
+else if argument0=33 { //MADISON
+	ob_main.textbox_string[0]="GYM LEADER: Madison.\nGYM LOCATION: Marigold City.\nMAIN TYPE: Fire.";
+}
+else if argument0=34 { //ZOE
+	ob_main.textbox_string[0]="GYM LEADER: Zoe.\nGYM LOCATION: Zinnia Town.\nMAIN TYPE: Electric.";
+}
+else if argument0=35 { //VINCENT
+	ob_main.textbox_string[0]="GYM LEADER: Vincent.\nGYM LOCATION: Verbena City.\nMAIN TYPE: Fighting.";
+}
+else if argument0=36 { //PENNY
+	ob_main.textbox_string[0]="GYM LEADER: Penny.\nGYM LOCATION: Candytuft City.\nMAIN TYPE: Psychic.";
+}
+else if argument0=37 { //LAKE
+	ob_main.textbox_string[0]="GYM LEADER: Lake.\nGYM LOCATION: Lupine City.\nMAIN TYPES: Grass, Fire & Water.";
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else if argument0=40 { //EMILY
+	ob_main.textbox_string[0]="HOUROU ELITE FOUR, BATTLE ONE: Emily.\nThe Blazing Darkness.";
+}
+else if argument0=41 { //FINN
+	ob_main.textbox_string[0]="HOUROU ELITE FOUR, BATTLE TWO: Finn.\nThe Venomous Slayer.";
+}
+else if argument0=42 { //DION
+	ob_main.textbox_string[0]="HOUROU ELITE FOUR, BATTLE THREE: Dion.\nThe Winged Fist.";
+}
+else if argument0=43 { //APRIL
+	ob_main.textbox_string[0]="HOUROU ELITE FOUR, BATTLE FOUR: April.\nThe Northern Warrior.";
+}
+else if argument0=44 { //DUNCAN
+	ob_main.textbox_string[0]="HOUROU CRYSTAL LEAGUE, FINAL BATTLE: Duncan.\nThe Crystal Champion.";
+}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }

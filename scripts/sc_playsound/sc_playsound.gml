@@ -13,9 +13,11 @@ switch (argument0) {
 	case ms_battle: sound_volume=ob_main.option_state[opt_music]; break;
 	case ms_battle_2: sound_volume=ob_main.option_state[opt_music]; break;
 	case ms_battle_3: sound_volume=ob_main.option_state[opt_music]; break;
+	case ms_battle_4: sound_volume=ob_main.option_state[opt_music]; break;
 	case ms_tutorial: sound_volume=ob_main.option_state[opt_music]; break;
 	case ms_victory: sound_volume=ob_main.option_state[opt_music]; break;
 	case ms_defeat: sound_volume=ob_main.option_state[opt_music]; break;
+	case ms_ending: sound_volume=ob_main.option_state[opt_music]; break;
 	default: sound_volume=ob_main.option_state[opt_sound];
 }
 //
@@ -26,9 +28,11 @@ if argument3=true {
 	audio_stop_sound(ms_battle);
 	audio_stop_sound(ms_battle_2);
 	audio_stop_sound(ms_battle_3);
+	audio_stop_sound(ms_battle_4);
 	audio_stop_sound(ms_tutorial);
 	audio_stop_sound(ms_victory);
 	audio_stop_sound(ms_defeat);
+	audio_stop_sound(ms_ending);
 }
 //
 audio_sound_gain(argument0,sound_volume,0);

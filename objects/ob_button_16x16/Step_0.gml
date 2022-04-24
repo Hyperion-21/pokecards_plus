@@ -95,6 +95,12 @@ else { //all other buttons
 				if button_id=101 {
 					//do nothing, only button_state=1 is needed
 				}
+				else if button_id=103 {
+					ob_main.credits_screen_toggle=true;
+				}
+				else if button_id=104 {
+					ob_main.type_chart_toggle=true;
+				}
 			}
 			button_state=1;
 		}
@@ -128,6 +134,8 @@ else { //all other buttons
 		else if button_id>=100 {
 			switch (button_id) {
 				case 101: ob_main.tooltip_text="Reset all options."; break;
+				case 103: ob_main.tooltip_text="Credits."; break;
+				case 104: ob_main.tooltip_text="Type-advantage chart."; break;
 			}
 			ob_main.tooltip_lines=1;
 		}
