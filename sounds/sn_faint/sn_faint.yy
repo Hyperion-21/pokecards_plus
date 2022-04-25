@@ -12,7 +12,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sn_faint.wav",
-  "duration": 0.580794,
+  "duration": 0.580454,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

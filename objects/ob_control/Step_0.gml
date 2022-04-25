@@ -228,7 +228,7 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or ob_main.cursor_hide=true) 
 							rock_spawn_id.card_face=true;
 							rock_spawn_id.card_played=true;
 							rock_cardspace_id.occupy_id=rock_spawn_id;
-							sc_card_effect(rock_cardspace_id.x,rock_cardspace_id.y,0,true);
+							sc_card_effect(rock_cardspace_id.x,rock_cardspace_id.y,0,true,false);
 						}
 						//
 						i++;
@@ -250,8 +250,8 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or ob_main.cursor_hide=true) 
 				card_hold.card_trash=true;
 			}
 			//
-			if var_cardspace_id=card_space_id[10] { sc_card_effect(var_cardspace_id.x,var_cardspace_id.y,1,false); }
-			else { sc_card_effect(var_cardspace_id.x,var_cardspace_id.y,0,true); }
+			if var_cardspace_id=card_space_id[10] { sc_card_effect(var_cardspace_id.x,var_cardspace_id.y,1,false,false); }
+			else { sc_card_effect(var_cardspace_id.x,var_cardspace_id.y,0,true,false); }
 			card_hold.card_played=true;
 			//
 			var i=0, lower_hand_num=false;

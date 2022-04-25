@@ -141,12 +141,12 @@ with (argument1) {
 						card_target.card_played=false;
 					}
 					else {
-						sc_card_effect(ob_control.card_space_id[10].x,ob_control.card_space_id[10].y,1,false);
+						sc_card_effect(ob_control.card_space_id[10].x,ob_control.card_space_id[10].y,1,false,false);
 						card_target.card_trash=true;
 					}
 					//
 					instance_position(card_target.x,card_target.y,ob_card_space).occupy_id=-1;
-					sc_card_effect(card_target.x,card_target.y,0,false);
+					sc_card_effect(card_target.x,card_target.y,0,false,false);
 				}
 			}
 			else if card_target=-1 {
@@ -197,6 +197,7 @@ with (argument1) {
 					ob_control.player_hp=0;
 					ob_control.battler_turn=0;
 					ob_main.event_transition=ref_event_defeat;
+					sc_playsound(sn_faint,50,false,false);
 					ob_main.music_player=sc_playsound(ms_defeat,100,false,true);
 				}
 				if ob_control.enemy_hp>ob_control.hp_max*2 { ob_control.enemy_hp=ob_control.hp_max*2; }
@@ -204,7 +205,11 @@ with (argument1) {
 					ob_control.enemy_hp=0;
 					ob_control.battler_turn=0;
 					ob_main.event_transition=ref_event_victory;
-					ob_main.music_player=sc_playsound(ms_victory,100,false,true);
+					if ob_main.playing_champion=false {
+						sc_playsound(sn_faint,50,false,false);
+						ob_main.music_player=sc_playsound(ms_victory,100,false,true);
+					}
+					else { ob_main.music_player=sc_playsound(sn_faint,100,false,true); } //play as music to stop music
 				}
 				//
 				damage_num_id_a.big_font=true;

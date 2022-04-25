@@ -13,7 +13,7 @@ if argument5!=-1 {
 	playcard_id=argument5;
 	playcard_id.card_trash=true;
 	playcard_id.card_played=true;
-	sc_card_effect(card_space_id[10].x,card_space_id[10].y,1,false);
+	sc_card_effect(card_space_id[10].x,card_space_id[10].y,1,false,false);
 	//
 	enemycard_discardplan_id=-1;
 }
@@ -33,7 +33,7 @@ else if argument1>0 or argument2>0 or argument3>0 or argument4>0 {
 	enemyberry_playplan[playcard_id.card_id-3000]--;
 	playcard_id.card_trash=true;
 	playcard_id.card_played=true;
-	sc_card_effect(card_space_id[enemyspace_playplan_slot].x,card_space_id[enemyspace_playplan_slot].y,0,true);
+	sc_card_effect(card_space_id[enemyspace_playplan_slot].x,card_space_id[enemyspace_playplan_slot].y,0,true,false);
 	//
 	if argument0=-1 { enemyspace_playplan_slot=-1; } //when just playing a berry
 }
@@ -83,7 +83,7 @@ else if argument0!=-1 {
 				rock_spawn_id.card_played=true;
 				rock_spawn_id.card_enemy=true;
 				rock_cardspace_id.occupy_id=rock_spawn_id;
-				sc_card_effect(rock_cardspace_id.x,rock_cardspace_id.y,0,true);
+				sc_card_effect(rock_cardspace_id.x,rock_cardspace_id.y,0,true,false);
 			}
 			//
 			i++;
@@ -100,7 +100,7 @@ else if argument0!=-1 {
 	playcard_id.card_face=true;
 	playcard_id.card_played=true;
 	card_space_id[enemyspace_playplan_slot].occupy_id=playcard_id;
-	sc_card_effect(card_space_id[enemyspace_playplan_slot].x,card_space_id[enemyspace_playplan_slot].y,0,true);
+	sc_card_effect(card_space_id[enemyspace_playplan_slot].x,card_space_id[enemyspace_playplan_slot].y,0,true,false);
 	//
 	enemycard_playplan_id=-1;
 	enemyspace_playplan_slot=-1;

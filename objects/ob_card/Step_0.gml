@@ -160,11 +160,19 @@ else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spr
 		//
 		if ob_event.show_deck=false {
 			if card_face=false {
-				if (card_cat=0 and card_stage>1) or (card_cat=1 and card_id=3003) { sc_playsound(sn_rare,50,false,false); }
-				else if card_cat=0 and (card_enigma=true or card_secret=true) { sc_playsound(sn_rare_2,50,false,false); }
+				if (card_cat=0 and card_stage>1) or (card_cat=1 and card_id=3003) {
+					sc_playsound(sn_rare,50,false,false);
+					sc_card_effect(x,y,0,false,true);
+				}
+				else if card_cat=0 and (card_enigma=true or card_secret=true) {
+					sc_playsound(sn_rare_2,50,false,false);
+					sc_card_effect(x,y,0,false,true);
+				}
+				else {
+					sc_card_effect(x,y,0,false,false);
+				}
 				//
 				card_face=true;
-				sc_card_effect(x,y,0,false);
 			}
 			else {
 				//ADD CARD
@@ -215,7 +223,7 @@ else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spr
 						potential_x=ob_event.event_space_id[i].x;
 						potential_y=ob_event.event_space_id[i].y;
 						ob_event.event_space_id[i].occupy_id=id;
-						sc_card_effect(ob_event.event_space_id[i].x,ob_event.event_space_id[i].y,0,true);
+						sc_card_effect(ob_event.event_space_id[i].x,ob_event.event_space_id[i].y,0,true,false);
 						i=ob_event.event_space_total;
 					}
 					else { i++; }

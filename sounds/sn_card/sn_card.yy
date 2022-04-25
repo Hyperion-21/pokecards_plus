@@ -12,7 +12,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sn_card.wav",
-  "duration": 0.085986,
+  "duration": 0.065986,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

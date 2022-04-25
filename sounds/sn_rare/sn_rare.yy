@@ -12,7 +12,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sn_rare.wav",
-  "duration": 0.953741,
+  "duration": 0.953651,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

@@ -12,7 +12,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sn_money.wav",
-  "duration": 0.114875,
+  "duration": 0.114762,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

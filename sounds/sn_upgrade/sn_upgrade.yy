@@ -12,7 +12,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sn_upgrade.wav",
-  "duration": 1.016145,
+  "duration": 1.015941,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

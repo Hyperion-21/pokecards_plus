@@ -188,7 +188,7 @@ if credits_screen=true {
 	"Pokemon belongs to Nintendo and The Pokemon Company." + "\n" +
 	"This is a fangame made just for fun and it's in no way related to Nintendo." + "\n\n" +
 	"Official art/sprites by GAME FREAK." + "\n" +
-	"Official music by HUDSON SOFT." + "\n" +
+	"Official music by ICHIRO SHIMAKURA (HUDSON SOFT)." + "\n" +
 	"Custom art/sprites by MOODYTAIL." + "\n" +
 	"Sound effects by MOODYTAIL and TOM VIAN." + "\n" +
 	"Fonts by DANIEL LINSSEN and EEVE SOMEPX." + "\n\n" +
@@ -196,6 +196,10 @@ if credits_screen=true {
 	"https://moodytail.itch.io/" + "\n\n" +
 	"Special thanks to all my friends, testers and supporters. <3",
 	global.color_white,global.color_black,1,1,0,-1);
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+if ending_screen=true {
+	sc_drawrectangle(-2,-2,room_width+2,room_height+2,global.color_black,c_white,0,1,1,0);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if fade_black>0 {
@@ -211,7 +215,7 @@ if fade_red_delete>0 {
 if event_transition=ref_event_victory or event_transition=ref_event_defeat {
 	draw_set_halign(fa_center);
 	//
-	if event_transition=ref_event_victory {
+	if event_transition=ref_event_victory and playing_champion=false {
 		draw_set_font(fn_m6x11_XL);
 		sc_drawtext(screen_main_x+cam_w/2,screen_main_y+cam_h/2-17,"VICTORY",global.color_player,global.color_black,1,1,0,-1);
 		draw_set_font(fn_matchup);
