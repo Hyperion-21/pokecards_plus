@@ -119,6 +119,8 @@ repeat (enemycard_hand_total) { //sets depth of cards in enemy's hand
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if card_focus!=-1 {
 	if mouse_check_button(mb_left) and ob_main.cursor_hide=false and battler_turn=1 and card_focus.card_played=false { //hold focused card
+		if mouse_check_button_pressed(mb_left) { sc_playsound(sn_card,50,false,false); }
+		//
 		card_focus.potential_x=mouse_x-28;
 		card_focus.potential_y=mouse_y-40;
 		card_hold=card_focus;
@@ -132,6 +134,8 @@ if card_focus!=-1 {
 if card_focus!=-1 { //click played card
 	if mouse_check_button_pressed(mb_left) and battler_turn=1 and card_hold=-1 and ob_main.cursor_hide=false and
 	card_focus.card_played=true and card_focus.card_enemy=false {
+		if mouse_check_button_pressed(mb_left) { sc_playsound(sn_click,50,false,false); }
+		//
 		if ob_main.playing_tutorial=false or (ob_main.playing_tutorial=true and sc_tutorial_conditions(5,-1)) {
 			if turn_num>2 { sc_card_attack(true,card_focus); }
 			else {
@@ -169,6 +173,8 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or ob_main.cursor_hide=true) 
 		}
 		//
 		if playing_requirements=true and (var_cardspace_id.occupy_id=-1 or var_cardspace_id=card_space_id[10]) {
+			sc_playsound(sn_card,50,false,false);
+			//
 			if var_cardspace_id=card_space_id[10] {
 				card_hold.card_trash=true;
 			}
@@ -222,7 +228,7 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or ob_main.cursor_hide=true) 
 							rock_spawn_id.card_face=true;
 							rock_spawn_id.card_played=true;
 							rock_cardspace_id.occupy_id=rock_spawn_id;
-							rock_cardspace_id.effect_use=1;
+							sc_card_effect(rock_cardspace_id.x,rock_cardspace_id.y,0,true);
 						}
 						//
 						i++;
@@ -244,7 +250,8 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or ob_main.cursor_hide=true) 
 				card_hold.card_trash=true;
 			}
 			//
-			var_cardspace_id.effect_use=1;
+			if var_cardspace_id=card_space_id[10] { sc_card_effect(var_cardspace_id.x,var_cardspace_id.y,1,false); }
+			else { sc_card_effect(var_cardspace_id.x,var_cardspace_id.y,0,true); }
 			card_hold.card_played=true;
 			//
 			var i=0, lower_hand_num=false;
@@ -327,6 +334,8 @@ if button_sorthand=true and card_focus=-1 {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if keyboard_check_pressed(vk_space) and !mouse_check_button(mb_left) and battler_turn=1 and card_hold=-1 and ob_main.cursor_hide=false {
+	sc_playsound(sn_click,50,false,false);
+	//
 	button_nextturn=true;
 	button_nextturn_id.button_state=1;
 }

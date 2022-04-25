@@ -4,21 +4,24 @@ function sc_playsound(argument0,argument1,argument2,argument3) {
 /// @param loops
 /// @param stop_prev_music
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-var sound_volume=0, random_pitch=false;
+var sound_volume=0, music_volume_multiplier=0.5, random_pitch=false;
 //
 switch (argument0) {
-	case ms_main: sound_volume=ob_main.option_state[opt_music]; break;
-	case ms_league: sound_volume=ob_main.option_state[opt_music]; break;
-	case ms_battle_intro: sound_volume=ob_main.option_state[opt_music]; break;
-	case ms_battle: sound_volume=ob_main.option_state[opt_music]; break;
-	case ms_battle_2: sound_volume=ob_main.option_state[opt_music]; break;
-	case ms_battle_3: sound_volume=ob_main.option_state[opt_music]; break;
-	case ms_battle_4: sound_volume=ob_main.option_state[opt_music]; break;
-	case ms_tutorial: sound_volume=ob_main.option_state[opt_music]; break;
-	case ms_victory: sound_volume=ob_main.option_state[opt_music]; break;
-	case ms_defeat: sound_volume=ob_main.option_state[opt_music]; break;
-	case ms_ending: sound_volume=ob_main.option_state[opt_music]; break;
-	default: sound_volume=ob_main.option_state[opt_sound];
+	case ms_main: sound_volume=ob_main.option_state[opt_music]*music_volume_multiplier; break;
+	case ms_league: sound_volume=ob_main.option_state[opt_music]*music_volume_multiplier; break;
+	case ms_battle_intro: sound_volume=ob_main.option_state[opt_music]*music_volume_multiplier; break;
+	case ms_battle: sound_volume=ob_main.option_state[opt_music]*music_volume_multiplier; break;
+	case ms_battle_2: sound_volume=ob_main.option_state[opt_music]*music_volume_multiplier; break;
+	case ms_battle_3: sound_volume=ob_main.option_state[opt_music]*music_volume_multiplier; break;
+	case ms_battle_4: sound_volume=ob_main.option_state[opt_music]*music_volume_multiplier; break;
+	case ms_tutorial: sound_volume=ob_main.option_state[opt_music]*music_volume_multiplier; break;
+	case ms_victory: sound_volume=ob_main.option_state[opt_music]*music_volume_multiplier; break;
+	case ms_defeat: sound_volume=ob_main.option_state[opt_music]*music_volume_multiplier; break;
+	case ms_ending: sound_volume=ob_main.option_state[opt_music]*music_volume_multiplier; break;
+	//
+	case sn_money: sound_volume=(ob_main.option_state[opt_sound]/100)*0.5; break;
+	case sn_text: sound_volume=(ob_main.option_state[opt_sound]/100)*0.4; break;
+	default: sound_volume=(ob_main.option_state[opt_sound]/100);
 }
 //
 if argument3=true {

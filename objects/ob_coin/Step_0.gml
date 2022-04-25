@@ -4,6 +4,7 @@ if y<ground_y {
 	coin_vspeed++;
 }
 else if y=ground_y and times_bounced<(coin_bounce*-1) {
+	sc_playsound(sn_coin,50,false,false);
 	coin_vspeed=coin_bounce+times_bounced;
 	times_bounced+=2;
 }

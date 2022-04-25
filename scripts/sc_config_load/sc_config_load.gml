@@ -21,7 +21,7 @@ window_set_size(512*(i-1),288*(i-1));
 option_state[opt_scaling]=i-1;
 //
 option_state[opt_music]=true;
-option_state[opt_sound]=true;
+option_state[opt_sound]=100;
 option_state[opt_autodeck]=true;
 option_state[opt_playericon]=0;
 option_state[opt_edge]=10;

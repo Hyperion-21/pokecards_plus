@@ -64,7 +64,7 @@ if apply_event=true {
 	if event_kind=ref_event_levelup and card_id_space[0]!=-1 {
 		if card_id_space[0].card_level<ob_main.card_level_player_limit and card_id_space[0].card_innate>0 {
 			card_id_space[0].card_level++;
-			card_id_space[0].effect_damaged=1;
+			sc_card_effect(card_id_space[0].x,card_id_space[0].y,0,false);
 			with (card_id_space[0]) {
 				sc_card_level_stats_all(true,true);
 			}
@@ -79,7 +79,7 @@ if apply_event=true {
 			do {
 				card_id_space[0].card_id=card_id_space[0].card_evo[irandom(7)];
 			} until (card_id_space[0].card_id!=-1 and card_id_space[0].card_id<=normal_poke_id_max);
-			card_id_space[0].effect_damaged=1;
+			sc_card_effect(card_id_space[0].x,card_id_space[0].y,0,false);
 			with (card_id_space[0]) {
 				sc_pokelist();
 				sc_card_level_stats_all(true,true);
@@ -102,7 +102,7 @@ if apply_event=true {
 			else if card_id_space[0].card_glyph_c=-1 {
 				card_id_space[0].card_glyph_c=glyph_add_id;
 			}
-			card_id_space[0].effect_damaged=1;
+			sc_card_effect(card_id_space[0].x,card_id_space[0].y,0,false);
 			//
 			event_applied=true;
 			ob_main.main_card_glyph_a[card_id_space[0].num_in_all]=card_id_space[0].card_glyph_a;
@@ -127,7 +127,7 @@ if apply_event=true {
 				card_id_space[0].effect_damaged=1;
 			}
 			else { card_id_space[1].card_innate--; }
-			card_id_space[1].effect_damaged=1;
+			sc_card_effect(card_id_space[1].x,card_id_space[1].y,0,false);
 			//
 			with (card_id_space[0]) {
 				sc_card_level_stats_all(true,true);
@@ -142,6 +142,8 @@ if apply_event=true {
 			ob_main.event_transition=event_kind;
 		}
 	}
+	//
+	if event_applied=true { sc_playsound(sn_upgrade,50,false,false); }
 	//
 	apply_event=false;
 }

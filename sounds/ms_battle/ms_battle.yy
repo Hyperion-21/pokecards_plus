@@ -14,8 +14,8 @@
   "soundFile": "ms_battle.wav",
   "duration": 131.24649,
   "parent": {
-    "name": "Sounds",
-    "path": "folders/Sounds.yy",
+    "name": "music",
+    "path": "folders/Sounds/music.yy",
   },
   "resourceVersion": "1.0",
   "name": "ms_battle",

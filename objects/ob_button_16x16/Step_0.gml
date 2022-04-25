@@ -2,6 +2,8 @@ if instance_exists(ob_control) and button_id=2 { //exit battle
 	if mouse_x>=x and mouse_y>=y+2 and mouse_x<x+sprite_width and mouse_y<y+sprite_height-2 and ob_main.mouse_cursor=0 and ob_control.battler_turn!=0 {
 		ob_main.mouse_cursor=1;
 		if mouse_check_button(mb_left) and ob_main.cursor_hide=false and button_state<1 {
+			if mouse_check_button_pressed(mb_left) { sc_playsound(sn_click,50,false,false); }
+			//
 			button_state+=0.005;
 			if button_state=1 {
 				ob_control.battler_turn=0;
@@ -26,6 +28,8 @@ else if button_id=100 or button_id=102 { //exit game & delete save data
 	if mouse_x>=x and mouse_y>=y+2 and mouse_x<x+sprite_width and mouse_y<y+sprite_height-2 and ob_main.mouse_cursor=0 {
 		ob_main.mouse_cursor=1;
 		if mouse_check_button(mb_left) and ob_main.cursor_hide=false and button_state<1 {
+			if mouse_check_button_pressed(mb_left) { sc_playsound(sn_click,50,false,false); }
+			//
 			if button_id=100 { button_state+=0.01; }
 			else if button_id=102 { button_state+=0.005; }
 		}
@@ -50,6 +54,8 @@ else { //all other buttons
 	if mouse_x>=x and mouse_y>=y+2 and mouse_x<x+sprite_width and mouse_y<y+sprite_height-2 and ob_main.mouse_cursor=0 {
 		ob_main.mouse_cursor=1;
 		if mouse_check_button_pressed(mb_left) and button_state=0 and ob_main.cursor_hide=false {
+			sc_playsound(sn_click,50,false,false);
+			//
 			if instance_exists(ob_control) {
 				if button_id=0 and ob_control.battler_turn=1 {
 					ob_control.button_nextturn=true;

@@ -4,7 +4,7 @@ function sc_textbox(argument0) {
 if argument0=0 {
 	ob_main.textbox_string[0]="Welcome to the world of Pokemon cards!";
 	ob_main.textbox_string[1]="I am Prof. Aspen of the Hourou region, here to help you with the basics.";
-	ob_main.textbox_string[2]="Do you think you have what it takes to be a Crystal League Champion? Well, let's start from the beginning! Pick your Starter Deck.";
+	ob_main.textbox_string[2]="Do you think you have what it takes to be the next Crystal League Champion? Well, let's start from the beginning! Pick your Starter Deck.";
 }
 else if argument0=1 {
 	ob_main.textbox_string[0]="Excellent choice! Now go to your deck and equip your newly acquired cards. Make sure to include all of your berries too, you'll need them!";
@@ -18,7 +18,7 @@ else if argument0=3 {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if argument0=4 { //tutorial: new turn
-	ob_main.textbox_string[0]="Welcome to your very first card battle! Don't worry if it seems complicated at first, the rules are actually quite simple!";
+	ob_main.textbox_string[0]="Welcome to your very first card battle! Don't worry if it seems complicated at first, the rules are actually quite simple.";
 	ob_main.textbox_string[1]="It's your turn first, so let's start by drawing cards.\nOn your first turn, you always get 5 Draw Points, or \"DP\". These are used to draw Pokemon and berries from your decks.";
 	ob_main.textbox_string[2]="Drawing a Pokemon (from the deck on your right) costs 2 DP, while drawing berries (from the deck on your left) costs only 1 DP. Berries are necessary to play your Pokemon, so both are important.";
 	ob_main.textbox_string[3]="Anyway, you have 5 DP, which means you can draw right now! Go ahead and draw, let's say, 2 Pokemon and 1 berry.";
@@ -49,8 +49,8 @@ else if argument0=15 { //tutorial: new turn
 	ob_main.textbox_string[0]="What a lucky draw, your Spearow has a type advantage over the Bellsprout I played! This is the perfect time to draw some more berries.";
 }
 else if argument0=16 { //tutorial: drawn
-	ob_main.textbox_string[0]="Excellent! When a Pokemon has a type advantage over another, their attacks will always deal 1 extra point of damage, even if the receiving Pokemon has a higher defense!";
-	ob_main.textbox_string[1]="Contrary to real Pokemon though, type advantages in cards only deal bonus damage. This means there are no type resistances or immunities, and Pokemon that are weak to a certain type will always receive more damage from it!";
+	ob_main.textbox_string[0]="Excellent! When a Pokemon has a type advantage over another, their attacks will always deal 1 extra point of damage, even if the receiving Pokemon has a higher defense.";
+	ob_main.textbox_string[1]="Contrary to real Pokemon though, type advantages in cards only deal bonus damage. This means there are no type resistances or immunities, and Pokemon that are weak to a certain type will always receive more damage from it.";
 	ob_main.textbox_string[2]="This makes it so that, for example, Bulbasaur (a grass/poison Pokemon) will always deal bonus damage to other Bulbasaurs, since Grass is weak against Poison attacks!";
 	ob_main.textbox_string[3]="But anyway, go ahead and play your Spearow right in front of my Bellsprout, then attack to take them out in one hit!";
 }

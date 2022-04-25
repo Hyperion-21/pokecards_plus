@@ -84,6 +84,11 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	draw_sprite_general(sp_sheet,0,16*(option_state[opt_playericon]+3),16*11,16,16,road_win_x-2+(bar_amount*228)/100,road_win_y-23-rel_hud,1,1,0,
 	global.color_character,global.color_character,global.color_character,global.color_character,1);
 	draw_sprite_general(sp_sheet,0,16*(option_state[opt_playericon]+3),16*12,16,16,road_win_x-2+(bar_amount*228)/100,road_win_y-23-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
+	//
+	for (var i=0; i<=7; i++;) {
+		if area_zone>i { draw_sprite_general(sp_sheet,0,16*(i+playericon_max+5),16*12,16,16,road_win_x+56+16*i,road_win_y-38-rel_hud,1,1,0,c_white,c_white,c_white,c_white,0.5); }
+		else { draw_sprite_general(sp_sheet,0,16*(playericon_max+4),16*12,16,16,road_win_x+56+16*i,road_win_y-38-rel_hud,1,1,0,c_white,c_white,c_white,c_white,0.25); }
+	}
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	draw_set_font(fn_m6x11);
 	draw_set_halign(fa_center);

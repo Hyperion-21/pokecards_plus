@@ -6,13 +6,14 @@ function AI_play(argument0,argument1,argument2,argument3,argument4,argument5) {
 /// @param enigma_berries
 /// @param discard_id
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+sc_playsound(sn_card,50,false,false);
 var playcard_id=-1;
 //
 if argument5!=-1 {
 	playcard_id=argument5;
 	playcard_id.card_trash=true;
 	playcard_id.card_played=true;
-	card_space_id[10].effect_use=1;
+	sc_card_effect(card_space_id[10].x,card_space_id[10].y,1,false);
 	//
 	enemycard_discardplan_id=-1;
 }
@@ -32,7 +33,7 @@ else if argument1>0 or argument2>0 or argument3>0 or argument4>0 {
 	enemyberry_playplan[playcard_id.card_id-3000]--;
 	playcard_id.card_trash=true;
 	playcard_id.card_played=true;
-	card_space_id[enemyspace_playplan_slot].effect_use=1;
+	sc_card_effect(card_space_id[enemyspace_playplan_slot].x,card_space_id[enemyspace_playplan_slot].y,0,true);
 	//
 	if argument0=-1 { enemyspace_playplan_slot=-1; } //when just playing a berry
 }
@@ -82,7 +83,7 @@ else if argument0!=-1 {
 				rock_spawn_id.card_played=true;
 				rock_spawn_id.card_enemy=true;
 				rock_cardspace_id.occupy_id=rock_spawn_id;
-				rock_cardspace_id.effect_use=1;
+				sc_card_effect(rock_cardspace_id.x,rock_cardspace_id.y,0,true);
 			}
 			//
 			i++;
@@ -99,7 +100,7 @@ else if argument0!=-1 {
 	playcard_id.card_face=true;
 	playcard_id.card_played=true;
 	card_space_id[enemyspace_playplan_slot].occupy_id=playcard_id;
-	card_space_id[enemyspace_playplan_slot].effect_use=1;
+	sc_card_effect(card_space_id[enemyspace_playplan_slot].x,card_space_id[enemyspace_playplan_slot].y,0,true);
 	//
 	enemycard_playplan_id=-1;
 	enemyspace_playplan_slot=-1;

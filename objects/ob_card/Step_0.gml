@@ -120,7 +120,9 @@ if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_hei
 	if mouse_check_button_pressed(mb_left) and ob_control.card_draw_click=false and ob_main.cursor_hide=false and card_face=false and ob_control.battler_turn=1 and
 	((num_in_maindeck>=0 and num_in_maindeck=ob_control.card_maindeck_total-1 and ob_control.card_draw_points>=ob_control.card_drawcost_main) or
 	(num_in_berrydeck>=0 and num_in_berrydeck=ob_control.card_berrydeck_total-1 and ob_control.card_draw_points>=ob_control.card_drawcost_berry)) {
+		sc_playsound(sn_card,50,false,false);
 		ob_control.card_draw_click=true;
+		//
 		if ob_control.card_hand_total<ob_control.card_hand_max {
 			if ob_main.playing_tutorial=false or (ob_main.playing_tutorial=true and
 			((num_in_maindeck>=0 and sc_tutorial_conditions(1,-1)) or (num_in_berrydeck>=0 and sc_tutorial_conditions(2,-1)))) {
@@ -154,10 +156,15 @@ else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spr
 	ob_main.mouse_cursor=1;
 	//
 	if ((mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false) or auto_turn_add=true) and y=potential_y {
+		sc_playsound(sn_card,50,false,false);
+		//
 		if ob_event.show_deck=false {
 			if card_face=false {
+				if (card_cat=0 and card_stage>1) or (card_cat=1 and card_id=3003) { sc_playsound(sn_rare,50,false,false); }
+				else if card_cat=0 and (card_enigma=true or card_secret=true) { sc_playsound(sn_rare_2,50,false,false); }
+				//
 				card_face=true;
-				effect_damaged=1;
+				sc_card_effect(x,y,0,false);
 			}
 			else {
 				//ADD CARD
@@ -208,7 +215,7 @@ else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spr
 						potential_x=ob_event.event_space_id[i].x;
 						potential_y=ob_event.event_space_id[i].y;
 						ob_event.event_space_id[i].occupy_id=id;
-						ob_event.event_space_id[i].effect_use=1;
+						sc_card_effect(ob_event.event_space_id[i].x,ob_event.event_space_id[i].y,0,true);
 						i=ob_event.event_space_total;
 					}
 					else { i++; }
@@ -229,6 +236,8 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 	//
 	if card_cat=0 {
 		if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false {
+			sc_playsound(sn_card,50,false,false);
+			//
 			if card_indeck[0]=false and ob_deckbuild.deck_build_used_total<ob_main.maindeck_size_max {
 				card_indeck[0]=true;
 				ob_deckbuild.reorder_selected=0; //pokemon id
@@ -242,8 +251,12 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 			card_delete_timer=0;
 		}
 		else if mouse_check_button(mb_right) and ob_deckbuild.deck_build_all_total>5 and card_indeck[0]=false and ob_main.cursor_hide=false {
+			if mouse_check_button_pressed(mb_right) { sc_playsound(sn_card,50,false,false); }
+			//
 			card_delete_timer++;
 			if card_delete_timer=card_delete_timer_max {
+				sc_playsound(sn_faint,50,false,false);
+				//
 				ob_deckbuild.reorder_type=5;
 				instance_destroy();
 			}
@@ -254,18 +267,22 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 	}
 	else if card_cat=1 {
 		if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false {
+			sc_playsound(sn_click,50,false,false);
 			ob_deckbuild.deck_berry_used[card_id-3000]=ob_deckbuild.deck_berry_total[card_id-3000];
 		}
 		else if mouse_check_button_pressed(mb_right) and ob_main.cursor_hide=false {
+			sc_playsound(sn_click,50,false,false);
 			ob_deckbuild.deck_berry_used[card_id-3000]=0;
 		}
 		else if mouse_wheel_up() and ob_main.cursor_hide=false {
 			if ob_deckbuild.deck_berry_used[card_id-3000]<ob_deckbuild.deck_berry_total[card_id-3000] {
+				sc_playsound(sn_click,50,false,false);
 				ob_deckbuild.deck_berry_used[card_id-3000]++;
 			}
 		}
 		else if mouse_wheel_down() and ob_main.cursor_hide=false {
 			if ob_deckbuild.deck_berry_used[card_id-3000]>0 {
+				sc_playsound(sn_click,50,false,false);
 				ob_deckbuild.deck_berry_used[card_id-3000]--;
 			}
 		}

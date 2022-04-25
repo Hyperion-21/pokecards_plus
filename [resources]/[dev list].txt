@@ -66,6 +66,6 @@
 ✔	gym/league intro dialogue
 ✔	credits
 ✔	league roadmap
-S 24/4	ending
-M 25/4+	extra visual effects
-M 25/4+	sound effects
+✔	extra visual effects
+✔	sound effects
+S 25/4	ending screen

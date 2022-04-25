@@ -14,8 +14,8 @@
   "soundFile": "ms_main.wav",
   "duration": 56.2549667,
   "parent": {
-    "name": "Sounds",
-    "path": "folders/Sounds.yy",
+    "name": "music",
+    "path": "folders/Sounds/music.yy",
   },
   "resourceVersion": "1.0",
   "name": "ms_main",

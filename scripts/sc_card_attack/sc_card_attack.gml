@@ -4,6 +4,8 @@ function sc_card_attack(argument0,argument1) {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 with (argument1) {
 	if already_attacked=false and card_environment=false {
+		sc_playsound(sn_hurt,50,false,false);
+		//
 		var card_target=-1, card_target_fork_a=-1, card_target_fork_b=-1; //target -1: empty space (direct/piercing attack), -2: unassigned (skip)
 		var card_space_slot=-1, attack_cycle=1;
 		if card_enemy=true { var i=0; } else { var i=5; }
@@ -91,6 +93,8 @@ with (argument1) {
 				}
 				//
 				if card_target.card_hp<=0 {
+					sc_playsound(sn_faint,50,false,false);
+					//
 					if sc_glyph_check(card_target,ref_glyph_harvest,true) { //glyph: harvest
 						if card_target.card_enemy=false {
 							for (var i=0; i<=3; i++;) {
@@ -137,12 +141,12 @@ with (argument1) {
 						card_target.card_played=false;
 					}
 					else {
-						ob_control.card_space_id[10].effect_use=1;
+						sc_card_effect(ob_control.card_space_id[10].x,ob_control.card_space_id[10].y,1,false);
 						card_target.card_trash=true;
 					}
 					//
 					instance_position(card_target.x,card_target.y,ob_card_space).occupy_id=-1;
-					instance_position(card_target.x,card_target.y,ob_card_space).effect_use=1;
+					sc_card_effect(card_target.x,card_target.y,0,false);
 				}
 			}
 			else if card_target=-1 {

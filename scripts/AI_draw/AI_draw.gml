@@ -1,6 +1,8 @@
 function AI_draw(argument0) {
 /// @param cat
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+sc_playsound(sn_card,50,false,false);
+//
 if argument0=0 {
 	var var_card_selected=enemycard_maindeck[enemycard_maindeck_total-1];
 }

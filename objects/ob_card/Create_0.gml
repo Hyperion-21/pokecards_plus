@@ -151,14 +151,14 @@ if card_cat=0 {
 			}
 			else {
 				var card_glyph_chance=irandom(9999), card_glyph_total=0;
-				if card_glyph_chance<280*(ob_main.area_zone+1) { //2.8%, 5.6%, 8.4%, 11.2%, 14%, 16.8%, 19.6%, 22.4%, (25.2%)
+				if card_glyph_chance<9999{//280*(ob_main.area_zone+1) { //2.8%, 5.6%, 8.4%, 11.2%, 14%, 16.8%, 19.6%, 22.4%, (25.2%)
 					card_glyph_chance=irandom(99);
 					if card_glyph_chance<5 { card_glyph_total=3; } //5%
 					else if card_glyph_chance<30 { card_glyph_total=2; } //25%
 					else if card_glyph_chance<100 { card_glyph_total=1; } //70%
 					//
 					if card_glyph_total>=1 and card_glyph_a=-1 {
-						card_glyph_a=sc_glyph_random();
+						card_glyph_a=ref_glyph_bulwark// sc_glyph_random();
 					}
 					if card_glyph_total>=2 and card_glyph_b=-1 {
 						do {

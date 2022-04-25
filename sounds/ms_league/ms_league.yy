@@ -14,8 +14,8 @@
   "soundFile": "ms_league.wav",
   "duration": 30.0004311,
   "parent": {
-    "name": "Sounds",
-    "path": "folders/Sounds.yy",
+    "name": "music",
+    "path": "folders/Sounds/music.yy",
   },
   "resourceVersion": "1.0",
   "name": "ms_league",
