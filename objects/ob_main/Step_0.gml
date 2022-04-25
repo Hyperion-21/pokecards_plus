@@ -20,6 +20,12 @@ else if credits_screen=true and (mouse_check_button_pressed(mb_left) or mouse_ch
 	credits_screen=false;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+if ending_static_timer>0 { ending_static_timer-=0.004; }
+else if ending_screen=true and ending_static_timer<=0 and ending_static_timer!=-1 {
+	game_restart();
+	//ending_screen=false;
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 if effect_money_error>0 { effect_money_error-=0.1; }
 //
 if music_beat_margin>0 { music_beat_margin--; }
@@ -76,8 +82,7 @@ if maindeck_size_max>50 { //not possible anymore, but just in case
 	enemy_maindeck_size=50;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if area_zone=0 and zone_first_lap=true and roadmap_area<roadmap_lab_max { money_payout=500; }
-else { money_payout=money_payout_base+money_payout_area_bonus*area_zone; }
+money_payout=money_payout_base+money_payout_area_bonus*area_zone;
 //
 if playing_tutorial=true { battle_hp=5; }
 else if playing_gym=false and playing_elite=false and playing_champion=false { battle_hp=10+area_zone*10; } //10 20 30 40 50 60 70 80 (90)
@@ -114,6 +119,11 @@ if textbox_string[textbox_current]!="" {
 					textbox_string[i]="";
 				}
 				textbox_current=0;
+				//
+				if ending_screen=true {
+					ending_static_timer=1;
+					sc_playsound(sn_noise,100,true,true);
+				}
 			}
 			//
 			if event_transition_standby!=-1 {
@@ -378,6 +388,7 @@ if roadmap_get_details=true {
 			event_description[ii][i]="";
 			//
 			if event_kind[ii][i]=ref_event_battle { event_name[ii][i]="Battle:\n" + trainer_name[i]; }
+			else if event_kind[ii][i]=ref_event_payout and area_zone=0 and zone_first_lap=true and i<roadmap_lab_max { event_name[ii][i]="Payout\n($500)"; }
 			else if event_kind[ii][i]=ref_event_payout { event_name[ii][i]="Payout\n($" + string(money_payout) + ")"; }
 			else if event_kind[ii][i]=ref_event_freecard { event_name[ii][i]="Free Card"; }
 			else if event_kind[ii][i]=ref_event_cardpack { event_name[ii][i]="Card Pack\n$" + string(event_cost[ref_event_cardpack]); }
@@ -487,7 +498,8 @@ else if event_transition>-1 and fade_black>=1 {
 		sc_data_save();
 	}
 	else if event_transition=ref_event_payout {
-		money+=money_payout;
+		if area_zone=0 and zone_first_lap=true and roadmap_area<roadmap_lab_max { money+=500; } //same conditions also when getting event name
+		else { money+=money_payout; }
 		roadmap_area++;
 		sc_data_save();
 	}
@@ -549,6 +561,7 @@ else if event_transition>-1 and fade_black>=1 {
 			playing_champion=false;
 			if event_transition=ref_event_victory {
 				ending_screen=true;
+				sc_textbox(50);
 				music_player=sc_playsound(ms_ending,100,true,true);
 			}
 		}

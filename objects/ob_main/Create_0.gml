@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.91"
+#macro game_version "v0.0.0.92"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -42,6 +42,7 @@ type_chart_toggle=false;
 credits_screen=false;
 credits_screen_toggle=false;
 ending_screen=false;
+ending_static_timer=-1;
 //
 #macro area_zone_max 9
 #macro roadmap_full_max 30 //save/load, needs to be bigger than the rest (and their sum, just in case)

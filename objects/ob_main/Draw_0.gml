@@ -199,7 +199,17 @@ if credits_screen=true {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if ending_screen=true {
-	sc_drawrectangle(-2,-2,room_width+2,room_height+2,global.color_black,c_white,0,1,1,0);
+	draw_sprite_general(sp_area,0,240*3,112*2,240,112,screen_main_x-104,screen_main_y-24,3,3,0,c_white,c_white,c_white,c_white,1); //city
+	//
+	if ending_static_timer>0 {
+		var noise_size=16;
+		for (var i=0; i<ceil(cam_w/noise_size); i++;) {
+			for (var ii=0; ii<ceil(cam_h/noise_size); ii++;) {
+				draw_sprite_general(sp_noise,0,noise_size*irandom((512/noise_size)-1),noise_size*irandom((512/noise_size)-1),noise_size,noise_size,
+				screen_main_x+(i*noise_size),screen_main_y+(ii*noise_size),1,1,0,c_white,c_white,c_white,c_white,1);
+			}
+		}
+	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if fade_black>0 {

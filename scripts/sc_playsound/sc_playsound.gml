@@ -21,11 +21,12 @@ switch (argument0) {
 	//
 	case sn_card: sound_volume=(ob_main.option_state[opt_sound]/100)*0.6; break;
 	case sn_click: sound_volume=(ob_main.option_state[opt_sound]/100)*0.4; random_pitch=true; break;
-	case sn_coin: sound_volume=(ob_main.option_state[opt_sound]/100); break;
-	case sn_event: sound_volume=(ob_main.option_state[opt_sound]/100)*0.9; break;
+	case sn_coin: sound_volume=(ob_main.option_state[opt_sound]/100)*0.9; break;
+	case sn_event: sound_volume=(ob_main.option_state[opt_sound]/100)*0.8; break;
 	case sn_faint: sound_volume=(ob_main.option_state[opt_sound]/100); break;
 	case sn_hurt: sound_volume=(ob_main.option_state[opt_sound]/100)*0.6; random_pitch=true; break;
 	case sn_money: sound_volume=(ob_main.option_state[opt_sound]/100)*0.2; break;
+	case sn_noise: sound_volume=(ob_main.option_state[opt_sound]/100)*0.2; break;
 	case sn_rare: sound_volume=(ob_main.option_state[opt_sound]/100); break;
 	case sn_rare_2: sound_volume=(ob_main.option_state[opt_sound]/100); break;
 	case sn_text: sound_volume=(ob_main.option_state[opt_sound]/100)*0.2; break;
