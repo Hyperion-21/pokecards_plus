@@ -55,13 +55,13 @@ else if area_zone=0 and zone_first_lap=true { roadmap_current_max=roadmap_road_m
 else if area_zone>0 and zone_first_lap=true { roadmap_current_max=roadmap_road_max; }
 else if zone_first_lap=false { roadmap_current_max=roadmap_outskirts_max; }
 //
-card_level_player_limit=area_zone+2; //2 3 4 5 6 7 8 9 (10)
+card_level_player_limit=area_zone+2; //2 3 4 5 6 7 8 9 (10), max level increase victory message for all gyms
 if card_level_player_limit>10 { card_level_player_limit=10; }
 card_level_spawn_limit=floor((area_zone+1)/1.5)+1; //1 2 3 3 4 5 5 6 (7)
 //
 card_level_enemy_min=area_zone; //1 1 2 3 4 5 6 7 (8)
 if card_level_enemy_min<=0 { card_level_enemy_min=1; }
-if area_zone>0 or zone_first_lap=false or playing_gym=true { card_level_enemy_limit=card_level_player_limit; }
+if area_zone>0 or zone_first_lap=false or playing_gym=true { card_level_enemy_limit=card_level_player_limit; } //also: 50% chance to re-roll level (in ob_card) if max during first laps
 else { card_level_enemy_limit=1; } //first zone, first lap
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if audio_is_playing(ms_main) and area_zone=area_zone_max-1 and roadmap_area>=roadmap_current_max-roadmap_league_max {
@@ -71,7 +71,7 @@ else if audio_is_playing(ms_league) and !(area_zone=area_zone_max-1 and roadmap_
 	music_player=sc_playsound(ms_main,100,true,true);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-maindeck_size_max=10+area_zone*5; //10 15 20 25 30 35 40 45 (50)
+maindeck_size_max=10+area_zone*5; //10 15 20 25 30 35 40 45 (50), deck size increase victory message for all gyms
 if zone_first_lap=false or playing_gym=true or playing_elite=true or playing_champion=true { enemy_maindeck_size=maindeck_size_max; }
 else {
 	enemy_maindeck_size=round((maindeck_size_max-5)+(5*roadmap_area/(roadmap_current_max-1)));
@@ -83,10 +83,37 @@ if maindeck_size_max>50 { //not possible anymore, but just in case
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 money_payout=money_payout_base+money_payout_area_bonus*area_zone;
+if money_payout>100 { money_payout=100; }
 //
 if playing_tutorial=true { battle_hp=5; }
-else if playing_gym=false and playing_elite=false and playing_champion=false { battle_hp=10+area_zone*10; } //10 20 30 40 50 60 70 80 (90)
-else { battle_hp=20+area_zone*10; } //gyms: 20 30 40 50 60 70 80 90 (100)
+else if playing_gym=false and playing_elite=false and playing_champion=false {
+	switch (area_zone) { //normal battles
+		case 00: battle_hp=5; break;
+		case 01: battle_hp=10; break;
+		case 02: battle_hp=20; break;
+		case 03: battle_hp=30; break;
+		case 04: battle_hp=40; break;
+		case 05: battle_hp=50; break;
+		case 06: battle_hp=75; break;
+		case 07: battle_hp=100; break;
+		case 08: battle_hp=125; break;
+	}
+	//battle_hp=10+area_zone*10; //10 20 30 40 50 60 70 80 (90) //old
+}
+else {
+	switch (area_zone) { //gyms and league battles
+		case 00: battle_hp=10; break;
+		case 01: battle_hp=20; break;
+		case 02: battle_hp=30; break;
+		case 03: battle_hp=40; break;
+		case 04: battle_hp=50; break;
+		case 05: battle_hp=75; break;
+		case 06: battle_hp=100; break;
+		case 07: battle_hp=125; break;
+		case 08: battle_hp=150; break;
+	}
+	//battle_hp=20+area_zone*10; //20 30 40 50 60 70 80 90 (100) //old
+}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if textbox_string[textbox_current]!="" {
 	if textbox_show!=textbox_string[textbox_current] {
@@ -388,7 +415,8 @@ if roadmap_get_details=true {
 			event_description[ii][i]="";
 			//
 			if event_kind[ii][i]=ref_event_battle { event_name[ii][i]="Battle:\n" + trainer_name[i]; }
-			else if event_kind[ii][i]=ref_event_payout and area_zone=0 and zone_first_lap=true and i<roadmap_lab_max { event_name[ii][i]="Payout\n($500)"; }
+			else if event_kind[ii][i]=ref_event_payout and area_zone=0 and zone_first_lap=true and i<roadmap_lab_max {
+				event_name[ii][i]="Payout\n($" + string(tutorial_payout) + ")"; }
 			else if event_kind[ii][i]=ref_event_payout { event_name[ii][i]="Payout\n($" + string(money_payout) + ")"; }
 			else if event_kind[ii][i]=ref_event_freecard { event_name[ii][i]="Free Card"; }
 			else if event_kind[ii][i]=ref_event_cardpack { event_name[ii][i]="Card Pack\n$" + string(event_cost[ref_event_cardpack]); }
@@ -498,7 +526,7 @@ else if event_transition>-1 and fade_black>=1 {
 		sc_data_save();
 	}
 	else if event_transition=ref_event_payout {
-		if area_zone=0 and zone_first_lap=true and roadmap_area<roadmap_lab_max { money+=500; } //same conditions also when getting event name
+		if area_zone=0 and zone_first_lap=true and roadmap_area<roadmap_lab_max { money+=tutorial_payout; } //same conditions also when getting event name
 		else { money+=money_payout; }
 		roadmap_area++;
 		sc_data_save();
@@ -506,7 +534,7 @@ else if event_transition>-1 and fade_black>=1 {
 	else if event_transition=ref_event_battle or event_transition=ref_event_gymbattle or event_transition=ref_event_elitebattle or event_transition=ref_event_championbattle or
 	event_transition=ref_event_tutorial {
 		instance_create_layer(x,y,"instances",ob_control);
-		if playing_tutorial=true { money_prize=money_payout; }
+		if playing_tutorial=true { money_prize=tutorial_payout; }
 		else if playing_champion=true { money_prize=0; }
 		else { money_prize=irandom_range((money_add_base+money_add_area_bonus*area_zone)*0.9,(money_add_base+money_add_area_bonus*area_zone)*1.1); }
 		//
@@ -604,10 +632,11 @@ else if event_transition=-1 and event_transition_standby=-1 and fade_black<=0 {
 			}
 			//
 			if event_conditions=true {
-				sc_playsound(sn_event,50,false,false);
-				//
 				event_cost_standby=event_cost[event_kind[mouse_in_event][roadmap_area]];
 				event_transition_standby=event_kind[mouse_in_event][roadmap_area];
+				//
+				if event_transition_standby!=ref_event_battle { sc_playsound(sn_event,50,false,false); } //doesn't play with normal battles to avoid mixing it with ms_battle_intro
+				else { music_player=sc_playsound(ms_battle_intro,100,false,true); }
 				//
 				if event_transition_standby=ref_event_tutorial { sc_textbox(3); }
 				else if event_transition_standby=ref_event_gymbattle { sc_textbox(30+area_zone); }
@@ -619,7 +648,6 @@ else if event_transition=-1 and event_transition_standby=-1 and fade_black<=0 {
 					event_transition_standby=-1;
 					//
 					if event_transition=ref_event_glyph { current_glyph_add=event_glyph_add[mouse_in_event][roadmap_area]; }
-					if event_transition=ref_event_battle { music_player=sc_playsound(ms_battle_intro,100,false,true); }
 				}
 			}
 			else {

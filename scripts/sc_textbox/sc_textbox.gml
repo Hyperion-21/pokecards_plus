@@ -3,7 +3,7 @@ function sc_textbox(argument0) {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if argument0=0 {
 	ob_main.textbox_string[0]="Welcome to the world of Pokemon cards!";
-	ob_main.textbox_string[1]="I am Prof. Aspen of the Hourou region, here to help you with the basics.";
+	ob_main.textbox_string[1]="I am Prof. Aspen of the Kyoumu region, here to help you with the basics.";
 	ob_main.textbox_string[2]="Do you think you have what it takes to be the next Crystal League Champion? Well, let's start from the beginning! Pick your Starter Deck.";
 }
 else if argument0=1 {
@@ -68,7 +68,7 @@ else if argument0=21 { //tutorial: new turn
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if argument0=22 {
 	ob_main.textbox_string[0]="That was a great battle! You clearly have a talent for cards. But, talent is nothing without practice!";
-	ob_main.textbox_string[1]="To be able to battle the Crystal League, you first need to build up your team and gain experience. Your goal is to travel through Hourou, and challenge each of the gym leaders from the eight major cities in the region.";
+	ob_main.textbox_string[1]="To be able to battle in the Crystal League, you first need to build up your team and gain experience. Your goal is to travel through Kyoumu, and challenge each of the gym leaders from the eight major cities in the region.";
 	ob_main.textbox_string[2]="Along the way, you'll be presented with numerous choices to strengthen your cards and battle other trainers.";
 	ob_main.textbox_string[3]="Here's your first set of choices: you can either level up one of your cards, get a card pack with three new cards and a random berry, or pick up a free card from a random set of three. The choice is yours!";
 	ob_main.textbox_string[4]="After that, your first stop will be to challenge Gym Leader Ian in Iris Town. It will be hard, but don't give up!";
@@ -102,19 +102,19 @@ else if argument0=37 { //LAKE
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if argument0=40 { //EMILY
-	ob_main.textbox_string[0]="HOUROU ELITE FOUR, BATTLE ONE: Emily.\nThe Blazing Darkness.";
+	ob_main.textbox_string[0]="KYOUMU ELITE FOUR, BATTLE ONE: Emily.\nThe Blazing Darkness.";
 }
 else if argument0=41 { //FINN
-	ob_main.textbox_string[0]="HOUROU ELITE FOUR, BATTLE TWO: Finn.\nThe Venomous Slayer.";
+	ob_main.textbox_string[0]="KYOUMU ELITE FOUR, BATTLE TWO: Finn.\nThe Venomous Slayer.";
 }
 else if argument0=42 { //DION
-	ob_main.textbox_string[0]="HOUROU ELITE FOUR, BATTLE THREE: Dion.\nThe Winged Fist.";
+	ob_main.textbox_string[0]="KYOUMU ELITE FOUR, BATTLE THREE: Dion.\nThe Winged Fist.";
 }
 else if argument0=43 { //APRIL
-	ob_main.textbox_string[0]="HOUROU ELITE FOUR, BATTLE FOUR: April.\nThe Northern Warrior.";
+	ob_main.textbox_string[0]="KYOUMU ELITE FOUR, BATTLE FOUR: April.\nThe Northern Warrior.";
 }
 else if argument0=44 { //DUNCAN
-	ob_main.textbox_string[0]="HOUROU CRYSTAL LEAGUE, FINAL BATTLE: Duncan.\nThe Crystal Champion.";
+	ob_main.textbox_string[0]="KYOUMU CRYSTAL LEAGUE, FINAL BATTLE: Duncan.\nThe Crystal Champion.";
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if argument0=50 {

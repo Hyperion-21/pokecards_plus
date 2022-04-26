@@ -305,7 +305,13 @@ if battler_turn=2 {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 // BUTTONS
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if button_sorthand=true and card_focus=-1 {
+if keyboard_check_pressed(vk_tab) and !mouse_check_button(mb_left) and card_hold=-1 and ob_main.cursor_hide=false {
+	sc_playsound(sn_click,50,false,false);
+	//
+	button_sorthand=true;
+	button_sorthand_id.button_state=1;
+}
+if button_sorthand=true and card_hold=-1 {
 	var i=0, card_hand_pos_replace;
 	repeat (card_hand_total) {
 		card_hand_pos_replace[i]=-1;

@@ -107,7 +107,17 @@ if card_cat=0 {
 				var random_id_chance=irandom(99); if random_id_chance<80 { allow_id_stage_3=true; } //80% stage 3 allowed
 			}
 			//
-			if reference_id.create_card_level=-1 { card_level=irandom_range(ob_main.card_level_enemy_min,ob_main.card_level_enemy_limit); }
+			if reference_id.create_card_level=-1 {
+				do {
+					var accepted_level=true;
+					card_level=irandom_range(ob_main.card_level_enemy_min,ob_main.card_level_enemy_limit);
+					//
+					if card_level=ob_main.card_level_enemy_limit and ob_main.zone_first_lap=true and
+					ob_main.playing_gym=false and ob_main.playing_elite=false and ob_main.playing_champion=false {
+						accepted_level=choose(true,false); //50% chance to re-roll
+					}
+				} until (accepted_level=true);
+			}
 			else { card_level=reference_id.create_card_level; }
 			card_glyph_a=reference_id.create_card_glyph_a;
 			card_glyph_b=reference_id.create_card_glyph_b;
