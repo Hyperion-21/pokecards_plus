@@ -37,10 +37,14 @@ repeat (maindeck_total) {
 	main_card_innate[i]=-1;
 	main_card_form_value[i]=-1;
 	main_card_serial[i]=-1;
-	//
+	i++;
+}
+//
+var i=0;
+repeat (serial_count) {
 	var ii=0;
 	repeat (deck_setup_max+1) {
-		main_card_indeck[i][ii]=false;
+		serial_card_indeck[i][ii]=false;
 		ii++;
 	}
 	i++;
@@ -117,11 +121,15 @@ if file_exists(data_file) {
 		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_form_value[i]=ds_map_find_value(savemap,value_name); }
 		var value_name="main_card_serial_" + string(i);
 		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_serial[i]=ds_map_find_value(savemap,value_name); }
-		//
+		i++;
+	}
+	//
+	var i=0;
+	repeat (serial_count) {
 		var ii=0;
 		repeat (deck_setup_max+1) {
-			var value_name="main_card_indeck_" + string(i) + "_" + string(ii);
-			if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_indeck[i][ii]=ds_map_find_value(savemap,value_name); }
+			var value_name="serial_card_indeck_" + string(i) + "_" + string(ii);
+			if !is_undefined(ds_map_find_value(savemap,value_name)) { serial_card_indeck[i][ii]=ds_map_find_value(savemap,value_name); }
 			ii++;
 		}
 		i++;

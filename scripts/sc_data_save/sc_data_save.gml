@@ -54,11 +54,15 @@ repeat (maindeck_total) {
 	ds_map_add(savemap,value_name,main_card_form_value[i]);
 	var value_name="main_card_serial_" + string(i);
 	ds_map_add(savemap,value_name,main_card_serial[i]);
-	//
+	i++;
+}
+//
+var i=0;
+repeat (serial_count) {
 	var ii=0;
 	repeat (deck_setup_max+1) {
-		var value_name="main_card_indeck_" + string(i) + "_" + string(ii);
-		ds_map_add(savemap,value_name,main_card_indeck[i][ii]);
+		var value_name="serial_card_indeck_" + string(i) + "_" + string(ii);
+		ds_map_add(savemap,value_name,serial_card_indeck[i][ii]);
 		ii++;
 	}
 	i++;

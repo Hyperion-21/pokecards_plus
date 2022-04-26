@@ -626,7 +626,7 @@ else if event_transition=-1 and event_transition_standby=-1 and fade_black<=0 {
 			var event_conditions=true;
 			if event_kind[mouse_in_event][roadmap_area]=ref_event_tutorial {
 				for (var i=0; i<5; i++;) {
-					if main_card_indeck[i][0]=false { event_conditions=false; }
+					if serial_card_indeck[i][0]=false { event_conditions=false; } //checks serials 0-4 (first 5 cards acquired)
 				}
 				if berry_num_used[0][0]<5 { event_conditions=false; }
 			}

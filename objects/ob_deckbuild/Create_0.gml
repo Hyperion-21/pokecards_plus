@@ -39,7 +39,7 @@ repeat (deck_build_all_total) {
 	create_card_serial=ob_main.main_card_serial[i];
 	//
 	for (var ii=0; ii<=deck_setup_max; ii++;) {
-		create_card_indeck[ii]=ob_main.main_card_indeck[i][ii];
+		create_card_indeck[ii]=ob_main.serial_card_indeck[ob_main.main_card_serial[i]][ii];
 	}
 	//
 	deck_card_all[i]=instance_create_layer(x,y,"instances",ob_card);
