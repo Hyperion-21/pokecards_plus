@@ -64,7 +64,7 @@ if card_cat=0 {
 				var random_id_chance=irandom(99); if random_id_chance<50 { allow_id_fossil=true; } //50% fossil allowed
 				var random_id_chance=irandom(99); if random_id_chance<25 { allow_id_starter=true; } //25% starter allowed
 				var random_id_chance=irandom(99); if random_id_chance<25 { allow_id_baby=true; } //25% baby allowed
-				var random_id_chance=irandom(99); if random_id_chance<10 { allow_id_stage_2=true; } //10% stage 2 allowed
+				var random_id_chance=irandom(99); if random_id_chance<8 { allow_id_stage_2=true; } //8% stage 2 allowed
 				var random_id_chance=irandom(99); if random_id_chance<5 { allow_id_stage_3=true; } //5% stage 3 allowed
 			}
 			//

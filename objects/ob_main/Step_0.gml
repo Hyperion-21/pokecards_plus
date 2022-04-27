@@ -83,7 +83,6 @@ if maindeck_size_max>50 { //not possible anymore, but just in case
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 money_payout=money_payout_base+money_payout_area_bonus*area_zone;
-if money_payout>100 { money_payout=100; }
 //
 if playing_tutorial=true { battle_hp=5; }
 else if playing_gym=false and playing_elite=false and playing_champion=false {
@@ -421,7 +420,7 @@ if roadmap_get_details=true {
 			else if event_kind[ii][i]=ref_event_freecard { event_name[ii][i]="Free Card"; }
 			else if event_kind[ii][i]=ref_event_cardpack { event_name[ii][i]="Card Pack\n$" + string(event_cost[ref_event_cardpack]); }
 			else if event_kind[ii][i]=ref_event_berry { event_name[ii][i]="Berry Pack\n$" + string(event_cost[ref_event_berry]); }
-			else if event_kind[ii][i]=ref_event_levelup { event_name[ii][i]="Level Up\n$" + string(event_cost[ref_event_levelup]); }
+			else if event_kind[ii][i]=ref_event_levelup { event_name[ii][i]="Level Up\n$" + string(event_cost[ref_event_levelup]) + " (*)"; }
 			else if event_kind[ii][i]=ref_event_evolution { event_name[ii][i]="Evolution\n$" + string(event_cost[ref_event_evolution]); }
 			else if event_kind[ii][i]=ref_event_tribute { event_name[ii][i]="Tribute"; }
 			else if event_kind[ii][i]=ref_event_loop { event_name[ii][i]="Not\nReady"; }
@@ -635,8 +634,8 @@ else if event_transition=-1 and event_transition_standby=-1 and fade_black<=0 {
 				event_cost_standby=event_cost[event_kind[mouse_in_event][roadmap_area]];
 				event_transition_standby=event_kind[mouse_in_event][roadmap_area];
 				//
-				if event_transition_standby!=ref_event_battle { sc_playsound(sn_event,50,false,false); } //doesn't play with normal battles to avoid mixing it with ms_battle_intro
-				else { music_player=sc_playsound(ms_battle_intro,100,false,true); }
+				sc_playsound(sn_event,50,false,false);
+				if event_transition_standby=ref_event_battle { music_player=sc_playsound(ms_battle_intro,100,false,true); }
 				//
 				if event_transition_standby=ref_event_tutorial { sc_textbox(3); }
 				else if event_transition_standby=ref_event_gymbattle { sc_textbox(30+area_zone); }
