@@ -1,6 +1,6 @@
 //ob_splash
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if mouse_check_button_pressed(mb_any) or keyboard_check_pressed(vk_anykey) and ob_main.fade_black<=0 {
+if (mouse_check_button_pressed(mb_any) or keyboard_check_pressed(vk_anykey)) and ob_main.fade_black<=0 {
 	sc_playsound(sn_click,50,false,false);
 	ob_main.event_transition=ref_mainmenu;
 }

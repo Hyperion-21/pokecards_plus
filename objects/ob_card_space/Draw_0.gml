@@ -6,6 +6,10 @@ else if trash=false {
 		if mouse_x>=x+4 and mouse_y>=y+4 and mouse_x<x+sprite_width-4 and mouse_y<y+sprite_height-4 { var var_event_alpha=1; }
 		else { var var_event_alpha=0.5; }
 		//
+		if ob_event.event_kind!=ref_event_tribute or ob_event.event_space_id[1]!=id {
+			draw_sprite_general(sp_sheet,0,16*(1+ob_event.event_kind*2),16*15,26,26,x+16,y+26,1,1,0,c_white,c_white,c_white,c_white,var_event_alpha);
+		}
+		//
 		if ob_event.event_kind=ref_event_levelup {
 			draw_set_font(fn_matchup);
 			draw_set_halign(fa_center);
@@ -15,10 +19,8 @@ else if trash=false {
 				sc_drawtext(x+28,y-20,"Cost: $" + string(ob_main.event_cost_standby) + " / $" + string(ob_main.money),money_color,global.color_black,1,1,0,-1);
 			}
 		}
-		else if ob_event.event_kind!=ref_event_tribute or ob_event.event_space_id[1]!=id {
-			draw_sprite_general(sp_sheet,0,16*(1+ob_event.event_kind*2),16*15,26,26,x+16,y+26,1,1,0,c_white,c_white,c_white,c_white,var_event_alpha);
-		}
-		else if ob_event.event_kind=ref_event_glyph {
+		//
+		if ob_event.event_kind=ref_event_glyph {
 			draw_sprite_general(sp_sheet,0,16*(ob_event.glyph_add_id+1),16*6,12,11,x+41,y+4,1,1,0,c_white,c_white,c_white,c_white,var_event_alpha);
 		}
 	}

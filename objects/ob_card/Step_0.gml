@@ -62,6 +62,7 @@ if reference_id=ob_control and card_cat=0 {
 				if sc_glyph_check(id,ref_glyph_transform,true) and vs_card!=-1 and card_id!=vs_card.card_id and vs_card.card_environment=false {
 					//transforms only if there's no mist
 					card_id=vs_card.card_id;
+					card_form_value=vs_card.card_form_value;
 					sc_pokelist();
 					sc_card_level_stats_all(false,false);
 					card_name="Ditto";
@@ -87,7 +88,7 @@ if reference_id=ob_control and card_cat=0 {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if reference_id=ob_control and card_cat=0 {
-	if sc_glyph_check(id,ref_glyph_berserk,true) and card_hp=1 { var base_atk_multiplier=2; } //glyph: berserk
+	if sc_glyph_check(id,ref_glyph_berserk,true) and (card_hp<=(card_full_hp/10) or (card_hp=1 and card_hp!=card_full_hp)) { var base_atk_multiplier=2; } //glyph: berserk
 	else { var base_atk_multiplier=1; }
 	//
 	if card_played=false and card_trash=false {
@@ -160,7 +161,9 @@ else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spr
 		//
 		if ob_event.show_deck=false {
 			if card_face=false {
-				if (card_cat=0 and card_stage>1) or (card_cat=1 and card_id=3003) {
+				if (card_cat=1 and card_id=3003) or
+				(card_cat=0 and (card_stage>1 or (card_glyph_a!=-1 and card_glyph_a<glyph_common_amount) or
+				(card_glyph_b!=-1 and card_glyph_b<glyph_common_amount) or (card_glyph_c!=-1 and card_glyph_c<glyph_common_amount))) {
 					sc_playsound(sn_rare,50,false,false);
 					sc_card_effect(x,y,0,false,true);
 				}

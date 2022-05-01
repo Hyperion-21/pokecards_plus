@@ -32,7 +32,7 @@ if random_value<10 and ob_main.playing_tutorial=false {
 	AI_draw(enemy_draw_cat);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-// DRAW: AT LEAST 1 POKEMON > BERRIES IF NEEDED > POKEMON > BERRIES
+// DRAW: AT LEAST 1 POKEMON > BERRIES IF NEEDED (NOT ENIGMA) > POKEMON > BERRIES
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if random_value<100 and ob_main.playing_tutorial=false {
 	if poke_held<1 and AI_draw_available(0) {

@@ -20,22 +20,43 @@ if event_kind=ref_event_cardpack or event_kind=ref_event_berry {
 	if event_kind=ref_event_cardpack {
 		card_prize=4;
 		var main_amount=3, berry_amount=1;
+		//
+		var i=0;
+		repeat (card_prize) {
+			if main_amount>0 and berry_amount>0 { create_card_cat=choose(0,1); }
+			else if main_amount>0 and berry_amount=0 { create_card_cat=0; }
+			else if main_amount=0 and berry_amount>0 { create_card_cat=1; }
+			if create_card_cat=0 { main_amount--; }
+			else { berry_amount--; }
+			create_card_id=-1;
+			//
+			instance_create_layer(screen_main_x+118+(73*i),screen_main_y+104,"instances",ob_card);
+			i++;
+		}
 	}
 	else if event_kind=ref_event_berry {
 		card_prize=4;
-		var main_amount=0, berry_amount=4;
-	}
-	var i=0;
-	repeat (card_prize) {
-		if main_amount>0 and berry_amount>0 { create_card_cat=choose(0,1); }
-		else if main_amount>0 and berry_amount=0 { create_card_cat=0; }
-		else if main_amount=0 and berry_amount>0 { create_card_cat=1; }
-		if create_card_cat=0 { main_amount--; }
-		else { berry_amount--; }
-		create_card_id=-1;
+		var min_oran=1, min_leppa=1, min_lum=1;
 		//
-		instance_create_layer(screen_main_x+118+(73*i),screen_main_y+104,"instances",ob_card);
-		i++;
+		var i=0;
+		repeat (card_prize) {
+			create_card_cat=1;
+			if min_oran>0 and min_leppa>0 and min_lum>0 { create_card_id=choose(3000,3001,3002); }
+			else if min_oran>0 and min_leppa>0 { create_card_id=choose(3000,3001); }
+			else if min_oran>0 and min_lum>0 { create_card_id=choose(3000,3002); }
+			else if min_leppa>0 and min_lum>0 { create_card_id=choose(3001,3002); }
+			else if min_oran>0 { create_card_id=3000; }
+			else if min_leppa>0 { create_card_id=3001; }
+			else if min_lum>0 { create_card_id=3002; }
+			else { create_card_id=-1; }
+			//
+			if create_card_id=3000 { min_oran--; }
+			else if create_card_id=3001 { min_leppa--; }
+			else if create_card_id=3002 { min_lum--; }
+			//
+			instance_create_layer(screen_main_x+118+(73*i),screen_main_y+104,"instances",ob_card);
+			i++;
+		}
 	}
 	//
 	button_create=instance_create_layer(screen_main_x+cam_w-24,screen_main_y+cam_h-24,"instances",ob_button_16x16);

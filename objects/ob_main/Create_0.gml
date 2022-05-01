@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.95"
+#macro game_version "v0.0.0.96"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -45,10 +45,10 @@ ending_screen=false;
 ending_static_timer=-1;
 //
 #macro area_zone_max 9
-#macro roadmap_full_max 30 //save/load, needs to be bigger than the rest (and their sum, just in case)
+#macro roadmap_full_max 35 //save/load, needs to be bigger than the rest (and their sum, just in case)
 roadmap_current_max=0;
-roadmap_road_max=12;
-roadmap_outskirts_max=6;
+roadmap_road_max=18;
+roadmap_outskirts_max=8;
 roadmap_league_max=5;
 roadmap_lab_max=3;
 //
@@ -96,11 +96,11 @@ textbox_char_pos=0;
 #macro maindeck_total_max 2000
 #macro berrydeck_total_max 200 //per berry
 //
-#macro money_add_base 70 //70 80 90 100 110 120 130 140 150
-#macro money_add_area_bonus 10
-#macro money_payout_base 50 //50 60 70 80 90 100 110 120 130
-#macro money_payout_area_bonus 10
-#macro tutorial_payout 200
+#macro money_add_base 150 //150 200 250 300 350 400 450 500 550
+#macro money_add_area_bonus 50
+#macro money_payout_base 100 //100 150 200 250 300 350 400 450 500
+#macro money_payout_area_bonus 50
+#macro tutorial_payout 1000
 //
 battle_hp=0;
 money_show=0;
@@ -133,12 +133,12 @@ event_cost_standby=0;
 for (var i=0; i<=999; i++;) {
 	event_cost[i]=0;
 }
-event_cost[ref_event_cardpack]=200;
-event_cost[ref_event_berry]=50;
-event_cost[ref_event_levelup]=50;
-#macro levelup_cost_multiplier 25 //50 75 100 125 150 175 200 225 250
-event_cost[ref_event_evolution]=300;
-event_cost[ref_event_glyph]=200;
+event_cost[ref_event_cardpack]=500;
+event_cost[ref_event_berry]=100;
+event_cost[ref_event_levelup]=100;
+#macro levelup_cost_multiplier 50 //100 150 200 250 300 350 400 450 500
+event_cost[ref_event_evolution]=1000;
+event_cost[ref_event_glyph]=750;
 //
 #macro innate_max 6 //failure chance uses manual values in ob_event, enemy innate uses manual values in ob_card, sc_enemy_deck uses manual values
 current_glyph_add=-1;

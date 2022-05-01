@@ -59,7 +59,7 @@ card_level_player_limit=area_zone+2; //2 3 4 5 6 7 8 9 (10), max level increase 
 if card_level_player_limit>10 { card_level_player_limit=10; }
 card_level_spawn_limit=floor((area_zone+1)/1.5)+1; //1 2 3 3 4 5 5 6 (7)
 //
-card_level_enemy_min=area_zone; //1 1 2 3 4 5 6 7 (8)
+card_level_enemy_min=area_zone-1; //1 1 1 2 3 4 5 6 (7)
 if card_level_enemy_min<=0 { card_level_enemy_min=1; }
 if area_zone>0 or zone_first_lap=false or playing_gym=true { card_level_enemy_limit=card_level_player_limit; } //also: 50% chance to re-roll level (in ob_card) if max during first laps
 else { card_level_enemy_limit=1; } //first zone, first lap
@@ -522,13 +522,15 @@ else if event_transition>-1 and fade_black>=1 {
 			roadmap_generated=false;
 			zone_first_lap=false;
 		}
-		sc_data_save();
+		//
+		if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(); }
 	}
 	else if event_transition=ref_event_payout {
 		if area_zone=0 and zone_first_lap=true and roadmap_area<roadmap_lab_max { money+=tutorial_payout; } //same conditions also when getting event name
 		else { money+=money_payout; }
 		roadmap_area++;
-		sc_data_save();
+		//
+		if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(); }
 	}
 	else if event_transition=ref_event_battle or event_transition=ref_event_gymbattle or event_transition=ref_event_elitebattle or event_transition=ref_event_championbattle or
 	event_transition=ref_event_tutorial {
@@ -593,7 +595,8 @@ else if event_transition>-1 and fade_black>=1 {
 			}
 		}
 		//
-		if roadmap_area<roadmap_current_max { sc_data_save(); }
+		if roadmap_area<roadmap_current_max {
+			if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(); }}
 	}
 	else {
 		if !instance_exists(ob_event) {
@@ -613,7 +616,8 @@ else if event_transition>-1 and fade_black>=1 {
 			with (ob_button_16x16) { instance_destroy(); }
 			with (ob_button_15x16) { instance_destroy(); }
 			with (ob_button_31x24) { instance_destroy(); }
-			sc_data_save();
+			//
+			if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(); }
 		}
 	}
 	//
@@ -745,6 +749,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 			fade_black_exit=0;
 			fade_red_delete=0;
 			screen_transition=2;
+			//
 			sc_config_save();
 		}
 	}
@@ -766,7 +771,8 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 			with (ob_button_15x16) { instance_destroy(); }
 			with (ob_button_31x24) { instance_destroy(); }
 			screen_transition=2;
-			sc_data_save();
+			//
+			if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(); }
 		}
 	}
 	else {
