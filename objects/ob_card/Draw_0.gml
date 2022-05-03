@@ -143,6 +143,10 @@ if card_cat=0 and card_face=true and in_view=true {
 	if card_delete_timer>0 {
 		draw_sprite_general(sp_sheet,0,16*37+4,16*0,57,80,draw_x,draw_y,1,1,0,c_white,c_white,c_white,c_white,1);
 		draw_healthbar(draw_x+8,draw_y+55,draw_x+48,draw_y+58,card_delete_timer*100/card_delete_timer_max,global.color_black,global.color_damage,global.color_damage,0,true,false);
+		//
+		draw_set_font(fn_matchup);
+		draw_set_halign(fa_center);
+		sc_drawtext(draw_x+29,draw_y+11,"$" + string(card_value*sell_value_multiplier),global.color_card_light,global.color_black,1,1,0,-1);
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

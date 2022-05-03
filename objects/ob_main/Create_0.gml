@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.96"
+#macro game_version "v0.0.0.97"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -47,7 +47,7 @@ ending_static_timer=-1;
 #macro area_zone_max 9
 #macro roadmap_full_max 35 //save/load, needs to be bigger than the rest (and their sum, just in case)
 roadmap_current_max=0;
-roadmap_road_max=18;
+roadmap_road_max=16;
 roadmap_outskirts_max=8;
 roadmap_league_max=5;
 roadmap_lab_max=3;
@@ -96,11 +96,12 @@ textbox_char_pos=0;
 #macro maindeck_total_max 2000
 #macro berrydeck_total_max 200 //per berry
 //
-#macro money_add_base 150 //150 200 250 300 350 400 450 500 550
+#macro money_add_base 100 //100 150 200 250 300 350 400 450 500
 #macro money_add_area_bonus 50
-#macro money_payout_base 100 //100 150 200 250 300 350 400 450 500
-#macro money_payout_area_bonus 50
-#macro tutorial_payout 1000
+#macro money_payout_base 80 //80 120 160 200 240 280 320 360 400
+#macro money_payout_area_bonus 40
+#macro tutorial_payout 800
+#macro sell_value_multiplier 5
 //
 battle_hp=0;
 money_show=0;

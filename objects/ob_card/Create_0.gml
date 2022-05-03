@@ -148,7 +148,7 @@ if card_cat=0 {
 			if enemy_randomizer=false {
 				var card_glyph_chance=irandom(999), card_glyph_total=0;
 				if card_glyph_chance<5 { card_glyph_total=2; } //0.5%
-				else if card_glyph_chance<25 { card_glyph_total=1; } //2%
+				else if card_glyph_chance<20 { card_glyph_total=1; } //1.5%
 				//
 				if card_glyph_total>=1 and card_glyph_a=-1 {
 					card_glyph_a=sc_glyph_random();

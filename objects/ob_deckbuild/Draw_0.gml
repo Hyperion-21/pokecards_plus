@@ -17,6 +17,8 @@ if cam_w<(deck_build_used_total*60) {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 draw_sprite_general(sp_sheet,0,16*13,16*9,48,32,screen_deck_x+38,screen_main_y+110-rel_hud*2,1,1,0,c_white,c_white,c_white,c_white,0.5);
 draw_sprite_general(sp_sheet,0,16*16,16*9,48,32,screen_deck_x+38,screen_main_y+110+36+rel_hud*2,1,1,0,c_white,c_white,c_white,c_white,0.5);
+draw_sprite_general(sp_sheet,0,16*19,16*9,48,32,screen_deck_x+448+rel_hud,screen_main_y+109,1,1,0,c_white,c_white,c_white,c_white,0.5);
+draw_sprite_general(sp_sheet,0,16*22,16*9,48,32,screen_deck_x+449-rel_hud,screen_main_y+109+38,1,1,0,c_white,c_white,c_white,c_white,0.5);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 draw_set_font(fn_m3x6);
 draw_set_halign(fa_left);
