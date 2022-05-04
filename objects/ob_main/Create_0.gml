@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.97"
+#macro game_version "v0.0.0.98"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -129,6 +129,8 @@ event_cost_standby=0;
 #macro ref_event_victory 300 //only for transitions
 #macro ref_event_defeat 301 //only for transitions
 #macro ref_event_exitbattle 302 //only for transitions
+#macro ref_fly_prev 400 //only for transitions
+#macro ref_fly_next 401 //only for transitions
 #macro ref_mainmenu 999 //only for transitions
 //
 for (var i=0; i<=999; i++;) {

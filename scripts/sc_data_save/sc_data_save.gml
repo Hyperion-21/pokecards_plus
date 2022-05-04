@@ -3,6 +3,7 @@ function sc_data_save() {
 var savemap=ds_map_create();
 //
 ds_map_add(savemap,"area_zone",area_zone);
+ds_map_add(savemap,"latest_zone",latest_zone);
 ds_map_add(savemap,"zone_first_lap",zone_first_lap);
 ds_map_add(savemap,"roadmap_area",roadmap_area);
 ds_map_add(savemap,"roadmap_generated",roadmap_generated);

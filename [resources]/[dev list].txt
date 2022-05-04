@@ -69,3 +69,5 @@
 ✔	extra visual effects
 ✔	sound effects
 ✔	ending screen
+✔	sell cards
+✔	fly to previous/next area

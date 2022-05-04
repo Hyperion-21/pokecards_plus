@@ -64,6 +64,11 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	else if zone_first_lap=true { zone_name_text="Road to: " + zone_name; }
 	else if zone_first_lap=false { zone_name_text="Outskirts: " + zone_name; }
 	sc_drawtext(road_win_x+120,road_win_y+120,zone_name_text,global.color_white,global.color_black,0.5,0.5,0,-1);
+	//
+	if area_zone>0 { var fly_alpha=0.5; } else { var fly_alpha=0.1; }
+	draw_sprite_general(sp_sheet,0,16*29,16*7,16,16,fly_prev_x,fly_prev_y,1,1,0,c_white,c_white,c_white,c_white,fly_alpha);
+	if area_zone<area_zone_max-1 and latest_zone>area_zone { var fly_alpha=0.5; } else { var fly_alpha=0.1; }
+	draw_sprite_general(sp_sheet,0,16*29,16*8,16,16,fly_next_x,fly_next_y,1,1,0,c_white,c_white,c_white,c_white,fly_alpha);
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	draw_set_alpha(1);
 	//
@@ -86,8 +91,12 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	draw_sprite_general(sp_sheet,0,16*(option_state[opt_playericon]+3),16*12,16,16,road_win_x-2+(bar_amount*228)/100,road_win_y-23-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
 	//
 	for (var i=0; i<=7; i++;) {
-		if area_zone>i { draw_sprite_general(sp_sheet,0,16*(i+playericon_max+5),16*12,16,16,road_win_x+56+16*i,road_win_y-38-rel_hud,1,1,0,c_white,c_white,c_white,c_white,0.5); }
-		else { draw_sprite_general(sp_sheet,0,16*(playericon_max+4),16*12,16,16,road_win_x+56+16*i,road_win_y-38-rel_hud,1,1,0,c_white,c_white,c_white,c_white,0.25); }
+		if area_zone=i { var zone_icon_alpha=1; } else { var zone_icon_alpha=0.5; }
+		//
+		if i<latest_zone {
+			draw_sprite_general(sp_sheet,0,16*(i+playericon_max+5),16*12,16,16,road_win_x+56+16*i,road_win_y-38-rel_hud,1,1,0,c_white,c_white,c_white,c_white,zone_icon_alpha); }
+		else {
+			draw_sprite_general(sp_sheet,0,16*(playericon_max+4),16*12,16,16,road_win_x+56+16*i,road_win_y-38-rel_hud,1,1,0,c_white,c_white,c_white,c_white,zone_icon_alpha/1.5); }
 	}
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	draw_set_font(fn_m6x11);
@@ -226,14 +235,14 @@ if event_transition=ref_event_victory or event_transition=ref_event_defeat {
 	draw_set_halign(fa_center);
 	//
 	if event_transition=ref_event_victory and playing_champion=false {
-		if playing_gym=false { var victory_text_y=screen_main_y+cam_h/2-17; }
+		if playing_gym=false or latest_zone>area_zone { var victory_text_y=screen_main_y+cam_h/2-17; }
 		else { var victory_text_y=screen_main_y+cam_h/2-29; }
 		//
 		draw_set_font(fn_m6x11_XL);
 		sc_drawtext(screen_main_x+cam_w/2,victory_text_y,"VICTORY",global.color_player,global.color_black,1,1,0,-1);
 		draw_set_font(fn_matchup);
 		sc_drawtext(screen_main_x+cam_w/2,victory_text_y+22,"Received $" + string(money_prize),global.color_card_light,global.color_black,1,1,0,-1);
-		if playing_gym=true {
+		if playing_gym=true and latest_zone=area_zone {
 			sc_drawtext(screen_main_x+cam_w/2,victory_text_y+22,"\nDeck size increased!\nMax card level increased!",global.color_card_light,global.color_black,1,1,0,-1); }
 	}
 	else if event_transition=ref_event_defeat {
