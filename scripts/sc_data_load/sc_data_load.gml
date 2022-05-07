@@ -2,6 +2,7 @@ function sc_data_load() {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 area_zone=0;
 latest_zone=0;
+latest_city=-1;
 zone_first_lap=true;
 roadmap_area=0;
 roadmap_generated=false;
@@ -72,6 +73,7 @@ if file_exists(data_file) {
 	//
 	if !is_undefined(ds_map_find_value(savemap,"area_zone")) { area_zone=ds_map_find_value(savemap,"area_zone"); }
 	if !is_undefined(ds_map_find_value(savemap,"latest_zone")) { latest_zone=ds_map_find_value(savemap,"latest_zone"); }
+	if !is_undefined(ds_map_find_value(savemap,"latest_city")) { latest_city=ds_map_find_value(savemap,"latest_city"); }
 	if !is_undefined(ds_map_find_value(savemap,"zone_first_lap")) { zone_first_lap=ds_map_find_value(savemap,"zone_first_lap"); }
 	if !is_undefined(ds_map_find_value(savemap,"roadmap_area")) { roadmap_area=ds_map_find_value(savemap,"roadmap_area"); }
 	if !is_undefined(ds_map_find_value(savemap,"roadmap_generated")) { roadmap_generated=ds_map_find_value(savemap,"roadmap_generated"); }

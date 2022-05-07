@@ -49,19 +49,19 @@ if !instance_exists(ob_control) and !instance_exists(ob_splash) {
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if area_zone=area_zone_max-1 and zone_first_lap=true { roadmap_current_max=roadmap_road_max+roadmap_league_max; }
-else if area_zone=area_zone_max-1 and zone_first_lap=false { roadmap_current_max=roadmap_outskirts_max+roadmap_league_max; }
+if area_zone=area_zone_max-1 and zone_first_lap=true { roadmap_current_max=roadmap_road_max+roadmap_league_max-1; }
+else if area_zone=area_zone_max-1 and zone_first_lap=false { roadmap_current_max=roadmap_outskirts_max+roadmap_league_max-1; } //roadmap_outskirts_max is also used when flying to league
 else if area_zone=0 and zone_first_lap=true { roadmap_current_max=roadmap_road_max+roadmap_lab_max; }
 else if area_zone>0 and zone_first_lap=true { roadmap_current_max=roadmap_road_max; }
-else if zone_first_lap=false { roadmap_current_max=roadmap_outskirts_max; }
+else if zone_first_lap=false { roadmap_current_max=roadmap_outskirts_max; } //roadmap_outskirts_max is also used when flying to cities
 //
 card_level_player_limit=latest_zone+2; //2 3 4 5 6 7 8 9 (10), max level increase victory message for all gyms
 if card_level_player_limit>10 { card_level_player_limit=10; }
 card_level_spawn_limit=floor((latest_zone+1)/1.5)+1; //1 2 3 3 4 5 5 6 (7)
 //
-card_level_enemy_min=area_zone-1; //1 1 1 2 3 4 5 6 (7)
+card_level_enemy_min=area_zone; //1 1 2 3 4 5 6 7 (8)
 if card_level_enemy_min<=0 { card_level_enemy_min=1; }
-if area_zone>0 or zone_first_lap=false or playing_gym=true { card_level_enemy_limit=area_zone+2; } //2 3 4 5 6 7 8 9 (10), 50% chance to re-roll level (in ob_card) if max (first laps)
+if area_zone>0 or zone_first_lap=false or playing_gym=true { card_level_enemy_limit=area_zone+2; } //2 3 4 5 6 7 8 9 (10), 40% chance to re-roll (first laps in ob_card)
 else { card_level_enemy_limit=1; } //first zone, first lap
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if audio_is_playing(ms_main) and area_zone=area_zone_max-1 and roadmap_area>=roadmap_current_max-roadmap_league_max {
@@ -490,19 +490,21 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 	fly_next_y=road_win_y+118;
 	//
 	if area_zone>0 and //same conditions as draw
+	((area_zone<area_zone_max-1 and roadmap_area=roadmap_current_max-1) or (area_zone=area_zone_max-1 and roadmap_area>=roadmap_current_max-roadmap_league_max)) and
 	mouse_x>=fly_prev_x and mouse_y>=fly_prev_y and mouse_x<fly_prev_x+16 and mouse_y<fly_prev_y+16 and cursor_hide=false {
 		mouse_in_fly=0;
 		//
 		mouse_cursor=1;
-		tooltip_text="Fly to previous area.";
+		tooltip_text="Fly to previous city/area.";
 		tooltip_lines=1;
 	}
 	else if area_zone<area_zone_max-1 and latest_zone>area_zone and //same conditions as draw
+	((area_zone<area_zone_max-1 and roadmap_area=roadmap_current_max-1) or (area_zone=area_zone_max-1 and roadmap_area>=roadmap_current_max-roadmap_league_max)) and
 	mouse_x>=fly_next_x and mouse_y>=fly_next_y and mouse_x<fly_next_x+16 and mouse_y<fly_next_y+16 and cursor_hide=false {
 		mouse_in_fly=1;
 		//
 		mouse_cursor=1;
-		tooltip_text="Fly to next area.";
+		tooltip_text="Fly to next city/area.";
 		tooltip_lines=1;
 	}
 }
@@ -540,11 +542,16 @@ else if event_transition>-1 and fade_black>=1 {
 	else if event_transition=ref_fly_prev or event_transition=ref_fly_next {
 		if event_transition=ref_fly_prev { area_zone--; }
 		else if event_transition=ref_fly_next { area_zone++; }
-		roadmap_area=0;
 		roadmap_generated=false;
 		//
-		if latest_zone=area_zone { zone_first_lap=true; }
-		else { zone_first_lap=false; }
+		if latest_city>=area_zone {
+			roadmap_area=roadmap_outskirts_max-1;
+			zone_first_lap=false;
+		}
+		else { //not possible anymore since you can't fly away from an area before reaching its city
+			//roadmap_area=0;
+			//zone_first_lap=true;
+		}
 		//
 		sc_data_save();
 	}
@@ -657,6 +664,10 @@ else if event_transition>-1 and fade_black>=1 {
 			if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(); }
 		}
 	}
+	//
+	if area_zone>latest_city and
+	((area_zone<area_zone_max-1 and roadmap_area=roadmap_current_max-1) or (area_zone=area_zone_max-1 and roadmap_area=roadmap_current_max-roadmap_league_max)) {
+		latest_city=area_zone; }
 	//
 	event_transition=-1;
 }

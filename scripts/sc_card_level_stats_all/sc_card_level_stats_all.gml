@@ -10,15 +10,16 @@ if argument0=true { card_hp=card_full_hp; }
 card_atk=card_full_atk;
 card_def=card_full_def;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+card_value=card_full_hp+card_full_atk*2+card_full_def*2;
+//
+var var_card_innate=card_innate;
+card_innate=1;
+var card_max_common_value=sc_card_level_stats_main(0,10)+sc_card_level_stats_main(1,10)*2+sc_card_level_stats_main(2,10)*2; //checks with max card_level and base card_innate
+card_innate=var_card_innate;
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 if argument1=true {
-	//if card_full_hp+card_full_atk*2+card_full_def*2>=40 { card_cost_total=2; }
-	//else if card_full_hp+card_full_atk*2+card_full_def*2>=4 { card_cost_total=1; }
-	//else { card_cost_total=0; }
-	//if card_enigma=true { card_cost_total++; }
-	//if card_environment=true { card_cost_total=0; }
-	//
 	if card_full_hp<=1 and card_full_atk<=1 and card_full_def<=0 { card_cost_total=0; }
-	else if card_level>=9 and card_evo[0]=-1 { card_cost_total=2; }
+	else if card_evo[0]=-1 and card_max_common_value>=30 { card_cost_total=2; } //not shuckle, smeargle, etc.
 	else { card_cost_total=1; }
 	if card_enigma=true { card_cost_total++; }
 	if card_environment=true { card_cost_total=0; }

@@ -114,7 +114,7 @@ if card_cat=0 {
 					//
 					if card_level=ob_main.card_level_enemy_limit and ob_main.zone_first_lap=true and
 					ob_main.playing_gym=false and ob_main.playing_elite=false and ob_main.playing_champion=false {
-						accepted_level=choose(true,false); //50% chance to re-roll
+						accepted_level=choose(true,true,true,false,false); //40% chance to re-roll
 					}
 				} until (accepted_level=true);
 			}
@@ -161,7 +161,11 @@ if card_cat=0 {
 			}
 			else {
 				var card_glyph_chance=irandom(9999), card_glyph_total=0;
-				if card_glyph_chance<(1000+250*ob_main.area_zone) { //10%, 12.5%, 15%, 17.5%, 20%, 22.5%, 25%, 27.5%, (30%)
+				if ob_main.playing_gym=true or ob_main.playing_elite=true or ob_main.playing_champion=true {
+					var card_glyph_chance_limit=1500+250*ob_main.area_zone; } //15%, 17.5%, 20%, 22.5%, 25%, 27.5%, 30%, 32.5%, (35%)
+				else { var card_glyph_chance_limit=1000+250*ob_main.area_zone; } //10%, 12.5%, 15%, 17.5%, 20%, 22.5%, 25%, 27.5%, (30%)
+				//
+				if card_glyph_chance<card_glyph_chance_limit {
 					card_glyph_chance=irandom(99);
 					if card_glyph_chance<5 { card_glyph_total=3; } //5%
 					else if card_glyph_chance<30 { card_glyph_total=2; } //25%
@@ -184,19 +188,22 @@ if card_cat=0 {
 			}
 		}
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
-		card_value=sc_card_level_stats_main(0,card_level)+sc_card_level_stats_main(1,card_level)*2+sc_card_level_stats_main(2,card_level)*2;
-		var card_rarity=sc_card_level_stats_main(0,10)+sc_card_level_stats_main(1,10)*2+sc_card_level_stats_main(2,10)*2; //checks with max card_level
-		//innate value is always 1 on random cards, so it's not considered for rarity
+		var card_rarity=sc_card_level_stats_main(0,10)+sc_card_level_stats_main(1,10)*2+sc_card_level_stats_main(2,10)*2;
+		//checks with max card_level and base card_innate, same as in sc_card_level_stats_all (innate value is always 1 on random cards, so it's not considered for rarity)
 		//
 		if random_card=true {
-			var card_rarity_chance=0;
+			var card_rarity_chance=0, card_rarity_soft_min=0;
 			//
 			if enemy_randomizer=false {
 				card_rarity_chance=irandom(74)+1; //75
 			}
 			else {
-				if card_environment=true or ob_main.playing_gym=true or ob_main.playing_elite=true or ob_main.playing_champion=true {
+				if card_environment=true {
 					card_rarity_chance=irandom(74)+1; //75
+				}
+				else if ob_main.playing_gym=true or ob_main.playing_elite=true or ob_main.playing_champion=true {
+					card_rarity_chance=irandom(74)+1; //75
+					card_rarity_soft_min=30; //about 1/3 below average
 				}
 				else {
 					var enemy_rarity_max=34+ob_main.area_zone*15;
@@ -216,6 +223,10 @@ if card_cat=0 {
 				else if card_stage=0 and allow_id_baby=false { card_rarity_check=false; }
 				else if card_stage=2 and allow_id_stage_2=false { card_rarity_check=false; }
 				else if card_stage=3 and allow_id_stage_3=false { card_rarity_check=false; }
+				//
+				if card_rarity_check=true {
+					if card_rarity<card_rarity_soft_min { card_rarity_check=choose(false,true); } //50%
+				}
 				//
 				if card_rarity_check=true {
 					card_rarity_chance=irandom(9)+1;

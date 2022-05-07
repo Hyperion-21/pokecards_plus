@@ -70,4 +70,4 @@
 ✔	sound effects
 ✔	ending screen
 ✔	sell cards
-✔	fly to previous/next area
+✔	fly to cities
