@@ -20,11 +20,11 @@ else if argument0=3 {
 else if argument0=4 { //tutorial: new turn
 	ob_main.textbox_string[0]="Welcome to your very first card battle! Don't worry if it seems complicated at first, the rules are actually quite simple.";
 	ob_main.textbox_string[1]="It's your turn first, so let's start by drawing cards.\nOn your first turn, you always get 5 Draw Points, or \"DP\". These are used to draw Pokemon and berries from your decks.";
-	ob_main.textbox_string[2]="Drawing a Pokemon (from the deck on your right) costs 2 DP, while drawing berries (from the deck on your left) costs only 1 DP. Berries are necessary to play your Pokemon, so both are important.";
-	ob_main.textbox_string[3]="Anyway, you have 5 DP, which means you can draw right now! Go ahead and draw, let's say, 2 Pokemon and 1 berry.";
+	ob_main.textbox_string[2]="Berries are used to play your Pokemon, so both decks are important.\nThere's 3 common types of berries: Oran berries, Leppa berries, and Lum berries. Most Pokemon require one of these to be played.";
+	ob_main.textbox_string[3]="Right now you have 5 DP, which means you can draw cards!\nDrawing a Pokemon costs 2 DP, while drawing berries costs only 1 DP. Go ahead and draw, let's say, 2 Pokemon and 1 berry.";
 }
 else if argument0=5 { //tutorial: drawn
-	ob_main.textbox_string[0]="Good! It seems both of your Pokemon require 1 Oran Berry to be played, you can see the little berry icon next to their picture. Play the Oran Berry you just got anywhere you want, and then play your Rattata on top of it.";
+	ob_main.textbox_string[0]="Good! It seems both of your Pokemon require an Oran berry to be played (you can see the little berry icon next to their picture). Play the Oran berry you just got anywhere you want, and then play your Rattata on top of it.";
 	ob_main.textbox_string[1]="Pokemon can't attack during your first turn, so once your Rattata is played, click the big green button to end your turn.";
 }
 else if argument0=6 { //tutorial: new turn
@@ -58,9 +58,9 @@ else if argument0=17 { //tutorial: attacked
 	ob_main.textbox_string[0]="Ouch! I wasn't expecting our battle to go this way, but it's definitely a good lesson! For both of us.";
 }
 else if argument0=18 { //tutorial: new turn
-	ob_main.textbox_string[0]="My Eevee has a glyph! Glyphs are unique abilities that can be added to cards. This one makes it so that my Eevee's attack is doubled when their HP is almost gone.";
-	ob_main.textbox_string[1]="You can see what any glyph does by placing your mouse over its icon. There are many of them out there, so look around!";
-	ob_main.textbox_string[2]="But anyway! Draw your last Pokemon from your deck and play it in front of my Pidgey to take them out. Then attack with the rest of your Pokemon as well!";
+	ob_main.textbox_string[0]="My Magnemite has a glyph! Glyphs are unique abilities that can be added to cards. This one makes it so that my Magnemite's attack is doubled when their HP is almost gone.";
+	ob_main.textbox_string[1]="You can see what any glyph does by placing your mouse over its icon. But be aware, cards with glyphs usually also have a higher berry cost!";
+	ob_main.textbox_string[2]="But anyway, draw your last Pokemon from your deck and play it in front of my Pidgey to take them out. Then attack with the rest of your Pokemon as well!";
 }
 else if argument0=21 { //tutorial: new turn
 	ob_main.textbox_string[0]="It seems our battle is almost over! Attack once more with your Pokemon to deal the final blow and take me down.";

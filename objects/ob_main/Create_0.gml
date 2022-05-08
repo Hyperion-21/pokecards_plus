@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.99"
+#macro game_version "v0.0.0.100"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -103,7 +103,17 @@ textbox_char_pos=0;
 #macro tutorial_payout 800
 #macro sell_value_multiplier 5
 //
-battle_hp=0;
+battle_hp[0]=5; //10
+battle_hp[1]=15; //30
+battle_hp[2]=25; //50
+battle_hp[3]=35; //70
+battle_hp[4]=50; //100
+battle_hp[5]=75; //150
+battle_hp[6]=100; //200
+battle_hp[7]=125; //250
+battle_hp[8]=150; //300
+battle_hp[9]=200; //400
+//
 money_show=0;
 money_prize=0;
 money_payout=0;

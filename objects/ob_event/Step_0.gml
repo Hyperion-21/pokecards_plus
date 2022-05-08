@@ -103,6 +103,9 @@ if apply_event=true {
 				card_id_in_space[0].card_glyph_c=glyph_add_id;
 			}
 			sc_card_effect(event_space_id[0].x,event_space_id[0].y,0,false,true);
+			with (card_id_in_space[0]) {
+				sc_card_level_stats_all(true,true);
+			}
 			//
 			event_applied=true;
 			ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_glyph_a;

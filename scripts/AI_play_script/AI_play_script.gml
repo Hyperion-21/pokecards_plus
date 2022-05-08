@@ -203,7 +203,7 @@ else if anypoke_playable=false and commonberry_playable=false and enigmaberry_pl
 	else if all_spaces_occupied=false {
 		var i=0, any_discardable=false, lowest_value=999;
 		repeat (enemycard_hand_total) {
-			if enemycard_hand[i].card_cat=0 and enemycard_hand[i].card_value<=lowest_value and enemycard_hand[i].card_value<=5 {
+			if enemycard_hand[i].card_cat=0 and enemycard_hand[i].card_value<=lowest_value and enemycard_hand[i].card_value<=4 {
 				lowest_value=enemycard_hand[i].card_value;
 				any_discardable=true;
 			}

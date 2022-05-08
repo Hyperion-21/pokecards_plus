@@ -83,38 +83,8 @@ if maindeck_size_max>40 {
 if enemy_maindeck_size>40 {
 	enemy_maindeck_size=40;
 }
-//————————————————————————————————————————————————————————————————————————————————————————————————————
-money_payout=money_payout_base+money_payout_area_bonus*area_zone;
 //
-if playing_tutorial=true { battle_hp=5; }
-else if playing_gym=false and playing_elite=false and playing_champion=false {
-	switch (area_zone) { //normal battles
-		case 00: battle_hp=5; break;
-		case 01: battle_hp=10; break;
-		case 02: battle_hp=20; break;
-		case 03: battle_hp=30; break;
-		case 04: battle_hp=40; break;
-		case 05: battle_hp=50; break;
-		case 06: battle_hp=75; break;
-		case 07: battle_hp=100; break;
-		case 08: battle_hp=125; break;
-	}
-	//battle_hp=10+area_zone*10; //10 20 30 40 50 60 70 80 (90) //old
-}
-else {
-	switch (area_zone) { //gyms and league battles
-		case 00: battle_hp=10; break;
-		case 01: battle_hp=20; break;
-		case 02: battle_hp=30; break;
-		case 03: battle_hp=40; break;
-		case 04: battle_hp=50; break;
-		case 05: battle_hp=75; break;
-		case 06: battle_hp=100; break;
-		case 07: battle_hp=125; break;
-		case 08: battle_hp=150; break;
-	}
-	//battle_hp=20+area_zone*10; //20 30 40 50 60 70 80 90 (100) //old
-}
+money_payout=money_payout_base+money_payout_area_bonus*area_zone;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if textbox_string[textbox_current]!="" {
 	if textbox_show!=textbox_string[textbox_current] {
@@ -437,6 +407,16 @@ if roadmap_get_details=true {
 				event_name[ii][i]="Glyph\n$" + string(event_cost[ref_event_glyph]);
 				event_description[ii][i]=sc_glyph_text(event_glyph_add[ii][i]);
 			}
+			//
+			if event_kind[ii][i]=ref_event_battle or event_kind[ii][i]=ref_event_tutorial {
+				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nBattle HP: " + string(battle_hp[area_zone]*2) +
+				" (" + string(battle_hp[area_zone]) + "/" + string(battle_hp[area_zone]) + ")";
+			}
+			else if event_kind[ii][i]=ref_event_gymbattle or event_kind[ii][i]=ref_event_elitebattle or event_kind[ii][i]=ref_event_championbattle {
+				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nBattle HP: " + string(battle_hp[area_zone+1]*2) +
+				" (" + string(battle_hp[area_zone+1]) + "/" + string(battle_hp[area_zone+1]) + ")";
+			}
+			//
 			ii++;
 		}
 		i++;

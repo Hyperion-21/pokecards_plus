@@ -12,16 +12,21 @@ card_def=card_full_def;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 card_value=card_full_hp+card_full_atk*2+card_full_def*2;
 //
-var var_card_innate=card_innate;
-card_innate=1;
-var card_max_common_value=sc_card_level_stats_main(0,10)+sc_card_level_stats_main(1,10)*2+sc_card_level_stats_main(2,10)*2; //checks with max card_level and base card_innate
-card_innate=var_card_innate;
+//var var_card_innate=card_innate;
+//card_innate=1;
+//var card_min_common_value=sc_card_level_stats_main(0,1)+sc_card_level_stats_main(1,1)*2+sc_card_level_stats_main(2,1)*2; //checks with min card_level and base card_innate
+//card_innate=var_card_innate;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if argument1=true {
-	if card_full_hp<=1 and card_full_atk<=1 and card_full_def<=0 { card_cost_total=0; }
-	else if card_evo[0]=-1 and card_max_common_value>=30 { card_cost_total=2; } //not shuckle, smeargle, etc.
+	if card_value<=3 { card_cost_total=0; } //and also used in tutorial for card with glyph
+	//else if card_min_common_value>=5 { card_cost_total=2; }
+	//else if (card_evo[0]=-1 or card_evo[0]>normal_poke_id_max) and card_max_common_value>=30 { card_cost_total=2; } //not shuckle, smeargle, etc.
 	else { card_cost_total=1; }
+	//
+	if (card_glyph_a>=0 and card_glyph_a<glyph_common_amount) or (card_glyph_b>=0 and card_glyph_b<glyph_common_amount) or (card_glyph_c>=0 and card_glyph_c<glyph_common_amount) {
+		card_cost_total++; }
 	if card_enigma=true { card_cost_total++; }
+	//
 	if card_environment=true { card_cost_total=0; }
 	//
 	var i=0;
@@ -43,7 +48,7 @@ if argument1=true {
 	card_cost_total_type[3]=0; //enigma
 	//
 	var i=0;
-	repeat (3) {
+	repeat (3) { //cost types are also considered for tutorial enemy deck
 		//normal, grass, fire, water, electric, flying
 		if card_cost[i]=00 or card_cost[i]=01 or card_cost[i]=02 or card_cost[i]=03 or card_cost[i]=04 or card_cost[i]=05 {
 			card_cost[i]=0; //oran
