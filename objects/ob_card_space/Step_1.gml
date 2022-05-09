@@ -29,11 +29,11 @@ if instance_exists(ob_control) {
 		card_bonus_def+=1;
 	}
 	//
-	//glyph: weakness
+	//glyph: debilitate
 	if (space_slot>=0 and space_slot<=4 and ob_control.card_space_id[space_slot+5].occupy_id!=-1 and
-	sc_glyph_check(ob_control.card_space_id[space_slot+5].occupy_id,ref_glyph_weakness,true)) or
+	sc_glyph_check(ob_control.card_space_id[space_slot+5].occupy_id,ref_glyph_debilitate,true)) or
 	(space_slot>=5 and space_slot<=9 and ob_control.card_space_id[space_slot-5].occupy_id!=-1 and
-	sc_glyph_check(ob_control.card_space_id[space_slot-5].occupy_id,ref_glyph_weakness,true)) {
+	sc_glyph_check(ob_control.card_space_id[space_slot-5].occupy_id,ref_glyph_debilitate,true)) {
 		card_penalty_atk+=1;
 	}
 	//

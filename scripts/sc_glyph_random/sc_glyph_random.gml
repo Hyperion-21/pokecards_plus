@@ -4,7 +4,7 @@ var var_random=irandom(859);
 //
 if var_random<75 { return ref_glyph_lucky; } //75 lucky
 else if var_random<175 { return ref_glyph_harvest; } //100 harvest
-else if var_random<275 { return ref_glyph_weakness; } //100 weakness
+else if var_random<275 { return ref_glyph_debilitate; } //100 debilitate
 else if var_random<375 { return ref_glyph_ruthless; } //100 ruthless
 else if var_random<450 { return ref_glyph_courage; } //75 courage
 else if var_random<490 { return ref_glyph_piercing; } //40 piercing attack

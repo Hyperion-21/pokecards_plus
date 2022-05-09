@@ -222,7 +222,7 @@ else if argument0=101 { //TUTORIAL (PROF. ASPEN)
 		if i<1 { sc_enemy_deck_addcard(i,161,1,-1,-1,-1,1,0); } //SENTRET, LV 1 (IN 1)
 		else if i<2 { sc_enemy_deck_addcard(i,016,1,-1,-1,-1,1,0); } //PIDGEY, LV 1 (IN 1)
 		else if i<3 { sc_enemy_deck_addcard(i,069,1,-1,-1,-1,1,0); } //BELLSPROUT, LV 1 (IN 1)
-		else if i<4 { sc_enemy_deck_addcard(i,081,1,ref_glyph_berserk,-1,-1,1,0); } //MAGNEMITE, LV 1 (IN 1)
+		else if i<4 { sc_enemy_deck_addcard(i,081,1,ref_glyph_debilitate,-1,-1,1,0); } //MAGNEMITE, LV 1 (IN 1)
 		else if i<5 { sc_enemy_deck_addcard(i,019,1,-1,-1,-1,1,0); } //RATTATA, LV 1 (IN 1)
 	}
 }
@@ -292,7 +292,7 @@ else if argument0=204 { //GYM 5: ZOE (ELECTRIC)
 	enemy_type_chance[04]=100; //electric
 	//
 	for (var i=0; i<enemycard_maindeck_total; i++;) {
-		if i<1 { sc_enemy_deck_addcard(i,-1,7,ref_glyph_weakness,-2,-2,1,-1); } //(1) LV 7 (>MAX) (IN 1)
+		if i<1 { sc_enemy_deck_addcard(i,-1,7,ref_glyph_debilitate,-2,-2,1,-1); } //(1) LV 7 (>MAX) (IN 1)
 		else if i<2 { sc_enemy_deck_addcard(i,-1,7,ref_glyph_piercing,-2,-2,1,-1); } //(1) LV 7 (>MAX) (IN 1)
 		else if i<3 { sc_enemy_deck_addcard(i,-1,7,ref_glyph_lucky,-2,-2,1,-1); } //(1) LV 7 (>MAX) (IN 1)
 		else if i<11 { sc_enemy_deck_addcard(i,-1,6,-2,-2,-2,-1,-1); } //(8) LV 6
@@ -373,7 +373,7 @@ else if argument0=209 { //ELITE 2: FINN (POISON/bug, ground/rock)
 	//
 	for (var i=0; i<enemycard_maindeck_total; i++;) {
 		if i<1 { sc_enemy_deck_addcard(i,-1,10,ref_glyph_vampire,-2,-2,3,-1); } //(1) LV 10 (IN 3)
-		else if i<2 { sc_enemy_deck_addcard(i,-1,10,ref_glyph_weakness,-2,-2,2,-1); } //(1) LV 10 (IN 2)
+		else if i<2 { sc_enemy_deck_addcard(i,-1,10,ref_glyph_debilitate,-2,-2,2,-1); } //(1) LV 10 (IN 2)
 		else if i<3 { sc_enemy_deck_addcard(i,-1,10,ref_glyph_ruthless,-2,-2,2,-1); } //(1) LV 10 (IN 2)
 		else if i<4 { sc_enemy_deck_addcard(i,-1,10,ref_glyph_fork,-2,-2,2,-1); } //(1) LV 10 (IN 2)
 		else if i<5 { sc_enemy_deck_addcard(i,-1,10,ref_glyph_memento,-2,-2,2,-1); } //(1) LV 10 (IN 2)
@@ -407,7 +407,7 @@ else if argument0=211 { //ELITE 4: APRIL (DRAGON/ice, steel, water)
 	enemy_type_chance[15]=25; //steel
 	//
 	for (var i=0; i<enemycard_maindeck_total; i++;) {
-		if i<1 { sc_enemy_deck_addcard(i,149,10,ref_glyph_weakness,-2,-2,3,-1); } //DRAGONITE, LV 10 (IN 3)
+		if i<1 { sc_enemy_deck_addcard(i,149,10,ref_glyph_debilitate,-2,-2,3,-1); } //DRAGONITE, LV 10 (IN 3)
 		else if i<2 { sc_enemy_deck_addcard(i,-1,10,ref_glyph_medic,-2,-2,2,-1); } //(1) LV 10 (IN 2)
 		else if i<3 { sc_enemy_deck_addcard(i,-1,10,ref_glyph_shield,-2,-2,2,-1); } //(1) LV 10 (IN 2)
 		else if i<4 { sc_enemy_deck_addcard(i,-1,10,ref_glyph_courage,-2,-2,2,-1); } //(1) LV 10 (IN 2)

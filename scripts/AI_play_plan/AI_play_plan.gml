@@ -92,7 +92,7 @@ do {
 						vs_bonus_dmg=sc_type_bonus(opposing_card_id.card_type_a,opposing_card_id.card_type_b,enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b);
 					}
 					//
-					if sc_glyph_check(enemycard_hand[i],ref_glyph_weakness,true) { var imaginary_penalty_atk=1; } //glyph: weakness
+					if sc_glyph_check(enemycard_hand[i],ref_glyph_debilitate,true) { var imaginary_penalty_atk=1; } //glyph: debilitate
 					else { var imaginary_penalty_atk=0; }
 					if sc_glyph_check(enemycard_hand[i],ref_glyph_ruthless,true) { var imaginary_penalty_def=2; } //glyph: ruthless
 					else { var imaginary_penalty_def=0; }

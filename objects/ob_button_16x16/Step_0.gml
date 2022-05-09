@@ -19,7 +19,7 @@ if instance_exists(ob_control) and button_id=2 { //exit battle
 	ob_main.fade_black_exit=button_state;
 	//
 	if ob_main.cursor_hide=false and mouse_x>=x and mouse_y>=y+2 and mouse_x<x+sprite_width and mouse_y<y+sprite_height-2 {
-		ob_control.tooltip_text="Exit battle (hold).";
+		ob_control.tooltip_text="Declare stalemate / exit battle (hold).";
 		ob_control.tooltip_lines=1;
 	}
 }

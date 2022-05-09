@@ -7,6 +7,10 @@ show_deck=false;
 apply_event=false;
 event_applied=false;
 event_cancelled=false;
+//
+levelup_new_hp=0;
+levelup_new_atk=0;
+levelup_new_def=0;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 //count berries (same as ob_card)
 for (var i=0; i<=3; i++;) {

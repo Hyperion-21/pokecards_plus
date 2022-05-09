@@ -62,6 +62,7 @@ if apply_event=true {
 	}
 	//
 	if event_kind=ref_event_levelup and card_id_in_space[0]!=-1 {
+		//conditions also used for showing cost/stats in ob_card_space
 		if card_id_in_space[0].card_level<ob_main.card_level_player_limit and card_id_in_space[0].card_innate>0 and ob_main.money>=ob_main.event_cost_standby {
 			card_id_in_space[0].card_level++;
 			sc_card_effect(event_space_id[0].x,event_space_id[0].y,0,false,true);

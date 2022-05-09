@@ -3,8 +3,8 @@ function sc_glyph_text(argument0) {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 switch (argument0) {
 	case ref_glyph_lucky: return "// LUCKY //\nGrants 2 DP (Draw Points) when played."; break;
-	case ref_glyph_harvest: return "// HARVEST //\nConsumed berries return to hand (if not full) when fainting."; break;
-	case ref_glyph_weakness: return "// WEAKNESS //\nThe opposing card's attack is lowered by 1."; break;
+	case ref_glyph_harvest: return "// HARVEST //\nConsumed Berries return to hand (if not full) when fainting."; break;
+	case ref_glyph_debilitate: return "// DEBILITATE //\nThe opposing card's attack is lowered by 1."; break;
 	case ref_glyph_ruthless: return "// RUTHLESS //\nThe opposing card's defense is lowered by 2."; break;
 	case ref_glyph_courage: return "// COURAGE //\nRaises attack of nearby friendly Pokemon by 2."; break;
 	case ref_glyph_piercing: return "// PIERCING ATTACK //\nAlways attacks the enemy trainer directly."; break;
@@ -20,7 +20,7 @@ switch (argument0) {
 	case ref_glyph_berserk: return "// BERSERK //\nWhen HP is 10% or less (or just 1, if hurt), base attack is doubled."; break;
 	case ref_glyph_adaptability: return "// ADAPTABILITY //\nType-advantage attacks deal 2 extra damage instead of 1."; break;
 	//
-	case ref_glyph_mist: return "// MIST //\nWhile this card is active, glyphs have no effect."; break;
+	case ref_glyph_mist: return "// MIST //\nWhile this card is active, Glyphs have no effect."; break;
 	case ref_glyph_transform: return "// TRANSFORM //\nTransforms into the opposing enemy Pokemon."; break;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

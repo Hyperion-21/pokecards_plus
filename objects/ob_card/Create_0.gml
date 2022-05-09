@@ -192,28 +192,29 @@ if card_cat=0 {
 		//checks with max card_level and base card_innate, same as in sc_card_level_stats_all (innate value is always 1 on random cards, so it's not considered for rarity)
 		//
 		if random_card=true {
-			var card_rarity_chance=0, card_rarity_soft_min=0;
+			var card_rarity_chance=0, card_rarity_chance_max=70, card_rarity_soft_min=0, card_rarity_soft_max=-1;
 			//
 			if enemy_randomizer=false {
-				card_rarity_chance=irandom(64)+1; //65
+				card_rarity_chance=irandom(card_rarity_chance_max-1)+1;
 			}
 			else {
 				if card_environment=true {
-					card_rarity_chance=irandom(64)+1; //65
+					card_rarity_chance=irandom(card_rarity_chance_max-1)+1;
 				}
 				else if ob_main.playing_gym=true or ob_main.playing_elite=true or ob_main.playing_champion=true {
-					card_rarity_chance=irandom(64)+1; //65
-					card_rarity_soft_min=26; //about 1/3 below average
+					card_rarity_chance=irandom(card_rarity_chance_max-1)+1;
+					card_rarity_soft_min=28; //about 1/3 below average
+					if ob_main.area_zone=0 { card_rarity_soft_max=42; } //average (first gym only)
 				}
 				else {
-					var enemy_rarity_max=30+ob_main.latest_zone*18;
-					if enemy_rarity_max>64 { enemy_rarity_max=64; }
-					card_rarity_chance=irandom(enemy_rarity_max)+1; //30 (above lowest normal-type and dragon-type), 48, 65
+					var card_rarity_irandom_max=32+ob_main.latest_zone*20; //32 (above lowest normal-type and dragon-type), 52, 69
+					if card_rarity_irandom_max>card_rarity_chance_max-1 { card_rarity_irandom_max=card_rarity_chance_max-1; }
+					card_rarity_chance=irandom(card_rarity_irandom_max)+1;
 				}
 			}
 			//
 			var card_rarity_check=false;
-			if card_rarity_chance>card_rarity or card_rarity_chance=65 {
+			if card_rarity_chance>card_rarity or card_rarity_chance=card_rarity_chance_max {
 				card_rarity_check=true;
 				//
 				if card_enigma=true and allow_id_enigma=false { card_rarity_check=false; }
@@ -225,7 +226,11 @@ if card_cat=0 {
 				else if card_stage=3 and allow_id_stage_3=false { card_rarity_check=false; }
 				//
 				if card_rarity_check=true {
-					if card_rarity<card_rarity_soft_min { card_rarity_check=choose(false,true); } //50%
+					if card_rarity<=card_rarity_soft_min { card_rarity_check=choose(false,true); } //50%
+				}
+				//
+				if card_rarity_check=true {
+					if card_rarity_soft_max>-1 and card_rarity>=card_rarity_soft_max { card_rarity_check=choose(false,false,false,true); } //25%
 				}
 				//
 				if card_rarity_check=true {

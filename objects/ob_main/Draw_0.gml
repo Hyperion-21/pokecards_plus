@@ -63,7 +63,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	if roadmap_area=roadmap_current_max-1 or area_zone=area_zone_max-1 or (area_zone=0 and roadmap_area<roadmap_lab_max and zone_first_lap=true) { zone_name_text=zone_name; }
 	else if zone_first_lap=true { zone_name_text="Road to: " + zone_name; }
 	else if zone_first_lap=false { zone_name_text="Outskirts: " + zone_name; }
-	sc_drawtext(road_win_x+120,road_win_y+120,zone_name_text,global.color_card_light,global.color_black,0.5,0.5,0,-1);
+	sc_drawtext(road_win_x+120,road_win_y+120,zone_name_text,global.color_card_light,global.color_black,0.6,0.5,0,-1);
 	//
 	if (area_zone<area_zone_max-1 and roadmap_area=roadmap_current_max-1) or (area_zone=area_zone_max-1 and roadmap_area>=roadmap_current_max-roadmap_league_max) {
 		if area_zone>0 { var fly_alpha=0.5; } else { var fly_alpha=0.1; }
@@ -93,12 +93,12 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	draw_sprite_general(sp_sheet,0,16*(option_state[opt_playericon]+3),16*12,16,16,road_win_x-2+(bar_amount*228)/100,road_win_y-23-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
 	//
 	for (var i=0; i<=7; i++;) {
-		if area_zone=i { var zone_icon_alpha=1; } else { var zone_icon_alpha=0.5; }
+		if area_zone=i { var zone_icon_alpha=0.8; } else { var zone_icon_alpha=0.4; }
 		//
 		if i<=latest_city {
 			draw_sprite_general(sp_sheet,0,16*(i+playericon_max+5),16*12,16,16,road_win_x+56+16*i,road_win_y+133,1,1,0,c_white,c_white,c_white,c_white,zone_icon_alpha); }
 		else {
-			draw_sprite_general(sp_sheet,0,16*(playericon_max+4),16*12,16,16,road_win_x+56+16*i,road_win_y+133,1,1,0,c_white,c_white,c_white,c_white,zone_icon_alpha/1.5); }
+			draw_sprite_general(sp_sheet,0,16*(playericon_max+4),16*12,16,16,road_win_x+56+16*i,road_win_y+133,1,1,0,c_white,c_white,c_white,c_white,zone_icon_alpha/1.6); }
 	}
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	draw_set_font(fn_m6x11);

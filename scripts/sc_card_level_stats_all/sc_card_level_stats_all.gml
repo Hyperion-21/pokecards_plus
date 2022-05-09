@@ -11,16 +11,9 @@ card_atk=card_full_atk;
 card_def=card_full_def;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 card_value=card_full_hp+card_full_atk*2+card_full_def*2;
-//
-//var var_card_innate=card_innate;
-//card_innate=1;
-//var card_min_common_value=sc_card_level_stats_main(0,1)+sc_card_level_stats_main(1,1)*2+sc_card_level_stats_main(2,1)*2; //checks with min card_level and base card_innate
-//card_innate=var_card_innate;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if argument1=true {
 	if card_value<=3 { card_cost_total=0; } //and also used in tutorial for card with glyph
-	//else if card_min_common_value>=5 { card_cost_total=2; }
-	//else if (card_evo[0]=-1 or card_evo[0]>normal_poke_id_max) and card_max_common_value>=30 { card_cost_total=2; } //not shuckle, smeargle, etc.
 	else { card_cost_total=1; }
 	//
 	if (card_glyph_a>=0 and card_glyph_a<glyph_common_amount) or (card_glyph_b>=0 and card_glyph_b<glyph_common_amount) or (card_glyph_c>=0 and card_glyph_c<glyph_common_amount) {

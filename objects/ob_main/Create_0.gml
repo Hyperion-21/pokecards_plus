@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.100"
+#macro game_version "v0.0.0.101"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -162,7 +162,7 @@ tooltip_lines=0;
 //
 #macro ref_glyph_lucky 00
 #macro ref_glyph_harvest 01
-#macro ref_glyph_weakness 02
+#macro ref_glyph_debilitate 02
 #macro ref_glyph_ruthless 03
 #macro ref_glyph_courage 04
 #macro ref_glyph_piercing 05
@@ -273,7 +273,7 @@ global.color_white=make_colour_rgb(230,230,230);
 global.color_black=make_colour_rgb(40,40,40);
 global.color_gray=make_colour_rgb(190,190,190);
 global.color_card_light=make_colour_rgb(233,230,222);
-global.color_card_dark=make_colour_rgb(205,198,181);
+global.color_card_mid=make_colour_rgb(205,198,181);
 //global.color_card_gold=make_colour_rgb(226,204,161);
 global.color_player=make_colour_rgb(160,193,225);
 global.color_enemy=make_colour_rgb(221,172,159);

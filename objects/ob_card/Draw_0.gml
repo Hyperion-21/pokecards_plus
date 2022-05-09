@@ -118,7 +118,7 @@ if card_cat=0 and card_face=true and in_view=true {
 	//STATS
 	draw_set_font(fn_m3x6);
 	draw_set_halign(fa_center);
-	draw_healthbar(draw_x+4,draw_y+56,draw_x+52,draw_y+57,0,global.color_card_dark,c_white,c_white,0,true,false);
+	draw_healthbar(draw_x+4,draw_y+56,draw_x+52,draw_y+57,0,global.color_card_mid,c_white,c_white,0,true,false);
 	sc_drawtext(draw_x+29,draw_y+39,card_name,global.color_white,global.color_black,1,(1/1.5),0,-1);
 	sc_drawtext(draw_x+29,draw_y+50,"lv " + string(card_level),global.color_gray,global.color_black,1,(1/1.7),0,-1);
 	//sc_drawtext(draw_x+29,draw_y+4,string(card_value) + "\n" + string(card_form_value) + "\n" + string(card_serial),c_aqua,global.color_black,1,1,0,-1);
@@ -156,7 +156,7 @@ else if card_cat=1 and card_face=true and in_view=true {
 	//
 	draw_sprite_general(sp_sheet,0,16*9+4,16*0,sprite_width,sprite_height,draw_x,draw_y,1,1,0,card_color,card_color,card_color,card_color,1);
 	draw_sprite_general(sp_sheet,0,16*1,16*2,53,10,draw_x+2,draw_y+41,1,1,0,
-	global.color_card_dark,global.color_card_light,global.color_card_light,global.color_card_dark,1);
+	global.color_card_mid,global.color_card_light,global.color_card_light,global.color_card_mid,1);
 	draw_sprite_general(sp_berries,0,32*(card_id-3000)+1,1,32,32,draw_x+12,draw_y+4,1,1,0,card_color,card_color,card_color,card_color,1);
 	//
 	draw_set_font(fn_m3x6);
