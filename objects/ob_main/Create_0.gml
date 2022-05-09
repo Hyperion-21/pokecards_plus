@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.102"
+#macro game_version "v0.0.0.103"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -153,7 +153,7 @@ event_cost[ref_event_levelup]=100;
 event_cost[ref_event_evolution]=1000;
 event_cost[ref_event_glyph]=750;
 //
-#macro innate_max 6 //failure chance uses manual values in ob_event, enemy innate uses manual values in ob_card, sc_enemy_deck uses manual values
+#macro innate_max 4 //failure chance uses manual values in ob_event, enemy innate uses manual values in ob_card, sc_enemy_deck uses manual values
 current_glyph_add=-1;
 tooltip_text="";
 tooltip_lines=0;

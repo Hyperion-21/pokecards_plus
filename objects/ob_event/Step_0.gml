@@ -120,10 +120,8 @@ if apply_event=true {
 		card_id_in_space[0].card_environment=false and card_id_in_space[1].card_environment=false {
 			var random_innate_chance=irandom(999), random_innate_success=false;
 			if card_id_in_space[1].card_innate<=1 and random_innate_chance<1000 { random_innate_success=true; }
-			else if card_id_in_space[1].card_innate=2 and random_innate_chance<925 { random_innate_success=true; }
-			else if card_id_in_space[1].card_innate=3 and random_innate_chance<850 { random_innate_success=true; }
-			else if card_id_in_space[1].card_innate=4 and random_innate_chance<775 { random_innate_success=true; }
-			else if card_id_in_space[1].card_innate=5 and random_innate_chance<700 { random_innate_success=true; }
+			else if card_id_in_space[1].card_innate=2 and random_innate_chance<850 { random_innate_success=true; }
+			else if card_id_in_space[1].card_innate=3 and random_innate_chance<700 { random_innate_success=true; }
 			//
 			if random_innate_success=true {
 				card_id_in_space[0].card_innate--;

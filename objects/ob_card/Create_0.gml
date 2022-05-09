@@ -43,15 +43,16 @@ if card_cat=0 {
 	do {
 		card_id=reference_id.create_card_id;
 		if card_id=-1 { var random_card=true; } else { var random_card=false; }
+		//
+		var choose_id_enigma=false, choose_id_stage_2=false, choose_id_stage_3=false, choose_id_normal=false;
+		var allow_id_pseudo=false, allow_id_fossil=false, allow_id_starter=false, allow_id_baby=false;
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		if random_card=true and enemy_randomizer=false {
-			var allow_id_enigma=false, allow_id_pseudo=false, allow_id_fossil=false, allow_id_starter=false, allow_id_baby=false, allow_id_stage_2=false, allow_id_stage_3=false;
-			//
 			if random_group_chance<1 { //0.01% secret card
 				card_id=irandom_range(1,secret_cards_total)+2000;
 				card_innate=1;
 			}
-			else if random_group_chance<101 { //1% environment card
+			else if random_group_chance<151 { //1.5% environment card
 				card_id=irandom_range(1,environment_cards_total)+2500;
 				card_innate=1;
 			}
@@ -59,17 +60,17 @@ if card_cat=0 {
 				card_id=irandom_range(1,normal_poke_id_max);
 				card_innate=1;
 				//
-				var random_id_chance=irandom(99); if random_id_chance<5 { allow_id_enigma=true; } //5% enigma allowed
+				if random_group_chance<161 { choose_id_enigma=true; } //0.1% enigma
+				else if random_group_chance<511 { choose_id_stage_2=true; } //3.5% stage 2
+				else if random_group_chance<561 { choose_id_stage_3=true; } //0.5% stage 3
+				else { choose_id_normal=true; } //94.39% stage 1 or baby
+				//
 				var random_id_chance=irandom(99); if random_id_chance<50 { allow_id_pseudo=true; } //50% pseudo allowed
 				var random_id_chance=irandom(99); if random_id_chance<50 { allow_id_fossil=true; } //50% fossil allowed
 				var random_id_chance=irandom(99); if random_id_chance<25 { allow_id_starter=true; } //25% starter allowed
 				var random_id_chance=irandom(99); if random_id_chance<25 { allow_id_baby=true; } //25% baby allowed
-				var random_id_chance=irandom(99); if random_id_chance<7 { allow_id_stage_2=true; } //7% stage 2 allowed
-				var random_id_chance=irandom(99); if random_id_chance<5 { allow_id_stage_3=true; } //5% stage 3 allowed
 			}
 			//
-			//card_id=irandom_range(000,000); //cheat
-			//allow_id_enigma=true; allow_id_pseudo=true; allow_id_fossil=true; allow_id_starter=true; allow_id_baby=true; allow_id_stage_2=true; allow_id_stage_3=true; //cheat
 			card_level=irandom_range(1,ob_main.card_level_spawn_limit);
 			card_glyph_a=-1;
 			card_glyph_b=-1;
@@ -78,8 +79,6 @@ if card_cat=0 {
 		}
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		else if random_card=true and enemy_randomizer=true {
-			var allow_id_enigma=false, allow_id_pseudo=false, allow_id_fossil=false, allow_id_starter=false, allow_id_baby=false, allow_id_stage_2=false, allow_id_stage_3=false;
-			//
 			if random_group_chance<500 { //5% environment card
 				card_id=irandom_range(1,environment_cards_total)+2500;
 				card_innate=1;
@@ -89,22 +88,17 @@ if card_cat=0 {
 				//
 				if reference_id.create_card_innate=-1 {
 					var card_enemy_innate_value=irandom(999);
-					if card_enemy_innate_value<1 { card_innate=innate_max; } //0.1%
-					else if card_enemy_innate_value<3 { card_innate=5; } //0.2%
-					else if card_enemy_innate_value<8 { card_innate=4; } //0.5%
-					else if card_enemy_innate_value<18 { card_innate=3; } //1%
-					else if card_enemy_innate_value<38 { card_innate=2; } //2%
-					else if card_enemy_innate_value<1000 { card_innate=1; } //96.2%
+					if card_enemy_innate_value<2 { card_innate=innate_max; } //0.2%
+					else if card_enemy_innate_value<15 { card_innate=3; } //1.3%
+					else if card_enemy_innate_value<50 { card_innate=2; } //3.5%
+					else if card_enemy_innate_value<1000 { card_innate=1; } //95%
 				}
 				else { card_innate=reference_id.create_card_innate; }
 				//
-				//var random_id_chance=irandom(99); if random_id_chance<0 { allow_id_enigma=true; } //0% enigma allowed
 				var random_id_chance=irandom(99); if random_id_chance<90 { allow_id_pseudo=true; } //90% pseudo allowed
 				var random_id_chance=irandom(99); if random_id_chance<75 { allow_id_fossil=true; } //75% fossil allowed
 				var random_id_chance=irandom(99); if random_id_chance<75 { allow_id_starter=true; } //75% starter allowed
 				var random_id_chance=irandom(99); if random_id_chance<50 { allow_id_baby=true; } //50% baby allowed
-				var random_id_chance=irandom(99); if random_id_chance<90 { allow_id_stage_2=true; } //90% stage 2 allowed
-				var random_id_chance=irandom(99); if random_id_chance<80 { allow_id_stage_3=true; } //80% stage 3 allowed
 			}
 			//
 			if reference_id.create_card_level=-1 {
@@ -188,11 +182,13 @@ if card_cat=0 {
 			}
 		}
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
-		var card_rarity=sc_card_level_stats_main(0,10)+sc_card_level_stats_main(1,10)*2+sc_card_level_stats_main(2,10)*2;
+		//var card_rarity=sc_card_level_stats_main(0,10)+sc_card_level_stats_main(1,10)*2+sc_card_level_stats_main(2,10)*2;
 		//checks with max card_level and base card_innate, same as in sc_card_level_stats_all (innate value is always 1 on random cards, so it's not considered for rarity)
 		//
+		var card_rarity=round(sqrt(card_base_hp+card_base_atk+card_base_def)*10-100);
+		//
 		if random_card=true {
-			var card_rarity_chance=0, card_rarity_chance_max=72, card_rarity_soft_min=0, card_rarity_soft_max=-1;
+			var card_rarity_chance=0, card_rarity_chance_max=145, card_rarity_soft_min=0, card_rarity_soft_max=-1;
 			//
 			if enemy_randomizer=false {
 				card_rarity_chance=irandom(card_rarity_chance_max-1)+1;
@@ -202,12 +198,12 @@ if card_cat=0 {
 					card_rarity_chance=irandom(card_rarity_chance_max-1)+1;
 				}
 				else if ob_main.playing_gym=true or ob_main.playing_elite=true or ob_main.playing_champion=true {
+					card_rarity_soft_min=42; //about 200 base stat total (201.64)
+					if ob_main.area_zone=0 { card_rarity_soft_max=81; } //about 330 base stat total (327.61)
 					card_rarity_chance=irandom(card_rarity_chance_max-1)+1;
-					card_rarity_soft_min=28; //about 1/3 below average
-					if ob_main.area_zone=0 { card_rarity_soft_max=43; } //average (first gym only)
 				}
 				else {
-					var card_rarity_irandom_max=32+ob_main.latest_zone*20; //32 (above lowest normal-type and dragon-type), 52, 71
+					var card_rarity_irandom_max=60+ob_main.latest_zone*45; //60 (above lowest normal-type and dragon-type), 105, 144
 					if card_rarity_irandom_max>card_rarity_chance_max-1 { card_rarity_irandom_max=card_rarity_chance_max-1; }
 					card_rarity_chance=irandom(card_rarity_irandom_max)+1;
 				}
@@ -217,25 +213,32 @@ if card_cat=0 {
 			if card_rarity_chance>card_rarity or card_rarity_chance=card_rarity_chance_max {
 				card_rarity_check=true;
 				//
-				if card_enigma=true and allow_id_enigma=false { card_rarity_check=false; }
-				else if card_pseudo=true and allow_id_pseudo=false { card_rarity_check=false; }
-				else if card_fossil=true and allow_id_fossil=false { card_rarity_check=false; }
-				else if card_starter=true and allow_id_starter=false { card_rarity_check=false; }
-				else if card_stage=0 and allow_id_baby=false { card_rarity_check=false; }
-				else if card_stage=2 and allow_id_stage_2=false { card_rarity_check=false; }
-				else if card_stage=3 and allow_id_stage_3=false { card_rarity_check=false; }
+				if enemy_randomizer=false {
+					if card_enigma=false and choose_id_enigma=true { card_rarity_check=false; }
+					else if card_stage!=2 and choose_id_stage_2=true { card_rarity_check=false; }
+					else if card_stage!=3 and choose_id_stage_3=true { card_rarity_check=false; }
+					else if (card_stage>1 or card_enigma=true) and choose_id_normal=true { card_rarity_check=false; }
+				}
+				else {
+					if card_enigma=true { card_rarity_check=false; }
+				}
+				//
+				if card_pseudo=true and allow_id_pseudo=false { card_rarity_check=false; }
+				if card_fossil=true and allow_id_fossil=false { card_rarity_check=false; }
+				if card_starter=true and allow_id_starter=false { card_rarity_check=false; }
+				if card_stage=0 and allow_id_baby=false { card_rarity_check=false; }
 				//
 				if card_rarity_check=true {
-					if card_rarity<=card_rarity_soft_min { card_rarity_check=choose(false,true); } //50%
+					if card_rarity<card_rarity_soft_min { card_rarity_check=choose(false,true); } //50%
 				}
 				//
 				if card_rarity_check=true {
-					if card_rarity_soft_max>-1 and card_rarity>=card_rarity_soft_max { card_rarity_check=choose(false,false,false,true); } //25%
+					if card_rarity_soft_max>-1 and card_rarity>card_rarity_soft_max { card_rarity_check=choose(false,false,false,true); } //25%
 				}
 				//
 				if card_rarity_check=true {
-					card_rarity_chance=irandom(9)+1;
-					if card_rarity_chance>=card_level { card_rarity_check=true; }
+					card_rarity_chance=irandom(34)+1; //level 10: 30 (max) + 5 (higher chances in general)
+					if card_rarity_chance>=round(sqrt(card_level-1)*10) { card_rarity_check=true; }
 					else { card_rarity_check=false; }
 				}
 				//
@@ -263,7 +266,7 @@ else if card_cat=1 {
 	if random_card=true {
 		var card_berry_chance=irandom(99);
 		if card_berry_chance<99 { card_id=choose(3000,3001,3002); }
-		else { card_id=3003; }
+		else { card_id=3003; } //1%
 	}
 	//
 	switch (card_id) {

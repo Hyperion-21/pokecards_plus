@@ -58,7 +58,7 @@ else if argument0=17 { //tutorial: attacked
 	ob_main.textbox_string[0]="Ouch! I wasn't expecting our battle to go this way, but it's definitely a good lesson! For both of us.";
 }
 else if argument0=18 { //tutorial: new turn
-	ob_main.textbox_string[0]="My Magikarp has a Glyph! Glyphs are unique abilities that can be added to cards. This one lowers the attack of any card opposing them.";
+	ob_main.textbox_string[0]="My Pichu has a Glyph! Glyphs are unique abilities that can be added to cards. This one lowers the attack of any card opposing them.";
 	ob_main.textbox_string[1]="You can see what any Glyph does by placing your mouse over its icon. But be aware, cards with Glyphs usually also have a higher Berry cost!";
 	ob_main.textbox_string[2]="But anyway, draw your last Pokemon from your deck and play it in front of my Pidgey to take them out. Then attack with the rest of your Pokemon as well!";
 }

@@ -222,7 +222,7 @@ else if argument0=101 { //TUTORIAL (PROF. ASPEN)
 		if i<1 { sc_enemy_deck_addcard(i,161,1,-1,-1,-1,1,0); } //SENTRET, LV 1 (IN 1)
 		else if i<2 { sc_enemy_deck_addcard(i,016,1,-1,-1,-1,1,0); } //PIDGEY, LV 1 (IN 1)
 		else if i<3 { sc_enemy_deck_addcard(i,069,1,-1,-1,-1,1,0); } //BELLSPROUT, LV 1 (IN 1)
-		else if i<4 { sc_enemy_deck_addcard(i,129,1,ref_glyph_debilitate,-1,-1,1,0); } //MAGIKARP, LV 1 (IN 1)
+		else if i<4 { sc_enemy_deck_addcard(i,172,1,ref_glyph_debilitate,-1,-1,1,0); } //PICHU, LV 1 (IN 1)
 		else if i<5 { sc_enemy_deck_addcard(i,019,1,-1,-1,-1,1,0); } //RATTATA, LV 1 (IN 1)
 	}
 }
@@ -440,9 +440,9 @@ else if argument0=212 { //CHAMPION: DUNCAN (ALL)
 	//
 	for (var i=0; i<enemycard_maindeck_total; i++;) {
 		if i<1 { sc_enemy_deck_addcard(i,-1,10,ref_glyph_lucky,-2,-2,innate_max,-1); } //(1) LV 10 (IN MAX)
-		else if i<2 { sc_enemy_deck_addcard(i,-1,10,ref_glyph_adaptability,-2,-2,5,-1); } //(1) LV 10 (IN 5)
-		else if i<3 { sc_enemy_deck_addcard(i,-1,10,ref_glyph_bulwark,-2,-2,4,-1); } //(1) LV 10 (IN 4)
-		else if i<4 { sc_enemy_deck_addcard(i,-1,10,ref_glyph_counter,-2,-2,3,-1); } //(1) LV 10 (IN 3)
+		else if i<2 { sc_enemy_deck_addcard(i,-1,10,ref_glyph_adaptability,-2,-2,3,-1); } //(1) LV 10 (IN 3)
+		else if i<3 { sc_enemy_deck_addcard(i,-1,10,ref_glyph_bulwark,-2,-2,3,-1); } //(1) LV 10 (IN 3)
+		else if i<4 { sc_enemy_deck_addcard(i,-1,10,ref_glyph_counter,-2,-2,2,-1); } //(1) LV 10 (IN 2)
 		else if i<5 { sc_enemy_deck_addcard(i,-1,10,ref_glyph_piercing,-2,-2,2,-1); } //(1) LV 10 (IN 2)
 		else if i<6 { sc_enemy_deck_addcard(i,150,10,ref_glyph_ruthless,ref_glyph_medic,ref_glyph_curse,1,-1); } //MEWTWO, LV 10 (IN 1)
 		else if i<16 { sc_enemy_deck_addcard(i,-1,10,-2,-2,-2,-1,-1); } //(10) LV 10
