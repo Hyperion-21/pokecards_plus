@@ -561,8 +561,6 @@ else if event_transition>-1 and fade_black>=1 {
 		else if playing_champion=true { money_prize=0; }
 		else { money_prize=irandom_range((money_add_base+money_add_area_bonus*area_zone)*0.9,(money_add_base+money_add_area_bonus*area_zone)*1.1); }
 		//
-		if latest_zone>area_zone { money_prize=ceil(money_prize/2); }
-		//
 		if event_transition=ref_event_battle {
 			music_player=sc_playsound(ms_battle,100,true,true);
 		}

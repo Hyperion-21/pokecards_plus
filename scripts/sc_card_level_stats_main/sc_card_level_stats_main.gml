@@ -5,7 +5,7 @@ function sc_card_level_stats_main(argument0,argument1) {
 var return_value=0;
 //
 if argument0=0 { //HP
-	return_value=1+round((card_base_hp*argument1)/53); //hp: 1/69/255 -> 1/2/6 to 1/14/49 (base 27 is min for 2 HP)
+	return_value=1+round((card_base_hp*argument1)/49); //hp: 1/69/255 -> 1/2/6 to 1/15/53 (base 25 is min for 2 HP)
 	if card_secret=false { return_value+=round(return_value*((card_innate-1)/(innate_max-1))); } //max x2
 	else { return_value+=round(return_value*2*((card_innate-1)/(innate_max-1))); } //secret: max x3
 }

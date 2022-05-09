@@ -50,7 +50,7 @@ else if argument0=15 { //tutorial: new turn
 }
 else if argument0=16 { //tutorial: drawn
 	ob_main.textbox_string[0]="Excellent! When a Pokemon has a type advantage over another, their attacks will always deal 1 extra point of damage, even if the receiving Pokemon has a higher defense.";
-	ob_main.textbox_string[1]="Contrary to real Pokemon though, type advantages in cards only deal bonus damage. This means there are no type resistances or immunities, and Pokemon that are weak to a certain type will always receive more damage from it.";
+	ob_main.textbox_string[1]="Contrary to real Pokemon though, type advantages in cards only deal bonus damage. This means there are no type resistances or immunities, and Pokemon that are weak to a certain type will always receive extra damage from it.";
 	ob_main.textbox_string[2]="This makes it so that, for example, Bulbasaur (a Grass/Poison Pokemon) will always deal bonus damage to other Bulbasaurs, since Poison has an advantage over Grass!";
 	ob_main.textbox_string[3]="But anyway, go ahead and play your Spearow right in front of my Bellsprout, then attack to take them out in one hit!";
 }
@@ -58,7 +58,7 @@ else if argument0=17 { //tutorial: attacked
 	ob_main.textbox_string[0]="Ouch! I wasn't expecting our battle to go this way, but it's definitely a good lesson! For both of us.";
 }
 else if argument0=18 { //tutorial: new turn
-	ob_main.textbox_string[0]="My Magnemite has a Glyph! Glyphs are unique abilities that can be added to cards. This one lowers the attack of any card opposing them.";
+	ob_main.textbox_string[0]="My Magikarp has a Glyph! Glyphs are unique abilities that can be added to cards. This one lowers the attack of any card opposing them.";
 	ob_main.textbox_string[1]="You can see what any Glyph does by placing your mouse over its icon. But be aware, cards with Glyphs usually also have a higher Berry cost!";
 	ob_main.textbox_string[2]="But anyway, draw your last Pokemon from your deck and play it in front of my Pidgey to take them out. Then attack with the rest of your Pokemon as well!";
 }
