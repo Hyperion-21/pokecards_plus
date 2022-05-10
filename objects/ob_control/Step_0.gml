@@ -5,6 +5,7 @@ if ob_main.cursor_hide=true {
 if player_effect_damaged>0 { player_effect_damaged-=0.08; }
 if enemy_effect_damaged>0 { enemy_effect_damaged-=0.08; }
 //
+if turn_splash_timer>0 { turn_splash_timer--; }
 if tooltip_timer>0 { tooltip_timer--; }
 else if tooltip_timer=0 {
 	first_turn_attack_warning=false;
@@ -364,6 +365,7 @@ if ob_main.playing_tutorial=false or (ob_main.playing_tutorial=true and (sc_tuto
 		//
 		turn_num++;
 		tooltip_timer=tooltip_timer_max;
+		turn_splash_timer=turn_splash_timer_max;
 		first_turn_attack_warning=false;
 		hand_full_draw_warning=false;
 		//

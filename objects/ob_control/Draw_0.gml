@@ -15,12 +15,12 @@ var scoreboard_y=button_nextturn_id.y-31;
 //
 sc_drawrectangle(scoreboard_x,scoreboard_y,scoreboard_x+67,scoreboard_y+25,global.color_black,global.color_white,1,0.5,1,0);
 draw_set_halign(fa_center);
-sc_drawtext(scoreboard_x+16+player_hp_draw_x,scoreboard_y+9+player_hp_draw_y,string(player_hp),global.color_player,global.color_black,1,0.5,0,-1);
+sc_drawtext(scoreboard_x+16+player_hp_draw_x,scoreboard_y+9+player_hp_draw_y,string(player_hp),global.color_friendly,global.color_black,1,0.5,0,-1);
 sc_drawtext(scoreboard_x+34,scoreboard_y+9,"/",global.color_white,global.color_black,1,0.5,0,-1);
 sc_drawtext(scoreboard_x+52+enemy_hp_draw_x,scoreboard_y+9+enemy_hp_draw_y,string(enemy_hp),global.color_enemy,global.color_black,1,0.5,0,-1);
 //
 var bar_amount=((player_hp)*100)/(hp_max*2);
-draw_healthbar(scoreboard_x+2,scoreboard_y+2,scoreboard_x+65,scoreboard_y+5,bar_amount,global.color_enemy,global.color_player,global.color_player,0,true,false);
+draw_healthbar(scoreboard_x+2,scoreboard_y+2,scoreboard_x+65,scoreboard_y+5,bar_amount,global.color_enemy,global.color_friendly,global.color_friendly,0,true,false);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var trainer_sprite=ob_main.trainer_sprite[ob_main.roadmap_area];
 var trainer_skin=ob_main.trainer_skin[ob_main.roadmap_area];
@@ -56,11 +56,7 @@ sc_drawtext(cam_x+cam_w-12,cam_y+cam_h-21,var_text,global.color_white,c_black,0.
 draw_set_halign(fa_center);
 var var_message="", var_message_color=c_white;
 //
-if battler_turn=2 {
-	var_message="(Adversary's turn)";
-	var_message_color=global.color_enemy;
-}
-else if first_turn_attack_warning=true {
+if first_turn_attack_warning=true {
 	var_message="You can't attack on your first turn.";
 	var_message_color=global.color_damage;
 }
@@ -70,26 +66,26 @@ else if (card_draw_points>0 and card_hand_total=card_hand_max) or hand_full_draw
 }
 else if card_draw_points>0 {
 	var_message="You may draw cards. You have " + string(card_draw_points) + " DP (Draw Points) remaining.";
-	var_message_color=global.color_player;
+	var_message_color=global.color_friendly;
 }
 //
 if tooltip_timer>0 and var_message!="" {
 	var tooltip_alpha=(tooltip_timer*100/tooltip_timer_max)/100;
 	sc_drawrectangle(cam_x+cam_w/2-string_width(var_message)/2-5,cam_y+219,cam_x+cam_w/2+string_width(var_message)/2+3,cam_y+230,
-	global.color_black,global.color_black,1,tooltip_alpha*0.8,tooltip_alpha,0);
+	global.color_black,global.color_black,1,tooltip_alpha*0.8,tooltip_alpha,0); //same alpha as turn splash
 	sc_drawtext(cam_x+cam_w/2,cam_y+218,var_message,var_message_color,global.color_black,tooltip_alpha*2,tooltip_alpha/2,0,-1);
 }
 //
 draw_set_halign(fa_center);
 if card_draw_points>=card_drawcost_berry and card_berrydeck_total>0 {
 	sc_drawrectangle(cam_x+26,cam_y+188,cam_x+50,cam_y+209,global.color_black,global.color_black,1,0.25,0.5,0);
-	sc_drawtext(cam_x+39,cam_y+187,"Berry",global.color_player,global.color_black,0.8,0.5,0,-1);
-	sc_drawtext(cam_x+39,cam_y+197,string(card_drawcost_berry) + " DP",global.color_player,global.color_black,0.8,0.5,0,-1);
+	sc_drawtext(cam_x+39,cam_y+187,"Berry",global.color_player,global.color_black,0.9,0.5,0,-1);
+	sc_drawtext(cam_x+39,cam_y+197,string(card_drawcost_berry) + " DP",global.color_player,global.color_black,0.9,0.5,0,-1);
 }
 if card_draw_points>=card_drawcost_main and card_maindeck_total>0 {
 	sc_drawrectangle(cam_x+cam_w-50,cam_y+188,cam_x+cam_w-28,cam_y+209,global.color_black,global.color_black,1,0.25,0.5,0);
-	sc_drawtext(cam_x+cam_w-38,cam_y+187,"Main",global.color_player,global.color_black,0.8,0.5,0,-1);
-	sc_drawtext(cam_x+cam_w-38,cam_y+197,string(card_drawcost_main) + " DP",global.color_player,global.color_black,0.8,0.5,0,-1);
+	sc_drawtext(cam_x+cam_w-38,cam_y+187,"Main",global.color_player,global.color_black,0.9,0.5,0,-1);
+	sc_drawtext(cam_x+cam_w-38,cam_y+197,string(card_drawcost_main) + " DP",global.color_player,global.color_black,0.9,0.5,0,-1);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var dpboard_x=cam_x+cam_w-39;
@@ -99,5 +95,19 @@ draw_set_halign(fa_right);
 sc_drawrectangle(dpboard_x,dpboard_y,dpboard_x+26,dpboard_y+15,global.color_black,global.color_white,1,0.25,0.5,0);
 sc_drawtext(dpboard_x+9,dpboard_y+1,string(card_draw_points),global.color_white,global.color_black,1,1,0,-1);
 draw_sprite_general(sp_sheet,0,16*3,16*15,16,16,dpboard_x+9,dpboard_y,1,1,0,c_white,c_white,c_white,c_white,1);
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+if turn_splash_timer>0 {
+	draw_set_halign(fa_center);
+	draw_set_font(fn_m6x11);
+	//
+	var turn_splash_text="", turn_splash_color=c_white;
+	if battler_turn=1 { turn_splash_text="Player's Turn"; turn_splash_color=global.color_friendly; }
+	else if battler_turn=2 { turn_splash_text="Opponent's Turn"; turn_splash_color=global.color_enemy; }
+	//
+	var turn_splash_alpha=(turn_splash_timer*100/turn_splash_timer_max)/100;
+	sc_drawrectangle(cam_x+cam_w/2-string_width(turn_splash_text)/2-5,cam_y+163,cam_x+cam_w/2+string_width(turn_splash_text)/2+3,cam_y+184,
+	global.color_black,global.color_black,1,turn_splash_alpha*0.8,turn_splash_alpha,0); //same alpha as tooltip
+	sc_drawtext(cam_x+cam_w/2,cam_y+167,turn_splash_text,turn_splash_color,global.color_black,turn_splash_alpha*3,turn_splash_alpha*2,0,-1);
+}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 sc_draw_tooltip_text(cam_x+cam_w);

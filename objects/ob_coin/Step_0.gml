@@ -30,6 +30,7 @@ else {
 			ob_control.enemycard_draw_points=5;
 		}
 		ob_control.tooltip_timer=ob_control.tooltip_timer_max;
+		ob_control.turn_splash_timer=ob_control.turn_splash_timer_max;
 		//
 		instance_destroy();
 	}

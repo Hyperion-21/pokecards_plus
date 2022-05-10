@@ -29,7 +29,7 @@ instance_create_layer(cam_x+cam_w/2-24,cam_y+cam_h/2-24,"instances",ob_coin);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 player_directdamage_id=instance_create_layer(cam_x+cam_w-62,cam_y+112,"instances",ob_damage_num);
 player_directdamage_id.damage_direct_unique=true;
-player_directdamage_id.text_color=global.color_player;
+player_directdamage_id.text_color=global.color_friendly;
 enemy_directdamage_id=instance_create_layer(cam_x+cam_w-26,cam_y+112,"instances",ob_damage_num);
 enemy_directdamage_id.damage_direct_unique=true;
 enemy_directdamage_id.text_color=global.color_enemy;
@@ -235,6 +235,8 @@ tooltip_timer=0;
 tooltip_timer_max=300;
 first_turn_attack_warning=false;
 hand_full_draw_warning=false;
+turn_splash_timer=0;
+turn_splash_timer_max=80;
 //
 tutorial_textbox_line_current=4; //first tutorial line in battle
 tutorial_textbox_line_max=21; //last tutorial line in battle

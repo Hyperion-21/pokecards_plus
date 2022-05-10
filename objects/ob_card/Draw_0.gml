@@ -126,7 +126,7 @@ if card_cat=0 and card_face=true and in_view=true {
 	var num_color=c_white;
 	draw_set_halign(fa_left);
 	if card_atk<card_full_atk { num_color=global.color_damage; }
-	else if card_atk>card_full_atk { num_color=global.color_player; }
+	else if card_atk>card_full_atk { num_color=global.color_friendly; }
 	else { num_color=global.color_white; }
 	sc_drawtext(draw_x+5,draw_y+66,string(card_atk),num_color,global.color_black,1,(1/1.7),0,-1);
 	draw_set_halign(fa_center);
@@ -135,7 +135,7 @@ if card_cat=0 and card_face=true and in_view=true {
 	sc_drawtext(draw_x+29,draw_y+60,string(card_hp),num_color,global.color_black,1,(1/1.7),0,-1);
 	draw_set_halign(fa_right);
 	if card_def<card_full_def { num_color=global.color_damage; }
-	else if card_def>card_full_def { num_color=global.color_player; }
+	else if card_def>card_full_def { num_color=global.color_friendly; }
 	else { num_color=global.color_white; }
 	sc_drawtext(draw_x+53,draw_y+66,string(card_def),num_color,global.color_black,1,(1/1.7),0,-1);
 	//

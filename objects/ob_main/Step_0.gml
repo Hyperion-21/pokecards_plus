@@ -999,7 +999,7 @@ repeat (colorsetup_total) {
 		mouse_cursor=1;
 		colorsetup_focus_r[i]=true;
 		if mouse_check_button(mb_left) and colorsetup_r[i]<255 { colorsetup_r[i]++; }
-		else if mouse_check_button(mb_right) and colorsetup_r[i]>0 { colorsetup_r[i]--; }
+		else if mouse_check_button(mb_right) and colorsetup_r[i]>40 { colorsetup_r[i]--; }
 	}
 	else { colorsetup_focus_r[i]=false; }
 	//
@@ -1009,7 +1009,7 @@ repeat (colorsetup_total) {
 		mouse_cursor=1;
 		colorsetup_focus_g[i]=true;
 		if mouse_check_button(mb_left) and colorsetup_g[i]<255 { colorsetup_g[i]++; }
-		else if mouse_check_button(mb_right) and colorsetup_g[i]>0 { colorsetup_g[i]--; }
+		else if mouse_check_button(mb_right) and colorsetup_g[i]>40 { colorsetup_g[i]--; }
 	}
 	else { colorsetup_focus_g[i]=false; }
 	//
@@ -1019,7 +1019,7 @@ repeat (colorsetup_total) {
 		mouse_cursor=1;
 		colorsetup_focus_b[i]=true;
 		if mouse_check_button(mb_left) and colorsetup_b[i]<255 { colorsetup_b[i]++; }
-		else if mouse_check_button(mb_right) and colorsetup_b[i]>0 { colorsetup_b[i]--; }
+		else if mouse_check_button(mb_right) and colorsetup_b[i]>40 { colorsetup_b[i]--; }
 	}
 	else { colorsetup_focus_b[i]=false; }
 	//
@@ -1031,8 +1031,8 @@ global.color_background_b=make_colour_rgb(colorsetup_r[opt_bg_b]/bg_rgb_divisor,
 global.color_background_tile=make_colour_rgb(colorsetup_r[opt_bg_tile]/bg_rgb_divisor,colorsetup_g[opt_bg_tile]/bg_rgb_divisor,colorsetup_b[opt_bg_tile]/bg_rgb_divisor);
 global.color_character=make_colour_rgb(colorsetup_r[opt_c_char],colorsetup_g[opt_c_char],colorsetup_b[opt_c_char]);
 //
-var progress_r=colorsetup_r[opt_c_char]*1.5, progress_g=colorsetup_g[opt_c_char]*1.5, progress_b=colorsetup_b[opt_c_char]*1.5;
+var progress_r=colorsetup_r[opt_c_char]*1.2, progress_g=colorsetup_g[opt_c_char]*1.2, progress_b=colorsetup_b[opt_c_char]*1.2;
 if progress_r>255 { progress_r=255; }
 if progress_g>255 { progress_g=255; }
 if progress_b>255 { progress_b=255; }
-global.color_roadmap_bar=make_colour_rgb(progress_r,progress_g,progress_b);
+global.color_player=make_colour_rgb(progress_r,progress_g,progress_b);

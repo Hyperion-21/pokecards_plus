@@ -76,7 +76,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	//
 	var bar_amount=(roadmap_area*100)/(roadmap_current_max-1);
 	draw_healthbar(road_win_x+2,road_win_y-17-rel_hud,road_win_x+237,road_win_y-14-rel_hud,bar_amount,
-	global.color_roadmap_bar_back,global.color_roadmap_bar,global.color_roadmap_bar,0,true,false);
+	global.color_roadmap_bar_back,global.color_player,global.color_player,0,true,false);
 	//
 	if area_zone=area_zone_max-1 {
 		for (var i=4; i>=1; i--;) {
@@ -241,7 +241,7 @@ if event_transition=ref_event_victory or event_transition=ref_event_defeat {
 		else { var victory_text_y=screen_main_y+cam_h/2-29; }
 		//
 		draw_set_font(fn_m6x11_XL);
-		sc_drawtext(screen_main_x+cam_w/2,victory_text_y,"VICTORY",global.color_player,global.color_black,1,1,0,-1);
+		sc_drawtext(screen_main_x+cam_w/2,victory_text_y,"VICTORY",global.color_friendly,global.color_black,1,1,0,-1);
 		draw_set_font(fn_matchup);
 		sc_drawtext(screen_main_x+cam_w/2,victory_text_y+22,"Received $" + string(money_prize),global.color_card_light,global.color_black,1,1,0,-1);
 		if playing_gym=true and latest_zone=area_zone {
@@ -257,7 +257,7 @@ if textbox_string[textbox_current]!="" {
 	draw_set_font(fn_matchup);
 	draw_set_halign(fa_left);
 	//
-	sc_drawrectangle(screen_main_x+5,screen_main_y+cam_h-51,screen_main_x+cam_w-6,screen_main_y+cam_h-6,global.color_black,global.color_character,1,0.9,1,1);
+	sc_drawrectangle(screen_main_x+5,screen_main_y+cam_h-51,screen_main_x+cam_w-6,screen_main_y+cam_h-6,global.color_black,global.color_player,1,0.9,1,1);
 	sc_drawtext(screen_main_x+11,screen_main_y+cam_h-48,textbox_show,global.color_white,global.color_black,1,0.5,0,492);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

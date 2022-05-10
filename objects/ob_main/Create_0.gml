@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.103"
+#macro game_version "v0.0.0.104"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -275,7 +275,7 @@ global.color_gray=make_colour_rgb(190,190,190);
 global.color_card_light=make_colour_rgb(233,230,222);
 global.color_card_mid=make_colour_rgb(205,198,181);
 //global.color_card_gold=make_colour_rgb(226,204,161);
-global.color_player=make_colour_rgb(160,193,225);
+global.color_friendly=make_colour_rgb(160,193,225);
 global.color_enemy=make_colour_rgb(221,172,159);
 global.color_fullhp=make_colour_rgb(176,223,159);
 global.color_damage=make_colour_rgb(225,168,160);
@@ -286,8 +286,8 @@ global.color_background_b=make_colour_rgb(colorsetup_r[opt_bg_b]/bg_rgb_divisor,
 global.color_background_tile=make_colour_rgb(colorsetup_r[opt_bg_tile]/bg_rgb_divisor,colorsetup_g[opt_bg_tile]/bg_rgb_divisor,colorsetup_b[opt_bg_tile]/bg_rgb_divisor);
 global.color_character=make_colour_rgb(colorsetup_r[opt_c_char],colorsetup_g[opt_c_char],colorsetup_b[opt_c_char]);
 //
-var progress_r=colorsetup_r[opt_c_char]*1.5, progress_g=colorsetup_g[opt_c_char]*1.5, progress_b=colorsetup_b[opt_c_char]*1.5;
+var progress_r=colorsetup_r[opt_c_char]*1.2, progress_g=colorsetup_g[opt_c_char]*1.2, progress_b=colorsetup_b[opt_c_char]*1.2;
 if progress_r>255 { progress_r=255; }
 if progress_g>255 { progress_g=255; }
 if progress_b>255 { progress_b=255; }
-global.color_roadmap_bar=make_colour_rgb(progress_r,progress_g,progress_b);
+global.color_player=make_colour_rgb(progress_r,progress_g,progress_b);
