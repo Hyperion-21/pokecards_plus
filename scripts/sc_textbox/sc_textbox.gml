@@ -40,10 +40,10 @@ else if argument0=8 { //tutorial: attacked
 	ob_main.textbox_string[2]="When your opponent's Hit Points reach 0, you win! You already took an early step towards victory!";
 }
 else if argument0=9 { //tutorial: new turn
-	ob_main.textbox_string[0]="It's your turn again! You have a Berry on your hand, but no Pokemon to play. You should draw another one next, then play it and attack once more!";
+	ob_main.textbox_string[0]="It's your turn again! You have a Berry on your hand, but no Pokemon to play. Draw another Pokemon next, then play it and attack!";
 }
 else if argument0=12 { //tutorial: new turn
-	ob_main.textbox_string[0]="Next turn! You have no cards to play right now. Draw a Pokemon, then attack with the ones already on the battlefield!";
+	ob_main.textbox_string[0]="Next turn! You have no cards to play right now. Draw another Pokemon, then attack once again with the ones already on the battlefield!";
 }
 else if argument0=15 { //tutorial: new turn
 	ob_main.textbox_string[0]="What a lucky draw, your Spearow has a type advantage over the Bellsprout I played! This is the perfect time to draw some more Berries.";
@@ -52,22 +52,22 @@ else if argument0=16 { //tutorial: drawn
 	ob_main.textbox_string[0]="Excellent! When a Pokemon has a type advantage over another, their attacks will always deal 1 extra point of damage, even if the receiving Pokemon has a higher defense.";
 	ob_main.textbox_string[1]="Contrary to real Pokemon though, type advantages in cards only deal bonus damage. This means there are no type resistances or immunities, and Pokemon that are weak to a certain type will always receive extra damage from it.";
 	ob_main.textbox_string[2]="This makes it so that, for example, Bulbasaur (a Grass/Poison Pokemon) will always deal bonus damage to other Bulbasaurs, since Poison has an advantage over Grass!";
-	ob_main.textbox_string[3]="But anyway, go ahead and play your Spearow right in front of my Bellsprout, then attack to take them out in one hit!";
+	ob_main.textbox_string[3]="But anyway, go ahead and play your Spearow right in front of my Bellsprout. Then attack to take them out in one hit!";
 }
 else if argument0=17 { //tutorial: attacked
 	ob_main.textbox_string[0]="Ouch! I wasn't expecting our battle to go this way, but it's definitely a good lesson! For both of us.";
 }
 else if argument0=18 { //tutorial: new turn
 	ob_main.textbox_string[0]="My Pichu has a Glyph! Glyphs are unique abilities that can be added to cards. This one lowers the attack of any card opposing them.";
-	ob_main.textbox_string[1]="You can see what any Glyph does by placing your mouse over its icon. But be aware, cards with Glyphs usually also have a higher Berry cost!";
-	ob_main.textbox_string[2]="But anyway, draw your last Pokemon from your deck and play it in front of my Pidgey to take them out. Then attack with the rest of your Pokemon as well!";
+	ob_main.textbox_string[1]="Cards with Glyphs usually have a higher Berry cost. You can see what any Glyph does by placing your mouse over its icon, so look around!";
+	ob_main.textbox_string[2]="But anyway! Draw your last Pokemon from your deck, and play it in front of my Pidgey to take them out. Then attack with the rest of your Pokemon as well!";
 }
 else if argument0=21 { //tutorial: new turn
 	ob_main.textbox_string[0]="It seems our battle is almost over! Attack once more with your Pokemon to deal the final blow and take me down.";
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if argument0=22 {
-	ob_main.textbox_string[0]="That was a great battle! You clearly have a talent for cards. But, talent is nothing without practice!";
+	ob_main.textbox_string[0]="That was a great battle! You clearly have a talent for cards. But, talent is little without practice!";
 	ob_main.textbox_string[1]="To be able to battle in the Crystal League, you first need to build up your team and gain experience. Your goal is to travel through Kyoumu, and challenge each of the gym leaders from the eight major cities in the region.";
 	ob_main.textbox_string[2]="Along the way, you'll be presented with numerous choices to strengthen your cards and battle other trainers.";
 	ob_main.textbox_string[3]="Here's your first set of choices: you can either level up one of your cards, get a card pack with three new cards and a random Berry, or pick up a free card from a random set of three. The choice is yours!";

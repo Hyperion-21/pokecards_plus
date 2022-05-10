@@ -236,7 +236,7 @@ tooltip_timer_max=300;
 first_turn_attack_warning=false;
 hand_full_draw_warning=false;
 turn_splash_timer=0;
-turn_splash_timer_max=80;
+turn_splash_timer_max=90;
 //
 tutorial_textbox_line_current=4; //first tutorial line in battle
 tutorial_textbox_line_max=21; //last tutorial line in battle

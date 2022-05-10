@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.104"
+#macro game_version "v0.0.0.105"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -290,4 +290,4 @@ var progress_r=colorsetup_r[opt_c_char]*1.2, progress_g=colorsetup_g[opt_c_char]
 if progress_r>255 { progress_r=255; }
 if progress_g>255 { progress_g=255; }
 if progress_b>255 { progress_b=255; }
-global.color_player=make_colour_rgb(progress_r,progress_g,progress_b);
+global.color_character_light=make_colour_rgb(progress_r,progress_g,progress_b);

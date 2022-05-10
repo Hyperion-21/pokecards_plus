@@ -61,9 +61,9 @@ if card_cat=0 {
 				card_innate=1;
 				//
 				if random_group_chance<161 { choose_id_enigma=true; } //0.1% enigma
-				else if random_group_chance<511 { choose_id_stage_2=true; } //3.5% stage 2
-				else if random_group_chance<561 { choose_id_stage_3=true; } //0.5% stage 3
-				else { choose_id_normal=true; } //94.39% stage 1 or baby
+				else if random_group_chance<311 { choose_id_stage_2=true; } //1.5% stage 2
+				else if random_group_chance<351 { choose_id_stage_3=true; } //0.4% stage 3
+				else { choose_id_normal=true; } //96.49% stage 1 or baby
 				//
 				var random_id_chance=irandom(99); if random_id_chance<50 { allow_id_pseudo=true; } //50% pseudo allowed
 				var random_id_chance=irandom(99); if random_id_chance<50 { allow_id_fossil=true; } //50% fossil allowed
@@ -108,7 +108,7 @@ if card_cat=0 {
 					//
 					if card_level=ob_main.card_level_enemy_limit and ob_main.zone_first_lap=true and
 					ob_main.playing_gym=false and ob_main.playing_elite=false and ob_main.playing_champion=false {
-						accepted_level=choose(true,true,true,false,false); //40% chance to re-roll
+						accepted_level=choose(true,false); //50% chance to re-roll
 					}
 				} until (accepted_level=true);
 			}

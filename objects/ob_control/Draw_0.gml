@@ -79,13 +79,13 @@ if tooltip_timer>0 and var_message!="" {
 draw_set_halign(fa_center);
 if card_draw_points>=card_drawcost_berry and card_berrydeck_total>0 {
 	sc_drawrectangle(cam_x+26,cam_y+188,cam_x+50,cam_y+209,global.color_black,global.color_black,1,0.25,0.5,0);
-	sc_drawtext(cam_x+39,cam_y+187,"Berry",global.color_player,global.color_black,0.9,0.5,0,-1);
-	sc_drawtext(cam_x+39,cam_y+197,string(card_drawcost_berry) + " DP",global.color_player,global.color_black,0.9,0.5,0,-1);
+	sc_drawtext(cam_x+39,cam_y+187,"Berry",global.color_character_light,global.color_black,0.9,0.5,0,-1);
+	sc_drawtext(cam_x+39,cam_y+197,string(card_drawcost_berry) + " DP",global.color_character_light,global.color_black,0.9,0.5,0,-1);
 }
 if card_draw_points>=card_drawcost_main and card_maindeck_total>0 {
 	sc_drawrectangle(cam_x+cam_w-50,cam_y+188,cam_x+cam_w-28,cam_y+209,global.color_black,global.color_black,1,0.25,0.5,0);
-	sc_drawtext(cam_x+cam_w-38,cam_y+187,"Main",global.color_player,global.color_black,0.9,0.5,0,-1);
-	sc_drawtext(cam_x+cam_w-38,cam_y+197,string(card_drawcost_main) + " DP",global.color_player,global.color_black,0.9,0.5,0,-1);
+	sc_drawtext(cam_x+cam_w-38,cam_y+187,"Main",global.color_character_light,global.color_black,0.9,0.5,0,-1);
+	sc_drawtext(cam_x+cam_w-38,cam_y+197,string(card_drawcost_main) + " DP",global.color_character_light,global.color_black,0.9,0.5,0,-1);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var dpboard_x=cam_x+cam_w-39;
