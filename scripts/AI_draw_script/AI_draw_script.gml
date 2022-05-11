@@ -32,13 +32,13 @@ if random_value<5 and ob_main.playing_tutorial=false {
 	AI_draw(enemy_draw_cat);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-// DRAW: AT LEAST 1 POKEMON > ANOTHER POKEMON IF 1-2 POKEMON AND 4+ BERRIES (NOT ENIGMA) > BERRIES IF NEEDED (NOT ENIGMA) > POKEMON > BERRIES
+// DRAW: AT LEAST 1 POKEMON > ANOTHER POKEMON IF 1-2 POKEMON AND 3+ BERRIES (NOT ENIGMA) > BERRIES IF NEEDED (NOT ENIGMA) > POKEMON > BERRIES
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if random_value<100 and ob_main.playing_tutorial=false {
 	if poke_held<1 and AI_draw_available(0) {
 		AI_draw(0);
 	}
-	else if poke_held<=2 and (berries_held[0]+berries_held[1]+berries_held[2])>=4 and AI_draw_available(0) {
+	else if poke_held<=2 and (berries_held[0]+berries_held[1]+berries_held[2])>=3 and AI_draw_available(0) {
 		AI_draw(0);
 	}
 	else if (berries_needed_fullhand[0]>berries_held[0] or berries_needed_fullhand[1]>berries_held[1] or berries_needed_fullhand[2]>berries_held[2]) and AI_draw_available(1) {

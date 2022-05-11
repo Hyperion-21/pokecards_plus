@@ -16,6 +16,10 @@ if argument2=true {
 		}
 		i++;
 	}
+	//
+	if argument0.card_glyph_a=ref_glyph_mist or argument0.card_glyph_b=ref_glyph_mist or argument0.card_glyph_c=ref_glyph_mist {
+		var_mist=true; //glyph: mist
+	}
 }
 //
 if var_mist=false and (argument0.card_glyph_a=argument1 or argument0.card_glyph_b=argument1 or argument0.card_glyph_c=argument1) {

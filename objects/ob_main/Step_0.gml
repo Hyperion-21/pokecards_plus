@@ -84,7 +84,10 @@ if enemy_maindeck_size>40 {
 	enemy_maindeck_size=40;
 }
 //
-money_payout=money_payout_base+money_payout_area_bonus*area_zone;
+money_payout=money_payout_base+money_payout_area_bonus*area_zone-money_penalty_multiplier*(latest_zone-area_zone);
+if money_payout<10 { money_payout=10; }
+money_prize_min=round((money_add_base+money_add_area_bonus*area_zone-money_penalty_multiplier*(latest_zone-area_zone))*0.9);
+money_prize_max=round((money_add_base+money_add_area_bonus*area_zone-money_penalty_multiplier*(latest_zone-area_zone))*1.1);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if textbox_string[textbox_current]!="" {
 	if textbox_show!=textbox_string[textbox_current] {
@@ -408,11 +411,19 @@ if roadmap_get_details=true {
 				event_description[ii][i]=sc_glyph_text(event_glyph_add[ii][i]);
 			}
 			//
-			if event_kind[ii][i]=ref_event_battle or event_kind[ii][i]=ref_event_tutorial {
+			if event_kind[ii][i]=ref_event_battle {
 				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nBattle HP: " + string(battle_hp[area_zone]*2) +
-				" (" + string(battle_hp[area_zone]) + "/" + string(battle_hp[area_zone]) + ")";
+				" (" + string(battle_hp[area_zone]) + "/" + string(battle_hp[area_zone]) + "), Reward: $" + string(money_prize_min) + "-$" + string(money_prize_max);
 			}
-			else if event_kind[ii][i]=ref_event_gymbattle or event_kind[ii][i]=ref_event_elitebattle or event_kind[ii][i]=ref_event_championbattle {
+			else if event_kind[ii][i]=ref_event_tutorial {
+				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nBattle HP: " + string(battle_hp[area_zone]*2) +
+				" (" + string(battle_hp[area_zone]) + "/" + string(battle_hp[area_zone]) + "), Reward: $" + string(tutorial_payout);
+			}
+			else if event_kind[ii][i]=ref_event_gymbattle or event_kind[ii][i]=ref_event_elitebattle {
+				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nBattle HP: " + string(battle_hp[area_zone+1]*2) +
+				" (" + string(battle_hp[area_zone+1]) + "/" + string(battle_hp[area_zone+1]) + "), Reward: $" + string(money_prize_min) + "-$" + string(money_prize_max);
+			}
+			else if event_kind[ii][i]=ref_event_championbattle {
 				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nBattle HP: " + string(battle_hp[area_zone+1]*2) +
 				" (" + string(battle_hp[area_zone+1]) + "/" + string(battle_hp[area_zone+1]) + ")";
 			}
@@ -557,9 +568,9 @@ else if event_transition>-1 and fade_black>=1 {
 	else if event_transition=ref_event_battle or event_transition=ref_event_gymbattle or event_transition=ref_event_elitebattle or event_transition=ref_event_championbattle or
 	event_transition=ref_event_tutorial {
 		instance_create_layer(x,y,"instances",ob_control);
-		if playing_tutorial=true { money_prize=tutorial_payout; }
-		else if playing_champion=true { money_prize=0; }
-		else { money_prize=irandom_range((money_add_base+money_add_area_bonus*area_zone)*0.9,(money_add_base+money_add_area_bonus*area_zone)*1.1); }
+		if playing_tutorial=true { money_prize=tutorial_payout; } //also shown in battle description
+		else if playing_champion=true { money_prize=0; } //also shown in battle description
+		else { money_prize=irandom_range(money_prize_min,money_prize_max); } //also shown in battle description
 		//
 		if event_transition=ref_event_battle {
 			music_player=sc_playsound(ms_battle,100,true,true);

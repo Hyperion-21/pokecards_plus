@@ -63,6 +63,7 @@ do {
 		(argument0=2 and enemycard_hand[i].card_def=highest_value and enemycard_hand[i].card_def>=stat_min) or
 		(argument0=3 and enemycard_hand[i].card_value=highest_value and enemycard_hand[i].card_value>=stat_min)) {
 			for (var ii=0; ii<=4; ii++;) {
+				//IMAGINARY DAMAGE CALCULATION (similar code in ob_control draw event)
 				var opposing_card_id=-1, bonus_dmg=false, vs_bonus_dmg=false, turns_to_defeat=-1, turns_to_faint=-1, any_card_hurt=false;
 				//
 				if enemycard_hand[i].card_environment=false {
@@ -79,23 +80,29 @@ do {
 				if card_space_id[ii+5].occupy_id!=-1 {
 					var opposing_card_id=card_space_id[ii+5].occupy_id;
 					//
-					if sc_glyph_check(opposing_card_id,ref_glyph_transform,true) and opposing_card_id.card_environment=false { //glyph: transform (Ditto only)
+					//glyph: transform (Ditto only)
+					if sc_glyph_check(opposing_card_id,ref_glyph_transform,true) and enemycard_hand[i].card_environment=false and opposing_card_id.card_environment=false {
 						bonus_dmg=sc_type_bonus(enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b,enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b);
 						vs_bonus_dmg=sc_type_bonus(enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b,enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b);
 					}
-					else if sc_glyph_check(enemycard_hand[i],ref_glyph_transform,true) and opposing_card_id.card_environment=false { //glyph: transform (Ditto only)
+					else if sc_glyph_check(enemycard_hand[i],ref_glyph_transform,true) and enemycard_hand[i].card_environment=false and opposing_card_id.card_environment=false {
 						bonus_dmg=sc_type_bonus(opposing_card_id.card_type_a,opposing_card_id.card_type_b,opposing_card_id.card_type_a,opposing_card_id.card_type_b);
 						vs_bonus_dmg=sc_type_bonus(opposing_card_id.card_type_a,opposing_card_id.card_type_b,opposing_card_id.card_type_a,opposing_card_id.card_type_b);
 					}
-					else if opposing_card_id.card_environment=false {
-						bonus_dmg=sc_type_bonus(enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b,opposing_card_id.card_type_a,opposing_card_id.card_type_b);
-						vs_bonus_dmg=sc_type_bonus(opposing_card_id.card_type_a,opposing_card_id.card_type_b,enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b);
+					else {
+						if enemycard_hand[i].card_environment=false {
+							bonus_dmg=sc_type_bonus(enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b,
+							opposing_card_id.card_type_a,opposing_card_id.card_type_b);
+						}
+						if opposing_card_id.card_environment=false {
+							vs_bonus_dmg=sc_type_bonus(opposing_card_id.card_type_a,opposing_card_id.card_type_b,
+							enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b);
+						}
 					}
 					//
-					if sc_glyph_check(enemycard_hand[i],ref_glyph_debilitate,true) { var imaginary_penalty_atk=1; } //glyph: debilitate
-					else { var imaginary_penalty_atk=0; }
-					if sc_glyph_check(enemycard_hand[i],ref_glyph_ruthless,true) { var imaginary_penalty_def=2; } //glyph: ruthless
-					else { var imaginary_penalty_def=0; }
+					var imaginary_penalty_atk=0, imaginary_penalty_def=0;
+					if sc_glyph_check(enemycard_hand[i],ref_glyph_debilitate,true) { imaginary_penalty_atk=1; } //glyph: debilitate
+					if sc_glyph_check(enemycard_hand[i],ref_glyph_ruthless,true) { imaginary_penalty_def=2; } //glyph: ruthless
 					//
 					var vs_atk=opposing_card_id.card_atk-imaginary_penalty_atk;
 					var vs_def=opposing_card_id.card_def-imaginary_penalty_def;

@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.105"
+#macro game_version "v0.0.0.106"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -96,12 +96,13 @@ textbox_char_pos=0;
 #macro maindeck_total_max 2000
 #macro berrydeck_total_max 200 //per berry
 //
-#macro money_add_base 100 //100 150 200 250 300 350 400 450 500
+#macro money_add_base 100 //100 150 200 250 300 350 400 450 500 (penalty: 20-500)
 #macro money_add_area_bonus 50
-#macro money_payout_base 80 //80 120 160 200 240 280 320 360 400
+#macro money_payout_base 80 //80 120 160 200 240 280 320 360 400 (penalty: 0/10-400)
 #macro money_payout_area_bonus 40
-#macro tutorial_payout 800
+#macro money_penalty_multiplier 10
 #macro sell_value_multiplier 5
+#macro tutorial_payout 800
 //
 battle_hp[0]=5; //10
 battle_hp[1]=15; //30
@@ -116,6 +117,8 @@ battle_hp[9]=200; //400
 //
 money_show=0;
 money_prize=0;
+money_prize_min=0;
+money_prize_max=0;
 money_payout=0;
 effect_money_error=0;
 event_cost_standby=0;
@@ -150,8 +153,8 @@ event_cost[ref_event_cardpack]=500;
 event_cost[ref_event_berry]=100;
 event_cost[ref_event_levelup]=100;
 #macro levelup_cost_multiplier 50 //100 150 200 250 300 350 400 450 500
-event_cost[ref_event_evolution]=1000;
-event_cost[ref_event_glyph]=750;
+event_cost[ref_event_evolution]=800;
+event_cost[ref_event_glyph]=500;
 //
 #macro innate_max 4 //failure chance uses manual values in ob_event, enemy innate uses manual values in ob_card, sc_enemy_deck uses manual values
 current_glyph_add=-1;

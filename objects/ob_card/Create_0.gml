@@ -182,9 +182,6 @@ if card_cat=0 {
 			}
 		}
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
-		//var card_rarity=sc_card_level_stats_main(0,10)+sc_card_level_stats_main(1,10)*2+sc_card_level_stats_main(2,10)*2;
-		//checks with max card_level and base card_innate, same as in sc_card_level_stats_all (innate value is always 1 on random cards, so it's not considered for rarity)
-		//
 		var card_rarity=round(sqrt(card_base_hp+card_base_atk+card_base_def)*10-100);
 		//
 		if random_card=true {
