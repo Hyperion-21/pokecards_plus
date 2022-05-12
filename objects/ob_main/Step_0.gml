@@ -61,7 +61,7 @@ card_level_spawn_limit=floor((latest_zone+1)/1.5)+1; //1 2 3 3 4 5 5 6 (7)
 //
 card_level_enemy_min=area_zone; //1 1 2 3 4 5 6 7 (8)
 if card_level_enemy_min<=0 { card_level_enemy_min=1; }
-if area_zone>0 or zone_first_lap=false or playing_gym=true { card_level_enemy_limit=area_zone+2; } //2 3 4 5 6 7 8 9 (10), 50% chance to re-roll (first laps in ob_card)
+if area_zone>0 or zone_first_lap=false or playing_gym=true { card_level_enemy_limit=area_zone+2; } //2 3 4 5 6 7 8 9 (10), 60% chance to re-roll (first laps in ob_card)
 else { card_level_enemy_limit=1; } //first zone, first lap
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if audio_is_playing(ms_main) and area_zone=area_zone_max-1 and roadmap_area>=roadmap_current_max-roadmap_league_max {
@@ -84,10 +84,9 @@ if enemy_maindeck_size>40 {
 	enemy_maindeck_size=40;
 }
 //
-money_payout=money_payout_base+money_payout_area_bonus*area_zone-money_penalty_multiplier*(latest_zone-area_zone);
-if money_payout<10 { money_payout=10; }
-money_prize_min=round((money_add_base+money_add_area_bonus*area_zone-money_penalty_multiplier*(latest_zone-area_zone))*0.9);
-money_prize_max=round((money_add_base+money_add_area_bonus*area_zone-money_penalty_multiplier*(latest_zone-area_zone))*1.1);
+money_payout=money_payout_base+money_payout_area_bonus*area_zone-money_payout_penalty_multiplier*(latest_zone-area_zone);
+money_prize_min=round((money_add_base+money_add_area_bonus*area_zone-money_prize_penalty_multiplier*(latest_zone-area_zone))*0.9);
+money_prize_max=round((money_add_base+money_add_area_bonus*area_zone-money_prize_penalty_multiplier*(latest_zone-area_zone))*1.1);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if textbox_string[textbox_current]!="" {
 	if textbox_show!=textbox_string[textbox_current] {
@@ -221,15 +220,15 @@ if roadmap_generated=false {
 				//
 				if event_kind[ii][i]=-1 { event_kind[ii][i]=-1; }
 				else if event_kind[ii][i]<400 and i=0 { event_kind[ii][i]=ref_event_battle; free_event=true; } //40% (ensures at least 1 battle in zone)
-				else if event_kind[ii][i]<300 { event_kind[ii][i]=ref_event_battle; free_event=true; } //30%
-				else if event_kind[ii][i]<375 { event_kind[ii][i]=ref_event_payout; free_event=true; } //7.5%
+				else if event_kind[ii][i]<325 { event_kind[ii][i]=ref_event_battle; free_event=true; } //32.5%
+				else if event_kind[ii][i]<375 { event_kind[ii][i]=ref_event_payout; free_event=true; } //5%
 				else if event_kind[ii][i]<400 { event_kind[ii][i]=ref_event_freecard; free_event=true; } //2.5%
 				else if event_kind[ii][i]<550 { event_kind[ii][i]=ref_event_cardpack; } //15%
 				else if event_kind[ii][i]<700 { event_kind[ii][i]=ref_event_berry; } //15%
 				else if event_kind[ii][i]<850 { event_kind[ii][i]=ref_event_levelup; } //15%
 				else if event_kind[ii][i]<900 { event_kind[ii][i]=ref_event_evolution; } //5%
-				else if event_kind[ii][i]<980 { event_kind[ii][i]=ref_event_glyph; } //8%
-				else if event_kind[ii][i]<1000 { event_kind[ii][i]=ref_event_tribute; } //2%
+				else if event_kind[ii][i]<975 { event_kind[ii][i]=ref_event_glyph; } //7.5%
+				else if event_kind[ii][i]<1000 { event_kind[ii][i]=ref_event_tribute; } //2.5%
 				//
 				if event_kind[ii][i]=ref_event_glyph { event_glyph_add[ii][i]=sc_glyph_random(); }
 				else { event_glyph_add[ii][i]=-1; }

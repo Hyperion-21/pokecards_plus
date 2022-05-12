@@ -71,3 +71,4 @@
 ✔	ending screen
 ✔	sell cards
 ✔	fly to cities
+✔	damage preview

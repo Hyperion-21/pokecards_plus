@@ -29,7 +29,7 @@ already_attacked=false;
 effect_damaged=0;
 //
 card_delete_timer=0;
-card_delete_timer_max=150;
+card_delete_timer_max=100;
 //
 auto_turn_add=false;
 if card_cat=0 and reference_id=ob_control { enemy_randomizer=reference_id.create_enemy_randomizer; }
@@ -52,7 +52,7 @@ if card_cat=0 {
 				card_id=irandom_range(1,secret_cards_total)+2000;
 				card_innate=1;
 			}
-			else if random_group_chance<151 { //1.5% environment card
+			else if random_group_chance<201 { //2% environment card
 				card_id=irandom_range(1,environment_cards_total)+2500;
 				card_innate=1;
 			}
@@ -60,10 +60,10 @@ if card_cat=0 {
 				card_id=irandom_range(1,normal_poke_id_max);
 				card_innate=1;
 				//
-				if random_group_chance<161 { choose_id_enigma=true; } //0.1% enigma
-				else if random_group_chance<311 { choose_id_stage_2=true; } //1.5% stage 2
-				else if random_group_chance<351 { choose_id_stage_3=true; } //0.4% stage 3
-				else { choose_id_normal=true; } //96.49% stage 1 or baby
+				if random_group_chance<211 { choose_id_enigma=true; } //0.1% enigma
+				else if random_group_chance<461 { choose_id_stage_2=true; } //2.5% stage 2
+				else if random_group_chance<511 { choose_id_stage_3=true; } //0.5% stage 3
+				else { choose_id_normal=true; } //94.89% stage 1 or baby
 				//
 				var random_id_chance=irandom(99); if random_id_chance<50 { allow_id_pseudo=true; } //50% pseudo allowed
 				var random_id_chance=irandom(99); if random_id_chance<50 { allow_id_fossil=true; } //50% fossil allowed
@@ -88,10 +88,10 @@ if card_cat=0 {
 				//
 				if reference_id.create_card_innate=-1 {
 					var card_enemy_innate_value=irandom(999);
-					if card_enemy_innate_value<2 { card_innate=innate_max; } //0.2%
-					else if card_enemy_innate_value<15 { card_innate=3; } //1.3%
-					else if card_enemy_innate_value<50 { card_innate=2; } //3.5%
-					else if card_enemy_innate_value<1000 { card_innate=1; } //95%
+					if card_enemy_innate_value<15 { card_innate=innate_max; } //1.5%
+					else if card_enemy_innate_value<50 { card_innate=3; } //3.5%
+					else if card_enemy_innate_value<100 { card_innate=2; } //5%
+					else if card_enemy_innate_value<1000 { card_innate=1; } //90%
 				}
 				else { card_innate=reference_id.create_card_innate; }
 				//
@@ -108,7 +108,7 @@ if card_cat=0 {
 					//
 					if card_level=ob_main.card_level_enemy_limit and ob_main.zone_first_lap=true and
 					ob_main.playing_gym=false and ob_main.playing_elite=false and ob_main.playing_champion=false {
-						accepted_level=choose(true,false); //50% chance to re-roll
+						accepted_level=choose(true,true,false,false,false); //60% chance to re-roll
 					}
 				} until (accepted_level=true);
 			}
@@ -142,7 +142,7 @@ if card_cat=0 {
 			if enemy_randomizer=false {
 				var card_glyph_chance=irandom(999), card_glyph_total=0;
 				if card_glyph_chance<5 { card_glyph_total=2; } //0.5%
-				else if card_glyph_chance<20 { card_glyph_total=1; } //1.5%
+				else if card_glyph_chance<25 { card_glyph_total=1; } //2%
 				//
 				if card_glyph_total>=1 and card_glyph_a=-1 {
 					card_glyph_a=sc_glyph_random();
@@ -156,14 +156,14 @@ if card_cat=0 {
 			else {
 				var card_glyph_chance=irandom(9999), card_glyph_total=0;
 				if ob_main.playing_gym=true or ob_main.playing_elite=true or ob_main.playing_champion=true {
-					var card_glyph_chance_limit=1000+250*ob_main.area_zone; } //10%, 12.5%, 15%, 17.5%, 20%, 22.5%, 25%, 27.5%, (30%)
+					var card_glyph_chance_limit=1500+225*ob_main.area_zone; } //15%, 17.25%, 19.5%, 21.75%, 24%, 26.25%, 28.5%, 30.75%, (33%)
 				else { var card_glyph_chance_limit=980+190*ob_main.area_zone; } //9.8%, 11.7%, 13.6%, 15.5%, 17.4%, 19.3%, 21.2%, 23.1%, (25%)
 				//
 				if card_glyph_chance<card_glyph_chance_limit {
 					card_glyph_chance=irandom(99);
-					if card_glyph_chance<5 { card_glyph_total=3; } //5%
-					else if card_glyph_chance<30 { card_glyph_total=2; } //25%
-					else if card_glyph_chance<100 { card_glyph_total=1; } //70%
+					if card_glyph_chance<10 { card_glyph_total=3; } //10%
+					else if card_glyph_chance<40 { card_glyph_total=2; } //30%
+					else if card_glyph_chance<100 { card_glyph_total=1; } //60%
 					//
 					if card_glyph_total>=1 and card_glyph_a=-1 {
 						card_glyph_a=sc_glyph_random();

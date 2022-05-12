@@ -101,11 +101,8 @@ if card_focus!=-1 and card_focus.card_cat=0 and card_focus_hand!=-1 and card_hol
 	draw_set_font(fn_m3x6);
 	//
 	for (var i=0; i<=4; i++;) {
+		//IMAGINARY DAMAGE CALCULATION (similar code in AI_play_plan)
 		if card_space_id[i].occupy_id!=-1 {
-			//IMAGINARY DAMAGE CALCULATION (similar code in AI_play_plan)
-			draw_sprite_general(sp_sheet,0,16*11,16*9,24,16,card_space_id[i].x+8,card_space_id[i].y+75,1,1,0,c_white,c_white,c_white,c_white,0.8);
-			draw_sprite_general(sp_sheet,0,16*11,16*10,24,16,card_space_id[i].x+30,card_space_id[i].y+75,1,1,0,c_white,c_white,c_white,c_white,0.8);
-			//
 			//intentionally omitting glyph: transform (Ditto only)
 			var bonus_dmg=false, vs_bonus_dmg=false;
 			if card_focus.card_environment=false {
@@ -135,9 +132,18 @@ if card_focus!=-1 and card_focus.card_cat=0 and card_focus_hand!=-1 and card_hol
 			else if bonus_dmg=true and !sc_glyph_check(card_focus,ref_glyph_adaptability,true) { bonus_damage_preview=1; }
 			//
 			var damage_preview_text="";
-			if bonus_damage_preview=0 { damage_preview_text=string(damage_preview); }
-			else { damage_preview_text=string(damage_preview) + "+" + string(bonus_damage_preview); }
-			sc_drawtext(card_space_id[i].x+18,card_space_id[i].y+74,damage_preview_text,global.color_friendly,global.color_black,1,1,0,-1);
+			if sc_glyph_check(card_focus,ref_glyph_fork,true) { //glyph: fork attack
+				if bonus_damage_preview=0 { damage_preview_text="+0"; }
+				else { damage_preview_text="+" + string(bonus_damage_preview); }
+			}
+			else {
+				if bonus_damage_preview=0 { damage_preview_text=string(damage_preview); }
+				else { damage_preview_text=string(damage_preview) + "+" + string(bonus_damage_preview); }
+			}
+			if !sc_glyph_check(card_focus,ref_glyph_piercing,true) { //glyph: piercing attack (if not)
+				draw_sprite_general(sp_sheet,0,16*11,16*9,24,16,card_space_id[i].x+8,card_space_id[i].y+75,1,1,0,c_white,c_white,c_white,c_white,0.8);
+				sc_drawtext(card_space_id[i].x+18,card_space_id[i].y+74,damage_preview_text,global.color_friendly,global.color_black,1,1,0,-1);
+			}
 			//
 			var damage_preview=vs_atk-own_def;
 			if damage_preview<0 { damage_preview=0; }
@@ -149,6 +155,7 @@ if card_focus!=-1 and card_focus.card_cat=0 and card_focus_hand!=-1 and card_hol
 			var damage_preview_text="";
 			if bonus_damage_preview=0 { damage_preview_text=string(damage_preview); }
 			else { damage_preview_text=string(damage_preview) + "+" + string(bonus_damage_preview); }
+			draw_sprite_general(sp_sheet,0,16*11,16*10,24,16,card_space_id[i].x+30,card_space_id[i].y+75,1,1,0,c_white,c_white,c_white,c_white,0.8);
 			sc_drawtext(card_space_id[i].x+40,card_space_id[i].y+74,damage_preview_text,global.color_damage,global.color_black,1,1,0,-1);
 		}
 	}
