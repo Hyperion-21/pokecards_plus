@@ -386,6 +386,7 @@ if roadmap_get_details=true {
 		var ii=0;
 		repeat (3) {
 			event_description[ii][i]="";
+			event_description_lines[ii][i]=0;
 			//
 			if event_kind[ii][i]=ref_event_battle { event_name[ii][i]="Battle:\n" + trainer_name[i]; }
 			else if event_kind[ii][i]=ref_event_payout and area_zone=0 and zone_first_lap=true and i<roadmap_lab_max {
@@ -407,24 +408,29 @@ if roadmap_get_details=true {
 			else if event_kind[ii][i]=ref_event_tutorial { event_name[ii][i]="Tutorial:\n" + trainer_name[i]; }
 			else if event_kind[ii][i]=ref_event_glyph {
 				event_name[ii][i]="Glyph\n$" + string(event_cost[ref_event_glyph]);
-				event_description[ii][i]=sc_glyph_text(event_glyph_add[ii][i]);
+				event_description[ii][i]=sc_glyph_text(event_glyph_add[ii][i],false);
+				event_description_lines[ii][i]=sc_glyph_text(event_glyph_add[ii][i],true);
 			}
 			//
 			if event_kind[ii][i]=ref_event_battle {
 				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nBattle HP: " + string(battle_hp[area_zone]*2) +
-				" (" + string(battle_hp[area_zone]) + "/" + string(battle_hp[area_zone]) + "), Reward: $" + string(money_prize_min) + "-$" + string(money_prize_max);
+				" (" + string(battle_hp[area_zone]) + "/" + string(battle_hp[area_zone]) + ")\nReward: $" + string(money_prize_min) + "-$" + string(money_prize_max);
+				event_description_lines[ii][i]=3;
 			}
 			else if event_kind[ii][i]=ref_event_tutorial {
 				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nBattle HP: " + string(battle_hp[area_zone]*2) +
-				" (" + string(battle_hp[area_zone]) + "/" + string(battle_hp[area_zone]) + "), Reward: $" + string(tutorial_payout);
+				" (" + string(battle_hp[area_zone]) + "/" + string(battle_hp[area_zone]) + ")\nReward: $" + string(tutorial_payout);
+				event_description_lines[ii][i]=3;
 			}
 			else if event_kind[ii][i]=ref_event_gymbattle or event_kind[ii][i]=ref_event_elitebattle {
 				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nBattle HP: " + string(battle_hp[area_zone+1]*2) +
-				" (" + string(battle_hp[area_zone+1]) + "/" + string(battle_hp[area_zone+1]) + "), Reward: $" + string(money_prize_min) + "-$" + string(money_prize_max);
+				" (" + string(battle_hp[area_zone+1]) + "/" + string(battle_hp[area_zone+1]) + ")\nReward: $" + string(money_prize_min) + "-$" + string(money_prize_max);
+				event_description_lines[ii][i]=3;
 			}
 			else if event_kind[ii][i]=ref_event_championbattle {
 				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nBattle HP: " + string(battle_hp[area_zone+1]*2) +
 				" (" + string(battle_hp[area_zone+1]) + "/" + string(battle_hp[area_zone+1]) + ")";
+				event_description_lines[ii][i]=2;
 			}
 			//
 			ii++;
@@ -471,7 +477,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 		mouse_cursor=1;
 		//
 		tooltip_text=event_description[mouse_in_event][roadmap_area];
-		tooltip_lines=2;
+		tooltip_lines=event_description_lines[mouse_in_event][roadmap_area];
 	}
 	//
 	fly_prev_x=road_win_x-2;

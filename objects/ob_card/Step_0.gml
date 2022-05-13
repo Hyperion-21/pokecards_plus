@@ -91,19 +91,22 @@ if reference_id=ob_control and card_cat=0 {
 	if sc_glyph_check(id,ref_glyph_berserk,true) and (card_hp<=(card_full_hp/5) or (card_hp=1 and card_hp!=card_full_hp)) { var base_atk_multiplier=2; } //glyph: berserk
 	else { var base_atk_multiplier=1; }
 	//
+	if sc_glyph_check(id,ref_glyph_fork,true) { var base_atk_divisor=2; } //glyph: fork attack
+	else { var base_atk_divisor=1; }
+	//
 	if card_played=false and card_trash=false {
-		card_atk=card_full_atk*base_atk_multiplier;
+		card_atk=ceil(card_full_atk*base_atk_multiplier/base_atk_divisor);
 	}
 	else if card_played=true and card_trash=false {
 		if card_enemy=true { var i=0; } else { var i=5; }
 		repeat (5) {
 			if ob_control.card_space_id[i].occupy_id=id {
 				if card_environment=false {
-					card_atk=(card_full_atk*base_atk_multiplier)+ob_control.card_space_id[i].card_bonus_atk-ob_control.card_space_id[i].card_penalty_atk;
+					card_atk=ceil(card_full_atk*base_atk_multiplier/base_atk_divisor)+ob_control.card_space_id[i].card_bonus_atk-ob_control.card_space_id[i].card_penalty_atk;
 					card_def=card_full_def+ob_control.card_space_id[i].card_bonus_def-ob_control.card_space_id[i].card_penalty_def;
 				}
 				else {
-					card_atk=(card_full_atk*base_atk_multiplier)-ob_control.card_space_id[i].card_penalty_atk;
+					card_atk=ceil(card_full_atk*base_atk_multiplier/base_atk_divisor)-ob_control.card_space_id[i].card_penalty_atk;
 					card_def=card_full_def-ob_control.card_space_id[i].card_penalty_def;
 				}
 				if card_atk<0 { card_atk=0; }
@@ -339,8 +342,8 @@ if ((reference_id=ob_control and ob_control.card_focus=id) or reference_id=ob_ev
 		if card_glyph_c>=0 and mouse_x>=x+43 and mouse_y>=y+22 and mouse_x<=x+54 and mouse_y<=y+32 { var switch_var=card_glyph_c; }
 		else if card_glyph_b>=0 and mouse_x>=x+43 and mouse_y>=y+12 and mouse_x<=x+54 and mouse_y<=y+22 { var switch_var=card_glyph_b; }
 		else if card_glyph_a>=0 and mouse_x>=x+43 and mouse_y>=y+2 and mouse_x<=x+54 and mouse_y<=y+12 { var switch_var=card_glyph_a; }
-		reference_id.tooltip_text=sc_glyph_text(switch_var);
-		reference_id.tooltip_lines=2;
+		reference_id.tooltip_text=sc_glyph_text(switch_var,false);
+		reference_id.tooltip_lines=sc_glyph_text(switch_var,true);
 	}
 	else if card_cost_total>0 and mouse_x>=x+3 and mouse_y>=y+35 and mouse_x<=x+2+(4*card_cost_total) and mouse_y<=y+38 {
 		reference_id.tooltip_text="Cost: ";
