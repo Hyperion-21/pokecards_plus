@@ -266,7 +266,7 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 			}
 			card_delete_timer=0;
 		}
-		else if mouse_check_button(mb_right) and ob_deckbuild.deck_build_all_total>5 and card_indeck[0]=false and ob_main.cursor_hide=false {
+		else if mouse_check_button(mb_right) and ob_deckbuild.deck_build_all_total>ob_main.maindeck_size_min_full and card_indeck[0]=false and ob_main.cursor_hide=false {
 			if mouse_check_button_pressed(mb_right) { sc_playsound(sn_card,50,false,false); }
 			//
 			card_delete_timer++;

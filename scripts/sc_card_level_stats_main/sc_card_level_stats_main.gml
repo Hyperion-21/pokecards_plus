@@ -19,8 +19,8 @@ else if argument0=2 { //DEF
 	return_value=round((sqrt(card_base_def)*argument1)/28); //def: 35/142/460 -> 0/0/1 to 2/4/8
 }
 //
-if card_secret=false { return_value+=round(return_value*((card_innate-1)/(innate_max-1))/2); } //max x1.5
-else { return_value+=round(return_value*((card_innate-1)/(innate_max-1))); } //secret: max x2
+if card_secret=false { return_value+=round(return_value*((card_innate-1)/(innate_max-1))*0.4); } //max x1.4
+else { return_value+=round(return_value*((card_innate-1)/(innate_max-1))*1); } //secret: max x2
 if return_value<min_value { return_value=min_value; }
 //
 return return_value;

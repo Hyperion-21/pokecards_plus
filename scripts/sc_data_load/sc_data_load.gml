@@ -26,6 +26,7 @@ repeat (roadmap_full_max) {
 }
 //
 maindeck_total=0;
+maindeck_used_total=0;
 berrydeck_total=0;
 serial_count=0;
 //
@@ -104,6 +105,7 @@ if file_exists(data_file) {
 	}
 	//
 	if !is_undefined(ds_map_find_value(savemap,"maindeck_total")) { maindeck_total=ds_map_find_value(savemap,"maindeck_total"); }
+	if !is_undefined(ds_map_find_value(savemap,"maindeck_used_total")) { maindeck_used_total=ds_map_find_value(savemap,"maindeck_used_total"); }
 	if !is_undefined(ds_map_find_value(savemap,"berrydeck_total")) { berrydeck_total=ds_map_find_value(savemap,"berrydeck_total"); }
 	if !is_undefined(ds_map_find_value(savemap,"serial_count")) { serial_count=ds_map_find_value(savemap,"serial_count"); }
 	//

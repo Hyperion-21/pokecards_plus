@@ -70,8 +70,8 @@ else if argument0=21 { //tutorial: new turn
 else if argument0=22 {
 	ob_main.textbox_string[0]="That was a great battle! You clearly have a talent for cards. But, talent is little without practice!";
 	ob_main.textbox_string[1]="To be able to battle in the Crystal League, you first need to build up your team and gain experience. Your goal is to travel through Kyoumu, and challenge each of the gym leaders from the eight major cities in the region.";
-	ob_main.textbox_string[2]="Along the way, you'll be presented with numerous choices to strengthen your cards and battle other trainers.";
-	ob_main.textbox_string[3]="Here's your first set of choices: you can either level up one of your cards, get a card pack with three new cards and a random Berry, or pick up a free card from a random set of three. The choice is yours!";
+	ob_main.textbox_string[2]="Along the way, you'll be presented with numerous choices to expand your deck, strengthen your cards and battle other trainers.";
+	ob_main.textbox_string[3]="Here's your first set of choices: you can either get a card pack with three new cards and a random Berry, or pick up a free card from a random set of three. The choice is yours!";
 	ob_main.textbox_string[4]="After that, your first stop will be to challenge Gym Leader Ian in Iris Town. It will be hard, but don't give up!";
 	ob_main.textbox_string[5]="Safe travels, kid! I believe in you!";
 }

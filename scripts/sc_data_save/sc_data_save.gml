@@ -35,6 +35,7 @@ repeat (roadmap_full_max) {
 }
 //
 ds_map_add(savemap,"maindeck_total",maindeck_total);
+ds_map_add(savemap,"maindeck_used_total",maindeck_used_total);
 ds_map_add(savemap,"berrydeck_total",berrydeck_total);
 ds_map_add(savemap,"serial_count",serial_count);
 //

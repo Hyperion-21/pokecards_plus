@@ -88,10 +88,18 @@ if card_cat=0 {
 				//
 				if reference_id.create_card_innate=-1 {
 					var card_enemy_innate_value=irandom(999);
-					if card_enemy_innate_value<15 { card_innate=innate_max; } //1.5%
-					else if card_enemy_innate_value<50 { card_innate=3; } //3.5%
-					else if card_enemy_innate_value<100 { card_innate=2; } //5%
-					else if card_enemy_innate_value<1000 { card_innate=1; } //90%
+					if ob_main.playing_gym=true or ob_main.playing_elite=true or ob_main.playing_champion=true {
+						if card_enemy_innate_value<(10+ob_main.area_zone*10) { card_innate=innate_max; } //1% - 9%
+						else if card_enemy_innate_value<(40+ob_main.area_zone*20) { card_innate=3; } //3% - 11%
+						else if card_enemy_innate_value<(100+ob_main.area_zone*30) { card_innate=2; } //6% - 14%
+						else { card_innate=1; } //90% - 66%
+					}
+					else {
+						if card_enemy_innate_value<(10+ob_main.area_zone*5) { card_innate=innate_max; } //1% - 5%
+						else if card_enemy_innate_value<(40+ob_main.area_zone*10) { card_innate=3; } //3% - 7%
+						else if card_enemy_innate_value<(100+ob_main.area_zone*15) { card_innate=2; } //6% - 10%
+						else { card_innate=1; } //90% - 78%
+					}
 				}
 				else { card_innate=reference_id.create_card_innate; }
 				//
@@ -161,9 +169,9 @@ if card_cat=0 {
 				//
 				if card_glyph_chance<card_glyph_chance_limit {
 					card_glyph_chance=irandom(99);
-					if card_glyph_chance<10 { card_glyph_total=3; } //10%
-					else if card_glyph_chance<40 { card_glyph_total=2; } //30%
-					else if card_glyph_chance<100 { card_glyph_total=1; } //60%
+					if card_glyph_chance<20 { card_glyph_total=3; } //20%
+					else if card_glyph_chance<50 { card_glyph_total=2; } //30%
+					else if card_glyph_chance<100 { card_glyph_total=1; } //50%
 					//
 					if card_glyph_total>=1 and card_glyph_a=-1 {
 						card_glyph_a=sc_glyph_random();
@@ -185,22 +193,26 @@ if card_cat=0 {
 		var card_rarity=round(sqrt(card_base_hp+card_base_atk+card_base_def)*10-100);
 		//
 		if random_card=true {
-			var card_rarity_chance=0, card_rarity_chance_max=145, card_rarity_soft_min=0, card_rarity_soft_max=-1;
+			var card_rarity_chance=0, card_rarity_soft_min=0, card_rarity_soft_max=-1;
 			//
 			if enemy_randomizer=false {
+				var card_rarity_chance_max=145;
 				card_rarity_chance=irandom(card_rarity_chance_max-1)+1;
 			}
 			else {
 				if card_environment=true {
+					var card_rarity_chance_max=145;
 					card_rarity_chance=irandom(card_rarity_chance_max-1)+1;
 				}
 				else if ob_main.playing_gym=true or ob_main.playing_elite=true or ob_main.playing_champion=true {
-					card_rarity_soft_min=42; //about 200 base stat total (201.64)
+					var card_rarity_chance_max=220; //about +50% to increase chance for stronger pokemon
+					card_rarity_soft_min=42+ob_main.area_zone*3; //42-66, about 200-275 base stat total (201.64-275.56)
 					if ob_main.area_zone=0 { card_rarity_soft_max=81; } //about 330 base stat total (327.61)
 					card_rarity_chance=irandom(card_rarity_chance_max-1)+1;
 				}
 				else {
-					var card_rarity_irandom_max=60+ob_main.latest_zone*45; //60 (above lowest normal-type and dragon-type), 105, 144
+					var card_rarity_chance_max=180; //about +25% to increase chance for stronger pokemon
+					var card_rarity_irandom_max=60+ob_main.latest_zone*45; //60 (above lowest normal-type and dragon-type), 105, 150 (145), 179
 					if card_rarity_irandom_max>card_rarity_chance_max-1 { card_rarity_irandom_max=card_rarity_chance_max-1; }
 					card_rarity_chance=irandom(card_rarity_irandom_max)+1;
 				}
@@ -226,7 +238,7 @@ if card_cat=0 {
 				if card_stage=0 and allow_id_baby=false { card_rarity_check=false; }
 				//
 				if card_rarity_check=true {
-					if card_rarity<card_rarity_soft_min { card_rarity_check=choose(false,true); } //50%
+					if card_rarity<card_rarity_soft_min { card_rarity_check=choose(false,false,false,true); } //25%
 				}
 				//
 				if card_rarity_check=true {

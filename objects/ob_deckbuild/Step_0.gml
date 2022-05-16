@@ -136,6 +136,8 @@ repeat (deck_build_all_total) {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 //SAVE DECKS
 ob_main.maindeck_total=deck_build_all_total;
+ob_main.maindeck_used_total=deck_build_used_total;
+//
 var i=0;
 repeat (deck_build_all_total) {
 	ob_main.main_card_id[i]=deck_card_all[i].card_id;

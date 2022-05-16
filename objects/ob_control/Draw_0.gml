@@ -132,7 +132,10 @@ if card_focus!=-1 and card_focus.card_cat=0 and card_focus_hand!=-1 and card_hol
 			else if bonus_dmg=true and !sc_glyph_check(card_focus,ref_glyph_adaptability,true) { bonus_damage_preview=1; }
 			//
 			var damage_preview_text="";
-			if sc_glyph_check(card_focus,ref_glyph_fork,true) { //glyph: fork attack
+			if sc_glyph_check(card_focus,ref_glyph_transform,true) or sc_glyph_check(card_space_id[i].occupy_id,ref_glyph_transform,true) { //glyph: transform (Ditto only)
+				damage_preview_text="?";
+			}
+			else if sc_glyph_check(card_focus,ref_glyph_fork,true) { //glyph: fork attack
 				if bonus_damage_preview=0 { damage_preview_text="+0"; }
 				else { damage_preview_text="+" + string(bonus_damage_preview); }
 			}
@@ -153,8 +156,13 @@ if card_focus!=-1 and card_focus.card_cat=0 and card_focus_hand!=-1 and card_hol
 			else if vs_bonus_dmg=true and !sc_glyph_check(card_space_id[i].occupy_id,ref_glyph_adaptability,true) { bonus_damage_preview=1; }
 			//
 			var damage_preview_text="";
-			if bonus_damage_preview=0 { damage_preview_text=string(damage_preview); }
-			else { damage_preview_text=string(damage_preview) + "+" + string(bonus_damage_preview); }
+			if sc_glyph_check(card_focus,ref_glyph_transform,true) or sc_glyph_check(card_space_id[i].occupy_id,ref_glyph_transform,true) { //glyph: transform (Ditto only)
+				damage_preview_text="?";
+			}
+			else {
+				if bonus_damage_preview=0 { damage_preview_text=string(damage_preview); }
+				else { damage_preview_text=string(damage_preview) + "+" + string(bonus_damage_preview); }
+			}
 			draw_sprite_general(sp_sheet,0,16*11,16*10,24,16,card_space_id[i].x+30,card_space_id[i].y+75,1,1,0,c_white,c_white,c_white,c_white,0.8);
 			sc_drawtext(card_space_id[i].x+40,card_space_id[i].y+74,damage_preview_text,global.color_damage,global.color_black,1,1,0,-1);
 		}

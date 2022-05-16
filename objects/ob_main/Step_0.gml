@@ -84,9 +84,13 @@ if enemy_maindeck_size>40 {
 	enemy_maindeck_size=40;
 }
 //
+maindeck_size_min=6+area_zone*3; //6 9 12 15 18 21 24 27 (30)
+maindeck_size_min_full=6+latest_zone*3;
+//
 money_payout=money_payout_base+money_payout_area_bonus*area_zone-money_payout_penalty_multiplier*(latest_zone-area_zone);
 money_prize_min=round((money_add_base+money_add_area_bonus*area_zone-money_prize_penalty_multiplier*(latest_zone-area_zone))*0.9);
 money_prize_max=round((money_add_base+money_add_area_bonus*area_zone-money_prize_penalty_multiplier*(latest_zone-area_zone))*1.1);
+money_prize_badge=money_badge_base+money_badge_area_bonus*area_zone;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if textbox_string[textbox_current]!="" {
 	if textbox_show!=textbox_string[textbox_current] {
@@ -219,13 +223,12 @@ if roadmap_generated=false {
 				}
 				//
 				if event_kind[ii][i]=-1 { event_kind[ii][i]=-1; }
-				else if event_kind[ii][i]<400 and i=0 { event_kind[ii][i]=ref_event_battle; free_event=true; } //40% (ensures at least 1 battle in zone)
-				else if event_kind[ii][i]<325 { event_kind[ii][i]=ref_event_battle; free_event=true; } //32.5%
-				else if event_kind[ii][i]<375 { event_kind[ii][i]=ref_event_payout; free_event=true; } //5%
-				else if event_kind[ii][i]<400 { event_kind[ii][i]=ref_event_freecard; free_event=true; } //2.5%
-				else if event_kind[ii][i]<550 { event_kind[ii][i]=ref_event_cardpack; } //15%
-				else if event_kind[ii][i]<700 { event_kind[ii][i]=ref_event_berry; } //15%
-				else if event_kind[ii][i]<850 { event_kind[ii][i]=ref_event_levelup; } //15%
+				else if event_kind[ii][i]<300 { event_kind[ii][i]=ref_event_battle; free_event=true; } //30%
+				else if event_kind[ii][i]<350 { event_kind[ii][i]=ref_event_payout; free_event=true; } //5%
+				else if event_kind[ii][i]<375 { event_kind[ii][i]=ref_event_freecard; free_event=true; } //2.5%
+				else if event_kind[ii][i]<525 { event_kind[ii][i]=ref_event_cardpack; } //15%
+				else if event_kind[ii][i]<650 { event_kind[ii][i]=ref_event_berry; } //12.5%
+				else if event_kind[ii][i]<850 { event_kind[ii][i]=ref_event_levelup; } //20%
 				else if event_kind[ii][i]<900 { event_kind[ii][i]=ref_event_evolution; } //5%
 				else if event_kind[ii][i]<975 { event_kind[ii][i]=ref_event_glyph; } //7.5%
 				else if event_kind[ii][i]<1000 { event_kind[ii][i]=ref_event_tribute; } //2.5%
@@ -260,18 +263,29 @@ if roadmap_generated=false {
 		event_kind[2][1]=-1;
 		location_type[1]=13; //lab
 		//
-		//events referenced in dialogue after tutorial
-		event_kind[0][2]=ref_event_levelup;
-		event_kind[1][2]=ref_event_cardpack;
-		event_kind[2][2]=ref_event_freecard;
+		//events referenced in dialogue after tutorial. needs at least 1 more card for minimum
+		event_kind[0][2]=ref_event_cardpack;
+		event_kind[1][2]=ref_event_freecard;
+		event_kind[2][2]=-1;
 		location_type[2]=13; //lab
 		//
 		event_kind[0][3]=ref_event_glyph;
 		event_glyph_add[0][3]=ref_glyph_harvest;
-		event_kind[1][3]=ref_event_battle;
-		trainer_kind[3]=03; //BUG CATCHER
+		event_kind[1][3]=ref_event_levelup;
 		event_kind[2][3]=ref_event_berry;
 		location_type[3]=00; //forest
+		//
+		event_kind[0][4]=ref_event_battle;
+		trainer_kind[4]=03; //BUG CATCHER
+		event_kind[1][4]=ref_event_payout;
+		event_kind[2][4]=-1;
+		location_type[4]=00; //forest
+	}
+	else if area_zone>0 and zone_first_lap=true and latest_city<area_zone {
+		//either increase their deck by 3 or already has the new minimum
+		event_kind[0][0]=ref_event_battle;
+		event_kind[1][0]=ref_event_cardpack;
+		event_kind[2][0]=-1;
 	}
 	//
 	if area_zone=area_zone_max-1 {
@@ -413,9 +427,10 @@ if roadmap_get_details=true {
 			}
 			//
 			if event_kind[ii][i]=ref_event_battle {
-				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nBattle HP: " + string(battle_hp[area_zone]*2) +
-				" (" + string(battle_hp[area_zone]) + "/" + string(battle_hp[area_zone]) + ")\nReward: $" + string(money_prize_min) + "-$" + string(money_prize_max);
-				event_description_lines[ii][i]=3;
+				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nMinimum deck size: " + string(maindeck_size_min) + " cards" +
+				"\nBattle HP: " + string(battle_hp[area_zone]*2) + " (" + string(battle_hp[area_zone]) + "/" + string(battle_hp[area_zone]) + ")" +
+				"\nReward: $" + string(money_prize_min) + "-$" + string(money_prize_max);
+				event_description_lines[ii][i]=4;
 			}
 			else if event_kind[ii][i]=ref_event_tutorial {
 				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nBattle HP: " + string(battle_hp[area_zone]*2) +
@@ -423,14 +438,18 @@ if roadmap_get_details=true {
 				event_description_lines[ii][i]=3;
 			}
 			else if event_kind[ii][i]=ref_event_gymbattle or event_kind[ii][i]=ref_event_elitebattle {
-				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nBattle HP: " + string(battle_hp[area_zone+1]*2) +
-				" (" + string(battle_hp[area_zone+1]) + "/" + string(battle_hp[area_zone+1]) + ")\nReward: $" + string(money_prize_min) + "-$" + string(money_prize_max);
-				event_description_lines[ii][i]=3;
+				if latest_zone=area_zone { var reward_text="$" + string(money_prize_badge); }
+				else { var reward_text="$" + string(money_prize_min) + "-$" + string(money_prize_max); }
+				//
+				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nMinimum deck size: " + string(maindeck_size_min) + " cards" +
+				"\nBattle HP: " + string(battle_hp[area_zone+1]*2) + " (" + string(battle_hp[area_zone+1]) + "/" + string(battle_hp[area_zone+1]) + ")" +
+				"\nReward: " + reward_text;
+				event_description_lines[ii][i]=4;
 			}
 			else if event_kind[ii][i]=ref_event_championbattle {
-				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nBattle HP: " + string(battle_hp[area_zone+1]*2) +
-				" (" + string(battle_hp[area_zone+1]) + "/" + string(battle_hp[area_zone+1]) + ")";
-				event_description_lines[ii][i]=2;
+				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nMinimum deck size: " + string(maindeck_size_min) + " cards" +
+				"\nBattle HP: " + string(battle_hp[area_zone+1]*2) + " (" + string(battle_hp[area_zone+1]) + "/" + string(battle_hp[area_zone+1]) + ")";
+				event_description_lines[ii][i]=3;
 			}
 			//
 			ii++;
@@ -575,6 +594,7 @@ else if event_transition>-1 and fade_black>=1 {
 		instance_create_layer(x,y,"instances",ob_control);
 		if playing_tutorial=true { money_prize=tutorial_payout; } //also shown in battle description
 		else if playing_champion=true { money_prize=0; } //also shown in battle description
+		else if (playing_gym=true or playing_elite=true) and latest_zone=area_zone { money_prize=money_prize_badge; } //also shown in battle description
 		else { money_prize=irandom_range(money_prize_min,money_prize_max); } //also shown in battle description
 		//
 		if event_transition=ref_event_battle {
@@ -675,6 +695,10 @@ else if event_transition=-1 and event_transition_standby=-1 and fade_black<=0 {
 						if serial_card_indeck[i][0]=false { event_conditions=false; } //checks serials 0-4 (first 5 cards acquired)
 					}
 					if berry_num_used[0][0]<5 { event_conditions=false; }
+				}
+				else if event_kind[mouse_in_event][roadmap_area]=ref_event_battle or event_kind[mouse_in_event][roadmap_area]=ref_event_gymbattle or
+				event_kind[mouse_in_event][roadmap_area]=ref_event_elitebattle or event_kind[mouse_in_event][roadmap_area]=ref_event_championbattle {
+					if maindeck_used_total<maindeck_size_min { event_conditions=false; }
 				}
 				//
 				if event_conditions=true {
