@@ -234,8 +234,6 @@ else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spr
 					}
 					else { i++; }
 				} until (i=ob_event.event_space_total);
-				//
-				if ob_event.event_kind=ref_event_levelup { ob_main.event_cost_standby=ob_main.event_cost[ref_event_levelup]+levelup_cost_multiplier*(card_level-1); }
 			}
 			else {
 				card_played=false;

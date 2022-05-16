@@ -68,12 +68,12 @@ else { //all other buttons
 				}
 			}
 			else if instance_exists(ob_event) {
-				if button_id=0 and ob_event.event_applied=false {
+				if button_id=0 and (ob_event.event_applied=false or ob_event.event_kind=ref_event_levelup) {
 					ob_event.apply_event=true;
 				}
 				else if button_id=1 {
 					ob_main.event_transition=ob_event.event_kind;
-					ob_event.event_cancelled=true;
+					if ob_event.event_applied=false { ob_event.event_cancelled=true; }
 				}
 				else if button_id=2 {
 					with (ob_card) {

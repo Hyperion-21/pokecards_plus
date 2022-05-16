@@ -49,3 +49,8 @@ else if instance_exists(ob_event) and occupy_id=-1 and ob_main.cursor_hide=false
 		}
 	}
 }
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+if instance_exists(ob_event) and ob_event.event_kind=ref_event_levelup {
+	if occupy_id!=-1 { ob_main.event_cost_standby_levelup=ob_main.event_cost[ref_event_levelup]+levelup_cost_multiplier*(occupy_id.card_level-1); }
+	else { ob_main.event_cost_standby_levelup=0; }
+}

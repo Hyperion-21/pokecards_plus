@@ -63,7 +63,8 @@ if apply_event=true {
 	//
 	if event_kind=ref_event_levelup and card_id_in_space[0]!=-1 {
 		//conditions also used for showing cost/stats in ob_card_space
-		if card_id_in_space[0].card_level<ob_main.card_level_player_limit and card_id_in_space[0].card_innate>0 and ob_main.money>=ob_main.event_cost_standby {
+		if card_id_in_space[0].card_level<ob_main.card_level_player_limit and card_id_in_space[0].card_innate>0 and
+		ob_main.money-ob_main.event_cost_standby>=ob_main.event_cost_standby_levelup {
 			card_id_in_space[0].card_level++;
 			sc_card_effect(event_space_id[0].x,event_space_id[0].y,0,false,true);
 			with (card_id_in_space[0]) {
@@ -71,9 +72,9 @@ if apply_event=true {
 			}
 			//
 			event_applied=true;
+			ob_main.event_cost_standby+=ob_main.event_cost_standby_levelup;
 			sc_playsound(sn_upgrade,50,false,false);
 			ob_main.main_card_level[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_level;
-			ob_main.event_transition=event_kind;
 		}
 	}
 	else if event_kind=ref_event_evolution and card_id_in_space[0]!=-1 {
@@ -90,7 +91,6 @@ if apply_event=true {
 			event_applied=true;
 			sc_playsound(sn_upgrade,50,false,false);
 			ob_main.main_card_id[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_id;
-			ob_main.event_transition=event_kind;
 		}
 	}
 	else if event_kind=ref_event_glyph and card_id_in_space[0]!=-1 {
@@ -115,7 +115,6 @@ if apply_event=true {
 			ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_glyph_a;
 			ob_main.main_card_glyph_b[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_glyph_b;
 			ob_main.main_card_glyph_c[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_glyph_c;
-			ob_main.event_transition=event_kind;
 		}
 	}
 	else if event_kind=ref_event_tribute and card_id_in_space[0]!=-1 and card_id_in_space[1]!=-1 {
@@ -148,7 +147,6 @@ if apply_event=true {
 			event_applied=true;
 			ob_main.main_card_innate[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_innate;
 			ob_main.main_card_innate[card_id_in_space[1].num_in_all]=card_id_in_space[1].card_innate;
-			ob_main.event_transition=event_kind;
 		}
 	}
 	//

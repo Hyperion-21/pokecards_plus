@@ -75,6 +75,9 @@ else if argument0=22 {
 	ob_main.textbox_string[4]="After that, your first stop will be to challenge Gym Leader Ian in Iris Town. It will be hard, but don't give up!";
 	ob_main.textbox_string[5]="Safe travels, kid! I believe in you!";
 }
+else if argument0=29 {
+	ob_main.textbox_string[0]="Not enough cards in deck. A minimum of " + string(ob_main.maindeck_size_min) + " cards is required for this battle.";
+}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if argument0=30 { //IAN
 	ob_main.textbox_string[0]="GYM LEADER: Ian.\nGYM LOCATION: Iris Town.\nMAIN TYPE: Normal.";

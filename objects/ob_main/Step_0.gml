@@ -223,12 +223,12 @@ if roadmap_generated=false {
 				}
 				//
 				if event_kind[ii][i]=-1 { event_kind[ii][i]=-1; }
-				else if event_kind[ii][i]<300 { event_kind[ii][i]=ref_event_battle; free_event=true; } //30%
-				else if event_kind[ii][i]<350 { event_kind[ii][i]=ref_event_payout; free_event=true; } //5%
-				else if event_kind[ii][i]<375 { event_kind[ii][i]=ref_event_freecard; free_event=true; } //2.5%
-				else if event_kind[ii][i]<525 { event_kind[ii][i]=ref_event_cardpack; } //15%
-				else if event_kind[ii][i]<650 { event_kind[ii][i]=ref_event_berry; } //12.5%
-				else if event_kind[ii][i]<850 { event_kind[ii][i]=ref_event_levelup; } //20%
+				else if event_kind[ii][i]<325 { event_kind[ii][i]=ref_event_battle; free_event=true; } //32.5%
+				else if event_kind[ii][i]<375 { event_kind[ii][i]=ref_event_payout; free_event=true; } //5%
+				else if event_kind[ii][i]<400 { event_kind[ii][i]=ref_event_freecard; free_event=true; } //2.5%
+				else if event_kind[ii][i]<550 { event_kind[ii][i]=ref_event_cardpack; } //15%
+				else if event_kind[ii][i]<675 { event_kind[ii][i]=ref_event_berry; } //12.5%
+				else if event_kind[ii][i]<850 { event_kind[ii][i]=ref_event_levelup; } //17.5%
 				else if event_kind[ii][i]<900 { event_kind[ii][i]=ref_event_evolution; } //5%
 				else if event_kind[ii][i]<975 { event_kind[ii][i]=ref_event_glyph; } //7.5%
 				else if event_kind[ii][i]<1000 { event_kind[ii][i]=ref_event_tribute; } //2.5%
@@ -702,8 +702,9 @@ else if event_transition=-1 and event_transition_standby=-1 and fade_black<=0 {
 				}
 				//
 				if event_conditions=true {
-					event_cost_standby=event_cost[event_kind[mouse_in_event][roadmap_area]];
 					event_transition_standby=event_kind[mouse_in_event][roadmap_area];
+					if event_transition_standby=ref_event_levelup { event_cost_standby=0; }
+					else { event_cost_standby=event_cost[event_transition_standby]; }
 					//
 					sc_playsound(sn_event,50,false,false);
 					if event_transition_standby=ref_event_battle { music_player=sc_playsound(ms_battle_intro,100,false,true); }
@@ -723,6 +724,9 @@ else if event_transition=-1 and event_transition_standby=-1 and fade_black<=0 {
 				else {
 					sc_playsound(sn_hurt,50,false,false);
 					if event_kind[mouse_in_event][roadmap_area]=ref_event_tutorial { sc_textbox(2); }
+					else if event_kind[mouse_in_event][roadmap_area]=ref_event_battle or event_kind[mouse_in_event][roadmap_area]=ref_event_gymbattle or
+					event_kind[mouse_in_event][roadmap_area]=ref_event_elitebattle or event_kind[mouse_in_event][roadmap_area]=ref_event_championbattle {
+						sc_textbox(29); }
 				}
 			}
 			else if money<event_cost[event_kind[mouse_in_event][roadmap_area]] {

@@ -6,8 +6,12 @@ if instance_exists(ob_control) {
 	else if button_id=3 { draw_sprite_general(sp_sheet,0,16*2,16*(8+(ceil(button_state)*2)),16,16,x,y,1,1,0,c_white,c_white,c_white,c_white,1); }
 }
 else if instance_exists(ob_event) {
-	if button_id=0 { draw_sprite_general(sp_sheet,0,16*3,16*(7+(ceil(button_state)*2)),31,24,x,y,1,1,0,c_white,c_white,c_white,c_white,1); }
-	else if button_id=1 { draw_sprite_general(sp_sheet,0,16*5,16*(7+(ceil(button_state)*2)),31,24,x,y,1,1,0,c_white,c_white,c_white,c_white,1); }
+	if button_id=0 and (ob_event.event_applied=false or ob_event.event_kind=ref_event_levelup) {
+		draw_sprite_general(sp_sheet,0,16*1,16*(16+(ceil(button_state)*2)),31,24,x,y,1,1,0,c_white,c_white,c_white,c_white,1); }
+	else if button_id=0 and ob_event.event_applied=true and ob_event.event_kind!=ref_event_levelup {
+		draw_sprite_general(sp_sheet,0,16*3,16*(16+(ceil(button_state)*2)),31,24,x,y,1,1,0,c_white,c_white,c_white,c_white,1); }
+	else if button_id=1 and ob_event.event_applied=true { draw_sprite_general(sp_sheet,0,16*3,16*(7+(ceil(button_state)*2)),31,24,x,y,1,1,0,c_white,c_white,c_white,c_white,1); }
+	else if button_id=1 and ob_event.event_applied=false { draw_sprite_general(sp_sheet,0,16*5,16*(7+(ceil(button_state)*2)),31,24,x,y,1,1,0,c_white,c_white,c_white,c_white,1); }
 	else if button_id=2 { draw_sprite_general(sp_sheet,0,16*1,16*(8+(ceil(button_state)*2)),16,16,x,y,1,1,0,c_white,c_white,c_white,c_white,1); }
 }
 else if instance_exists(ob_deckbuild) {

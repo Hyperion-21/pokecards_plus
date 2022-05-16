@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.109"
+#macro game_version "v0.0.0.110"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -127,6 +127,7 @@ money_prize_max=0;
 money_payout=0;
 effect_money_error=0;
 event_cost_standby=0;
+event_cost_standby_levelup=0;
 #macro ref_event_battle 0
 #macro ref_event_payout 1
 #macro ref_event_freecard 2
