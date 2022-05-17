@@ -122,10 +122,11 @@ else if argument0=44 { //DUNCAN
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if argument0=50 {
-	ob_main.textbox_string[0]="And thus, after a long series of arduous battles, our hero overcame their challenges and rose to be the next Crystal League Champion.";
+	ob_main.textbox_string[0]="And thus, after a long series of arduous battles, our hero overcame their challenges and rose to be the next Crystal League Champion...";
 	ob_main.textbox_string[1]="But was this the end of their journey, or simply the beginning of a greater adventure? What awaited them on the road ahead?";
 	ob_main.textbox_string[2]="Perhaps the future would reveal it in due time. But for now, it was time for a well-deserved rest...";
-	ob_main.textbox_string[3]="Thanks everybody for watching, and don't forget to tune in next time!";
+	ob_main.textbox_string[3]="Thanks everybody for watching our show, and don't forget to tune in next time for more exciting adventures!";
+	ob_main.textbox_string[4]="- T H E   E N D -";
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }

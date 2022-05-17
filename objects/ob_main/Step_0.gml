@@ -20,13 +20,14 @@ else if credits_screen=true and (mouse_check_button_pressed(mb_left) or mouse_ch
 	credits_screen=false;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if ending_static_timer>0 { ending_static_timer-=0.004; }
+if ending_static_timer>0 { ending_static_timer-=0.003; }
 else if ending_screen=true and ending_static_timer<=0 and ending_static_timer!=-1 {
 	game_restart();
 	//ending_screen=false;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if effect_money_error>0 { effect_money_error-=0.1; }
+if fade_black<0 { fade_black=0; }
 //
 if music_beat_margin>0 { music_beat_margin--; }
 if !instance_exists(ob_splash) and sc_music_sync()=true {
@@ -227,8 +228,8 @@ if roadmap_generated=false {
 				else if event_kind[ii][i]<375 { event_kind[ii][i]=ref_event_payout; free_event=true; } //5%
 				else if event_kind[ii][i]<400 { event_kind[ii][i]=ref_event_freecard; free_event=true; } //2.5%
 				else if event_kind[ii][i]<550 { event_kind[ii][i]=ref_event_cardpack; } //15%
-				else if event_kind[ii][i]<675 { event_kind[ii][i]=ref_event_berry; } //12.5%
-				else if event_kind[ii][i]<850 { event_kind[ii][i]=ref_event_levelup; } //17.5%
+				else if event_kind[ii][i]<650 { event_kind[ii][i]=ref_event_berry; } //10%
+				else if event_kind[ii][i]<850 { event_kind[ii][i]=ref_event_levelup; } //20%
 				else if event_kind[ii][i]<900 { event_kind[ii][i]=ref_event_evolution; } //5%
 				else if event_kind[ii][i]<975 { event_kind[ii][i]=ref_event_glyph; } //7.5%
 				else if event_kind[ii][i]<1000 { event_kind[ii][i]=ref_event_tribute; } //2.5%
@@ -525,8 +526,8 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if event_transition>-1 and fade_black<1 {
-	if event_transition=ref_event_victory or event_transition=ref_event_defeat or event_transition=ref_event_exitbattle {
-		fade_black+=0.0025;
+	if event_transition=ref_event_victory or event_transition=ref_event_defeat {
+		fade_black+=0.0027; //6.17s (slightly longer than ms_victory and ms_defeat)
 	}
 	else if event_transition=ref_event_battle or event_transition=ref_event_gymbattle or event_transition=ref_event_elitebattle or event_transition=ref_event_championbattle or
 	event_transition=ref_event_tutorial or event_transition=ref_event_loop or event_transition=ref_fly_prev or event_transition=ref_fly_next or event_transition=ref_mainmenu {

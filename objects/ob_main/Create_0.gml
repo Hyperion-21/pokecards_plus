@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.111"
+#macro game_version "v0.0.0.112"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -157,10 +157,10 @@ for (var i=0; i<=999; i++;) {
 }
 event_cost[ref_event_cardpack]=300;
 event_cost[ref_event_berry]=100;
-event_cost[ref_event_levelup]=100;
-#macro levelup_cost_multiplier 25 //100 125 150 175 200 225 250 275 300
+event_cost[ref_event_levelup]=80;
+#macro levelup_cost_multiplier 40 //80 120 160 200 240 280 320 360 400
 event_cost[ref_event_evolution]=500;
-event_cost[ref_event_glyph]=500;
+event_cost[ref_event_glyph]=400;
 //
 #macro innate_max 4 //failure chance uses manual values in ob_event, enemy innate uses manual values in ob_card, sc_enemy_deck uses manual values
 current_glyph_add=-1;

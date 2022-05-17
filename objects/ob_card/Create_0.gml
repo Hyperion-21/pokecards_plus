@@ -274,8 +274,8 @@ else if card_cat=1 {
 	//
 	if random_card=true {
 		var card_berry_chance=irandom(99);
-		if card_berry_chance<99 { card_id=choose(3000,3001,3002); }
-		else { card_id=3003; } //1%
+		if card_berry_chance<98 { card_id=choose(3000,3001,3002); }
+		else { card_id=3003; } //2%
 	}
 	//
 	switch (card_id) {
