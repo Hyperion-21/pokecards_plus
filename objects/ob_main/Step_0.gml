@@ -90,9 +90,9 @@ maindeck_size_min_full=6+latest_zone*3;
 //
 money_payout=money_payout_base+money_payout_area_bonus*area_zone-money_payout_penalty_multiplier*(latest_zone-area_zone);
 if money_payout<10 { money_payout=10; }
-money_prize_min=round((money_add_base+money_add_area_bonus*area_zone-money_prize_penalty_multiplier*(latest_zone-area_zone))*0.9);
-money_prize_max=round((money_add_base+money_add_area_bonus*area_zone-money_prize_penalty_multiplier*(latest_zone-area_zone))*1.1);
 money_prize_badge=money_badge_base+money_badge_area_bonus*area_zone;
+money_prize_min=round(0.9*(round(power(money_prize_power_base+money_prize_power_area_bonus*area_zone,money_prize_power_n))-money_prize_penalty_multiplier*(latest_zone-area_zone)));
+money_prize_max=round(1.1*(round(power(money_prize_power_base+money_prize_power_area_bonus*area_zone,money_prize_power_n))-money_prize_penalty_multiplier*(latest_zone-area_zone)));
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if textbox_string[textbox_current]!="" {
 	if textbox_show!=textbox_string[textbox_current] {
@@ -751,7 +751,7 @@ else if event_transition=-1 and event_transition_standby=-1 and fade_black<=0 {
 //CHEATS
 if keyboard_check_pressed(vk_multiply) { game_restart(); }
 if keyboard_check_pressed(vk_add) { roadmap_area++; }
-if keyboard_check_pressed(vk_numpad0) { money+=10000; }
+if keyboard_check_pressed(vk_numpad0) { money+=1000; }
 //
 if instance_exists(ob_control) and keyboard_check_pressed(vk_numpad8) {
 	ob_control.player_hp=(ob_control.hp_max*2)-1;
