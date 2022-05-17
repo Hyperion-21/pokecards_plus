@@ -98,6 +98,12 @@ if reorder_type>-1 {
 	//
 	reorder_type=-1;
 }
+//
+if reorder_swap_standby!=0 {
+	reorder_selected=reorder_swap_standby;
+	reorder_type=reorder_selected;
+	reorder_swap_standby=0;
+}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 //LOAD DECKS
 if deck_setup_load>-1 {

@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.110"
+#macro game_version "v0.0.0.111"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -107,7 +107,7 @@ textbox_char_pos=0;
 #macro money_badge_base 360 //360 440 520 600 680 760 840 920 1000 (minimum should be enough for a card pack)
 #macro money_badge_area_bonus 80
 #macro sell_value_multiplier 4
-#macro tutorial_payout 800
+#macro tutorial_payout 500
 //
 battle_hp[0]=5; //10
 battle_hp[1]=15; //30
@@ -158,7 +158,7 @@ for (var i=0; i<=999; i++;) {
 event_cost[ref_event_cardpack]=300;
 event_cost[ref_event_berry]=100;
 event_cost[ref_event_levelup]=100;
-#macro levelup_cost_multiplier 50 //100 150 200 250 300 350 400 450 500
+#macro levelup_cost_multiplier 25 //100 125 150 175 200 225 250 275 300
 event_cost[ref_event_evolution]=500;
 event_cost[ref_event_glyph]=500;
 //

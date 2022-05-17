@@ -545,6 +545,7 @@ else if event_transition>-1 and fade_black>=1 {
 	if instance_exists(ob_event) {
 		if ob_event.event_cancelled=false { money-=event_cost_standby; }
 		event_cost_standby=0;
+		event_cost_standby_levelup=0;
 	}
 	//
 	if event_transition=ref_mainmenu {

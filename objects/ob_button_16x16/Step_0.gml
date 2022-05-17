@@ -84,15 +84,18 @@ else { //all other buttons
 			else if instance_exists(ob_deckbuild) {
 				if button_id<=4 {
 					ob_deckbuild.reorder_selected=button_id;
+					ob_deckbuild.reorder_swap_standby=ob_deckbuild.reorder_selected;
 					ob_deckbuild.reorder_type=ob_deckbuild.reorder_selected;
 				}
 				else if button_id<=9 {
 					ob_deckbuild.deck_setup_load=button_id-4;
+					ob_deckbuild.reorder_swap_standby=ob_deckbuild.reorder_selected;
 					ob_deckbuild.reorder_selected=0; //pokemon id
 					ob_deckbuild.reorder_type=ob_deckbuild.reorder_selected;
 				}
 				else if button_id<=14 {
 					ob_deckbuild.deck_setup_save=button_id-9;
+					ob_deckbuild.reorder_swap_standby=ob_deckbuild.reorder_selected;
 					ob_deckbuild.reorder_selected=0; //pokemon id
 					ob_deckbuild.reorder_type=ob_deckbuild.reorder_selected;
 				}

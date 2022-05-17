@@ -254,11 +254,13 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 			//
 			if card_indeck[0]=false and ob_deckbuild.deck_build_used_total<ob_main.maindeck_size_max {
 				card_indeck[0]=true;
+				ob_deckbuild.reorder_swap_standby=ob_deckbuild.reorder_selected;
 				ob_deckbuild.reorder_selected=0; //pokemon id
 				ob_deckbuild.reorder_type=ob_deckbuild.reorder_selected;
 			}
 			else if card_indeck[0]=true {
 				card_indeck[0]=false;
+				ob_deckbuild.reorder_swap_standby=ob_deckbuild.reorder_selected;
 				ob_deckbuild.reorder_selected=0; //pokemon id
 				ob_deckbuild.reorder_type=ob_deckbuild.reorder_selected;
 			}
@@ -272,6 +274,7 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 				sc_playsound(sn_faint,50,false,false);
 				ob_main.money+=card_value*sell_value_multiplier;
 				//
+				ob_deckbuild.reorder_swap_standby=ob_deckbuild.reorder_selected;
 				ob_deckbuild.reorder_type=5;
 				instance_destroy();
 			}

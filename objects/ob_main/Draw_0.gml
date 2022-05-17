@@ -11,6 +11,12 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	sc_drawrectangle(road_win_x-2,road_win_y-2,road_win_x+240,road_win_y+112,c_white,global.color_white,2,0,1,0);
 	draw_sprite_general(sp_area,0,240*area_sp_x,112*area_sp_y,240,112,road_win_x,road_win_y,1,1,0,c_white,c_white,c_white,c_white,1);
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
+	if area_zone=area_zone_max-1 and roadmap_area>roadmap_current_max-roadmap_league_max {
+		draw_set_font(fn_m3x6);
+		draw_set_halign(fa_right);
+		sc_drawtext(screen_main_x+cam_w-3,screen_main_y+cam_h-14,"(saving disabled)",global.color_card_light,global.color_black,0.25,0.25,0,-1);
+	}
+	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	draw_set_font(fn_matchup);
 	draw_set_halign(fa_center);
 	//

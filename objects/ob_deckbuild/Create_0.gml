@@ -74,3 +74,4 @@ tooltip_text="";
 tooltip_lines=0;
 reorder_type=0; //0 pokemon id, 1 level, 2 attack, 3 defense, 4 hp, 5 delete card
 reorder_selected=0;
+reorder_swap_standby=0;
