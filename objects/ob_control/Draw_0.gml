@@ -28,18 +28,18 @@ var trainer_color=ob_main.trainer_hair_color[ob_main.roadmap_area];
 var player_icon=ob_main.option_state[opt_playericon];
 //
 if trainer_sprite<=playericon_max {
-	draw_sprite_general(sp_sheet,0,16*((trainer_sprite mod 2)+1),16*(11+trainer_skin),16,16,scoreboard_x+42,scoreboard_y-17,1,1,0,c_white,c_white,c_white,c_white,1);
-	draw_sprite_general(sp_sheet,0,16*(trainer_sprite+3),16*11,16,16,scoreboard_x+42,scoreboard_y-17,1,1,0,trainer_color,trainer_color,trainer_color,trainer_color,1);
-	draw_sprite_general(sp_sheet,0,16*(trainer_sprite+3),16*12,16,16,scoreboard_x+42,scoreboard_y-17,1,1,0,c_white,c_white,c_white,c_white,1);
+	draw_sprite_general(sp_sheet,0,16*((trainer_sprite mod 2)+1),16*(11+trainer_skin),16,16,scoreboard_x+44,scoreboard_y-17,1,1,0,c_white,c_white,c_white,c_white,1);
+	draw_sprite_general(sp_sheet,0,16*(trainer_sprite+3),16*11,16,16,scoreboard_x+44,scoreboard_y-17,1,1,0,trainer_color,trainer_color,trainer_color,trainer_color,1);
+	draw_sprite_general(sp_sheet,0,16*(trainer_sprite+3),16*12,16,16,scoreboard_x+44,scoreboard_y-17,1,1,0,c_white,c_white,c_white,c_white,1);
 }
 else {
-	draw_sprite_general(sp_sheet,0,16*(trainer_sprite+3),16*11,16,16,scoreboard_x+42,scoreboard_y-17,1,1,0,c_white,c_white,c_white,c_white,1);
+	draw_sprite_general(sp_sheet,0,16*(trainer_sprite+3),16*11,16,16,scoreboard_x+44,scoreboard_y-17,1,1,0,c_white,c_white,c_white,c_white,1);
 }
 //
-draw_sprite_general(sp_sheet,0,16*((player_icon mod 2)+1),16*11,16,16,scoreboard_x+10,scoreboard_y-17,1,1,0,c_white,c_white,c_white,c_white,1);
-draw_sprite_general(sp_sheet,0,16*(player_icon+3),16*11,16,16,scoreboard_x+10,scoreboard_y-17,1,1,0,
+draw_sprite_general(sp_sheet,0,16*((player_icon mod 2)+1),16*11,16,16,scoreboard_x+8,scoreboard_y-17,1,1,0,c_white,c_white,c_white,c_white,1);
+draw_sprite_general(sp_sheet,0,16*(player_icon+3),16*11,16,16,scoreboard_x+8,scoreboard_y-17,1,1,0,
 global.color_character,global.color_character,global.color_character,global.color_character,1);
-draw_sprite_general(sp_sheet,0,16*(player_icon+3),16*12,16,16,scoreboard_x+10,scoreboard_y-17,1,1,0,c_white,c_white,c_white,c_white,1);
+draw_sprite_general(sp_sheet,0,16*(player_icon+3),16*12,16,16,scoreboard_x+8,scoreboard_y-17,1,1,0,c_white,c_white,c_white,c_white,1);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 draw_set_font(fn_m3x6);
 //

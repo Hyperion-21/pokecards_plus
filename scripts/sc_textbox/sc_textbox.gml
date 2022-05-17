@@ -80,29 +80,29 @@ else if argument0=29 {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if argument0=30 { //IAN
-	ob_main.textbox_string[0]="GYM LEADER: Ian.\nGYM LOCATION: Iris Town.\nMAIN TYPE: Normal.";
+	ob_main.textbox_string[0]="GYM LEADER: Ian.\nGYM LOCATION: Iris Town.\nDECK TYPE: Normal (Flying).";
 	//ob_main.textbox_string[1]="People think normal-type and flying-type Pokemon are weak, but I'm delighted to prove them wrong. Get ready!";
 }
 else if argument0=31 { //CAMMIE
-	ob_main.textbox_string[0]="GYM LEADER: Cammie.\nGYM LOCATION: Camellia City.\nMAIN TYPE: Grass.";
+	ob_main.textbox_string[0]="GYM LEADER: Cammie.\nGYM LOCATION: Camellia City.\nDECK TYPE: Grass (Ground, Rock).";
 }
 else if argument0=32 { //WALKER
-	ob_main.textbox_string[0]="GYM LEADER: Walker.\nGYM LOCATION: Bluestar City.\nMAIN TYPE: Water.";
+	ob_main.textbox_string[0]="GYM LEADER: Walker.\nGYM LOCATION: Bluestar City.\nDECK TYPE: Water (Ice).";
 }
 else if argument0=33 { //MADISON
-	ob_main.textbox_string[0]="GYM LEADER: Madison.\nGYM LOCATION: Marigold City.\nMAIN TYPE: Fire.";
+	ob_main.textbox_string[0]="GYM LEADER: Madison.\nGYM LOCATION: Marigold City.\nDECK TYPE: Fire (Steel).";
 }
 else if argument0=34 { //ZOE
-	ob_main.textbox_string[0]="GYM LEADER: Zoe.\nGYM LOCATION: Zinnia Town.\nMAIN TYPE: Electric.";
+	ob_main.textbox_string[0]="GYM LEADER: Zoe.\nGYM LOCATION: Zinnia Town.\nDECK TYPE: Electric.";
 }
 else if argument0=35 { //VINCENT
-	ob_main.textbox_string[0]="GYM LEADER: Vincent.\nGYM LOCATION: Verbena City.\nMAIN TYPE: Fighting.";
+	ob_main.textbox_string[0]="GYM LEADER: Vincent.\nGYM LOCATION: Verbena City.\nDECK TYPE: Fighting (Dark).";
 }
 else if argument0=36 { //PENNY
-	ob_main.textbox_string[0]="GYM LEADER: Penny.\nGYM LOCATION: Candytuft City.\nMAIN TYPE: Psychic.";
+	ob_main.textbox_string[0]="GYM LEADER: Penny.\nGYM LOCATION: Candytuft City.\nDECK TYPE: Psychic (Fairy, Ghost).";
 }
 else if argument0=37 { //LAKE
-	ob_main.textbox_string[0]="GYM LEADER: Lake.\nGYM LOCATION: Lupine City.\nMAIN TYPES: Grass, Fire & Water.";
+	ob_main.textbox_string[0]="GYM LEADER: Lake.\nGYM LOCATION: Lupine City.\nDECK TYPE: Grass, Fire, Water.";
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if argument0=40 { //EMILY

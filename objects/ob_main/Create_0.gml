@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v0.0.0.112"
+#macro game_version "v0.0.0.113"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -45,9 +45,9 @@ ending_screen=false;
 ending_static_timer=-1;
 //
 #macro area_zone_max 9
-#macro roadmap_full_max 35 //save/load, needs to be bigger than the rest (and their sum, just in case)
+#macro roadmap_full_max 30 //save/load, needs to be bigger than the rest (and their sum, just in case)
 roadmap_current_max=0;
-roadmap_road_max=16;
+roadmap_road_max=12;
 roadmap_outskirts_max=8;
 roadmap_league_max=5;
 roadmap_lab_max=3;
@@ -101,11 +101,11 @@ textbox_char_pos=0;
 #macro money_add_base 110 //110 190 270 350 430 510 590 670 750 (penalty: 30-750)
 #macro money_add_area_bonus 80
 #macro money_prize_penalty_multiplier 10
-#macro money_payout_base 60 //60 90 120 150 180 210 240 270 300 (penalty: 20-300)
-#macro money_payout_area_bonus 30
-#macro money_payout_penalty_multiplier 5
-#macro money_badge_base 360 //360 440 520 600 680 760 840 920 1000 (minimum should be enough for a card pack)
-#macro money_badge_area_bonus 80
+#macro money_payout_base 80 //80 120 160 200 240 280 320 360 400 (penalty: 10!-400)
+#macro money_payout_area_bonus 40
+#macro money_payout_penalty_multiplier 10
+#macro money_badge_base 300 //300 375 450 525 600 675 750 825 900 (minimum should be enough for a card pack)
+#macro money_badge_area_bonus 75
 #macro sell_value_multiplier 4
 #macro tutorial_payout 500
 //
@@ -157,8 +157,8 @@ for (var i=0; i<=999; i++;) {
 }
 event_cost[ref_event_cardpack]=300;
 event_cost[ref_event_berry]=100;
-event_cost[ref_event_levelup]=80;
-#macro levelup_cost_multiplier 40 //80 120 160 200 240 280 320 360 400
+event_cost[ref_event_levelup]=100;
+#macro levelup_cost_multiplier 50 //100 150 200 250 300 350 400 450 500
 event_cost[ref_event_evolution]=500;
 event_cost[ref_event_glyph]=400;
 //

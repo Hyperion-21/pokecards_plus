@@ -89,6 +89,7 @@ maindeck_size_min=6+area_zone*3; //6 9 12 15 18 21 24 27 (30)
 maindeck_size_min_full=6+latest_zone*3;
 //
 money_payout=money_payout_base+money_payout_area_bonus*area_zone-money_payout_penalty_multiplier*(latest_zone-area_zone);
+if money_payout<10 { money_payout=10; }
 money_prize_min=round((money_add_base+money_add_area_bonus*area_zone-money_prize_penalty_multiplier*(latest_zone-area_zone))*0.9);
 money_prize_max=round((money_add_base+money_add_area_bonus*area_zone-money_prize_penalty_multiplier*(latest_zone-area_zone))*1.1);
 money_prize_badge=money_badge_base+money_badge_area_bonus*area_zone;
@@ -224,8 +225,8 @@ if roadmap_generated=false {
 				}
 				//
 				if event_kind[ii][i]=-1 { event_kind[ii][i]=-1; }
-				else if event_kind[ii][i]<325 { event_kind[ii][i]=ref_event_battle; free_event=true; } //32.5%
-				else if event_kind[ii][i]<375 { event_kind[ii][i]=ref_event_payout; free_event=true; } //5%
+				else if event_kind[ii][i]<350 { event_kind[ii][i]=ref_event_battle; free_event=true; } //35%
+				else if event_kind[ii][i]<375 { event_kind[ii][i]=ref_event_payout; free_event=true; } //2.5%
 				else if event_kind[ii][i]<400 { event_kind[ii][i]=ref_event_freecard; free_event=true; } //2.5%
 				else if event_kind[ii][i]<550 { event_kind[ii][i]=ref_event_cardpack; } //15%
 				else if event_kind[ii][i]<650 { event_kind[ii][i]=ref_event_berry; } //10%
