@@ -44,8 +44,16 @@ else if instance_exists(ob_event) and occupy_id=-1 and ob_main.cursor_hide=false
 			ob_event.tooltip_lines=sc_glyph_text(ob_event.glyph_add_id,true);
 		}
 		else if ob_event.event_kind=ref_event_tribute {
-			ob_event.tooltip_text="// TRIBUTE //\nTransfers the innate strength of one Pokemon into another.\nTributes always stack, but multiple attempts may result in failure...";
-			ob_event.tooltip_lines=3;
+			if id=ob_event.event_space_id[0] {
+				ob_event.tooltip_text="// TRIBUTE //\nTransfers the intrinsic strength of one Pokemon into another." +
+				"\nThe card placed here will be weakened, and unable to receive\nany further improvements.";
+				ob_event.tooltip_lines=4;
+			}
+			else if id=ob_event.event_space_id[1] {
+				ob_event.tooltip_text="// TRIBUTE //\nTransfers the intrinsic strength of one Pokemon into another." +
+				"\nThe card placed here will receive a boost to its innate parameters.\nTributes will stack, but multiple attempts may result in failure...";
+				ob_event.tooltip_lines=4;
+			}
 		}
 	}
 }

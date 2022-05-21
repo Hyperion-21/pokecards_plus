@@ -1,0 +1,13 @@
+[v1.0.1.0]
+
+- Slightly lowered difficulty of random battles right after defeating a Gym Leader.
+- The up/down arrow keys can now also be used to set a specific number of berries in your deck.
+- Made in-game description for Tributes a bit more clear.
+- Some other minor improvements.
+
+[v1.0.0.0]
+
+Pocket Crystal League has been officially released!
+
+Let me know if you run into any issues. I also recommend checking out the gameplay tips in the main page before downloading.
+I hope you have fun, and thank you all for your interest!

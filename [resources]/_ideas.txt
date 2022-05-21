@@ -1,0 +1,1 @@
+- make enigma berries also act as wildcard berries?

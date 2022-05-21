@@ -116,7 +116,7 @@ if card_cat=0 {
 					//
 					if card_level=ob_main.card_level_enemy_limit and ob_main.zone_first_lap=true and
 					ob_main.playing_gym=false and ob_main.playing_elite=false and ob_main.playing_champion=false {
-						accepted_level=choose(true,true,false,false,false); //60% chance to re-roll
+						accepted_level=choose(true,false,false); //2/3 chance to re-roll
 					}
 				} until (accepted_level=true);
 			}

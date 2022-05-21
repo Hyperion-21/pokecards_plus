@@ -1,0 +1,26 @@
+PCL is a Poke-card game, although completely different to the Official Trading Card Game. The gameplay mechanics were partially inspired by Inscryption, being pretty straightforward and easy to learn.
+
+After choosing a starter deck, your goal is to travel through Kyoumu, challenging each of the Gym Leaders from the eight major cities in the region, building up your team to reach the ultimate goal, the Crystal League. Along the way, you'll be presented with numerous choices to expand your deck, strengthen your cards, give them unique special abilities, and battle other trainers.
+
+The current release includes all of gens 1 and 2 (but with corresponding Fairy types). The game may be expanded with more content and generations in the future, but there are no plans currently for it. It is fully playable in its current state.
+Balancing can be a bit tricky at times, but I'm satisfied with the current level of difficulty, overall. The game is not supposed to be too easy, but challenging to a degree. Nevertheless, balance updates may happen if/when needed.
+
+This project was done ultimately just for fun, and I'm not getting any kind of revenue or payment from it— please Nintendo, let it be!
+
+I hope you enjoy it, and let me know if you have any issues!
+
+——————————
+
+Gameplay Tips:
+
+- The outskirts of each city, accesible throught the "Not Ready" button before facing a Gym Leader, feature slightly stronger opponents than the road previously leading to it.
+
+- Don't try to rush through each area unless you're attempting a challenge run. Training on the outskirts a few times before challenging a Gym Leader is recommended to build a balanced and versatile deck.
+
+- You don't need to equip all your Berries at all times. Think about how many you need (approximately), and how often you want to be able to draw each type relative to the entire deck. You can set a specific number of berries with the scroll wheel.
+
+- If the current area feels overwhelming in difficulty, you can visit any previous area by using the flight service available in all cities.
+
+- You can level up multiple cards as many times as you want during a single "Level Up" event, as long as you have enough money and have raised the level cap for your cards.
+
+- Don't add Glyphs to all your cards! A card with any amount of Glyphs costs more Berries than a card with none, so try to keep a balanced deck between single-cost cards and cards with Glyphs.

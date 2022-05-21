@@ -292,13 +292,13 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 			sc_playsound(sn_click,50,false,false);
 			ob_deckbuild.deck_berry_used[card_id-3000]=0;
 		}
-		else if mouse_wheel_up() and ob_main.cursor_hide=false {
+		else if (mouse_wheel_up() or keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W"))) and ob_main.cursor_hide=false {
 			if ob_deckbuild.deck_berry_used[card_id-3000]<ob_deckbuild.deck_berry_total[card_id-3000] {
 				sc_playsound(sn_click,50,false,false);
 				ob_deckbuild.deck_berry_used[card_id-3000]++;
 			}
 		}
-		else if mouse_wheel_down() and ob_main.cursor_hide=false {
+		else if (mouse_wheel_down() or keyboard_check_pressed(vk_down) or keyboard_check_pressed(ord("S"))) and ob_main.cursor_hide=false {
 			if ob_deckbuild.deck_berry_used[card_id-3000]>0 {
 				sc_playsound(sn_click,50,false,false);
 				ob_deckbuild.deck_berry_used[card_id-3000]--;
