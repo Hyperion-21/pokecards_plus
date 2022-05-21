@@ -1,3 +1,7 @@
+[v1.0.1.1]
+
+- Adding Glyphs to cards now lets you know what Berry cost will be added to the card as well.
+
 [v1.0.1.0]
 
 - Slightly lowered difficulty of random battles right after defeating a Gym Leader.

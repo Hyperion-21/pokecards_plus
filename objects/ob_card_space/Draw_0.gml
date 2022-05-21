@@ -35,6 +35,38 @@ else if trash=false {
 		//
 		if ob_event.event_kind=ref_event_glyph {
 			draw_sprite_general(sp_sheet,0,16*(ob_event.glyph_add_id+1),16*6,12,11,x+41,y+4,1,1,0,c_white,c_white,c_white,c_white,var_event_alpha);
+			//
+			draw_set_font(fn_matchup);
+			draw_set_halign(fa_center);
+			if occupy_id!=-1 and occupy_id.card_innate>0 and occupy_id.card_environment=false and
+			((occupy_id.card_glyph_a=-1) or (occupy_id.card_glyph_a>=glyph_common_amount and occupy_id.card_glyph_b=-1) or
+			(occupy_id.card_glyph_a>=glyph_common_amount and occupy_id.card_glyph_b>=glyph_common_amount and occupy_id.card_glyph_c=-1)) {
+				//berry costs from sc_card_level_stats_all
+				var imaginary_card_cost;
+				for (var i=0; i<=2; i++;) {
+					imaginary_card_cost[i]=sc_card_cost_map(occupy_id.card_cost_total+1,occupy_id.card_enigma,occupy_id.card_type_a,occupy_id.card_type_b,i);
+				}
+				//normal, grass, fire, water, electric, flying
+				if imaginary_card_cost[occupy_id.card_cost_total]=00 or imaginary_card_cost[occupy_id.card_cost_total]=01 or
+				imaginary_card_cost[occupy_id.card_cost_total]=02 or imaginary_card_cost[occupy_id.card_cost_total]=03 or
+				imaginary_card_cost[occupy_id.card_cost_total]=04 or imaginary_card_cost[occupy_id.card_cost_total]=05 {
+					var new_cost_text="Oran Berry";
+				}
+				//psychic, fairy, bug, poison, ghost, dark
+				else if imaginary_card_cost[occupy_id.card_cost_total]=07 or imaginary_card_cost[occupy_id.card_cost_total]=08 or
+				imaginary_card_cost[occupy_id.card_cost_total]=11 or imaginary_card_cost[occupy_id.card_cost_total]=12 or
+				imaginary_card_cost[occupy_id.card_cost_total]=16 or imaginary_card_cost[occupy_id.card_cost_total]=17 {
+					var new_cost_text="Leppa Berry";
+				}
+				//fighting, ground, rock, ice, dragon, steel
+				else if imaginary_card_cost[occupy_id.card_cost_total]=06 or imaginary_card_cost[occupy_id.card_cost_total]=09 or
+				imaginary_card_cost[occupy_id.card_cost_total]=10 or imaginary_card_cost[occupy_id.card_cost_total]=13 or
+				imaginary_card_cost[occupy_id.card_cost_total]=14 or imaginary_card_cost[occupy_id.card_cost_total]=15 {
+					var new_cost_text="Lum Berry";
+				}
+				//
+				sc_drawtext(x+28,y-24,"Card cost: +1 " + new_cost_text,global.color_card_light,global.color_black,1,1,0,-1);
+			}
 		}
 	}
 	//

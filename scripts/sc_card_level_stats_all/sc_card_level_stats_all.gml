@@ -17,23 +17,14 @@ if argument1=true {
 	else { card_cost_total=1; }
 	//
 	if (card_glyph_a>=0 and card_glyph_a<glyph_common_amount) or (card_glyph_b>=0 and card_glyph_b<glyph_common_amount) or (card_glyph_c>=0 and card_glyph_c<glyph_common_amount) {
-		card_cost_total++; }
+		card_cost_total++; } //similar conditions in ob_card_space for showing new cost when adding a glyph to an empty card
 	if card_enigma=true { card_cost_total++; }
 	//
 	if card_environment=true { card_cost_total=0; }
 	//
-	var i=0;
-	repeat (3) {
-		card_cost[i]=-1;
-		i++;
+	for (var i=0; i<=2; i++;) {
+		card_cost[i]=sc_card_cost_map(card_cost_total,card_enigma,card_type_a,card_type_b,i);
 	}
-	if card_cost_total=1 and card_enigma=false { card_cost[0]=card_type_a; }
-	else if card_cost_total=1 and card_enigma=true { card_cost[0]=20; }
-	else if card_cost_total=2 and card_type_b=-1 and card_enigma=false { card_cost[0]=card_type_a; card_cost[1]=card_type_a; }
-	else if card_cost_total=2 and card_type_b>=0 and card_enigma=false { card_cost[0]=card_type_a; card_cost[1]=card_type_b; }
-	else if card_cost_total=2 and card_enigma=true { card_cost[0]=card_type_a; card_cost[1]=20; }
-	else if card_cost_total=3 and card_type_b=-1 and card_enigma=true { card_cost[0]=card_type_a; card_cost[1]=card_type_a; card_cost[2]=20; }
-	else if card_cost_total=3 and card_type_b>=0 and card_enigma=true { card_cost[0]=card_type_a; card_cost[1]=card_type_b; card_cost[2]=20; }
 	//
 	card_cost_total_type[0]=0; //oran
 	card_cost_total_type[1]=0; //leppa
@@ -41,7 +32,7 @@ if argument1=true {
 	card_cost_total_type[3]=0; //enigma
 	//
 	var i=0;
-	repeat (3) { //cost types are also considered for tutorial enemy deck
+	repeat (3) { //cost types are also considered for tutorial enemy deck, and shown in ob_card_space when adding a glyph to an empty card
 		//normal, grass, fire, water, electric, flying
 		if card_cost[i]=00 or card_cost[i]=01 or card_cost[i]=02 or card_cost[i]=03 or card_cost[i]=04 or card_cost[i]=05 {
 			card_cost[i]=0; //oran
