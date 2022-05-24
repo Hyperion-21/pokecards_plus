@@ -226,6 +226,10 @@ if ending_screen=true {
 				screen_main_x+(i*noise_size),screen_main_y+(ii*noise_size),1,1,0,c_white,c_white,c_white,c_white,1);
 			}
 		}
+		//
+		draw_set_font(fn_m3x6);
+		draw_set_halign(fa_right);
+		sc_drawtext(screen_main_x+cam_w-3,screen_main_y+cam_h-14,"PHOENIX: 35.176861, 158.977194",global.color_white,global.color_black,0.75,0.25,0,-1);
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

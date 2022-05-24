@@ -55,10 +55,10 @@ with (argument1) {
 				//basic formula (atk-def + type advantage) also used in AI when checking for damage, so tweak AI if changed
 				var damage_dealt=card_atk-card_target.card_def, damage_extra_dealt=0;
 				if damage_dealt<0 { damage_dealt=0; }
-				if sc_type_bonus(card_type_a,card_type_b,card_target.card_type_a,card_target.card_type_b)=true and sc_glyph_check(id,ref_glyph_adaptability,true) {
-					damage_extra_dealt=2; } //glyph: adaptability
-				else if sc_type_bonus(card_type_a,card_type_b,card_target.card_type_a,card_target.card_type_b)=true and !sc_glyph_check(id,ref_glyph_adaptability,true) {
-					damage_extra_dealt=1; }
+				if sc_type_bonus(card_type_a,card_type_b,card_target.card_type_a,card_target.card_type_b)=true {
+					damage_extra_dealt=ceil(card_level/4);
+					if sc_glyph_check(id,ref_glyph_adaptability,true) { damage_extra_dealt+=2; } //glyph: adaptability
+				}
 				damage_dealt+=damage_extra_dealt;
 				card_target.card_hp-=damage_dealt;
 				card_target.effect_damaged=1;

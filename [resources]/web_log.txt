@@ -1,3 +1,14 @@
+[v1.1.0.0]
+
+- Type advantage attacks now deal 1 extra point of damage every four levels.
+- Adaptability now adds 2 extra points of damage on top of the already existing type-advantage bonus.
+- Slightly readjusted overall Hit Points for most cards at higher levels.
+- Slightly rebalanced late game Gym Leaders and Crystal League.
+- Slightly raised spawn chance for most rare Glyphs.
+- Bug fix: fixed crash related to Harvest (enemy trying to draw/play more cards than allowed).
+- The "Exit Battle" button is now faster.
+- Some other minor improvements.
+
 [v1.0.1.1]
 
 - Adding Glyphs to cards now lets you know what Berry cost will be added to the card as well.

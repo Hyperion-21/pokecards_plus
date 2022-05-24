@@ -128,8 +128,10 @@ if card_focus!=-1 and card_focus.card_cat=0 and card_focus_hand!=-1 and card_hol
 			if damage_preview<0 { damage_preview=0; }
 			//
 			var bonus_damage_preview=0;
-			if bonus_dmg=true and sc_glyph_check(card_focus,ref_glyph_adaptability,true) { bonus_damage_preview=2; } //glyph: adaptability
-			else if bonus_dmg=true and !sc_glyph_check(card_focus,ref_glyph_adaptability,true) { bonus_damage_preview=1; }
+			if bonus_dmg=true {
+				bonus_damage_preview=ceil(card_focus.card_level/4);
+				if sc_glyph_check(card_focus,ref_glyph_adaptability,true) { bonus_damage_preview+=2; } //glyph: adaptability
+			}
 			//
 			var damage_preview_text="";
 			if sc_glyph_check(card_focus,ref_glyph_transform,true) or sc_glyph_check(card_space_id[i].occupy_id,ref_glyph_transform,true) { //glyph: transform (Ditto only)
@@ -152,8 +154,10 @@ if card_focus!=-1 and card_focus.card_cat=0 and card_focus_hand!=-1 and card_hol
 			if damage_preview<0 { damage_preview=0; }
 			//
 			var bonus_damage_preview=0;
-			if vs_bonus_dmg=true and sc_glyph_check(card_space_id[i].occupy_id,ref_glyph_adaptability,true) { bonus_damage_preview=2; } //glyph: adaptability
-			else if vs_bonus_dmg=true and !sc_glyph_check(card_space_id[i].occupy_id,ref_glyph_adaptability,true) { bonus_damage_preview=1; }
+			if vs_bonus_dmg=true {
+				bonus_damage_preview=ceil(card_space_id[i].occupy_id.card_level/4);
+				if sc_glyph_check(card_space_id[i].occupy_id,ref_glyph_adaptability,true) { bonus_damage_preview+=2; } //glyph: adaptability
+			}
 			//
 			var damage_preview_text="";
 			if sc_glyph_check(card_focus,ref_glyph_transform,true) or sc_glyph_check(card_space_id[i].occupy_id,ref_glyph_transform,true) { //glyph: transform (Ditto only)

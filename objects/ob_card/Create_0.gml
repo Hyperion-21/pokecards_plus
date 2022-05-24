@@ -206,7 +206,7 @@ if card_cat=0 {
 				}
 				else if ob_main.playing_gym=true or ob_main.playing_elite=true or ob_main.playing_champion=true {
 					var card_rarity_chance_max=220; //about +50% to increase chance for stronger pokemon
-					card_rarity_soft_min=42+ob_main.area_zone*3; //42-66, about 200-275 base stat total (201.64-275.56)
+					card_rarity_soft_min=42+ob_main.area_zone*4; //42-74, about 200-300 base stat total (201.64-302.76)
 					if ob_main.area_zone=0 { card_rarity_soft_max=81; } //about 330 base stat total (327.61)
 					card_rarity_chance=irandom(card_rarity_chance_max-1)+1;
 				}

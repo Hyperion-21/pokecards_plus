@@ -1,0 +1,26 @@
+Due to the way the engine used to build this game works, save files between different devices need a workaround to be loaded properly. This is a step-by-step​ guide to make it work.
+
+Step 1.
+On your SECOND device (the new one), open and close the game. This is done just so the game can create the necessary folder and files.
+
+Step 2.
+Go to the save folder (C:\Users\(NAME)\AppData\Local\PocketCrystalLeague​)​ on your FIRST device, where the save file is from. Copy the file named "data.sav", and transfer it into your SECOND device (don't put it in the new save folder yet, though).
+
+Step 3.
+On your SECOND device, go to the save folder and rename the "data.sav" file there to "data_key.sav". All steps from now on should be done on your SECOND device (where you want to transfer your save file into).
+
+Step 4.
+Rename the file you transfered from your first device to "data_transfer.sav". Then put it in the new save folder. You should have both "data_key.sav" and "data_transfer.sav" in there so far.
+
+Step 5.
+Open "data_key.sav" with a text editor (like notepad), and copy the first 80 characters from this file. Count them very carefully!
+
+Step 6.
+Make a backup of "data_transfer.sav" for this step, just in case. Then open it with a text editor and REPLACE the first 80 characters with the ones you just copied. Again, make sure to count them carefully. Then save it.
+
+Step 7.
+Rename "data_transfer.sav" back to "data.sav".
+
+That's it! The save file should be loaded automatically the next time you open the game. You can delete the "data_key.sav" file and/or the backups if you want, after you're sure the save file is loading properly. You can follow these same steps to transfer the "config.sav" file as well, if you want.
+
+Thanks for playing!

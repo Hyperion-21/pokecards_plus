@@ -233,9 +233,9 @@ else if argument0=101 { //TUTORIAL (PROF. ASPEN)
 //tertiary types: 25% (50% if very few pokemon)
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 //GYMS AND LEAGUE LEVEL DISTRIBUTION
-//high level: 50% (round up, +1 over-level every 2 gyms, +1 total over-level in league, +1 total over-level champion)
-//mid level: 30% (round up)
-//low level: 20% (rest)
+//high level: 50% (round up, +1 (1-4) over-level every 2 gyms, +1 (5) total over-level in league, +2 (7) total over-level champion)
+//mid level: 30% (round up) / 40% (champion)
+//low level: 20% (rest) / 10% (champion)
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if argument0=200 { //GYM 1: IAN (NORMAL/flying)
 	enemy_type_chance[00]=100; //normal
@@ -424,10 +424,10 @@ else if argument0=212 { //CHAMPION: DUNCAN (ALL)
 	for (var i=0; i<enemycard_maindeck_total; i++;) {
 		if i<1 { sc_enemy_deck_addcard(i,248,10,ref_glyph_tenacity,-2,-2,innate_max,-1); } //TYRANITAR, LV 10 (IN MAX)
 		else if i<2 { sc_enemy_deck_addcard(i,150,10,ref_glyph_counter,ref_glyph_curse,ref_glyph_medic,innate_max,-1); } //MEWTWO, LV 10 (IN MAX)
-		else if i<6 { sc_enemy_deck_addcard(i,-1,10,-2,-2,-2,innate_max,-1); } //(4) LV 10 (IN MAX)
-		else if i<20 { sc_enemy_deck_addcard(i,-1,10,-2,-2,-2,-1,-1); } //(14) LV 10
-		else if i<32 { sc_enemy_deck_addcard(i,-1,9,-2,-2,-2,-1,-1); } //(12) LV 9
-		else if i<40 { sc_enemy_deck_addcard(i,-1,8,-2,-2,-2,-1,-1); } //(8) LV 8
+		else if i<7 { sc_enemy_deck_addcard(i,-1,10,-2,-2,-2,innate_max,-1); } //(5) LV 10 (IN MAX)
+		else if i<20 { sc_enemy_deck_addcard(i,-1,10,-2,-2,-2,-1,-1); } //(13) LV 10
+		else if i<36 { sc_enemy_deck_addcard(i,-1,9,-2,-2,-2,-1,-1); } //(16) LV 9
+		else if i<40 { sc_enemy_deck_addcard(i,-1,8,-2,-2,-2,-1,-1); } //(4) LV 8
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

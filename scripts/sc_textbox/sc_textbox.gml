@@ -49,7 +49,7 @@ else if argument0=15 { //tutorial: new turn
 	ob_main.textbox_string[0]="What a lucky draw, your Spearow has a type advantage over the Bellsprout I played! This is the perfect time to draw some more Berries.";
 }
 else if argument0=16 { //tutorial: drawn
-	ob_main.textbox_string[0]="Excellent! When a Pokemon has a type advantage over another, their attacks will always deal 1 extra point of damage, even if the receiving Pokemon has a higher defense.";
+	ob_main.textbox_string[0]="Excellent! When a Pokemon has a type advantage over another, their attacks will always deal at least 1 extra point of damage (plus 1 every four levels), even if the receiving Pokemon has a higher defense.";
 	ob_main.textbox_string[1]="Contrary to real Pokemon though, type advantages in cards only deal bonus damage. This means there are no type resistances or immunities, and Pokemon that are weak to a certain type will always receive extra damage from it.";
 	ob_main.textbox_string[2]="This makes it so that, for example, Bulbasaur (a Grass/Poison Pokemon) will always deal bonus damage to other Bulbasaurs, since Poison has an advantage over Grass!";
 	ob_main.textbox_string[3]="But anyway, go ahead and play your Spearow right in front of my Bellsprout. Then attack to take them out in one hit!";

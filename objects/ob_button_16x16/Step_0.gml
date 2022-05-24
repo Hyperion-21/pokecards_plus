@@ -4,7 +4,7 @@ if instance_exists(ob_control) and button_id=2 { //exit battle
 		if mouse_check_button(mb_left) and ob_main.cursor_hide=false and button_state<1 {
 			if mouse_check_button_pressed(mb_left) { sc_playsound(sn_click,50,false,false); }
 			//
-			button_state+=0.005;
+			button_state+=0.01;
 			if button_state=1 {
 				ob_control.battler_turn=0;
 				ob_main.event_transition=ref_event_exitbattle;

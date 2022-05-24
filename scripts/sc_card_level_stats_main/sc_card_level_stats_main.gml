@@ -7,7 +7,7 @@ var return_value=0;
 if argument0=0 { //HP
 	var min_value=1;
 	if card_base_hp<=20 and argument1=1 { return_value=1; } //base 20 and lower: 1 HP at level 1
-	else { return_value=1+round((sqrt(card_base_hp-1)*argument1)/7); } //hp: 1/69/255 -> 1/2/3 to 1/13/24
+	else { return_value=1+round((sqrt(card_base_hp-1)*argument1)/6); } //hp: 1/69/255 -> 1/2/4 to 1/15/28
 }
 else if argument0=1 { //ATK
 	if card_base_atk>0 { var min_value=1; } else { var min_value=0; }
@@ -20,7 +20,7 @@ else if argument0=2 { //DEF
 }
 //
 if card_secret=false { return_value+=round(return_value*((card_innate-1)/(innate_max-1))*0.4); } //max x1.4
-else { return_value+=round(return_value*((card_innate-1)/(innate_max-1))*1); } //secret: max x2
+else { return_value+=round(return_value*((card_innate-1)/(innate_max-1))*1.5); } //secret: max x2.5
 if return_value<min_value { return_value=min_value; }
 //
 return return_value;
