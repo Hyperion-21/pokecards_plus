@@ -1,5 +1,8 @@
 if instance_exists(ob_control) {
-	if button_id=0 and ob_control.battler_turn=1 { draw_sprite_general(sp_sheet,0,16*3,16*(7+(ceil(button_state)*2)),31,24,x,y,1,1,0,c_white,c_white,c_white,c_white,1); }
+	if button_id=0 and ob_control.battler_turn=1 {
+		draw_sprite_general(sp_sheet,0,16*3,16*(7+(ceil(button_state)*2)),31,24,x,y,1,1,0,c_white,c_white,c_white,c_white,1);
+		if ob_control.card_draw_points>0 { draw_sprite_general(sp_sheet,0,16*1,16*3,4,4,x+25,y+2+ceil(button_state)*2,1,1,0,c_white,c_white,c_white,c_white,1); }
+	}
 	else if button_id=0 and ob_control.battler_turn!=1 { draw_sprite_general(sp_sheet,0,16*5,16*(7+(ceil(button_state)*2)),31,24,x,y,1,1,0,c_white,c_white,c_white,c_white,1); }
 	else if button_id=1 { draw_sprite_general(sp_sheet,0,16*button_id,16*(7+(ceil(button_state)*2)),16,16,x,y,1,1,0,c_white,c_white,c_white,c_white,1); }
 	else if button_id=2 { draw_sprite_general(sp_sheet,0,16*button_id,16*(7+(ceil(button_state)*2)),16,16,x,y,1,1,0,c_white,c_white,c_white,c_white,0.5); }

@@ -18,7 +18,6 @@ if argument1=true {
 	//
 	if (card_glyph_a>=0 and card_glyph_a<glyph_common_amount) or (card_glyph_b>=0 and card_glyph_b<glyph_common_amount) or (card_glyph_c>=0 and card_glyph_c<glyph_common_amount) {
 		card_cost_total++; } //similar conditions in ob_card_space for showing new cost when adding a glyph to an empty card
-	if card_enigma=true { card_cost_total++; }
 	//
 	if card_environment=true { card_cost_total=0; }
 	//

@@ -64,6 +64,10 @@ else if trash=false {
 				imaginary_card_cost[occupy_id.card_cost_total]=14 or imaginary_card_cost[occupy_id.card_cost_total]=15 {
 					var new_cost_text="Lum Berry";
 				}
+				//enigma
+				else if imaginary_card_cost[occupy_id.card_cost_total]=20 {
+					var new_cost_text="Enigma Berry";
+				}
 				//
 				sc_drawtext(x+28,y-24,"Card cost: +1 " + new_cost_text,global.color_card_light,global.color_black,1,1,0,-1);
 			}

@@ -199,8 +199,27 @@ if any_playable=true {
 	} until (space_poke_possible[enemyspace_playplan_slot][enemycard_playplan_slot]=true and space_poke_target[enemyspace_playplan_slot][enemycard_playplan_slot]=true);
 	//
 	enemycard_playplan_id=enemycard_hand[enemycard_playplan_slot];
+	//
+	var berries_held;
+	for (var i=0; i<=3; i++;) {
+		berries_held[i]=0;
+	}
+	//
+	for (var i=0; i<enemycard_hand_total; i++;) {
+		if enemycard_hand[i].card_cat=1 {
+			berries_held[enemycard_hand[i].card_id-3000]++;
+		}
+	}
+	//
 	for (var i=0; i<=3; i++;) {
 		enemyberry_playplan[i]=enemycard_playplan_id.card_cost_total_type[i]-card_space_id[enemyspace_playplan_slot].berries_total_type[i];
+	}
+	//
+	for (var i=0; i<=3; i++;) {
+		if berries_held[i]<enemyberry_playplan[i] {
+			enemyberry_playplan[3]+=enemyberry_playplan[i]-berries_held[i];
+			enemyberry_playplan[i]-=enemyberry_playplan[i]-berries_held[i];
+		}
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

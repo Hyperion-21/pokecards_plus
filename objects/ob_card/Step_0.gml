@@ -117,43 +117,57 @@ if reference_id=ob_control and card_cat=0 {
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height and card_trash=false and card_enemy=false and reference_id=ob_control {
-	if ob_control.card_hold=-1 { ob_main.mouse_cursor=1; }
-	else { ob_main.mouse_cursor=2; }
-	//
-	if mouse_check_button_pressed(mb_left) and ob_control.card_draw_click=false and ob_main.cursor_hide=false and card_face=false and ob_control.battler_turn=1 and
-	((num_in_maindeck>=0 and num_in_maindeck=ob_control.card_maindeck_total-1 and ob_control.card_draw_points>=ob_control.card_drawcost_main) or
-	(num_in_berrydeck>=0 and num_in_berrydeck=ob_control.card_berrydeck_total-1 and ob_control.card_draw_points>=ob_control.card_drawcost_berry)) {
-		sc_playsound(sn_card,50,false,false);
-		ob_control.card_draw_click=true;
+if card_trash=false and card_enemy=false and reference_id=ob_control {
+	if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height) or
+	((keyboard_check_pressed(vk_left) or keyboard_check_pressed(ord("A"))) and num_in_berrydeck>=0) or
+	((keyboard_check_pressed(vk_right) or keyboard_check_pressed(ord("D"))) and num_in_maindeck>=0)) {
+		if (mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height) {
+			if ob_control.card_hold=-1 { ob_main.mouse_cursor=1; }
+			else { ob_main.mouse_cursor=2; }
+		}
 		//
-		if ob_control.card_hand_total<ob_control.card_hand_max {
-			if ob_main.playing_tutorial=false or (ob_main.playing_tutorial=true and
-			((num_in_maindeck>=0 and sc_tutorial_conditions(1,-1)) or (num_in_berrydeck>=0 and sc_tutorial_conditions(2,-1)))) {
-				ob_control.card_hand_total++;
-				ob_control.card_hand[ob_control.card_hand_total-1]=id;
-				card_face=true;
-				//
-				if num_in_maindeck>=0 and num_in_maindeck=ob_control.card_maindeck_total-1 {
-					ob_control.card_maindeck_total--;
-					ob_control.card_maindeck[num_in_maindeck]=-1;
-					num_in_maindeck=-1;
-					ob_control.card_draw_points-=ob_control.card_drawcost_main;
-				}
-				else if num_in_berrydeck>=0 and num_in_berrydeck=ob_control.card_berrydeck_total-1 {
-					ob_control.card_berrydeck_total--;
-					ob_control.card_berrydeck[num_in_berrydeck]=-1;
-					num_in_berrydeck=-1;
-					ob_control.card_draw_points-=ob_control.card_drawcost_berry;
+		if (mouse_check_button_pressed(mb_left) or
+		((keyboard_check_pressed(vk_left) or keyboard_check_pressed(ord("A"))) and num_in_berrydeck>=0) or
+		((keyboard_check_pressed(vk_right) or keyboard_check_pressed(ord("D"))) and num_in_maindeck>=0)) and
+		ob_control.card_draw_click=false and ob_main.cursor_hide=false and card_face=false and ob_control.battler_turn=1 and ob_control.card_hold=-1 and
+		((num_in_maindeck>=0 and num_in_maindeck=ob_control.card_maindeck_total-1 and ob_control.card_draw_points>=ob_control.card_drawcost_main) or
+		(num_in_berrydeck>=0 and num_in_berrydeck=ob_control.card_berrydeck_total-1 and ob_control.card_draw_points>=ob_control.card_drawcost_berry)) {
+			sc_playsound(sn_card,50,false,false);
+			ob_control.card_draw_click=true;
+			//
+			if ob_control.card_hand_total<ob_control.card_hand_max {
+				if ob_main.playing_tutorial=false or (ob_main.playing_tutorial=true and
+				((num_in_maindeck>=0 and sc_tutorial_conditions(1,-1)) or (num_in_berrydeck>=0 and sc_tutorial_conditions(2,-1)))) {
+					ob_control.card_hand_total++;
+					ob_control.card_hand[ob_control.card_hand_total-1]=id;
+					card_face=true;
+					//
+					if num_in_maindeck>=0 and num_in_maindeck=ob_control.card_maindeck_total-1 {
+						ob_control.card_maindeck_total--;
+						ob_control.card_maindeck[num_in_maindeck]=-1;
+						num_in_maindeck=-1;
+						ob_control.card_draw_points-=ob_control.card_drawcost_main;
+					}
+					else if num_in_berrydeck>=0 and num_in_berrydeck=ob_control.card_berrydeck_total-1 {
+						ob_control.card_berrydeck_total--;
+						ob_control.card_berrydeck[num_in_berrydeck]=-1;
+						num_in_berrydeck=-1;
+						ob_control.card_draw_points-=ob_control.card_drawcost_berry;
+					}
 				}
 			}
-		}
-		else {
-			ob_control.hand_full_draw_warning=true;
-			ob_control.tooltip_timer=ob_control.tooltip_timer_max;
+			else {
+				ob_control.hand_full_draw_warning=true;
+				ob_control.tooltip_timer=ob_control.tooltip_timer_max;
+			}
 		}
 	}
-	else if !mouse_check_button_pressed(mb_left) { ob_control.card_draw_click=false; }
+	//
+	if !mouse_check_button_pressed(mb_left) and
+	!(keyboard_check_pressed(vk_left) or keyboard_check_pressed(ord("A"))) and
+	!(keyboard_check_pressed(vk_right) or keyboard_check_pressed(ord("D"))) {
+		ob_control.card_draw_click=false;
+	}
 }
 //
 else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height) or auto_turn_add=true) and reference_id=ob_event {

@@ -40,6 +40,13 @@ else if argument1>0 or argument2>0 or argument3>0 or argument4>0 {
 else if argument0!=-1 {
 	playcard_id=argument0;
 	//
+	var var_consumed_berry;
+	for (var i=0; i<=3; i++;) {
+		var_consumed_berry[i]=sc_card_cost_check(card_space_id[enemyspace_playplan_slot].berries_total_type[0],card_space_id[enemyspace_playplan_slot].berries_total_type[1],
+		card_space_id[enemyspace_playplan_slot].berries_total_type[2],card_space_id[enemyspace_playplan_slot].berries_total_type[3],
+		playcard_id.card_cost_total_type[0],playcard_id.card_cost_total_type[1],playcard_id.card_cost_total_type[2],playcard_id.card_cost_total_type[3],i);
+	}
+	//
 	if sc_glyph_check(playcard_id,ref_glyph_lucky,true) { //glyph: lucky
 		enemycard_draw_points+=2;
 	}
@@ -92,11 +99,11 @@ else if argument0!=-1 {
 	//
 	playcard_id.potential_x=card_space_id[enemyspace_playplan_slot].x;
 	playcard_id.potential_y=card_space_id[enemyspace_playplan_slot].y;
-	card_space_id[enemyspace_playplan_slot].berries_total_type[0]-=playcard_id.card_cost_total_type[0];
-	card_space_id[enemyspace_playplan_slot].berries_total_type[1]-=playcard_id.card_cost_total_type[1];
-	card_space_id[enemyspace_playplan_slot].berries_total_type[2]-=playcard_id.card_cost_total_type[2];
-	card_space_id[enemyspace_playplan_slot].berries_total_type[3]-=playcard_id.card_cost_total_type[3];
-	card_space_id[enemyspace_playplan_slot].berries_total-=playcard_id.card_cost_total;
+	for (var i=0; i<=3; i++;) {
+		card_space_id[enemyspace_playplan_slot].berries_total_type[i]-=var_consumed_berry[i];
+		playcard_id.consumed_berry[i]=var_consumed_berry[i];
+	}
+	card_space_id[enemyspace_playplan_slot].berries_total-=var_consumed_berry[0]+var_consumed_berry[1]+var_consumed_berry[2]+var_consumed_berry[3];
 	playcard_id.card_face=true;
 	playcard_id.card_played=true;
 	card_space_id[enemyspace_playplan_slot].occupy_id=playcard_id;

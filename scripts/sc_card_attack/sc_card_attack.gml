@@ -98,12 +98,12 @@ with (argument1) {
 					if sc_glyph_check(card_target,ref_glyph_harvest,true) { //glyph: harvest
 						if card_target.card_enemy=false {
 							for (var i=0; i<=3; i++;) {
-								ob_control.berry_spawn[i]+=card_target.card_cost_total_type[i];
+								ob_control.berry_spawn[i]+=card_target.consumed_berry[i];
 							}
 						}
 						else {
 							for (var i=0; i<=3; i++;) {
-								ob_control.enemyberry_spawn[i]+=card_target.card_cost_total_type[i];
+								ob_control.enemyberry_spawn[i]+=card_target.consumed_berry[i];
 							}
 						}
 					}

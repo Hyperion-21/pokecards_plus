@@ -25,11 +25,15 @@ num_in_all=-1;
 potential_x=x;
 potential_y=y;
 //
+for (var i=0; i<=3; i++;) {
+	consumed_berry[i]=0;
+}
+//
 already_attacked=false;
 effect_damaged=0;
 //
 card_delete_timer=0;
-card_delete_timer_max=100;
+card_delete_timer_max=60;
 //
 auto_turn_add=false;
 if card_cat=0 and reference_id=ob_control { enemy_randomizer=reference_id.create_enemy_randomizer; }
@@ -274,8 +278,8 @@ else if card_cat=1 {
 	//
 	if random_card=true {
 		var card_berry_chance=irandom(99);
-		if card_berry_chance<98 { card_id=choose(3000,3001,3002); }
-		else { card_id=3003; } //2%
+		if card_berry_chance<90 { card_id=choose(3000,3001,3002); }
+		else { card_id=3003; } //10% (same as extra enigma berries in common enemy decks in sc_enemy_berry_deck)
 	}
 	//
 	switch (card_id) {

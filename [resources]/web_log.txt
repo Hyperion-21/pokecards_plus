@@ -1,3 +1,13 @@
+[v1.2.0.0]
+
+- Enigma Berries can now be used as wildcards.
+- Slightly improved AI and modified all trainer decks to fit these changes.
+- Raised drop chance for Enigma Berries in both Card Packs and Berry Packs.
+- Lowered berry cost of all Legendary/Mythical cards.
+- The left/right arrow keys (or A/D keys) can now be used to draw cards during battle.
+- Selling cards is now faster.
+- Some other minor improvements.
+
 [v1.1.0.0]
 
 - Type advantage attacks now deal 1 extra point of damage every four levels.
@@ -5,7 +15,7 @@
 - Slightly readjusted overall Hit Points for most cards at higher levels.
 - Slightly rebalanced late game Gym Leaders and Crystal League.
 - Slightly raised spawn chance for most rare Glyphs.
-- Bug fix: fixed crash related to Harvest (enemy trying to draw/play more cards than allowed).
+- Bug fix: fixed crash related to Harvest (opponent trying to draw/play more cards than allowed).
 - The "Exit Battle" button is now faster.
 - Some other minor improvements.
 

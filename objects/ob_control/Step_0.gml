@@ -145,16 +145,24 @@ if card_focus!=-1 { //click played card
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if card_hold!=-1 and (!mouse_check_button(mb_left) or ob_main.cursor_hide=true) { //play held card
 	if position_meeting(mouse_x,mouse_y,ob_card_space) {
-		var var_cardspace_id=instance_position(mouse_x,mouse_y,ob_card_space), playing_requirements=false;
+		var var_cardspace_id=instance_position(mouse_x,mouse_y,ob_card_space), playing_requirements=false, var_consumed_berry;
+		//
+		for (var i=0; i<=3; i++;) {
+			var_consumed_berry[i]=0;
+		}
 		//
 		if var_cardspace_id=card_space_id[5] or var_cardspace_id=card_space_id[6] or var_cardspace_id=card_space_id[7] or
 		var_cardspace_id=card_space_id[8] or var_cardspace_id=card_space_id[9] {
-			if card_hold.card_cat=0 and
-			var_cardspace_id.berries_total_type[0]>=card_hold.card_cost_total_type[0] and
-			var_cardspace_id.berries_total_type[1]>=card_hold.card_cost_total_type[1] and
-			var_cardspace_id.berries_total_type[2]>=card_hold.card_cost_total_type[2] and
-			var_cardspace_id.berries_total_type[3]>=card_hold.card_cost_total_type[3] {
+			if card_hold.card_cat=0 and sc_card_cost_check(var_cardspace_id.berries_total_type[0],var_cardspace_id.berries_total_type[1],
+			var_cardspace_id.berries_total_type[2],var_cardspace_id.berries_total_type[3],
+			card_hold.card_cost_total_type[0],card_hold.card_cost_total_type[1],card_hold.card_cost_total_type[2],card_hold.card_cost_total_type[3],-1) {
 				playing_requirements=true;
+				//
+				for (var i=0; i<=3; i++;) {
+					var_consumed_berry[i]=sc_card_cost_check(var_cardspace_id.berries_total_type[0],var_cardspace_id.berries_total_type[1],
+					var_cardspace_id.berries_total_type[2],var_cardspace_id.berries_total_type[3],
+					card_hold.card_cost_total_type[0],card_hold.card_cost_total_type[1],card_hold.card_cost_total_type[2],card_hold.card_cost_total_type[3],i);
+				}
 			}
 			else if card_hold.card_cat=1 and var_cardspace_id.berries_total<8 {
 				playing_requirements=true;
@@ -234,11 +242,11 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or ob_main.cursor_hide=true) 
 				//
 				card_hold.potential_x=var_cardspace_id.x;
 				card_hold.potential_y=var_cardspace_id.y;
-				var_cardspace_id.berries_total_type[0]-=card_hold.card_cost_total_type[0];
-				var_cardspace_id.berries_total_type[1]-=card_hold.card_cost_total_type[1];
-				var_cardspace_id.berries_total_type[2]-=card_hold.card_cost_total_type[2];
-				var_cardspace_id.berries_total_type[3]-=card_hold.card_cost_total_type[3];
-				var_cardspace_id.berries_total-=card_hold.card_cost_total;
+				for (var i=0; i<=3; i++;) {
+					var_cardspace_id.berries_total_type[i]-=var_consumed_berry[i];
+					card_hold.consumed_berry[i]=var_consumed_berry[i];
+				}
+				var_cardspace_id.berries_total-=var_consumed_berry[0]+var_consumed_berry[1]+var_consumed_berry[2]+var_consumed_berry[3];
 				var_cardspace_id.occupy_id=card_hold;
 			}
 			else if card_hold.card_cat=1 {

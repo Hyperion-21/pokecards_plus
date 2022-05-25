@@ -54,15 +54,17 @@ repeat (enemycard_hand_total) {
 		repeat (5) {
 			var space_missing_berries;
 			for (var iii=0; iii<=3; iii++;) {
+				//space_missing_berries is only used to avoid max number of berries in space slot,
+				//so it doesn't consider enigma berries as wildcards when counting (because it's a mess and may cause issues)
 				space_missing_berries[iii]=enemycard_hand[i].card_cost_total_type[iii]-card_space_id[ii].berries_total_type[iii];
 				if space_missing_berries[iii]<0 { space_missing_berries[iii]=0; }
 			}
 			//
 			if card_space_id[ii].occupy_id=-1 and
-			enemycard_hand[i].card_cost_total_type[0]<=card_space_id[ii].berries_total_type[0]+berries_held[0] and
-			enemycard_hand[i].card_cost_total_type[1]<=card_space_id[ii].berries_total_type[1]+berries_held[1] and
-			enemycard_hand[i].card_cost_total_type[2]<=card_space_id[ii].berries_total_type[2]+berries_held[2] and
-			enemycard_hand[i].card_cost_total_type[3]<=card_space_id[ii].berries_total_type[3]+berries_held[3] and
+			sc_card_cost_check(card_space_id[ii].berries_total_type[0]+berries_held[0],card_space_id[ii].berries_total_type[1]+berries_held[1],
+			card_space_id[ii].berries_total_type[2]+berries_held[2],card_space_id[ii].berries_total_type[3]+berries_held[3],
+			enemycard_hand[i].card_cost_total_type[0],enemycard_hand[i].card_cost_total_type[1],
+			enemycard_hand[i].card_cost_total_type[2],enemycard_hand[i].card_cost_total_type[3],-1) and
 			(card_space_id[ii].berries_total+space_missing_berries[0]+space_missing_berries[1]+space_missing_berries[2]+space_missing_berries[3]<=8) {
 				space_poke_possible[ii][i]=true;
 				anypoke_playable=true;
