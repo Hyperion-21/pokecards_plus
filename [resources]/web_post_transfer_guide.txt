@@ -10,7 +10,7 @@ Step 3.
 On your SECOND device, go to the save folder and rename the "data.sav" file there to "data_key.sav". All steps from now on should be done on your SECOND device (where you want to transfer your save file into).
 
 Step 4.
-Rename the file you transfered from your first device to "data_transfer.sav". Then put it in the new save folder. You should have both "data_key.sav" and "data_transfer.sav" in there so far.
+Rename the file you transferred from your first device to "data_transfer.sav". Then put it in the new save folder. You should have both "data_key.sav" and "data_transfer.sav" in there so far.
 
 Step 5.
 Open "data_key.sav" with a text editor (like notepad), and copy the first 80 characters from this file. Count them very carefully!

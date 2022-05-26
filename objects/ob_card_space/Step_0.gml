@@ -51,8 +51,8 @@ else if instance_exists(ob_event) and occupy_id=-1 and ob_main.cursor_hide=false
 			}
 			else if id=ob_event.event_space_id[1] {
 				ob_event.tooltip_text="// TRIBUTE //\nTransfers the intrinsic strength of one Pokemon into another." +
-				"\nThe card placed here will receive a boost to its innate parameters.\nTributes will stack, but multiple attempts may result in failure...";
-				ob_event.tooltip_lines=4;
+				"\nThe card placed here will receive a boost to its innate parameters.";
+				ob_event.tooltip_lines=3;
 			}
 		}
 	}

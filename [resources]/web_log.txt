@@ -1,3 +1,8 @@
+[v1.2.1.0] - May 26, 2022
+
+- Tributes now always have a 100% success rate, they can no longer fail.
+- Enigma Berries can no longer amount to more than half of current Berry Deck.
+
 [v1.2.0.1] - May 26, 2022
 
 - Scroll wheel can now also be used to adjust some options.

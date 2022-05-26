@@ -120,22 +120,12 @@ if apply_event=true {
 	else if event_kind=ref_event_tribute and card_id_in_space[0]!=-1 and card_id_in_space[1]!=-1 {
 		if card_id_in_space[0].card_innate>0 and card_id_in_space[1].card_innate<innate_max and
 		card_id_in_space[0].card_environment=false and card_id_in_space[1].card_environment=false {
-			var random_innate_chance=irandom(999), random_innate_success=false;
-			if card_id_in_space[1].card_innate<=1 and random_innate_chance<1000 { random_innate_success=true; }
-			else if card_id_in_space[1].card_innate=2 and random_innate_chance<850 { random_innate_success=true; }
-			else if card_id_in_space[1].card_innate=3 and random_innate_chance<700 { random_innate_success=true; }
-			//
 			card_id_in_space[0].card_innate--;
 			card_id_in_space[0].effect_damaged=1;
 			//
-			if random_innate_success=true {
-				card_id_in_space[1].card_innate++;
-				sc_card_effect(event_space_id[1].x,event_space_id[1].y,0,false,true);
-				sc_playsound(sn_upgrade,50,false,false);
-			}
-			else {
-				sc_playsound(sn_hurt,50,false,false);
-			}
+			card_id_in_space[1].card_innate++;
+			sc_card_effect(event_space_id[1].x,event_space_id[1].y,0,false,true);
+			sc_playsound(sn_upgrade,50,false,false);
 			//
 			with (card_id_in_space[0]) {
 				sc_card_level_stats_all(true,true);

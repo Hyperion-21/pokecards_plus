@@ -298,16 +298,29 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 		}
 	}
 	else if card_cat=1 {
+		var berry_common_used=ob_deckbuild.deck_berry_used[0]+ob_deckbuild.deck_berry_used[1]+ob_deckbuild.deck_berry_used[2];
+		var berry_enigma_used=ob_deckbuild.deck_berry_used[3];
+		//
 		if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false {
 			sc_playsound(sn_click,50,false,false);
-			ob_deckbuild.deck_berry_used[card_id-3000]=ob_deckbuild.deck_berry_total[card_id-3000];
+			if ((card_id!=3003) or (card_id=3003 and ob_deckbuild.deck_berry_total[3]<=berry_common_used)) {
+				ob_deckbuild.deck_berry_used[card_id-3000]=ob_deckbuild.deck_berry_total[card_id-3000];
+			}
+			else if card_id=3003 and ob_deckbuild.deck_berry_total[3]>berry_common_used {
+				ob_deckbuild.deck_berry_used[card_id-3000]=berry_common_used;
+			}
 		}
 		else if mouse_check_button_pressed(mb_right) and ob_main.cursor_hide=false {
 			sc_playsound(sn_click,50,false,false);
 			ob_deckbuild.deck_berry_used[card_id-3000]=0;
+			//
+			berry_common_used=ob_deckbuild.deck_berry_used[0]+ob_deckbuild.deck_berry_used[1]+ob_deckbuild.deck_berry_used[2];
+			berry_enigma_used=ob_deckbuild.deck_berry_used[3];
+			if berry_enigma_used>berry_common_used { ob_deckbuild.deck_berry_used[3]=berry_common_used; }
 		}
 		else if (mouse_wheel_up() or keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W"))) and ob_main.cursor_hide=false {
-			if ob_deckbuild.deck_berry_used[card_id-3000]<ob_deckbuild.deck_berry_total[card_id-3000] {
+			if ob_deckbuild.deck_berry_used[card_id-3000]<ob_deckbuild.deck_berry_total[card_id-3000] and
+			((card_id!=3003) or (card_id=3003 and berry_enigma_used+1<=berry_common_used)) {
 				sc_playsound(sn_click,50,false,false);
 				ob_deckbuild.deck_berry_used[card_id-3000]++;
 			}
@@ -316,6 +329,10 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 			if ob_deckbuild.deck_berry_used[card_id-3000]>0 {
 				sc_playsound(sn_click,50,false,false);
 				ob_deckbuild.deck_berry_used[card_id-3000]--;
+				//
+				berry_common_used=ob_deckbuild.deck_berry_used[0]+ob_deckbuild.deck_berry_used[1]+ob_deckbuild.deck_berry_used[2];
+				berry_enigma_used=ob_deckbuild.deck_berry_used[3];
+				if berry_enigma_used>berry_common_used { ob_deckbuild.deck_berry_used[3]=berry_common_used; }
 			}
 		}
 	}
@@ -379,5 +396,13 @@ if ((reference_id=ob_control and ob_control.card_focus=id) or reference_id=ob_ev
 		}
 		reference_id.tooltip_text=reference_id.tooltip_text + ".";
 		reference_id.tooltip_lines=1;
+	}
+}
+else if reference_id=ob_deckbuild and card_cat=1 and ob_main.cursor_hide=false {
+	if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height {
+		if card_id=3003 { //enigma berries
+			reference_id.tooltip_text="Can be used as any Berry.\nTotal amount cannot exceed half of Berry Deck.";
+			reference_id.tooltip_lines=2;
+		}
 	}
 }
