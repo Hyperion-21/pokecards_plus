@@ -975,27 +975,21 @@ repeat (options_total) {
 			sc_playsound(sn_click,50,false,false);
 		}
 		else if mouse_check_button(mb_left) or mouse_check_button(mb_right) or mouse_wheel_up() or mouse_wheel_down() {
-			if i=opt_music {
+			if i=opt_music or i=opt_sound or i=opt_edge {
 				if (mouse_check_button(mb_left) or mouse_wheel_up()) and option_state[i]<100 {
 					option_state[i]++;
 				}
 				else if (mouse_check_button(mb_right) or mouse_wheel_down()) and option_state[i]>0 {
 					option_state[i]--;
 				}
-				//still plays at volume 0 to keep the beat animations
-				audio_sound_gain(ms_main,(option_state[i]/100),0);
-				audio_sound_gain(ms_league,(option_state[i]/100),0);
-			}
-			else if i=opt_sound or i=opt_edge {
-				if (mouse_check_button(mb_left) or mouse_wheel_up()) and option_state[i]<100 {
-					option_state[i]++;
+				//
+				if i=opt_music { //still plays at volume 0 to keep the beat animations
+					audio_sound_gain(ms_main,(option_state[i]/100),0);
+					audio_sound_gain(ms_league,(option_state[i]/100),0);
 				}
-				else if (mouse_check_button(mb_right) or mouse_wheel_down()) and option_state[i]>0 {
-					option_state[i]--;
-				}
+				//
+				if i=opt_sound or mouse_wheel_up() or mouse_wheel_down() { sc_playsound(sn_click,50,false,false); }
 			}
-			//
-			if i=opt_sound or mouse_wheel_up() or mouse_wheel_down() { sc_playsound(sn_click,50,false,false); }
 		}
 	}
 	else { option_focus[i]=false; }
