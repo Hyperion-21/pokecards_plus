@@ -24,3 +24,12 @@ Gameplay Tips:
 - You can level up multiple cards as many times as you want during a single "Level Up" event, as long as you have enough money and have raised the level cap for your cards.
 
 - Don't add Glyphs to all your cards! A card with any amount of Glyphs costs more Berries than a card with none, so try to keep a balanced deck between single-cost cards and cards with Glyphs.
+
+——————————
+
+Keyboard Shortcuts:
+
+- Spacebar: end turn during battle.
+- Tab: sort cards in hand during battle.
+- Left/Right arrow keys (or A/D keys): navigate menus (options/deck) and draw cards during battle.
+- Up/Down arrow keys (or W/S keys): select number of berries when building deck.

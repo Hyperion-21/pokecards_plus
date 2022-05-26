@@ -1,1 +1,1 @@
-- right click (or something) on end turn button to attack with all cards?
+- right click (or some other way) on end turn button to attack with all cards?

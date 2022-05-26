@@ -1,0 +1,7 @@
+If you get an error saying "Data structure with index does not exist at gml_Script_sc_config_load" when launching the game, do not worry, there's a very simple workaround to get it fixed.
+
+This issue is caused when the game is unable to save your settings properly. I haven't yet been able to find the cause for it, as it could be caused by the game itself, the engine running it, or any sort of external issue like antivirus software, operating system settings or hard drive problems. But in the meantime, here's how to fix it: simply go to the save folder, located in C:\Users\(NAME)\AppData\Local\PocketCrystalLeague, and delete the "config.sav" file. You'll need to change your settings again after launching the game, but that should work!
+
+However, if you're trying to transfer your save files from a different computer, please follow this guide instead: [link]
+
+Sorry for the inconvenience!

@@ -974,36 +974,28 @@ repeat (options_total) {
 			//
 			sc_playsound(sn_click,50,false,false);
 		}
-		else if mouse_check_button(mb_left) or mouse_check_button(mb_right) {
+		else if mouse_check_button(mb_left) or mouse_check_button(mb_right) or mouse_wheel_up() or mouse_wheel_down() {
 			if i=opt_music {
-				if mouse_check_button(mb_left) and option_state[i]<100 {
+				if (mouse_check_button(mb_left) or mouse_wheel_up()) and option_state[i]<100 {
 					option_state[i]++;
 				}
-				else if mouse_check_button(mb_right) and option_state[i]>0 {
+				else if (mouse_check_button(mb_right) or mouse_wheel_down()) and option_state[i]>0 {
 					option_state[i]--;
 				}
 				//still plays at volume 0 to keep the beat animations
 				audio_sound_gain(ms_main,(option_state[i]/100),0);
 				audio_sound_gain(ms_league,(option_state[i]/100),0);
 			}
-			else if i=opt_sound {
-				if mouse_check_button(mb_left) and option_state[i]<100 {
-					sc_playsound(sn_click,50,false,false);
+			else if i=opt_sound or i=opt_edge {
+				if (mouse_check_button(mb_left) or mouse_wheel_up()) and option_state[i]<100 {
 					option_state[i]++;
 				}
-				else if mouse_check_button(mb_right) and option_state[i]>0 {
-					sc_playsound(sn_click,50,false,false);
+				else if (mouse_check_button(mb_right) or mouse_wheel_down()) and option_state[i]>0 {
 					option_state[i]--;
 				}
 			}
-			else if i=opt_edge {
-				if mouse_check_button(mb_left) and option_state[i]<100 {
-					option_state[i]++;
-				}
-				else if mouse_check_button(mb_right) and option_state[i]>0 {
-					option_state[i]--;
-				}
-			}
+			//
+			if i=opt_sound or mouse_wheel_up() or mouse_wheel_down() { sc_playsound(sn_click,50,false,false); }
 		}
 	}
 	else { option_focus[i]=false; }
@@ -1042,31 +1034,31 @@ var i=0;
 repeat (colorsetup_total) {
 	if mouse_x>=colorsetup_r_x[i] and mouse_y>=colorsetup_y[i]+2 and
 	mouse_x<=colorsetup_r_x[i]+string_width("R " + string(colorsetup_r[i])) and mouse_y<=colorsetup_y[i]+10 and cursor_hide=false {
-		if mouse_check_button_pressed(mb_left) or mouse_check_button_pressed(mb_right) { sc_playsound(sn_click,50,false,false); }
+		if mouse_check_button_pressed(mb_left) or mouse_check_button_pressed(mb_right) or mouse_wheel_up() or mouse_wheel_down() { sc_playsound(sn_click,50,false,false); }
 		mouse_cursor=1;
 		colorsetup_focus_r[i]=true;
-		if mouse_check_button(mb_left) and colorsetup_r[i]<255 { colorsetup_r[i]++; }
-		else if mouse_check_button(mb_right) and colorsetup_r[i]>40 { colorsetup_r[i]--; }
+		if (mouse_check_button(mb_left) or mouse_wheel_up()) and colorsetup_r[i]<255 { colorsetup_r[i]++; }
+		else if (mouse_check_button(mb_right) or mouse_wheel_down()) and colorsetup_r[i]>40 { colorsetup_r[i]--; }
 	}
 	else { colorsetup_focus_r[i]=false; }
 	//
 	if mouse_x>=colorsetup_g_x[i] and mouse_y>=colorsetup_y[i]+2 and
 	mouse_x<=colorsetup_g_x[i]+string_width("G " + string(colorsetup_g[i])) and mouse_y<=colorsetup_y[i]+10 and cursor_hide=false {
-		if mouse_check_button_pressed(mb_left) or mouse_check_button_pressed(mb_right) { sc_playsound(sn_click,50,false,false); }
+		if mouse_check_button_pressed(mb_left) or mouse_check_button_pressed(mb_right) or mouse_wheel_up() or mouse_wheel_down() { sc_playsound(sn_click,50,false,false); }
 		mouse_cursor=1;
 		colorsetup_focus_g[i]=true;
-		if mouse_check_button(mb_left) and colorsetup_g[i]<255 { colorsetup_g[i]++; }
-		else if mouse_check_button(mb_right) and colorsetup_g[i]>40 { colorsetup_g[i]--; }
+		if (mouse_check_button(mb_left) or mouse_wheel_up()) and colorsetup_g[i]<255 { colorsetup_g[i]++; }
+		else if (mouse_check_button(mb_right) or mouse_wheel_down()) and colorsetup_g[i]>40 { colorsetup_g[i]--; }
 	}
 	else { colorsetup_focus_g[i]=false; }
 	//
 	if mouse_x>=colorsetup_b_x[i] and mouse_y>=colorsetup_y[i]+2 and
 	mouse_x<=colorsetup_b_x[i]+string_width("B " + string(colorsetup_b[i])) and mouse_y<=colorsetup_y[i]+10 and cursor_hide=false {
-		if mouse_check_button_pressed(mb_left) or mouse_check_button_pressed(mb_right) { sc_playsound(sn_click,50,false,false); }
+		if mouse_check_button_pressed(mb_left) or mouse_check_button_pressed(mb_right) or mouse_wheel_up() or mouse_wheel_down() { sc_playsound(sn_click,50,false,false); }
 		mouse_cursor=1;
 		colorsetup_focus_b[i]=true;
-		if mouse_check_button(mb_left) and colorsetup_b[i]<255 { colorsetup_b[i]++; }
-		else if mouse_check_button(mb_right) and colorsetup_b[i]>40 { colorsetup_b[i]--; }
+		if (mouse_check_button(mb_left) or mouse_wheel_up()) and colorsetup_b[i]<255 { colorsetup_b[i]++; }
+		else if (mouse_check_button(mb_right) or mouse_wheel_down()) and colorsetup_b[i]>40 { colorsetup_b[i]--; }
 	}
 	else { colorsetup_focus_b[i]=false; }
 	//

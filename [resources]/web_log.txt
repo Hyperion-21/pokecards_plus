@@ -1,4 +1,8 @@
-[v1.2.0.0]
+[v1.2.0.1] - May 26, 2022
+
+- Scroll wheel can now also be used to adjust some options.
+
+[v1.2.0.0] - May 24, 2022
 
 - Enigma Berries can now be used as wildcards.
 - Slightly improved AI and modified all trainer decks to fit these changes.
@@ -8,7 +12,7 @@
 - Selling cards is now faster.
 - Some other minor improvements.
 
-[v1.1.0.0]
+[v1.1.0.0] - May 24, 2022
 
 - Type advantage attacks now deal 1 extra point of damage every four levels.
 - Adaptability now adds 2 extra points of damage on top of the already existing type-advantage bonus.
@@ -19,14 +23,14 @@
 - The "Exit Battle" button is now faster.
 - Some other minor improvements.
 
-[v1.0.1.1]
+[v1.0.1.1] - May 21, 2022
 
 - Adding Glyphs to cards now lets you know what Berry cost will be added to the card as well.
 
-[v1.0.1.0]
+[v1.0.1.0] - May 21, 2022
 
 - Slightly lowered difficulty of random battles right after defeating a Gym Leader.
-- The up/down arrow keys can now also be used to set a specific number of berries in your deck.
+- The up/down arrow keys (or W/S keys) can now also be used to set a specific number of berries in your deck.
 - Made in-game description for Tributes a bit more clear.
 - Some other minor improvements.
 
