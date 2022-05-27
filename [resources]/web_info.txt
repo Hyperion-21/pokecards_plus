@@ -33,3 +33,15 @@ Keyboard Shortcuts:
 - Tab: sort cards in hand during battle.
 - Left/Right arrow keys (or A/D keys): navigate menus (options/deck) and draw cards during battle.
 - Up/Down arrow keys (or W/S keys): select number of berries when building deck.
+
+——————————
+
+Related Discord Servers:
+
+- Pocket Crystal Discord: https://discord.gg/yNJUFT3a
+Fan-made server for discussion about the game.
+
+- Amie Dungeon (+18): https://discord.gg/vJENUPR
+Unrelated furry/poke game, but with a dedicated channel for PCL discussion. NSFW.
+
+If you have a Discord server/channel related to the game that you want me to include here, let me know!
