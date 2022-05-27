@@ -56,7 +56,7 @@ with (argument1) {
 				var damage_dealt=card_atk-card_target.card_def, damage_extra_dealt=0;
 				if damage_dealt<0 { damage_dealt=0; }
 				if sc_type_bonus(card_type_a,card_type_b,card_target.card_type_a,card_target.card_type_b)=true {
-					damage_extra_dealt=ceil(card_level/4);
+					damage_extra_dealt=ceil(card_level/advantage_level_interval);
 					if sc_glyph_check(id,ref_glyph_adaptability,true) { damage_extra_dealt+=2; } //glyph: adaptability
 				}
 				damage_dealt+=damage_extra_dealt;

@@ -29,6 +29,8 @@ else if trash=false {
 				var def_diff=ob_event.levelup_new_def-occupy_id.card_full_def;
 				//
 				var levelup_info_text="+" + string(hp_diff) + " HP / +" + string(atk_diff) + " ATK / +" + string(def_diff) + " DEF";
+				if occupy_id.card_level mod advantage_level_interval = 0 {
+					levelup_info_text=levelup_info_text + " / +1 TYPE BONUS"; }
 				sc_drawtext(x+28,y-20,levelup_info_text,global.color_card_mid,global.color_black,1,1,0,-1);
 			}
 		}

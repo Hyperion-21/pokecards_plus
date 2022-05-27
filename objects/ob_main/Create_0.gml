@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v1.2.2.0"
+#macro game_version "v1.2.3.0"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -66,6 +66,7 @@ menu_back_options_hover=false;
 menu_back_deck_hover=false;
 //
 card_level_player_limit=0;
+card_level_spawn_min=0;
 card_level_spawn_limit=0;
 card_level_enemy_min=0;
 card_level_enemy_limit=0;
@@ -107,7 +108,7 @@ textbox_char_pos=0;
 #macro money_payout_penalty_multiplier 10
 #macro money_badge_base 200 //200 300 400 500 600 700 800 900 1000 (minimum should be enough for a card pack)
 #macro money_badge_area_bonus 100
-#macro sell_value_multiplier 4
+#macro sell_value_multiplier 2.5 //bankers rounding
 #macro tutorial_payout 400
 //
 battle_hp[0]=5; //10
@@ -129,6 +130,7 @@ money_payout=0;
 effect_money_error=0;
 event_cost_standby=0;
 event_cost_standby_levelup=0;
+//
 #macro ref_event_battle 0
 #macro ref_event_payout 1
 #macro ref_event_freecard 2
@@ -164,6 +166,7 @@ event_cost[ref_event_evolution]=500;
 event_cost[ref_event_glyph]=300;
 //
 #macro innate_max 4 //failure chance uses manual values in ob_event, enemy innate uses manual values in ob_card, sc_enemy_deck uses manual values
+#macro advantage_level_interval 4
 current_glyph_add=-1;
 tooltip_text="";
 tooltip_lines=0;

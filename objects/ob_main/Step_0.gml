@@ -58,6 +58,7 @@ else if zone_first_lap=false { roadmap_current_max=roadmap_outskirts_max; } //ro
 //
 card_level_player_limit=latest_zone+2; //2 3 4 5 6 7 8 9 (10), max level increase victory message for all gyms
 if card_level_player_limit>10 { card_level_player_limit=10; }
+card_level_spawn_min=floor(latest_zone/3)+1; //1 1 1 2 2 2 3 3 (3)
 card_level_spawn_limit=floor((latest_zone+1)/1.5)+1; //1 2 3 3 4 5 5 6 (7)
 //
 card_level_enemy_min=area_zone; //1 1 2 3 4 5 6 7 (8)
