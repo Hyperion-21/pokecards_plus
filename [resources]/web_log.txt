@@ -1,12 +1,16 @@
+[v1.2.3.1] - May 28, 2022
+
+- A couple of minor visual improvements and clean-up.
+
+This will be the last update for the time being, unless any other changes are required.
+Thank you for playing, and I'm looking forward to expanding the game in the future, if possible!
+
 [v1.2.3.0] - May 27, 2022
 
 - Slightly raised drop chance for Legendary/Mythical cards.
 - Added level floor for cards you get in Card Packs as you progress through the game.
 - Readjusted card selling price to compensate.
 - Some other minor improvements.
-
-This will be the last update for the time being, unless any other changes are required.
-Thank you for playing, and I'm looking forward to expanding the game in the future, if possible!
 
 [v1.2.2.0] - May 27, 2022
 

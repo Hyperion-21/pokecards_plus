@@ -116,9 +116,11 @@ if card_cat=0 and card_face=true and in_view=true {
 	}
 	//
 	//STATS
+	if card_environment=false { var var_level_rank=ceil(card_level/advantage_level_interval); } else { var var_level_rank=0; }
+	draw_sprite_general(sp_sheet,0,16*17,16*var_level_rank,49,2,draw_x+4,draw_y+56,1,1,0,c_white,c_white,c_white,c_white,1);
+	//
 	draw_set_font(fn_m3x6);
 	draw_set_halign(fa_center);
-	draw_sprite_general(sp_sheet,0,16*17,16*(ceil(card_level/advantage_level_interval)-1),49,2,draw_x+4,draw_y+56,1,1,0,c_white,c_white,c_white,c_white,1);
 	sc_drawtext(draw_x+29,draw_y+39,card_name,global.color_white,global.color_black,1,(1/1.5),0,-1);
 	sc_drawtext(draw_x+29,draw_y+50,"lv " + string(card_level),global.color_gray,global.color_black,1,(1/1.7),0,-1);
 	//sc_drawtext(draw_x+29,draw_y+4,string(card_value) + "\n" + string(card_form_value) + "\n" + string(card_serial),c_aqua,global.color_black,1,1,0,-1);
