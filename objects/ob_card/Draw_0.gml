@@ -117,7 +117,7 @@ if card_cat=0 and card_face=true and in_view=true {
 	//
 	//STATS
 	if card_environment=false { var var_level_rank=ceil(card_level/advantage_level_interval); } else { var var_level_rank=0; }
-	draw_sprite_general(sp_sheet,0,16*17,16*var_level_rank,49,2,draw_x+4,draw_y+56,1,1,0,c_white,c_white,c_white,c_white,1);
+	draw_sprite_general(sp_sheet,0,16*17,16*var_level_rank,49,2,draw_x+4,draw_y+56,1,1,0,card_color,card_color,card_color,card_color,1);
 	//
 	draw_set_font(fn_m3x6);
 	draw_set_halign(fa_center);
