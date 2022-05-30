@@ -1,10 +1,14 @@
+[v1.2.4.1] - May 30, 2022
+
+- Bug fix: fixed issue related to event progression.
+
+This will be the last update for the time being (I know, I keep saying that!), unless any other changes are required.
+Thank you for playing, and I'm looking forward to expanding the game in the future, if possible!
+
 [v1.2.4.0] - May 28, 2022
 
 - Slightly modified all trainer decks (including Gym Leaders and Crystal League).
 - Some other minor (visual) improvements.
-
-This will be the last update for the time being (I know, I keep saying that!), unless any other changes are required.
-Thank you for playing, and I'm looking forward to expanding the game in the future, if possible!
 
 [v1.2.3.1] - May 28, 2022
 

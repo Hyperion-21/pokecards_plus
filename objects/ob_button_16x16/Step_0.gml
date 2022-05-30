@@ -71,7 +71,7 @@ else { //all other buttons
 				}
 			}
 			else if instance_exists(ob_event) {
-				if button_id=0 and (ob_event.event_applied=false or ob_event.event_kind=ref_event_levelup) {
+				if button_id=0 and ob_event.event_cancelled=false and (ob_event.event_applied=false or ob_event.event_kind=ref_event_levelup) {
 					ob_event.apply_event=true;
 				}
 				else if button_id=1 {
