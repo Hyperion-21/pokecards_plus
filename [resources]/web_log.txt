@@ -1,9 +1,13 @@
-[v1.2.4.1] - May 30, 2022
+[v1.2.4.2] - May 31, 2022
 
-- Bug fix: fixed issue related to event progression.
+- Bug fix: fixed rare crash when selecting cards during an event.
 
 This will be the last update for the time being (I know, I keep saying that!), unless any other changes are required.
 Thank you for playing, and I'm looking forward to expanding the game in the future, if possible!
+
+[v1.2.4.1] - May 30, 2022
+
+- Bug fix: fixed issue related to event progression.
 
 [v1.2.4.0] - May 28, 2022
 

@@ -173,7 +173,7 @@ if card_trash=false and card_enemy=false and reference_id=ob_control {
 else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height) or auto_turn_add=true) and reference_id=ob_event {
 	ob_main.mouse_cursor=1;
 	//
-	if ((mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false) or auto_turn_add=true) and y=potential_y {
+	if ((mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false) or auto_turn_add=true) and y=potential_y and x=potential_x {
 		sc_playsound(sn_card,50,false,false);
 		//
 		if ob_event.show_deck=false {
