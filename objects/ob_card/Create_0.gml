@@ -278,8 +278,8 @@ else if card_cat=1 {
 	//
 	if random_card=true {
 		var card_berry_chance=irandom(99);
-		if card_berry_chance<90 { card_id=choose(3000,3001,3002); }
-		else { card_id=3003; } //10% (same as extra enigma berries in common enemy decks in sc_enemy_berry_deck)
+		if card_berry_chance<85 { card_id=choose(3000,3001,3002); }
+		else { card_id=3003; } //15% (keep in mind number of extra enigma berries in enemy decks in sc_enemy_berry_deck)
 	}
 	//
 	switch (card_id) {

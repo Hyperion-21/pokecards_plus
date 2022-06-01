@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v1.2.4.2"
+#macro game_version "v1.2.5.0"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -99,12 +99,12 @@ textbox_char_pos=0;
 #macro maindeck_total_max 2000
 #macro berrydeck_total_max 200 //per berry
 //
-#macro money_prize_power_base 21.54 //100 161 231 310 395 487 586 690 800 (penalty: 20-800)
-#macro money_prize_power_area_bonus 8.08
+#macro money_prize_power_base 24.32 //120 189 268 355 450 553 662 778 900 (penalty: 40-900)
+#macro money_prize_power_area_bonus 8.61
 #macro money_prize_power_n 1.5
 #macro money_prize_penalty_multiplier 10
-#macro money_payout_base 80 //80 120 160 200 240 280 320 360 400 (penalty: 10!-400)
-#macro money_payout_area_bonus 40
+#macro money_payout_base 100 //100 150 200 250 300 350 400 450 500 (penalty: 20-500)
+#macro money_payout_area_bonus 50
 #macro money_payout_penalty_multiplier 10
 #macro money_badge_base 200 //200 300 400 500 600 700 800 900 1000 (minimum should be enough for a card pack)
 #macro money_badge_area_bonus 100

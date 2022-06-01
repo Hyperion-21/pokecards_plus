@@ -90,7 +90,6 @@ maindeck_size_min=6+area_zone*3; //6 9 12 15 18 21 24 27 (30)
 maindeck_size_min_full=6+latest_zone*3;
 //
 money_payout=money_payout_base+money_payout_area_bonus*area_zone-money_payout_penalty_multiplier*(latest_zone-area_zone);
-if money_payout<10 { money_payout=10; }
 money_prize_badge=money_badge_base+money_badge_area_bonus*area_zone;
 money_prize_min=round(0.9*(round(power(money_prize_power_base+money_prize_power_area_bonus*area_zone,money_prize_power_n))-money_prize_penalty_multiplier*(latest_zone-area_zone)));
 money_prize_max=round(1.1*(round(power(money_prize_power_base+money_prize_power_area_bonus*area_zone,money_prize_power_n))-money_prize_penalty_multiplier*(latest_zone-area_zone)));
