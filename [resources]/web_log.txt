@@ -1,6 +1,7 @@
-[v1.2.5.0] - May 31, 2022
+[v1.2.5.0] - June 1, 2022
 
 - Raised all money rewards (Battles and Payouts).
+- Raised drop chance for Legendary/Mythical cards.
 - Raised drop chance for Enigma Berries.
 
 This will be the last update for the time being (I know, I keep saying that!), unless any other changes are required.

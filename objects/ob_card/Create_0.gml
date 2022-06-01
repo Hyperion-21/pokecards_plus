@@ -64,10 +64,10 @@ if card_cat=0 {
 				card_id=irandom_range(1,normal_poke_id_max);
 				card_innate=1;
 				//
-				if random_group_chance<213 and ob_main.latest_zone>0 { choose_id_enigma=true; } //0.12% enigma
-				else if random_group_chance<463 and ob_main.latest_zone>0 { choose_id_stage_2=true; } //2.5% stage 2
-				else if random_group_chance<513 and ob_main.latest_zone>0 { choose_id_stage_3=true; } //0.5% stage 3
-				else { choose_id_normal=true; } //94.87% stage 1 or baby
+				if random_group_chance<216 and ob_main.latest_zone>0 { choose_id_enigma=true; } //0.15% enigma
+				else if random_group_chance<466 and ob_main.latest_zone>0 { choose_id_stage_2=true; } //2.5% stage 2
+				else if random_group_chance<516 and ob_main.latest_zone>0 { choose_id_stage_3=true; } //0.5% stage 3
+				else { choose_id_normal=true; } //94.84% stage 1 or baby
 				//
 				var random_id_chance=irandom(99); if random_id_chance<50 { allow_id_pseudo=true; } //50% pseudo allowed
 				var random_id_chance=irandom(99); if random_id_chance<50 { allow_id_fossil=true; } //50% fossil allowed
