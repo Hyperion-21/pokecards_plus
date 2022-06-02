@@ -257,6 +257,9 @@ turn_num=1;
 battler_turn=0; //0 stand-by, 1 player, 2 enemy
 enemy_turn_timer=0;
 //
+auto_attack_slot=0;
+auto_attack_timer=0;
+//
 card_draw_points=0;
 card_draw_click=false; //to avoid drawing multiple cards with a single click when their number in deck is in descending order
 enemycard_draw_points=0;

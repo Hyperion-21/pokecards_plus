@@ -31,6 +31,7 @@ Keyboard Shortcuts:
 
 - Spacebar: end turn during battle.
 - Tab: sort cards in hand during battle.
+- Up arrow key (or W key): hold down to attack with all cards during battle.
 - Left/Right arrow keys (or A/D keys): navigate menus (options/deck) and draw cards during battle.
 - Up/Down arrow keys (or W/S keys): select number of berries when building deck.
 

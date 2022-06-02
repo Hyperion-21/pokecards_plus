@@ -14,7 +14,7 @@ do {
 			for (var i=0; i<=4; i++;) {
 				card_space_checked[i]=true;
 			}
-			enemy_turn_timer=8;
+			enemy_turn_timer=8; //same as auto-attack
 		}
 	}
 	//

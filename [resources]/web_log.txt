@@ -1,11 +1,16 @@
+[v1.2.6.0] - June 2, 2022
+
+- You can now hold down the up arrow key (or W key) during battle to attack with all your cards.
+- Some other minor improvements.
+
+This will be the last update for the time being (I know, I keep saying that!), unless any other changes are required.
+Thank you for playing, and I'm looking forward to expanding the game in the future, if possible!
+
 [v1.2.5.0] - June 1, 2022
 
 - Raised all money rewards (Battles and Payouts).
 - Raised drop chance for Legendary/Mythical cards.
 - Raised drop chance for Enigma Berries.
-
-This will be the last update for the time being (I know, I keep saying that!), unless any other changes are required.
-Thank you for playing, and I'm looking forward to expanding the game in the future, if possible!
 
 [v1.2.4.2] - May 31, 2022
 

@@ -344,6 +344,31 @@ if button_sorthand=true and card_hold=-1 {
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+if (keyboard_check(vk_up) or keyboard_check(ord("W"))) and !mouse_check_button(mb_left) and battler_turn=1 and card_hold=-1 and ob_main.cursor_hide=false {
+	if keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W")) { sc_playsound(sn_click,50,false,false); }
+	//
+	if auto_attack_timer>0 { auto_attack_timer--; }
+	//
+	if auto_attack_timer=0 and (ob_main.playing_tutorial=false or (ob_main.playing_tutorial=true and sc_tutorial_conditions(5,-1))) {
+		if turn_num>2 {
+			if card_space_id[auto_attack_slot+5].occupy_id!=-1 and
+			card_space_id[auto_attack_slot+5].occupy_id.already_attacked=false and card_space_id[auto_attack_slot+5].occupy_id.card_environment=false {
+				sc_card_attack(true,card_space_id[auto_attack_slot+5].occupy_id);
+				auto_attack_timer=8; //same as enemy
+			}
+			if auto_attack_slot<=3 { auto_attack_slot++; }
+		}
+		else {
+			first_turn_attack_warning=true;
+			tooltip_timer=tooltip_timer_max;
+		}
+	}
+}
+else {
+	auto_attack_slot=0;
+	auto_attack_timer=0;
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 if keyboard_check_pressed(vk_space) and !mouse_check_button(mb_left) and battler_turn=1 and card_hold=-1 and ob_main.cursor_hide=false {
 	sc_playsound(sn_click,50,false,false);
 	//
