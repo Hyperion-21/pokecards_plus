@@ -143,6 +143,12 @@ if card_cat=0 {
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		sc_pokelist();
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
+		// SAVE COMPATIBILITY (v1.3.0.1)
+		if random_card=false {
+			if (card_id=109 or card_id=110) and card_glyph_a>=glyph_common_amount { card_glyph_a=ref_glyph_mist; } //koffing, weezing
+			else if card_id=132 and card_glyph_a!=ref_glyph_transform { card_glyph_a=ref_glyph_transform; } //ditto
+		}
+		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		if random_card=true or card_glyph_a=-2 or card_glyph_b=-2 or card_glyph_c=-2 {
 			if card_glyph_a=-2 { card_glyph_a=-1; } //in case they were -2, which is used for semi-random enemy cards
 			if card_glyph_b=-2 { card_glyph_b=-1; }

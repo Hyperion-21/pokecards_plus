@@ -1,3 +1,7 @@
+[v1.3.0.1] - June 8, 2022
+
+- Big fix: fixed issue related to unique Glyphs (Mist and Transform).
+
 [v1.3.0.0] - June 7, 2022
 
 - Added new Glyph: "Recovery" (recovers 1 HP at the beginning of each active turn).
