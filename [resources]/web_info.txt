@@ -2,7 +2,7 @@ PCL is a Poke-card game, although completely different to the Official Trading C
 
 After choosing a starter deck, your goal is to travel through Kyoumu, challenging each of the Gym Leaders from the eight major cities in the region, building up your team to reach the ultimate goal, the Crystal League. Along the way, you'll be presented with numerous choices to expand your deck, strengthen your cards, give them unique special abilities, and battle other trainers.
 
-The current release includes all of gens 1 and 2 (but with corresponding Fairy types). The game may be expanded with more content and generations in the future, but there are no plans currently for it. It is fully playable in its current state.
+The current release includes all of gens 1 and 2 (but with corresponding Fairy types). The game may be expanded with more content in the future, but there are currently no plans for any further updates. It is fully playable in its current state.
 Balancing can be a bit tricky at times, but I'm satisfied with the current level of difficulty, overall. The game is not supposed to be too easy, but challenging to a degree. Nevertheless, balance updates may happen if/when needed.
 
 This project was done ultimately just for fun, and I'm not getting any kind of revenue or payment from it— please Nintendo, let it be!
@@ -39,7 +39,7 @@ Keyboard Shortcuts:
 
 Related Discord Servers:
 
-- Pocket Crystal Discord: https://discord.gg/yNJUFT3a
+- Pocket Crystal Discord: https://discord.gg/D2rxnBsN
 Fan-made server for discussion about the game.
 
 If you have a Discord server/channel related to the game that you want me to include here (as long as it's SFW), let me know!

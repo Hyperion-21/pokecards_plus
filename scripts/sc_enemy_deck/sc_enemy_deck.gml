@@ -254,7 +254,7 @@ else if argument0=201 { //GYM 2: CAMMIE (GRASS/ground/rock)
 	enemy_type_chance[10]=50; //rock
 	//
 	for (var i=0; i<enemycard_maindeck_total; i++;) {
-		if i<1 { sc_enemy_deck_addcard(i,192,4,ref_glyph_bulwark,-2,-2,-1,-1); } //SUNFLORA, LV 4 (>MAX)
+		if i<1 { sc_enemy_deck_addcard(i,192,4,ref_glyph_recovery,-2,-2,-1,-1); } //SUNFLORA, LV 4 (>MAX)
 		else if i<7 { sc_enemy_deck_addcard(i,-1,3,-2,-2,-2,-1,-1); } //(6) LV 3
 		else if i<12 { sc_enemy_deck_addcard(i,-1,2,-2,-2,-2,-1,-1); } //(5) LV 2
 		else if i<14 { sc_enemy_deck_addcard(i,-1,1,-2,-2,-2,-1,-1); } //(2) LV 1

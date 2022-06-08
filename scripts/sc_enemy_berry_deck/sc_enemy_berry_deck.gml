@@ -1,6 +1,7 @@
 function sc_enemy_berry_deck() {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 enemycard_berrydeck_total=enemy_deck_fullcost[0]*2+enemy_deck_fullcost[1]*2+enemy_deck_fullcost[2]*2+enemy_deck_fullcost[3]*2; //none over berrydeck_total_max
+if enemycard_berrydeck_total=0 { enemycard_berrydeck_total=1; }
 //
 if ob_main.playing_gym=true { enemycard_berrydeck_total=round(enemycard_berrydeck_total*1.2); } //+20%
 else if ob_main.playing_elite=true { enemycard_berrydeck_total=round(enemycard_berrydeck_total*1.25); } //+25%

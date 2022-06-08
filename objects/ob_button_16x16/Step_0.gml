@@ -25,6 +25,25 @@ if instance_exists(ob_control) and button_id=2 { //exit battle
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+else if instance_exists(ob_control) and button_id=4 { //auto-attack
+	if mouse_x>=x and mouse_y>=y+2 and mouse_x<x+sprite_width and mouse_y<y+sprite_height-2 and ob_main.mouse_cursor=0 {
+		ob_main.mouse_cursor=1;
+		//
+		if mouse_check_button(mb_left) and ob_main.cursor_hide=false {
+			if mouse_check_button_pressed(mb_left) { sc_playsound(sn_click,50,false,false); }
+			//
+			button_state=1;
+		}
+		else { button_state=0; }
+	}
+	else { button_state=0; }
+	//
+	if ob_main.cursor_hide=false and mouse_x>=x and mouse_y>=y+2 and mouse_x<x+sprite_width and mouse_y<y+sprite_height-2 {
+		ob_control.tooltip_text="Attack with all cards (hold).";
+		ob_control.tooltip_lines=1;
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 else if button_id=100 or button_id=102 { //exit game & delete save data
 	if mouse_x>=x and mouse_y>=y+2 and mouse_x<x+sprite_width and mouse_y<y+sprite_height-2 and ob_main.mouse_cursor=0 {
 		ob_main.mouse_cursor=1;
@@ -142,6 +161,13 @@ else { //all other buttons
 				case 14: ob_deckbuild.tooltip_text="Save deck setup 5."; break;
 			}
 			ob_deckbuild.tooltip_lines=1;
+		}
+		else if instance_exists(ob_control) {
+			switch (button_id) {
+				case 01: ob_control.tooltip_text="Sort cards in hand."; break;
+				case 03: ob_control.tooltip_text="Type-advantage chart."; break;
+			}
+			ob_control.tooltip_lines=1;
 		}
 		else if button_id>=100 {
 			switch (button_id) {

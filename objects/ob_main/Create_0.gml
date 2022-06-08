@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v1.2.6.0"
+#macro game_version "v1.3.0.0"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -171,7 +171,7 @@ current_glyph_add=-1;
 tooltip_text="";
 tooltip_lines=0;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-#macro glyph_common_amount 17
+#macro glyph_common_amount 18
 //
 #macro ref_glyph_lucky 00
 #macro ref_glyph_harvest 01
@@ -190,9 +190,10 @@ tooltip_lines=0;
 #macro ref_glyph_memento 14
 #macro ref_glyph_berserk 15
 #macro ref_glyph_adaptability 16
+#macro ref_glyph_recovery 17
 //
-#macro ref_glyph_mist 17
-#macro ref_glyph_transform 18
+#macro ref_glyph_mist 18
+#macro ref_glyph_transform 19
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 #macro options_total 10
 #macro playericon_max 15

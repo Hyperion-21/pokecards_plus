@@ -1,10 +1,15 @@
+[v1.3.0.0] - June 7, 2022
+
+- Added new Glyph: "Recovery" (recovers 1 HP at the beginning of each active turn).
+- Added clickable button (hold) to attack with all cards during battle.
+- Improved Glyph distribution for all trainer decks.
+- Amount of berries needed for current deck setup is now visible in Deck menu.
+- Some other minor improvements (including bug fixes).
+
 [v1.2.6.0] - June 2, 2022
 
 - You can now hold down the up arrow key (or W key) during battle to attack with all your cards.
 - Some other minor improvements.
-
-This will be the last update for the time being (I know, I keep saying that!), unless any other changes are required.
-Thank you for playing, and I'm looking forward to expanding the game in the future, if possible!
 
 [v1.2.5.0] - June 1, 2022
 
@@ -81,7 +86,7 @@ Thank you for playing, and I'm looking forward to expanding the game in the futu
 - Made in-game description for Tributes a bit more clear.
 - Some other minor improvements.
 
-[v1.0.0.0]
+[v1.0.0.0] - May 18, 2022
 
 Pocket Crystal League has been officially released!
 

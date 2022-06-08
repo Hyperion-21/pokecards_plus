@@ -157,17 +157,18 @@ if card_cat=0 {
 				else if card_glyph_chance<25 { card_glyph_total=1; } //2%
 				//
 				if card_glyph_total>=1 and card_glyph_a=-1 {
-					card_glyph_a=sc_glyph_random();
+					card_glyph_a=sc_glyph_random(card_environment);
 				}
 				if card_glyph_total>=2 and card_glyph_b=-1 {
 					do {
-						card_glyph_b=sc_glyph_random();
+						card_glyph_b=sc_glyph_random(card_environment);
 					} until (card_glyph_b!=card_glyph_a);
 				}
 			}
 			else {
 				var card_glyph_chance=irandom(9999), card_glyph_total=0;
-				if ob_main.playing_gym=true or ob_main.playing_elite=true or ob_main.playing_champion=true {
+				if card_environment=true { var card_glyph_chance_limit=2500+625*ob_main.area_zone; } //25%, 31.25%, 37.5%, 43.75%, 50%, 56.25%, 62.5%, 68.75%, (75%)
+				else if ob_main.playing_gym=true or ob_main.playing_elite=true or ob_main.playing_champion=true {
 					var card_glyph_chance_limit=1500+225*ob_main.area_zone; } //15%, 17.25%, 19.5%, 21.75%, 24%, 26.25%, 28.5%, 30.75%, (33%)
 				else { var card_glyph_chance_limit=980+190*ob_main.area_zone; } //9.8%, 11.7%, 13.6%, 15.5%, 17.4%, 19.3%, 21.2%, 23.1%, (25%)
 				//
@@ -178,16 +179,16 @@ if card_cat=0 {
 					else if card_glyph_chance<100 { card_glyph_total=1; } //50%
 					//
 					if card_glyph_total>=1 and card_glyph_a=-1 {
-						card_glyph_a=sc_glyph_random();
+						card_glyph_a=sc_glyph_random(card_environment);
 					}
 					if card_glyph_total>=2 and card_glyph_b=-1 {
 						do {
-							card_glyph_b=sc_glyph_random();
+							card_glyph_b=sc_glyph_random(card_environment);
 						} until (card_glyph_b!=card_glyph_a);
 					}
 					if card_glyph_total=3 and card_glyph_c=-1 {
 						do {
-							card_glyph_c=sc_glyph_random();
+							card_glyph_c=sc_glyph_random(card_environment);
 						} until (card_glyph_c!=card_glyph_a and card_glyph_c!=card_glyph_b);
 					}
 				}

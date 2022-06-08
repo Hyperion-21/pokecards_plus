@@ -23,6 +23,7 @@ if instance_exists(ob_control) {
 	else if button_id=1 { draw_sprite_general(sp_sheet,0,16*button_id,16*(7+(ceil(button_state)*2)),16,16,x,y,1,1,0,c_white,c_white,c_white,c_white,1); }
 	else if button_id=2 { draw_sprite_general(sp_sheet,0,16*button_id,16*(7+(ceil(button_state)*2)),16,16,x,y,1,1,0,c_white,c_white,c_white,c_white,0.5); }
 	else if button_id=3 { draw_sprite_general(sp_sheet,0,16*2,16*(8+(ceil(button_state)*2)),16,16,x,y,1,1,0,c_white,c_white,c_white,c_white,1); }
+	else if button_id=4 { draw_sprite_general(sp_sheet,0,16*30,16*(7+ceil(button_state)),16,16,x,y,1,1,0,c_white,c_white,c_white,c_white,1); }
 }
 else if instance_exists(ob_event) {
 	if button_id=0 and (ob_event.event_applied=false or ob_event.event_kind=ref_event_levelup) {

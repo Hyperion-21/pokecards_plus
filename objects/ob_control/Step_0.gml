@@ -344,7 +344,8 @@ if button_sorthand=true and card_hold=-1 {
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if (keyboard_check(vk_up) or keyboard_check(ord("W"))) and !mouse_check_button(mb_left) and battler_turn=1 and card_hold=-1 and ob_main.cursor_hide=false {
+if (((keyboard_check(vk_up) or keyboard_check(ord("W"))) and !mouse_check_button(mb_left)) or (button_autoattack_id.button_state=1)) and
+battler_turn=1 and card_hold=-1 and ob_main.cursor_hide=false {
 	if keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W")) { sc_playsound(sn_click,50,false,false); }
 	//
 	if auto_attack_timer>0 { auto_attack_timer--; }
@@ -384,12 +385,40 @@ if ob_main.playing_tutorial=false or (ob_main.playing_tutorial=true and (sc_tuto
 			else { enemycard_draw_points+=5; }
 			card_draw_points=0;
 			enemy_turn_timer=irandom_range(30,60);
+			//
+			for (var i=0; i<=4; i++;) {
+				if card_space_id[i].occupy_id!=-1 {
+					if sc_glyph_check(card_space_id[i].occupy_id,ref_glyph_recovery,true) { //glyph: recovery
+						card_space_id[i].occupy_id.card_hp++;
+						if card_space_id[i].occupy_id.card_hp>card_space_id[i].occupy_id.card_full_hp {
+							card_space_id[i].occupy_id.card_hp=card_space_id[i].occupy_id.card_full_hp; }
+						var heal_num_id=instance_create_layer(card_space_id[i].occupy_id.x+29,card_space_id[i].occupy_id.y+18+15,"instances",ob_damage_num);
+						heal_num_id.damage_num=1;
+						heal_num_id.text_alpha=heal_num_id.text_alpha_full;
+						heal_num_id.text_color=global.color_fullhp;
+					}
+				}
+			}
 		}
 		else if battler_turn=2 {
 			battler_turn=1;
 			if turn_num>1 { card_draw_points+=2; }
 			else { card_draw_points+=5; }
 			enemycard_draw_points=0;
+			//
+			for (var i=5; i<=9; i++;) {
+				if card_space_id[i].occupy_id!=-1 {
+					if sc_glyph_check(card_space_id[i].occupy_id,ref_glyph_recovery,true) { //glyph: recovery
+						card_space_id[i].occupy_id.card_hp++;
+						if card_space_id[i].occupy_id.card_hp>card_space_id[i].occupy_id.card_full_hp {
+							card_space_id[i].occupy_id.card_hp=card_space_id[i].occupy_id.card_full_hp; }
+						var heal_num_id=instance_create_layer(card_space_id[i].occupy_id.x+29,card_space_id[i].occupy_id.y+18+15,"instances",ob_damage_num);
+						heal_num_id.damage_num=1;
+						heal_num_id.text_alpha=heal_num_id.text_alpha_full;
+						heal_num_id.text_color=global.color_fullhp;
+					}
+				}
+			}
 		}
 		//
 		turn_num++;

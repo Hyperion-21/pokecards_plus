@@ -200,6 +200,17 @@ repeat (4) {
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+// NEEDED BERRY COUNT
+for (var i=0; i<=3; i++;) {
+	berries_needed_deck[i]=0;
+}
+//
+for (var i=0; i<deck_build_used_total; i++;) {
+	for (var ii=0; ii<=3; ii++;) {
+		berries_needed_deck[ii]+=deck_card_used[i].card_cost_total_type[ii];
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
 // SCROLL BARS (ob_event & ob_deckbuild)
 if mouse_y>=screen_main_y+stored_y and mouse_y<screen_main_y+stored_y+80+8 and ob_main.cursor_hide=false {
 	if mouse_wheel_up() {

@@ -26,6 +26,11 @@ draw_set_halign(fa_left);
 if deck_build_used_total>0 {
 	var var_text="Deck: " + string(deck_build_used_total) + "/" + string(ob_main.maindeck_size_max);
 	sc_drawtext(screen_deck_x+6,screen_main_y+used_y-21,var_text,global.color_white,global.color_black,1,1,0,-1);
+	//
+	var var_text_berries=" (x" + string(berries_needed_deck[0]) + " Oran, x" + string(berries_needed_deck[1]) + " Leppa, x" + string(berries_needed_deck[2]) + " Lum";
+	if berries_needed_deck[3]>0 { var_text_berries=var_text_berries + ", x" + string(berries_needed_deck[3]) + " Enigma)."; }
+	else { var_text_berries=var_text_berries + ")."; }
+	sc_drawtext(screen_deck_x+6+string_width(var_text),screen_main_y+used_y-21,var_text_berries,global.color_white,global.color_black,0.5,0.5,0,-1);
 }
 //
 if deck_build_all_total<=ob_main.maindeck_size_min_full and deck_build_all_total>0 {

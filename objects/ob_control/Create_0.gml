@@ -24,6 +24,8 @@ if ob_main.playing_tutorial=false {
 }
 button_create=instance_create_layer(cam_x+76,cam_y+180,"instances",ob_button_16x16);
 button_create.button_id=3;
+button_autoattack_id=instance_create_layer(cam_x+76,cam_y+163,"instances",ob_button_16x16);
+button_autoattack_id.button_id=4;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 instance_create_layer(cam_x+cam_w/2-24,cam_y+cam_h/2-24,"instances",ob_coin);
 //————————————————————————————————————————————————————————————————————————————————————————————————————

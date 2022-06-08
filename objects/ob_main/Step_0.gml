@@ -235,7 +235,7 @@ if roadmap_generated=false {
 				else if event_kind[ii][i]<975 { event_kind[ii][i]=ref_event_glyph; } //7.5%
 				else if event_kind[ii][i]<1000 { event_kind[ii][i]=ref_event_tribute; } //2.5%
 				//
-				if event_kind[ii][i]=ref_event_glyph { event_glyph_add[ii][i]=sc_glyph_random(); }
+				if event_kind[ii][i]=ref_event_glyph { event_glyph_add[ii][i]=sc_glyph_random(false); }
 				else { event_glyph_add[ii][i]=-1; }
 				//
 				ii++;
