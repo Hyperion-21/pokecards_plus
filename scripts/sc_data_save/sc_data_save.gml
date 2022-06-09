@@ -10,6 +10,8 @@ ds_map_add(savemap,"roadmap_area",roadmap_area);
 ds_map_add(savemap,"roadmap_generated",roadmap_generated);
 ds_map_add(savemap,"money",money);
 //
+ds_map_add(savemap,"challenge_mode",option_state[opt_challenge]);
+//
 var i=0;
 repeat (roadmap_full_max) {
 	var value_name="location_type_" + string(i);

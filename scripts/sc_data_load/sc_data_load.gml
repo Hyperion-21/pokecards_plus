@@ -8,6 +8,8 @@ roadmap_area=0;
 roadmap_generated=false;
 money=0;
 //
+option_state[opt_challenge]=0;
+//
 var i=0;
 repeat (roadmap_full_max) {
 	location_type[i]=-1;
@@ -79,6 +81,8 @@ if file_exists(data_file) {
 	if !is_undefined(ds_map_find_value(savemap,"roadmap_area")) { roadmap_area=ds_map_find_value(savemap,"roadmap_area"); }
 	if !is_undefined(ds_map_find_value(savemap,"roadmap_generated")) { roadmap_generated=ds_map_find_value(savemap,"roadmap_generated"); }
 	if !is_undefined(ds_map_find_value(savemap,"money")) { money=ds_map_find_value(savemap,"money"); }
+	//
+	if !is_undefined(ds_map_find_value(savemap,"challenge_mode")) { option_state[opt_challenge]=ds_map_find_value(savemap,"challenge_mode"); }
 	//
 	var i=0;
 	repeat (roadmap_full_max) {
