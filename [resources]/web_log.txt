@@ -2,7 +2,7 @@
 
 - Bug fix: fixed issue when loading Challenge Mode from save file.
 
-Note: This update will remove any already-set challenges (v1.4.0.0) from previous save files. Sorry for the inconvenience.
+Note: this update will remove any previously set challenges (if any) from existing save files (v1.4.0.0). Sorry for the inconvenience.
 
 [v1.4.0.0] - June 9, 2022
 
