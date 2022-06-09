@@ -1,7 +1,7 @@
 [v1.4.0.0] - June 9, 2022
 
 - Added Challenge Modes: "Resolution", "Dominance" and "Barrenness".
-- Resolved slowdown/hiccup issues when setting up decks and selling cards.
+- Greatly reduced slowdown/hiccup issues when setting up decks and selling cards.
 - Raised money rewards from Battles (including Tutorial).
 - Berserk Glyph now triggers at 25% HP (up from 20%).
 - Moved "attack with all cards" button.
