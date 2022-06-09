@@ -88,7 +88,7 @@ if reference_id=ob_control and card_cat=0 {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if reference_id=ob_control and card_cat=0 {
-	if sc_glyph_check(id,ref_glyph_berserk,true) and (card_hp<=(card_full_hp/5) or (card_hp=1 and card_hp!=card_full_hp)) { var base_atk_multiplier=2; } //glyph: berserk
+	if sc_glyph_check(id,ref_glyph_berserk,true) and (card_hp<=(card_full_hp/4) or (card_hp=1 and card_hp!=card_full_hp)) { var base_atk_multiplier=2; } //glyph: berserk
 	else { var base_atk_multiplier=1; }
 	//
 	if sc_glyph_check(id,ref_glyph_fork,true) { var base_atk_divisor=2; } //glyph: fork attack

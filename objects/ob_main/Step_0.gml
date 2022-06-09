@@ -93,6 +93,13 @@ money_payout=money_payout_base+money_payout_area_bonus*area_zone-money_payout_pe
 money_prize_badge=money_badge_base+money_badge_area_bonus*area_zone;
 money_prize_min=round(0.9*(round(power(money_prize_power_base+money_prize_power_area_bonus*area_zone,money_prize_power_n))-money_prize_penalty_multiplier*(latest_zone-area_zone)));
 money_prize_max=round(1.1*(round(power(money_prize_power_base+money_prize_power_area_bonus*area_zone,money_prize_power_n))-money_prize_penalty_multiplier*(latest_zone-area_zone)));
+//
+if option_state[opt_challenge]=ch_resolution {
+	money_payout*=3;
+	money_prize_badge*=3;
+	money_prize_min*=3;
+	money_prize_max*=3;
+}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if textbox_string[textbox_current]!="" {
 	if textbox_show!=textbox_string[textbox_current] {
@@ -704,6 +711,9 @@ else if event_transition=-1 and event_transition_standby=-1 and fade_black<=0 {
 					if maindeck_used_total<maindeck_size_min { event_conditions=false; }
 				}
 				//
+				if event_kind[mouse_in_event][roadmap_area]=ref_event_berry and option_state[opt_challenge]=ch_barrenness { event_conditions=false; }
+				else if event_kind[mouse_in_event][roadmap_area]=ref_event_loop and option_state[opt_challenge]=ch_resolution { event_conditions=false; }
+				//
 				if event_conditions=true {
 					event_transition_standby=event_kind[mouse_in_event][roadmap_area];
 					if event_transition_standby=ref_event_levelup { event_cost_standby=0; }
@@ -739,11 +749,16 @@ else if event_transition=-1 and event_transition_standby=-1 and fade_black<=0 {
 		}
 		//
 		else if mouse_in_fly>-1 {
-			sc_playsound(sn_event,50,false,false);
-			//
-			event_cost_standby=0;
-			if mouse_in_fly=0 { event_transition=ref_fly_prev; }
-			else if mouse_in_fly=1 { event_transition=ref_fly_next; }
+			if option_state[opt_challenge]!=ch_resolution {
+				sc_playsound(sn_event,50,false,false);
+				//
+				event_cost_standby=0;
+				if mouse_in_fly=0 { event_transition=ref_fly_prev; }
+				else if mouse_in_fly=1 { event_transition=ref_fly_next; }
+			}
+			else {
+				sc_playsound(sn_hurt,50,false,false);
+			}
 		}
 	}
 }
@@ -921,6 +936,7 @@ repeat (options_total) {
 	if mouse_x>=option_x[i] and mouse_y>=option_y[i]+2 and mouse_x<=option_x[i]+string_width(option_name[i] + option_state_text[i]) and mouse_y<=option_y[i]+10 and cursor_hide=false {
 		mouse_cursor=1;
 		option_focus[i]=true;
+		//
 		if mouse_check_button_pressed(mb_left) or mouse_check_button_pressed(mb_right) {
 			if i=opt_fullscreen {
 				if option_state[i]=false { option_state[i]=true; }
@@ -950,6 +966,20 @@ repeat (options_total) {
 			else if i=opt_autodeck {
 				if option_state[i]=false { option_state[i]=true; }
 				else { option_state[i]=false; }
+			}
+			else if i=opt_challenge {
+				if area_zone=0 and zone_first_lap=true and roadmap_area=0 {
+					if mouse_check_button_pressed(mb_left) {
+						option_state[i]++;
+						if option_state[i]>3 { option_state[i]=0; }
+					}
+					else if mouse_check_button_pressed(mb_right) {
+						option_state[i]--;
+						if option_state[i]<0 { option_state[i]=3; }
+					}
+					//
+					roadmap_generated=false;
+				}
 			}
 			else if i=opt_playericon {
 				if mouse_check_button_pressed(mb_left) {
@@ -1008,17 +1038,47 @@ repeat (options_total) {
 		if option_state[i]=true { option_state_text[i]="GO TO DECK"; }
 		else { option_state_text[i]="DO NOTHING"; }
 	}
-	else if i=opt_playericon {
-		option_state_text[i]="   ";
-	}
 	else if i=opt_edge {
 		option_state_text[i]=string(option_state[i]) + "%";
+	}
+	else if i=opt_challenge {
+		if option_state[i]=0 { option_state_text[i]="NONE"; }
+		else if option_state[i]=ch_resolution { option_state_text[i]="RESOLUTION"; }
+		else if option_state[i]=ch_dominance { option_state_text[i]="DOMINANCE"; }
+		else if option_state[i]=ch_barrenness { option_state_text[i]="BARRENNESS"; }
+	}
+	else if i=opt_playericon {
+		option_state_text[i]="   ";
 	}
 	else if i=opt_bg_type {
 		if option_state[i]=0 { option_state_text[i]="MOVING TILES (HORIZONTAL)"; }
 		else if option_state[i]=1 { option_state_text[i]="MOVING TILES (VERTICAL)"; }
 		else if option_state[i]=2 { option_state_text[i]="IDLE TILES"; }
 		else if option_state[i]=3 { option_state_text[i]="LOCATION"; } //also referenced in draw for alpha of bg preview
+	}
+	//
+	if option_focus[opt_challenge]=true {
+		if option_state[opt_challenge]=0 {
+			tooltip_text="Normal playthrough.";
+			tooltip_lines=2;
+		}
+		else if option_state[opt_challenge]=ch_resolution {
+			tooltip_text="// RESOLUTION //\n" +
+			"All money rewards are multiplied x3,\nbut cannot go back to outskirts or fly to any previous location.";
+			tooltip_lines=4;
+		}
+		else if option_state[opt_challenge]=ch_dominance {
+			tooltip_text="// DOMINANCE //\n" +
+			"Type-advantage attacks from your opponent always result in OHKOs.";
+			tooltip_lines=3;
+		}
+		else if option_state[opt_challenge]=ch_barrenness {
+			tooltip_text="// BARRENNESS //\n" +
+			"Cannot buy Berry Packs.";
+			tooltip_lines=3;
+		}
+		//
+		tooltip_text=tooltip_text + "\nChallenges can only be set before picking a Starter Deck.";
 	}
 	//
 	i++;

@@ -52,7 +52,7 @@ else if button_id=100 or button_id=102 { //exit game & delete save data
 			if mouse_check_button_pressed(mb_left) { sc_playsound(sn_click,50,false,false); }
 			//
 			if button_id=100 { button_state+=0.01; }
-			else if button_id=102 { button_state+=0.005; }
+			else if button_id=102 { button_state+=0.008; }
 		}
 		else { button_state-=0.05; }
 	}

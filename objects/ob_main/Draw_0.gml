@@ -168,7 +168,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	//
 	if option_state[opt_bg_type]!=3 { var option_alpha=1; }
 	else { var option_alpha=0.5; }
-	var bg_preview_x=screen_options_x+355, bg_preview_y=screen_main_y+option_y[opt_bg_type]+5;
+	var bg_preview_x=screen_options_x+356, bg_preview_y=screen_main_y+option_y[opt_bg_type]+5;
 	sc_drawrectangle(bg_preview_x-2,bg_preview_y-2,bg_preview_x+96,bg_preview_y+64,global.color_black,c_white,0,option_alpha,0,0);
 	draw_sprite_general(sp_back_pixel,0,0,0,1,1,bg_preview_x,bg_preview_y,96,64,0,
 	global.color_background_a,global.color_background_b,global.color_background_a,global.color_background_b,option_alpha);

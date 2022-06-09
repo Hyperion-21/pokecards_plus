@@ -123,7 +123,7 @@ if card_cat=0 and card_face=true and in_view=true {
 	draw_set_halign(fa_center);
 	sc_drawtext(draw_x+29,draw_y+39,card_name,global.color_white,global.color_black,1,(1/1.5),0,-1);
 	sc_drawtext(draw_x+29,draw_y+50,"lv " + string(card_level),global.color_gray,global.color_black,1,(1/1.7),0,-1);
-	//sc_drawtext(draw_x+29,draw_y+4,string(card_value) + "\n" + string(card_form_value) + "\n" + string(card_serial),c_aqua,global.color_black,1,1,0,-1);
+	//sc_drawtext(draw_x+29,draw_y+4,"#" + string(card_id) + "\nv " + string(card_value) + "\nfv " + string(card_form_value) + "\ns " + string(card_serial),c_aqua,c_black,1,1,0,-1);
 	//
 	var num_color=c_white;
 	draw_set_halign(fa_left);

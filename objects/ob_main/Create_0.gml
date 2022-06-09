@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v1.3.0.1"
+#macro game_version "v1.4.0.0"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -99,17 +99,17 @@ textbox_char_pos=0;
 #macro maindeck_total_max 2000
 #macro berrydeck_total_max 200 //per berry
 //
-#macro money_prize_power_base 24.32 //120 189 268 355 450 553 662 778 900 (penalty: 40-900)
-#macro money_prize_power_area_bonus 8.61
+#macro money_prize_power_base 24.33 //120 196 284 383 490 606 730 862 1000 (penalty: 40-1000)
+#macro money_prize_power_area_bonus 9.46
 #macro money_prize_power_n 1.5
 #macro money_prize_penalty_multiplier 10
 #macro money_payout_base 100 //100 150 200 250 300 350 400 450 500 (penalty: 20-500)
 #macro money_payout_area_bonus 50
 #macro money_payout_penalty_multiplier 10
-#macro money_badge_base 200 //200 300 400 500 600 700 800 900 1000 (minimum should be enough for a card pack)
-#macro money_badge_area_bonus 100
+#macro money_badge_base 200 //200 325 450 575 700 825 950 1075 1200 (minimum should be enough for a card pack)
+#macro money_badge_area_bonus 125
 #macro sell_value_multiplier 2.5 //bankers rounding
-#macro tutorial_payout 400
+#macro tutorial_payout 500
 //
 battle_hp[0]=5; //10
 battle_hp[1]=15; //30
@@ -195,7 +195,7 @@ tooltip_lines=0;
 #macro ref_glyph_mist 100
 #macro ref_glyph_transform 101
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-#macro options_total 10
+#macro options_total 11
 #macro playericon_max 15
 //
 #macro opt_fullscreen 0
@@ -205,9 +205,14 @@ tooltip_lines=0;
 #macro opt_music 4
 #macro opt_sound 5
 #macro opt_autodeck 6
-#macro opt_playericon 7
-#macro opt_edge 8
-#macro opt_bg_type 9
+#macro opt_edge 7
+#macro opt_challenge 8
+#macro opt_playericon 9
+#macro opt_bg_type 10
+//
+#macro ch_resolution 1
+#macro ch_dominance 2
+#macro ch_barrenness 3
 //
 for (var i=0; i<options_total; i++;) {
 	if i=opt_fullscreen { option_name[i]="Fullscreen: "; }
@@ -217,12 +222,13 @@ for (var i=0; i<options_total; i++;) {
 	else if i=opt_music { option_name[i]="Music: "; }
 	else if i=opt_sound { option_name[i]="Sound Effects: "; }
 	else if i=opt_autodeck { option_name[i]="New Cards: "; }
-	else if i=opt_playericon { option_name[i]="Player Icon: "; }
 	else if i=opt_edge { option_name[i]="Edge Shading: "; }
+	else if i=opt_challenge { option_name[i]="Challenge Mode: "; }
+	else if i=opt_playericon { option_name[i]="Player Icon: "; }
 	else if i=opt_bg_type { option_name[i]="Battle Background Style: "; }
 	//
-	option_x[i]=21;
-	option_y[i]=18+20*i;
+	option_x[i]=22;
+	option_y[i]=19+18*i;
 	option_focus[i]=false;
 	option_state_text[i]="";
 }
@@ -241,11 +247,11 @@ for (var i=0; i<colorsetup_total; i++;) {
 	else if i=opt_bg_tile { colorsetup_name[i]="Battle Background Color C: "; }
 	else if i=opt_c_char { colorsetup_name[i]="Character Color: "; }
 	//
-	colorsetup_main_x[i]=21;
+	colorsetup_main_x[i]=22;
 	colorsetup_r_x[i]=colorsetup_main_x[i]+166;
 	colorsetup_g_x[i]=colorsetup_r_x[i]+38;
 	colorsetup_b_x[i]=colorsetup_g_x[i]+38;
-	colorsetup_y[i]=18+13*i+20*options_total;
+	colorsetup_y[i]=19+13*i+18*options_total;
 	colorsetup_focus_r[i]=false;
 	colorsetup_focus_g[i]=false;
 	colorsetup_focus_b[i]=false;
