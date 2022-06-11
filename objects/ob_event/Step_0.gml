@@ -78,9 +78,12 @@ if apply_event=true {
 		}
 	}
 	else if event_kind=ref_event_evolution and card_id_in_space[0]!=-1 {
-		if card_id_in_space[0].card_evo[0]!=-1 and card_id_in_space[0].card_evo[0]<=normal_poke_id_max and card_id_in_space[0].card_innate>0 {
+		if evo_list[0]!=-1 and evo_list[0]<=normal_poke_id_max and card_id_in_space[0].card_innate>0 {
 			do {
-				card_id_in_space[0].card_id=card_id_in_space[0].card_evo[irandom(7)];
+				card_id_in_space[0].card_id=evo_list[evolution_position];
+				//
+				evolution_position++;
+				if evolution_position>7 { evolution_position=0; }
 			} until (card_id_in_space[0].card_id!=-1 and card_id_in_space[0].card_id<=normal_poke_id_max);
 			sc_card_effect(event_space_id[0].x,event_space_id[0].y,0,false,true);
 			with (card_id_in_space[0]) {
@@ -89,6 +92,7 @@ if apply_event=true {
 			}
 			//
 			event_applied=true;
+			evolution_retry=true;
 			sc_playsound(sn_upgrade,50,false,false);
 			ob_main.main_card_id[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_id;
 		}

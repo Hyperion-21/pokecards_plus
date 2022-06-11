@@ -143,10 +143,11 @@ if card_cat=0 {
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		sc_pokelist();
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
-		// SAVE COMPATIBILITY (v1.3.0.1)
+		// SAVE COMPATIBILITY (v1.3.0.1) + (v1.5.0.0)
 		if random_card=false {
 			if (card_id=109 or card_id=110) and card_glyph_a>=glyph_common_amount { card_glyph_a=ref_glyph_mist; } //koffing, weezing
 			else if card_id=132 and card_glyph_a!=ref_glyph_transform { card_glyph_a=ref_glyph_transform; } //ditto
+			else if card_id=235 and card_glyph_a!=ref_glyph_sketch { card_glyph_a=ref_glyph_sketch; } //smeargle
 		}
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		if random_card=true or card_glyph_a=-2 or card_glyph_b=-2 or card_glyph_c=-2 {
@@ -156,6 +157,7 @@ if card_cat=0 {
 			//
 			if card_id=109 or card_id=110 { card_glyph_a=choose(-1,-1,ref_glyph_mist); } //koffing, weezing
 			else if card_id=132 { card_glyph_a=ref_glyph_transform; } //ditto
+			else if card_id=235 { card_glyph_a=ref_glyph_sketch; } //smeargle
 			//
 			if enemy_randomizer=false {
 				var card_glyph_chance=irandom(999), card_glyph_total=0;

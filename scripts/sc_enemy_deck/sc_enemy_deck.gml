@@ -188,7 +188,7 @@ if argument0<=100 {
 		enemy_type_chance[11]=25; //bug
 		enemy_type_chance[12]=25; //poison
 	}
-	else if argument0=100 { //ACE TRAINER
+	else if argument0=100 { //ACE TRAINER (number also referenced in sc_enemy_berry_deck)
 		enemy_type_chance[00]=100; //normal
 		enemy_type_chance[01]=100; //grass
 		enemy_type_chance[02]=100; //fire

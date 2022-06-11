@@ -25,6 +25,7 @@ if argument1=false {
 		//
 		case ref_glyph_mist: return "// MIST //\nWhile this card is active, Glyphs have no effect."; break;
 		case ref_glyph_transform: return "// TRANSFORM //\nTransforms into the opposing enemy Pokemon."; break;
+		case ref_glyph_sketch: return "// SKETCH //\nCopies the opposing enemy Pokemon's types."; break;
 	}
 }
 else {

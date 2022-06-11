@@ -133,6 +133,12 @@ event_kind=ref_event_glyph or event_kind=ref_event_tribute {
 		glyph_add_id=ob_main.current_glyph_add;
 	}
 	//
+	evolution_retry=false;
+	evolution_position=0;
+	for (var i=0; i<8; i++;) {
+		evo_list[i]=-1;
+	}
+	//
 	card_event_total=0;
 	var i=0;
 	repeat (ob_main.maindeck_total) {

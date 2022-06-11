@@ -36,8 +36,8 @@ else if instance_exists(ob_event) and occupy_id=-1 and ob_main.cursor_hide=false
 			}
 		}
 		else if ob_event.event_kind=ref_event_evolution {
-			ob_event.tooltip_text="// EVOLUTION //\nThe Pokemon evolves into its next form,\nbut multiple forms may yield unexpected results.";
-			ob_event.tooltip_lines=3;
+			ob_event.tooltip_text="// EVOLUTION //\nThe Pokemon evolves into its next form.";
+			ob_event.tooltip_lines=2;
 		}
 		else if ob_event.event_kind=ref_event_glyph {
 			ob_event.tooltip_text=sc_glyph_text(ob_event.glyph_add_id,false);

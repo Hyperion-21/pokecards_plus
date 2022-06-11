@@ -105,10 +105,22 @@ if card_focus!=-1 and card_focus.card_cat=0 and card_focus_hand!=-1 and card_hol
 		if card_space_id[i].occupy_id!=-1 {
 			//intentionally omitting glyph: transform (Ditto only)
 			var bonus_dmg=false, vs_bonus_dmg=false;
-			if card_focus.card_environment=false {
-				bonus_dmg=sc_type_bonus(card_focus.card_type_a,card_focus.card_type_b,card_space_id[i].occupy_id.card_type_a,card_space_id[i].occupy_id.card_type_b); }
-			if card_space_id[i].occupy_id.card_environment=false {
-				vs_bonus_dmg=sc_type_bonus(card_space_id[i].occupy_id.card_type_a,card_space_id[i].occupy_id.card_type_b,card_focus.card_type_a,card_focus.card_type_b); }
+			if sc_glyph_check(card_focus,ref_glyph_sketch,true) and card_space_id[i].occupy_id.card_environment=false { //glyph: sketch (Smeargle only)
+				bonus_dmg=sc_type_bonus(card_space_id[i].occupy_id.card_type_a,card_space_id[i].occupy_id.card_type_b,
+				card_space_id[i].occupy_id.card_type_a,card_space_id[i].occupy_id.card_type_b);
+				vs_bonus_dmg=sc_type_bonus(card_space_id[i].occupy_id.card_type_a,card_space_id[i].occupy_id.card_type_b,
+				card_space_id[i].occupy_id.card_type_a,card_space_id[i].occupy_id.card_type_b);
+			}
+			else if sc_glyph_check(card_space_id[i].occupy_id,ref_glyph_sketch,true) and card_focus.card_environment=false { //glyph: sketch (Smeargle only)
+				bonus_dmg=sc_type_bonus(card_focus.card_type_a,card_focus.card_type_b,card_focus.card_type_a,card_focus.card_type_b);
+				vs_bonus_dmg=sc_type_bonus(card_focus.card_type_a,card_focus.card_type_b,card_focus.card_type_a,card_focus.card_type_b);
+			}
+			else {
+				if card_focus.card_environment=false {
+					bonus_dmg=sc_type_bonus(card_focus.card_type_a,card_focus.card_type_b,card_space_id[i].occupy_id.card_type_a,card_space_id[i].occupy_id.card_type_b); }
+				if card_space_id[i].occupy_id.card_environment=false {
+					vs_bonus_dmg=sc_type_bonus(card_space_id[i].occupy_id.card_type_a,card_space_id[i].occupy_id.card_type_b,card_focus.card_type_a,card_focus.card_type_b); }
+			}
 			//
 			var own_atk=card_focus.card_atk+card_space_id[i+5].card_bonus_atk-card_space_id[i+5].card_penalty_atk;
 			var own_def=card_focus.card_def+card_space_id[i+5].card_bonus_def-card_space_id[i+5].card_penalty_def;

@@ -48,34 +48,41 @@ if card_trash=true {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if reference_id=ob_control and card_cat=0 {
-	if sc_glyph_check(id,ref_glyph_transform,false) and card_played=true { //glyph: transform (Ditto only)
+	var vs_card=-1;
+	//
+	if card_played=true {
 		if card_enemy=true { var i=0; } else { var i=5; }
 		repeat (5) {
 			if ob_control.card_space_id[i].occupy_id=id {
-				var vs_card=-1;
 				if (card_enemy=false and ob_control.card_space_id[i-5].occupy_id!=-1) {
 					vs_card=ob_control.card_space_id[i-5].occupy_id;
 				}
 				if (card_enemy=true and ob_control.card_space_id[i+5].occupy_id!=-1) {
 					vs_card=ob_control.card_space_id[i+5].occupy_id;
 				}
-				if sc_glyph_check(id,ref_glyph_transform,true) and vs_card!=-1 and card_id!=vs_card.card_id and vs_card.card_environment=false {
-					//transforms only if there's no mist
-					card_id=vs_card.card_id;
-					card_form_value=vs_card.card_form_value;
-					sc_pokelist();
-					sc_card_level_stats_all(false,false);
-					card_name="Ditto";
-					effect_damaged=1;
-				}
-				else if vs_card=-1 and card_id!=132 { //transforms back even if there's mist
-					card_id=132;
-					sc_pokelist();
-					sc_card_level_stats_all(false,false);
-					effect_damaged=1;
-				}
 			}
 			i++;
+		}
+	}
+	//
+	if sc_glyph_check(id,ref_glyph_transform,false) and card_played=true { //glyph: transform (Ditto only)
+		if sc_glyph_check(id,ref_glyph_transform,true) and vs_card!=-1 and vs_card.card_environment=false {
+			//transforms only if there's no mist
+			if card_id!=vs_card.card_id {
+				card_id=vs_card.card_id;
+				card_form_value=vs_card.card_form_value;
+				sc_pokelist();
+				sc_card_level_stats_all(false,false);
+				card_name="Ditto";
+				effect_damaged=1;
+			}
+		}
+		else if card_id!=132 {
+			//transforms back even if there's mist
+			card_id=132;
+			sc_pokelist();
+			sc_card_level_stats_all(false,false);
+			effect_damaged=1;
 		}
 	}
 	else if sc_glyph_check(id,ref_glyph_transform,false) and card_played=false {
@@ -83,6 +90,29 @@ if reference_id=ob_control and card_cat=0 {
 			card_id=132;
 			sc_pokelist();
 			sc_card_level_stats_all(false,false);
+		}
+	}
+	//
+	if sc_glyph_check(id,ref_glyph_sketch,false) and card_played=true { //glyph: sketch (Smeargle only)
+		if sc_glyph_check(id,ref_glyph_sketch,true) and vs_card!=-1 and vs_card.card_environment=false {
+			//copies types only if there's no mist
+			if card_type_a!=vs_card.card_type_a or card_type_b!=vs_card.card_type_b {
+				card_type_a=vs_card.card_type_a;
+				card_type_b=vs_card.card_type_b;
+				effect_damaged=1;
+			}
+		}
+		else if card_type_a!=00 or card_type_b!=-1 {
+			//restores types even if there's mist
+			card_type_a=00;
+			card_type_b=-1;
+			effect_damaged=1;
+		}
+	}
+	else if sc_glyph_check(id,ref_glyph_sketch,false) and card_played=false {
+		if card_type_a!=00 or card_type_b!=-1 {
+			card_type_a=00;
+			card_type_b=-1;
 		}
 	}
 }
@@ -244,6 +274,13 @@ else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spr
 						potential_y=ob_event.event_space_id[i].y;
 						ob_event.event_space_id[i].occupy_id=id;
 						sc_card_effect(ob_event.event_space_id[i].x,ob_event.event_space_id[i].y,0,true,false);
+						//
+						if ob_event.event_kind=ref_event_evolution {
+							for (var ii=0; ii<8; ii++;) {
+								ob_event.evo_list[ii]=card_evo[ii];
+							}
+						}
+						//
 						i=ob_event.event_space_total;
 					}
 					else { i++; }
@@ -252,6 +289,7 @@ else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spr
 			else {
 				card_played=false;
 				instance_position(x,y,ob_card_space).occupy_id=-1;
+				ob_event.evolution_retry=false;
 			}
 		}
 	}

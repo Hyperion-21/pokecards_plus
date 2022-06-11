@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v1.4.0.2"
+#macro game_version "v1.5.0.0"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -194,6 +194,7 @@ tooltip_lines=0;
 //
 #macro ref_glyph_mist 100
 #macro ref_glyph_transform 101
+#macro ref_glyph_sketch 102
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 #macro options_total 11
 #macro playericon_max 15

@@ -197,7 +197,7 @@ repeat (enemycard_maindeck_total) {
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-sc_enemy_berry_deck();
+sc_enemy_berry_deck(ob_main.trainer_kind[ob_main.roadmap_area]);
 //
 var i=0, card_shuffle;
 repeat (enemycard_berrydeck_total) {

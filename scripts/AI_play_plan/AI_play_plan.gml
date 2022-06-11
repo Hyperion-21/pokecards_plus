@@ -80,12 +80,14 @@ do {
 				if card_space_id[ii+5].occupy_id!=-1 {
 					var opposing_card_id=card_space_id[ii+5].occupy_id;
 					//
-					//glyph: transform (Ditto only)
-					if sc_glyph_check(opposing_card_id,ref_glyph_transform,true) and enemycard_hand[i].card_environment=false and opposing_card_id.card_environment=false {
+					//glyph: transform (Ditto only) & sketch (Smeargle only)
+					if (sc_glyph_check(opposing_card_id,ref_glyph_transform,true) or sc_glyph_check(opposing_card_id,ref_glyph_sketch,true)) and
+					enemycard_hand[i].card_environment=false and opposing_card_id.card_environment=false {
 						bonus_dmg=sc_type_bonus(enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b,enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b);
 						vs_bonus_dmg=sc_type_bonus(enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b,enemycard_hand[i].card_type_a,enemycard_hand[i].card_type_b);
 					}
-					else if sc_glyph_check(enemycard_hand[i],ref_glyph_transform,true) and enemycard_hand[i].card_environment=false and opposing_card_id.card_environment=false {
+					else if (sc_glyph_check(enemycard_hand[i],ref_glyph_transform,true) or sc_glyph_check(enemycard_hand[i],ref_glyph_sketch,true)) and
+					enemycard_hand[i].card_environment=false and opposing_card_id.card_environment=false {
 						bonus_dmg=sc_type_bonus(opposing_card_id.card_type_a,opposing_card_id.card_type_b,opposing_card_id.card_type_a,opposing_card_id.card_type_b);
 						vs_bonus_dmg=sc_type_bonus(opposing_card_id.card_type_a,opposing_card_id.card_type_b,opposing_card_id.card_type_a,opposing_card_id.card_type_b);
 					}
