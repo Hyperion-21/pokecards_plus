@@ -43,11 +43,16 @@ if reorder_type>-1 {
 	//
 	for (var i=0; i<deck_build_all_total; i++;) {
 		ds_grid_set(order_grid,0,i,deck_card_all[i]); //instance id
-		if reorder_type=0 or reorder_type=5 { ds_grid_set(order_grid,1,i,deck_card_all[i].card_id); }
-		else if reorder_type=1 { ds_grid_set(order_grid,1,i,deck_card_all[i].card_level); }
-		else if reorder_type=2 { ds_grid_set(order_grid,1,i,deck_card_all[i].card_full_atk); }
-		else if reorder_type=3 { ds_grid_set(order_grid,1,i,deck_card_all[i].card_full_def); }
-		else if reorder_type=4 { ds_grid_set(order_grid,1,i,deck_card_all[i].card_full_hp); }
+		//
+		var order_number=0;
+		if reorder_type=0 or reorder_type=5 { order_number=deck_card_all[i].card_id; }
+		else if reorder_type=1 { order_number=deck_card_all[i].card_level; }
+		else if reorder_type=2 { order_number=deck_card_all[i].card_full_atk; }
+		else if reorder_type=3 { order_number=deck_card_all[i].card_full_def; }
+		else if reorder_type=4 { order_number=deck_card_all[i].card_full_hp; }
+		//
+		order_number+=(deck_card_all[i].card_serial/(ob_main.serial_count+1)); //never adds +1, always only decimal
+		ds_grid_set(order_grid,1,i,order_number);
 	}
 	//
 	if reorder_type=0 or reorder_type=5 { ds_grid_sort(order_grid,1,true); }

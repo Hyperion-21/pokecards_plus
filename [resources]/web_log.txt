@@ -1,3 +1,7 @@
+[v1.4.0.2] - June 10, 2022
+
+- Bug fix: fixed issue when sorting cards.
+
 [v1.4.0.1] - June 9, 2022
 
 - Bug fix: fixed issue when loading Challenge Mode from save file.
