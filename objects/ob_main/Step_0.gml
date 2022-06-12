@@ -51,6 +51,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_splash) {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if option_state[opt_challenge]=ch_resolution { roadmap_road_max=roadmap_road_max_resolution; }
+else { roadmap_road_max=roadmap_road_max_normal; }
 //
 if area_zone=area_zone_max-1 and zone_first_lap=true { roadmap_current_max=roadmap_road_max+roadmap_league_max-1; }
 else if area_zone=area_zone_max-1 and zone_first_lap=false { roadmap_current_max=roadmap_outskirts_max+roadmap_league_max-1; } //roadmap_outskirts_max is also used when flying to league

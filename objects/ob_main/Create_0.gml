@@ -47,8 +47,9 @@ ending_static_timer=-1;
 #macro area_zone_max 9
 #macro roadmap_full_max 50 //save/load, needs to be bigger than the rest (and their sum, just in case)
 roadmap_current_max=0;
-roadmap_road_max=12;
+roadmap_road_max_normal=12;
 roadmap_road_max_resolution=20;
+roadmap_road_max=roadmap_road_max_normal;
 roadmap_outskirts_max=8;
 roadmap_league_max=5;
 roadmap_lab_max=3;
