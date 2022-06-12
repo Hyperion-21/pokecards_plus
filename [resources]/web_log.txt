@@ -8,6 +8,8 @@
 - Smeargle now has a unique Glyph: "Sketch".
 - Some other minor improvements (including bug fixes).
 
+——————————
+
 [v1.4.0.2] - June 10, 2022
 
 - Bug fix: fixed issue when sorting cards.
@@ -27,6 +29,8 @@ Note: this update will remove any previously set challenges (if any) from existi
 - Moved "attack with all cards" button.
 - Some other minor improvements.
 
+——————————
+
 [v1.3.0.1] - June 8, 2022
 
 - Bug fix: fixed issue related to unique Glyphs (Mist and Transform).
@@ -38,6 +42,8 @@ Note: this update will remove any previously set challenges (if any) from existi
 - Improved Glyph distribution for all trainer decks.
 - Amount of berries needed for current deck setup is now visible in Deck menu.
 - Some other minor improvements (including bug fixes).
+
+——————————
 
 [v1.2.6.0] - June 2, 2022
 
@@ -97,6 +103,8 @@ Note: this update will remove any previously set challenges (if any) from existi
 - Selling cards is now faster.
 - Some other minor improvements.
 
+——————————
+
 [v1.1.0.0] - May 24, 2022
 
 - Type advantage attacks now deal 1 extra point of damage every four levels.
@@ -108,6 +116,8 @@ Note: this update will remove any previously set challenges (if any) from existi
 - The "Exit Battle" button is now faster.
 - Some other minor improvements.
 
+——————————
+
 [v1.0.1.1] - May 21, 2022
 
 - Adding Glyphs to cards now lets you know what Berry cost will be added to the card as well.
@@ -118,6 +128,8 @@ Note: this update will remove any previously set challenges (if any) from existi
 - The up/down arrow keys (or W/S keys) can now also be used to set a specific number of berries in your deck.
 - Made in-game description for Tributes a bit more clear.
 - Some other minor improvements.
+
+——————————
 
 [v1.0.0.0] - May 18, 2022
 
