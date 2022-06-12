@@ -1,6 +1,6 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
-#macro game_version "v1.5.0.0"
+#macro game_version "v1.5.1.0"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -45,9 +45,10 @@ ending_screen=false;
 ending_static_timer=-1;
 //
 #macro area_zone_max 9
-#macro roadmap_full_max 30 //save/load, needs to be bigger than the rest (and their sum, just in case)
+#macro roadmap_full_max 50 //save/load, needs to be bigger than the rest (and their sum, just in case)
 roadmap_current_max=0;
 roadmap_road_max=12;
+roadmap_road_max_resolution=20;
 roadmap_outskirts_max=8;
 roadmap_league_max=5;
 roadmap_lab_max=3;

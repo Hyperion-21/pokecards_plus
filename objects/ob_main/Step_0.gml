@@ -50,6 +50,8 @@ if !instance_exists(ob_control) and !instance_exists(ob_splash) {
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+if option_state[opt_challenge]=ch_resolution { roadmap_road_max=roadmap_road_max_resolution; }
+//
 if area_zone=area_zone_max-1 and zone_first_lap=true { roadmap_current_max=roadmap_road_max+roadmap_league_max-1; }
 else if area_zone=area_zone_max-1 and zone_first_lap=false { roadmap_current_max=roadmap_outskirts_max+roadmap_league_max-1; } //roadmap_outskirts_max is also used when flying to league
 else if area_zone=0 and zone_first_lap=true { roadmap_current_max=roadmap_road_max+roadmap_lab_max; }
@@ -99,6 +101,10 @@ if option_state[opt_challenge]=ch_resolution {
 	money_prize_badge*=3;
 	money_prize_min*=3;
 	money_prize_max*=3;
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+if roadmap_generated=true and event_kind[0,roadmap_current_max-1]=-1 {
+	roadmap_generated=false;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if textbox_string[textbox_current]!="" {
@@ -1064,7 +1070,7 @@ repeat (options_total) {
 		}
 		else if option_state[opt_challenge]=ch_resolution {
 			tooltip_text="// RESOLUTION //\n" +
-			"All money rewards are multiplied x3,\nbut cannot go back to outskirts or fly to any previous location.";
+			"All money rewards are multiplied x3 and all routes are extended,\nbut cannot go back to outskirts or fly to any previous locations.";
 			tooltip_lines=4;
 		}
 		else if option_state[opt_challenge]=ch_dominance {

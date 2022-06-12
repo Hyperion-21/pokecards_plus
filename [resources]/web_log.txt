@@ -1,3 +1,7 @@
+[v1.5.1.0] - June 11, 2022
+
+- Resolution Mode now has extended routes.
+
 [v1.5.0.0] - June 11, 2022
 
 - Evolutions are no longer random, and can be selected at will.
