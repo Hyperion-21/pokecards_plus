@@ -1,3 +1,8 @@
+[v1.5.2.0] - June 12, 2022
+
+- The spacebar can now be used to grab all cards in a pack.
+- Further tweaked Resolution Mode.
+
 [v1.5.1.0] - June 11, 2022
 
 - Resolution Mode now has extended routes.

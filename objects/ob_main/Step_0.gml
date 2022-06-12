@@ -98,10 +98,10 @@ money_prize_min=round(0.9*(round(power(money_prize_power_base+money_prize_power_
 money_prize_max=round(1.1*(round(power(money_prize_power_base+money_prize_power_area_bonus*area_zone,money_prize_power_n))-money_prize_penalty_multiplier*(latest_zone-area_zone)));
 //
 if option_state[opt_challenge]=ch_resolution {
-	money_payout*=3;
-	money_prize_badge*=3;
-	money_prize_min*=3;
-	money_prize_max*=3;
+	money_payout=round(money_payout*2.5);
+	money_prize_badge=round(money_prize_badge*2.5);
+	money_prize_min=round(money_prize_min*2.5);
+	money_prize_max=round(money_prize_max*2.5);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if roadmap_generated=true and event_kind[0,roadmap_current_max-1]=-1 {
@@ -1071,7 +1071,7 @@ repeat (options_total) {
 		}
 		else if option_state[opt_challenge]=ch_resolution {
 			tooltip_text="// RESOLUTION //\n" +
-			"All money rewards are multiplied x3 and all routes are extended,\nbut cannot go back to outskirts or fly to any previous locations.";
+			"All money rewards are multiplied x2.5 and all routes are extended,\nbut cannot go back to outskirts or fly to any previous locations.";
 			tooltip_lines=4;
 		}
 		else if option_state[opt_challenge]=ch_dominance {

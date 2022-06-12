@@ -29,7 +29,7 @@ Gameplay Tips:
 
 Keyboard Shortcuts:
 
-- Spacebar: end turn during battle.
+- Spacebar: end turn during battle and grab all cards when opening a pack.
 - Tab: sort cards in hand during battle.
 - Up arrow key (or W key): hold down to attack with all cards during battle.
 - Left/Right arrow keys (or A/D keys): navigate menus (options/deck) and draw cards during battle.

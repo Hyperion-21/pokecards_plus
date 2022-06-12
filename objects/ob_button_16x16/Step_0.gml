@@ -98,7 +98,7 @@ else { //all other buttons
 					ob_main.event_transition=ob_event.event_kind;
 					if ob_event.event_applied=false { ob_event.event_cancelled=true; }
 				}
-				else if button_id=2 {
+				else if button_id=2 { //same as spacebar
 					with (ob_card) {
 						auto_turn_add=true;
 					}
@@ -141,6 +141,17 @@ else { //all other buttons
 	else { button_state-=0.1; }
 	//
 	if button_state<0 { button_state=0; }
+	//
+	if keyboard_check_pressed(vk_space) and !mouse_check_button(mb_left) and button_state=0 and ob_main.cursor_hide=false {
+		if instance_exists(ob_event) {
+			if button_id=2 {
+				with (ob_card) {
+					auto_turn_add=true;
+				}
+				button_state=1;
+			}
+		}
+	}
 	//
 	if ob_main.cursor_hide=false and mouse_x>=x and mouse_y>=y+2 and mouse_x<x+sprite_width and mouse_y<y+sprite_height-2 {
 		if instance_exists(ob_deckbuild) {
