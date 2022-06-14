@@ -58,7 +58,7 @@ else if argument0=17 { //tutorial: attacked
 	ob_main.textbox_string[0]="Ouch! I wasn't expecting our battle to go this way, but it's definitely a good lesson! For both of us.";
 }
 else if argument0=18 { //tutorial: new turn
-	ob_main.textbox_string[0]="My Pichu has a Glyph! Glyphs are unique abilities that can be added to cards. This one lowers the attack of any card opposing them.";
+	ob_main.textbox_string[0]="My Magikarp has a Glyph! Glyphs are unique abilities that can be added to cards. This one lowers the attack of any card opposing them.";
 	ob_main.textbox_string[1]="Before teaching a Glyph to one of your cards though, you should know that Pokemon usually increase their Berry cost the first time they learn a Glyph, and they can't be forgotten afterwards, so choose carefully!";
 	ob_main.textbox_string[2]="Each card can have up to 3 different Glyphs. You can see what any of them does by placing your mouse over its icon, so look around!";
 	ob_main.textbox_string[3]="But anyway! Draw your last Pokemon from your deck, and play it in front of my Pidgey to take them out. Then attack with the rest of your Pokemon as well!";

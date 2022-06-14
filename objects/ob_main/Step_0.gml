@@ -98,10 +98,10 @@ money_prize_min=round(0.9*(round(power(money_prize_power_base+money_prize_power_
 money_prize_max=round(1.1*(round(power(money_prize_power_base+money_prize_power_area_bonus*area_zone,money_prize_power_n))-money_prize_penalty_multiplier*(latest_zone-area_zone)));
 //
 if option_state[opt_challenge]=ch_resolution {
-	money_payout=round(money_payout*2.5);
-	money_prize_badge=round(money_prize_badge*2.5);
-	money_prize_min=round(money_prize_min*2.5);
-	money_prize_max=round(money_prize_max*2.5);
+	money_payout=round(money_payout*2);
+	money_prize_badge=round(money_prize_badge*2);
+	money_prize_min=round(money_prize_min*2);
+	money_prize_max=round(money_prize_max*2);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if roadmap_generated=true and event_kind[0,roadmap_current_max-1]=-1 {
@@ -542,7 +542,13 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if event_transition>-1 and fade_black<1 {
 	if event_transition=ref_event_victory or event_transition=ref_event_defeat {
-		fade_black+=0.0027; //6.17s (slightly longer than ms_victory and ms_defeat)
+		if (mouse_check_button_pressed(mb_right) or keyboard_check_pressed(vk_space)) and
+		cursor_hide=false and playing_gym=false and playing_elite=false and playing_champion=false {
+			fade_black+=1;
+		}
+		else {
+			fade_black+=0.0027; //6.17s (slightly longer than ms_victory and ms_defeat)
+		}
 	}
 	else if event_transition=ref_event_battle or event_transition=ref_event_gymbattle or event_transition=ref_event_elitebattle or event_transition=ref_event_championbattle or
 	event_transition=ref_event_tutorial or event_transition=ref_event_loop or event_transition=ref_fly_prev or event_transition=ref_fly_next or event_transition=ref_mainmenu {
@@ -718,8 +724,7 @@ else if event_transition=-1 and event_transition_standby=-1 and fade_black<=0 {
 					if maindeck_used_total<maindeck_size_min { event_conditions=false; }
 				}
 				//
-				if event_kind[mouse_in_event][roadmap_area]=ref_event_berry and option_state[opt_challenge]=ch_barrenness { event_conditions=false; }
-				else if event_kind[mouse_in_event][roadmap_area]=ref_event_loop and option_state[opt_challenge]=ch_resolution { event_conditions=false; }
+				if event_kind[mouse_in_event][roadmap_area]=ref_event_loop and option_state[opt_challenge]=ch_resolution { event_conditions=false; }
 				//
 				if event_conditions=true {
 					event_transition_standby=event_kind[mouse_in_event][roadmap_area];
@@ -1071,7 +1076,7 @@ repeat (options_total) {
 		}
 		else if option_state[opt_challenge]=ch_resolution {
 			tooltip_text="// RESOLUTION //\n" +
-			"All money rewards are multiplied x2.5 and all routes are extended,\nbut cannot go back to outskirts or fly to any previous locations.";
+			"All money rewards are multiplied x2 and all routes are extended,\nbut cannot go back to outskirts or fly to any previous locations.";
 			tooltip_lines=4;
 		}
 		else if option_state[opt_challenge]=ch_dominance {
@@ -1081,7 +1086,7 @@ repeat (options_total) {
 		}
 		else if option_state[opt_challenge]=ch_barrenness {
 			tooltip_text="// BARRENNESS //\n" +
-			"Cannot buy Berry Packs.";
+			"Can only acquire a total of 30 Berries.";
 			tooltip_lines=3;
 		}
 		//

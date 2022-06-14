@@ -48,10 +48,9 @@ else if trash=false {
 				for (var i=0; i<=2; i++;) {
 					imaginary_card_cost[i]=sc_card_cost_map(occupy_id.card_cost_total+1,occupy_id.card_enigma,occupy_id.card_type_a,occupy_id.card_type_b,i);
 				}
-				//normal, grass, fire, water, electric, flying
+				//normal, grass, fire, water, flying
 				if imaginary_card_cost[occupy_id.card_cost_total]=00 or imaginary_card_cost[occupy_id.card_cost_total]=01 or
-				imaginary_card_cost[occupy_id.card_cost_total]=02 or imaginary_card_cost[occupy_id.card_cost_total]=03 or
-				imaginary_card_cost[occupy_id.card_cost_total]=04 or imaginary_card_cost[occupy_id.card_cost_total]=05 {
+				imaginary_card_cost[occupy_id.card_cost_total]=02 or imaginary_card_cost[occupy_id.card_cost_total]=03 or imaginary_card_cost[occupy_id.card_cost_total]=05 {
 					var new_cost_text="Oran Berry";
 				}
 				//psychic, fairy, bug, poison, ghost, dark
@@ -60,9 +59,9 @@ else if trash=false {
 				imaginary_card_cost[occupy_id.card_cost_total]=16 or imaginary_card_cost[occupy_id.card_cost_total]=17 {
 					var new_cost_text="Leppa Berry";
 				}
-				//fighting, ground, rock, ice, dragon, steel
-				else if imaginary_card_cost[occupy_id.card_cost_total]=06 or imaginary_card_cost[occupy_id.card_cost_total]=09 or
-				imaginary_card_cost[occupy_id.card_cost_total]=10 or imaginary_card_cost[occupy_id.card_cost_total]=13 or
+				//electric, fighting, ground, rock, ice, dragon, steel
+				else if imaginary_card_cost[occupy_id.card_cost_total]=04 or imaginary_card_cost[occupy_id.card_cost_total]=06 or
+				imaginary_card_cost[occupy_id.card_cost_total]=09 or imaginary_card_cost[occupy_id.card_cost_total]=10 or imaginary_card_cost[occupy_id.card_cost_total]=13 or
 				imaginary_card_cost[occupy_id.card_cost_total]=14 or imaginary_card_cost[occupy_id.card_cost_total]=15 {
 					var new_cost_text="Lum Berry";
 				}

@@ -15,11 +15,11 @@ if argument1=false {
 		case ref_glyph_medic: return "// MEDIC //\nFully heals all friendly cards when played."; break;
 		case ref_glyph_tenacity: return "// TENACITY //\nWhen fainting, it has a 50% chance to return to hand (if not full)."; break;
 		case ref_glyph_bulwark: return "// BULWARK //\nSummons rocks on each empty side when played."; break;
-		case ref_glyph_fork: return "// FORK ATTACK //\nAttacks diagonally to its sides (twice) instead of straight ahead,\nbut base attack is halved."; break;
+		case ref_glyph_fork: return "// FORK ATTACK //\nAttacks diagonally to its sides (twice) instead of straight ahead,\nbut base attack is reduced by 1/3."; break;
 		case ref_glyph_vampire: return "// VAMPIRE //\nWhen attacking another card, half of the damage is absorbed."; break;
 		case ref_glyph_curse: return "// CURSE //\nWhen fainting, the enemy card is left with 1 HP."; break;
 		case ref_glyph_memento: return "// MEMENTO //\nGrants 2 DP (Draw Points) when fainting."; break;
-		case ref_glyph_berserk: return "// BERSERK //\nWhen HP is 25% or less (or just 1, if hurt),\nbase attack is doubled."; break;
+		case ref_glyph_berserk: return "// BERSERK //\nWhen HP is 1/3 or less (or just 1, if hurt),\nbase attack is doubled."; break;
 		case ref_glyph_adaptability: return "// ADAPTABILITY //\nType-advantage attacks deal 2 extra points of bonus damage."; break;
 		case ref_glyph_recovery: return "// RECOVERY //\nRecovers 1 HP at the beginning of each active turn."; break;
 		//

@@ -118,10 +118,10 @@ if reference_id=ob_control and card_cat=0 {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if reference_id=ob_control and card_cat=0 {
-	if sc_glyph_check(id,ref_glyph_berserk,true) and (card_hp<=(card_full_hp/4) or (card_hp=1 and card_hp!=card_full_hp)) { var base_atk_multiplier=2; } //glyph: berserk
+	if sc_glyph_check(id,ref_glyph_berserk,true) and (card_hp<=(card_full_hp/3) or (card_hp=1 and card_hp!=card_full_hp)) { var base_atk_multiplier=2; } //glyph: berserk
 	else { var base_atk_multiplier=1; }
 	//
-	if sc_glyph_check(id,ref_glyph_fork,true) { var base_atk_divisor=2; } //glyph: fork attack
+	if sc_glyph_check(id,ref_glyph_fork,true) { var base_atk_divisor=1.5; } //glyph: fork attack
 	else { var base_atk_divisor=1; }
 	//
 	if card_played=false and card_trash=false {
@@ -244,7 +244,8 @@ else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spr
 					ob_main.maindeck_total++;
 					potential_y=screen_main_y+cam_h+2;
 				}
-				else if card_cat=1 and ob_event.deck_berry_total[card_id-3000]<berrydeck_total_max and ob_event.card_prize>0 {
+				else if card_cat=1 and ob_event.deck_berry_total[card_id-3000]<berrydeck_total_max and ob_event.card_prize>0 and
+				(ob_main.option_state[opt_challenge]!=ch_barrenness or ob_main.berrydeck_total<30) {
 					ob_main.berry_card_id[ob_main.berrydeck_total]=card_id;
 					ob_main.berrydeck_total++;
 					potential_y=screen_main_y+cam_h+2;

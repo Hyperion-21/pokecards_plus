@@ -201,7 +201,7 @@ if credits_screen=true {
 	draw_set_font(fn_matchup);
 	//
 	sc_drawrectangle(-2,-2,room_width+2,room_height+2,global.color_black,c_white,0,0.9,0,0);
-	sc_drawtext(screen_options_x+cam_w/2,screen_main_y+59,
+	sc_drawtext(screen_options_x+cam_w/2,screen_main_y+53,
 	"Pokemon belongs to Nintendo and The Pokemon Company." + "\n" +
 	"This is a fangame made just for fun and it's in no way related to Nintendo." + "\n\n" +
 	"Official art/sprites by GAME FREAK." + "\n" +
@@ -211,7 +211,8 @@ if credits_screen=true {
 	"Fonts by DANIEL LINSSEN and EEVE SOMEPX." + "\n\n" +
 	"Created by MOODYTAIL." + "\n" +
 	"https://moodytail.itch.io/" + "\n\n" +
-	"Special thanks to all my friends, testers and supporters. <3",
+	"Special thanks to all my friends, testers and supporters. <3" + "\n" +
+	"(" + game_version + ")",
 	global.color_white,global.color_black,1,1,0,-1);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

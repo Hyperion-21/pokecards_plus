@@ -32,8 +32,8 @@ if argument1=true {
 	//
 	var i=0;
 	repeat (3) { //cost types are also considered for tutorial enemy deck, and shown in ob_card_space when adding a glyph to an empty card
-		//normal, grass, fire, water, electric, flying
-		if card_cost[i]=00 or card_cost[i]=01 or card_cost[i]=02 or card_cost[i]=03 or card_cost[i]=04 or card_cost[i]=05 {
+		//normal, grass, fire, water, flying
+		if card_cost[i]=00 or card_cost[i]=01 or card_cost[i]=02 or card_cost[i]=03 or card_cost[i]=05 {
 			card_cost[i]=0; //oran
 			card_cost_total_type[0]++;
 			if enemy_costcount=true { ob_control.enemy_deck_fullcost[0]++; }
@@ -44,8 +44,8 @@ if argument1=true {
 			card_cost_total_type[1]++;
 			if enemy_costcount=true { ob_control.enemy_deck_fullcost[1]++; }
 		}
-		//fighting, ground, rock, ice, dragon, steel
-		else if card_cost[i]=06 or card_cost[i]=09 or card_cost[i]=10 or card_cost[i]=13 or card_cost[i]=14 or card_cost[i]=15 {
+		//electric, fighting, ground, rock, ice, dragon, steel
+		else if card_cost[i]=04 or card_cost[i]=06 or card_cost[i]=09 or card_cost[i]=10 or card_cost[i]=13 or card_cost[i]=14 or card_cost[i]=15 {
 			card_cost[i]=2; //lum
 			card_cost_total_type[2]++;
 			if enemy_costcount=true { ob_control.enemy_deck_fullcost[2]++; }

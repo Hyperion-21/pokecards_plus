@@ -29,10 +29,10 @@ Gameplay Tips:
 
 Keyboard Shortcuts:
 
-- Spacebar: end turn during battle and grab all cards when opening a pack.
+- Spacebar: end turn during battle, grab all cards when opening a pack, and skip victory/defeat screen after random battles.
 - Tab: sort cards in hand during battle.
 - Up arrow key (or W key): hold down to attack with all cards during battle.
-- Left/Right arrow keys (or A/D keys): navigate menus (options/deck) and draw cards during battle.
+- Left/Right arrow keys (or A/D keys): navigate menus (options/deck), and draw cards during battle.
 - Up/Down arrow keys (or W/S keys): select number of berries when building deck.
 
 ——————————
