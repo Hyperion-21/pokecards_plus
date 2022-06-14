@@ -1,3 +1,8 @@
+The project is now Open Source!
+https://gitlab.com/moodytail/pokecards
+
+——————————
+
 PCL is a Poke-card game, although completely different to the Official Trading Card Game. The gameplay mechanics were partially inspired by Inscryption, being pretty straightforward and easy to learn.
 
 After choosing a starter deck, your goal is to travel through Kyoumu, challenging each of the Gym Leaders from the eight major cities in the region, building up your team to reach the ultimate goal, the Crystal League. Along the way, you'll be presented with numerous choices to expand your deck, strengthen your cards, give them unique special abilities, and battle other trainers.

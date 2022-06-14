@@ -1,0 +1,5 @@
+Now that I'm comfortable with where the game is at, I decided to finally release the project publicly. I was going to write documentation for it, but I just don't have the time to do so. But anyway! Feel free to check it out!
+
+Thank you all for your support, and I hope you can understand and forgive my messy code. Have a very nice day!
+
+https://gitlab.com/moodytail/pokecards
