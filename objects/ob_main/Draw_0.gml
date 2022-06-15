@@ -213,7 +213,7 @@ if credits_screen=true {
 	"Created by MOODYTAIL." + "\n" +
 	"https://moodytail.itch.io/" + "\n\n" +
 	"Special thanks to all my friends, testers and supporters. <3" + "\n" +
-	"(" + game_version + ")",
+	"(PCL " + game_version + ", PCL+ " + pclp_version + ")",
 	global.color_white,global.color_black,1,1,0,-1);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
