@@ -21,7 +21,11 @@ To build this mod:
 
 ## STATUS:
 Gen 3 is complete!
+
 Gen 4 isn't!
+
 Gen 5 isn't!
+
 Gen 6 isn't!
+
 Gen 7 is complete!
