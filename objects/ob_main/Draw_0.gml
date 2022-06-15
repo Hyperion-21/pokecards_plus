@@ -202,6 +202,7 @@ if credits_screen=true {
 	//
 	sc_drawrectangle(-2,-2,room_width+2,room_height+2,global.color_black,c_white,0,0.9,0,0);
 	sc_drawtext(screen_options_x+cam_w/2,screen_main_y+53,
+	"PCL+ is a mod made by Hyperion_21, Tukurai, DarkAnarchist, and 2fast4you98.\n\n" +
 	"Pokemon belongs to Nintendo and The Pokemon Company." + "\n" +
 	"This is a fangame made just for fun and it's in no way related to Nintendo." + "\n\n" +
 	"Official art/sprites by GAME FREAK." + "\n" +
