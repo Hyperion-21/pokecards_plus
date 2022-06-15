@@ -10,7 +10,7 @@ Currently only adds a few dozen pokemon out of hundreds... but we'll get there e
 And yes, I know the starter decks are extremely glitchy right now (missingno's and off-screen cards). For now, just click the collect-all button on the bottom right to get past that screen.
 
 
-To build this game:
+To build this mod:
 - Clone the repo onto your computer
 - Open it up in gamemaker studio
 - Build it (or just run it)
