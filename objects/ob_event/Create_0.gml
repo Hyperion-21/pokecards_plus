@@ -83,20 +83,26 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 	//specific pokemon ids are checked manually when creating deck in tutorial
 	//exact amount of cards and berries is also checked manually when entering tutorial
 	//
-	card_prize=10;
+	card_prize=14;
 	var i=0;
+	
 	repeat (card_prize) {
-		if i<=4 {
+		if i<=6 {
 			create_card_cat=0;
 			if i=0 and event_kind=ref_event_grass { create_card_id=001; } //bulbasaur
 			else if i=1 and event_kind=ref_event_grass { create_card_id=152; } //chikorita
+			else if i=2 and event_kind=ref_event_grass { create_card_id=252; } //treecko
+			
 			else if i=0 and event_kind=ref_event_fire { create_card_id=004; } //charmander
 			else if i=1 and event_kind=ref_event_fire { create_card_id=155; } //cyndaquil
+			else if i=2 and event_kind=ref_event_fire { create_card_id=255; } //torchick
+			
 			else if i=0 and event_kind=ref_event_water { create_card_id=007; } //squirtle
 			else if i=1 and event_kind=ref_event_water { create_card_id=158; } //totodile
-			else if i=2 { create_card_id=016; } //pidgey
-			else if i=3 { create_card_id=021; } //spearow
-			else if i=4 { create_card_id=019; } //rattata
+			else if i=2 and event_kind=ref_event_water { create_card_id=258; } //mudkip
+			
+			else if i>=3 { create_card_id=2001; } //missingno
+			
 			create_card_level=1;
 			create_card_glyph_a=-1;
 			create_card_glyph_b=-1;
@@ -106,10 +112,11 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 		}
 		else {
 			create_card_cat=1;
-			if i<=9 { create_card_id=3000; } //oran
+			if i<=13 { create_card_id=3000; } //oran
 			//else { create_card_id=3001; } //leppa
 			//else { create_card_id=3002; } //lum
 		}
+		
 		//
 		if i<=4 { var card_x=screen_main_x+83+(72*i), card_y=screen_main_y+104-47; }
 		else { var card_x=screen_main_x+83+(72*(i-5)), card_y=screen_main_y+104+47; }
