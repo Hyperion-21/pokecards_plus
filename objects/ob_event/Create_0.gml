@@ -62,7 +62,7 @@ if event_kind=ref_event_cardpack or event_kind=ref_event_berry {
 			i++;
 		}
 	}
-	//
+	
 	button_create=instance_create_layer(screen_main_x+cam_w-24,screen_main_y+cam_h-24,"instances",ob_button_16x16);
 	button_create.button_id=2;
 }

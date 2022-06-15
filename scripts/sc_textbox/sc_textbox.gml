@@ -11,7 +11,8 @@ else if argument0=1 {
 	ob_main.textbox_string[1]="When you're done, come back here and let's get things started. Or, if you're already familiar with the rules, feel free to get a Payout instead!";
 }
 else if argument0=2 {
-	ob_main.textbox_string[0]="Please go to your deck and equip all of your newly acquired cards!";
+	//ob_main.textbox_string[0]="Please go to your deck and equip all of your newly acquired cards!";
+	ob_main.textbox_string[0]="Tutorial has been disabled in PCL+!";
 }
 else if argument0=3 {
 	ob_main.textbox_string[0]="Alright, here we go! Are you ready?";
