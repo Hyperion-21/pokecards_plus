@@ -13,7 +13,7 @@ And yes, I know the starter decks are extremely glitchy right now (missingno's a
 To build this mod:
 - Clone the repo onto your computer
 - Open it up in gamemaker studio
-- Build it (or just run it)
+- Build it (or just run it; turns out you need to pay for gamemaker to create desktop binaries... so unless you have paid gamemaker you pretty much have to debug the game to play it)
 
 (note to self: attach binaries later)
 
