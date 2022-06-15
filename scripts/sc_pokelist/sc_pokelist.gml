@@ -2687,12 +2687,12 @@ switch (card_id) {
 	case 0512: card_name="Simisage"; card_stage=2;  card_type_a=1; card_type_b=-1; card_base_hp=75; card_base_atk=98+98; card_base_def=63+63; card_grid_x=5; card_grid_y=11; break;
 	case 0513: card_name="Pansear"; card_stage=1; card_evo[0]=514; card_type_a=2; card_type_b=-1; card_base_hp=50; card_base_atk=53+53; card_base_def=48+48; card_grid_x=6; card_grid_y=11; break;
 	case 0514: card_name="Simisear"; card_stage=2;  card_type_a=2; card_type_b=-1; card_base_hp=75; card_base_atk=98+98; card_base_def=63+63; card_grid_x=8; card_grid_y=11; break;
-	case 0515: card_name="Panpour"; card_stage=1; card_evo[0]=516; card_type_a=3; card_type_b=-1; card_base_hp=50; card_base_atk=53+53; card_base_def=48+48; card_grid_x=9; card_grid_y=11; break;
-	case 0516: card_name="Simipour"; card_stage=2;  card_type_a=3; card_type_b=-1; card_base_hp=75; card_base_atk=98+98; card_base_def=63+63; card_grid_x=10; card_grid_y=11; break;
-	case 0517: card_name="Munna"; card_stage=1; card_evo[0]=518; card_type_a=7; card_type_b=-1; card_base_hp=76; card_base_atk=25+67; card_base_def=45+55; card_grid_x=11; card_grid_y=11; break;
-	case 0518: card_name="Musharna"; card_stage=2;  card_type_a=7; card_type_b=-1; card_base_hp=116; card_base_atk=55+107; card_base_def=85+95; card_grid_x=12; card_grid_y=11; break;
-	case 0519: card_name="Pidove"; card_stage=1; card_evo[0]=520; card_type_a=0; card_type_b=5; card_base_hp=50; card_base_atk=55+36; card_base_def=50+30; card_grid_x=13; card_grid_y=11; break;
-	case 0520: card_name="Tranquill"; card_stage=2; card_evo[0]=521; card_type_a=0; card_type_b=5; card_base_hp=62; card_base_atk=77+50; card_base_def=62+42; card_grid_x=14; card_grid_y=11; break;
+	case 0515: card_name="Panpour"; card_stage=1; card_evo[0]=516; card_type_a=3; card_type_b=-1; card_base_hp=50; card_base_atk=53+53; card_base_def=48+48; card_grid_x=10; card_grid_y=11; break;
+	case 0516: card_name="Simipour"; card_stage=2;  card_type_a=3; card_type_b=-1; card_base_hp=75; card_base_atk=98+98; card_base_def=63+63; card_grid_x=11; card_grid_y=11; break;
+	case 0517: card_name="Munna"; card_stage=1; card_evo[0]=518; card_type_a=7; card_type_b=-1; card_base_hp=76; card_base_atk=25+67; card_base_def=45+55; card_grid_x=12; card_grid_y=11; break;
+	case 0518: card_name="Musharna"; card_stage=2;  card_type_a=7; card_type_b=-1; card_base_hp=116; card_base_atk=55+107; card_base_def=85+95; card_grid_x=13; card_grid_y=11; break;
+	case 0519: card_name="Pidove"; card_stage=1; card_evo[0]=520; card_type_a=0; card_type_b=5; card_base_hp=50; card_base_atk=55+36; card_base_def=50+30; card_grid_x=14; card_grid_y=11; break;
+	case 0520: card_name="Tranquill"; card_stage=2; card_evo[0]=521; card_type_a=0; card_type_b=5; card_base_hp=62; card_base_atk=77+50; card_base_def=62+42; card_grid_x=15; card_grid_y=11; break;
 	case 0521: card_name="Unfezant"; card_stage=3;  card_type_a=0; card_type_b=5; card_base_hp=80; card_base_atk=115+65; card_base_def=80+55; card_grid_x=1; card_grid_y=12; break;
 	//case 0521: card_name="Unfezant"; card_stage=3;  card_type_a=0; card_type_b=5; card_base_hp=80; card_base_atk=115+65; card_base_def=80+55; card_grid_x=2; card_grid_y=12; break;
 	case 0522: card_name="Blitzle"; card_stage=1; card_evo[0]=523; card_type_a=4; card_type_b=-1; card_base_hp=45; card_base_atk=60+50; card_base_def=32+32; card_grid_x=3; card_grid_y=12; break;
