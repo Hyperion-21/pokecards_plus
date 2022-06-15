@@ -101,7 +101,7 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 			else if i=1 and event_kind=ref_event_water { create_card_id=158; } //totodile
 			else if i=2 and event_kind=ref_event_water { create_card_id=258; } //mudkip
 			
-			else if i>=3 { create_card_id=2001; } //missingno
+			else if i>=3 { create_card_id=289; } //slaking
 			
 			create_card_level=1;
 			create_card_glyph_a=-1;
