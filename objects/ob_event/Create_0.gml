@@ -93,13 +93,16 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 			else if i=1 and event_kind=ref_event_grass { create_card_id=152; } //chikorita
 			else if i=2 and event_kind=ref_event_grass { create_card_id=252; } //treecko
 			else if i=3 and event_kind=ref_event_grass { create_card_id=387; } //turtwig
+			else if i=4 and event_kind=ref_event_grass { create_card_id=495; } //snivy
 			else if i=5 and event_kind=ref_event_grass { create_card_id=650; } //chespin
 			else if i=6 and event_kind=ref_event_grass { create_card_id=722; } //rowlet
+			
 			
 			else if i=0 and event_kind=ref_event_fire { create_card_id=004; } //charmander
 			else if i=1 and event_kind=ref_event_fire { create_card_id=155; } //cyndaquil
 			else if i=2 and event_kind=ref_event_fire { create_card_id=255; } //torchick
 			else if i=3 and event_kind=ref_event_fire { create_card_id=390; } //chimchar
+			else if i=4 and event_kind=ref_event_fire { create_card_id=498; } //tepig
 			else if i=5 and event_kind=ref_event_fire { create_card_id=653; } //fennekin
 			else if i=6 and event_kind=ref_event_fire { create_card_id=725; } //litten
 			
@@ -107,10 +110,9 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 			else if i=1 and event_kind=ref_event_water { create_card_id=158; } //totodile
 			else if i=2 and event_kind=ref_event_water { create_card_id=258; } //mudkip
 			else if i=3 and event_kind=ref_event_water { create_card_id=393; } //piplup
+			else if i=4 and event_kind=ref_event_water { create_card_id=501; } //oshawott
 			else if i=5 and event_kind=ref_event_water { create_card_id=656; } //froakie
 			else if i=6 and event_kind=ref_event_water { create_card_id=728; } //popplio
-			
-			else if i=4 { create_card_id=493; } //arceus
 			
 			create_card_level=1;
 			create_card_glyph_a=-1;
