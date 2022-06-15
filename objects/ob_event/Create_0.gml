@@ -127,8 +127,13 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 		}
 		
 		//
+		
+		/*
 		if i<=4 { var card_x=screen_main_x+83+(72*i), card_y=screen_main_y+104-47; }
 		else { var card_x=screen_main_x+83+(72*(i-5)), card_y=screen_main_y+104+47; }
+		*/
+		if i<=6 { var card_x=screen_main_x+36+(62*i), card_y=screen_main_y+104-47; }
+		else { var card_x=screen_main_x+36+(62*(i-7)), card_y=screen_main_y+104+47; }
 		instance_create_layer(card_x,card_y,"instances",ob_card);
 		i++;
 	}
