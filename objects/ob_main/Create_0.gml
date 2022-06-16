@@ -1,6 +1,7 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
 #macro game_version "v1.6.0.0"
+#macro pclp_version "v1.0.1.3-pre"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -93,7 +94,7 @@ textbox_timer=0;
 textbox_timer_max=1;
 textbox_char_pos=0;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-#macro normal_poke_id_max 272 //normal (non-secret and non-environment) poke cards
+#macro normal_poke_id_max 807 //normal (non-secret and non-environment) poke cards
 #macro secret_cards_total 2
 #macro environment_cards_total 3
 //
@@ -279,8 +280,8 @@ repeat (8) {
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-#macro config_file "config.sav"
-#macro data_file "data.sav"
+#macro config_file "config_pcl+.sav"
+#macro data_file "data_pcl+.sav"
 sc_config_load();
 sc_config_save();
 sc_data_load();

@@ -62,7 +62,7 @@ if event_kind=ref_event_cardpack or event_kind=ref_event_berry {
 			i++;
 		}
 	}
-	//
+	
 	button_create=instance_create_layer(screen_main_x+cam_w-24,screen_main_y+cam_h-24,"instances",ob_button_16x16);
 	button_create.button_id=2;
 }
@@ -92,16 +92,27 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 			if i=0 and event_kind=ref_event_grass { create_card_id=001; } //bulbasaur
 			else if i=1 and event_kind=ref_event_grass { create_card_id=152; } //chikorita
 			else if i=2 and event_kind=ref_event_grass { create_card_id=252; } //treecko
+			else if i=3 and event_kind=ref_event_grass { create_card_id=387; } //turtwig
+			else if i=4 and event_kind=ref_event_grass { create_card_id=495; } //snivy
+			else if i=5 and event_kind=ref_event_grass { create_card_id=650; } //chespin
+			else if i=6 and event_kind=ref_event_grass { create_card_id=722; } //rowlet
+			
 			
 			else if i=0 and event_kind=ref_event_fire { create_card_id=004; } //charmander
 			else if i=1 and event_kind=ref_event_fire { create_card_id=155; } //cyndaquil
 			else if i=2 and event_kind=ref_event_fire { create_card_id=255; } //torchick
+			else if i=3 and event_kind=ref_event_fire { create_card_id=390; } //chimchar
+			else if i=4 and event_kind=ref_event_fire { create_card_id=498; } //tepig
+			else if i=5 and event_kind=ref_event_fire { create_card_id=653; } //fennekin
+			else if i=6 and event_kind=ref_event_fire { create_card_id=725; } //litten
 			
 			else if i=0 and event_kind=ref_event_water { create_card_id=007; } //squirtle
 			else if i=1 and event_kind=ref_event_water { create_card_id=158; } //totodile
 			else if i=2 and event_kind=ref_event_water { create_card_id=258; } //mudkip
-			
-			else if i>=3 { create_card_id=2001; } //missingno
+			else if i=3 and event_kind=ref_event_water { create_card_id=393; } //piplup
+			else if i=4 and event_kind=ref_event_water { create_card_id=501; } //oshawott
+			else if i=5 and event_kind=ref_event_water { create_card_id=656; } //froakie
+			else if i=6 and event_kind=ref_event_water { create_card_id=728; } //popplio
 			
 			create_card_level=1;
 			create_card_glyph_a=-1;
@@ -118,8 +129,13 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 		}
 		
 		//
+		
+		/*
 		if i<=4 { var card_x=screen_main_x+83+(72*i), card_y=screen_main_y+104-47; }
 		else { var card_x=screen_main_x+83+(72*(i-5)), card_y=screen_main_y+104+47; }
+		*/
+		if i<=6 { var card_x=screen_main_x+36+(62*i), card_y=screen_main_y+104-47; }
+		else { var card_x=screen_main_x+36+(62*(i-7)), card_y=screen_main_y+104+47; }
 		instance_create_layer(card_x,card_y,"instances",ob_card);
 		i++;
 	}
