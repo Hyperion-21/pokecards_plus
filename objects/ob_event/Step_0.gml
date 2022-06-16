@@ -98,7 +98,7 @@ if apply_event=true {
 		}
 		/* START
 		FORM SWAPPER AND MEGA SWAPPER. Might need to limit it to only certain mons.
-		*/
+		
 		if card_id_in_space[0].card_has_forms {
 			do { //2 forms is clean, multiform is messy.
 				//card_id_in_space[0].card_form_value=irandom(999);
@@ -118,7 +118,7 @@ if apply_event=true {
 			sc_playsound(sn_upgrade,50,false,false);
 			ob_main.main_card_id[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_id;
 		}
-		/* 
+		
 		MEGA EVO
 		*/
 		if card_id_in_space[0].card_can_mega {
