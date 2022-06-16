@@ -16,8 +16,6 @@ card_enigma=false;
 card_pseudo=false;
 card_fossil=false;
 card_starter=false;
-card_mega=false;
-
 //
 card_secret=false;
 card_environment=false;
@@ -91,7 +89,7 @@ switch (card_id) {
 		card_base_hp=59; card_base_atk=63+65; card_base_def=80+80;
 		card_grid_x=11; card_grid_y=1; break;
 	case 009:
-		if card_mega=false{
+		if if card_mega=false{
 		card_name="Blastoise";
 		card_stage=3; card_evo[0]=009; card_starter=true;
 		card_type_a=03; card_type_b=-1;
