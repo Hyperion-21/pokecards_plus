@@ -34,11 +34,17 @@ switch (card_id) {
 		card_base_hp=60; card_base_atk=62+80; card_base_def=63+80;
 		card_grid_x=2; card_grid_y=1; break;
 	case 003:
-		card_name="Venusaur";
-		card_stage=3; card_starter=true;
+		if card_form_value<999 { card_name="Venusaur";
+		card_stage=3; card_evo[0]=003; card_starter=true;
 		card_type_a=01; card_type_b=12;
 		card_base_hp=80; card_base_atk=82+100; card_base_def=83+100;
-		card_grid_x=3; card_grid_y=1; break;
+		card_grid_x=3; card_grid_y=1;}
+		else {
+		card_name="M-Venusaur";
+		card_stage=3; card_evo[0]=003; card_starter=true; card_enigma=true;
+		card_type_a=01; card_type_b=12;
+		card_base_hp=80; card_base_atk=100+122; card_base_def=123+120;
+		card_grid_x=4; card_grid_y=1;} break;
 	case 004:
 		card_name="Charmander";
 		card_stage=1; card_evo[0]=005; card_starter=true;
@@ -52,11 +58,24 @@ switch (card_id) {
 		card_base_hp=58; card_base_atk=64+80; card_base_def=58+65;
 		card_grid_x=6; card_grid_y=1; break;
 	case 006:
+		if card_form_value<999{
 		card_name="Charizard";
-		card_stage=3; card_starter=true;
+		card_stage=3; card_evo[0]=006; card_starter=true;
 		card_type_a=02; card_type_b=05;
 		card_base_hp=78; card_base_atk=84+109; card_base_def=78+85;
-		card_grid_x=7; card_grid_y=1; break;
+		card_grid_x=7; card_grid_y=1;}
+		else if card_form_value<1001{
+		card_name="M-Charizard X";
+		card_stage=3; card_evo[0]=006; card_starter=true; card_enigma=true;
+		card_type_a=02; card_type_b=14;
+		card_base_hp=78; card_base_atk=130+130; card_base_def=111+85;
+		card_grid_x=8; card_grid_y=1;}
+		else if card_form_value<1002{
+		card_name="M-Charizard Y";
+		card_stage=3; card_evo[0]=006; card_starter=true; card_enigma=true;
+		card_type_a=02; card_type_b=05;
+		card_base_hp=78; card_base_atk=104+159; card_base_def=78+115;
+		card_grid_x=9; card_grid_y=1;} break;
 	case 007:
 		card_name="Squirtle";
 		card_stage=1; card_evo[0]=008; card_starter=true;
@@ -70,11 +89,19 @@ switch (card_id) {
 		card_base_hp=59; card_base_atk=63+65; card_base_def=80+80;
 		card_grid_x=11; card_grid_y=1; break;
 	case 009:
+		if card_form_value<999{
 		card_name="Blastoise";
-		card_stage=3; card_starter=true;
+		card_stage=3; card_evo[0]=009; card_starter=true;
 		card_type_a=03; card_type_b=-1;
 		card_base_hp=79; card_base_atk=83+85; card_base_def=100+105;
-		card_grid_x=12; card_grid_y=1; break;
+		card_grid_x=12; card_grid_y=1;}
+		else {
+		card_name="M-Blastoise";
+		card_stage=3; card_evo[0]=009; card_starter=true; card_enigma=true;
+		card_type_a=03; card_type_b=-1;
+		card_base_hp=79; card_base_atk=103+135; card_base_def=120+115;
+		card_grid_x=13; card_grid_y=1;} 
+		break;
 	case 010:
 		card_name="Caterpie";
 		card_stage=1; card_evo[0]=011;
