@@ -190,11 +190,11 @@ switch (card_id) {
 		if card_form_value<500 { 
 		card_type_a=04; card_type_b=-1;
 		card_base_hp=60; card_base_atk=90+90; card_base_def=55+80;
-		card_grid_x=13; card_grid_y=3;)
+		card_grid_x=13; card_grid_y=3;}
 		else if card_form_value<999 { 
 		card_type_a=04; card_type_b=07;
 		card_base_hp=60; card_base_atk=85+95; card_base_def=50+85;
-		card_grid_x=14; card_grid_y=3;)	break;
+		card_grid_x=14; card_grid_y=3;}	break;
 	case 027:
 		card_name="Sandshrew";
 		card_stage=1; card_evo[0]=028;
