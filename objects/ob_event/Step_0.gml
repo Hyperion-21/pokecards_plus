@@ -124,10 +124,12 @@ if apply_event=true {
 		if evo_list[0]=card_id_in_space[0].card_id {
 			do {
 				//card_id_in_space[0].card_form_value=irandom(999);
-				if card_id_in_space[0].card_form_value<999 {
-				card_id_in_space[0].card_form_value=1000+irandom(1);}//multi mega
+				if card_id_in_space[0].card_mega=false {
+					card_id_in_space[0].card_mega=true;
+					}//multi mega
 				else {
-				card_id_in_space[0].card_form_value=irandom(999);}
+					card_id_in_space[0].card_mega=false;
+					}
 			} until (card_id_in_space[0].card_id!=-1 and card_id_in_space[0].card_id<=normal_poke_id_max);
 			sc_card_effect(event_space_id[0].x,event_space_id[0].y,0,false,true);
 			with (card_id_in_space[0]) {
