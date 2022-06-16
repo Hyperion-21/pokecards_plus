@@ -131,16 +131,29 @@ switch (card_id) {
 		card_grid_x=8; card_grid_y=2; break;
 	case 019:
 		card_name="Rattata";
+		if card_form_value<500 { 
 		card_stage=1; card_evo[0]=020;
 		card_type_a=00; card_type_b=-1;
 		card_base_hp=30; card_base_atk=56+25; card_base_def=35+35;
-		card_grid_x=10; card_grid_y=2; break;
+		card_grid_x=10; card_grid_y=2; }
+		else if card_form_value<999 { 
+		card_stage=1; card_evo[0]=020;
+		card_type_a=17; card_type_b=00;
+		card_base_hp=30; card_base_atk=56+25; card_base_def=35+35;
+		card_grid_x=11; card_grid_y=2; }; break;
+		
 	case 020:
 		card_name="Raticate";
+		if card_form_value<500 { 
 		card_stage=2;
 		card_type_a=00; card_type_b=-1;
 		card_base_hp=55; card_base_atk=81+50; card_base_def=60+70;
-		card_grid_x=12; card_grid_y=2; break;
+		card_grid_x=12; card_grid_y=2; }
+		else{ 
+		card_stage=2;
+		card_type_a=17; card_type_b=00;
+		card_base_hp=55; card_base_atk=81+50; card_base_def=60+70;
+		card_grid_x=13; card_grid_y=2; } break;
 	case 021:
 		card_name="Spearow";
 		card_stage=1; card_evo[0]=022;
