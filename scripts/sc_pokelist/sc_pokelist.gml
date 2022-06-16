@@ -3125,6 +3125,7 @@ switch (card_id) {
 		card_base_hp=130; card_base_atk=0; card_base_def=200; //hp 3-20, def 1-5
 		card_grid_x=3; card_grid_y=14; break;
 	default:
+		card_sheet=sp_poke_c;
 		card_name=card_id;
 		card_stage=1; card_environment=true;
 		card_type_a=10; card_type_b=-1;
