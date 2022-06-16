@@ -2884,8 +2884,8 @@ switch (card_id) {
 	case 0667: card_name="Litleo"; card_stage=1;  card_evo[0]=668; card_type_a=2; card_type_b=0; card_base_hp=62; card_base_atk=50+73; card_base_def=58+54; card_grid_x=10; card_grid_y=26; break;
 	case 0668: card_name="Pyroar"; card_stage=2;  card_type_a=2; card_type_b=0; card_base_hp=86; card_base_atk=68+109; card_base_def=72+66; card_grid_x=11; card_grid_y=26; break;
 	// case 0668: card_name="Pyroar"; card_stage=2;  card_type_a=2; card_type_b=0; card_base_hp=86; card_base_atk=68+109; card_base_def=72+66; card_grid_x=12; card_grid_y=26; break;
-	/*
 	case 0669: card_name="Flabebe"; card_stage=1;  card_evo[1]=670; card_type_a=8; card_type_b=-1; card_base_hp=44; card_base_atk=38+61; card_base_def=39+79; card_grid_x=13; card_grid_y=26; break;
+	/*
 	case 0669: card_name="Flabebe"; card_stage=1;  card_evo[1]=670; card_type_a=8; card_type_b=-1; card_base_hp=44; card_base_atk=38+61; card_base_def=39+79; card_grid_x=14; card_grid_y=26; break;
 	case 0669: card_name="Flabebe"; card_stage=1;  card_evo[1]=670; card_type_a=8; card_type_b=-1; card_base_hp=44; card_base_atk=38+61; card_base_def=39+79; card_grid_x=15; card_grid_y=26; break;
 	case 0669: card_name="Flabebe"; card_stage=1;  card_evo[1]=670; card_type_a=8; card_type_b=-1; card_base_hp=44; card_base_atk=38+61; card_base_def=39+79; card_grid_x=1; card_grid_y=27; break;
