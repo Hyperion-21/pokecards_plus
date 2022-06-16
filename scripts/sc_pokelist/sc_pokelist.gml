@@ -649,7 +649,6 @@ switch (card_id) {
 		card_type_a=03; card_type_b=07;
 		card_base_hp=95; card_base_atk=75+100; card_base_def=110+80;
 		card_grid_x=12; card_grid_y=8;}
-		card_can_mega=true;
 		else {
 		card_name="M-Slowbro";
 		card_stage=2; card_enigma=true;
@@ -753,7 +752,8 @@ switch (card_id) {
 		card_stage=3;
 		card_type_a=16; card_type_b=12;
 		card_base_hp=60; card_base_atk=65+130; card_base_def=60+75;
-		card_grid_x=15; card_grid_y=9;}999{
+		card_grid_x=15; card_grid_y=9;}
+		else {
 		card_name="M-Gengar";
 		card_stage=3; card_enigma=true;
 		card_type_a=16; card_type_b=12;
