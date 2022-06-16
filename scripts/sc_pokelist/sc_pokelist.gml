@@ -376,17 +376,29 @@ switch (card_id) {
 		card_base_hp=35; card_base_atk=100+50; card_base_def=60+70;
 		card_grid_x=4; card_grid_y=6;} break;
 	case 052:
-		card_name="Meowth";
-		card_stage=1; card_evo[0]=053;
+		card_name="Meowth";//this has a third gen8 for with a different evo so it needs to be divided into 3 later
+		card_stage=1; 
+		if card_form_value<500 {
+		card_evo[0]=053;
 		card_type_a=00; card_type_b=-1;
 		card_base_hp=40; card_base_atk=45+40; card_base_def=35+40;
-		card_grid_x=6; card_grid_y=6; break;
+		card_grid_x=6; card_grid_y=6;}
+		else if card_form_value<999 {
+		card_evo[0]=053;
+		card_type_a=17; card_type_b=-1;
+		card_base_hp=40; card_base_atk=35+50; card_base_def=35+40;
+		card_grid_x=7; card_grid_y=6;} break;
 	case 053:
 		card_name="Persian";
 		card_stage=2;
+		if card_form_value<500 {
 		card_type_a=00; card_type_b=-1;
 		card_base_hp=65; card_base_atk=70+65; card_base_def=60+65;
-		card_grid_x=8; card_grid_y=6; break;
+		card_grid_x=8; card_grid_y=6;}
+		else if card_form_value<999 {
+		card_type_a=17; card_type_b=-1;
+		card_base_hp=65; card_base_atk=60+75; card_base_def=60+65;
+		card_grid_x=9; card_grid_y=6;} break;
 	case 054:
 		card_name="Psyduck";
 		card_stage=1; card_evo[0]=055;
@@ -510,21 +522,36 @@ switch (card_id) {
 	case 074:
 		card_name="Geodude";
 		card_stage=1; card_evo[0]=075;
+		if card_form_value<500 {
 		card_type_a=10; card_type_b=09;
 		card_base_hp=40; card_base_atk=80+30; card_base_def=100+30;
-		card_grid_x=3; card_grid_y=8; break;
+		card_grid_x=3; card_grid_y=8;}
+		else if card_form_value<999 {
+		card_type_a=10; card_type_b=04;
+		card_base_hp=40; card_base_atk=80+30; card_base_def=100+30;
+		card_grid_x=4; card_grid_y=8;} break;
 	case 075:
 		card_name="Graveler";
 		card_stage=2; card_evo[0]=076;
+		if card_form_value<500 {
 		card_type_a=10; card_type_b=09;
 		card_base_hp=55; card_base_atk=95+45; card_base_def=115+45;
-		card_grid_x=5; card_grid_y=8; break;
+		card_grid_x=5; card_grid_y=8;}
+		else if card_form_value<999 {
+		card_type_a=10; card_type_b=04;
+		card_base_hp=55; card_base_atk=95+45; card_base_def=115+45;
+		card_grid_x=6; card_grid_y=8;} break;
 	case 076:
 		card_name="Golem";
 		card_stage=3;
+		if card_form_value<500 {
 		card_type_a=10; card_type_b=09;
 		card_base_hp=80; card_base_atk=120+55; card_base_def=130+65;
-		card_grid_x=7; card_grid_y=8; break;
+		card_grid_x=7; card_grid_y=8;}
+		else if card_form_value<999 {
+		card_type_a=10; card_type_b=04;
+		card_base_hp=80; card_base_atk=120+55; card_base_def=130+65;
+		card_grid_x=8; card_grid_y=8;} break;
 	case 077:
 		card_name="Ponyta";
 		card_stage=1; card_evo[0]=078;
@@ -594,15 +621,25 @@ switch (card_id) {
 	case 088:
 		card_name="Grimer";
 		card_stage=1; card_evo[0]=089;
+		if card_form_value<500 {
 		card_type_a=12; card_type_b=-1;
 		card_base_hp=80; card_base_atk=80+40; card_base_def=50+50;
-		card_grid_x=6; card_grid_y=9; break;
+		card_grid_x=6; card_grid_y=9;}
+		else if card_form_value<999 {
+		card_type_a=12; card_type_b=17;
+		card_base_hp=80; card_base_atk=80+40; card_base_def=50+50;
+		card_grid_x=7; card_grid_y=9;} break;
 	case 089:
 		card_name="Muk";
 		card_stage=2;
+		if card_form_value<500 {
 		card_type_a=12; card_type_b=-1;
 		card_base_hp=105; card_base_atk=105+65; card_base_def=75+100;
-		card_grid_x=8; card_grid_y=9; break;
+		card_grid_x=8; card_grid_y=9;}
+		else if card_form_value<999 {
+		card_type_a=12; card_type_b=17;
+		card_base_hp=105; card_base_atk=105+65; card_base_def=75+100;
+		card_grid_x=9; card_grid_y=9;} break;
 	case 090:
 		card_name="Shellder";
 		card_stage=1; card_evo[0]=091;
@@ -684,9 +721,14 @@ switch (card_id) {
 	case 103:
 		card_name="Exeggutor";
 		card_stage=2;
+		if card_form_value<500 {
 		card_type_a=01; card_type_b=07;
 		card_base_hp=95; card_base_atk=95+125; card_base_def=85+75;
-		card_grid_x=11; card_grid_y=10; break;
+		card_grid_x=11; card_grid_y=10;}
+		else if card_form_value<999 {
+		card_type_a=01; card_type_b=14;
+		card_base_hp=95; card_base_atk=105+125; card_base_def=85+75;
+		card_grid_x=12; card_grid_y=10;} break;
 	case 104:
 		card_name="Cubone";
 		card_stage=1; card_evo[0]=105;
@@ -696,9 +738,14 @@ switch (card_id) {
 	case 105:
 		card_name="Marowak";
 		card_stage=2;
+		if card_form_value<500 {
 		card_type_a=09; card_type_b=-1;
 		card_base_hp=60; card_base_atk=80+50; card_base_def=110+80;
-		card_grid_x=14; card_grid_y=10; break;
+		card_grid_x=14; card_grid_y=10;}
+		else if card_form_value<999 {
+		card_type_a=02; card_type_b=16;
+		card_base_hp=60; card_base_atk=80+50; card_base_def=110+80;
+		card_grid_x=15; card_grid_y=10;} break;
 	case 106:
 		card_name="Hitmonlee";
 		card_stage=1;
