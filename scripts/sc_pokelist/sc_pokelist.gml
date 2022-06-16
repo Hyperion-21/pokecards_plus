@@ -2860,8 +2860,8 @@ switch (card_id) {
 	case 0548: card_name="Petilil"; card_stage=1; card_evo[0]=549; card_type_a=1; card_type_b=-1; card_base_hp=45; card_base_atk=35+70; card_base_def=50+50; card_grid_x=3; card_grid_y=14; break;
 	case 0549: card_name="Lilligant"; card_stage=2;  card_type_a=1; card_type_b=-1; card_base_hp=70; card_base_atk=60+110; card_base_def=75+75; card_grid_x=4; card_grid_y=14; break;
 	case 0550: card_name="Basculin"; card_stage=1;  card_type_a=3; card_type_b=-1; card_base_hp=70; card_base_atk=92+80; card_base_def=65+55; 
-	if card_form_value<500{card_grid_x=13; card_grid_y=3;}card_grid_x=6; card_grid_y=14;}
-	else if card_form_value<999{card_grid_x=13; card_grid_y=3;}card_grid_x=7; card_grid_y=14;}	break;
+	if card_form_value<500{card_grid_x=6; card_grid_y=14;}
+	else if card_form_value<999{card_grid_x=7; card_grid_y=14;}	break;
 	case 0551: card_name="Sandile"; card_stage=1; card_evo[0]=552; card_type_a=9; card_type_b=17; card_base_hp=50; card_base_atk=72+35; card_base_def=35+35; card_grid_x=8; card_grid_y=14; break;
 	case 0552: card_name="Krokorok"; card_stage=2; card_evo[0]=553; card_type_a=9; card_type_b=17; card_base_hp=60; card_base_atk=82+45; card_base_def=45+45; card_grid_x=9; card_grid_y=14; break;
 	case 0553: card_name="Krookodile"; card_stage=3;  card_type_a=9; card_type_b=17; card_base_hp=95; card_base_atk=117+65; card_base_def=80+70; card_grid_x=10; card_grid_y=14; break;
