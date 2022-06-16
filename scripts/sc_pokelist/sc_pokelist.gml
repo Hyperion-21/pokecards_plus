@@ -187,21 +187,36 @@ switch (card_id) {
 	case 026:
 		card_name="Raichu";
 		card_stage=2;
+		if card_form_value<500 { 
 		card_type_a=04; card_type_b=-1;
 		card_base_hp=60; card_base_atk=90+90; card_base_def=55+80;
-		card_grid_x=13; card_grid_y=3; break;
+		card_grid_x=13; card_grid_y=3;)
+		else if card_form_value<999 { 
+		card_type_a=04; card_type_b=07;
+		card_base_hp=60; card_base_atk=85+95; card_base_def=50+85;
+		card_grid_x=14; card_grid_y=3;)	break;
 	case 027:
 		card_name="Sandshrew";
 		card_stage=1; card_evo[0]=028;
+		if card_form_value<500 { 
 		card_type_a=09; card_type_b=-1;
 		card_base_hp=50; card_base_atk=75+20; card_base_def=85+30;
-		card_grid_x=15; card_grid_y=3; break;
+		card_grid_x=15; card_grid_y=3;}
+		else if card_form_value<999 { 
+		card_type_a=13; card_type_b=15;
+		card_base_hp=50; card_base_atk=75+10; card_base_def=90+35;
+		card_grid_x=1; card_grid_y=4;}	break;
 	case 028:
 		card_name="Sandslash";
 		card_stage=2;
+		if card_form_value<500 { 
 		card_type_a=09; card_type_b=-1;
 		card_base_hp=75; card_base_atk=100+45; card_base_def=110+55;
-		card_grid_x=2; card_grid_y=4; break;
+		card_grid_x=2; card_grid_y=4;}
+		else if card_form_value<999 {  
+		card_type_a=13; card_type_b=15;
+		card_base_hp=75; card_base_atk=100+25; card_base_def=120+65;
+		card_grid_x=3; card_grid_y=4;}   break;
 	case 029:
 		card_name="Nidoran F";
 		card_stage=1; card_evo[0]=030;
@@ -253,15 +268,25 @@ switch (card_id) {
 	case 037:
 		card_name="Vulpix";
 		card_stage=1; card_evo[0]=038;
+		if card_form_value<500 {
 		card_type_a=02; card_type_b=-1;
 		card_base_hp=38; card_base_atk=41+50; card_base_def=40+65;
-		card_grid_x=14; card_grid_y=4; break;
+		card_grid_x=14; card_grid_y=4;}
+		else if card_form_value<999 {
+		card_type_a=13; card_type_b=-1;
+		card_base_hp=38; card_base_atk=41+50; card_base_def=40+65;
+		card_grid_x=15; card_grid_y=4;} break;
 	case 038:
 		card_name="Ninetales";
 		card_stage=2;
+		if card_form_value<500 {
 		card_type_a=02; card_type_b=-1;
 		card_base_hp=73; card_base_atk=76+81; card_base_def=75+100;
-		card_grid_x=1; card_grid_y=5; break;
+		card_grid_x=1; card_grid_y=5;}
+		else if card_form_value<999 {
+		card_type_a=13; card_type_b=08;
+		card_base_hp=73; card_base_atk=67+81; card_base_def=75+100;
+		card_grid_x=2; card_grid_y=5;} break;
 	case 039:
 		card_name="Jigglypuff";
 		card_stage=1; card_evo[0]=040;
@@ -331,15 +356,25 @@ switch (card_id) {
 	case 050:
 		card_name="Diglett";
 		card_stage=1; card_evo[0]=051;
+		if card_form_value<500 {
 		card_type_a=09; card_type_b=-1;
 		card_base_hp=10; card_base_atk=55+35; card_base_def=25+45;
-		card_grid_x=1; card_grid_y=6; break;
+		card_grid_x=1; card_grid_y=6;}
+		else if card_form_value<999 {
+		card_type_a=09; card_type_b=15;
+		card_base_hp=10; card_base_atk=55+35; card_base_def=30+45;
+		card_grid_x=2; card_grid_y=6;} break;
 	case 051:
 		card_name="Dugtrio";
 		card_stage=2;
+		if card_form_value<500 {
 		card_type_a=09; card_type_b=-1;
 		card_base_hp=35; card_base_atk=100+50; card_base_def=50+70;
-		card_grid_x=3; card_grid_y=6; break;
+		card_grid_x=3; card_grid_y=6;}
+		else if card_form_value<999 {
+		card_type_a=09; card_type_b=15;
+		card_base_hp=35; card_base_atk=100+50; card_base_def=60+70;
+		card_grid_x=4; card_grid_y=6;} break;
 	case 052:
 		card_name="Meowth";
 		card_stage=1; card_evo[0]=053;
