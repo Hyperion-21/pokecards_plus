@@ -96,6 +96,55 @@ if apply_event=true {
 			sc_playsound(sn_upgrade,50,false,false);
 			ob_main.main_card_id[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_id;
 		}
+		/* START
+		FORM SWAPPER AND MEGA SWAPPER. Might need to limit it to only certain mons.
+		*/
+		if evo_list[0]=-1 {
+			do { //2 forms is clean, multiform is messy.
+				//card_id_in_space[0].card_form_value=irandom(999);
+				if card_id_in_space[0].card_form_value<500 {
+				card_id_in_space[0].card_form_value=irandom(499)+500;}
+				else if card_id_in_space[0].card_form_value<999 {
+				card_id_in_space[0].card_form_value=irandom(499);}
+			} until (card_id_in_space[0].card_id!=-1 and card_id_in_space[0].card_id<=normal_poke_id_max);
+			sc_card_effect(event_space_id[0].x,event_space_id[0].y,0,false,true);
+			with (card_id_in_space[0]) {
+				sc_pokelist();
+				sc_card_level_stats_all(true,true);
+			}
+			//
+			event_applied=false;//free for testing
+			evolution_retry=true;
+			sc_playsound(sn_upgrade,50,false,false);
+			ob_main.main_card_id[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_id;
+		}
+		/* 
+		MEGA EVO
+		*/
+		if evo_list[0]=card_id_in_space[0].card_id {
+			do {
+				//card_id_in_space[0].card_form_value=irandom(999);
+				if card_id_in_space[0].card_mega=false {
+					card_id_in_space[0].card_mega=true;
+					}//multi mega
+				else {
+					card_id_in_space[0].card_mega=false;
+					}
+			} until (card_id_in_space[0].card_id!=-1 and card_id_in_space[0].card_id<=normal_poke_id_max);
+			sc_card_effect(event_space_id[0].x,event_space_id[0].y,0,false,true);
+			with (card_id_in_space[0]) {
+				sc_pokelist();
+				sc_card_level_stats_all(true,true);
+			}
+			//
+			event_applied=false;//free for testing
+			evolution_retry=true;
+			sc_playsound(sn_upgrade,50,false,false);
+			ob_main.main_card_id[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_id;
+		}
+		/* END
+		FORM SWAPPER AND MEGA SWAPPER. Might need to limit it to only certain mons.
+		*/
 	}
 	else if event_kind=ref_event_glyph and card_id_in_space[0]!=-1 {
 		if card_id_in_space[0].card_glyph_c=-1 and card_id_in_space[0].card_innate>0 and
