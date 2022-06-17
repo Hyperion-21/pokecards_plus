@@ -78,8 +78,14 @@ if apply_event=true {
 		}
 	}
 	else if event_kind=ref_event_evolution and card_id_in_space[0]!=-1 {
+		//REMOVE LATER
+		evolved_now=false;
+		//
 		if evo_list[0]!=-1 and evo_list[0]<=normal_poke_id_max and card_id_in_space[0].card_innate>0 {
 			do {
+				//REMOVE LATER
+				evolved_now=true;
+				//
 				card_id_in_space[0].card_id=evo_list[evolution_position];
 				//
 				evolution_position++;
@@ -98,8 +104,8 @@ if apply_event=true {
 		}
 		/* START
 		FORM SWAPPER AND MEGA SWAPPER. Might need to limit it to only certain mons.
-		
-		if card_id_in_space[0].card_has_forms {
+		*/
+		if card_id_in_space[0].card_has_forms and !evolved_now {
 			do { //2 forms is clean, multiform is messy.
 				//card_id_in_space[0].card_form_value=irandom(999);
 				if card_id_in_space[0].card_form_value<500 {
@@ -118,10 +124,10 @@ if apply_event=true {
 			sc_playsound(sn_upgrade,50,false,false);
 			ob_main.main_card_id[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_id;
 		}
-		
+		/*
 		MEGA EVO
 		*/
-		if card_id_in_space[0].card_can_mega {
+		if card_id_in_space[0].card_can_mega and !evolved_now {
 			do {
 				//card_id_in_space[0].card_form_value=irandom(999);
 				if card_id_in_space[0].card_form_value<999 {
