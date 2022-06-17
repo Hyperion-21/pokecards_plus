@@ -164,7 +164,7 @@ if apply_event=true {
 			event_applied=true;//free for testing
 			evolution_retry=true;
 			sc_playsound(sn_upgrade,50,false,false);
-			ob_main.main_card_id[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_id;
+			ob_main.main_card_form_value[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_form_value;
 		}
 	}
 	else if event_kind=ref_event_changeform and card_id_in_space[0]!=-1 {
@@ -195,7 +195,7 @@ if apply_event=true {
 			event_applied=false;//free for testing
 			evolution_retry=true;
 			sc_playsound(sn_upgrade,50,false,false);
-			ob_main.main_card_id[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_id;
+			ob_main.main_card_form_value[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_form_value;
 		}
 	}
 	else if event_kind=ref_event_glyph and card_id_in_space[0]!=-1 {
