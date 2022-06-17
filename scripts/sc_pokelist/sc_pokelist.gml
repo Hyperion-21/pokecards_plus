@@ -2241,7 +2241,7 @@ switch (card_id) {
 		card_can_mega=true;
 		if card_form_value<=999 {
 		card_name="Sableye";
-		card_stage=1; card_evo[0]=0;
+		card_stage=1;  
 		card_type_a=17; card_type_b=16;
 		card_base_hp=50; card_base_atk=75+65; card_base_def=75+65;
 		card_grid_x=10; card_grid_y=29;}
@@ -2256,7 +2256,7 @@ switch (card_id) {
 		card_can_mega=true;
 		if card_form_value<=999 {
 		card_name="Mawile";
-		card_stage=1; card_evo[0]=0;
+		card_stage=1;  
 		card_type_a=15; card_type_b=8;
 		card_base_hp=50; card_base_atk=85+55; card_base_def=85+55;
 		card_grid_x=12; card_grid_y=29;}
@@ -2450,13 +2450,13 @@ switch (card_id) {
 		card_can_mega=true;
 		if card_form_value<=999 {
 		card_name="Glalie"; 
-		card_stage=1; card_evo[0]=0; card_starter=false; 
+		card_stage=1;   card_starter=false; 
 		card_type_a=13; card_type_b=-1; 
 		card_base_hp=80; card_base_atk=80+80; card_base_def=80+80; 
 		card_grid_x=14; card_grid_y=34;}
 		else {
 		card_name="M-Glalie"; 
-		card_stage=1; card_evo[0]=0; card_starter=false; card_enigma=true;
+		card_stage=1;   card_starter=false; card_enigma=true;
 		card_type_a=13; card_type_b=-1; 
 		card_base_hp=80; card_base_atk=120+120; card_base_def=80+80; 
 		card_grid_x=15; card_grid_y=34;}
@@ -2468,8 +2468,8 @@ switch (card_id) {
 	case 0366: card_name="Clamperl"; card_stage=1; card_evo[0]=367; card_evo[1]=368; card_starter=false; card_type_a=3; card_type_b=-1; card_base_hp=35; card_base_atk=64+74; card_base_def=85+55; card_grid_x=4; card_grid_y=35; break;
 	case 0367: card_name="Huntail"; card_stage=2; card_starter=false; card_type_a=3; card_type_b=-1; card_base_hp=55; card_base_atk=104+94; card_base_def=105+75; card_grid_x=5; card_grid_y=35; break;
 	case 0368: card_name="Gorebyss"; card_stage=2; card_starter=false; card_type_a=3; card_type_b=-1; card_base_hp=55; card_base_atk=84+114; card_base_def=105+75; card_grid_x=6; card_grid_y=35; break;
-	case 0369: card_name="Relicanth"; card_stage=1; card_evo[0]=0; card_starter=false; card_type_a=3; card_type_b=10; card_base_hp=100; card_base_atk=90+45; card_base_def=130+65; card_grid_x=7; card_grid_y=35; break;
-	case 0370: card_name="Luvdisc"; card_stage=1; card_evo[0]=0; card_starter=false; card_type_a=3; card_type_b=-1; card_base_hp=43; card_base_atk=30+40; card_base_def=55+65; card_grid_x=8; card_grid_y=35; break;
+	case 0369: card_name="Relicanth"; card_stage=1;   card_starter=false; card_type_a=3; card_type_b=10; card_base_hp=100; card_base_atk=90+45; card_base_def=130+65; card_grid_x=7; card_grid_y=35; break;
+	case 0370: card_name="Luvdisc"; card_stage=1;   card_starter=false; card_type_a=3; card_type_b=-1; card_base_hp=43; card_base_atk=30+40; card_base_def=55+65; card_grid_x=8; card_grid_y=35; break;
 	case 0371: card_name="Bagon"; card_stage=1; card_evo[0]=372; card_starter=false; card_type_a=14; card_type_b=-1; card_base_hp=45; card_base_atk=75+40; card_base_def=60+30; card_grid_x=9; card_grid_y=35; break;
 	case 0372: card_name="Shelgon"; card_stage=2; card_evo[0]=373; card_starter=false; card_type_a=14; card_type_b=-1; card_base_hp=65; card_base_atk=95+60; card_base_def=100+50; card_grid_x=10; card_grid_y=35; break;
 	case 0373: 
