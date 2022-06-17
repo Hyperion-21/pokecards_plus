@@ -3673,13 +3673,13 @@ switch (card_id) {
 	
 	case 0658: 
 		card_can_mega=true;
-		card_stage=3;  card_starter=true; card_enigma=true;
+		card_stage=3;  card_starter=true;
 		card_type_a=3; card_type_b=17; 
 		if card_form_value<=999{
 		card_name="Greninja"; 
 		card_base_hp=72; card_base_atk=95+103; card_base_def=67+71; card_grid_x=9; card_grid_y=24; }
 		else{
-		card_name="A-Greninja"; 
+		card_name="Ash-Greninja";  card_enigma=true;
 		card_base_hp=72; card_base_atk=145+153; card_base_def=67+71; card_grid_x=11; card_grid_y=24; }
 		break;
 	
