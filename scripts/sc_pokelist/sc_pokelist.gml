@@ -3872,7 +3872,7 @@ switch (card_id) {
 	card_type_a=16; card_type_b=5; card_base_hp=75; card_base_atk=70+98; card_base_def=70+70; card_grid_x=9; card_grid_y=34; }
 	break;
 	
-	case 0742: card_name="Cutiefly"; card_stage=1;  card_type_a=11; card_type_b=8; card_base_hp=40; card_base_atk=45+55; card_base_def=40+40; card_grid_x=10; card_grid_y=34; break;
+	case 0742: card_name="Cutiefly"; card_stage=1; card_evo[0]=743; card_type_a=11; card_type_b=8; card_base_hp=40; card_base_atk=45+55; card_base_def=40+40; card_grid_x=10; card_grid_y=34; break;
 	case 0743: card_name="Ribombee"; card_stage=2;  card_type_a=11; card_type_b=8; card_base_hp=60; card_base_atk=55+95; card_base_def=60+70; card_grid_x=11; card_grid_y=34; break;
 	case 0744: card_name="Rockruff"; card_stage=1; card_evo[0]=745; card_type_a=10; card_type_b=-1; card_base_hp=45; card_base_atk=65+30; card_base_def=40+40; card_grid_x=12; card_grid_y=34; break;
 	case 0745: card_has_forms=true; card_name="Lycanroc"; card_stage=2;  card_type_a=10; card_type_b=-1; 
