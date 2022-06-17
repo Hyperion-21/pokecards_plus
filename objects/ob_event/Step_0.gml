@@ -177,7 +177,7 @@ if apply_event=true {
 					card_id_in_space[0].card_form_value=irandom(55);}
 				} until (card_id_in_space[0].card_id!=-1 and card_id_in_space[0].card_id<=normal_poke_id_max);
 			}
-			else if card_id_in_space[0].card_can_mega{//already checks for has_forms
+			else if card_id_in_space[0].card_can_mega and card_id_in_space[0].card_form_value>999 {//already checks for has_forms
 				do {
 					if card_id_in_space[0].card_form_value=1000 {
 					card_id_in_space[0].card_form_value=1001;}
