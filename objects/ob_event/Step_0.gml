@@ -78,14 +78,8 @@ if apply_event=true {
 		}
 	}
 	else if event_kind=ref_event_evolution and card_id_in_space[0]!=-1 {
-		//REMOVE LATER
-		evolved_now=false;
-		//
 		if evo_list[0]!=-1 and evo_list[0]<=normal_poke_id_max and card_id_in_space[0].card_innate>0 {
 			do {
-				//REMOVE LATER
-				evolved_now=true;
-				//
 				card_id_in_space[0].card_id=evo_list[evolution_position];
 				//
 				evolution_position++;
@@ -102,50 +96,9 @@ if apply_event=true {
 			sc_playsound(sn_upgrade,50,false,false);
 			ob_main.main_card_id[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_id;
 		}
-		/* START
-		FORM SWAPPER AND MEGA SWAPPER. Might need to limit it to only certain mons.
-		*/
-		if card_id_in_space[0].card_has_forms and !evolved_now {
-			if card_id_in_space[0].card_id=493 {
-				do { //2 forms is clean, multiform is messy.
-					if card_id_in_space[0].card_form_value<935 {
-					card_id_in_space[0].card_form_value+=55;}
-					else {
-					card_id_in_space[0].card_form_value=irandom(55);}
-				} until (card_id_in_space[0].card_id!=-1 and card_id_in_space[0].card_id<=normal_poke_id_max);
-			}
-			if card_id_in_space[0].card_id=773 {
-				do { //2 forms is clean, multiform is messy.
-					if card_id_in_space[0].card_form_value<935 {
-					card_id_in_space[0].card_form_value+=55;}
-					else {
-					card_id_in_space[0].card_form_value=irandom(55);}
-				} until (card_id_in_space[0].card_id!=-1 and card_id_in_space[0].card_id<=normal_poke_id_max);
-			}
-			else{
-				do { //2 forms is clean, multiform is messy.
-					//card_id_in_space[0].card_form_value=irandom(999);
-					if card_id_in_space[0].card_form_value<500 {
-					card_id_in_space[0].card_form_value=irandom(499)+500;}
-					else {
-					card_id_in_space[0].card_form_value=irandom(499);}
-				} until (card_id_in_space[0].card_id!=-1 and card_id_in_space[0].card_id<=normal_poke_id_max);
-			}
-			sc_card_effect(event_space_id[0].x,event_space_id[0].y,0,false,true);
-			with (card_id_in_space[0]) {
-				sc_pokelist();
-				sc_card_level_stats_all(true,true);
-			}
-			//
-			event_applied=false;//free for testing
-			evolution_retry=true;
-			sc_playsound(sn_upgrade,50,false,false);
-			ob_main.main_card_id[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_id;
-		}
-		/*
-		MEGA EVO
-		*/
-		if card_id_in_space[0].card_can_mega and !evolved_now {
+	}
+	else if event_kind=ref_event_megaevolve and card_id_in_space[0]!=-1 {
+		if card_id_in_space[0].card_can_mega {
 			do {
 				//card_id_in_space[0].card_form_value=irandom(999);
 				if card_id_in_space[0].card_form_value<999 {
@@ -165,9 +118,27 @@ if apply_event=true {
 			sc_playsound(sn_upgrade,50,false,false);
 			ob_main.main_card_id[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_id;
 		}
-		/* END
-		FORM SWAPPER AND MEGA SWAPPER. Might need to limit it to only certain mons.
-		*/
+	}
+	else if event_kind=ref_event_changeform and card_id_in_space[0]!=-1 {
+		if card_id_in_space[0].card_has_forms {
+			do { //2 forms is clean, multiform is messy.
+				//card_id_in_space[0].card_form_value=irandom(999);
+				if card_id_in_space[0].card_form_value<500 {
+				card_id_in_space[0].card_form_value=irandom(499)+500;}
+				else if card_id_in_space[0].card_form_value<999 {
+				card_id_in_space[0].card_form_value=irandom(499);}
+			} until (card_id_in_space[0].card_id!=-1 and card_id_in_space[0].card_id<=normal_poke_id_max);
+			sc_card_effect(event_space_id[0].x,event_space_id[0].y,0,false,true);
+			with (card_id_in_space[0]) {
+				sc_pokelist();
+				sc_card_level_stats_all(true,true);
+			}
+			//
+			event_applied=false;//free for testing
+			evolution_retry=true;
+			sc_playsound(sn_upgrade,50,false,false);
+			ob_main.main_card_id[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_id;
+		}
 	}
 	else if event_kind=ref_event_glyph and card_id_in_space[0]!=-1 {
 		if card_id_in_space[0].card_glyph_c=-1 and card_id_in_space[0].card_innate>0 and
@@ -213,6 +184,20 @@ if apply_event=true {
 			event_applied=true;
 			ob_main.main_card_innate[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_innate;
 			ob_main.main_card_innate[card_id_in_space[1].num_in_all]=card_id_in_space[1].card_innate;
+		}
+	}
+	else if event_kind=ref_event_campfire and card_id_in_space[0]!=-1 {
+		if card_id_in_space[0].card_innate<innate_max and card_id_in_space[0].card_environment=false {
+			card_id_in_space[0].card_innate++;
+			sc_card_effect(event_space_id[0].x,event_space_id[0].y,0,false,true);
+			sc_playsound(sn_upgrade,50,false,false);
+			//
+			with (card_id_in_space[0]) {
+				sc_card_level_stats_all(true,true);
+			}
+			//
+			event_applied=true;
+			ob_main.main_card_innate[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_innate;
 		}
 	}
 	//

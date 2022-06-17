@@ -39,7 +39,7 @@ switch (card_id) {
 		card_can_mega=true;
 		if card_form_value<=999 {
 		card_name="Venusaur";
-		card_stage=3; card_starter=true;
+		card_stage=3; card_evo[0]=003; card_starter=true;
 		card_type_a=01; card_type_b=12;
 		card_base_hp=80; card_base_atk=82+100; card_base_def=83+100;
 		card_grid_x=3; card_grid_y=1;}
@@ -4102,6 +4102,13 @@ switch (card_id) {
 		card_type_a=10; card_type_b=-1;
 		card_base_hp=130; card_base_atk=0; card_base_def=200; //hp 3-20, def 1-5
 		card_grid_x=3; card_grid_y=14; break;
+	default:
+		card_sheet=sp_poke_c;
+		card_name=card_id;
+		card_stage=1; card_environment=true;
+		card_type_a=10; card_type_b=-1;
+		card_base_hp=100; card_base_atk=0; card_base_def=0; //hp 3-20, def 1-5
+		card_grid_x=5; card_grid_y=14; break;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }
