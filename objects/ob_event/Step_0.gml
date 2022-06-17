@@ -192,7 +192,7 @@ if apply_event=true {
 				sc_card_level_stats_all(true,true);
 			}
 			//
-			event_applied=false;//free for testing
+			event_applied=true;//free for testing
 			evolution_retry=true;
 			sc_playsound(sn_upgrade,50,false,false);
 			ob_main.main_card_form_value[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_form_value;
