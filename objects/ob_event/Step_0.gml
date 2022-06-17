@@ -78,14 +78,8 @@ if apply_event=true {
 		}
 	}
 	else if event_kind=ref_event_evolution and card_id_in_space[0]!=-1 {
-		//REMOVE LATER
-		evolved_now=false;
-		//
 		if evo_list[0]!=-1 and evo_list[0]<=normal_poke_id_max and card_id_in_space[0].card_innate>0 {
 			do {
-				//REMOVE LATER
-				evolved_now=true;
-				//
 				card_id_in_space[0].card_id=evo_list[evolution_position];
 				//
 				evolution_position++;
@@ -105,7 +99,7 @@ if apply_event=true {
 		/* START
 		FORM SWAPPER AND MEGA SWAPPER. Might need to limit it to only certain mons.
 		*/
-		if card_id_in_space[0].card_has_forms and !evolved_now {
+		else if card_id_in_space[0].card_has_forms {
 			if card_id_in_space[0].card_id=493 {
 				do { //
 					if card_id_in_space[0].card_form_value<935 {
@@ -145,7 +139,7 @@ if apply_event=true {
 		/*
 		MEGA EVO
 		*/
-		if card_id_in_space[0].card_can_mega and !evolved_now {
+		else if card_id_in_space[0].card_can_mega {
 			do {
 				//card_id_in_space[0].card_form_value=irandom(999);
 				if card_id_in_space[0].card_form_value<999 {
