@@ -4108,7 +4108,8 @@ switch (card_id) {
 		card_stage=1; card_environment=true;
 		card_type_a=10; card_type_b=-1;
 		card_base_hp=100; card_base_atk=0; card_base_def=0; //hp 3-20, def 1-5
-		card_grid_x=5; card_grid_y=14; break;
+		card_grid_x=5; card_grid_y=14; 
+		break;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }
