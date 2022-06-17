@@ -3545,7 +3545,7 @@ switch (card_id) {
 	case 0589: card_name="Escavalier"; card_stage=2;  card_type_a=11; card_type_b=15; card_base_hp=70; card_base_atk=135+60; card_base_def=105+105; card_grid_x=11; card_grid_y=17; break;
 	case 0590: card_name="Foongus"; card_stage=1; card_evo[0]=591; card_type_a=1; card_type_b=12; card_base_hp=69; card_base_atk=55+55; card_base_def=45+55; card_grid_x=12; card_grid_y=17; break;
 	case 0591: card_name="Amoonguss"; card_stage=2;  card_type_a=1; card_type_b=12; card_base_hp=114; card_base_atk=85+85; card_base_def=70+80; card_grid_x=13; card_grid_y=17; break;
-	case 0592: card_name="Frillish"; card_stage=1;  card_type_a=3; card_type_b=16; card_base_hp=55; card_base_atk=40+65; card_base_def=50+85; card_grid_x=15; card_grid_y=17; break;
+	case 0592: card_name="Frillish"; card_stage=1; card_evo[0]=593;  card_type_a=3; card_type_b=16; card_base_hp=55; card_base_atk=40+65; card_base_def=50+85; card_grid_x=15; card_grid_y=17; break;
 	//case 0592: card_name="Frillish"; card_stage=1; card_evo[0]=593; card_type_a=3; card_type_b=16; card_base_hp=55; card_base_atk=40+65; card_base_def=50+85; card_grid_x=1; card_grid_y=18; break;
 	case 0593: card_name="Jellicent"; card_stage=2;  card_type_a=3; card_type_b=16; card_base_hp=100; card_base_atk=60+85; card_base_def=70+105; card_grid_x=2; card_grid_y=18; break;
 	//case 0593: card_name="Jellicent"; card_stage=2;  card_type_a=3; card_type_b=16; card_base_hp=100; card_base_atk=60+85; card_base_def=70+105; card_grid_x=3; card_grid_y=18; break;
