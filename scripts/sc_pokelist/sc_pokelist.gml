@@ -3086,7 +3086,7 @@ switch (card_id) {
 		card_type_a=01; card_type_b=13;
 		card_base_hp=90; card_base_atk=92+92; card_base_def=75+85;
 		card_grid_x=12; card_grid_y=6;}
-		 {
+		else {
 		card_name="M-Abomasnow";
 		card_stage=2; card_enigma=true;
 		card_type_a=01; card_type_b=13;
