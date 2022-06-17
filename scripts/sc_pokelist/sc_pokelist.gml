@@ -4067,15 +4067,6 @@ switch (card_id) {
 	case 0806: card_name="Blacephalon"; card_stage=1;  card_enigma=true; card_type_a=2; card_type_b=16; card_base_hp=53; card_base_atk=127+151; card_base_def=53+79; card_grid_x=1; card_grid_y=41; break;
 	case 0807: card_name="Zeraora"; card_stage=1;  card_enigma=true; card_type_a=4; card_type_b=-1; card_base_hp=88; card_base_atk=112+102; card_base_def=75+80; card_grid_x=3; card_grid_y=41; break;
 	
-	
-	default:
-		card_sheet=sp_poke_c;
-		card_name=card_id;
-		card_stage=1; card_environment=true;
-		card_type_a=10; card_type_b=-1;
-		card_base_hp=100; card_base_atk=0; card_base_def=0; //hp 3-20, def 1-5
-		card_grid_x=5; card_grid_y=14; 
-		break;
 		
 	// END OF MODDED CODE
 		
@@ -4111,6 +4102,14 @@ switch (card_id) {
 		card_type_a=10; card_type_b=-1;
 		card_base_hp=130; card_base_atk=0; card_base_def=200; //hp 3-20, def 1-5
 		card_grid_x=3; card_grid_y=14; break;
+	default:
+		card_sheet=sp_poke_c;
+		card_name=card_id;
+		card_stage=1; card_environment=true;
+		card_type_a=10; card_type_b=-1;
+		card_base_hp=100; card_base_atk=0; card_base_def=0; //hp 3-20, def 1-5
+		card_grid_x=5; card_grid_y=14; 
+		break;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }
