@@ -42,7 +42,7 @@ switch (card_id) {
 		card_stage=3; card_evo[0]=003; card_starter=true;
 		card_type_a=01; card_type_b=12;
 		card_base_hp=80; card_base_atk=82+100; card_base_def=83+100;
-		card_grid_x=3; card_grid_y=1; break;
+		card_grid_x=3; card_grid_y=1;} break;
 	case 004:
 		card_name="Charmander";
 		card_stage=1; card_evo[0]=005; card_starter=true;
@@ -94,7 +94,7 @@ switch (card_id) {
 		card_stage=3; card_starter=true;
 		card_type_a=03; card_type_b=-1;
 		card_base_hp=79; card_base_atk=83+85; card_base_def=100+105;
-		card_grid_x=12; card_grid_y=1; break;
+		card_grid_x=12; card_grid_y=1;} break;
 	case 010:
 		card_name="Caterpie";
 		card_stage=1; card_evo[0]=011;

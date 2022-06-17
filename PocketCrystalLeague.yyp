@@ -87,7 +87,6 @@
     {"id":{"name":"fn_m3x618","path":"sprites/fn_m3x618/fn_m3x618.yy",},"order":9,},
     {"id":{"name":"sn_upgrade","path":"sounds/sn_upgrade/sn_upgrade.yy",},"order":12,},
     {"id":{"name":"ms_defeat","path":"sounds/ms_defeat/ms_defeat.yy",},"order":9,},
-    {"id":{"name":"sp_sheet","path":"sprites/sp_sheet/sp_sheet.yy",},"order":0,},
     {"id":{"name":"ms_battle_2","path":"sounds/ms_battle_2/ms_battle_2.yy",},"order":4,},
     {"id":{"name":"ob_button_15x16","path":"objects/ob_button_15x16/ob_button_15x16.yy",},"order":8,},
     {"id":{"name":"sc_card_cost_check","path":"scripts/sc_card_cost_check/sc_card_cost_check.yy",},"order":7,},
