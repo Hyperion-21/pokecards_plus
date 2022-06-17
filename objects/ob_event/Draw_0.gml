@@ -1,4 +1,5 @@
 if show_deck=true {
+	
 	if cam_w<(card_event_inventory_total*60) {
 		var inventory_pos=inventory_x-4, mouse_pos_max=cam_w-16-10, inventory_pos_max=cam_w-(card_event_inventory_total*60)-5;
 		var inventory_x_percent=inventory_pos*100/inventory_pos_max;

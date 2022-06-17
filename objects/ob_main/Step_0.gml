@@ -239,6 +239,8 @@ if roadmap_generated=false {
 				}
 				//
 				if event_kind[ii][i]=-1 { event_kind[ii][i]=-1; }
+				else if event_kind[ii][i]<5 { event_kind[ii][i]=ref_event_campfire; free_event=true; } //0.5%
+				else if event_kind[ii][i]<25 { event_kind[ii][i]=ref_event_megaevolve; } //2%
 				else if event_kind[ii][i]<350 { event_kind[ii][i]=ref_event_battle; free_event=true; } //35%
 				else if event_kind[ii][i]<375 { event_kind[ii][i]=ref_event_payout; free_event=true; } //2.5%
 				else if event_kind[ii][i]<400 { event_kind[ii][i]=ref_event_freecard; free_event=true; } //2.5%
@@ -255,10 +257,10 @@ if roadmap_generated=false {
 				ii++;
 			}
 			
-			event_kind[3][0]=ref_event_campfire;
-			event_kind[3][1]=ref_event_sacrifice;
-			event_kind[3][2]=ref_event_changeform;
-			event_kind[3][3]=ref_event_megaevolve;
+			//event_kind[3][1]=ref_event_sacrifice;
+			//event_kind[3][0]=ref_event_campfire;
+			//event_kind[3][2]=ref_event_changeform;
+			//event_kind[3][3]=ref_event_megaevolve;
 			
 			//
 			var repeating_event=true;
