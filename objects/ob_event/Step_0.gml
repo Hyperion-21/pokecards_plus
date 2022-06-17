@@ -7,9 +7,27 @@ if show_deck=true {
 		}
 		i++;
 	}
+	i=0;
+	repeat (card_event_inventory_total) {
+		if card_inventory[i].card_played=false {
+			card_inventory[i].potential_x=screen_main_x+inventory_x+(60*i);
+			card_inventory[i].potential_y=screen_main_y+inventory_y;
+		}
+		i++;
+	}
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	// SCROLL BAR (ob_event & ob_deckbuild)
-	if mouse_y>=screen_main_y+deck_y-8 and mouse_y<screen_main_y+deck_y+80 and ob_main.cursor_hide=false {
+	if mouse_y>=screen_main_y+inventory_y and mouse_y<screen_main_y+inventory_y+80+8 and ob_main.cursor_hide=false {
+		if mouse_wheel_up() {
+			inventory_x+=32;
+			if inventory_x>4 { inventory_x=4; }
+		}
+		else if mouse_wheel_down() and cam_w<(card_event_inventory_total*60) {
+			inventory_x-=32;
+			if inventory_x<cam_w-(card_event_inventory_total*60)-1 { inventory_x=cam_w-(card_event_inventory_total*60)-1; }
+		}
+	}
+	else if mouse_y>=screen_main_y+deck_y-8 and mouse_y<screen_main_y+deck_y+80 and ob_main.cursor_hide=false {
 		if mouse_wheel_up() {
 			deck_x+=32;
 			if deck_x>4 { deck_x=4; }
@@ -20,7 +38,17 @@ if show_deck=true {
 		}
 	}
 	//
-	if mouse_check_button(mb_left) and ob_main.cursor_hide=false and cam_w<(card_event_total*60) and
+	
+	if mouse_check_button(mb_left) and ob_main.cursor_hide=false and cam_w<(card_event_inventory_total*60) and hold_inventory_bar=false and
+	((mouse_y>=screen_main_y+inventory_y+82 and mouse_y<screen_main_y+inventory_y+86) or hold_inventory_bar=true) {
+		var mouse_pos=mouse_x-screen_main_x-8-4, mouse_pos_max=cam_w-16-10, inventory_pos_max=cam_w-(card_event_inventory_total*60)-5;
+		var inventory_x_percent=mouse_pos*100/mouse_pos_max;
+		inventory_x=round(inventory_x_percent*inventory_pos_max/100)+4;
+		if inventory_x>4 { inventory_x=4; }
+		else if inventory_x<cam_w-(card_event_inventory_total*60)-1 { inventory_x=cam_w-(card_event_inventory_total*60)-1; }
+		hold_inventory_bar=true;
+	}
+	else if mouse_check_button(mb_left) and ob_main.cursor_hide=false and cam_w<(card_event_total*60) and
 	((mouse_y>=screen_main_y+deck_y-8 and mouse_y<screen_main_y+deck_y-4) or hold_deck_bar=true) {
 		var mouse_pos=mouse_x-screen_main_x-8-4, mouse_pos_max=cam_w-16-10, deck_pos_max=cam_w-(card_event_total*60)-5;
 		var deck_x_percent=mouse_pos*100/mouse_pos_max;
@@ -47,19 +75,30 @@ else {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if apply_event=true {
 	var i=0, card_id_in_space;
-	repeat (event_space_total) {
-		card_id_in_space[i]=-1;
-		if event_space_id[i].occupy_id!=-1 {
-			var ii=0;
-			repeat (card_event_total) {
-				if card_event[ii]=event_space_id[i].occupy_id {
-					card_id_in_space[i]=event_space_id[i].occupy_id;
+		repeat (event_space_total) {
+			card_id_in_space[i]=-1;
+			if event_space_id[i].occupy_id!=-1 {
+				var ii=0;
+				
+				if(event_space_id_deck[i])
+				{
+					repeat (card_event_total) {
+						if card_event[ii]=event_space_id[i].occupy_id {
+							card_id_in_space[i]=event_space_id[i].occupy_id;
+						}
+						ii++;
+					}
+				} else {
+					repeat (card_event_inventory_total) {
+						if card_inventory[ii]=event_space_id[i].occupy_id {
+							card_id_in_space[i]=event_space_id[i].occupy_id;
+						}
+						ii++;
+					}
 				}
-				ii++;
 			}
+			i++;
 		}
-		i++;
-	}
 	//
 	if event_kind=ref_event_levelup and card_id_in_space[0]!=-1 {
 		//conditions also used for showing cost/stats in ob_card_space

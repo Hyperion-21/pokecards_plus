@@ -2241,7 +2241,7 @@ switch (card_id) {
 		card_can_mega=true;
 		if card_form_value<=999 {
 		card_name="Sableye";
-		card_stage=1; card_evo[0]=0;
+		card_stage=1;
 		card_type_a=17; card_type_b=16;
 		card_base_hp=50; card_base_atk=75+65; card_base_def=75+65;
 		card_grid_x=10; card_grid_y=29;}
@@ -2256,7 +2256,7 @@ switch (card_id) {
 		card_can_mega=true;
 		if card_form_value<=999 {
 		card_name="Mawile";
-		card_stage=1; card_evo[0]=0;
+		card_stage=1;
 		card_type_a=15; card_type_b=8;
 		card_base_hp=50; card_base_atk=85+55; card_base_def=85+55;
 		card_grid_x=12; card_grid_y=29;}
