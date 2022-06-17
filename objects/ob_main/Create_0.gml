@@ -154,6 +154,12 @@ event_cost_standby_levelup=0;
 #macro ref_event_victory 300 //only for transitions
 #macro ref_event_defeat 301 //only for transitions
 #macro ref_event_exitbattle 302 //only for transitions
+
+#macro ref_event_sacrifice 500
+#macro ref_event_campfire 501
+#macro ref_event_megaevolve 502
+#macro ref_event_changeform 503
+
 #macro ref_fly_prev 400 //only for transitions
 #macro ref_fly_next 401 //only for transitions
 #macro ref_mainmenu 999 //only for transitions
@@ -166,6 +172,9 @@ event_cost[ref_event_berry]=100;
 event_cost[ref_event_levelup]=100;
 #macro levelup_cost_multiplier 50 //100 150 200 250 300 350 400 450 500
 event_cost[ref_event_evolution]=500;
+
+event_cost[ref_event_megaevolve]=500;
+
 event_cost[ref_event_glyph]=300;
 //
 #macro innate_max 4 //failure chance uses manual values in ob_event, enemy innate uses manual values in ob_card, sc_enemy_deck uses manual values

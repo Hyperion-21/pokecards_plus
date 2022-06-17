@@ -20,10 +20,73 @@ for (var i=0; i<ob_main.berrydeck_total; i++;) {
 	deck_berry_total[ob_main.berry_card_id[i]-3000]++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if event_kind=ref_event_cardpack or event_kind=ref_event_berry {
+
+if event_kind=ref_event_campfire or event_kind=ref_event_sacrifice or event_kind=ref_event_megaevolve or event_kind=ref_event_changeform {
+	show_deck=true;
+	//
+	deck_x=4;
+	deck_y=204;
+	hold_deck_bar=false;
+	evolution_retry=false;
+	evolution_position=0;
+	for (var i=0; i<8; i++;) {
+		evo_list[i]=-1;
+	}
+	//
+	card_event_total=0;
+	var i=0;
+	repeat (ob_main.maindeck_total) {
+		if ob_main.serial_card_indeck[ob_main.main_card_serial[i]][0]=true {
+			card_event_total++;
+		}
+		i++;
+	}
+	//
+	var i=0, ii=0;
+	repeat (ob_main.maindeck_total) {
+		if ob_main.serial_card_indeck[ob_main.main_card_serial[i]][0]=true {
+			create_card_cat=0;
+			create_card_id=ob_main.main_card_id[i];
+			create_card_level=ob_main.main_card_level[i];
+			create_card_glyph_a=ob_main.main_card_glyph_a[i];
+			create_card_glyph_b=ob_main.main_card_glyph_b[i];
+			create_card_glyph_c=ob_main.main_card_glyph_c[i];
+			create_card_innate=ob_main.main_card_innate[i];
+			create_card_form_value=ob_main.main_card_form_value[i];
+			//
+			card_event[ii]=instance_create_layer(x,y,"instances",ob_card);
+			card_event[ii].num_in_all=i;
+			//
+			ii++;
+		}
+		i++;
+	}
+	//
+	if event_kind=ref_event_sacrifice {
+		event_space_total=2;
+		for (var i=0; i<event_space_total; i++;) {
+			event_space_id[i]=instance_create_layer(screen_main_x+227-35+71*i,screen_main_y+59,"instances",ob_card_space);
+		}
+	}
+	else {
+		event_space_total=1;
+		for (var i=0; i<event_space_total; i++;) {
+			event_space_id[i]=instance_create_layer(screen_main_x+227,screen_main_y+59,"instances",ob_card_space);
+		}
+	}
+	//
+	var i=0, button_create;
+	repeat (2) {
+		button_create=instance_create_layer(screen_main_x+219+42*i,screen_main_y+155,"instances",ob_button_31x24);
+		button_create.button_id=i;
+		i++;
+	}
+}
+//————————————————————————————————————————————————————————————————————————————————————————————————————
+else if event_kind=ref_event_cardpack or event_kind=ref_event_berry {
 	if event_kind=ref_event_cardpack {
-		card_prize=4;
-		var main_amount=3, berry_amount=1;
+		card_prize=5;
+		var main_amount=5, berry_amount=1;
 		//
 		var i=0;
 		repeat (card_prize) {
@@ -34,7 +97,7 @@ if event_kind=ref_event_cardpack or event_kind=ref_event_berry {
 			else { berry_amount--; }
 			create_card_id=-1;
 			//
-			instance_create_layer(screen_main_x+118+(73*i),screen_main_y+104,"instances",ob_card);
+			instance_create_layer(screen_main_x+83+(72*i),screen_main_y+104,"instances",ob_card);
 			i++;
 		}
 	}
@@ -70,11 +133,11 @@ if event_kind=ref_event_cardpack or event_kind=ref_event_berry {
 else if event_kind=ref_event_freecard {
 	card_prize=1;
 	var i=0;
-	repeat (3) {
+	repeat (5) {
 		create_card_cat=0;
 		create_card_id=-1;
 		//
-		instance_create_layer(screen_main_x+155+(72*i),screen_main_y+104,"instances",ob_card);
+		instance_create_layer(screen_main_x+83+(72*i),screen_main_y+104,"instances",ob_card);
 		i++;
 	}
 }

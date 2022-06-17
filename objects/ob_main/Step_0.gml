@@ -254,6 +254,12 @@ if roadmap_generated=false {
 				//
 				ii++;
 			}
+			
+			event_kind[3][0]=ref_event_campfire;
+			event_kind[3][1]=ref_event_sacrifice;
+			event_kind[3][2]=ref_event_changeform;
+			event_kind[3][3]=ref_event_megaevolve;
+			
 			//
 			var repeating_event=true;
 			if (event_kind[0][i]!=event_kind[1][i] or event_glyph_add[0][i]!=event_glyph_add[1][i]) and
@@ -427,6 +433,12 @@ if roadmap_get_details=true {
 			else if event_kind[ii][i]=ref_event_berry { event_name[ii][i]="Berry Pack\n$" + string(event_cost[ref_event_berry]); }
 			else if event_kind[ii][i]=ref_event_levelup { event_name[ii][i]="Level Up\n$" + string(event_cost[ref_event_levelup]) + " (*)"; }
 			else if event_kind[ii][i]=ref_event_evolution { event_name[ii][i]="Evolution\n$" + string(event_cost[ref_event_evolution]); }
+			
+			else if event_kind[ii][i]=ref_event_sacrifice { event_name[ii][i]="Sacrifice"; }
+			else if event_kind[ii][i]=ref_event_megaevolve { event_name[ii][i]="Mega Evolve\n$" + string(event_cost[ref_event_megaevolve]); }
+			else if event_kind[ii][i]=ref_event_campfire { event_name[ii][i]="Campfire"; }
+			else if event_kind[ii][i]=ref_event_changeform { event_name[ii][i]="Change form"; }
+			
 			else if event_kind[ii][i]=ref_event_tribute { event_name[ii][i]="Tribute"; }
 			else if event_kind[ii][i]=ref_event_loop { event_name[ii][i]="Not\nReady"; }
 			else if event_kind[ii][i]=ref_event_grass { event_name[ii][i]="Grass\nSt. Deck"; }

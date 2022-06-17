@@ -46,6 +46,7 @@ if card_cat=0 {
 	//
 	do {
 		card_id=reference_id.create_card_id;
+		card_mega = false;
 		if card_id=-1 { var random_card=true; } else { var random_card=false; }
 		//
 		var choose_id_enigma=false, choose_id_stage_2=false, choose_id_stage_3=false, choose_id_normal=false;
