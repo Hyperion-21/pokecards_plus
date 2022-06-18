@@ -2331,7 +2331,7 @@ switch (card_id) {
 	
 	case 0313: card_name="Volbeat"; card_stage=1; card_starter=false; card_type_a=11; card_type_b=-1; card_base_hp=65; card_base_atk=73+47; card_base_def=75+85; card_grid_x=11; card_grid_y=30; break;
 	case 0314: card_name="Illumise"; card_stage=1; card_starter=false; card_type_a=11; card_type_b=-1; card_base_hp=65; card_base_atk=47+73; card_base_def=75+85; card_grid_x=12; card_grid_y=30; break;
-	case 0315: card_name="Roselia"; card_stage=2; /*card_evo[0]=407;*/ card_starter=false; card_type_a=1; card_type_b=12; card_base_hp=50; card_base_atk=60+100; card_base_def=45+80; card_grid_x=13; card_grid_y=30; break;
+	case 0315: card_name="Roselia"; card_stage=2; card_evo[0]=407; card_starter=false; card_type_a=1; card_type_b=12; card_base_hp=50; card_base_atk=60+100; card_base_def=45+80; card_grid_x=13; card_grid_y=30; break;
 	case 0316: card_name="Gulpin"; card_stage=1; card_evo[0]=317; card_starter=false; card_type_a=12; card_type_b=-1; card_base_hp=70; card_base_atk=43+43; card_base_def=53+53; card_grid_x=15; card_grid_y=30; break;
 	case 0317: card_name="Swalot"; card_stage=2; card_starter=false; card_type_a=12; card_type_b=-1; card_base_hp=100; card_base_atk=73+73; card_base_def=83+83; card_grid_x=1; card_grid_y=31; break;
 	case 0318: card_name="Carvanha"; card_stage=1; card_evo[0]=319; card_starter=false; card_type_a=3; card_type_b=17; card_base_hp=45; card_base_atk=90+65; card_base_def=20+20; card_grid_x=2; card_grid_y=31; break;
