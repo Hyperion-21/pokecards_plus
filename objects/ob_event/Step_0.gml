@@ -168,13 +168,21 @@ if apply_event=true {
 		}
 	}
 	else if event_kind=ref_event_changeform and card_id_in_space[0]!=-1 {
-		if card_id_in_space[0].card_has_forms {
+		if card_id_in_space[0].card_has_forms and card_id_in_space[0].card_form_change=true {
 			if card_id_in_space[0].card_id=493 or card_id_in_space[0].card_id=773 {
 				do { //
 					if card_id_in_space[0].card_form_value<935 {
 					card_id_in_space[0].card_form_value+=55;}
 					else {
 					card_id_in_space[0].card_form_value=irandom(55);}
+				} until (card_id_in_space[0].card_id!=-1 and card_id_in_space[0].card_id<=normal_poke_id_max);
+			}
+			else if card_id_in_space[0].card_can_mega and card_id_in_space[0].card_form_value>999 {//already checks for has_forms
+				do {
+					if card_id_in_space[0].card_form_value=1000 {
+					card_id_in_space[0].card_form_value=1001;}
+					else {
+					card_id_in_space[0].card_form_value=1000}
 				} until (card_id_in_space[0].card_id!=-1 and card_id_in_space[0].card_id<=normal_poke_id_max);
 			}
 			else{
