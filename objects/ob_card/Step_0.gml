@@ -274,6 +274,11 @@ else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spr
 						potential_x=ob_event.event_space_id[i].x;
 						potential_y=ob_event.event_space_id[i].y;
 						ob_event.event_space_id[i].occupy_id=id;
+						ob_event.event_space_id_deck[i] = false;
+						if(mouse_y > 144) {
+							ob_event.event_space_id_deck[i] = true;
+						}
+							
 						sc_card_effect(ob_event.event_space_id[i].x,ob_event.event_space_id[i].y,0,true,false);
 						//
 						if ob_event.event_kind=ref_event_evolution {

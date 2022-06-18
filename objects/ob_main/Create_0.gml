@@ -1,7 +1,7 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
 #macro game_version "v1.6.0.0"
-#macro pclp_version "v1.0.1.1"
+#macro pclp_version "v1.2.2.0pre"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -154,6 +154,24 @@ event_cost_standby_levelup=0;
 #macro ref_event_victory 300 //only for transitions
 #macro ref_event_defeat 301 //only for transitions
 #macro ref_event_exitbattle 302 //only for transitions
+
+#macro ref_event_sacrifice 500
+#macro ref_event_campfire 501
+#macro ref_event_megaevolve 502
+#macro ref_event_changeform 503
+#macro ref_event_deglyph 504
+
+#macro ref_event_cardpack_0 600 // Joke cards such as missingno and ghost.
+#macro ref_event_cardpack_1 601 // Focus on Gen 1.
+#macro ref_event_cardpack_2 602 // Focus on Gen 2.
+#macro ref_event_cardpack_3 603 // Focus on Gen 3.
+#macro ref_event_cardpack_4 604 // Focus on Gen 4.
+#macro ref_event_cardpack_5 605 // Focus on Gen 5.
+#macro ref_event_cardpack_6 606 // Focus on Gen 6.
+#macro ref_event_cardpack_7 607 // Focus on Gen 7.
+#macro ref_event_cardpack_8 608 // Focus on Gen 8.
+#macro ref_event_cardpack_9 609 // Focus on Gen 9.
+
 #macro ref_fly_prev 400 //only for transitions
 #macro ref_fly_next 401 //only for transitions
 #macro ref_mainmenu 999 //only for transitions
@@ -166,6 +184,20 @@ event_cost[ref_event_berry]=100;
 event_cost[ref_event_levelup]=100;
 #macro levelup_cost_multiplier 50 //100 150 200 250 300 350 400 450 500
 event_cost[ref_event_evolution]=500;
+
+event_cost[ref_event_megaevolve]=500;
+
+event_cost[ref_event_cardpack_0]=5000;
+event_cost[ref_event_cardpack_1]=300;
+event_cost[ref_event_cardpack_2]=300;
+event_cost[ref_event_cardpack_3]=300;
+event_cost[ref_event_cardpack_4]=300;
+event_cost[ref_event_cardpack_5]=300;
+event_cost[ref_event_cardpack_6]=300;
+event_cost[ref_event_cardpack_7]=300;
+event_cost[ref_event_cardpack_8]=300;
+event_cost[ref_event_cardpack_9]=300;
+
 event_cost[ref_event_glyph]=300;
 //
 #macro innate_max 4 //failure chance uses manual values in ob_event, enemy innate uses manual values in ob_card, sc_enemy_deck uses manual values
