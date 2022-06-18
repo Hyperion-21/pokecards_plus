@@ -283,7 +283,7 @@ if apply_event=true {
 				}
 			}
 			//Dont know if you want it to take innate value from it regardless, your choice.
-			//if card_id_in_space[1].card_innate < 4{
+			//if card_id_in_space[1].card_innate < innate_max{
 			card_id_in_space[0].card_innate--;
 			//}		
 			card_id_in_space[0].effect_damaged=1;
@@ -292,7 +292,7 @@ if apply_event=true {
 			sc_playsound(sn_hurt,50,false,false);
 			
 			//
-			if card_id_in_space[1].card_innate < 4{
+			if card_id_in_space[1].card_innate < innate_max{
 			card_id_in_space[1].card_innate++;
 			}
 			sc_card_effect(event_space_id[1].x,event_space_id[1].y,0,false,true);
