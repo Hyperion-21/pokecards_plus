@@ -322,6 +322,12 @@ if apply_event=true {
 				ob_main.main_card_innate[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_innate;
 			}
 			ob_main.main_card_innate[card_id_in_space[1].num_in_all]=card_id_in_space[1].card_innate;
+			ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_glyph_a;
+			ob_main.main_card_glyph_b[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_glyph_b;
+			ob_main.main_card_glyph_c[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_glyph_c;
+			ob_main.main_card_glyph_a[card_id_in_space[1].num_in_all]=card_id_in_space[1].card_glyph_a;
+			ob_main.main_card_glyph_b[card_id_in_space[1].num_in_all]=card_id_in_space[1].card_glyph_b;
+			ob_main.main_card_glyph_c[card_id_in_space[1].num_in_all]=card_id_in_space[1].card_glyph_c;
 		}
 	}
 	else if event_kind=ref_event_deglyph and card_id_in_space[0]!=-1 {
@@ -352,6 +358,9 @@ if apply_event=true {
 			event_applied=true;
 			ob_main.main_card_innate[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_innate;
 			//ob_main.main_card_innate[card_id_in_space[1].num_in_all]=card_id_in_space[1].card_innate;
+			ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_glyph_a;
+			ob_main.main_card_glyph_b[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_glyph_b;
+			ob_main.main_card_glyph_c[card_id_in_space[0].num_in_all]=card_id_in_space[0].card_glyph_c;
 		}
 	}
 	else if event_kind=ref_event_campfire and card_id_in_space[0]!=-1 {
