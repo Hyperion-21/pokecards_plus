@@ -4042,7 +4042,7 @@ switch (card_id) {
 	case 0786: card_name="Tapu Lele"; card_stage=1;  card_enigma=true; card_type_a=7; card_type_b=8; card_base_hp=70; card_base_atk=85+130; card_base_def=75+115; card_grid_x=1; card_grid_y=39; break;
 	case 0787: card_name="Tapu Bulu"; card_stage=1;  card_enigma=true; card_type_a=1; card_type_b=8; card_base_hp=70; card_base_atk=130+85; card_base_def=115+95; card_grid_x=2; card_grid_y=39; break;
 	case 0788: card_name="Tapu Fini"; card_stage=1;  card_enigma=true; card_type_a=3; card_type_b=8; card_base_hp=70; card_base_atk=75+95; card_base_def=115+130; card_grid_x=3; card_grid_y=39; break;
-	case 0789: card_name="Cosmog"; card_stage=1;  card_enigma=true; card_type_a=7; card_type_b=-1; card_base_hp=43; card_base_atk=29+29; card_base_def=31+31; card_grid_x=4; card_grid_y=39; break;
+	case 0789: card_name="Cosmog"; card_stage=1; card_evo[0]=790;  card_enigma=true; card_type_a=7; card_type_b=-1; card_base_hp=43; card_base_atk=29+29; card_base_def=31+31; card_grid_x=4; card_grid_y=39; break;
 	case 0790: card_name="Cosmoem"; card_stage=2; card_evo[0]=791; card_evo[1]=792; card_enigma=true; card_type_a=7; card_type_b=-1; card_base_hp=43; card_base_atk=29+29; card_base_def=131+131; card_grid_x=5; card_grid_y=39; break;
 	case 0791: card_name="Solgaleo"; card_stage=3;  card_enigma=true; card_type_a=7; card_type_b=15; card_base_hp=137; card_base_atk=137+113; card_base_def=107+89; card_grid_x=6; card_grid_y=39; break;
 	case 0792: card_name="Lunala"; card_stage=3;  card_enigma=true; card_type_a=7; card_type_b=16; card_base_hp=137; card_base_atk=113+137; card_base_def=89+107; card_grid_x=7; card_grid_y=39; break;

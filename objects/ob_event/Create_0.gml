@@ -83,12 +83,13 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 	//specific pokemon ids are checked manually when creating deck in tutorial
 	//exact amount of cards and berries is also checked manually when entering tutorial
 	//
-	card_prize=14;
+	card_prize=10;
 	var i=0;
 	
 	repeat (card_prize) {
-		if i<=6 {
-			create_card_cat=0;
+		if i<=4 {
+			//Left these here for the ids xD
+			/*
 			if i=0 and event_kind=ref_event_grass { create_card_id=001; } //bulbasaur
 			else if i=1 and event_kind=ref_event_grass { create_card_id=152; } //chikorita
 			else if i=2 and event_kind=ref_event_grass { create_card_id=252; } //treecko
@@ -100,7 +101,7 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 			
 			else if i=0 and event_kind=ref_event_fire { create_card_id=004; } //charmander
 			else if i=1 and event_kind=ref_event_fire { create_card_id=155; } //cyndaquil
-			else if i=2 and event_kind=ref_event_fire { create_card_id=255; } //torchick
+			else if i=2 and event_kind=ref_event_fire { create_card_id=255; } //torchic
 			else if i=3 and event_kind=ref_event_fire { create_card_id=390; } //chimchar
 			else if i=4 and event_kind=ref_event_fire { create_card_id=498; } //tepig
 			else if i=5 and event_kind=ref_event_fire { create_card_id=653; } //fennekin
@@ -113,30 +114,182 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 			else if i=4 and event_kind=ref_event_water { create_card_id=501; } //oshawott
 			else if i=5 and event_kind=ref_event_water { create_card_id=656; } //froakie
 			else if i=6 and event_kind=ref_event_water { create_card_id=728; } //popplio
+			*/
 			
+			create_card_cat=0;
+			if i=0 {
+				switch (irandom(1)) {
+					default:
+						create_card_id=999;//Hit that placeholder :P
+						break;
+					case 0:
+						if event_kind=ref_event_grass { create_card_id=001; } //bulbasaur
+						else if event_kind=ref_event_fire { create_card_id=004; } //charmander
+						else if event_kind=ref_event_water { create_card_id=007; } //squirtle
+						break;
+					case 1:
+						if event_kind=ref_event_grass { create_card_id=152; } //chikorita
+						else if event_kind=ref_event_fire { create_card_id=155; } //cyndaquil
+						else if event_kind=ref_event_water { create_card_id=158; } //totodile
+						break;
+				}
+			}
+			if i=1 {
+				switch (irandom(1)) {
+					default:
+						create_card_id=999;//Hit that placeholder :P
+						break;
+					case 0:
+						if event_kind=ref_event_grass { create_card_id=252; } //treecko
+						else if event_kind=ref_event_fire { create_card_id=255; } //torchic
+						else if event_kind=ref_event_water { create_card_id=258; } //mudkip
+						break;
+					case 1:
+						if event_kind=ref_event_grass { create_card_id=387; } //turtwig
+						else if event_kind=ref_event_fire { create_card_id=390; } //chimchar
+						else if event_kind=ref_event_water { create_card_id=393; } //piplup
+						break;
+				}
+			}
+			if i=2 {
+				switch (irandom(2)) {
+					default:
+						create_card_id=999;//Hit that placeholder :P
+						break;
+					case 0:
+						if event_kind=ref_event_grass { create_card_id=495; } //snivy
+						else if event_kind=ref_event_fire { create_card_id=498; } //tepig
+						else if event_kind=ref_event_water { create_card_id=501; } //oshawott
+						break;
+					case 1:
+						if event_kind=ref_event_grass { create_card_id=650; } //chespin
+						else if event_kind=ref_event_fire { create_card_id=653; } //fennekin
+						else if event_kind=ref_event_water { create_card_id=656; } //froakie
+						break;
+					case 2:
+						if event_kind=ref_event_grass { create_card_id=722; } //rowlet
+						else if event_kind=ref_event_fire { create_card_id=725; } //litten
+						else if event_kind=ref_event_water { create_card_id=728; } //popplio
+						break;
+				}
+			}
+			if i=3 {
+				switch (irandom(6)) {
+					default:
+						create_card_id=999;//Hit that placeholder :P
+						break;
+					case 0:
+						create_card_id=016; //Pidgey
+						break;
+					case 1:
+						create_card_id=163; //Hoothoot
+						break;
+					case 2:
+						create_card_id=276; //Tailow
+						break;
+					case 3:
+						create_card_id=396; //Starly - Not all birbs are born equal xD
+						break;
+					case 4:
+						create_card_id=519; //Pidove
+						break;
+					case 5:
+						create_card_id=661; //Fletchling - Not all birbs are born equal xD
+						break;
+					case 6:
+						create_card_id=731; //Pikipek
+						break;
+					
+				}
+			}
+			if i=4 {
+				switch (irandom(6)) {
+					default:
+						create_card_id=999;//Hit that placeholder :P
+						break;
+					case 0:
+						create_card_id=019; //Rattata
+						break;
+					case 1:
+						create_card_id=161; //Sentret
+						break;
+					case 2:
+						create_card_id=263; //Zigzagoon
+						break;
+					case 3:
+						create_card_id=399; //Bidoof
+						break;
+					case 4:
+						create_card_id=504; //Patrat
+						break;
+					case 5:
+						create_card_id=659; //Bunnelby
+						break;
+					case 6:
+						create_card_id=734; //Yungoos
+						break;
+					
+				}
+			}
+			
+			
+			//Template to add more
+			/*
+			if i=5 {
+				switch (irandom(6)) {
+					default:
+						create_card_id=999;//Hit that placeholder :P
+						break;
+					case 0:
+						create_card_id=
+						break;
+					case 1:
+						create_card_id=
+						break;
+					case 2:
+						create_card_id=
+						break;
+					case 3:
+						create_card_id=
+						break;
+					case 4:
+						create_card_id=
+						break;
+					case 5:
+						create_card_id=
+						break;
+					case 6:
+						create_card_id=
+						break;
+					
+				}
+			}
+			*/
 			create_card_level=1;
 			create_card_glyph_a=-1;
 			create_card_glyph_b=-1;
 			create_card_glyph_c=-1;
 			create_card_innate=1;
-			create_card_form_value=0;
+			create_card_form_value=0;//Leave forms low so no one gets alolan rattata(unplayable without leppas)
 		}
 		else {
 			create_card_cat=1;
-			if i<=13 { create_card_id=3000; } //oran
+			if i<=5 { create_card_id=3000; } //oran
 			//else { create_card_id=3001; } //leppa
 			//else { create_card_id=3002; } //lum
 		}
 		
 		//
 		
-		/*
+		
 		if i<=4 { var card_x=screen_main_x+83+(72*i), card_y=screen_main_y+104-47; }
 		else { var card_x=screen_main_x+83+(72*(i-5)), card_y=screen_main_y+104+47; }
-		*/
+		
+		/*
 		if i<=6 { var card_x=screen_main_x+36+(62*i), card_y=screen_main_y+104-47; }
 		else { var card_x=screen_main_x+36+(62*(i-7)), card_y=screen_main_y+104+47; }
-		instance_create_layer(card_x,card_y,"instances",ob_card);
+		*/
+		instance_create_layer(card_x,card_y,"instances",ob_card);		
 		i++;
 	}
 	//
