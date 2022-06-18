@@ -26,6 +26,10 @@ else if trash=false {
 			draw_sprite_general(sp_sheet,0,464,240,26,26,x+16,y+26,1,1,0,c_white,c_white,c_white,c_white,var_event_alpha);
 		}
 		
+		if ob_event.event_kind=ref_event_deglyph {
+			draw_sprite_general(sp_sheet,0,624,240,26,26,x+16,y+26,1,1,0,c_white,c_white,c_white,c_white,var_event_alpha);
+		}
+		
 		//
 		if ob_event.event_kind=ref_event_levelup {
 			draw_set_font(fn_matchup);

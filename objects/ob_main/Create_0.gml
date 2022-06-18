@@ -159,6 +159,18 @@ event_cost_standby_levelup=0;
 #macro ref_event_campfire 501
 #macro ref_event_megaevolve 502
 #macro ref_event_changeform 503
+#macro ref_event_deglyph 504
+
+#macro ref_event_cardpack_0 600 // Joke cards such as missingno and ghost.
+#macro ref_event_cardpack_1 601 // Focus on Gen 1.
+#macro ref_event_cardpack_2 602 // Focus on Gen 2.
+#macro ref_event_cardpack_3 603 // Focus on Gen 3.
+#macro ref_event_cardpack_4 604 // Focus on Gen 4.
+#macro ref_event_cardpack_5 605 // Focus on Gen 5.
+#macro ref_event_cardpack_6 606 // Focus on Gen 6.
+#macro ref_event_cardpack_7 607 // Focus on Gen 7.
+#macro ref_event_cardpack_8 608 // Focus on Gen 8.
+#macro ref_event_cardpack_9 609 // Focus on Gen 9.
 
 #macro ref_fly_prev 400 //only for transitions
 #macro ref_fly_next 401 //only for transitions
@@ -174,6 +186,17 @@ event_cost[ref_event_levelup]=100;
 event_cost[ref_event_evolution]=500;
 
 event_cost[ref_event_megaevolve]=500;
+
+event_cost[ref_event_cardpack_0]=5000;
+event_cost[ref_event_cardpack_1]=300;
+event_cost[ref_event_cardpack_2]=300;
+event_cost[ref_event_cardpack_3]=300;
+event_cost[ref_event_cardpack_4]=300;
+event_cost[ref_event_cardpack_5]=300;
+event_cost[ref_event_cardpack_6]=300;
+event_cost[ref_event_cardpack_7]=300;
+event_cost[ref_event_cardpack_8]=300;
+event_cost[ref_event_cardpack_9]=300;
 
 event_cost[ref_event_glyph]=300;
 //

@@ -230,7 +230,7 @@ if roadmap_generated=false {
 		// [weight, event reference, free] Determine event odds.
 		var events = [
 			[10, ref_event_megaevolve, false],
-			[10, ref_event_changeform, true],
+			[10, ref_event_changeform, false],
 			[330, ref_event_battle, true],
 			[25, ref_event_payout, true],
 			[25, ref_event_freecard, true],
@@ -239,7 +239,9 @@ if roadmap_generated=false {
 			[200, ref_event_levelup, false],
 			[50, ref_event_evolution, false],
 			[25, ref_event_glyph, false],
+			[20, ref_event_deglyph, false],
 			[15, ref_event_tribute, false],
+			[15, ref_event_sacrifice, false],
 			[10, ref_event_campfire, true]
 		];
 		
@@ -257,12 +259,7 @@ if roadmap_generated=false {
 				//
 				ii++;
 			}
-			
-			//event_kind[3][1]=ref_event_sacrifice;
-			//event_kind[3][0]=ref_event_campfire;
-			//event_kind[3][2]=ref_event_changeform;
-			//event_kind[3][3]=ref_event_megaevolve;
-			
+						
 			//
 			var repeating_event=true;
 			if (event_kind[0][i]!=event_kind[1][i] or event_glyph_add[0][i]!=event_glyph_add[1][i]) and
@@ -441,6 +438,18 @@ if roadmap_get_details=true {
 			else if event_kind[ii][i]=ref_event_megaevolve { event_name[ii][i]="Mega Evolve\n$" + string(event_cost[ref_event_megaevolve]); }
 			else if event_kind[ii][i]=ref_event_campfire { event_name[ii][i]="Campfire"; }
 			else if event_kind[ii][i]=ref_event_changeform { event_name[ii][i]="Change form"; }
+			else if event_kind[ii][i]=ref_event_deglyph { event_name[ii][i]="De-Glyph"; }
+			
+			else if event_kind[ii][i]=ref_event_cardpack_0 { event_name[ii][i]="Joke Pack\n$" + string(event_cost[ref_event_cardpack_0]); }
+			else if event_kind[ii][i]=ref_event_cardpack_1 { event_name[ii][i]="Gen 1 Pack\n$" + string(event_cost[ref_event_cardpack_1]); }
+			else if event_kind[ii][i]=ref_event_cardpack_2 { event_name[ii][i]="Gen 2 Pack\n$" + string(event_cost[ref_event_cardpack_2]); }
+			else if event_kind[ii][i]=ref_event_cardpack_3 { event_name[ii][i]="Gen 3 Pack\n$" + string(event_cost[ref_event_cardpack_3]); }
+			else if event_kind[ii][i]=ref_event_cardpack_4 { event_name[ii][i]="Gen 4 Pack\n$" + string(event_cost[ref_event_cardpack_4]); }
+			else if event_kind[ii][i]=ref_event_cardpack_5 { event_name[ii][i]="Gen 5 Pack\n$" + string(event_cost[ref_event_cardpack_5]); }
+			else if event_kind[ii][i]=ref_event_cardpack_6 { event_name[ii][i]="Gen 6 Pack\n$" + string(event_cost[ref_event_cardpack_6]); }
+			else if event_kind[ii][i]=ref_event_cardpack_7 { event_name[ii][i]="Gen 7 Pack\n$" + string(event_cost[ref_event_cardpack_7]); }
+			else if event_kind[ii][i]=ref_event_cardpack_8 { event_name[ii][i]="Gen 8 Pack\n$" + string(event_cost[ref_event_cardpack_8]); }
+			else if event_kind[ii][i]=ref_event_cardpack_9 { event_name[ii][i]="Gen 9 Pack\n$" + string(event_cost[ref_event_cardpack_9]); }
 			
 			else if event_kind[ii][i]=ref_event_tribute { event_name[ii][i]="Tribute"; }
 			else if event_kind[ii][i]=ref_event_loop { event_name[ii][i]="Not\nReady"; }

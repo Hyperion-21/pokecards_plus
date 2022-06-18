@@ -2450,7 +2450,7 @@ switch (card_id) {
 		card_stage=1; card_starter=false; card_enigma=true;
 		card_type_a=17; card_type_b=-1; 
 		card_base_hp=65; card_base_atk=150+115; card_base_def=60+60; 
-		card_grid_x=9; card_grid_y=34;}
+		card_grid_x=10; card_grid_y=34;}
 		break;
 		
 	case 0360: card_name="Wynaut"; card_stage=1; card_evo[0]=202; card_starter=false; card_type_a=7; card_type_b=-1; card_base_hp=95; card_base_atk=23+23; card_base_def=48+48; card_grid_x=12; card_grid_y=34; break;
@@ -3477,8 +3477,8 @@ switch (card_id) {
 	case 0540: card_name="Sewaddle"; card_stage=1; card_evo[0]=541; card_type_a=11; card_type_b=1; card_base_hp=45; card_base_atk=53+40; card_base_def=70+60; card_grid_x=10; card_grid_y=13; break;
 	case 0541: card_name="Swadloon"; card_stage=2; card_evo[0]=542; card_type_a=11; card_type_b=1; card_base_hp=55; card_base_atk=63+50; card_base_def=90+80; card_grid_x=11; card_grid_y=13; break;
 	case 0542: card_name="Leavanny"; card_stage=3;  card_type_a=11; card_type_b=1; card_base_hp=75; card_base_atk=103+70; card_base_def=80+80; card_grid_x=12; card_grid_y=13; break;
-	case 0543: card_name="Venipede"; card_stage=1; card_evo[0]=543; card_type_a=11; card_type_b=12; card_base_hp=30; card_base_atk=45+30; card_base_def=59+39; card_grid_x=13; card_grid_y=13; break;
-	case 0544: card_name="Whirlipede"; card_stage=2; card_evo[0]=544; card_type_a=11; card_type_b=12; card_base_hp=40; card_base_atk=55+40; card_base_def=99+79; card_grid_x=14; card_grid_y=13; break;
+	case 0543: card_name="Venipede"; card_stage=1; card_evo[0]=544; card_type_a=11; card_type_b=12; card_base_hp=30; card_base_atk=45+30; card_base_def=59+39; card_grid_x=13; card_grid_y=13; break;
+	case 0544: card_name="Whirlipede"; card_stage=2; card_evo[0]=545; card_type_a=11; card_type_b=12; card_base_hp=40; card_base_atk=55+40; card_base_def=99+79; card_grid_x=14; card_grid_y=13; break;
 	case 0545: card_name="Scolipede"; card_stage=3;  card_type_a=11; card_type_b=12; card_base_hp=60; card_base_atk=100+55; card_base_def=89+69; card_grid_x=15; card_grid_y=13; break;
 	case 0546: card_name="Cottonee"; card_stage=1; card_evo[0]=547; card_type_a=1; card_type_b=8; card_base_hp=40; card_base_atk=27+37; card_base_def=60+50; card_grid_x=1; card_grid_y=14; break;
 	case 0547: card_name="Whimsicott"; card_stage=2;  card_type_a=1; card_type_b=8; card_base_hp=60; card_base_atk=67+77; card_base_def=85+75; card_grid_x=2; card_grid_y=14; break;

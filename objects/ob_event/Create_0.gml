@@ -147,7 +147,7 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 else if event_kind=ref_event_levelup or event_kind=ref_event_evolution or
 event_kind=ref_event_glyph or event_kind=ref_event_tribute or 
 event_kind=ref_event_campfire or event_kind=ref_event_sacrifice or 
-event_kind=ref_event_megaevolve or event_kind=ref_event_changeform {
+event_kind=ref_event_megaevolve or event_kind=ref_event_changeform  or event_kind=ref_event_deglyph {
 	show_deck=true;
 	//
 	inventory_x=4;

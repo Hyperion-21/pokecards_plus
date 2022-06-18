@@ -56,6 +56,10 @@ else if instance_exists(ob_event) and occupy_id=-1 and ob_main.cursor_hide=false
 				"\nThe card placed here will receive a boost\nto its innate parameters, or tastiness.";
 			ob_event.tooltip_lines=4;
 		}
+		else if ob_event.event_kind=ref_event_deglyph {
+			ob_event.tooltip_text="// DE-GLYPH //\nRemove non-unique glyphs from pokemon.";
+			ob_event.tooltip_lines=2;
+		}
 		else if ob_event.event_kind=ref_event_tribute {
 			if id=ob_event.event_space_id[0] {
 				ob_event.tooltip_text="// TRIBUTE //\nTransfers the intrinsic strength of one Pokemon into another." +
@@ -70,8 +74,8 @@ else if instance_exists(ob_event) and occupy_id=-1 and ob_main.cursor_hide=false
 		} else if ob_event.event_kind=ref_event_sacrifice {
 			if id=ob_event.event_space_id[0] {
 				ob_event.tooltip_text="// SACRIFICE //\nTransfers glyphs from one Pokemon into another." +
-				"\nThe card placed here will be lost, and can't be restored.";
-				ob_event.tooltip_lines=3;
+				"\nThe card placed here will be lost if\nits intrinsic strength is too low.";
+				ob_event.tooltip_lines=4;
 			}
 			else if id=ob_event.event_space_id[1] {
 				ob_event.tooltip_text="// SACRIFICE //\nTransfers glyphs from one Pokemon into another." +
