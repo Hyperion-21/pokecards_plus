@@ -216,7 +216,7 @@ else if mouse_y>=screen_main_y+used_y-8 and mouse_y<screen_main_y+used_y+80 and 
 }
 //
 if mouse_check_button(mb_left) and ob_main.cursor_hide=false and cam_w<(deck_build_stored_total*60) and hold_used_bar=false and
-((mouse_y>=screen_main_y+stored_y+82 and mouse_y<screen_main_y+stored_y+86) or hold_stored_bar=true) {
+((mouse_y>=screen_main_y+stored_y+80 and mouse_y<screen_main_y+stored_y+88) or hold_stored_bar=true) {
 	var mouse_pos=mouse_x-screen_deck_x-8-4, mouse_pos_max=cam_w-16-10, stored_pos_max=cam_w-(deck_build_stored_total*60)-5;
 	var stored_x_percent=mouse_pos*100/mouse_pos_max;
 	stored_x=round(stored_x_percent*stored_pos_max/100)+4;
@@ -225,7 +225,7 @@ if mouse_check_button(mb_left) and ob_main.cursor_hide=false and cam_w<(deck_bui
 	hold_stored_bar=true;
 }
 else if mouse_check_button(mb_left) and ob_main.cursor_hide=false and cam_w<(deck_build_used_total*60) and hold_stored_bar=false and
-((mouse_y>=screen_main_y+used_y-8 and mouse_y<screen_main_y+used_y-4) or hold_used_bar=true) {
+((mouse_y>=screen_main_y+used_y-10 and mouse_y<screen_main_y+used_y-2) or hold_used_bar=true) {
 	var mouse_pos=mouse_x-screen_deck_x-8-4, mouse_pos_max=cam_w-16-10, used_pos_max=cam_w-(deck_build_used_total*60)-5;
 	var used_x_percent=mouse_pos*100/mouse_pos_max;
 	used_x=round(used_x_percent*used_pos_max/100)+4;

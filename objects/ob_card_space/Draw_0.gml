@@ -7,8 +7,25 @@ else if trash=false {
 		else { var var_event_alpha=0.5; }
 		//
 		if ob_event.event_kind!=ref_event_tribute or ob_event.event_space_id[1]!=id {
-			draw_sprite_general(sp_sheet,0,16*(1+ob_event.event_kind*2),16*15,26,26,x+16,y+26,1,1,0,c_white,c_white,c_white,c_white,var_event_alpha);
+			draw_sprite_general(sp_sheet,0,16*(1+ob_event.event_kind*2),240,26,26,x+16,y+26,1,1,0,c_white,c_white,c_white,c_white,var_event_alpha);
 		}
+		
+		if ob_event.event_kind=ref_event_campfire {
+			draw_sprite_general(sp_sheet,0,560,240,26,26,x+16,y+26,1,1,0,c_white,c_white,c_white,c_white,var_event_alpha);
+		}
+		
+		if ob_event.event_kind=ref_event_megaevolve {
+			draw_sprite_general(sp_sheet,0,528,240,26,26,x+16,y+26,1,1,0,c_white,c_white,c_white,c_white,var_event_alpha);
+		}
+		
+		if ob_event.event_kind=ref_event_changeform {
+			draw_sprite_general(sp_sheet,0,592,240,26,26,x+16,y+26,1,1,0,c_white,c_white,c_white,c_white,var_event_alpha);
+		}
+		
+		if ob_event.event_kind=ref_event_sacrifice {
+			draw_sprite_general(sp_sheet,0,464,240,26,26,x+16,y+26,1,1,0,c_white,c_white,c_white,c_white,var_event_alpha);
+		}
+		
 		//
 		if ob_event.event_kind=ref_event_levelup {
 			draw_set_font(fn_matchup);
@@ -16,7 +33,7 @@ else if trash=false {
 			if occupy_id!=-1 and occupy_id.card_level<ob_main.card_level_player_limit and occupy_id.card_innate>0 and ob_main.event_cost_standby_levelup>0 {
 				if ob_main.money-ob_main.event_cost_standby>=ob_main.event_cost_standby_levelup { var money_color=global.color_card_light; }
 				else { var money_color=global.color_damage; }
-				sc_drawtext(x+28,y-34,"Cost: $" + string(ob_main.event_cost_standby_levelup) + " / $" + string(ob_main.money-ob_main.event_cost_standby),
+				sc_drawtext(x-108,y+20,"Cost: $" + string(ob_main.event_cost_standby_levelup) + " / $" + string(ob_main.money-ob_main.event_cost_standby),
 				money_color,global.color_black,1,1,0,-1);
 				//
 				with (occupy_id) {
@@ -31,7 +48,7 @@ else if trash=false {
 				var levelup_info_text="+" + string(hp_diff) + " HP / +" + string(atk_diff) + " ATK / +" + string(def_diff) + " DEF";
 				if occupy_id.card_level mod advantage_level_interval = 0 and occupy_id.card_environment=false {
 					levelup_info_text=levelup_info_text + " / +1 TYPE BONUS"; }
-				sc_drawtext(x+28,y-20,levelup_info_text,global.color_card_mid,global.color_black,1,1,0,-1);
+				sc_drawtext(x-108,y+40,levelup_info_text,global.color_card_mid,global.color_black,1,1,0,-1);
 			}
 		}
 		//
@@ -70,7 +87,7 @@ else if trash=false {
 					var new_cost_text="Enigma Berry";
 				}
 				//
-				sc_drawtext(x+28,y-24,"Card cost: +1 " + new_cost_text,global.color_card_light,global.color_black,1,1,0,-1);
+				sc_drawtext(x-108,y+30,"Card cost: +1 " + new_cost_text,global.color_card_light,global.color_black,1,1,0,-1);
 			}
 		}
 	}

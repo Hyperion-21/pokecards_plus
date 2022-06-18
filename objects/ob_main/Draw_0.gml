@@ -32,6 +32,9 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 		else if event_kind[i][roadmap_area]=ref_event_grass { event_sprite_x=16*(1+10*2); }
 		else if event_kind[i][roadmap_area]=ref_event_fire { event_sprite_x=16*(1+11*2); }
 		else if event_kind[i][roadmap_area]=ref_event_water { event_sprite_x=16*(1+12*2); }
+		else if event_kind[i][roadmap_area]=ref_event_megaevolve { event_sprite_x=16*(1+16*2); }
+		else if event_kind[i][roadmap_area]=ref_event_campfire { event_sprite_x=16*(1+17*2); }
+		else if event_kind[i][roadmap_area]=ref_event_changeform { event_sprite_x=16*(1+18*2); }
 		//
 		sc_drawrectangle(event_button_x[i],event_button_y[i],event_button_x[i]+42,event_button_y[i]+42,global.color_black,global.color_white,2,0.8,0.5,0);
 		draw_sprite_general(sp_sheet,0,event_sprite_x,16*13,26,27,event_button_x[i]+9,event_button_y[i]+9-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);

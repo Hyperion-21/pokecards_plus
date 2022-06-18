@@ -166,7 +166,7 @@ if textbox_string[textbox_current]!="" {
 if roadmap_generated=false {
 	var i=0, var_event_num;
 	repeat (roadmap_current_max) {
-		var_event_num[i]=choose(2,3,3);
+		var_event_num[i]= 3; //choose(2,3,3);
 		i++;
 	}
 	//
@@ -226,34 +226,43 @@ if roadmap_generated=false {
 					case 21: trainer_kind[i]=choose(02,17); break;
 			}
 		}
-		//
+			
+		// [weight, event reference, free] Determine event odds.
+		var events = [
+			[10, ref_event_megaevolve, false],
+			[10, ref_event_changeform, true],
+			[330, ref_event_battle, true],
+			[25, ref_event_payout, true],
+			[25, ref_event_freecard, true],
+			[50, ref_event_cardpack, false],
+			[100, ref_event_berry, false],
+			[200, ref_event_levelup, false],
+			[50, ref_event_evolution, false],
+			[25, ref_event_glyph, false],
+			[15, ref_event_tribute, false],
+			[10, ref_event_campfire, true]
+		];
+		
 		do {
-			var ii=0, free_event=false;
-			repeat (3) {
-				if var_event_num[i]=2 {
-					if ii<2 { event_kind[ii][i]=irandom(999); }
-					else { event_kind[ii][i]=-1; }
-				}
-				else if var_event_num[i]=3 {
-					event_kind[ii][i]=irandom(999);
-				}
-				//
-				if event_kind[ii][i]=-1 { event_kind[ii][i]=-1; }
-				else if event_kind[ii][i]<350 { event_kind[ii][i]=ref_event_battle; free_event=true; } //35%
-				else if event_kind[ii][i]<375 { event_kind[ii][i]=ref_event_payout; free_event=true; } //2.5%
-				else if event_kind[ii][i]<400 { event_kind[ii][i]=ref_event_freecard; free_event=true; } //2.5%
-				else if event_kind[ii][i]<550 { event_kind[ii][i]=ref_event_cardpack; } //15%
-				else if event_kind[ii][i]<650 { event_kind[ii][i]=ref_event_berry; } //10%
-				else if event_kind[ii][i]<850 { event_kind[ii][i]=ref_event_levelup; } //20%
-				else if event_kind[ii][i]<900 { event_kind[ii][i]=ref_event_evolution; } //5%
-				else if event_kind[ii][i]<975 { event_kind[ii][i]=ref_event_glyph; } //7.5%
-				else if event_kind[ii][i]<1000 { event_kind[ii][i]=ref_event_tribute; } //2.5%
-				//
+			var ii=0;
+				
+			repeat (var_event_num[i]) {
+				
+				var event = determine_events(events);
+				event_kind[ii][i] = event[1];
+				free_event = event[2];
+				
 				if event_kind[ii][i]=ref_event_glyph { event_glyph_add[ii][i]=sc_glyph_random(false); }
 				else { event_glyph_add[ii][i]=-1; }
 				//
 				ii++;
 			}
+			
+			//event_kind[3][1]=ref_event_sacrifice;
+			//event_kind[3][0]=ref_event_campfire;
+			//event_kind[3][2]=ref_event_changeform;
+			//event_kind[3][3]=ref_event_megaevolve;
+			
 			//
 			var repeating_event=true;
 			if (event_kind[0][i]!=event_kind[1][i] or event_glyph_add[0][i]!=event_glyph_add[1][i]) and
@@ -427,6 +436,12 @@ if roadmap_get_details=true {
 			else if event_kind[ii][i]=ref_event_berry { event_name[ii][i]="Berry Pack\n$" + string(event_cost[ref_event_berry]); }
 			else if event_kind[ii][i]=ref_event_levelup { event_name[ii][i]="Level Up\n$" + string(event_cost[ref_event_levelup]) + " (*)"; }
 			else if event_kind[ii][i]=ref_event_evolution { event_name[ii][i]="Evolution\n$" + string(event_cost[ref_event_evolution]); }
+			
+			else if event_kind[ii][i]=ref_event_sacrifice { event_name[ii][i]="Sacrifice"; }
+			else if event_kind[ii][i]=ref_event_megaevolve { event_name[ii][i]="Mega Evolve\n$" + string(event_cost[ref_event_megaevolve]); }
+			else if event_kind[ii][i]=ref_event_campfire { event_name[ii][i]="Campfire"; }
+			else if event_kind[ii][i]=ref_event_changeform { event_name[ii][i]="Change form"; }
+			
 			else if event_kind[ii][i]=ref_event_tribute { event_name[ii][i]="Tribute"; }
 			else if event_kind[ii][i]=ref_event_loop { event_name[ii][i]="Not\nReady"; }
 			else if event_kind[ii][i]=ref_event_grass { event_name[ii][i]="Grass\nSt. Deck"; }
@@ -777,9 +792,9 @@ else if event_transition=-1 and event_transition_standby=-1 and fade_black<=0 {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 //CHEATS
-/*if keyboard_check_pressed(vk_multiply) { game_restart(); }
-if keyboard_check_pressed(vk_add) { roadmap_area++; }
-if keyboard_check_pressed(vk_numpad0) { money+=1000; }
+/*if keyboard_check_pressed(vk_f12) { game_restart(); }
+if keyboard_check_pressed(vk_f11) { roadmap_area++; }
+if keyboard_check_pressed(vk_f10) { money+=1000; }
 //
 if instance_exists(ob_control) and keyboard_check_pressed(vk_numpad8) {
 	ob_control.player_hp=(ob_control.hp_max*2)-1;
