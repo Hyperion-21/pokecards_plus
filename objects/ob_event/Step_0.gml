@@ -299,6 +299,23 @@ if apply_event=true {
 				else {
 					return; // BEGONE EMPTY HUSK, YOU BRING NOTHING TO THE LORD
 				}
+				no_glyph = false;
+				while (card_id_in_space[0].card_glyph_a = -1 or (no_glyph)) {
+					if (sc_insert_into_free_glyph_slot(card_id_in_space[0],card_id_in_space[0].card_glyph_b)){
+						card_id_in_space[0].card_glyph_b = -1;
+					}
+					else if (sc_insert_into_free_glyph_slot(card_id_in_space[0],card_id_in_space[0].card_glyph_c)){
+						card_id_in_space[0].card_glyph_c = -1;
+					}
+					else if (sc_insert_into_free_glyph_slot(card_id_in_space[0],card_id_in_space[0].card_glyph_c)){
+						card_id_in_space[0].card_glyph_c = -1;
+					}
+					else{
+						no_glyph = true;
+					}
+					
+				}
+				
 			}
 			//Dont know if you want it to take innate value from it regardless, your choice.
 			//if card_id_in_space[1].card_innate < innate_max{
