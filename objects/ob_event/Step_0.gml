@@ -250,31 +250,49 @@ if apply_event=true {
 			var devour = false;
 			// WE SHALL SACRIFICE THIS CARD TO THE LORD OF THE DEAD!
 			if(card_id_in_space[0].card_innate = 0){
-				if card_id_in_space[0].card_glyph_c != -1 and !sc_glyph_bound(card_id_in_space[0].card_glyph_c) {
+				if card_id_in_space[0].card_glyph_c != -1 and !sc_glyph_bound(card_id_in_space[0].card_glyph_c) 
+				and card_id_in_space[1].card_glyph_a!=card_id_in_space[0].card_glyph_c 
+				and card_id_in_space[1].card_glyph_b!=card_id_in_space[0].card_glyph_c 
+				and card_id_in_space[1].card_glyph_c!=card_id_in_space[0].card_glyph_c {
 					sc_insert_into_free_glyph_slot(card_id_in_space[1],card_id_in_space[0].card_glyph_c);
 					card_id_in_space[0].card_glyph_c= -1;
 				}
 				
-				if card_id_in_space[0].card_glyph_b != -1 and !sc_glyph_bound(card_id_in_space[0].card_glyph_b) {
+				if card_id_in_space[0].card_glyph_b != -1 and !sc_glyph_bound(card_id_in_space[0].card_glyph_b)
+				and card_id_in_space[1].card_glyph_a!=card_id_in_space[0].card_glyph_b 
+				and card_id_in_space[1].card_glyph_b!=card_id_in_space[0].card_glyph_b 
+				and card_id_in_space[1].card_glyph_c!=card_id_in_space[0].card_glyph_b {
 					sc_insert_into_free_glyph_slot(card_id_in_space[1],card_id_in_space[0].card_glyph_b);
 					card_id_in_space[0].card_glyph_b= -1;
 				}
 				
-				if card_id_in_space[0].card_glyph_a != -1 and !sc_glyph_bound(card_id_in_space[0].card_glyph_a) {
+				if card_id_in_space[0].card_glyph_a != -1 and !sc_glyph_bound(card_id_in_space[0].card_glyph_a) 
+				and card_id_in_space[1].card_glyph_a!=card_id_in_space[0].card_glyph_a 
+				and card_id_in_space[1].card_glyph_b!=card_id_in_space[0].card_glyph_a 
+				and card_id_in_space[1].card_glyph_c!=card_id_in_space[0].card_glyph_a{
 					sc_insert_into_free_glyph_slot(card_id_in_space[1],card_id_in_space[0].card_glyph_a);
 					card_id_in_space[0].card_glyph_a= -1;
 				}				
 				devour = true;
 			} else { // OUR LORD IS MERCIFUL, PROVIDE HIS HERALD WITH YOUR ESSENCE AND YOU SHALL REMAIN
-				if card_id_in_space[0].card_glyph_c != -1 and !sc_glyph_bound(card_id_in_space[0].card_glyph_c) {
+				if card_id_in_space[0].card_glyph_c != -1 and !sc_glyph_bound(card_id_in_space[0].card_glyph_c) 
+				and card_id_in_space[1].card_glyph_a!=card_id_in_space[0].card_glyph_c 
+				and card_id_in_space[1].card_glyph_b!=card_id_in_space[0].card_glyph_c 
+				and card_id_in_space[1].card_glyph_c!=card_id_in_space[0].card_glyph_c{
 					sc_insert_into_free_glyph_slot(card_id_in_space[1],card_id_in_space[0].card_glyph_c);
 					card_id_in_space[0].card_glyph_c= -1;
 				}
-				else if card_id_in_space[0].card_glyph_b != -1 and !sc_glyph_bound(card_id_in_space[0].card_glyph_b) {
+				else if card_id_in_space[0].card_glyph_b != -1 and !sc_glyph_bound(card_id_in_space[0].card_glyph_b) 
+				and card_id_in_space[1].card_glyph_a!=card_id_in_space[0].card_glyph_b 
+				and card_id_in_space[1].card_glyph_b!=card_id_in_space[0].card_glyph_b 
+				and card_id_in_space[1].card_glyph_c!=card_id_in_space[0].card_glyph_b{
 					sc_insert_into_free_glyph_slot(card_id_in_space[1],card_id_in_space[0].card_glyph_b);
 					card_id_in_space[0].card_glyph_b = -1;
 				}
-				else if card_id_in_space[0].card_glyph_a != -1 and !sc_glyph_bound(card_id_in_space[0].card_glyph_a) {
+				else if card_id_in_space[0].card_glyph_a != -1 and !sc_glyph_bound(card_id_in_space[0].card_glyph_a) 
+				and card_id_in_space[1].card_glyph_a!=card_id_in_space[0].card_glyph_a 
+				and card_id_in_space[1].card_glyph_b!=card_id_in_space[0].card_glyph_a 
+				and card_id_in_space[1].card_glyph_c!=card_id_in_space[0].card_glyph_a{
 					sc_insert_into_free_glyph_slot(card_id_in_space[1],card_id_in_space[0].card_glyph_a);
 					card_id_in_space[0].card_glyph_a = -1;
 				}
