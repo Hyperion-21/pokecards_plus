@@ -4,7 +4,8 @@ function sc_pokelist() {
 //09 ground, 10 rock, 11 bug, 12 poison, 13 ice, 14 dragon, 15 steel, 16 ghost, 17 dark
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if card_id<=386 { card_sheet=sp_poke_a; }
-else if card_id<=2000 { card_sheet=sp_poke_b; }
+else if card_id<=807 { card_sheet=sp_poke_b; }
+else if card_id<=2000 { card_sheet=sp_poke_d; }
 else { card_sheet=sp_poke_c; }
 var i=0;
 repeat (8) {
@@ -4080,7 +4081,10 @@ switch (card_id) {
 	case 0806: card_name="Blacephalon"; card_stage=1;  card_enigma=true; card_type_a=2; card_type_b=16; card_base_hp=53; card_base_atk=127+151; card_base_def=53+79; card_grid_x=1; card_grid_y=41; break;
 	case 0807: card_name="Zeraora"; card_stage=1;  card_enigma=true; card_type_a=4; card_type_b=-1; card_base_hp=88; card_base_atk=112+102; card_base_def=75+80; card_grid_x=3; card_grid_y=41; break;
 	
-		
+	// Gen 8
+	
+	
+	
 	// END OF MODDED CODE
 		
 	//

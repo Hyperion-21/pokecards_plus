@@ -57,6 +57,7 @@
     {"id":{"name":"AI_draw","path":"scripts/AI_draw/AI_draw.yy",},"order":2,},
     {"id":{"name":"sp_57x80","path":"sprites/sp_57x80/sp_57x80.yy",},"order":3,},
     {"id":{"name":"sp_splash_title","path":"sprites/sp_splash_title/sp_splash_title.yy",},"order":7,},
+    {"id":{"name":"sp_poke_d","path":"sprites/sp_poke_d/sp_poke_d.yy",},"order":14,},
     {"id":{"name":"sc_card_attack","path":"scripts/sc_card_attack/sc_card_attack.yy",},"order":9,},
     {"id":{"name":"fn_m6x11","path":"fonts/fn_m6x11/fn_m6x11.yy",},"order":2,},
     {"id":{"name":"AI_play_plan","path":"scripts/AI_play_plan/AI_play_plan.yy",},"order":1,},
