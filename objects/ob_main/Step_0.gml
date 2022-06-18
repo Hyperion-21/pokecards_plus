@@ -166,7 +166,7 @@ if textbox_string[textbox_current]!="" {
 if roadmap_generated=false {
 	var i=0, var_event_num;
 	repeat (roadmap_current_max) {
-		var_event_num[i]=choose(2,3,3);
+		var_event_num[i]= 3; //choose(2,3,3);
 		i++;
 	}
 	//
@@ -226,32 +226,32 @@ if roadmap_generated=false {
 					case 21: trainer_kind[i]=choose(02,17); break;
 			}
 		}
-		//
+			
+		// [weight, event reference, free] Determine event odds.
+		var events = [
+			[10, ref_event_megaevolve, false],
+			[10, ref_event_changeform, true],
+			[330, ref_event_battle, true],
+			[25, ref_event_payout, true],
+			[25, ref_event_freecard, true],
+			[50, ref_event_cardpack, false],
+			[100, ref_event_berry, false],
+			[200, ref_event_levelup, false],
+			[50, ref_event_evolution, false],
+			[25, ref_event_glyph, false],
+			[15, ref_event_tribute, false],
+			[10, ref_event_campfire, true]
+		];
+		
 		do {
-			var ii=0, free_event=false;
-			repeat (3) {
-				if var_event_num[i]=2 {
-					if ii<2 { event_kind[ii][i]=irandom(999); }
-					else { event_kind[ii][i]=-1; }
-				}
-				else if var_event_num[i]=3 {
-					event_kind[ii][i]=irandom(999);
-				}
-				//
-				if event_kind[ii][i]=-1 { event_kind[ii][i]=-1; }
-				else if event_kind[ii][i]<10 { event_kind[ii][i]=ref_event_megaevolve; } //1%
-				else if event_kind[ii][i]<20 { event_kind[ii][i]=ref_event_changeform; free_event=true; } //1%
-				else if event_kind[ii][i]<350 { event_kind[ii][i]=ref_event_battle; free_event=true; } //33%
-				else if event_kind[ii][i]<375 { event_kind[ii][i]=ref_event_payout; free_event=true; } //2.5%
-				else if event_kind[ii][i]<400 { event_kind[ii][i]=ref_event_freecard; free_event=true; } //2.5%
-				else if event_kind[ii][i]<550 { event_kind[ii][i]=ref_event_cardpack; } //15%
-				else if event_kind[ii][i]<650 { event_kind[ii][i]=ref_event_berry; } //10%
-				else if event_kind[ii][i]<850 { event_kind[ii][i]=ref_event_levelup; } //20%
-				else if event_kind[ii][i]<900 { event_kind[ii][i]=ref_event_evolution; } //5%
-				else if event_kind[ii][i]<975 { event_kind[ii][i]=ref_event_glyph; } //7.5%
-				else if event_kind[ii][i]<995 { event_kind[ii][i]=ref_event_tribute; } //2.0%
-				else if event_kind[ii][i]<1000 { event_kind[ii][i]=ref_event_campfire; free_event=true; } //0.5%
-				//
+			var ii=0;
+				
+			repeat (var_event_num[i]) {
+				
+				var event = determine_events(events);
+				event_kind[ii][i] = event[1];
+				free_event = event[2];
+				
 				if event_kind[ii][i]=ref_event_glyph { event_glyph_add[ii][i]=sc_glyph_random(false); }
 				else { event_glyph_add[ii][i]=-1; }
 				//

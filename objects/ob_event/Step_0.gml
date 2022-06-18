@@ -39,10 +39,10 @@ if show_deck=true {
 	}
 	//
 	
-	if mouse_check_button(mb_left) and ob_main.cursor_hide=false and cam_w<(card_event_inventory_total*60) and hold_inventory_bar=false and
-	((mouse_y>=screen_main_y+inventory_y+82 and mouse_y<screen_main_y+inventory_y+86) or hold_inventory_bar=true) {
+	if mouse_check_button(mb_left) and ob_main.cursor_hide=false and cam_w<(card_event_inventory_total*60) and
+	((mouse_y>=screen_main_y+inventory_y+80 and mouse_y<screen_main_y+inventory_y+88) or hold_inventory_bar=true) {
 		//screen_main_y+deck_y-8
-		var mouse_pos=mouse_x-screen_deck_x-8-4; 
+		var mouse_pos=mouse_x-screen_main_x-8-4; 
 		var mouse_pos_max=cam_w-16-10,
 		var inventory_pos_max=cam_w-(card_event_inventory_total*60)-5;
 		
@@ -53,7 +53,7 @@ if show_deck=true {
 		hold_inventory_bar=true;
 	}	
 	else if mouse_check_button(mb_left) and ob_main.cursor_hide=false and cam_w<(card_event_total*60) and
-	((mouse_y>=screen_main_y+deck_y-8 and mouse_y<screen_main_y+deck_y-4) or hold_deck_bar=true) {
+	((mouse_y>=screen_main_y+deck_y-10 and mouse_y<screen_main_y+deck_y-2) or hold_deck_bar=true) {
 		
 		var mouse_pos=mouse_x-screen_main_x-8-4;
 		var mouse_pos_max=cam_w-16-10; 

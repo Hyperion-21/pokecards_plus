@@ -7,8 +7,25 @@ else if trash=false {
 		else { var var_event_alpha=0.5; }
 		//
 		if ob_event.event_kind!=ref_event_tribute or ob_event.event_space_id[1]!=id {
-			draw_sprite_general(sp_sheet,0,16*(1+ob_event.event_kind*2),16*15,26,26,x+16,y+26,1,1,0,c_white,c_white,c_white,c_white,var_event_alpha);
+			draw_sprite_general(sp_sheet,0,16*(1+ob_event.event_kind*2),240,26,26,x+16,y+26,1,1,0,c_white,c_white,c_white,c_white,var_event_alpha);
 		}
+		
+		if ob_event.event_kind=ref_event_campfire {
+			draw_sprite_general(sp_sheet,0,560,240,26,26,x+16,y+26,1,1,0,c_white,c_white,c_white,c_white,var_event_alpha);
+		}
+		
+		if ob_event.event_kind=ref_event_megaevolve {
+			draw_sprite_general(sp_sheet,0,528,240,26,26,x+16,y+26,1,1,0,c_white,c_white,c_white,c_white,var_event_alpha);
+		}
+		
+		if ob_event.event_kind=ref_event_changeform {
+			draw_sprite_general(sp_sheet,0,592,240,26,26,x+16,y+26,1,1,0,c_white,c_white,c_white,c_white,var_event_alpha);
+		}
+		
+		if ob_event.event_kind=ref_event_sacrifice {
+			draw_sprite_general(sp_sheet,0,464,240,26,26,x+16,y+26,1,1,0,c_white,c_white,c_white,c_white,var_event_alpha);
+		}
+		
 		//
 		if ob_event.event_kind=ref_event_levelup {
 			draw_set_font(fn_matchup);

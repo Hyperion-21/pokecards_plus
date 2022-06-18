@@ -39,9 +39,22 @@ else if instance_exists(ob_event) and occupy_id=-1 and ob_main.cursor_hide=false
 			ob_event.tooltip_text="// EVOLUTION //\nThe Pokemon evolves into its next form.";
 			ob_event.tooltip_lines=2;
 		}
+		else if ob_event.event_kind=ref_event_changeform {
+			ob_event.tooltip_text="// CHANGE FORM //\nThe Pokemon changes into its alternate form.";
+			ob_event.tooltip_lines=2;
+		}
+		else if ob_event.event_kind=ref_event_megaevolve {
+			ob_event.tooltip_text="// MEGA EVOLUTION //\nThe Pokemon mega evolves into its mega form.";
+			ob_event.tooltip_lines=2;
+		}
 		else if ob_event.event_kind=ref_event_glyph {
 			ob_event.tooltip_text=sc_glyph_text(ob_event.glyph_add_id,false);
 			ob_event.tooltip_lines=sc_glyph_text(ob_event.glyph_add_id,true);
+		}
+		else if ob_event.event_kind=ref_event_campfire {
+			ob_event.tooltip_text="// CAMPFIRE //\nIncreases the intrinsic strength of one Pokemon." +
+				"\nThe card placed here will receive a boost\nto its innate parameters, or tastiness.";
+			ob_event.tooltip_lines=4;
 		}
 		else if ob_event.event_kind=ref_event_tribute {
 			if id=ob_event.event_space_id[0] {
@@ -53,6 +66,17 @@ else if instance_exists(ob_event) and occupy_id=-1 and ob_main.cursor_hide=false
 				ob_event.tooltip_text="// TRIBUTE //\nTransfers the intrinsic strength of one Pokemon into another." +
 				"\nThe card placed here will receive a boost to its innate parameters.";
 				ob_event.tooltip_lines=3;
+			}
+		} else if ob_event.event_kind=ref_event_sacrifice {
+			if id=ob_event.event_space_id[0] {
+				ob_event.tooltip_text="// SACRIFICE //\nTransfers glyphs from one Pokemon into another." +
+				"\nThe card placed here will be lost, and can't be restored.";
+				ob_event.tooltip_lines=3;
+			}
+			else if id=ob_event.event_space_id[1] {
+				ob_event.tooltip_text="// SACRIFICE //\nTransfers glyphs from one Pokemon into another." +
+				"\nThe card placed here will gain as many glyphs as it can,\nstarting from the top of the sacrifice.";
+				ob_event.tooltip_lines=4;
 			}
 		}
 	}

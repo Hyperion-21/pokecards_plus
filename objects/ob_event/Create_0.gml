@@ -207,15 +207,16 @@ event_kind=ref_event_megaevolve or event_kind=ref_event_changeform {
 		i++;
 	}
 	//
-	var spacing = 1;
+	var spacing = 71;
 	if event_kind=ref_event_tribute or event_kind=ref_event_sacrifice {
-		var spacing = 2;
+		var spacing = 142-35;
 		event_space_total=2;
 		for (var i=0; i<event_space_total; i++;) {
 			event_space_id[i]=instance_create_layer(screen_main_x+227-35+71*i,screen_main_y+109,"instances",ob_card_space);
 		}
 	}
 	else {
+		var spacing = 71;
 		event_space_total=1;
 		for (var i=0; i<event_space_total; i++;) {
 			event_space_id[i]=instance_create_layer(screen_main_x+227,screen_main_y+109,"instances",ob_card_space);
@@ -224,7 +225,7 @@ event_kind=ref_event_megaevolve or event_kind=ref_event_changeform {
 	//
 	var i=0, button_create;
 	repeat (2) {
-		button_create=instance_create_layer(screen_main_x+227+71*spacing,screen_main_y+117+42*i,"instances",ob_button_31x24);
+		button_create=instance_create_layer(screen_main_x+227+spacing,screen_main_y+117+42*i,"instances",ob_button_31x24);
 		button_create.button_id=i;
 		i++;
 	}
