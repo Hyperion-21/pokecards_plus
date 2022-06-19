@@ -151,7 +151,7 @@ switch (event_kind){
 		var card_pool_gen_3_4_5;
 		var card_pool_gen_6_7_8;
 		var card_pool_birds = [[10, 016],[10, 163],[10, 276],[10, 396],[10, 519],[10, 661],[10, 731], [10, 821]];
-		var card_pool_rodents = [[10, 019],[10, 161],[10, 263],[10, 339],[10, 504],[10, 659],[10, 734], [10, 819]];
+		var card_pool_rodents = [[10, 019],[10, 161],[10, 263],[10, 399],[10, 504],[10, 659],[10, 734], [10, 819]];
 	
 		switch (event_kind){
 			case ref_event_grass: 
