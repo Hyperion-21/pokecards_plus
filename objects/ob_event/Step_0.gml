@@ -197,7 +197,8 @@ if (apply_event) {
 		case ref_event_evolution:
 			if (card_id_in_space[0] != -1)
 			{
-			    if (evo_list[0] != -1 && evo_list[0] <= normal_poke_id_max && card_id_in_space[0].card_innate > 0)
+			    if (evo_list[0] != -1 && evo_list[0] <= normal_poke_id_max && card_id_in_space[0].card_innate > 0 &&
+			        ob_main.money - ob_main.event_cost_standby >= ob_main.event_cost[ref_event_evolution])
 			    {
 			        do
 			        {
@@ -208,6 +209,7 @@ if (apply_event) {
 			                evolution_position = 0;
 			            }
 			        } until (card_id_in_space[0].card_id != -1 && card_id_in_space[0].card_id <= normal_poke_id_max)
+					
 			        sc_card_effect(event_space_id[0].x, event_space_id[0].y, 0, false, true);
 			        with (card_id_in_space[0])
 			        {
@@ -217,6 +219,7 @@ if (apply_event) {
         
 			        event_applied = true;
 			        evolution_retry = true;
+			        ob_main.event_cost_standby += ob_main.event_cost[ref_event_evolution];
 			        sc_playsound(sn_upgrade, 50, false, false);
 			        ob_main.main_card_id[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_id;
 			    }

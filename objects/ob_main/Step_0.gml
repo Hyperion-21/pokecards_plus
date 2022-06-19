@@ -238,8 +238,8 @@ if roadmap_generated=false {
 			[100, ref_event_berry, false],
 			[200, ref_event_levelup, false],
 			[50, ref_event_evolution, false],
-			[25, ref_event_glyph, false],
-			[20, ref_event_deglyph, false],
+			[35, ref_event_glyph, false],
+			[10, ref_event_deglyph, false],
 			[15, ref_event_tribute, false],
 			[15, ref_event_sacrifice, false],
 			[10, ref_event_campfire, true]
@@ -589,7 +589,7 @@ else if event_transition>-1 and fade_black>=1 {
 	money_show=money;
 	//
 	if instance_exists(ob_event) {
-		if ob_event.event_cancelled=false { money-=event_cost_standby; }
+		if !ob_event.event_cancelled { money -= event_cost_standby; }
 		event_cost_standby=0;
 		event_cost_standby_levelup=0;
 	}
@@ -753,12 +753,13 @@ else if event_transition=-1 and event_transition_standby=-1 and fade_black<=0 {
 				//
 				if event_conditions=true {
 					event_transition_standby=event_kind[mouse_in_event][roadmap_area];
-					if event_transition_standby=ref_event_levelup { event_cost_standby=0; }
+					
+					if (event_transition_standby == ref_event_levelup || event_transition_standby == ref_event_evolution) { event_cost_standby=0; }
 					else { event_cost_standby=event_cost[event_transition_standby]; }
-					//
+					
 					sc_playsound(sn_event,50,false,false);
 					if event_transition_standby=ref_event_battle { music_player=sc_playsound(ms_battle_intro,100,false,true); }
-					//
+					
 					if event_transition_standby=ref_event_tutorial { sc_textbox(3); }
 					else if event_transition_standby=ref_event_gymbattle { sc_textbox(30+area_zone); }
 					else if event_transition_standby=ref_event_elitebattle or event_transition_standby=ref_event_championbattle {
@@ -801,20 +802,20 @@ else if event_transition=-1 and event_transition_standby=-1 and fade_black<=0 {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 //CHEATS
-/*
-if keyboard_check_pressed(vk_f12) { game_restart(); }
-if keyboard_check_pressed(vk_f11) { roadmap_area++; }
-if keyboard_check_pressed(vk_f10) { money+=1000; }
+if (RUN_FROM_IDE) {	
+	if keyboard_check_pressed(vk_f12) { game_restart(); }
+	if keyboard_check_pressed(vk_f11) { roadmap_area++; }
+	if keyboard_check_pressed(vk_f10) { money+=1000; }
 
-if instance_exists(ob_control) and keyboard_check_pressed(vk_numpad8) {
-	ob_control.player_hp=(ob_control.hp_max*2)-1;
-	ob_control.enemy_hp=1;
+	if instance_exists(ob_control) and keyboard_check_pressed(vk_numpad8) {
+		ob_control.player_hp=(ob_control.hp_max*2)-1;
+		ob_control.enemy_hp=1;
+	}
+	if instance_exists(ob_control) and keyboard_check_pressed(vk_numpad7) {
+		ob_control.player_hp=1;
+		ob_control.enemy_hp=(ob_control.hp_max*2)-1;
+	}
 }
-if instance_exists(ob_control) and keyboard_check_pressed(vk_numpad7) {
-	ob_control.player_hp=1;
-	ob_control.enemy_hp=(ob_control.hp_max*2)-1;
-}
-*/
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if roadmap_area=roadmap_current_max {
 	area_zone++;

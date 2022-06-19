@@ -31,6 +31,8 @@ camera_set_view_size(view_camera[0],512,288);
 #macro cam_w camera_get_view_width(view_camera[0])
 #macro cam_h camera_get_view_height(view_camera[0])
 //
+#macro RUN_FROM_IDE parameter_count()==3&&string_count("GMS2TEMP",parameter_string(2))
+//
 surface_resize(application_surface,cam_w,cam_h);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 mouse_cursor=0;
