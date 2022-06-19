@@ -4119,11 +4119,46 @@ switch (card_id) {
 	case 0842: card_name="Appletun"; card_stage=2;  card_type_a=1; card_type_b=14; card_base_hp=110; card_base_atk=85+100; card_base_def=80+80; card_grid_x=5; card_grid_y=3; break;
 	case 0843: card_name="Silicobra"; card_stage=1; card_evo[0]=844; card_type_a=9; card_type_b=-1; card_base_hp=52; card_base_atk=57+35; card_base_def=75+50; card_grid_x=6; card_grid_y=3; break;
 	case 0844: card_name="Sandaconda"; card_stage=2;  card_type_a=9; card_type_b=-1; card_base_hp=72; card_base_atk=107+65; card_base_def=125+70; card_grid_x=7; card_grid_y=3; break;
-	case 0845: card_name="Cramorant"; card_stage=1;  card_type_a=5; card_type_b=3; card_base_hp=70; card_base_atk=85+85; card_base_def=55+95; card_grid_x=8; card_grid_y=3; break;
+	
+	case 0845: //cosmetic but not in your control in cannon
+		card_has_forms=true;
+		card_name="Cramorant"; 
+		card_stage=1;  
+		card_type_a=5; card_type_b=3; 
+		card_base_hp=70; 
+		card_base_atk=85+85; 
+		card_base_def=55+95; 
+		if card_form_value<500 {
+			card_grid_x=8; card_grid_y=3; 
+		}
+		else if card_form_value<750 {
+			card_grid_x=9; card_grid_y=3; 
+		}
+		else {
+			card_grid_x=10; card_grid_y=3; 
+		}
+		break;
+	
 	case 0846: card_name="Arrokuda"; card_stage=1; card_evo[0]=847; card_type_a=3; card_type_b=-1; card_base_hp=41; card_base_atk=63+40; card_base_def=40+30; card_grid_x=11; card_grid_y=3; break;
 	case 0847: card_name="Barraskewda"; card_stage=2;  card_type_a=3; card_type_b=-1; card_base_hp=61; card_base_atk=123+60; card_base_def=60+50; card_grid_x=12; card_grid_y=3; break;
 	case 0848: card_name="Toxel"; card_stage=1; card_evo[0]=849; card_type_a=4; card_type_b=12; card_base_hp=40; card_base_atk=38+54; card_base_def=35+35; card_grid_x=13; card_grid_y=3; break;
-	case 0849: card_name="Toxtricity"; card_stage=2;  card_type_a=4; card_type_b=12; card_base_hp=75; card_base_atk=98+114; card_base_def=70+70; card_grid_x=14; card_grid_y=3; break;
+	
+	case 0849: 
+		card_has_forms=true;
+		card_name="Toxtricity"; 
+		card_stage=2;  
+		card_type_a=4; card_type_b=12; 
+		card_base_hp=75; 
+		card_base_atk=98+114; 
+		card_base_def=70+70; 
+		if card_form_value<500 {
+			card_grid_x=14; card_grid_y=3; 
+		}
+		else {
+			card_grid_x=15; card_grid_y=3; 
+		}
+		break;
+	
 	case 0850: card_name="Sizzlipede"; card_stage=1; card_evo[0]=851; card_type_a=2; card_type_b=11; card_base_hp=50; card_base_atk=65+50; card_base_def=45+50; card_grid_x=1; card_grid_y=4; break;
 	case 0851: card_name="Centiskorch"; card_stage=2;  card_type_a=2; card_type_b=11; card_base_hp=100; card_base_atk=115+90; card_base_def=65+90; card_grid_x=2; card_grid_y=4; break;
 	case 0852: card_name="Clobbopus"; card_stage=1; card_evo[0]=853; card_type_a=6; card_type_b=-1; card_base_hp=50; card_base_atk=68+50; card_base_def=60+50; card_grid_x=3; card_grid_y=4; break;
@@ -4143,15 +4178,71 @@ switch (card_id) {
 	case 0866: card_name="Mr. Rime"; card_stage=3;  card_type_a=13; card_type_b=7; card_base_hp=80; card_base_atk=85+110; card_base_def=75+100; card_grid_x=2; card_grid_y=5; break;
 	case 0867: card_name="Runerigus"; card_stage=2;  card_type_a=9; card_type_b=16; card_base_hp=58; card_base_atk=95+50; card_base_def=145+105; card_grid_x=3; card_grid_y=5; break;
 	case 0868: card_name="Milcery"; card_stage=1; card_evo[0]=869; card_type_a=8; card_type_b=-1; card_base_hp=45; card_base_atk=40+50; card_base_def=40+61; card_grid_x=4; card_grid_y=5; break;
-	case 0869: card_name="Alcremie"; card_stage=2;  card_type_a=8; card_type_b=-1; card_base_hp=65; card_base_atk=60+110; card_base_def=75+121; card_grid_x=5; card_grid_y=5; break;
+	
+	//******
+	//THIS HAS 70 NON-SHINY FORMS IN CANNON D:
+	case 0869: card_has_forms=true; card_name="Alcremie"; card_stage=2;  card_type_a=8; card_type_b=-1; card_base_hp=65; card_base_atk=60+110; card_base_def=75+121; card_grid_x=5; card_grid_y=5; break;
+	//******
+	
 	case 0870: card_name="Falinks"; card_stage=1;  card_type_a=6; card_type_b=-1; card_base_hp=65; card_base_atk=100+70; card_base_def=100+60; card_grid_x=14; card_grid_y=5; break;
 	case 0871: card_name="Pincurchin"; card_stage=1;  card_type_a=4; card_type_b=-1; card_base_hp=48; card_base_atk=101+91; card_base_def=95+85; card_grid_x=15; card_grid_y=5; break;
 	case 0872: card_name="Snom"; card_stage=1; card_evo[0]=873; card_type_a=13; card_type_b=11; card_base_hp=30; card_base_atk=25+45; card_base_def=35+30; card_grid_x=1; card_grid_y=6; break;
 	case 0873: card_name="Frosmoth"; card_stage=2;  card_type_a=13; card_type_b=11; card_base_hp=70; card_base_atk=65+125; card_base_def=60+90; card_grid_x=2; card_grid_y=6; break;
 	case 0874: card_name="Stonjourner"; card_stage=1;  card_type_a=10; card_type_b=-1; card_base_hp=100; card_base_atk=125+20; card_base_def=135+20; card_grid_x=3; card_grid_y=6; break;
-	case 0875: card_name="Eiscue"; card_stage=1;  card_type_a=13; card_type_b=-1; card_base_hp=75; card_base_atk=80+65; card_base_def=110+90; card_grid_x=4; card_grid_y=6; break;
-	case 0876: card_name="Indeedee"; card_stage=1;  card_type_a=7; card_type_b=0; card_base_hp=60; card_base_atk=65+105; card_base_def=55+95; card_grid_x=6; card_grid_y=6; break;
-	case 0877: card_name="Morpeko"; card_stage=1;  card_type_a=4; card_type_b=17; card_base_hp=58; card_base_atk=95+70; card_base_def=58+58; card_grid_x=8; card_grid_y=6; break;
+	
+	case 0875: 
+		card_form_change=true;
+		card_has_forms=true;
+		card_stage=1;  
+		card_type_a=13; card_type_b=-1; 
+		card_base_hp=75; 
+		card_base_atk=80+65; 
+		if card_form_value<500 {
+			card_name="Eiscue-I"; 
+			card_base_def=110+90; 
+			card_grid_x=4; card_grid_y=6; 
+		}
+		else { // Just worse :(
+			card_name="Eiscue-N"; 
+			card_base_def=70+50; 
+			card_grid_x=4; card_grid_y=6; 
+		}
+		break;
+	
+	case 0876: 
+		card_has_forms=true;
+		card_name="Indeedee"; 
+		card_stage=1;  
+		card_type_a=7; card_type_b=0; 
+		card_base_hp=60; 
+		card_base_atk=65+105; 
+		card_base_def=55+95; 
+		if card_form_value<500 { 
+			card_grid_x=6; card_grid_y=6; 
+		}
+		else { 
+			card_grid_x=7; card_grid_y=6; 
+		}
+		break;
+	
+	case 0877: 
+		//Cannon wise it CAN change form but 
+		//it is not in your control
+		card_has_forms=true;
+		card_name="Morpeko"; 
+		card_stage=1;  
+		card_type_a=4; card_type_b=17; 
+		card_base_hp=58; 
+		card_base_atk=95+70; 
+		card_base_def=58+58; 
+		if card_form_value<500 {
+			card_grid_x=8; card_grid_y=6; 
+		}
+		else {
+			card_grid_x=9; card_grid_y=6; 
+		}
+		break;
+	
 	case 0878: card_name="Cufant"; card_stage=1; card_evo[0]=879; card_type_a=15; card_type_b=-1; card_base_hp=72; card_base_atk=80+40; card_base_def=49+49; card_grid_x=10; card_grid_y=6; break;
 	case 0879: card_name="Copperajah"; card_stage=2;  card_type_a=15; card_type_b=-1; card_base_hp=122; card_base_atk=130+80; card_base_def=69+69; card_grid_x=11; card_grid_y=6; break;
 	case 0880: card_name="Dracozolt"; card_stage=1;  card_type_a=4; card_type_b=14; card_base_hp=90; card_base_atk=100+80; card_base_def=90+70; card_grid_x=12; card_grid_y=6; break;
@@ -4162,17 +4253,148 @@ switch (card_id) {
 	case 0885: card_name="Dreepy"; card_stage=1; card_evo[0]=886; card_type_a=14; card_type_b=16; card_base_hp=28; card_base_atk=60+40; card_base_def=30+30; card_grid_x=2; card_grid_y=7; break;
 	case 0886: card_name="Drakloak"; card_stage=2; card_evo[0]=887; card_type_a=14; card_type_b=16; card_base_hp=68; card_base_atk=80+60; card_base_def=50+50; card_grid_x=3; card_grid_y=7; break;
 	case 0887: card_name="Dragapult"; card_stage=3;  card_type_a=14; card_type_b=16; card_base_hp=88; card_base_atk=120+100; card_base_def=75+75; card_grid_x=4; card_grid_y=7; break;
-	case 0888: card_name="Zacian"; card_stage=1;  card_type_a=8; card_type_b=15; card_base_hp=92; card_base_atk=170+80; card_base_def=115+115; card_grid_x=5; card_grid_y=7; card_enigma=true; break;
-	case 0889: card_name="Zamazenta"; card_stage=1;  card_type_a=6; card_type_b=15; card_base_hp=92; card_base_atk=130+80; card_base_def=145+145; card_grid_x=7; card_grid_y=7; card_enigma=true; break;
-	case 0890: card_name="Eternatus"; card_stage=1;  card_type_a=12; card_type_b=14; card_base_hp=140; card_base_atk=85+145; card_base_def=95+95; card_grid_x=10; card_grid_y=7; card_enigma=true; break;
-	case 0891: card_name="Kubfu"; card_stage=1; card_evo[0]=892; card_type_a=6; card_type_b=-1; card_base_hp=60; card_base_atk=90+53; card_base_def=60+50; card_grid_x=11; card_grid_y=7; card_pseudo=true; break;
-	case 0892: card_name="Urshifu"; card_stage=2;  card_type_a=6; card_type_b=17; card_base_hp=100; card_base_atk=130+63; card_base_def=100+60; card_grid_x=12; card_grid_y=7; card_pseudo=true; break;
-	case 0893: card_name="Zarude"; card_stage=1;  card_type_a=17; card_type_b=1; card_base_hp=105; card_base_atk=120+70; card_base_def=105+95; card_grid_x=13; card_grid_y=7; card_pseudo=true; break;
+	
+	case 0888:
+		card_form_change=true;
+		card_has_forms=true;
+		card_enigma=true; 
+		card_stage=1;  
+		card_base_hp=92; 
+		if card_form_value<500 {
+			card_name="Zacian"; 
+			card_type_a=8; card_type_b=-1; 
+			card_base_atk=130+80; 
+			card_base_def=115+115; 
+			card_grid_x=5; card_grid_y=7; 
+		}
+		else { //should ATK boost by 50% but didnt
+			card_name="Zacian-C"; 
+			card_type_a=8; card_type_b=15; 
+			card_base_atk=170+80; 
+			card_base_def=115+115; 
+			card_grid_x=6; card_grid_y=7; 
+		}
+		break;
+	
+	case 0889: 
+		card_form_change=true;
+		card_has_forms=true;
+		card_enigma=true; 
+		card_stage=1; 
+		card_base_hp=92;  
+		if card_form_value<500 {
+			card_name="Zamazenta"; 
+			card_type_a=6; card_type_b=-1; 
+			card_base_atk=130+80; 
+			card_base_def=115+115; 
+			card_grid_x=7; card_grid_y=7;
+		}
+		else { //should DEF boost by 50% but didnt
+			card_name="Zamazenta-C"; 
+			card_type_a=6; card_type_b=15; 
+			card_base_atk=130+80; 
+			card_base_def=145+145; 
+			card_grid_x=8 card_grid_y=7;
+		}
+		break;
+	
+	case 0890: 
+		card_has_forms=true;
+		card_stage=1;  
+		card_enigma=true; 
+		card_type_a=12; card_type_b=14; 
+		if card_form_value<=999 {
+			card_name="Eternatus";  
+			card_base_hp=140; 
+			card_base_atk=85+145; 
+			card_base_def=95+95; 
+			card_grid_x=11; card_grid_y=7;
+		}
+		else { 
+			//For the only gigamax that increases stat lol
+			//Should be unobtainable. Just here for...testing.
+			card_name="Eternamax";  
+			card_base_hp=255; 
+			card_base_atk=115+125; 
+			card_base_def=250+250; 
+			card_grid_x=4; card_grid_y=10;
+		}
+		break;
+	
+	case 0891: card_name="Kubfu"; card_stage=1; card_evo[0]=892; card_type_a=6; card_type_b=-1; card_base_hp=60; card_base_atk=90+53; card_base_def=60+50; card_grid_x=11; card_grid_y=7; card_enigma=true; break;
+	
+	case 0892: 
+		//Not swappable in cannon
+		card_has_forms=true;
+		card_enigma=true; 
+		card_stage=2;  
+		card_base_hp=100;
+		card_base_atk=130+63; 
+		card_base_def=100+60; 
+		
+		if card_form_value<500 {
+			card_name="Urshifu-S"; 
+			card_type_a=6; card_type_b=17;  
+			card_grid_x=12; card_grid_y=7; 
+		}
+		else {
+			card_name="Urshifu-R"; 
+			card_type_a=6; card_type_b=2;  
+			card_grid_x=13; card_grid_y=7; 
+		}
+		break;
+	
+	case 0893: 
+		card_has_forms=true;
+		card_enigma=true; 
+		card_name="Zarude"; 
+		card_stage=1; 
+		card_type_a=17; card_type_b=1; 
+		card_base_hp=105; 
+		card_base_atk=120+70; 
+		card_base_def=105+95;  
+		if card_form_value<500 { 
+			card_grid_x=13; card_grid_y=7; 
+		} 
+		else { 	
+			card_grid_x=14; card_grid_y=7; 
+		}
+		break;
+	
 	case 0894: card_name="Regieleki"; card_stage=1;  card_type_a=4; card_type_b=-1; card_base_hp=80; card_base_atk=100+100; card_base_def=50+50; card_grid_x=15; card_grid_y=7; card_enigma=true; break;
 	case 0895: card_name="Regidrago"; card_stage=1;  card_type_a=14; card_type_b=-1; card_base_hp=200; card_base_atk=100+100; card_base_def=50+50; card_grid_x=1; card_grid_y=8; card_enigma=true; break;
 	case 0896: card_name="Glastrier"; card_stage=1;  card_type_a=13; card_type_b=-1; card_base_hp=100; card_base_atk=145+65; card_base_def=130+110; card_grid_x=2; card_grid_y=8; card_enigma=true; break;
 	case 0897: card_name="Spectrier"; card_stage=1;  card_type_a=16; card_type_b=-1; card_base_hp=100; card_base_atk=65+145; card_base_def=60+80; card_grid_x=3; card_grid_y=8; card_enigma=true; break;
-	case 0898: card_name="Calyrex"; card_stage=1;  card_type_a=7; card_type_b=1; card_base_hp=100; card_base_atk=80+80; card_base_def=80+80; card_grid_x=6; card_grid_y=8; card_enigma=true; break;
+	
+	case 0898: 
+		card_has_forms=true;
+		card_form_change=true;
+		card_enigma=true;
+		card_stage=1; 
+		card_base_hp=100; 
+		
+		if card_form_value<500 {
+			card_name="Calyrex";  
+			card_type_a=7; card_type_b=1; 
+			card_base_atk=80+80; 
+			card_base_def=80+80; 
+			card_grid_x=6; card_grid_y=8; 
+		}
+		if card_form_value<750 {
+			card_name="Calyrex-I";  
+			card_type_a=7; card_type_b=13; 
+			card_base_atk=165+85; 
+			card_base_def=150+130; 
+			card_grid_x=7; card_grid_y=8; 
+		}
+		else {
+			card_name="Calyrex-S";  
+			card_type_a=7; card_type_b=16; 
+			card_base_atk=85+165; 
+			card_base_def=80+100; 
+			card_grid_x=8; card_grid_y=8; 
+		}
+		break;
 	
 	
 	// END OF MODDED CODE
