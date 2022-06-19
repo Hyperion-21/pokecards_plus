@@ -3012,7 +3012,7 @@ switch (card_id) {
 		card_can_mega=true;
 		if card_form_value<=999 {
 		card_name="Lucario";
-		card_stage=1;
+		card_stage=2;
 		card_type_a=06; card_type_b=15;
 		card_base_hp=70; card_base_atk=110+115; card_base_def=70+70;
 		card_grid_x=14; card_grid_y=5;}
@@ -3598,7 +3598,7 @@ switch (card_id) {
 	case 0626: card_name="Bouffalant"; card_stage=1;  card_type_a=0; card_type_b=-1; card_base_hp=95; card_base_atk=110+40; card_base_def=95+95; card_grid_x=12; card_grid_y=20; break;
 	case 0627: card_name="Rufflet"; card_stage=1; card_evo[0]=628; card_type_a=0; card_type_b=5; card_base_hp=70; card_base_atk=83+37; card_base_def=50+50; card_grid_x=13; card_grid_y=20; break;
 	case 0628: card_name="Braviary"; card_stage=2;  card_type_a=0; card_type_b=5; card_base_hp=100; card_base_atk=123+57; card_base_def=75+75; card_grid_x=14; card_grid_y=20; break;
-	case 0629: card_name="Vullaby"; card_stage=1;  card_type_a=17; card_type_b=5; card_base_hp=70; card_base_atk=55+45; card_base_def=75+65; card_grid_x=15; card_grid_y=20; break;
+	case 0629: card_name="Vullaby"; card_stage=1; card_evo[0]=630;  card_type_a=17; card_type_b=5; card_base_hp=70; card_base_atk=55+45; card_base_def=75+65; card_grid_x=15; card_grid_y=20; break;
 	case 0630: card_name="Mandibuzz"; card_stage=1;  card_type_a=17; card_type_b=5; card_base_hp=110; card_base_atk=65+55; card_base_def=105+95; card_grid_x=1; card_grid_y=21; break;
 	case 0631: card_name="Heatmor"; card_stage=1;  card_type_a=2; card_type_b=-1; card_base_hp=85; card_base_atk=97+105; card_base_def=66+66; card_grid_x=2; card_grid_y=21; break;
 	case 0632: card_name="Durant"; card_stage=1;  card_type_a=11; card_type_b=15; card_base_hp=58; card_base_atk=109+48; card_base_def=112+48; card_grid_x=3; card_grid_y=21; break;
