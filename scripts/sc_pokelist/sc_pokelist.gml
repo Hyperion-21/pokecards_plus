@@ -4174,6 +4174,15 @@ switch (card_id) {
 	case 0897: card_name="Spectrier"; card_stage=1;  card_type_a=16; card_type_b=-1; card_base_hp=100; card_base_atk=65+145; card_base_def=60+80; card_grid_x=3; card_grid_y=8; card_enigma=true; break;
 	case 0898: card_name="Calyrex"; card_stage=1;  card_type_a=7; card_type_b=1; card_base_hp=100; card_base_atk=80+80; card_base_def=80+80; card_grid_x=6; card_grid_y=8; card_enigma=true; break;
 	
+	// LEGENDS ARCEUS
+	case 0899: card_name="Wyrdeer"; card_stage=1;  card_pseudo=true; card_type_a=0; card_type_b=7; card_base_hp=103; card_base_atk=105+105; card_base_def=72+75; card_grid_x=7; card_grid_y=8; break;
+	case 0900: card_name="Kleavor"; card_stage=2;  card_pseudo=true; card_type_a=11; card_type_b=10; card_base_hp=70; card_base_atk=135+45; card_base_def=95+70; card_grid_x=8; card_grid_y=8; break;
+	case 0901: card_name="Ursaluna"; card_stage=3;  card_pseudo=true; card_type_a=9; card_type_b=0; card_base_hp=130; card_base_atk=140+45; card_base_def=105+80; card_grid_x=9; card_grid_y=8; break;
+	case 0902: card_name="Basculegion"; card_stage=2;  card_pseudo=true; card_type_a=3; card_type_b=16; card_base_hp=120; card_base_atk=112+80; card_base_def=65+75; card_grid_x=10; card_grid_y=8; break;
+	case 0903: card_name="Sneasler"; card_stage=2;  card_pseudo=true; card_type_a=6; card_type_b=12; card_base_hp=80; card_base_atk=130+40; card_base_def=60+80; card_grid_x=12; card_grid_y=8; break;
+	case 0904: card_name="Overqwil"; card_stage=2;  card_type_a=17; card_type_b=12; card_base_hp=85; card_base_atk=115+65; card_base_def=95+65; card_grid_x=13; card_grid_y=8; break;
+	case 0905: card_name="Enamorus"; card_stage=1;  card_enigma=true; card_type_a=8; card_type_b=5; card_base_hp=74; card_base_atk=115+135; card_base_def=70+80; card_grid_x=14; card_grid_y=8; break;
+	
 	
 	// END OF MODDED CODE
 		
