@@ -172,7 +172,7 @@ switch (event_kind){
 		}
 	
 		var card_pool_compiled = [card_pool_gen_1_2, card_pool_gen_3_4_5, card_pool_gen_6_7_8, card_pool_birds, card_pool_rodents];
-	
+		
 		create_card_cat=0;
 		repeat (creatures_num) {
 			create_card_id = sc_determine_starter_card(i, card_pool_compiled);
@@ -186,6 +186,9 @@ switch (event_kind){
 			create_card_form_value=0;
 		
 			var card_x=screen_main_x+83+(72*i), card_y=screen_main_y+104-47; 
+			
+			instance_create_layer(card_x,card_y,"instances",ob_card);		
+			i++;
 		}
 	
 		i = 0;
