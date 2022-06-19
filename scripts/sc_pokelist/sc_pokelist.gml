@@ -4317,7 +4317,7 @@ switch (card_id) {
 			card_base_hp=255; 
 			card_base_atk=115+125; 
 			card_base_def=250+250; 
-			card_grid_x=4; card_grid_y=10;
+			card_grid_x=4; card_grid_y=14;
 		}
 		break;
 	
