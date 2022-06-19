@@ -4317,11 +4317,11 @@ switch (card_id) {
 			card_base_hp=255; 
 			card_base_atk=115+125; 
 			card_base_def=250+250; 
-			card_grid_x=4; card_grid_y=9;
+			card_grid_x=4; card_grid_y=10;
 		}
 		break;
 	
-	case 0891: card_name="Kubfu"; card_stage=1; card_evo[0]=892; card_type_a=6; card_type_b=-1; card_base_hp=60; card_base_atk=90+53; card_base_def=60+50; card_grid_x=11; card_grid_y=7; card_enigma=true; break;
+	case 0891: card_name="Kubfu"; card_stage=1; card_evo[0]=892; card_type_a=6; card_type_b=-1; card_base_hp=60; card_base_atk=90+53; card_base_def=60+50; card_grid_x=10; card_grid_y=7; card_enigma=true; break;
 	
 	case 0892: 
 		//Not swappable in cannon
@@ -4339,7 +4339,7 @@ switch (card_id) {
 		}
 		else {
 			card_name="Urshifu-R"; 
-			card_type_a=6; card_type_b=2;  
+			card_type_a=6; card_type_b=3;  
 			card_grid_x=12; card_grid_y=7; 
 		}
 		break;
