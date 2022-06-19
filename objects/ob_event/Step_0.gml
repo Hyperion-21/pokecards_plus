@@ -218,7 +218,7 @@ if (apply_event) {
 			    {
 			        do
 			        {
-			            if (card_id_in_space[0].card_form_value < 999)
+			            if (card_id_in_space[0].card_form_value <= 999)
 			            {
 			                card_id_in_space[0].card_form_value = 1000 + irandom(1);
 			            }
