@@ -117,6 +117,8 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 			*/
 			
 			create_card_cat=0;
+			
+			// Gens 1-2
 			if i=0 {
 				switch (irandom(1)) {
 					default:
@@ -134,8 +136,10 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 						break;
 				}
 			}
+			
+			// Gens 3-5
 			if i=1 {
-				switch (irandom(1)) {
+				switch (irandom(2)) {
 					default:
 						create_card_id=999;//Hit that placeholder :P
 						break;
@@ -149,32 +153,41 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 						else if event_kind=ref_event_fire { create_card_id=390; } //chimchar
 						else if event_kind=ref_event_water { create_card_id=393; } //piplup
 						break;
+					case 2:
+						if event_kind=ref_event_grass { create_card_id=495; } //snivy
+						else if event_kind=ref_event_fire { create_card_id=498; } //tepig
+						else if event_kind=ref_event_water { create_card_id=501; } //oshawott
+						break;
 				}
 			}
+			
+			// Gens 6-8
 			if i=2 {
 				switch (irandom(2)) {
 					default:
 						create_card_id=999;//Hit that placeholder :P
 						break;
 					case 0:
-						if event_kind=ref_event_grass { create_card_id=495; } //snivy
-						else if event_kind=ref_event_fire { create_card_id=498; } //tepig
-						else if event_kind=ref_event_water { create_card_id=501; } //oshawott
-						break;
-					case 1:
 						if event_kind=ref_event_grass { create_card_id=650; } //chespin
 						else if event_kind=ref_event_fire { create_card_id=653; } //fennekin
 						else if event_kind=ref_event_water { create_card_id=656; } //froakie
 						break;
-					case 2:
+					case 1:
 						if event_kind=ref_event_grass { create_card_id=722; } //rowlet
 						else if event_kind=ref_event_fire { create_card_id=725; } //litten
 						else if event_kind=ref_event_water { create_card_id=728; } //popplio
 						break;
+					case 2:
+						if event_kind=ref_event_grass { create_card_id=810; } //grookey
+						else if event_kind=ref_event_fire { create_card_id=813; } //scorbunny
+						else if event_kind=ref_event_water { create_card_id=816; } //sobble
+						break;
 				}
 			}
+			
+			// Birds
 			if i=3 {
-				switch (irandom(6)) {
+				switch (irandom(7)) {
 					default:
 						create_card_id=999;//Hit that placeholder :P
 						break;
@@ -199,11 +212,15 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 					case 6:
 						create_card_id=731; //Pikipek
 						break;
-					
+					case 7:
+						create_card_id=821; //Rookidee
+						break;
 				}
 			}
+			
+			// Rodents
 			if i=4 {
-				switch (irandom(6)) {
+				switch (irandom(7)) {
 					default:
 						create_card_id=999;//Hit that placeholder :P
 						break;
@@ -228,7 +245,9 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 					case 6:
 						create_card_id=734; //Yungoos
 						break;
-					
+					case 7:
+						create_card_id=819; // Skwovet
+						break;
 				}
 			}
 			
