@@ -119,7 +119,9 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 			create_card_cat=0;
 			
 			// Gens 1-2
+			
 			if i=0 {
+				
 				switch (irandom(1)) {
 					default:
 						create_card_id=999;//Hit that placeholder :P
@@ -135,6 +137,8 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 						else if event_kind=ref_event_water { create_card_id=158; } //totodile
 						break;
 				}
+				
+				
 			}
 			
 			// Gens 3-5
@@ -251,7 +255,6 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 				}
 			}
 			
-			
 			//Template to add more
 			/*
 			if i=5 {
@@ -293,7 +296,7 @@ else if event_kind=ref_event_grass or event_kind=ref_event_fire or event_kind=re
 		}
 		else {
 			create_card_cat=1;
-			if i<=5 { create_card_id=3000; } //oran
+			create_card_id=3000; //oran
 			//else { create_card_id=3001; } //leppa
 			//else { create_card_id=3002; } //lum
 		}
