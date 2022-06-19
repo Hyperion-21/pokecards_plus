@@ -4082,8 +4082,10 @@ switch (card_id) {
 	case 0807: card_name="Zeraora"; card_stage=1;  card_enigma=true; card_type_a=4; card_type_b=-1; card_base_hp=88; card_base_atk=112+102; card_base_def=75+80; card_grid_x=3; card_grid_y=41; break;
 	
 	// Gen 8
-	case 0808: card_name="Meltan"; card_stage=1; card_evo[0]=809; card_type_a=15; card_type_b=-1; card_base_hp=46; card_base_atk=65+55; card_base_def=65+35; card_grid_x=1; card_grid_y=1; break;
-	case 0809: card_name="Melmetal"; card_stage=2;  card_type_a=15; card_type_b=-1; card_base_hp=135; card_base_atk=143+80; card_base_def=143+65; card_grid_x=2; card_grid_y=1; break;
+	
+	case 0808: card_name="Meltan"; card_enigma=true;  card_stage=1; card_evo[0]=809; card_type_a=15; card_type_b=-1; card_base_hp=46; card_base_atk=65+55; card_base_def=65+35; card_grid_x=1; card_grid_y=1; break;
+	case 0809: card_name="Melmetal"; card_enigma=true;  card_stage=2;  card_type_a=15; card_type_b=-1; card_base_hp=135; card_base_atk=143+80; card_base_def=143+65; card_grid_x=2; card_grid_y=1; break;
+	
 	case 0810: card_name="Grookey"; card_stage=1; card_evo[0]=811; card_starter=true; card_type_a=1; card_type_b=-1; card_base_hp=50; card_base_atk=65+40; card_base_def=50+40; card_grid_x=3; card_grid_y=1; break;
 	case 0811: card_name="Thwackey"; card_stage=2; card_evo[0]=812; card_starter=true; card_type_a=1; card_type_b=-1; card_base_hp=70; card_base_atk=85+55; card_base_def=70+60; card_grid_x=4; card_grid_y=1; break;
 	case 0812: card_name="Rillaboom"; card_stage=3;  card_starter=true; card_type_a=1; card_type_b=-1; card_base_hp=100; card_base_atk=125+60; card_base_def=90+70; card_grid_x=5; card_grid_y=1; break;
