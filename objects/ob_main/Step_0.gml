@@ -250,7 +250,7 @@ if roadmap_generated=false {
 				
 			repeat (var_event_num[i]) {
 				
-				var event = determine_events(events);
+				var event = sc_determine_events(events);
 				event_kind[ii][i] = event[1];
 				free_event = event[2];
 				
