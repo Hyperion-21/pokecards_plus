@@ -2,7 +2,7 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function sc_determine_starter_card(index, cards_pool)
 {
-   if (array_length(cards_pool) >= index) {
+   if (index >= array_length(cards_pool)) {
 	   return irandom(normal_poke_id_max);
    }
    
@@ -12,7 +12,7 @@ function sc_determine_starter_card(index, cards_pool)
    {
       rnd -= cards[i][0];
       if(rnd <= 0) {
-		  return cards[i];
+		  return cards[i][1];
 	  }
    }
    return cards[array_length(cards)-1];
