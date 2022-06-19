@@ -4308,7 +4308,7 @@ switch (card_id) {
 			card_base_hp=140; 
 			card_base_atk=85+145; 
 			card_base_def=95+95; 
-			card_grid_x=11; card_grid_y=7;
+			card_grid_x=9; card_grid_y=7;
 		}
 		else { 
 			//For the only gigamax that increases stat lol
@@ -4317,7 +4317,7 @@ switch (card_id) {
 			card_base_hp=255; 
 			card_base_atk=115+125; 
 			card_base_def=250+250; 
-			card_grid_x=4; card_grid_y=10;
+			card_grid_x=4; card_grid_y=9;
 		}
 		break;
 	
@@ -4335,12 +4335,12 @@ switch (card_id) {
 		if card_form_value<500 {
 			card_name="Urshifu-S"; 
 			card_type_a=6; card_type_b=17;  
-			card_grid_x=12; card_grid_y=7; 
+			card_grid_x=11; card_grid_y=7; 
 		}
 		else {
 			card_name="Urshifu-R"; 
 			card_type_a=6; card_type_b=2;  
-			card_grid_x=13; card_grid_y=7; 
+			card_grid_x=12; card_grid_y=7; 
 		}
 		break;
 	
