@@ -4164,9 +4164,9 @@ switch (card_id) {
 	case 0887: card_name="Dragapult"; card_stage=3;  card_type_a=14; card_type_b=16; card_base_hp=88; card_base_atk=120+100; card_base_def=75+75; card_grid_x=4; card_grid_y=7; break;
 	case 0888: card_name="Zacian"; card_stage=1;  card_type_a=8; card_type_b=15; card_base_hp=92; card_base_atk=170+80; card_base_def=115+115; card_grid_x=5; card_grid_y=7; card_enigma=true; break;
 	case 0889: card_name="Zamazenta"; card_stage=1;  card_type_a=6; card_type_b=15; card_base_hp=92; card_base_atk=130+80; card_base_def=145+145; card_grid_x=7; card_grid_y=7; card_enigma=true; break;
-	case 0890: 
+	case 0890: card_can_mega=true;
 		if card_form_value<=999 { card_name="Eternatus"; card_stage=1;  card_type_a=12; card_type_b=14; card_base_hp=140; card_base_atk=85+145; card_base_def=95+95; card_grid_x=10; card_grid_y=7; card_enigma=true; break; }
-		else { card_name="Eternamax"; card_stage=1;  card_type_a=12; card_type_b=14; card_base_hp=255; card_base_atk=115+125; card_base_def=250+250; card_grid_x=9; card_grid_y=7; break; }
+		else { card_name="Eternamax"; card_stage=1;  card_type_a=12; card_type_b=14; card_base_hp=255; card_base_atk=115+125; card_base_def=250+250; card_grid_x=9; card_grid_y=7; card_enigma=true; break; }
 	case 0891: card_name="Kubfu"; card_stage=1; card_evo[0]=892; card_type_a=6; card_type_b=-1; card_base_hp=60; card_base_atk=90+53; card_base_def=60+50; card_grid_x=11; card_grid_y=7; card_pseudo=true; break;
 	case 0892: card_name="Urshifu"; card_stage=2;  card_type_a=6; card_type_b=17; card_base_hp=100; card_base_atk=130+63; card_base_def=100+60; card_grid_x=12; card_grid_y=7; card_pseudo=true; break;
 	case 0893: card_name="Zarude"; card_stage=1;  card_type_a=17; card_type_b=1; card_base_hp=105; card_base_atk=120+70; card_base_def=105+95; card_grid_x=13; card_grid_y=7; card_pseudo=true; break;
