@@ -4,6 +4,11 @@ if (show_deck)
     var i = 0;
     repeat (card_event_total)
     {
+		if (!variable_instance_exists(card_event[i], "card_played")) {
+			i++;
+			continue;
+		}
+		
         if (card_event[i].card_played == false)
         {
             card_event[i].potential_x = screen_main_x + deck_x + (60 * i);
@@ -14,6 +19,12 @@ if (show_deck)
     i = 0;
     repeat (card_event_inventory_total)
     {
+		if (!variable_instance_exists(card_inventory[i], "card_played")) {
+			i++;
+			continue;
+		}
+
+		
         if (card_inventory[i].card_played == false)
         {
             card_inventory[i].potential_x = screen_main_x + inventory_x + (60 * i);
@@ -423,19 +434,16 @@ if (apply_event) {
 					{
 					    if (devour)
 					    {
-					        event_space_id[0].occupy_id = -1;
 					        sc_playsound(sn_faint, 50, false, false);
-        
-					        //
-					        ob_deckbuild.reorder_swap_standby = ob_deckbuild.reorder_selected;
-					        ob_deckbuild.reorder_type = 5;
-					        instance_destroy();
+							instance_destroy();
 					    }
 					    else
 					    {
 					        sc_card_level_stats_all(true, true);
 					    }
 					}
+					event_space_id[0].occupy_id = -1;
+					
 					with (card_id_in_space[1])
 					{
 					    sc_card_level_stats_all(true, true);
@@ -453,7 +461,6 @@ if (apply_event) {
 					ob_main.main_card_glyph_a[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_glyph_a;
 					ob_main.main_card_glyph_b[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_glyph_b;
 					ob_main.main_card_glyph_c[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_glyph_c;
-
 				}
 			}
 		break;

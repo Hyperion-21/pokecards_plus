@@ -166,7 +166,7 @@ switch (event_kind){
 			break;
 			case ref_event_water: 
 				card_pool_gen_1_2 = [[10, 007],[10, 158]];		
-				card_pool_gen_3_4_5 = [[10, 258],[10, 393],[10, 501]];		
+				card_pool_gen_3_4_5 = [[10, 258],[10, 393],[10, 501]];	
 				card_pool_gen_6_7_8 = [[10, 656],[10, 728],[10, 816]];
 			break;
 		}
