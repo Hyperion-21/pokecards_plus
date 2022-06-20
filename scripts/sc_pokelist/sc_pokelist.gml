@@ -4802,7 +4802,7 @@ switch (card_id) {
 			card_base_def=80+80; 
 			card_grid_x=4; card_grid_y=8; 
 		}
-		if card_form_value<750 {
+		else if card_form_value<750 {
 			card_name="Calyrex-I";  
 			card_type_a=7; card_type_b=13; 
 			card_base_atk=165+85; 
