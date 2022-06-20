@@ -285,6 +285,29 @@ if (apply_event) {
 				            }
 				        } until (card_id_in_space[0].card_id != -1 && card_id_in_space[0].card_id <= normal_poke_id_max)
 				    }
+					if (card_id_in_space[0].card_id == 555)
+				    {
+				        do
+				        {
+				            //should work but did not test
+				            if (card_id_in_space[0].card_form_value < 250)
+				            {
+				                card_id_in_space[0].card_form_value+=250;
+				            }
+							else if (card_id_in_space[0].card_form_value < 500)
+				            {
+				                card_id_in_space[0].card_form_value-=250;
+				            }
+							else if (card_id_in_space[0].card_form_value < 750)
+				            {
+				                card_id_in_space[0].card_form_value+=250;
+				            }
+				            else
+				            {
+				                card_id_in_space[0].card_form_value-=250;
+				            }
+				        } until (card_id_in_space[0].card_id != -1 && card_id_in_space[0].card_id <= normal_poke_id_max)
+				    }
 				    else if (card_id_in_space[0].card_can_mega && card_id_in_space[0].card_form_value > 999)
 				    {
 				        do

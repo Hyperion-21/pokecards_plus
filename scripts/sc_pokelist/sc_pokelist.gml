@@ -1344,7 +1344,7 @@ switch (card_id) {
 		card_stage=3; card_starter=true;
 		card_has_forms=true;	
 		if card_form_value<500 {
-			card_type_a=02; card_type_b=16;
+			card_type_a=02; card_type_b=-1;
 			card_base_hp=78; card_base_atk=84+109; card_base_def=78+85;
 			card_grid_x=6; card_grid_y=15; 
 		}
@@ -3747,7 +3747,7 @@ switch (card_id) {
 			card_grid_x=8; card_grid_y=11; }
 		break;
 	case 0555: //could code it to change later but cba to do it this second.
-		card_form_change=false; 
+		card_form_change=true; 
 		card_has_forms=true; 
 		card_name="Darmanitan"; card_stage=2;  
 		if card_form_value<250{
@@ -4800,21 +4800,21 @@ switch (card_id) {
 			card_type_a=7; card_type_b=1; 
 			card_base_atk=80+80; 
 			card_base_def=80+80; 
-			card_grid_x=6; card_grid_y=8; 
+			card_grid_x=4; card_grid_y=8; 
 		}
 		if card_form_value<750 {
 			card_name="Calyrex-I";  
 			card_type_a=7; card_type_b=13; 
 			card_base_atk=165+85; 
 			card_base_def=150+130; 
-			card_grid_x=7; card_grid_y=8; 
+			card_grid_x=5; card_grid_y=8; 
 		}
 		else {
 			card_name="Calyrex-S";  
 			card_type_a=7; card_type_b=16; 
 			card_base_atk=85+165; 
 			card_base_def=80+100; 
-			card_grid_x=8; card_grid_y=8; 
+			card_grid_x=6; card_grid_y=8; 
 		}
 		break;
 	
