@@ -1,7 +1,7 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
 #macro game_version "v1.6.0.0"
-#macro pclp_version "v1.2.1.0pre"
+#macro pclp_version "v1.3.0.1"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -30,6 +30,8 @@ camera_set_view_size(view_camera[0],512,288);
 //
 #macro cam_w camera_get_view_width(view_camera[0])
 #macro cam_h camera_get_view_height(view_camera[0])
+//
+#macro RUN_FROM_IDE parameter_count()==3&&string_count("GMS2TEMP",parameter_string(2))
 //
 surface_resize(application_surface,cam_w,cam_h);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -94,7 +96,7 @@ textbox_timer=0;
 textbox_timer_max=1;
 textbox_char_pos=0;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-#macro normal_poke_id_max 807 //normal (non-secret and non-environment) poke cards
+#macro normal_poke_id_max 905 //normal (non-secret and non-environment) poke cards
 #macro secret_cards_total 2
 #macro environment_cards_total 3
 //
@@ -159,6 +161,18 @@ event_cost_standby_levelup=0;
 #macro ref_event_campfire 501
 #macro ref_event_megaevolve 502
 #macro ref_event_changeform 503
+#macro ref_event_deglyph 504
+
+#macro ref_event_cardpack_0 600 // Joke cards such as missingno and ghost.
+#macro ref_event_cardpack_1 601 // Focus on Gen 1.
+#macro ref_event_cardpack_2 602 // Focus on Gen 2.
+#macro ref_event_cardpack_3 603 // Focus on Gen 3.
+#macro ref_event_cardpack_4 604 // Focus on Gen 4.
+#macro ref_event_cardpack_5 605 // Focus on Gen 5.
+#macro ref_event_cardpack_6 606 // Focus on Gen 6.
+#macro ref_event_cardpack_7 607 // Focus on Gen 7.
+#macro ref_event_cardpack_8 608 // Focus on Gen 8.
+#macro ref_event_cardpack_9 609 // Focus on Gen 9.
 
 #macro ref_fly_prev 400 //only for transitions
 #macro ref_fly_next 401 //only for transitions
@@ -174,6 +188,17 @@ event_cost[ref_event_levelup]=100;
 event_cost[ref_event_evolution]=500;
 
 event_cost[ref_event_megaevolve]=500;
+
+event_cost[ref_event_cardpack_0]=5000;
+event_cost[ref_event_cardpack_1]=300;
+event_cost[ref_event_cardpack_2]=300;
+event_cost[ref_event_cardpack_3]=300;
+event_cost[ref_event_cardpack_4]=300;
+event_cost[ref_event_cardpack_5]=300;
+event_cost[ref_event_cardpack_6]=300;
+event_cost[ref_event_cardpack_7]=300;
+event_cost[ref_event_cardpack_8]=300;
+event_cost[ref_event_cardpack_9]=300;
 
 event_cost[ref_event_glyph]=300;
 //
@@ -305,6 +330,7 @@ button_delete_data=-1;
 global.color_white=make_colour_rgb(230,230,230);
 global.color_black=make_colour_rgb(40,40,40);
 global.color_gray=make_colour_rgb(190,190,190);
+global.color_card_sacrificed=make_colour_rgb(110,90,100);
 global.color_card_light=make_colour_rgb(233,230,222);
 global.color_card_mid=make_colour_rgb(205,198,181);
 //global.color_card_gold=make_colour_rgb(226,204,161);

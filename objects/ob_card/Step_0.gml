@@ -330,7 +330,11 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 			card_delete_timer++;
 			if card_delete_timer=card_delete_timer_max {
 				sc_playsound(sn_faint,50,false,false);
-				ob_main.money+=round(card_value*sell_value_multiplier);
+				if(card_innate = -1){
+					ob_main.money += 1;
+				} else {
+					ob_main.money+=round(card_value*sell_value_multiplier);
+				}
 				//
 				ob_deckbuild.reorder_swap_standby=ob_deckbuild.reorder_selected;
 				ob_deckbuild.reorder_type=5;

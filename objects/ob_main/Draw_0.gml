@@ -24,6 +24,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	else { var var_event_num=3; }
 	//
 	var i=0;
+	var event_sprite_y = 16*13;
 	repeat (var_event_num) {
 		var event_sprite_x=16*(1+event_kind[i][roadmap_area]*2);
 		if event_kind[i][roadmap_area]=ref_event_gymbattle or event_kind[i][roadmap_area]=ref_event_elitebattle or event_kind[i][roadmap_area]=ref_event_championbattle {
@@ -32,12 +33,26 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 		else if event_kind[i][roadmap_area]=ref_event_grass { event_sprite_x=16*(1+10*2); }
 		else if event_kind[i][roadmap_area]=ref_event_fire { event_sprite_x=16*(1+11*2); }
 		else if event_kind[i][roadmap_area]=ref_event_water { event_sprite_x=16*(1+12*2); }
+		
+		else if event_kind[i][roadmap_area]=ref_event_cardpack_0 { event_sprite_x=16*(1+13*2); event_sprite_y = 272; }
+		else if event_kind[i][roadmap_area]=ref_event_cardpack_1 { event_sprite_x=16*(1+9*2); event_sprite_y = 240; }
+		else if event_kind[i][roadmap_area]=ref_event_cardpack_2 { event_sprite_x=16*(1+10*2); event_sprite_y = 240; }
+		else if event_kind[i][roadmap_area]=ref_event_cardpack_3 { event_sprite_x=16*(1+11*2); event_sprite_y = 240; }
+		else if event_kind[i][roadmap_area]=ref_event_cardpack_4 { event_sprite_x=16*(1+12*2); event_sprite_y = 240; }
+		else if event_kind[i][roadmap_area]=ref_event_cardpack_5 { event_sprite_x=16*(1+13*2); event_sprite_y = 240; }
+		else if event_kind[i][roadmap_area]=ref_event_cardpack_6 { event_sprite_x=16*(1+9*2); event_sprite_y = 272; }
+		else if event_kind[i][roadmap_area]=ref_event_cardpack_7 { event_sprite_x=16*(1+10*2); event_sprite_y = 272; }
+		else if event_kind[i][roadmap_area]=ref_event_cardpack_8 { event_sprite_x=16*(1+11*2); event_sprite_y = 272; }
+		else if event_kind[i][roadmap_area]=ref_event_cardpack_9 { event_sprite_x=16*(1+12*2); event_sprite_y = 272; }
+		
 		else if event_kind[i][roadmap_area]=ref_event_megaevolve { event_sprite_x=16*(1+16*2); }
+		else if event_kind[i][roadmap_area]=ref_event_sacrifice { event_sprite_x=16*(1+14*2); }
 		else if event_kind[i][roadmap_area]=ref_event_campfire { event_sprite_x=16*(1+17*2); }
 		else if event_kind[i][roadmap_area]=ref_event_changeform { event_sprite_x=16*(1+18*2); }
+		else if event_kind[i][roadmap_area]=ref_event_deglyph { event_sprite_x=16*(1+19*2); }
 		//
 		sc_drawrectangle(event_button_x[i],event_button_y[i],event_button_x[i]+42,event_button_y[i]+42,global.color_black,global.color_white,2,0.8,0.5,0);
-		draw_sprite_general(sp_sheet,0,event_sprite_x,16*13,26,27,event_button_x[i]+9,event_button_y[i]+9-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
+		draw_sprite_general(sp_sheet,0,event_sprite_x,event_sprite_y,26,27,event_button_x[i]+9,event_button_y[i]+9-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
 		sc_drawtext(event_button_x[i]+22,event_button_y[i]+51,event_name[i][roadmap_area],global.color_white,global.color_black,1,1,0,-1);
 		//
 		if event_kind[i][roadmap_area]=ref_event_battle or event_kind[i][roadmap_area]=ref_event_gymbattle or event_kind[i][roadmap_area]=ref_event_elitebattle or

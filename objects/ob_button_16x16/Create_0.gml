@@ -1,3 +1,3 @@
-depth=300;
-//
-button_state=0;
+depth = 300;
+
+button_state = 0;

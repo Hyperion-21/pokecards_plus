@@ -1,6 +1,6 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
-function determine_events(events)
+function sc_determine_events(events)
 {
    var rnd = irandom(sc_event_chance_sum(events)-1);
    for(var i = 0; i < array_length(events); i++)
