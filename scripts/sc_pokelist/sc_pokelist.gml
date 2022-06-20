@@ -3747,7 +3747,7 @@ switch (card_id) {
 			card_grid_x=8; card_grid_y=11; }
 		break;
 	case 0555: //could code it to change later but cba to do it this second.
-		card_form_change=false; 
+		card_form_change=true; 
 		card_has_forms=true; 
 		card_name="Darmanitan"; card_stage=2;  
 		if card_form_value<250{
