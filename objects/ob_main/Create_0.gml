@@ -314,8 +314,8 @@ repeat (8) {
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-#macro config_file "config_pcl+.sav"
-#macro data_file "data_pcl+.sav"
+#macro config_file "config_pcl+_pre.sav"
+#macro data_file "data_pcl+_pre.sav"
 sc_config_load();
 sc_config_save();
 sc_data_load();
