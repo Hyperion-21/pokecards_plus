@@ -1344,7 +1344,7 @@ switch (card_id) {
 		card_stage=3; card_starter=true;
 		card_has_forms=true;	
 		if card_form_value<500 {
-			card_type_a=02; card_type_b=16;
+			card_type_a=02; card_type_b=-1;
 			card_base_hp=78; card_base_atk=84+109; card_base_def=78+85;
 			card_grid_x=6; card_grid_y=15; 
 		}
