@@ -233,6 +233,9 @@ switch (event_kind){
 
 		evolution_retry = false;
 		evolution_position = 0;
+		// 5am spatti remove and replace with better xD
+		count = 0;
+		//
 		for (var i = 0; i < 8; i++)
 		{
 		    evo_list[i] = -1;
