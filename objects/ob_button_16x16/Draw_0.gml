@@ -61,7 +61,7 @@ if (instance_exists(ob_event))
     switch (button_id)
     {
         case 0:
-            if (!ob_event.event_applied || ob_event.event_kind == ref_event_levelup)
+            if (!ob_event.event_applied || ob_event.event_kind == ref_event_levelup || ob_event.event_kind == ref_event_evolution)
             {
                 draw_sprite_general(sp_sheet, 0, 16 * 1, 16 * (16 + (ceil(button_state) * 2)), 31, 24, x, y, 1, 1, 0, c_white, c_white, c_white, c_white, 1);
             }
@@ -69,7 +69,7 @@ if (instance_exists(ob_event))
             {
                 draw_sprite_general(sp_sheet, 0, 16 * 5, 16 * (16 + (ceil(button_state) * 2)), 31, 24, x, y, 1, 1, 0, c_white, c_white, c_white, c_white, 1);
             }
-            else if (ob_event.event_applied && !ob_event.evolution_retry && ob_event.event_kind != ref_event_levelup)
+            else if (ob_event.event_applied && !ob_event.evolution_retry && ob_event.event_kind != ref_event_levelup && ob_event.event_kind != ref_event_evolution)
             {
                 draw_sprite_general(sp_sheet, 0, 16 * 3, 16 * (16 + (ceil(button_state) * 2)), 31, 24, x, y, 1, 1, 0, c_white, c_white, c_white, c_white, 1);
             }
