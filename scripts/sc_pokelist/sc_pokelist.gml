@@ -4800,21 +4800,21 @@ switch (card_id) {
 			card_type_a=7; card_type_b=1; 
 			card_base_atk=80+80; 
 			card_base_def=80+80; 
-			card_grid_x=6; card_grid_y=8; 
+			card_grid_x=4; card_grid_y=8; 
 		}
 		if card_form_value<750 {
 			card_name="Calyrex-I";  
 			card_type_a=7; card_type_b=13; 
 			card_base_atk=165+85; 
 			card_base_def=150+130; 
-			card_grid_x=7; card_grid_y=8; 
+			card_grid_x=5; card_grid_y=8; 
 		}
 		else {
 			card_name="Calyrex-S";  
 			card_type_a=7; card_type_b=16; 
 			card_base_atk=85+165; 
 			card_base_def=80+100; 
-			card_grid_x=8; card_grid_y=8; 
+			card_grid_x=6; card_grid_y=8; 
 		}
 		break;
 	
