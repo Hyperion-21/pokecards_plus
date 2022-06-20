@@ -421,7 +421,8 @@ if (apply_event) {
 						}
 						devour = true;
 						card_id_in_space[0].card_innate = -1;
-					} else { 
+					} else {
+						card_id_in_space[0].card_innate--;
 						if (card_id_in_space[0].card_glyph_c != -1 && !sc_glyph_bound(card_id_in_space[0].card_glyph_c) && !sc_glyph_exists_on_card(card_id_in_space[1], card_id_in_space[0].card_glyph_c))
 						{
 						    sc_insert_into_free_glyph_slot(card_id_in_space[1], card_id_in_space[0].card_glyph_c);
