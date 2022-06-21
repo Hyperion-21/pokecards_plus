@@ -4152,7 +4152,7 @@ switch (card_id) {
 	if card_form_value<=500 {
 	card_grid_x=15; card_grid_y=28; }
 	else{
-	card_grid_x=1; card_grid_y=28; }
+	card_grid_x=1; card_grid_y=29; }
 	break;
 	case 0679: card_name="Honedge"; card_stage=1;  card_evo[0]=680; card_type_a=15; card_type_b=16; card_base_hp=45; card_base_atk=80+35; card_base_def=100+37; card_grid_x=2; card_grid_y=29; break;
 	case 0680: card_name="Doublade"; card_stage=2;  card_evo[0]=681; card_type_a=15; card_type_b=16; card_base_hp=59; card_base_atk=110+45; card_base_def=150+49; card_grid_x=3; card_grid_y=29; break;
