@@ -3466,17 +3466,35 @@ switch (card_id) {
 		card_base_hp=75; card_base_atk=125+125; card_base_def=70+70;
 		card_grid_x=14; card_grid_y=8; break;
 	case 483:
+		card_form_change=true;
+		card_has_forms=true;
 		card_name="Dialga";
 		card_stage=1; card_enigma=true;
 		card_type_a=15; card_type_b=14;
+		if card_form_value<=500 {
 		card_base_hp=100; card_base_atk=120+150; card_base_def=120+100;
-		card_grid_x=15; card_grid_y=8; break;
+		card_grid_x=15; card_grid_y=8; }
+		else{
+		card_sheet=sp_poke_c;
+		card_base_hp=100; card_base_atk=100+150; card_base_def=120+120;
+		card_grid_x=1; card_grid_y=6;} 
+		break;
 	case 484:
+		card_form_change=true;
+		card_has_forms=true;
 		card_name="Palkia";
 		card_stage=1; card_enigma=true;
 		card_type_a=03; card_type_b=14;
+		if card_form_value<=500 {
 		card_base_hp=90; card_base_atk=120+150; card_base_def=100+120;
-		card_grid_x=1; card_grid_y=9; break;
+		card_grid_x=1; card_grid_y=9; }
+		else {
+		card_sheet=sp_poke_c;
+		card_base_hp=90; card_base_atk=100+150; card_base_def=100+120;
+		card_grid_x=2; card_grid_y=6;} 
+		break;
+		
+		
 	case 485:
 		card_name="Heatran";
 		card_stage=1; card_enigma=true;
@@ -3497,8 +3515,13 @@ switch (card_id) {
 		card_type_a=16; card_type_b=14;
 		if card_form_value<500{card_base_hp=150; card_base_atk=100+100; card_base_def=120+120;
 		card_grid_x=4; card_grid_y=9;}
-		else {card_base_hp=150; card_base_atk=120+120; card_base_def=100+100;
-		card_grid_x=5; card_grid_y=9;} break;
+		else if card_form_value<=750 {card_base_hp=150; card_base_atk=120+120; card_base_def=100+100;
+		card_grid_x=5; card_grid_y=9;}
+		else {
+		card_base_hp=150; card_base_atk=120+120; card_base_def=100+100;
+		card_sheet=sp_poke_c;
+		card_grid_x=3; card_grid_y=6;} 
+		break;
 	case 488:
 		card_name="Cresselia";
 		card_stage=1; card_enigma=true;
@@ -3535,6 +3558,7 @@ switch (card_id) {
 		card_base_hp=100; card_base_atk=103+120; card_base_def=75+75;
 		card_grid_x=11; card_grid_y=9;} break;
 	case 493:
+		card_sheet=sp_poke_c;
 		card_form_change=true;
 		card_has_forms=true;
 		card_name="Arceus";
@@ -3542,75 +3566,75 @@ switch (card_id) {
 		card_base_hp=120; card_base_atk=120+120; card_base_def=120+120;
 		if card_form_value<55 {
 		card_type_a=00; card_type_b=-1;
-		card_grid_x=13; card_grid_y=9; 
+		card_grid_x=1; card_grid_y=2; 
 		}
 		else if card_form_value<110 {
 		card_type_a=01; card_type_b=-1;
-		card_grid_x=13; card_grid_y=9; 
+		card_grid_x=12; card_grid_y=2; 
 		}
 		else if card_form_value<165 {
 		card_type_a=02; card_type_b=-1;
-		card_grid_x=13; card_grid_y=9; 
+		card_grid_x=10; card_grid_y=2; 
 		}
 		else if card_form_value<220 {
 		card_type_a=03; card_type_b=-1;
-		card_grid_x=13; card_grid_y=9; 
+		card_grid_x=11; card_grid_y=2; 
 		}
 		else if card_form_value<275 {
 		card_type_a=04; card_type_b=-1;
-		card_grid_x=13; card_grid_y=9; 
+		card_grid_x=13; card_grid_y=2; 
 		}
 		else if card_form_value<330 {
 		card_type_a=05; card_type_b=-1;
-		card_grid_x=13; card_grid_y=9; 
+		card_grid_x=3; card_grid_y=2; 
 		}
 		else if card_form_value<385 {
 		card_type_a=06; card_type_b=-1;
-		card_grid_x=13; card_grid_y=9; 
+		card_grid_x=2; card_grid_y=2; 
 		}
 		else if card_form_value<440 {
 		card_type_a=07; card_type_b=-1;
-		card_grid_x=13; card_grid_y=9; 
+		card_grid_x=14; card_grid_y=2; 
 		}
 		else if card_form_value<495 {
 		card_type_a=08; card_type_b=-1;
-		card_grid_x=13; card_grid_y=9; 
+		card_grid_x=3; card_grid_y=3; 
 		}
 		else if card_form_value<550 {
 		card_type_a=09; card_type_b=-1;
-		card_grid_x=13; card_grid_y=9; 
+		card_grid_x=5; card_grid_y=2; 
 		}
 		else if card_form_value<605 {
 		card_type_a=10; card_type_b=-1;
-		card_grid_x=13; card_grid_y=9; 
+		card_grid_x=6; card_grid_y=2; 
 		}
 		else if card_form_value<660 {
 		card_type_a=11; card_type_b=-1;
-		card_grid_x=13; card_grid_y=9; 
+		card_grid_x=7; card_grid_y=2; 
 		}
 		else if card_form_value<715 {
 		card_type_a=12; card_type_b=-1;
-		card_grid_x=13; card_grid_y=9; 
+		card_grid_x=4; card_grid_y=2; 
 		}
 		else if card_form_value<770 {
 		card_type_a=13; card_type_b=-1;
-		card_grid_x=13; card_grid_y=9; 
+		card_grid_x=15; card_grid_y=2; 
 		}
 		else if card_form_value<825 {
 		card_type_a=14; card_type_b=-1;
-		card_grid_x=13; card_grid_y=9; 
+		card_grid_x=1; card_grid_y=3; 
 		}
 		else if card_form_value<880 {
 		card_type_a=15; card_type_b=-1;
-		card_grid_x=13; card_grid_y=9; 
+		card_grid_x=9; card_grid_y=2; 
 		}
 		else if card_form_value<935 {
 		card_type_a=16; card_type_b=-1;
-		card_grid_x=13; card_grid_y=9; 
+		card_grid_x=8; card_grid_y=2; 
 		}
 		else {
 		card_type_a=17; card_type_b=-1;
-		card_grid_x=13; card_grid_y=9; 
+		card_grid_x=2; card_grid_y=3; 
 		}
 		break;
 		
@@ -4352,81 +4376,83 @@ switch (card_id) {
 	case 0771: card_name="Pyukumuku"; card_stage=1;  card_type_a=3; card_type_b=-1; card_base_hp=55; card_base_atk=60+30; card_base_def=130+130; card_grid_x=15; card_grid_y=36; break;
 	case 0772: card_name="Type: Null"; card_stage=1; card_evo[0]=773; card_enigma=true; card_type_a=0; card_type_b=-1; card_base_hp=95; card_base_atk=95+95; card_base_def=95+95; card_grid_x=1; card_grid_y=37; break;
 	
-	case 0773: card_form_change=true; card_has_forms=true;
+	case 0773: 
+		card_sheet=sp_poke_c;
+		card_form_change=true; card_has_forms=true;
 		card_name="Silvally"; 
 		card_stage=2;  card_enigma=true; 
 		card_base_hp=95; card_base_atk=95+95; card_base_def=95+95;
 		if card_form_value<55{
 		card_type_a=0; card_type_b=-1; 
-		card_grid_x=2; card_grid_y=37; 
+		card_grid_x=1; card_grid_y=4; 
 		}
 		else if card_form_value<110{
 		card_type_a=1; card_type_b=-1; 
-		card_grid_x=2; card_grid_y=37; 
+		card_grid_x=12; card_grid_y=4; 
 		}
 		else if card_form_value<165{
 		card_type_a=2; card_type_b=-1; 
-		card_grid_x=2; card_grid_y=37; 
+		card_grid_x=10; card_grid_y=4; 
 		}
 		else if card_form_value<220{
 		card_type_a=3; card_type_b=-1; 
-		card_grid_x=2; card_grid_y=37; 
+		card_grid_x=11; card_grid_y=4; 
 		}
 		else if card_form_value<275{
 		card_type_a=4; card_type_b=-1; 
-		card_grid_x=2; card_grid_y=37; 
+		card_grid_x=13; card_grid_y=4; 
 		}
 		else if card_form_value<330{
 		card_type_a=5; card_type_b=-1; 
-		card_grid_x=2; card_grid_y=37; 
+		card_grid_x=3; card_grid_y=4; 
 		}
 		else if card_form_value<385{
 		card_type_a=6; card_type_b=-1; 
-		card_grid_x=2; card_grid_y=37; 
+		card_grid_x=2; card_grid_y=4; 
 		}
 		else if card_form_value<440{
 		card_type_a=7; card_type_b=-1; 
-		card_grid_x=2; card_grid_y=37; 
+		card_grid_x=14; card_grid_y=4; 
 		}
 		else if card_form_value<495{
 		card_type_a=8; card_type_b=-1; 
-		card_grid_x=2; card_grid_y=37; 
+		card_grid_x=3; card_grid_y=5; 
 		}
 		else if card_form_value<550{
 		card_type_a=9; card_type_b=-1; 
-		card_grid_x=2; card_grid_y=37; 
+		card_grid_x=5; card_grid_y=4; 
 		}
 		else if card_form_value<605{
 		card_type_a=10; card_type_b=-1; 
-		card_grid_x=2; card_grid_y=37; 
+		card_grid_x=6; card_grid_y=4; 
 		}
 		else if card_form_value<660{
 		card_type_a=11; card_type_b=-1; 
-		card_grid_x=2; card_grid_y=37; 
+		card_grid_x=7; card_grid_y=4; 
 		}
 		else if card_form_value<715{
 		card_type_a=12; card_type_b=-1; 
-		card_grid_x=2; card_grid_y=37; 
+		card_grid_x=4; card_grid_y=4; 
 		}
 		else if card_form_value<770{
 		card_type_a=13; card_type_b=-1; 
-		card_grid_x=2; card_grid_y=37; 
+		card_grid_x=15; card_grid_y=4; 
 		}
 		else if card_form_value<825{
 		card_type_a=14; card_type_b=-1; 
-		card_grid_x=2; card_grid_y=37; 
+		card_grid_x=1; card_grid_y=5; 
 		}
 		else if card_form_value<880{
 		card_type_a=15; card_type_b=-1; 
-		card_grid_x=2; card_grid_y=37; 
+		card_grid_x=9; card_grid_y=4; 
 		}
 		else if card_form_value<935{
 		card_type_a=16; card_type_b=-1; 
-		card_grid_x=2; card_grid_y=37; 
+		card_grid_x=8; card_grid_y=4; 
 		}
 		else{
 		card_type_a=17; card_type_b=-1; 
-		card_grid_x=2; card_grid_y=37; 
+		card_grid_x=2; card_grid_y=5; 
 		}
 		break;
 	
