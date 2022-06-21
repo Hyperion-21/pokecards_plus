@@ -195,7 +195,7 @@ switch (event_kind){
 			create_card_glyph_c=-1;
 			create_card_innate=1;
 			// Leave forms low so no one gets alolan rattata. (requires leppa berries due to dark typing.)
-			create_card_form_value=0
+			create_card_form_value=0;
 			if(RUN_FROM_IDE and test){
 				create_card_level=10;
 				create_card_glyph_a=-1;
