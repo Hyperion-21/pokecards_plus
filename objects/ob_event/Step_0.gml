@@ -270,7 +270,7 @@ if (apply_event) {
 			{
 				if (card_id_in_space[0].card_has_forms && card_id_in_space[0].card_form_change == true)
 				{
-				    if (card_id_in_space[0].card_id == 493 || card_id_in_space[0].card_id == 773)
+				    if (card_id_in_space[0].card_id == 493 or card_id_in_space[0].card_id == 773)
 				    {
 				        do
 				        {
@@ -281,11 +281,11 @@ if (apply_event) {
 				            }
 				            else
 				            {
-				                card_id_in_space[0].card_form_value = irandom(55);
+				                card_id_in_space[0].card_form_value = irandom(54);
 				            }
 				        } until (card_id_in_space[0].card_id != -1 && card_id_in_space[0].card_id <= normal_poke_id_max)
 				    }
-					if (card_id_in_space[0].card_id == 555)
+					else if (card_id_in_space[0].card_id == 555)
 				    {
 				        do
 				        {
