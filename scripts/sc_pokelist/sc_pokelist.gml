@@ -4345,7 +4345,7 @@ switch (card_id) {
 	case 0764: card_name="Comfey"; card_stage=1;  card_type_a=8; card_type_b=-1; card_base_hp=51; card_base_atk=52+82; card_base_def=90+110; card_grid_x=7; card_grid_y=36; break;
 	case 0765: card_name="Oranguru"; card_stage=1;  card_type_a=0; card_type_b=7; card_base_hp=90; card_base_atk=60+90; card_base_def=80+110; card_grid_x=9; card_grid_y=36; break;
 	case 0766: card_name="Passimian"; card_stage=1;  card_type_a=6; card_type_b=-1; card_base_hp=100; card_base_atk=120+40; card_base_def=90+60; card_grid_x=10; card_grid_y=36; break;
-	case 0767: card_name="Wimpod"; card_stage=1;  card_type_a=11; card_type_b=3; card_base_hp=25; card_base_atk=35+20; card_base_def=40+30; card_grid_x=11; card_grid_y=36; break;
+	case 0767: card_name="Wimpod";card_evo[0]=768; card_stage=1;  card_type_a=11; card_type_b=3; card_base_hp=25; card_base_atk=35+20; card_base_def=40+30; card_grid_x=11; card_grid_y=36; break;
 	case 0768: card_name="Golisopod"; card_stage=2;  card_type_a=11; card_type_b=3; card_base_hp=75; card_base_atk=125+60; card_base_def=140+90; card_grid_x=12; card_grid_y=36; break;
 	case 0769: card_name="Sandygast"; card_stage=1; card_evo[0]=770; card_type_a=16; card_type_b=9; card_base_hp=55; card_base_atk=55+70; card_base_def=80+45; card_grid_x=13; card_grid_y=36; break;
 	case 0770: card_name="Palossand"; card_stage=2;  card_type_a=16; card_type_b=9; card_base_hp=85; card_base_atk=75+100; card_base_def=110+75; card_grid_x=14; card_grid_y=36; break;
