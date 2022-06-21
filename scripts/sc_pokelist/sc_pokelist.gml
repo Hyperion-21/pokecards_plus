@@ -4653,7 +4653,7 @@ switch (card_id) {
 		else { // Just worse :(
 			card_name="Eiscue-N"; 
 			card_base_def=70+50; 
-			card_grid_x=4; card_grid_y=6; 
+			card_grid_x=5; card_grid_y=6; 
 		}
 		break;
 	
