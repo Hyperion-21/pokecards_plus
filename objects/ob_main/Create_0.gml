@@ -178,25 +178,24 @@ event_cost_standby_levelup=0;
 #macro ref_fly_next 401 //only for transitions
 #macro ref_mainmenu 999 //only for transitions
 //
-
-#macro event_card_type_secret 0
-#macro event_card_type_environment 1
-#macro event_card_type_enigma 2
-#macro event_card_type_stage_2 3
-#macro event_card_type_stage_3 4
+#macro event_card_group_secret 0
+#macro event_card_group_environment 1
+#macro event_card_group_enigma 2
+#macro event_card_group_stage_2 3
+#macro event_card_group_stage_3 4
 #macro event_card_group_common 5
 
-#macro event_card_type_pseudo 1
-#macro event_card_type_fossil 2
-#macro event_card_type_starter 3
-#macro event_card_type_baby 4
+#macro event_card_type_pseudo 0
+#macro event_card_type_fossil 1
+#macro event_card_type_starter 2
+#macro event_card_type_baby 3
 
 // Chance in 10000, chances if weight changes.
-event_card_weight[event_card_type_secret] = 1;
-event_card_weight[event_card_type_environment] = 200;
-event_card_weight[event_card_type_enigma] = 15;
-event_card_weight[event_card_type_stage_2] = 250;
-event_card_weight[event_card_type_stage_3] = 50;
+event_card_weight[event_card_group_secret] = 1;
+event_card_weight[event_card_group_environment] = 200;
+event_card_weight[event_card_group_enigma] = 15;
+event_card_weight[event_card_group_stage_2] = 250;
+event_card_weight[event_card_group_stage_3] = 50;
 event_card_weight[event_card_group_common] = 9484;
 
 // Chance in 100 to be added to possible common selection
@@ -208,7 +207,6 @@ event_card_addition_chance[event_card_type_baby] = 25;
 for (var i=0; i<=999; i++;) {
 	event_cost[i]=0;
 }
-
 event_cost[ref_event_cardpack]=200;
 event_cost[ref_event_berry]=100;
 event_cost[ref_event_levelup]=100;
