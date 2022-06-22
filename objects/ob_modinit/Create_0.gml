@@ -1,14 +1,18 @@
+window_set_fullscreen(false);
 window_set_caption("PCL Mod Config");
 
-global.mod_gen3to8 = true;
-global.mod_megaforms = true;
-global.mod_qol = true;
-global.mod_speed = true;
-global.mod_campfire = true;
+global.mod_gen3to8 = undefined;
+global.mod_megaforms = undefined;
+global.mod_qol = undefined;
+global.mod_speed = undefined;
+global.mod_campfire = undefined;
 
-instance_create_depth(0, 40*1, 0, ob_initbutton, {init_id : 1});
-instance_create_depth(0, 40*2, 0, ob_initbutton, {init_id : 2});
-instance_create_depth(0, 40*3, 0, ob_initbutton, {init_id : 3});
-instance_create_depth(0, 40*4, 0, ob_initbutton, {init_id : 4});
-instance_create_depth(0, 40*5, 0, ob_initbutton, {init_id : 5});
+i = 1;
+max_button = 5;
 
+while i <= max_button {
+	instance_create_depth(2, 40*i, 0, ob_initbutton, {init_id : i});
+	i++;
+}
+
+instance_create_depth(2, 40*(i+1), 0, ob_initbutton_start);
