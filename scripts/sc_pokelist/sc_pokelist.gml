@@ -4096,7 +4096,7 @@ switch (card_id) {
 	else if card_form_value<450{ card_grid_x=13; card_grid_y=25;}
 	else if card_form_value<500{ card_grid_x=14; card_grid_y=25;}
 	else if card_form_value<550{ card_grid_x=15; card_grid_y=25;}
-	else if card_form_value<{600 card_grid_x=1; card_grid_y=26;}
+	else if card_form_value<600{ card_grid_x=1; card_grid_y=26;}
 	else if card_form_value<650{ card_grid_x=2; card_grid_y=26;}
 	else if card_form_value<700{ card_grid_x=3; card_grid_y=26;}
 	else if card_form_value<750{ card_grid_x=4; card_grid_y=26;}
@@ -4161,7 +4161,7 @@ switch (card_id) {
 	else if card_form_value<700{card_grid_x=10; card_grid_y=28; }
 	else if card_form_value<800{card_grid_x=11; card_grid_y=28; }
 	else if card_form_value<900{card_grid_x=12; card_grid_y=28; }
-	else {card_grid_x=13; card_grid_y=28; break;
+	else {card_grid_x=13; card_grid_y=28;} break;
 	
 	case 0677: card_name="Espurr"; card_stage=1;  card_evo[0]=678; card_type_a=7; card_type_b=-1; card_base_hp=62; card_base_atk=48+63; card_base_def=54+60; card_grid_x=14; card_grid_y=28; break;
 	case 0678: card_has_forms=true; card_name="Meowstic"; card_stage=2;  card_type_a=7; card_type_b=-1; card_base_hp=74; card_base_atk=48+83; card_base_def=76+81; 
