@@ -1738,7 +1738,7 @@ switch (card_id) {
 		else {
 			card_evo[0]=904;
 			card_sheet=sp_poke_d;
-			card_type_a=16; card_type_b=12;
+			card_type_a=17; card_type_b=12;
 			card_base_hp=65; card_base_atk=95+55; card_base_def=85+55;
 			card_grid_x=15; card_grid_y=10; }
 		break;
