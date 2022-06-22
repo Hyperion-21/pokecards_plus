@@ -806,6 +806,30 @@ if (RUN_FROM_IDE) {
 	if keyboard_check_pressed(vk_f12) { game_restart(); }
 	if keyboard_check_pressed(vk_f11) { roadmap_area++; }
 	if keyboard_check_pressed(vk_f10) { money+=1000; }
+	if keyboard_check_pressed(vk_f9) { 
+		event_card_weight[event_card_group_secret] = 10000;
+		event_card_weight[event_card_group_environment] = 0;
+		event_card_weight[event_card_group_enigma] = 0;
+		event_card_weight[event_card_group_stage_2] = 0;
+		event_card_weight[event_card_group_stage_3] = 0;
+		event_card_weight[event_card_group_common] = 0;
+	}
+	if keyboard_check_pressed(vk_f8) { 
+		event_card_weight[event_card_group_secret] = 0;
+		event_card_weight[event_card_group_environment] = 0;
+		event_card_weight[event_card_group_enigma] = 10000;
+		event_card_weight[event_card_group_stage_2] = 0;
+		event_card_weight[event_card_group_stage_3] = 0;
+		event_card_weight[event_card_group_common] = 0;
+	}
+	if keyboard_check_pressed(vk_f7) { 
+		event_card_weight[event_card_group_secret] = 1;
+		event_card_weight[event_card_group_environment] = 200;
+		event_card_weight[event_card_group_enigma] = 15;
+		event_card_weight[event_card_group_stage_2] = 250;
+		event_card_weight[event_card_group_stage_3] = 50;
+		event_card_weight[event_card_group_common] = 9484;
+	}
 
 	if instance_exists(ob_control) and keyboard_check_pressed(vk_numpad8) {
 		ob_control.player_hp=(ob_control.hp_max*2)-1;

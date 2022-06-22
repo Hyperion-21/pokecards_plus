@@ -116,76 +116,68 @@ if card_cat=0 {
 		var allow_id_baby = false;
 
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
-		if (random_card == true && enemy_randomizer == false)
+		if (random_card && !enemy_randomizer)
 		{
-		    if (random_group_chance < 1 && ob_main.latest_zone > 0)
-		    {
-		        // 0.01% secret card
-		        card_id = irandom_range(1, secret_cards_total) + 2000;
-		        card_innate = 1;
-		    }
-		    else if (random_group_chance < 201)
-		    {
-		        // 2% environment card
-		        card_id = irandom_range(1, environment_cards_total) + 2500;
-		        card_innate = 1;
-		    }
-		    else
-		    {
-		        card_id = irandom_range(1, normal_poke_id_max);
-		        card_innate = 1;
-        
-		        //
-		        if (random_group_chance < 216 && ob_main.latest_zone > 0)
-		        {
+			// [weight, ref_card_group, free] Determine event odds.
+			var groups = [
+				[ob_main.event_card_weight[event_card_group_secret], event_card_group_secret],
+				[ob_main.event_card_weight[event_card_group_environment], event_card_group_environment],
+				[ob_main.event_card_weight[event_card_group_enigma], event_card_group_enigma],
+				[ob_main.event_card_weight[event_card_group_stage_2], event_card_group_stage_2],
+				[ob_main.event_card_weight[event_card_group_stage_3], event_card_group_stage_3],
+				[ob_main.event_card_weight[event_card_group_common], event_card_group_common]
+			];
+		
+			var selected_card_group = sc_determine_card_group(groups);
+			
+			if(ob_main.latest_zone <= 0 && (selected_card_group != event_card_group_environment || selected_card_group != event_card_group_common)){
+				selected_card_group = event_card_group_common;
+			}
+			
+			switch(selected_card_group){
+				case event_card_group_secret:
+			        card_id = irandom_range(1, secret_cards_total) + 2000;
+				break;
+				case event_card_group_environment:
+			        card_id = irandom_range(1, environment_cards_total) + 2500;
+				break;
+				case event_card_group_enigma:
 		            choose_id_enigma = true;
-		        } // 0.15% enigma
-		        else if (random_group_chance < 466 && ob_main.latest_zone > 0)
-		        {
+				break;
+				case event_card_group_stage_2:
 		            choose_id_stage_2 = true;
-		        } // 2.5% stage 2
-		        else if (random_group_chance < 516 && ob_main.latest_zone > 0)
-		        {
+				break;
+				case event_card_group_stage_3:
 		            choose_id_stage_3 = true;
-		        } // 0.5% stage 3
-		        else
-		        {
+				break;
+				case event_card_group_common:
 		            choose_id_normal = true;
-		        } // 94.84% stage 1 or baby
-        
-		        //
-		        var random_id_chance = irandom(99);
-		        if (random_id_chance < 50)
-		        {
-		            allow_id_pseudo = true;
-		        } // 50% pseudo allowed
-		        var random_id_chance = irandom(99);
-		        if (random_id_chance < 50)
-		        {
-		            allow_id_fossil = true;
-		        } // 50% fossil allowed
-		        var random_id_chance = irandom(99);
-		        if (random_id_chance < 25)
-		        {
-		            allow_id_starter = true;
-		        } // 25% starter allowed
-		        var random_id_chance = irandom(99);
-		        if (random_id_chance < 25)
-		        {
-		            allow_id_baby = true;
-		        } // 25% baby allowed
-		    }
+				break;
+				default:
+				break;
+			}
+			
+			if (card_id == -1){
+		        card_id = irandom_range(1, normal_poke_id_max);
+			}
+		    card_innate = 1;
+			
+			if (selected_card_group != event_card_group_secret && selected_card_group != event_card_group_environment) {
+		        allow_id_pseudo = choose(true, false);
+		        allow_id_fossil = choose(true, false);
+		        allow_id_starter = choose(true, false, false, false);
+		        allow_id_baby = choose(true, false, false, false);
+			}
     
-		    //
-		    card_level = irandom_range(ob_main.card_level_spawn_min, ob_main.card_level_spawn_limit);
+			card_level = irandom_range(ob_main.card_level_spawn_min, ob_main.card_level_spawn_limit);
+		    card_form_value = irandom(999);
 		    card_glyph_a = -1;
 		    card_glyph_b = -1;
 		    card_glyph_c = -1;
-		    card_form_value = irandom(999);
 		}
 
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
-		else if (random_card == true && enemy_randomizer == true)
+		else if (random_card && enemy_randomizer)
 		{
 		    if (random_group_chance < 500)
 		    {
@@ -313,7 +305,7 @@ if card_cat=0 {
 		sc_pokelist();
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		// SAVE COMPATIBILITY (v1.3.0.1) + (v1.5.0.0)
-		if (random_card == false)
+		if (!random_card)
 		{
 		    if ((card_id == 109 || card_id == 110) && card_glyph_a >= glyph_common_amount)
 		    {
@@ -329,7 +321,7 @@ if card_cat=0 {
 		    } // smeargle
 		}
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
-		if (random_card == true || card_glyph_a == -2 || card_glyph_b == -2 || card_glyph_c == -2)
+		if (random_card || card_glyph_a == -2 || card_glyph_b == -2 || card_glyph_c == -2)
 		{
 			// in case they were -2, which is used for semi-random enemy cards
 		    if (card_glyph_a == -2)
@@ -443,24 +435,23 @@ if card_cat=0 {
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		var card_rarity = round(sqrt(card_base_hp + card_base_atk + card_base_def) * 10 - 100);
 		//
-		if (random_card == true)
+		if (random_card)
 		{
 		    var card_rarity_chance = 0, card_rarity_soft_min = 0, card_rarity_soft_max = -1;
     
-		    //
-		    if (enemy_randomizer == false)
+		    if (!enemy_randomizer)
 		    {
 		        var card_rarity_chance_max = 145;
 		        card_rarity_chance = irandom(card_rarity_chance_max - 1) + 1;
 		    }
 		    else
 		    {
-		        if (card_environment == true)
+		        if (card_environment)
 		        {
 		            var card_rarity_chance_max = 145;
 		            card_rarity_chance = irandom(card_rarity_chance_max - 1) + 1;
 		        }
-		        else if (ob_main.playing_gym == true || ob_main.playing_elite == true || ob_main.playing_champion == true)
+		        else if (ob_main.playing_gym || ob_main.playing_elite || ob_main.playing_champion)
 		        {
 		            var card_rarity_chance_max = 220; // about +50% to increase chance for stronger pokemon
 		            card_rarity_soft_min = 42 + ob_main.area_zone * 4; // 42-74, about 200-300 base stat total (201.64-302.76)
@@ -488,71 +479,67 @@ if card_cat=0 {
 		        card_rarity_check = true;
         
 		        //
-		        if (enemy_randomizer == false)
+		        if (!enemy_randomizer)
 		        {
-		            if (card_enigma == false && choose_id_enigma == true)
+		            if (!card_enigma && choose_id_enigma)
 		            {
 		                card_rarity_check = false;
 		            }
-		            else if (card_stage != 2 && choose_id_stage_2 == true)
+		            else if (card_stage != 2 && choose_id_stage_2)
 		            {
 		                card_rarity_check = false;
 		            }
-		            else if (card_stage != 3 && choose_id_stage_3 == true)
+		            else if (card_stage != 3 && choose_id_stage_3)
 		            {
 		                card_rarity_check = false;
 		            }
-		            else if ((card_stage > 1 || card_enigma == true) && choose_id_normal == true)
+		            else if ((card_stage > 1 || card_enigma) && choose_id_normal)
 		            {
 		                card_rarity_check = false;
 		            }
 		        }
 		        else
 		        {
-		            if (card_enigma == true)
+		            if (card_enigma)
 		            {
 		                card_rarity_check = false;
 		            }
 		        }
-        
-		        //
-		        if (card_pseudo == true && allow_id_pseudo == false)
+
+				if (card_pseudo && !allow_id_pseudo)
 		        {
 		            card_rarity_check = false;
 		        }
-		        if (card_fossil == true && allow_id_fossil == false)
+		        if (card_fossil && !allow_id_fossil)
 		        {
 		            card_rarity_check = false;
 		        }
-		        if (card_starter == true && allow_id_starter == false)
+		        if (card_starter && !allow_id_starter)
 		        {
 		            card_rarity_check = false;
 		        }
-		        if (card_stage == 0 && allow_id_baby == false)
+		        if (card_stage == 0 && !allow_id_baby)
 		        {
 		            card_rarity_check = false;
 		        }
-        
-		        //
-		        if (card_rarity_check == true)
+				
+		        if (card_rarity_check)
 		        {
 		            if (card_rarity < card_rarity_soft_min)
 		            {
 		                card_rarity_check = choose(false, false, false, true);
 		            } // 25%
 		        }
-        
-		        //
-		        if (card_rarity_check == true)
+				
+		        if (card_rarity_check)
 		        {
 		            if (card_rarity_soft_max > -1 && card_rarity > card_rarity_soft_max)
 		            {
 		                card_rarity_check = choose(false, false, false, true);
 		            } // 25%
 		        }
-        
-		        //
-		        if (card_rarity_check == true)
+				
+		        if (card_rarity_check)
 		        {
 		            card_rarity_chance = irandom(34) + 1; // level 10: 30 (max) + 5 (higher chances in general)
 		            if (card_rarity_chance >= round(sqrt(card_level - 1) * 10))
@@ -564,13 +551,11 @@ if card_cat=0 {
 		                card_rarity_check = false;
 		            }
 		        }
-        
-		        //
-		        if (card_rarity_check == true && enemy_randomizer == true && card_environment == false)
+				
+		        if (card_rarity_check && enemy_randomizer && !card_environment)
 		        {
 		            card_rarity_check = false;
-            
-		            //
+					
 		            for (var i = 0; i <= 17; i++)
 		            {
 		                var type_condition_chance = irandom(99);
@@ -582,8 +567,8 @@ if card_cat=0 {
 		        }
 		    }
 		}
-	} until (random_card = false || (card_rarity_check == true && card_name != ""));
-	//————————————————————————————————————————————————————————————————————————————————————————————————————
+	} until (!random_card || (card_rarity_check && card_name != ""));
+	
 	sc_card_level_stats_all(true,true);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -600,7 +585,7 @@ else if (card_cat == 1)
     }
     
     //
-    if (random_card == true)
+    if (random_card)
     {
         var card_berry_chance = irandom(99);
         if (card_berry_chance < 85)
