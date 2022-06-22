@@ -4133,7 +4133,7 @@ switch (card_id) {
 	card_grid_x=6; card_grid_y=27;}
 	else if card_form_value<950{card_name="Floette"; card_base_hp=54; 
 	card_base_atk=45+75; card_base_def=47+98; 
-	ard_grid_x=7; card_grid_y=27;}
+	card_grid_x=7; card_grid_y=27;}
 	//5% need to set this low so the colour distrubtion is still nice on the others
 	else {card_name="E-Floette"; card_base_hp=74; 
 	card_base_atk=65+125; card_base_def=67+128; 
@@ -4909,7 +4909,8 @@ switch (card_id) {
 		card_stage=1; card_secret=true;
 		card_type_a=05; card_type_b=00;
 		card_base_hp=33; card_base_atk=136+6; card_base_def=0+6;
-		card_grid_x=1; card_grid_y=1; break;
+		//as requested
+		card_grid_x=4; card_grid_y=14; break;
 	case 2002:
 		card_name="-"; //GHOST: Marowak, but with 1 base HP
 		card_stage=1; card_secret=true;
