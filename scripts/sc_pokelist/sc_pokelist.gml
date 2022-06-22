@@ -2161,7 +2161,7 @@ switch (card_id) {
 			card_grid_x=15; card_grid_y=26; }
 		else {
 			card_sheet=sp_poke_d;
-			card_type_a=16; card_type_b=00;
+			card_type_a=17; card_type_b=00;
 			card_base_hp=38; card_base_atk=30+30; card_base_def=41+41;
 			card_grid_x=3; card_grid_y=11; }
 		break;
@@ -2176,7 +2176,7 @@ switch (card_id) {
 			card_grid_x=1; card_grid_y=27; }
 		else {
 			card_sheet=sp_poke_d; card_evo[0]=862;
-			card_type_a=16; card_type_b=00;
+			card_type_a=17; card_type_b=00;
 			card_base_hp=78; card_base_atk=70+50; card_base_def=61+61;
 			card_grid_x=4; card_grid_y=11; }
 		break;
