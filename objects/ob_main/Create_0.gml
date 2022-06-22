@@ -343,7 +343,7 @@ repeat (8) {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 #macro config_file "config_pcl+.sav"
-#macro data_file "data_pcl+.sav"
+data_file = global.tempsave;
 sc_config_load();
 sc_config_save();
 sc_data_load();

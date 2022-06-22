@@ -78,7 +78,7 @@
     {"id":{"name":"sc_textbox","path":"scripts/sc_textbox/sc_textbox.yy",},"order":15,},
     {"id":{"name":"ob_card_splash","path":"objects/ob_card_splash/ob_card_splash.yy",},"order":13,},
     {"id":{"name":"sc_data_save","path":"scripts/sc_data_save/sc_data_save.yy",},"order":3,},
-    {"id":{"name":"ob_roominit","path":"objects/ob_roominit/ob_roominit.yy",},"order":16,},
+    {"id":{"name":"ob_modinit","path":"objects/ob_modinit/ob_modinit.yy",},"order":16,},
     {"id":{"name":"sn_click","path":"sounds/sn_click/sn_click.yy",},"order":2,},
     {"id":{"name":"sp_initbutton_on","path":"sprites/sp_initbutton_on/sp_initbutton_on.yy",},"order":14,},
     {"id":{"name":"sc_drawrectangle","path":"scripts/sc_drawrectangle/sc_drawrectangle.yy",},"order":4,},

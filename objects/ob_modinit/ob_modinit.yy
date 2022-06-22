@@ -30,7 +30,7 @@
     "path": "folders/Objects.yy",
   },
   "resourceVersion": "1.0",
-  "name": "ob_roominit",
+  "name": "ob_modinit",
   "tags": [],
   "resourceType": "GMObject",
 }
