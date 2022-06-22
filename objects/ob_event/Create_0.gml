@@ -152,7 +152,7 @@ switch (event_kind){
 		var card_pool_gen_6_7_8;
 		var card_pool_birds = [[10, 016],[10, 163],[10, 276],[10, 396],[10, 519],[10, 661],[10, 731], [10, 821]];
 		var card_pool_rodents = [[10, 019],[10, 161],[10, 263],[10, 399],[10, 504],[10, 659],[10, 734], [10, 819]];
-		
+	
 		switch (event_kind){
 			case ref_event_grass: 
 				card_pool_gen_1_2 = [[10, 001],[10, 152]];		
@@ -175,11 +175,11 @@ switch (event_kind){
 		// with IDE mode(run from gamemaker) only failsafe if left enabled
 		test = false;
 		if(RUN_FROM_IDE and test){
-			card_pool_gen_1_2 = [[10, 493]];		
-			card_pool_gen_3_4_5 = [[10, 773]];		
-			card_pool_gen_6_7_8 = [[10, 483]];
-			var card_pool_birds = [[10, 484]];
-			var card_pool_rodents = [[10, 487]];
+			card_pool_gen_1_2 = [[10, 2001]];		
+			card_pool_gen_3_4_5 = [[10, 2001]];		
+			card_pool_gen_6_7_8 = [[10, 2001]];
+			var card_pool_birds = [[10, 2001]];
+			var card_pool_rodents = [[10, 2001]];
 		}
 		//
 		//
@@ -196,15 +196,18 @@ switch (event_kind){
 			create_card_innate=1;
 			// Leave forms low so no one gets alolan rattata. (requires leppa berries due to dark typing.)
 			create_card_form_value=0;
+			//
+			// If run from Gamemaker and test is true.
 			if(RUN_FROM_IDE and test){
 				create_card_level=10;
 				create_card_glyph_a=-1;
 				create_card_glyph_b=-1;
 				create_card_glyph_c=-1;
 				create_card_innate=4;
-				create_card_form_value=1000;
+				create_card_form_value=irandom(999);
 			}
-		
+			//
+			//
 			var card_x=screen_main_x+83+(72*i), card_y=screen_main_y+104-47; 
 			
 			instance_create_layer(card_x,card_y,"instances",ob_card);		
