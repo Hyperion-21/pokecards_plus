@@ -23,6 +23,15 @@ card_form_change=false;
 //
 card_secret=false;
 card_environment=false;
+//Lets stop crashes like that in the future.
+card_name=card_id;
+card_type_a=00; card_type_b=00;
+card_stage=1;
+card_base_hp=1; 
+card_base_atk=1; 
+card_base_def=1;
+card_grid_x=1; 
+card_grid_y=1;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 switch (card_id) {
 	case 001:
