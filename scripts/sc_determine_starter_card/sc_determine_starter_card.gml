@@ -3,7 +3,7 @@
 function sc_determine_starter_card(index, cards_pool)
 {
    if (index >= array_length(cards_pool)) {
-	   return irandom(normal_poke_id_max);
+	   return irandom(global.normal_poke_id_max);
    }
    
    var cards = cards_pool[index];

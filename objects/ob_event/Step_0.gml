@@ -197,7 +197,7 @@ if (apply_event) {
 		case ref_event_evolution:
 			if (card_id_in_space[0] != -1)
 			{
-			    if (evo_list[0] != -1 && evo_list[0] <= normal_poke_id_max && card_id_in_space[0].card_innate > 0 &&
+			    if (evo_list[0] != -1 && evo_list[0] <= global.normal_poke_id_max && card_id_in_space[0].card_innate > 0 &&
 			        ob_main.money - ob_main.event_cost_standby >= ob_main.event_cost[ref_event_evolution])
 			    {
 					free=false;
@@ -216,7 +216,7 @@ if (apply_event) {
 			        if (evo_list[1]==evo_list[2]){count=0;}
 					//
 					//
-					} until (card_id_in_space[0].card_id != -1 && card_id_in_space[0].card_id <= normal_poke_id_max)
+					} until (card_id_in_space[0].card_id != -1 && card_id_in_space[0].card_id <= global.normal_poke_id_max)
 					//FIX ME
 			        if(!free or count>1){sc_card_effect(event_space_id[0].x, event_space_id[0].y, 0, false, true);}
 			        with (card_id_in_space[0])
@@ -250,7 +250,7 @@ if (apply_event) {
 			            {
 			                card_id_in_space[0].card_form_value = irandom(999);
 			            }
-			        } until (card_id_in_space[0].card_id != -1 && card_id_in_space[0].card_id <= normal_poke_id_max)
+			        } until (card_id_in_space[0].card_id != -1 && card_id_in_space[0].card_id <= global.normal_poke_id_max)
 			        sc_card_effect(event_space_id[0].x, event_space_id[0].y, 0, false, true);
 			        with (card_id_in_space[0])
 			        {
@@ -283,7 +283,7 @@ if (apply_event) {
 				            {
 				                card_id_in_space[0].card_form_value = irandom(54);
 				            }
-				        } until (card_id_in_space[0].card_id != -1 && card_id_in_space[0].card_id <= normal_poke_id_max)
+				        } until (card_id_in_space[0].card_id != -1 && card_id_in_space[0].card_id <= global.normal_poke_id_max)
 				    }
 					else if (card_id_in_space[0].card_id == 555)
 				    {
@@ -306,7 +306,7 @@ if (apply_event) {
 				            {
 				                card_id_in_space[0].card_form_value-=250;
 				            }
-				        } until (card_id_in_space[0].card_id != -1 && card_id_in_space[0].card_id <= normal_poke_id_max)
+				        } until (card_id_in_space[0].card_id != -1 && card_id_in_space[0].card_id <= global.normal_poke_id_max)
 				    }
 				    else if (card_id_in_space[0].card_can_mega && card_id_in_space[0].card_form_value > 999)
 				    {
@@ -320,7 +320,7 @@ if (apply_event) {
 				            {
 				                card_id_in_space[0].card_form_value = 1000;
 				            }
-				        } until (card_id_in_space[0].card_id != -1 && card_id_in_space[0].card_id <= normal_poke_id_max)
+				        } until (card_id_in_space[0].card_id != -1 && card_id_in_space[0].card_id <= global.normal_poke_id_max)
 				    }
 				    else
 				    {
@@ -334,7 +334,7 @@ if (apply_event) {
 				            {
 				                card_id_in_space[0].card_form_value = irandom(499);
 				            }
-				        } until (card_id_in_space[0].card_id != -1 && card_id_in_space[0].card_id <= normal_poke_id_max)
+				        } until (card_id_in_space[0].card_id != -1 && card_id_in_space[0].card_id <= global.normal_poke_id_max)
 				    }
 				    sc_card_effect(event_space_id[0].x, event_space_id[0].y, 0, false, true);
 				    with (card_id_in_space[0])

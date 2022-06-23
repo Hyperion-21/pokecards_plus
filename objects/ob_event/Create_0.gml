@@ -150,26 +150,53 @@ switch (event_kind){
 		var card_pool_gen_1_2;
 		var card_pool_gen_3_4_5;
 		var card_pool_gen_6_7_8;
-		var card_pool_birds = [[10, 016],[10, 163],[10, 276],[10, 396],[10, 519],[10, 661],[10, 731], [10, 821]];
-		var card_pool_rodents = [[10, 019],[10, 161],[10, 263],[10, 399],[10, 504],[10, 659],[10, 734], [10, 819]];
+		var card_pool_birds;
+		var card_pool_rodents;
 		
-		switch (event_kind){
-			case ref_event_grass: 
-				card_pool_gen_1_2 = [[10, 001],[10, 152]];		
-				card_pool_gen_3_4_5 = [[10, 252],[10, 387],[10, 495]];		
-				card_pool_gen_6_7_8 = [[10, 650],[10, 722],[10, 810]];
-			break;
-			case ref_event_fire: 
-				card_pool_gen_1_2 = [[10, 004],[10, 155]];
-				card_pool_gen_3_4_5 = [[10, 255],[10, 390],[10, 498]];		
-				card_pool_gen_6_7_8 = [[10, 653],[10, 725],[10, 813]];
-			break;
-			case ref_event_water: 
-				card_pool_gen_1_2 = [[10, 007],[10, 158]];		
-				card_pool_gen_3_4_5 = [[10, 258],[10, 393],[10, 501]];	
-				card_pool_gen_6_7_8 = [[10, 656],[10, 728],[10, 816]];
-			break;
+		if global.mod_gen3to8 {
+			card_pool_birds = [[10, 016],[10, 163],[10, 276],[10, 396],[10, 519],[10, 661],[10, 731], [10, 821]];
+			card_pool_rodents = [[10, 019],[10, 161],[10, 263],[10, 399],[10, 504],[10, 659],[10, 734], [10, 819]];
+			
+			switch (event_kind){
+				case ref_event_grass: 
+					card_pool_gen_1_2 = [[10, 001],[10, 152]];		
+					card_pool_gen_3_4_5 = [[10, 252],[10, 387],[10, 495]];		
+					card_pool_gen_6_7_8 = [[10, 650],[10, 722],[10, 810]];
+					break;
+				case ref_event_fire: 
+					card_pool_gen_1_2 = [[10, 004],[10, 155]];
+					card_pool_gen_3_4_5 = [[10, 255],[10, 390],[10, 498]];		
+					card_pool_gen_6_7_8 = [[10, 653],[10, 725],[10, 813]];
+					break;
+				case ref_event_water: 
+					card_pool_gen_1_2 = [[10, 007],[10, 158]];		
+					card_pool_gen_3_4_5 = [[10, 258],[10, 393],[10, 501]];	
+					card_pool_gen_6_7_8 = [[10, 656],[10, 728],[10, 816]];
+					break;
+			}
 		}
+		else {
+			// ignore the erroneous variable names
+			card_pool_gen_6_7_8 = [[10, 16]];
+			card_pool_birds = [[10, 21]];
+			card_pool_rodents = [[10, 19]];
+			
+			switch (event_kind){
+				case ref_event_grass: 
+					card_pool_gen_1_2 = [[10, 001]];		
+					card_pool_gen_3_4_5 = [[10, 152]];	
+					break;
+				case ref_event_fire: 
+					card_pool_gen_1_2 = [[10, 004]];
+					card_pool_gen_3_4_5 = [[10, 155]];	
+					break;
+				case ref_event_water: 
+					card_pool_gen_1_2 = [[10, 007]];		
+					card_pool_gen_3_4_5 = [[10, 158]];	
+				break;
+			}
+		}
+		
 		//
 		// IF TESTING SET TRUE
 		// with IDE mode(run from gamemaker) only failsafe if left enabled

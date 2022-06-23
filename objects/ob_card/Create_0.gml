@@ -132,7 +132,7 @@ if card_cat=0 {
 		    }
 		    else
 		    {
-		        card_id = irandom_range(1, normal_poke_id_max);
+		        card_id = irandom_range(1, global.normal_poke_id_max);
 		        card_innate = 1;
         
 		        //
@@ -195,7 +195,7 @@ if card_cat=0 {
 		    }
 		    else
 		    {
-		        card_id = irandom_range(1, normal_poke_id_max);
+		        card_id = irandom_range(1, global.normal_poke_id_max);
         
 		        //
 		        if (reference_id.create_card_innate == -1)

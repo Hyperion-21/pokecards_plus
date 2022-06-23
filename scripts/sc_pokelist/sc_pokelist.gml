@@ -199,9 +199,9 @@ switch (card_id) {
 		card_grid_x=11; card_grid_y=2; }; break;
 		
 	case 020:
-		card_has_forms=true;
+		if global.mod_gen3to8 { card_has_forms=true; }
 		card_name="Raticate";
-		if card_form_value<500 { 
+		if card_form_value<500 or global.mod_gen3to8 { 
 		card_stage=2;
 		card_type_a=00; card_type_b=-1;
 		card_base_hp=55; card_base_atk=81+50; card_base_def=60+70;
@@ -242,10 +242,10 @@ switch (card_id) {
 		card_base_hp=35; card_base_atk=55+50; card_base_def=40+50;
 		card_grid_x=3; card_grid_y=3; break;
 	case 026:
-		card_has_forms=true;
+		if global.mod_gen3to8 { card_has_forms=true; }
 		card_name="Raichu";
 		card_stage=2;
-		if card_form_value<500 { 
+		if card_form_value<500 or global.mod_gen3to8 { 
 		card_type_a=04; card_type_b=-1;
 		card_base_hp=60; card_base_atk=90+90; card_base_def=55+80;
 		card_grid_x=13; card_grid_y=3;}
@@ -254,10 +254,10 @@ switch (card_id) {
 		card_base_hp=60; card_base_atk=85+95; card_base_def=50+85;
 		card_grid_x=14; card_grid_y=3;}	break;
 	case 027:
-		card_has_forms=true;
+		if global.mod_gen3to8 { card_has_forms=true; }
 		card_name="Sandshrew";
 		card_stage=1; card_evo[0]=028;
-		if card_form_value<500 { 
+		if card_form_value<500 or global.mod_gen3to8 { 
 		card_type_a=09; card_type_b=-1;
 		card_base_hp=50; card_base_atk=75+20; card_base_def=85+30;
 		card_grid_x=15; card_grid_y=3;}
@@ -266,10 +266,10 @@ switch (card_id) {
 		card_base_hp=50; card_base_atk=75+10; card_base_def=90+35;
 		card_grid_x=1; card_grid_y=4;}	break;
 	case 028:
-		card_has_forms=true;
+		if global.mod_gen3to8 { card_has_forms=true; }
 		card_name="Sandslash";
 		card_stage=2;
-		if card_form_value<500 { 
+		if card_form_value<500 or global.mod_gen3to8 { 
 		card_type_a=09; card_type_b=-1;
 		card_base_hp=75; card_base_atk=100+45; card_base_def=110+55;
 		card_grid_x=2; card_grid_y=4;}
@@ -326,10 +326,10 @@ switch (card_id) {
 		card_base_hp=95; card_base_atk=70+95; card_base_def=73+90;
 		card_grid_x=12; card_grid_y=4; break;
 	case 037:
-		card_has_forms=true;
+		if global.mod_gen3to8 { card_has_forms=true; }
 		card_name="Vulpix";
 		card_stage=1; card_evo[0]=038;
-		if card_form_value<500 {
+		if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=02; card_type_b=-1;
 		card_base_hp=38; card_base_atk=41+50; card_base_def=40+65;
 		card_grid_x=14; card_grid_y=4;}
@@ -338,10 +338,10 @@ switch (card_id) {
 		card_base_hp=38; card_base_atk=41+50; card_base_def=40+65;
 		card_grid_x=15; card_grid_y=4;} break;
 	case 038:
-		card_has_forms=true;
+		if global.mod_gen3to8 { card_has_forms=true; }
 		card_name="Ninetales";
 		card_stage=2;
-		if card_form_value<500 {
+		if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=02; card_type_b=-1;
 		card_base_hp=73; card_base_atk=76+81; card_base_def=75+100;
 		card_grid_x=1; card_grid_y=5;}
@@ -416,10 +416,10 @@ switch (card_id) {
 		card_base_hp=70; card_base_atk=65+90; card_base_def=60+75;
 		card_grid_x=15; card_grid_y=5; break;
 	case 050:
-		card_has_forms=true;
+		if global.mod_gen3to8 { card_has_forms=true; }
 		card_name="Diglett";
 		card_stage=1; card_evo[0]=051;
-		if card_form_value<500 {
+		if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=09; card_type_b=-1;
 		card_base_hp=10; card_base_atk=55+35; card_base_def=25+45;
 		card_grid_x=1; card_grid_y=6;}
@@ -428,10 +428,10 @@ switch (card_id) {
 		card_base_hp=10; card_base_atk=55+35; card_base_def=30+45;
 		card_grid_x=2; card_grid_y=6;} break;
 	case 051:
-		card_has_forms=true;
+		if global.mod_gen3to8 { card_has_forms=true; }
 		card_name="Dugtrio";
 		card_stage=2;
-		if card_form_value<500 {
+		if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=09; card_type_b=-1;
 		card_base_hp=35; card_base_atk=100+50; card_base_def=50+70;
 		card_grid_x=3; card_grid_y=6;}
@@ -440,10 +440,10 @@ switch (card_id) {
 		card_base_hp=35; card_base_atk=100+50; card_base_def=60+70;
 		card_grid_x=4; card_grid_y=6;} break;
 	case 052:
-		card_has_forms=true;
-		card_name="Meowth";//this has a third gen8 for with a different evo so it needs to be divided into 3 later
+		if global.mod_gen3to8 { card_has_forms=true; }
+		card_name="Meowth";
 		card_stage=1; 
-		if card_form_value<333 {
+		if card_form_value<333 or global.mod_gen3to8 {
 		card_evo[0]=053;
 		card_type_a=00; card_type_b=-1;
 		card_base_hp=40; card_base_atk=45+40; card_base_def=35+40;
@@ -461,10 +461,10 @@ switch (card_id) {
 		card_grid_x=6; card_grid_y=9;}
 		break;
 	case 053:
-		card_has_forms=true;
+		if global.mod_gen3to8 { card_has_forms=true; }
 		card_name="Persian";
 		card_stage=2;
-		if card_form_value<500 {
+		if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=00; card_type_b=-1;
 		card_base_hp=65; card_base_atk=70+65; card_base_def=60+65;
 		card_grid_x=8; card_grid_y=6;}
@@ -497,10 +497,10 @@ switch (card_id) {
 		card_base_hp=65; card_base_atk=105+60; card_base_def=60+70;
 		card_grid_x=13; card_grid_y=6; break;
 	case 058:
-		card_has_forms=true;	
+		if global.mod_gen3to8 { card_has_forms=true; }
 		card_name="Growlithe";
 		card_stage=1; card_evo[0]=059;
-		if card_form_value<500 {
+		if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=02; card_type_b=-1;
 		card_base_hp=55; card_base_atk=70+70; card_base_def=45+50;
 		card_grid_x=14; card_grid_y=6;
@@ -513,10 +513,10 @@ switch (card_id) {
 		}
 		break;
 	case 059:
-		card_has_forms=true;	
+		if global.mod_gen3to8 { card_has_forms=true; }
 		card_name="Arcanine";
 		card_stage=2;
-		if card_form_value<500 {
+		if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=02; card_type_b=-1;
 		card_base_hp=90; card_base_atk=110+100; card_base_def=80+80;
 		card_grid_x=15; card_grid_y=6;
@@ -621,10 +621,10 @@ switch (card_id) {
 		card_base_hp=80; card_base_atk=70+80; card_base_def=65+120;
 		card_grid_x=2; card_grid_y=8; break;
 	case 074:
-		card_has_forms=true;
+		if global.mod_gen3to8 { card_has_forms=true; }
 		card_name="Geodude";
 		card_stage=1; card_evo[0]=075;
-		if card_form_value<500 {
+		if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=10; card_type_b=09;
 		card_base_hp=40; card_base_atk=80+30; card_base_def=100+30;
 		card_grid_x=3; card_grid_y=8;}
@@ -633,10 +633,10 @@ switch (card_id) {
 		card_base_hp=40; card_base_atk=80+30; card_base_def=100+30;
 		card_grid_x=4; card_grid_y=8;} break;
 	case 075:
-		card_has_forms=true;
+		if global.mod_gen3to8 { card_has_forms=true; }
 		card_name="Graveler";
 		card_stage=2; card_evo[0]=076;
-		if card_form_value<500 {
+		if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=10; card_type_b=09;
 		card_base_hp=55; card_base_atk=95+45; card_base_def=115+45;
 		card_grid_x=5; card_grid_y=8;}
@@ -645,10 +645,10 @@ switch (card_id) {
 		card_base_hp=55; card_base_atk=95+45; card_base_def=115+45;
 		card_grid_x=6; card_grid_y=8;} break;
 	case 076:
-		card_has_forms=true;
+		if global.mod_gen3to8 { card_has_forms=true; }
 		card_name="Golem";
 		card_stage=3;
-		if card_form_value<500 {
+		if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=10; card_type_b=09;
 		card_base_hp=80; card_base_atk=120+55; card_base_def=130+65;
 		card_grid_x=7; card_grid_y=8;}
@@ -660,8 +660,8 @@ switch (card_id) {
 		card_name="Ponyta";
 		card_stage=1; card_evo[0]=078;
 		
-		card_has_forms=true;	
-		if card_form_value<500 {
+		if global.mod_gen3to8 { card_has_forms=true; }
+		if card_form_value<500 or global.mod_gen3to8 {
 			card_type_a=02; card_type_b=-1;
 			card_base_hp=50; card_base_atk=85+65; card_base_def=55+65;
 			card_grid_x=9; card_grid_y=8; 
@@ -676,8 +676,8 @@ switch (card_id) {
 		card_name="Rapidash";
 		card_stage=2;
 		
-		card_has_forms=true;	
-		if card_form_value<500 {
+		if global.mod_gen3to8 { card_has_forms=true; }	
+		if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=02; card_type_b=-1;
 		card_base_hp=65; card_base_atk=100+80; card_base_def=70+80;
 		card_grid_x=10; card_grid_y=8; 
@@ -689,10 +689,10 @@ switch (card_id) {
 		}
 		break;
 	case 079:
-		card_has_forms=true;	
+		if global.mod_gen3to8 { card_has_forms=true; }
 		card_name="Slowpoke";
 		card_stage=1; card_evo[0]=080; card_evo[1]=199;
-		if card_form_value<500 {
+		if card_form_value<500 or global.mod_gen3to8 {
 			card_type_a=03; card_type_b=07;
 			card_base_hp=90; card_base_atk=65+40; card_base_def=65+40;
 			card_grid_x=11; card_grid_y=8; 
@@ -704,11 +704,11 @@ switch (card_id) {
 		}
 		break;
 	case 080:
-		card_has_forms=true;	
+		if global.mod_gen3to8 { card_has_forms=true; }
 		card_name="Slowbro";
 		card_stage=2;
 		
-		if card_form_value<500 {
+		if card_form_value<500 or global.mod_gen3to8 {
 			card_can_mega=true;
 			card_type_a=03; card_type_b=07;
 			card_base_hp=95; card_base_atk=75+100; card_base_def=110+80;
@@ -740,10 +740,10 @@ switch (card_id) {
 		card_base_hp=50; card_base_atk=60+120; card_base_def=95+70;
 		card_grid_x=15; card_grid_y=8; break;
 	case 083:
-		card_has_forms=true;
+		if global.mod_gen3to8 { card_has_forms=true; }
 		card_name="Farfetch'd";
 		
-		if card_form_value<500 {
+		if card_form_value<500 or global.mod_gen3to8 {
 			card_stage=1;
 			card_type_a=00; card_type_b=05;
 			card_base_hp=52; card_base_atk=90+58; card_base_def=55+62;
@@ -782,10 +782,10 @@ switch (card_id) {
 		card_base_hp=90; card_base_atk=70+70; card_base_def=80+95;
 		card_grid_x=5; card_grid_y=9; break;
 	case 088:
-		card_has_forms=true;
+		if global.mod_gen3to8 { card_has_forms=true; }
 		card_name="Grimer";
 		card_stage=1; card_evo[0]=089;
-		if card_form_value<500 {
+		if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=12; card_type_b=-1;
 		card_base_hp=80; card_base_atk=80+40; card_base_def=50+50;
 		card_grid_x=6; card_grid_y=9;}
@@ -794,10 +794,10 @@ switch (card_id) {
 		card_base_hp=80; card_base_atk=80+40; card_base_def=50+50;
 		card_grid_x=7; card_grid_y=9;} break;
 	case 089:
-		card_has_forms=true;
+		if global.mod_gen3to8 { card_has_forms=true; }
 		card_name="Muk";
 		card_stage=2;
-		if card_form_value<500 {
+		if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=12; card_type_b=-1;
 		card_base_hp=105; card_base_atk=105+65; card_base_def=75+100;
 		card_grid_x=8; card_grid_y=9;}
@@ -877,8 +877,8 @@ switch (card_id) {
 		card_name="Voltorb";
 		card_stage=1; card_evo[0]=101;
 		
-		card_has_forms=true;	
-		if card_form_value<500 {
+		if global.mod_gen3to8 { card_has_forms=true; }
+		if card_form_value<500 or global.mod_gen3to8 {
 			card_type_a=04; card_type_b=-1;
 			card_base_hp=40; card_base_atk=30+55; card_base_def=50+55;
 			card_grid_x=8; card_grid_y=10; 
@@ -892,8 +892,8 @@ switch (card_id) {
 	case 101:
 		card_name="Electrode";
 		card_stage=2;
-		card_has_forms=true;	
-		if card_form_value<500 {
+		if global.mod_gen3to8 { card_has_forms=true; }
+		if card_form_value<500 or global.mod_gen3to8 {
 			card_type_a=04; card_type_b=-1;
 			card_base_hp=60; card_base_atk=50+80; card_base_def=70+80;
 			card_grid_x=9; card_grid_y=10; }
@@ -910,10 +910,10 @@ switch (card_id) {
 		card_base_hp=60; card_base_atk=40+60; card_base_def=80+45;
 		card_grid_x=10; card_grid_y=10; break;
 	case 103:
-		card_has_forms=true;
+		if global.mod_gen3to8 { card_has_forms=true; }
 		card_name="Exeggutor";
 		card_stage=2;
-		if card_form_value<500 {
+		if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=01; card_type_b=07;
 		card_base_hp=95; card_base_atk=95+125; card_base_def=85+75;
 		card_grid_x=11; card_grid_y=10;}
@@ -928,10 +928,10 @@ switch (card_id) {
 		card_base_hp=50; card_base_atk=50+40; card_base_def=95+50;
 		card_grid_x=13; card_grid_y=10; break;
 	case 105:
-		card_has_forms=true;
+		if global.mod_gen3to8 { card_has_forms=true; }
 		card_name="Marowak";
 		card_stage=2;
-		if card_form_value<500 {
+		if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=09; card_type_b=-1;
 		card_base_hp=60; card_base_atk=80+50; card_base_def=110+80;
 		card_grid_x=14; card_grid_y=10;}
@@ -966,8 +966,8 @@ switch (card_id) {
 	case 110:
 		card_name="Weezing";
 		card_stage=2;
-		card_has_forms=true;	
-		if card_form_value<500 {
+		if global.mod_gen3to8 { card_has_forms=true; }
+		if card_form_value<500 or global.mod_gen3to8 {
 			card_type_a=12; card_type_b=-1;
 			card_base_hp=65; card_base_atk=90+85; card_base_def=120+70;
 			card_grid_x=5; card_grid_y=11; }
@@ -1055,8 +1055,8 @@ switch (card_id) {
 	case 122:
 		card_name="Mr. Mime";
 		card_stage=1;
-		card_has_forms=true;	
-		if card_form_value<500 {
+		if global.mod_gen3to8 { card_has_forms=true; }
+		if card_form_value<500 or global.mod_gen3to8 {
 			card_type_a=07; card_type_b=08;
 			card_base_hp=40; card_base_atk=45+100; card_base_def=65+120;
 			card_grid_x=3; card_grid_y=12;}
@@ -1221,8 +1221,8 @@ switch (card_id) {
 	case 144:
 		card_name="Articuno";
 		card_stage=1; card_enigma=true;
-		card_has_forms=true;	
-		if card_form_value<500 {
+		if global.mod_gen3to8 { card_has_forms=true; }
+		if card_form_value<500 or global.mod_gen3to8 {
 			card_type_a=13; card_type_b=05;
 			card_base_hp=90; card_base_atk=85+95; card_base_def=100+125;
 			card_grid_x=13; card_grid_y=13; }
@@ -1235,8 +1235,8 @@ switch (card_id) {
 	case 145:
 		card_name="Zapdos";
 		card_stage=1; card_enigma=true;
-		card_has_forms=true;	
-		if card_form_value<500 {
+		if global.mod_gen3to8 { card_has_forms=true; }
+		if card_form_value<500 or global.mod_gen3to8 {
 			card_type_a=04; card_type_b=05;
 			card_base_hp=90; card_base_atk=90+125; card_base_def=85+90;
 			card_grid_x=14; card_grid_y=13; }
@@ -1249,8 +1249,8 @@ switch (card_id) {
 	case 146:
 		card_name="Moltres";
 		card_stage=1; card_enigma=true;
-		card_has_forms=true;	
-		if card_form_value<500 {
+		if global.mod_gen3to8 { card_has_forms=true; }
+		if card_form_value<500 or global.mod_gen3to8 {
 			card_type_a=02; card_type_b=05;
 			card_base_hp=90; card_base_atk=100+125; card_base_def=90+85;
 			card_grid_x=15; card_grid_y=13; }
@@ -1342,8 +1342,8 @@ switch (card_id) {
 	case 157:
 		card_name="Typhlosion";
 		card_stage=3; card_starter=true;
-		card_has_forms=true;	
-		if card_form_value<500 {
+		if global.mod_gen3to8 { card_has_forms=true; }
+		if card_form_value<500 or global.mod_gen3to8 {
 			card_type_a=02; card_type_b=-1;
 			card_base_hp=78; card_base_atk=84+109; card_base_def=78+85;
 			card_grid_x=6; card_grid_y=15; 
@@ -1613,8 +1613,8 @@ switch (card_id) {
 	case 199:
 		card_name="Slowking";
 		card_stage=2;
-		card_has_forms=true;	
-		if card_form_value<500 {
+		if global.mod_gen3to8 { card_has_forms=true; }
+		if card_form_value<500 or global.mod_gen3to8 {
 			card_type_a=03; card_type_b=07;
 			card_base_hp=95; card_base_atk=75+100; card_base_def=80+110;
 			card_grid_x=8; card_grid_y=18; }
@@ -1730,8 +1730,8 @@ switch (card_id) {
 	case 211:
 		card_name="Qwilfish";
 		card_stage=1;
-		card_has_forms=true;	
-		if card_form_value<500 {
+		if global.mod_gen3to8 { card_has_forms=true; }
+		if card_form_value<500 or global.mod_gen3to8 {
 			card_type_a=03; card_type_b=12;
 			card_base_hp=65; card_base_atk=95+55; card_base_def=85+55;
 			card_grid_x=6; card_grid_y=22; }
@@ -1778,8 +1778,8 @@ switch (card_id) {
 		card_grid_x=11; card_grid_y=22;} break;
 	case 215:
 		card_name="Sneasel";
-		card_has_forms=true;	
-		if card_form_value<500 {
+		if global.mod_gen3to8 { card_has_forms=true; }
+		if card_form_value<500 or global.mod_gen3to8 {
 			card_stage=1; card_evo[0]=461;
 			card_type_a=17; card_type_b=13;
 			card_base_hp=55; card_base_atk=95+35; card_base_def=55+75;
@@ -1830,8 +1830,8 @@ switch (card_id) {
 	case 222:
 		card_name="Corsola";
 		card_stage=1;
-		card_has_forms=true;	
-		if card_form_value<500 {
+		if global.mod_gen3to8 { card_has_forms=true; }
+		if card_form_value<500 or global.mod_gen3to8 {
 			card_type_a=03; card_type_b=10;
 			card_base_hp=65; card_base_atk=55+65; card_base_def=95+95;
 			card_grid_x=6; card_grid_y=23; }
@@ -2046,9 +2046,11 @@ switch (card_id) {
 		card_grid_x=-1; card_grid_y=-1; break;
 	*/
 	
-	// DON'T FORGET TO CHANGE normal_poke_id_max WHEN ADDING NEW POKEMON!
+	// DON'T FORGET TO CHANGE global.normal_poke_id_max WHEN ADDING NEW POKEMON!
 	
 	// Gen 3
+	
+	// global.mod_gen3to8=false disables all pokemon from here to 2001 by setting global.normal_poke_id_max.
 	
 	case 252:
 		card_name="Treecko";

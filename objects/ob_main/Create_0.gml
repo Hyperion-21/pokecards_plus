@@ -96,7 +96,10 @@ textbox_timer=0;
 textbox_timer_max=1;
 textbox_char_pos=0;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-#macro normal_poke_id_max 905 //normal (non-secret and non-environment) poke cards
+// #macro global.normal_poke_id_max 905 //normal (non-secret and non-environment) poke cards
+if global.mod_gen3to8 { global.normal_poke_id_max=905; }
+else { global.normal_poke_id_max=251; }
+
 #macro secret_cards_total 2
 #macro environment_cards_total 3
 //
