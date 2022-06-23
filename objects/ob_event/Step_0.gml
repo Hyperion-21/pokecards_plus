@@ -234,6 +234,7 @@ if (apply_event) {
 			        ob_main.main_card_id[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_id;
 			    }
 			}
+			else {evolution_position = 0;}
 		break;
 		case ref_event_megaevolve:
 			if (card_id_in_space[0] != -1)
