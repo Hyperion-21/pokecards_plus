@@ -1,7 +1,7 @@
+if variable_global_exists("mod_gen3to8") { room_goto(rm_main); }
+
 window_set_fullscreen(false);
 window_set_caption("PCL Mod Config");
-
-if variable_global_exists("mod_gen3to8") { room_goto(rm_main); }
 
 global.mod_gen3to8 = undefined;
 global.mod_megaforms = undefined;
