@@ -24,6 +24,7 @@ card_form_change=false;
 card_secret=false;
 card_environment=false;
 //Lets stop crashes like that in the future.
+card_name=card_id;
 card_type_a=00; card_type_b=00;
 card_stage=1;
 card_base_hp=1; 
@@ -4121,7 +4122,7 @@ switch (card_id) {
 	
 	if card_form_value<500 {	card_grid_x=11; card_grid_y=26;}
 	else {	card_grid_x=12; card_grid_y=26;} break;
-	case 0669: card_name="Flabebe"; card_has_forms=true; card_stage=1;  card_evo[1]=670; card_type_a=8; card_type_b=-1; card_base_hp=44; card_base_atk=38+61; card_base_def=39+79; 
+	case 0669: card_name="Flabebe"; card_has_forms=true; card_stage=1;  card_evo[0]=670; card_type_a=8; card_type_b=-1; card_base_hp=44; card_base_atk=38+61; card_base_def=39+79; 
 	if card_form_value<200{ card_grid_x=13; card_grid_y=26;}
 	else if card_form_value<400{card_grid_x=14; card_grid_y=26; }
 	else if card_form_value<600{card_grid_x=15; card_grid_y=26; }
