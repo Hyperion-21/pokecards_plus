@@ -1,4 +1,5 @@
 buttonstate = true;
+window_set_size(window_get_width() * 2, window_get_height() * 2);
 
 if file_exists("moddata.txt") {
 	

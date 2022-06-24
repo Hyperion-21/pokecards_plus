@@ -1,5 +1,6 @@
 if variable_global_exists("mod_gen3to8") { room_goto(rm_main); }
 
+draw_set_font(fn_m6x11);
 window_set_fullscreen(false);
 window_set_caption("PCL Mod Config");
 
@@ -13,7 +14,7 @@ i = 1;
 max_button = 5;
 
 while i <= max_button {
-	instance_create_depth(2, 40*i, 0, ob_initbutton, {init_id : i});
+	instance_create_depth(2, 40*i + 2, 0, ob_initbutton, {init_id : i});
 	i++;
 }
 
