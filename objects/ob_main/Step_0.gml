@@ -229,7 +229,7 @@ if roadmap_generated=false {
 			
 		// [weight, event reference, free] Determine event odds.
 		var events = [
-			[10, ref_event_megaevolve, false],
+			[global.mod_megaforms ? 10 : 0, ref_event_megaevolve, false],
 			[10, ref_event_changeform, false],
 			[330, ref_event_battle, true],
 			[25, ref_event_payout, true],
