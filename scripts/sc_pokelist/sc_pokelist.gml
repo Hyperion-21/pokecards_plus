@@ -3695,10 +3695,10 @@ switch (card_id) {
 	case 0520: card_name="Tranquill"; card_stage=2; card_evo[0]=521; card_type_a=0; card_type_b=5; card_base_hp=62; card_base_atk=77+50; card_base_def=62+42; card_grid_x=15; card_grid_y=11; break;
 	case 0521: card_name="Unfezant"; card_stage=3;  card_type_a=0; card_type_b=5; card_base_hp=80; card_base_atk=115+65; card_base_def=80+55; 
 	
-	if card_form_value<500 {card_grid_x=1; card_grid_y=12; }
-	else {card_grid_x=2; card_grid_y=12; }
+		if card_form_value<500 {card_grid_x=1; card_grid_y=12; }
+		else {card_grid_x=2; card_grid_y=12; }
 	
-	break;
+		break;
 	
 	case 0522: card_name="Blitzle"; card_stage=1; card_evo[0]=523; card_type_a=4; card_type_b=-1; card_base_hp=45; card_base_atk=60+50; card_base_def=32+32; card_grid_x=3; card_grid_y=12; break;
 	case 0523: card_name="Zebstrika"; card_stage=2;  card_type_a=4; card_type_b=-1; card_base_hp=75; card_base_atk=100+80; card_base_def=63+63; card_grid_x=4; card_grid_y=12; break;
