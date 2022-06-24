@@ -16,24 +16,27 @@ if (show_deck)
         }
         i++;
     }
-    i = 0;
-    repeat (card_event_inventory_total)
-    {
-		if (!variable_instance_exists(card_inventory[i], "card_played")) {
-			i++;
-			continue;
-		}
+	
+	if global.mod_qol {
+	    i = 0;
+	    repeat (card_event_inventory_total)
+	    {
+			if (!variable_instance_exists(card_inventory[i], "card_played")) {
+				i++;
+				continue;
+			}
 
 		
-        if (card_inventory[i].card_played == false)
-        {
-            card_inventory[i].potential_x = screen_main_x + inventory_x + (60 * i);
-            card_inventory[i].potential_y = screen_main_y + inventory_y;
-        }
-        i++;
-    }
+	        if (card_inventory[i].card_played == false)
+	        {
+	            card_inventory[i].potential_x = screen_main_x + inventory_x + (60 * i);
+	            card_inventory[i].potential_y = screen_main_y + inventory_y;
+	        }
+	        i++;
+	    }
+	}
     
-    if (mouse_y >= screen_main_y + inventory_y && mouse_y < screen_main_y + inventory_y + 80 + 8 && ob_main.cursor_hide == false)
+    if global.mod_qol { if (mouse_y >= screen_main_y + inventory_y && mouse_y < screen_main_y + inventory_y + 80 + 8 && ob_main.cursor_hide == false)
     {
         if (mouse_wheel_up())
         {
@@ -51,7 +54,7 @@ if (show_deck)
                 inventory_x = cam_w - (card_event_inventory_total * 60) - 1;
             }
         }
-    }
+    }}
     else if (mouse_y >= screen_main_y + deck_y - 8 && mouse_y < screen_main_y + deck_y + 80 && ob_main.cursor_hide == false)
     {
         if (mouse_wheel_up())
@@ -73,7 +76,7 @@ if (show_deck)
     }
         
     if (mouse_check_button(mb_left) && ob_main.cursor_hide == false && cam_w < (card_event_inventory_total * 60) &&
-        ((mouse_y >= screen_main_y + inventory_y + 80 && mouse_y < screen_main_y + inventory_y + 88) || hold_inventory_bar == true))
+        ((mouse_y >= screen_main_y + inventory_y + 80 && mouse_y < screen_main_y + inventory_y + 88) || hold_inventory_bar == true) && global.mod_qol)
     {
         var mouse_pos = mouse_x - screen_main_x - 8 - 4;
         var mouse_pos_max = cam_w - 16 - 10;
@@ -158,7 +161,7 @@ if (apply_event) {
 	                ii++;
 	            }
 	        }
-	        else
+	        else if global.mod_qol
 	        {
 	            repeat (card_event_inventory_total)
 	            {

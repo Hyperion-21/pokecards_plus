@@ -25,8 +25,8 @@ for (var i = 0; i < ob_main.berrydeck_total; i++)
 
 switch (event_kind){
 	case ref_event_cardpack:
-		card_prize = 5;
-		var main_amount = 5, berry_amount = 1;
+		card_prize = global.mod_qol ? 5 : 4;
+		var main_amount = global.mod_qol ? 5 : 4, berry_amount = 1;
 
 		var i = 0;
 		repeat (card_prize)
@@ -125,7 +125,7 @@ switch (event_kind){
 	case ref_event_freecard:
 		card_prize = 1;
 		var i = 0;
-		repeat (5)
+		repeat (global.mod_qol ? 5 : 4)
 		{
 		    create_card_cat = 0;
 		    create_card_id = -1;
@@ -265,9 +265,11 @@ switch (event_kind){
 	case ref_event_deglyph:
 		show_deck = true;
 
-		inventory_x = 4;
-		inventory_y = 4;
-		hold_inventory_bar = false;
+		if global.mod_qol {
+			inventory_x = 4;
+			inventory_y = 4;
+			hold_inventory_bar = false;
+		}
 
 		deck_x = 4;
 		deck_y = 204;
@@ -297,14 +299,14 @@ switch (event_kind){
 		    {
 		        card_event_total++;
 		    }
-		    else
+		    else if global.mod_qol
 		    {
 		        card_event_inventory_total++;
 		    }
 		    i++;
 		}
 
-		var i = 0, ii = 0, iii = 0;
+		var i = 0, ii = 0; var iii = 0;
 		repeat (ob_main.maindeck_total)
 		{
 		    create_card_cat = 0;
@@ -323,7 +325,7 @@ switch (event_kind){
         
 		        ii++;
 		    }
-		    else
+		    else if global.mod_qol
 		    {
 		        card_inventory[iii] = instance_create_layer(x, y, "instances", ob_card);
 		        card_inventory[iii].num_in_all = i;
@@ -340,7 +342,7 @@ switch (event_kind){
 		    event_space_total = 2;
 		    for (var i = 0; i < event_space_total; i++)
 		    {
-		        event_space_id[i] = instance_create_layer(screen_main_x + 227 - 35 + 71 * i, screen_main_y + 109, "instances", ob_card_space);
+		        event_space_id[i] = instance_create_layer(screen_main_x + 227 - 35 + 71 * i, screen_main_y + (global.mod_qol ? 109 : 59), "instances", ob_card_space);
 		    }
 		}
 		else
@@ -349,14 +351,14 @@ switch (event_kind){
 		    event_space_total = 1;
 		    for (var i = 0; i < event_space_total; i++)
 		    {
-		        event_space_id[i] = instance_create_layer(screen_main_x + 227, screen_main_y + 109, "instances", ob_card_space);
+		        event_space_id[i] = instance_create_layer(screen_main_x + 227, screen_main_y + (global.mod_qol ? 109 : 59), "instances", ob_card_space);
 		    }
 		}
 
 		var i = 0, button_create;
 		repeat (2)
 		{
-		    button_create = instance_create_layer(screen_main_x + 227 + spacing, screen_main_y + 117 + 42 * i, "instances", ob_button_31x24);
+		    button_create = instance_create_layer(screen_main_x + (global.mod_qol ? 227 + spacing : 219 + 42 * i), screen_main_y + (global.mod_qol ? 117 + 42 * i : 155), "instances", ob_button_31x24);
 		    button_create.button_id = i;
 		    i++;
 		}

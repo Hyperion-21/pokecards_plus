@@ -2,7 +2,7 @@ if (show_deck == true)
 {
     var rel_hud = ceil(ob_main.moving_hud);
     
-    if (cam_w < (card_event_inventory_total * 60))
+    if (cam_w < (card_event_inventory_total * 60) and global.mod_qol)
     {
         var inventory_pos = inventory_x - 4, mouse_pos_max = cam_w - 16 - 10, inventory_pos_max = cam_w - (card_event_inventory_total * 60) - 5;
         var inventory_x_percent = inventory_pos * 100 / inventory_pos_max;
@@ -19,8 +19,9 @@ if (show_deck == true)
         sc_drawrectangle(deck_bar_x, screen_main_y + deck_y - 8, deck_bar_x + 16, screen_main_y + deck_y - 4, global.color_white, c_white, 0, 0.5, 0, 0);
     }
     
-    draw_sprite_general(sp_sheet, 0, 16 * 13, 16 * 9, 48, 32, screen_main_x + cam_w - 92, screen_main_y - rel_hud + 110, 1, 1, 0, c_white, c_white, c_white, c_white, 0.5);
-    draw_sprite_general(sp_sheet, 0, 16 * 16, 16 * 9, 48, 32, screen_main_x + cam_w - 92, screen_main_y + rel_hud + 110 + 36, 1, 1, 0, c_white, c_white, c_white, c_white, 0.5);
-}
+    if global.mod_qol { 
+		draw_sprite_general(sp_sheet, 0, 16 * 13, 16 * 9, 48, 32, screen_main_x + cam_w - 92, screen_main_y - rel_hud + 110, 1, 1, 0, c_white, c_white, c_white, c_white, 0.5);
+		draw_sprite_general(sp_sheet, 0, 16 * 16, 16 * 9, 48, 32, screen_main_x + cam_w - 92, screen_main_y + rel_hud + 110 + 36, 1, 1, 0, c_white, c_white, c_white, c_white, 0.5);}
+	}
 
 sc_draw_tooltip_text(screen_main_x + cam_w);

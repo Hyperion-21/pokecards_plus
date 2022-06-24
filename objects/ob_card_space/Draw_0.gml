@@ -51,7 +51,7 @@ if (instance_exists(ob_event))
 			    {
 			        var money_color = global.color_damage;
 			    }
-			    sc_drawtext(x - 108, y + 20, "Cost: $" + string(ob_main.event_cost_standby_levelup) + " / $" + string(ob_main.money - ob_main.event_cost_standby),
+			    sc_drawtext(x + (global.mod_qol ? -108 : 28), y + (global.mod_qol ? 20 : -34), "Cost: $" + string(ob_main.event_cost_standby_levelup) + " / $" + string(ob_main.money - ob_main.event_cost_standby),
 			        money_color, global.color_black, 1, 1, 0, -1);
     
 			    with (occupy_id)
@@ -69,7 +69,7 @@ if (instance_exists(ob_event))
 			    {
 			        levelup_info_text = levelup_info_text + " / +1 TYPE BONUS";
 			    }
-			    sc_drawtext(x - 108, y + 40, levelup_info_text, global.color_card_mid, global.color_black, 1, 1, 0, -1);
+			    sc_drawtext(x + (global.mod_qol ? -108 : 28), y + (global.mod_qol ? 40 : -20), levelup_info_text, global.color_card_mid, global.color_black, 1, 1, 0, -1);
 			}
 
 		break;
@@ -112,7 +112,7 @@ if (instance_exists(ob_event))
 			        var new_cost_text = "Enigma Berry";
 			    }
     
-			    sc_drawtext(x - 108, y + 30, "Card cost: +1 " + new_cost_text, global.color_card_light, global.color_black, 1, 1, 0, -1);
+			    sc_drawtext(x + (global.mod_qol ? -108 : -28), y + (global.mod_qol ? 30 : -24), "Card cost: +1 " + new_cost_text, global.color_card_light, global.color_black, 1, 1, 0, -1);
 			}
 
 		break;
