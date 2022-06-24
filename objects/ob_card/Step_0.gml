@@ -285,6 +285,8 @@ else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spr
 							for (var ii=0; ii<8; ii++;) {
 								ob_event.evo_list[ii]=card_evo[ii];
 							}
+							ob_event.evolution_position=0;
+							ob_event.count=0;
 						}
 						//
 						i=ob_event.event_space_total;
