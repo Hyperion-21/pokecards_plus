@@ -175,7 +175,7 @@ if card_cat=0 and card_face=true and in_view=true {
 	sc_drawtext(draw_x+53,draw_y+66,string(card_def),num_color,global.color_black,1,(1/1.7),0,-1);
 	//
 	//DELETE
-	if card_delete_timer>0 {
+	if card_delete_timer>20 {
 		draw_sprite_general(sp_sheet,0,16*37+4,16*0,57,80,draw_x,draw_y,1,1,0,c_white,c_white,c_white,c_white,1);
 		draw_healthbar(draw_x+8,draw_y+55,draw_x+48,draw_y+58,card_delete_timer*100/card_delete_timer_max,global.color_black,global.color_damage,global.color_damage,0,true,false);
 		//
@@ -221,6 +221,16 @@ else if card_cat=1 and card_face=true and in_view=true {
 			draw_sprite_general(sp_sheet,0,16*10,16*9,16,16,draw_x+42,draw_y+72+rel_hud,1,1,0,c_white,c_white,c_white,c_white,0.8);
 		}
 		sc_drawtext(draw_x+54,draw_y+64,string(ob_deckbuild.deck_berry_used[card_id-3000]),num_color,global.color_black,1,0.8,0,-1);
+	}
+	//Remove
+	if berry_remove_timer>10 {
+		draw_sprite_general(sp_sheet,0,16*33+4,16*0,57,80,draw_x,draw_y,1,1,0,c_white,c_white,c_white,c_white,1);
+		draw_healthbar(draw_x+8,draw_y+55,draw_x+48,draw_y+58,berry_remove_timer*100/berry_remove_timer_max,global.color_black,global.color_friendly,global.color_friendly,0,true,false);
+		//
+		draw_set_font(fn_matchup);
+		draw_set_halign(fa_center);
+		
+		
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

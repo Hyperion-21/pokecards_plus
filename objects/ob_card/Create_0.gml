@@ -33,7 +33,9 @@ already_attacked=false;
 effect_damaged=0;
 //
 card_delete_timer=0;
-card_delete_timer_max=60;
+card_delete_timer_max=100;
+berry_remove_timer=0;
+berry_remove_timer_max=60;
 //
 auto_turn_add=false;
 if card_cat=0 and reference_id=ob_control { enemy_randomizer=reference_id.create_enemy_randomizer; }

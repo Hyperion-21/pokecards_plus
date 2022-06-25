@@ -309,7 +309,7 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 	ob_main.mouse_cursor=1;
 	//
 	if card_cat=0 {
-		if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false {
+		if mouse_check_button_released(mb_left) and ob_main.cursor_hide=false {
 			sc_playsound(sn_card,50,false,false);
 			//
 			if card_indeck[0]=false and ob_deckbuild.deck_build_used_total<ob_main.maindeck_size_max {
@@ -326,8 +326,8 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 			}
 			card_delete_timer=0;
 		}
-		else if mouse_check_button(mb_right) and ob_deckbuild.deck_build_all_total>ob_main.maindeck_size_min_full and card_indeck[0]=false and ob_main.cursor_hide=false {
-			if mouse_check_button_pressed(mb_right) { sc_playsound(sn_card,50,false,false); }
+		else if mouse_check_button(mb_left) and ob_deckbuild.deck_build_all_total>ob_main.maindeck_size_min_full and card_indeck[0]=false and ob_main.cursor_hide=false {
+			if mouse_check_button_pressed(mb_left) { sc_playsound(sn_card,50,false,false); }
 			//
 			card_delete_timer++;
 			if card_delete_timer=card_delete_timer_max {
@@ -351,7 +351,7 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 		var berry_common_used=ob_deckbuild.deck_berry_used[0]+ob_deckbuild.deck_berry_used[1]+ob_deckbuild.deck_berry_used[2];
 		var berry_enigma_used=ob_deckbuild.deck_berry_used[3];
 		//
-		if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false {
+		/*if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false {
 			sc_playsound(sn_click,50,false,false);
 			if ((card_id!=3003) or (card_id=3003 and ob_deckbuild.deck_berry_total[3]<=berry_common_used)) {
 				ob_deckbuild.deck_berry_used[card_id-3000]=ob_deckbuild.deck_berry_total[card_id-3000];
@@ -368,26 +368,35 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 			berry_enigma_used=ob_deckbuild.deck_berry_used[3];
 			if berry_enigma_used>berry_common_used { ob_deckbuild.deck_berry_used[3]=berry_common_used; }
 		}
-		else if (mouse_wheel_up() or keyboard_check_pressed(vk_up) or keyboard_check_pressed(ord("W"))) and ob_main.cursor_hide=false {
+		else */if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false {
 			if ob_deckbuild.deck_berry_used[card_id-3000]<ob_deckbuild.deck_berry_total[card_id-3000] and
 			((card_id!=3003) or (card_id=3003 and berry_enigma_used+1<=berry_common_used)) {
 				sc_playsound(sn_click,50,false,false);
 				ob_deckbuild.deck_berry_used[card_id-3000]++;
 			}
 		}
-		else if (mouse_wheel_down() or keyboard_check_pressed(vk_down) or keyboard_check_pressed(ord("S"))) and ob_main.cursor_hide=false {
-			if ob_deckbuild.deck_berry_used[card_id-3000]>0 {
-				sc_playsound(sn_click,50,false,false);
-				ob_deckbuild.deck_berry_used[card_id-3000]--;
-				//
-				berry_common_used=ob_deckbuild.deck_berry_used[0]+ob_deckbuild.deck_berry_used[1]+ob_deckbuild.deck_berry_used[2];
-				berry_enigma_used=ob_deckbuild.deck_berry_used[3];
-				if berry_enigma_used>berry_common_used { ob_deckbuild.deck_berry_used[3]=berry_common_used; }
+		else if mouse_check_button(mb_left) and ob_main.cursor_hide=false {
+			
+			//
+			berry_remove_timer++;
+			if berry_remove_timer=berry_remove_timer_max and ob_deckbuild.deck_berry_used[card_id-3000]>0{
+				ob_deckbuild.deck_berry_used[card_id-3000]=0;
+				berry_remove_timer=0;
+				if mouse_check_button_pressed(mb_left) { sc_playsound(sn_card,50,false,false); }
+				while((ob_deckbuild.deck_berry_used[0]+ob_deckbuild.deck_berry_used[1]+ob_deckbuild.deck_berry_used[2])<ob_deckbuild.deck_berry_used[3]){
+					ob_deckbuild.deck_berry_used[3]--;
+				}
+				
+			
 			}
+		}
+		else {
+			berry_remove_timer=0;
 		}
 	}
 }
 else {
+	berry_remove_timer=0;
 	card_delete_timer=0;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
