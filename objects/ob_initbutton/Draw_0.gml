@@ -31,9 +31,9 @@ switch (init_id) {
 		global.mod_speed = buttonstate;
 		break;
 	case 5:
-		draw_text(id.x + 42, id.y + 2,"Campfires (WIP)"); 
+		draw_text(id.x + 42, id.y + 2,"Campfires and Sacrifices"); 
 		draw_set_font(fn_m3x6);
-		draw_text(id.x + 42, id.y + 18,"Toggles if the Campfire event occurs."); 
+		draw_text(id.x + 42, id.y + 18,"Toggles if the Campfire or Sacrifice event occurs."); 
 		global.mod_campfire = buttonstate;
 		break;
 }

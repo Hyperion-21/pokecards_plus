@@ -241,8 +241,8 @@ if roadmap_generated=false {
 			[35, ref_event_glyph, false],
 			[10, ref_event_deglyph, false],
 			[15, ref_event_tribute, false],
-			[15, ref_event_sacrifice, false],
-			[10, ref_event_campfire, true]
+			[global.mod_campfire ? 15 : 0, ref_event_sacrifice, false],
+			[global.mod_campfire ? 10 : 0, ref_event_campfire, true]
 		];
 		
 		do {
