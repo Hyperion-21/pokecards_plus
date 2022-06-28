@@ -26,7 +26,7 @@ for (var i = 0; i < ob_main.berrydeck_total; i++)
 switch (event_kind){
 	case ref_event_cardpack:
 		card_prize = 5;
-		var main_amount = 5, berry_amount = 1;
+		var main_amount = card_prize, berry_amount = round(main_amount/5);
 
 		var i = 0;
 		repeat (card_prize)

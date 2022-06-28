@@ -100,6 +100,7 @@
     {"id":{"name":"sp_sheet","path":"sprites/sp_sheet/sp_sheet.yy",},"order":13,},
     {"id":{"name":"ob_splash","path":"objects/ob_splash/ob_splash.yy",},"order":12,},
     {"id":{"name":"sc_glyph_text","path":"scripts/sc_glyph_text/sc_glyph_text.yy",},"order":11,},
+    {"id":{"name":"sc_determine_card_group","path":"scripts/sc_determine_card_group/sc_determine_card_group.yy",},"order":24,},
     {"id":{"name":"sp_splash_title_kana","path":"sprites/sp_splash_title_kana/sp_splash_title_kana.yy",},"order":8,},
     {"id":{"name":"rm_main","path":"rooms/rm_main/rm_main.yy",},"order":0,},
   ],
