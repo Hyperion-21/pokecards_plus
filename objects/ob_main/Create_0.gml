@@ -379,4 +379,4 @@ if progress_b>255 { progress_b=255; }
 global.color_character_light=make_colour_rgb(progress_r,progress_g,progress_b);
 
 time_incrementer = 1;
-backup_speed = 10000;
+backup_speed = 30 * 60 * 1000; // miliseconds per backup

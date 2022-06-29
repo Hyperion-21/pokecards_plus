@@ -706,7 +706,9 @@ else if event_transition>-1 and fade_black>=1 {
 		}
 		//
 		if roadmap_area<roadmap_current_max {
-			if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(false); }}
+			if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { 
+				sc_data_save(false);
+				}}
 	}
 	else {
 		if !instance_exists(ob_event) {
@@ -727,7 +729,7 @@ else if event_transition>-1 and fade_black>=1 {
 			with (ob_button_15x16) { instance_destroy(); }
 			with (ob_button_31x24) { instance_destroy(); }
 			//
-			if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(false); }
+			if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(false); show_debug_message("check1"); }
 		}
 	}
 	//
@@ -852,6 +854,8 @@ if roadmap_area=roadmap_current_max {
 	roadmap_area=0;
 	roadmap_generated=false;
 	zone_first_lap=true;
+	sc_data_save(false);
+	sc_data_save(true);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if !instance_exists(ob_control) and !instance_exists(ob_event) {
@@ -940,7 +944,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 			with (ob_button_31x24) { instance_destroy(); }
 			screen_transition=2;
 			//
-			if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(false); }
+			if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(false); show_debug_message("check2"); }
 		}
 	}
 	else {
