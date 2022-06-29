@@ -345,7 +345,8 @@ repeat (8) {
 sc_config_load();
 sc_config_save();
 sc_data_load();
-sc_data_save();
+sc_data_save(false);
+sc_data_save(true);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 music_player=sc_playsound(ms_main,100,true,true);
 music_beat_margin=0;
@@ -376,3 +377,6 @@ if progress_r>255 { progress_r=255; }
 if progress_g>255 { progress_g=255; }
 if progress_b>255 { progress_b=255; }
 global.color_character_light=make_colour_rgb(progress_r,progress_g,progress_b);
+
+time_incrementer = 1;
+backup_speed = 10000;
