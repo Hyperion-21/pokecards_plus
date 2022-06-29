@@ -23,6 +23,15 @@ card_form_change=false;
 //
 card_secret=false;
 card_environment=false;
+//Lets stop crashes like that in the future.
+card_name=card_id;
+card_type_a=00; card_type_b=00;
+card_stage=1;
+card_base_hp=1; 
+card_base_atk=1; 
+card_base_def=1;
+card_grid_x=1; 
+card_grid_y=1;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 switch (card_id) {
 	case 001:
@@ -3684,8 +3693,13 @@ switch (card_id) {
 	case 0518: card_name="Musharna"; card_stage=2;  card_type_a=7; card_type_b=-1; card_base_hp=116; card_base_atk=55+107; card_base_def=85+95; card_grid_x=13; card_grid_y=11; break;
 	case 0519: card_name="Pidove"; card_stage=1; card_evo[0]=520; card_type_a=0; card_type_b=5; card_base_hp=50; card_base_atk=55+36; card_base_def=50+30; card_grid_x=14; card_grid_y=11; break;
 	case 0520: card_name="Tranquill"; card_stage=2; card_evo[0]=521; card_type_a=0; card_type_b=5; card_base_hp=62; card_base_atk=77+50; card_base_def=62+42; card_grid_x=15; card_grid_y=11; break;
-	case 0521: card_name="Unfezant"; card_stage=3;  card_type_a=0; card_type_b=5; card_base_hp=80; card_base_atk=115+65; card_base_def=80+55; card_grid_x=1; card_grid_y=12; break;
-	//case 0521: card_name="Unfezant"; card_stage=3;  card_type_a=0; card_type_b=5; card_base_hp=80; card_base_atk=115+65; card_base_def=80+55; card_grid_x=2; card_grid_y=12; break;
+	case 0521: card_name="Unfezant"; card_stage=3;  card_type_a=0; card_type_b=5; card_base_hp=80; card_base_atk=115+65; card_base_def=80+55; 
+	
+		if card_form_value<500 {card_grid_x=1; card_grid_y=12; }
+		else {card_grid_x=2; card_grid_y=12; }
+	
+		break;
+	
 	case 0522: card_name="Blitzle"; card_stage=1; card_evo[0]=523; card_type_a=4; card_type_b=-1; card_base_hp=45; card_base_atk=60+50; card_base_def=32+32; card_grid_x=3; card_grid_y=12; break;
 	case 0523: card_name="Zebstrika"; card_stage=2;  card_type_a=4; card_type_b=-1; card_base_hp=75; card_base_atk=100+80; card_base_def=63+63; card_grid_x=4; card_grid_y=12; break;
 	case 0524: card_name="Roggenrola"; card_stage=1; card_evo[0]=525; card_type_a=10; card_type_b=-1; card_base_hp=55; card_base_atk=75+25; card_base_def=85+25; card_grid_x=5; card_grid_y=12; break;
@@ -3920,11 +3934,11 @@ switch (card_id) {
 	case 0590: card_name="Foongus"; card_stage=1; card_evo[0]=591; card_type_a=1; card_type_b=12; card_base_hp=69; card_base_atk=55+55; card_base_def=45+55; card_grid_x=12; card_grid_y=17; break;
 	case 0591: card_name="Amoonguss"; card_stage=2;  card_type_a=1; card_type_b=12; card_base_hp=114; card_base_atk=85+85; card_base_def=70+80; card_grid_x=13; card_grid_y=17; break;
 	case 0592: card_name="Frillish"; card_stage=1; card_evo[0]=593;  card_type_a=3; card_type_b=16; card_base_hp=55; card_base_atk=40+65; card_base_def=50+85; 
-	{card_grid_x=15; card_grid_y=17;} 
-	{card_grid_x=1; card_grid_y=18;} break;
+	if card_form_value<500 {card_grid_x=15; card_grid_y=17;} 
+	else {card_grid_x=1; card_grid_y=18;} break;
 	case 0593: card_name="Jellicent"; card_stage=2;  card_type_a=3; card_type_b=16; card_base_hp=100; card_base_atk=60+85; card_base_def=70+105; 
-	card_grid_x=2; card_grid_y=18; }
-	card_grid_x=3; card_grid_y=18;} break;
+	if card_form_value<500 {card_grid_x=2; card_grid_y=18; }
+	else {card_grid_x=3; card_grid_y=18;} break;
 	case 0594: card_name="Alomomola"; card_stage=1;  card_type_a=3; card_type_b=-1; card_base_hp=165; card_base_atk=75+40; card_base_def=80+45; card_grid_x=4; card_grid_y=18; break;
 	case 0595: card_name="Joltik"; card_stage=1; card_evo[0]=596; card_type_a=11; card_type_b=4; card_base_hp=50; card_base_atk=47+57; card_base_def=50+50; card_grid_x=5; card_grid_y=18; break;
 	case 0596: card_name="Galvantula"; card_stage=2;  card_type_a=11; card_type_b=4; card_base_hp=70; card_base_atk=77+97; card_base_def=60+60; card_grid_x=6; card_grid_y=18; break;
@@ -4113,8 +4127,8 @@ switch (card_id) {
 	
 	if card_form_value<500 {	card_grid_x=11; card_grid_y=26;}
 	else {	card_grid_x=12; card_grid_y=26;} break;
-	case 0669: card_name="Flabebe"; card_has_forms=true; card_stage=1;  card_evo[1]=670; card_type_a=8; card_type_b=-1; card_base_hp=44; card_base_atk=38+61; 
-	if card_form_value<200{card_base_def=39+79; card_grid_x=13; card_grid_y=26;}
+	case 0669: card_name="Flabebe"; card_has_forms=true; card_stage=1;  card_evo[0]=670; card_type_a=8; card_type_b=-1; card_base_hp=44; card_base_atk=38+61; card_base_def=39+79; 
+	if card_form_value<200{ card_grid_x=13; card_grid_y=26;}
 	else if card_form_value<400{card_grid_x=14; card_grid_y=26; }
 	else if card_form_value<600{card_grid_x=15; card_grid_y=26; }
 	else if card_form_value<800{card_grid_x=1; card_grid_y=27; }
@@ -4939,9 +4953,10 @@ switch (card_id) {
 		card_base_hp=130; card_base_atk=0; card_base_def=200; //hp 3-20, def 1-5
 		card_grid_x=3; card_grid_y=14; break;
 	default:
+		card_secret=true;
 		card_sheet=sp_poke_c;
 		card_name=card_id;
-		card_stage=1;
+		card_stage=3;
 		card_type_a=00; card_type_b=-1;
 		card_base_hp=100; card_base_atk=100; card_base_def=100; //hp 3-20, def 1-5
 		card_grid_x=5; card_grid_y=14; 

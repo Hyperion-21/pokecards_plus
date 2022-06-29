@@ -3,9 +3,17 @@
 
 THIS IS NOT CREATED BY THE ORIGINAL GAME'S CREATOR NOR THE POKEMON COMPANY! THIS IS A MOD OF A FANGAME! FIND THE ORIGINAL GAME [HERE](https://moodytail.itch.io/pocket-crystal-league)! ALL CREDIT TO THEM!
 
-Adds Pokemon from all 7 generations.
-
-ALL POKEMON ARE ADDED! We just need to balance them...
+Mod contents:
+- Added Generation 3 - 8.
+- Included all alternative forms. (Alolan/Galarian/Hisui)
+- Boosters contain 5 cards.
+- Free card event gives 5 options.
+- Added a Campfire event.
+- Added a Sacrifice event.
+- Added a Mega evolution event.
+- Added a Deglyph event.
+- Changed evolution event to be multi use.
+- Included chances to get other generation starters from starting decks.
 
 To build this mod:
 - Clone the repo onto your computer
