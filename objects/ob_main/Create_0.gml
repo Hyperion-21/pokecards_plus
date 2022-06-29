@@ -1,7 +1,7 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
 #macro game_version "v1.6.0.0"
-#macro pclp_version "v1.3.0.6"
+#macro pclp_version "v1.3.0.7"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -345,7 +345,8 @@ repeat (8) {
 sc_config_load();
 sc_config_save();
 sc_data_load();
-sc_data_save();
+sc_data_save(false);
+sc_data_save(true);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 music_player=sc_playsound(ms_main,100,true,true);
 music_beat_margin=0;
@@ -376,3 +377,20 @@ if progress_r>255 { progress_r=255; }
 if progress_g>255 { progress_g=255; }
 if progress_b>255 { progress_b=255; }
 global.color_character_light=make_colour_rgb(progress_r,progress_g,progress_b);
+
+time_incrementer = 1;
+backup_speed = 30 * 60 * 1000; // miliseconds per backup
+
+if !file_exists("!README!.txt") {
+	readme = file_text_open_write("!README!.txt");
+	
+	file_text_write_string(readme,
+		"PCL+ (as of v1.3.0.7) will only read/write to files specifically named \"data_pcl+.sav\" or \"config_pcl+.sav\". Any other file is ignored. The config file isn't that useful for save editing purposes, so the data file will be your primary focus most of the time.\n"
+		+ "\n"
+		+ "To transfer a save file from one device to another, consult https://moodytail.itch.io/pocket-crystal-league/devlog/384066/how-to-transfer-save-files-from-one-computer-into-another\n"
+		+ "\n"
+		+ "To load a backup save, simply move the backup to the main save folder, and rename the backup to \"data_pcl+.sav\"."
+	);
+	
+	file_text_close(readme);
+}
