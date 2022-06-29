@@ -380,3 +380,17 @@ global.color_character_light=make_colour_rgb(progress_r,progress_g,progress_b);
 
 time_incrementer = 1;
 backup_speed = 30 * 60 * 1000; // miliseconds per backup
+
+if !file_exists("!README!.txt") {
+	readme = file_text_open_write("!README!.txt");
+	
+	file_text_write_string(readme,
+		"PCL+ (as of v1.3.0.7) will only read/write to files specifically named \"data_pcl+.sav\" or \"config_pcl+.sav\". Any other file is ignored. The config file isn't that useful for save editing purposes, so the data file will be your primary focus most of the time.\n"
+		+ "\n"
+		+ "To transfer a save file from one device to another, consult https://moodytail.itch.io/pocket-crystal-league/devlog/384066/how-to-transfer-save-files-from-one-computer-into-another\n"
+		+ "\n"
+		+ "To load a backup save, simply move the backup to the main save folder, and rename the backup to \"data_pcl+.sav\"."
+	);
+	
+	file_text_close(readme);
+}
