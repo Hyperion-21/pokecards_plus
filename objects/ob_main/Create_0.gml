@@ -1,7 +1,7 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
 #macro game_version "v1.6.0.0"
-#macro pclp_version "v1.3.0.7"
+#macro pclp_version "v1.3.1.0"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
