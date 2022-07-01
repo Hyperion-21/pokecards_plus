@@ -1,3 +1,8 @@
+if current_time >= backup_speed * time_incrementer {
+	time_incrementer++;
+	sc_data_save(true);
+}
+
 if mouse_check_button(mb_middle) or instance_exists(ob_splash) or
 type_chart=true or credits_screen=true or ending_screen=true or textbox_string[textbox_current]!="" { cursor_hide=true; }
 else { cursor_hide=false; }
@@ -357,7 +362,7 @@ if roadmap_generated=false {
 	//
 	roadmap_generated=true;
 	roadmap_get_details=true;
-	sc_data_save();
+	sc_data_save(false);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if roadmap_get_details=true {
@@ -615,7 +620,7 @@ else if event_transition>-1 and fade_black>=1 {
 			//zone_first_lap=true;
 		}
 		//
-		sc_data_save();
+		sc_data_save(false);
 	}
 	else if event_transition=ref_event_loop {
 		if area_zone=area_zone_max-1 and roadmap_area>roadmap_current_max-roadmap_league_max {
@@ -627,14 +632,14 @@ else if event_transition>-1 and fade_black>=1 {
 			zone_first_lap=false;
 		}
 		//
-		if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(); }
+		if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(false); }
 	}
 	else if event_transition=ref_event_payout {
 		if area_zone=0 and zone_first_lap=true and roadmap_area<roadmap_lab_max { money+=tutorial_payout; } //same conditions also when getting event name
 		else { money+=money_payout; }
 		roadmap_area++;
 		//
-		if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(); }
+		if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(false); }
 	}
 	else if event_transition=ref_event_battle or event_transition=ref_event_gymbattle or event_transition=ref_event_elitebattle or event_transition=ref_event_championbattle or
 	event_transition=ref_event_tutorial {
@@ -701,7 +706,9 @@ else if event_transition>-1 and fade_black>=1 {
 		}
 		//
 		if roadmap_area<roadmap_current_max {
-			if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(); }}
+			if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { 
+				sc_data_save(false);
+				}}
 	}
 	else {
 		if !instance_exists(ob_event) {
@@ -722,7 +729,7 @@ else if event_transition>-1 and fade_black>=1 {
 			with (ob_button_15x16) { instance_destroy(); }
 			with (ob_button_31x24) { instance_destroy(); }
 			//
-			if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(); }
+			if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(false); show_debug_message("check1"); }
 		}
 	}
 	//
@@ -806,6 +813,30 @@ if (RUN_FROM_IDE) {
 	if keyboard_check_pressed(vk_f12) { game_restart(); }
 	if keyboard_check_pressed(vk_f11) { roadmap_area++; }
 	if keyboard_check_pressed(vk_f10) { money+=1000; }
+	if keyboard_check_pressed(vk_f9) { 
+		event_card_weight[event_card_group_secret] = 10000;
+		event_card_weight[event_card_group_environment] = 0;
+		event_card_weight[event_card_group_enigma] = 0;
+		event_card_weight[event_card_group_stage_2] = 0;
+		event_card_weight[event_card_group_stage_3] = 0;
+		event_card_weight[event_card_group_common] = 0;
+	}
+	if keyboard_check_pressed(vk_f8) { 
+		event_card_weight[event_card_group_secret] = 0;
+		event_card_weight[event_card_group_environment] = 0;
+		event_card_weight[event_card_group_enigma] = 10000;
+		event_card_weight[event_card_group_stage_2] = 0;
+		event_card_weight[event_card_group_stage_3] = 0;
+		event_card_weight[event_card_group_common] = 0;
+	}
+	if keyboard_check_pressed(vk_f7) { 
+		event_card_weight[event_card_group_secret] = 1;
+		event_card_weight[event_card_group_environment] = 200;
+		event_card_weight[event_card_group_enigma] = 15;
+		event_card_weight[event_card_group_stage_2] = 250;
+		event_card_weight[event_card_group_stage_3] = 50;
+		event_card_weight[event_card_group_common] = 9484;
+	}
 
 	if instance_exists(ob_control) and keyboard_check_pressed(vk_numpad8) {
 		ob_control.player_hp=(ob_control.hp_max*2)-1;
@@ -823,6 +854,8 @@ if roadmap_area=roadmap_current_max {
 	roadmap_area=0;
 	roadmap_generated=false;
 	zone_first_lap=true;
+	sc_data_save(false);
+	sc_data_save(true);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if !instance_exists(ob_control) and !instance_exists(ob_event) {
@@ -911,7 +944,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 			with (ob_button_31x24) { instance_destroy(); }
 			screen_transition=2;
 			//
-			if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(); }
+			if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(false); show_debug_message("check2"); }
 		}
 	}
 	else {

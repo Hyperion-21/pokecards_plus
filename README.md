@@ -18,4 +18,18 @@ Mod contents:
 To build this mod:
 - Clone the repo onto your computer
 - Open it up in gamemaker studio
-- Build it (or just run it; turns out you need to pay for gamemaker to create desktop binaries... so unless you have paid gamemaker you pretty much have to debug the mod to play it)
+- Build it (or just run it; turns out you need to pay for gamemaker to create desktop binaries)
+
+## Branching Strategy
+(disclaimer: not strictly enforced, do whatever you like)
+
+- Main is for release builds
+- Development is for in-dev builds (merge development onto main when ready/nearly ready for release)
+
+Commit directly to main, if the change is minor (like readme or version number edits)
+
+Commit directly to development, if the change is moderate and/or is implemented in a single commit (like code refactoring or bugfixing)
+
+For major features, create a new branch, then PR that branch onto development once ready.
+
+Temp Branches -> Development -> Main -> Release Tags

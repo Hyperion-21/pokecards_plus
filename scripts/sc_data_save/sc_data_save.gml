@@ -1,4 +1,4 @@
-function sc_data_save() {
+function sc_data_save(backup) {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var savemap=ds_map_create();
 //
@@ -91,7 +91,7 @@ repeat (4) {
 	i++;
 }
 //
-ds_map_secure_save(savemap,data_file);
+ds_map_secure_save(savemap, backup ? "backup/backup-" + string(current_year) + "-" + string(current_month) + "-" + string(current_day) + "-" + string(current_hour) + "-" + string(current_minute) + "-" + string(current_second) + ".sav" : data_file);
 ds_map_destroy(savemap);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }
