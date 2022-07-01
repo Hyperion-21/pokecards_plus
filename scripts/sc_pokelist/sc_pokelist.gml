@@ -4357,7 +4357,7 @@ switch (card_id) {
 	else if card_form_value<500 {
 	card_type_a=4; card_type_b=5; card_base_hp=75; card_base_atk=70+98; card_base_def=70+70; card_grid_x=7; card_grid_y=34; }
 	else if card_form_value<750 {
-	card_type_a=2; card_type_b=5; card_base_hp=75; card_base_atk=70+98; card_base_def=70+70; card_grid_x=8; card_grid_y=34; }
+	card_type_a=7; card_type_b=5; card_base_hp=75; card_base_atk=70+98; card_base_def=70+70; card_grid_x=8; card_grid_y=34; }
 	else{
 	card_type_a=16; card_type_b=5; card_base_hp=75; card_base_atk=70+98; card_base_def=70+70; card_grid_x=9; card_grid_y=34; }
 	break;
