@@ -3670,7 +3670,7 @@ switch (card_id) {
 			card_grid_x=11; card_grid_y=10; }
 		else {
 			card_sheet=sp_poke_d;
-			card_type_a=3; card_type_b=16; 
+			card_type_a=3; card_type_b=17; 
 			card_base_hp=90; 
 			card_base_atk=109+100; 
 			card_base_def=80+65; 
@@ -4272,7 +4272,24 @@ switch (card_id) {
 	case 0711: card_name="Gourgeist"; card_stage=2;  card_type_a=16; card_type_b=1; card_base_hp=85; card_base_atk=100+58; card_base_def=122+75; card_grid_x=10; card_grid_y=31; break;
 	*/
 	case 0712: card_name="Bergmite"; card_stage=1;  card_evo[0]=713; card_type_a=13; card_type_b=-1; card_base_hp=55; card_base_atk=69+32; card_base_def=85+35; card_grid_x=11; card_grid_y=31; break;
-	case 0713: card_name="Avalugg"; card_stage=2;  card_type_a=13; card_type_b=-1; card_base_hp=95; card_base_atk=117+44; card_base_def=184+46; card_grid_x=12; card_grid_y=31; break;
+	case 0713: 
+		card_name="Avalugg"; 
+		card_stage=2;
+		card_has_forms=true;	
+		if card_form_value<500 { 
+			card_type_a=13; card_type_b=-1; 
+			card_base_hp=95; 
+			card_base_atk=117+44; 
+			card_base_def=184+46; 
+			card_grid_x=4; card_grid_y=31; }
+		else {
+			card_sheet=sp_poke_d;
+			card_type_a=14; card_type_b=10; 
+			card_base_hp=80; 
+			card_base_atk=127+34; 
+			card_base_def=184+36; 
+			card_grid_x=4; card_grid_y=12; }
+		break;
 	case 0714: card_name="Noibat"; card_stage=1;  card_evo[0]=715; card_type_a=5; card_type_b=14; card_base_hp=40; card_base_atk=30+45; card_base_def=35+40; card_grid_x=13; card_grid_y=31; break;
 	case 0715: card_name="Noivern"; card_stage=2;  card_type_a=5; card_type_b=14; card_base_hp=85; card_base_atk=70+97; card_base_def=80+80; card_grid_x=14; card_grid_y=31; break;
 	case 0716: card_name="Xerneas"; card_stage=1;  card_enigma=true; card_type_a=8; card_type_b=-1; card_base_hp=126; card_base_atk=131+131; card_base_def=95+98; card_grid_x=15; card_grid_y=31; break;
