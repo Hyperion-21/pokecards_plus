@@ -18,4 +18,8 @@ if text_alpha>0 {
 	//
 	draw_set_halign(fa_center);
 	sc_drawtext(x,y,damage_text,text_color,global.color_black,text_alpha,text_alpha/1.5,0,-1);
+	if global.attack_crit == true { 
+		draw_set_font(fn_m3x6);
+		sc_drawtext(x+10,y-10,"CRIT!",c_red,global.color_black,text_alpha,text_alpha/1.5,0,-1);
+	}
 }

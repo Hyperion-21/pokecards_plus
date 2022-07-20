@@ -4935,7 +4935,7 @@ default:
 
 // var statsum = card_base_hp + card_base_atk + card_base_hp;
 // card_base_speed = 0;
-if global.mod_speed { card_base_hp += 1 * card_base_speed; } // modify this formula to change how speed affects pokemon
+// if global.mod_speed { card_base_hp += 1 * card_base_speed; } // modify this formula to change how speed affects pokemon
 
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }

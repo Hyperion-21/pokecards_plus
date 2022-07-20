@@ -144,6 +144,12 @@ if card_cat=0 and card_face=true and in_view=true {
 		}
 	}
 	//
+	
+	// DEBUG
+	
+	draw_set_font(fn_m3x6);
+	sc_drawtext(draw_x+15,draw_y,card_base_speed,global.color_white,global.color_black,1,(1/1.5),0,-1);
+	
 	//STATS
 	if card_environment=false { var var_level_rank=ceil(card_level/advantage_level_interval); } else { var var_level_rank=0; }
 	draw_sprite_general(sp_sheet,0,16*17,16*var_level_rank,49,2,draw_x+4,draw_y+56,1,1,0,card_color,card_color,card_color,card_color,1);

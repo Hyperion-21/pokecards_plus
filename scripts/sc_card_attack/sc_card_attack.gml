@@ -2,6 +2,9 @@ function sc_card_attack(argument0,argument1) {
 /// @param player
 /// @param card_id
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+
+global.attack_crit = false;
+
 with (argument1) {
 	if already_attacked=false and card_environment=false {
 		sc_playsound(sn_hurt,50,false,false);
@@ -62,6 +65,19 @@ with (argument1) {
 					if card_enemy=true and ob_main.option_state[opt_challenge]=ch_dominance and ob_main.playing_tutorial=false { damage_extra_dealt=card_target.card_full_hp; }
 				}
 				damage_dealt+=damage_extra_dealt;
+				
+				// here's the code that handles crits
+				// each point of speed advantage contributes to +0.5% crit chance, plus a minimum unconditional 5% chance
+				// a speed difference of 195 (shuckle vs regileki) results in a 53.75% crit chance against shuckle and 5% crit chance against regileki
+				// crit is currently 2x damage, after everything, including type bonuses
+				// MODDER NOTE: DOES NOT WORK WITH FORK ATTACK (untested) OR PIERCING (also untested)
+				var crit_got = card_speed >= card_target.card_speed;
+				if global.mod_speed and random(400) <= (crit_got ? 20 + card_speed - card_target.card_speed : 20) and damage_dealt > 0 {
+					damage_dealt *= 2;
+					damage_extra_dealt *= 2;
+					global.attack_crit = true;
+				}
+
 				card_target.card_hp-=damage_dealt;
 				card_target.effect_damaged=1;
 				var damage_num_id=instance_create_layer(card_target.x+29,card_target.y+18,"instances",ob_damage_num);

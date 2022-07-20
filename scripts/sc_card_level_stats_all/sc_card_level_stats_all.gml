@@ -6,9 +6,12 @@ if argument0=true { card_full_hp=sc_card_level_stats_main(0,card_level); }
 card_full_atk=sc_card_level_stats_main(1,card_level);
 card_full_def=sc_card_level_stats_main(2,card_level);
 //
+card_speed=card_base_speed;
+
 if argument0=true { card_hp=card_full_hp; }
 card_atk=card_full_atk;
 card_def=card_full_def;
+
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 card_value=card_full_hp+card_full_atk*2+card_full_def*2;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
