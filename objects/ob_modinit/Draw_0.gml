@@ -7,7 +7,7 @@ draw_set_font(fn_m6x11);
 
 //cursor_sprite=sp_splash_title_kana;
 
-global.tempsave = "data_" + string(global.mod_gen3to8) + string(global.mod_megaforms) + string(global.mod_campfire) + "_v1.4.0.0.sav";
+global.tempsave = "data_" + string(global.mod_gen3to8) + string(global.mod_megaforms) + string(global.mod_campfire) + "_PREALPHA.sav";
 
 draw_text(2, 305, "Savefile: " + global.tempsave);
 
