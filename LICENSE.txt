@@ -1,0 +1,16 @@
+The 'main developers' of the software Pocket Crystal League + (henceforth PCL+), comprising of Hyperion-21, DarkAnarch, and Tukurai, do NOT in any way own or attempt to own the software Pocket Crystal League (henceforth PCL).
+
+PCL is owned to, and is legally the property of, exclusively, Moodytail. PCL is licensed under CC BY-NC, which asserts that any distributed modifications to the original software (such as PCL+) must:
+- give appropriate credit, provide a link to the license, and indicate if changes were made,
+- not use the material for commercial purposes,
+- and not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+
+The following section exists to comply to these restrictions:
+- PCL+ is a non-commercial project, and has not generated any revenue for any person, nor has directly costed any person any legal tender,
+- PCL+ is a modification of a parent software, PCL (https://gitlab.com/moodytail/pokecards/-/blob/main/LICENSE.txt), which is developed by Moodytail (https://gitlab.com/moodytail).
+- PCL+ is a transformative work, that has significantly and meaningfully modified multiple aspects of PCL, including but not limited to:
+    - graphics, art, and other visual assets that originally were and are property of Moodytail,
+    - programming and code that comprises of 'gameplay' and functionality of the software.
+- This legal statement only gives credit to Moodytail and their software PCL, and does not in any way restrict any rights granted to any person who wishes to modify PCL or PCL+.
+
+Any right granted to any person, relating to modifying and/or distrubiting PCL, is also granted to any person, relating to modifying and/or distrubiting PCL+. Any right revoked from any person, relating to modifying and/or distrubiting PCL, is also revoked from any person, relating to modifying and/or distrubiting PCL+. 
