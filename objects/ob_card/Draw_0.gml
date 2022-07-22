@@ -146,11 +146,13 @@ if card_cat=0 and card_face=true and in_view=true {
 	//
 	
 	//SPEED
-	if card_speed <= 30 { draw_sprite_general(sp_sheet,0,384,8,6,6,draw_x+47,draw_y+33,1,1,0,c_white,c_white,c_white,c_white,1) }
-	else if card_speed <= 60 { draw_sprite_general(sp_sheet,0,384,8,6,3,draw_x+47,draw_y+35,1,1,0,c_white,c_white,c_white,c_white,1) }
-	else if card_speed < 90 { draw_sprite_general(sp_sheet,0,384,0,6,6,draw_x+48,draw_y+33,1,1,0,c_white,c_white,c_white,c_white,1) }
-	else if card_speed < 120 { draw_sprite_general(sp_sheet,0,392,8,6,3,draw_x+47,draw_y+35,1,1,0,c_white,c_white,c_white,c_white,1) }
-	else if card_speed >= 120 { draw_sprite_general(sp_sheet,0,392,8,6,6,draw_x+47,draw_y+33,1,1,0,c_white,c_white,c_white,c_white,1) }
+	if global.mod_speed {
+		if card_speed <= 30 { draw_sprite_general(sp_sheet,0,384,8,6,6,draw_x+47,draw_y+33,1,1,0,c_white,c_white,c_white,c_white,1) }
+		else if card_speed <= 60 { draw_sprite_general(sp_sheet,0,384,8,6,3,draw_x+47,draw_y+35,1,1,0,c_white,c_white,c_white,c_white,1) }
+		else if card_speed < 90 { draw_sprite_general(sp_sheet,0,384,0,6,6,draw_x+48,draw_y+33,1,1,0,c_white,c_white,c_white,c_white,1) }
+		else if card_speed < 120 { draw_sprite_general(sp_sheet,0,392,8,6,3,draw_x+47,draw_y+35,1,1,0,c_white,c_white,c_white,c_white,1) }
+		else if card_speed >= 120 { draw_sprite_general(sp_sheet,0,392,8,6,6,draw_x+47,draw_y+33,1,1,0,c_white,c_white,c_white,c_white,1) }
+	}
 	
 	//STATS
 	if card_environment=false { var var_level_rank=ceil(card_level/advantage_level_interval); } else { var var_level_rank=0; }

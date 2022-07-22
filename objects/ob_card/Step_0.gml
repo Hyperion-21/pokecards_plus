@@ -447,7 +447,7 @@ if ((reference_id=ob_control and ob_control.card_focus=id) or reference_id=ob_ev
 	}
 	
 	
-	else if mouse_x>=x+48 and mouse_y>=y+33 and mouse_x<=x+54 and mouse_y<=y+39 {
+	else if mouse_x>=x+48 and mouse_y>=y+33 and mouse_x<=x+54 and mouse_y<=y+39 and global.mod_speed {
 		
 		var vs_card=-1;
 		if card_played=true {
@@ -472,11 +472,11 @@ if ((reference_id=ob_control and ob_control.card_focus=id) or reference_id=ob_ev
 		} else {
 			reference_id.tooltip_text="This Pokemon is fast.\nIt will frequently hit crits, and will rarely get critted agaisnt.";
 		}
-		
+			reference_id.tooltip_text += "\n\nThe speed stat of this Pokemon is " + string(card_speed) + ".";
 			if vs_card != -1 {
-				reference_id.tooltip_text += "\n\nThe speed stat of this Pokemon is " + string(card_speed) + ".\nThe chance of " + card_name + " critting " + vs_card.card_name + " is " + string(card_speed >= vs_card.card_speed ? (20 + card_speed - vs_card.card_speed) / 4 : 5) + "%\nThe chance of " + vs_card.card_name + " critting " + card_name + " is " + string(vs_card.card_speed >= card_speed ? (20 + vs_card.card_speed - card_speed) / 4 : 5) + "%";
+				reference_id.tooltip_text += "\nThe chance of " + card_name + " critting " + vs_card.card_name + " is " + string(card_speed >= vs_card.card_speed ? (20 + card_speed - vs_card.card_speed) / 4 : 5) + "%\nThe chance of " + vs_card.card_name + " critting " + card_name + " is " + string(vs_card.card_speed >= card_speed ? (20 + vs_card.card_speed - card_speed) / 4 : 5) + "%";
 				reference_id.tooltip_lines = 6;
-			} else { reference_id.tooltip_lines = 2 }
+			} else { reference_id.tooltip_lines = 4 }
 	}
 }
 else if reference_id=ob_deckbuild and card_cat=1 and ob_main.cursor_hide=false {
