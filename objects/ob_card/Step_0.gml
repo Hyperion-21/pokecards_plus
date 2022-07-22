@@ -274,12 +274,9 @@ else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spr
 						potential_x=ob_event.event_space_id[i].x;
 						potential_y=ob_event.event_space_id[i].y;
 						ob_event.event_space_id[i].occupy_id=id;
-						
-						if global.mod_qol {
-							ob_event.event_space_id_deck[i] = false;
-							if(mouse_y > 144) {
-								ob_event.event_space_id_deck[i] = true;
-							}
+						ob_event.event_space_id_deck[i] = false;
+						if(mouse_y > 144) {
+							ob_event.event_space_id_deck[i] = true;
 						}
 						
 						sc_card_effect(ob_event.event_space_id[i].x,ob_event.event_space_id[i].y,0,true,false);
@@ -447,6 +444,39 @@ if ((reference_id=ob_control and ob_control.card_focus=id) or reference_id=ob_ev
 		}
 		reference_id.tooltip_text=reference_id.tooltip_text + ".";
 		reference_id.tooltip_lines=1;
+	}
+	
+	
+	else if mouse_x>=x+48 and mouse_y>=y+33 and mouse_x<=x+54 and mouse_y<=y+39 {
+		
+		var vs_card=-1;
+		if card_played=true {
+			if card_enemy=true { var i=0; } else { var i=5; }
+			repeat (5) {
+				if ob_control.card_space_id[i].occupy_id=id {
+					if (card_enemy=false and ob_control.card_space_id[i-5].occupy_id!=-1) {
+						vs_card=ob_control.card_space_id[i-5].occupy_id;
+					}
+					if (card_enemy=true and ob_control.card_space_id[i+5].occupy_id!=-1) {
+						vs_card=ob_control.card_space_id[i+5].occupy_id;
+					}
+				}
+				i++;
+			}
+		}
+
+		if card_speed < 60 {
+			reference_id.tooltip_text="This Pokemon is slow.\nIt will struggle to hit crits, and is likely to get critted against.";
+		} else if card_speed <= 80 {
+			reference_id.tooltip_text="This Pokemon has average speed.\nIt will hit and recieve a normal amount of crits.";
+		} else {
+			reference_id.tooltip_text="This Pokemon is fast.\nIt will frequently hit crits, and will rarely get critted agaisnt.";
+		}
+		
+			if vs_card != -1 {
+				reference_id.tooltip_text += "\n\nThe speed stat of this Pokemon is " + string(card_speed) + ".\nThe chance of " + card_name + " critting " + vs_card.card_name + " is " + string(card_speed >= vs_card.card_speed ? (20 + card_speed - vs_card.card_speed) / 4 : 5) + "%\nThe chance of " + vs_card.card_name + " critting " + card_name + " is " + string(vs_card.card_speed >= card_speed ? (20 + vs_card.card_speed - card_speed) / 4 : 5) + "%";
+				reference_id.tooltip_lines = 6;
+			} else { reference_id.tooltip_lines = 2 }
 	}
 }
 else if reference_id=ob_deckbuild and card_cat=1 and ob_main.cursor_hide=false {

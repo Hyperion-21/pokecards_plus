@@ -381,3 +381,5 @@ if progress_r>255 { progress_r=255; }
 if progress_g>255 { progress_g=255; }
 if progress_b>255 { progress_b=255; }
 global.color_character_light=make_colour_rgb(progress_r,progress_g,progress_b);
+
+global.attack_crit = false;

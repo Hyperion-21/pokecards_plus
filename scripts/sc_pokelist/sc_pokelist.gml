@@ -51,7 +51,7 @@ else {
 	card_name="M-Venusaur";
 	card_stage=3; card_starter=true; card_enigma=true;
 	card_type_a=01; card_type_b=12;
-	card_base_hp=80; card_base_atk=100+122; card_base_def=123+120; //speed
+	card_base_hp=80; card_base_atk=100+122; card_base_def=123+120; card_base_speed=80;
 	card_grid_x=4; card_grid_y=1;} break;
 case 004:
 	card_name="Charmander";
@@ -79,7 +79,7 @@ else if card_form_value<1001{
 	card_has_forms=true;
 	card_stage=3; card_starter=true; card_enigma=true;
 	card_type_a=02; card_type_b=14;
-	card_base_hp=78; card_base_atk=130+130; card_base_def=111+85; //speed
+	card_base_hp=78; card_base_atk=130+130; card_base_def=111+85; card_base_speed=100;
 	card_grid_x=8; card_grid_y=1;}
 else if card_form_value<1002{
 	card_name="M-Charizard Y";
@@ -87,7 +87,7 @@ else if card_form_value<1002{
 	card_has_forms=true;
 	card_stage=3; card_starter=true; card_enigma=true;
 	card_type_a=02; card_type_b=05;
-	card_base_hp=78; card_base_atk=104+159; card_base_def=78+115; //speed
+	card_base_hp=78; card_base_atk=104+159; card_base_def=78+115; card_base_speed=100;
 	card_grid_x=9; card_grid_y=1;} break;
 case 007:
 	card_name="Squirtle";
@@ -113,7 +113,7 @@ else {
 	card_name="M-Blastoise";
 	card_stage=3; card_starter=true; card_enigma=true;
 	card_type_a=03; card_type_b=-1;
-	card_base_hp=79; card_base_atk=103+135; card_base_def=120+115; //speed
+	card_base_hp=79; card_base_atk=103+135; card_base_def=120+115; card_base_speed=78;
 	card_grid_x=13; card_grid_y=1;} 
 	break;
 case 010:
@@ -158,7 +158,7 @@ else {
 	card_name="M-Beedrill";
 	card_stage=3; card_enigma=true;
 	card_type_a=11; card_type_b=12;
-	card_base_hp=65; card_base_atk=150+15; card_base_def=40+80; //speed
+	card_base_hp=65; card_base_atk=150+15; card_base_def=40+80; card_base_speed=145;
 	card_grid_x=5; card_grid_y=2;} break;
 case 016:
 	card_name="Pidgey";
@@ -184,7 +184,7 @@ case 018:
 	card_name="M-Pidgeot";
 	card_stage=3; card_enigma=true;
 	card_type_a=00; card_type_b=05;
-	card_base_hp=83; card_base_atk=80+135; card_base_def=80+80; //speed
+	card_base_hp=83; card_base_atk=80+135; card_base_def=80+80; card_base_speed=121;
 	card_grid_x=9; card_grid_y=2;} break;
 case 019:
 	card_has_forms=true;
@@ -197,7 +197,7 @@ case 019:
 	else { 
 	card_stage=1; card_evo[0]=020;
 	card_type_a=17; card_type_b=00;
-	card_base_hp=30; card_base_atk=56+25; card_base_def=35+35; //speed
+	card_base_hp=30; card_base_atk=56+25; card_base_def=35+35; card_base_speed=72;
 	card_grid_x=11; card_grid_y=2; }; break;
 		
 case 020:
@@ -211,7 +211,7 @@ case 020:
 	else{ 
 	card_stage=2;
 	card_type_a=17; card_type_b=00;
-	card_base_hp=55; card_base_atk=81+50; card_base_def=60+70;
+	card_base_hp=75; card_base_atk=71+40; card_base_def=70+80; card_base_speed=77;
 	card_grid_x=13; card_grid_y=2; } break;
 case 021:
 	card_name="Spearow";
@@ -265,7 +265,7 @@ case 027:
 	card_grid_x=15; card_grid_y=3;}
 	else { 
 	card_type_a=13; card_type_b=15;
-	card_base_hp=50; card_base_atk=75+10; card_base_def=90+35; //speed
+	card_base_hp=50; card_base_atk=75+10; card_base_def=90+35; card_base_speed=40;
 	card_grid_x=1; card_grid_y=4;}	break;
 case 028:
 	card_has_forms=global.mod_gen3to8
@@ -277,7 +277,7 @@ case 028:
 	card_grid_x=2; card_grid_y=4;}
 	else {  
 	card_type_a=13; card_type_b=15;
-	card_base_hp=75; card_base_atk=100+25; card_base_def=120+65; //speed
+	card_base_hp=75; card_base_atk=100+25; card_base_def=120+65; card_base_speed=65;
 	card_grid_x=3; card_grid_y=4;}   break;
 case 029:
 	card_name="Nidoran F";
@@ -337,7 +337,7 @@ case 037:
 	card_grid_x=14; card_grid_y=4;}
 	else {
 	card_type_a=13; card_type_b=-1;
-	card_base_hp=38; card_base_atk=41+50; card_base_def=40+65; //speed
+	card_base_hp=38; card_base_atk=41+50; card_base_def=40+65; card_base_speed=65;
 	card_grid_x=15; card_grid_y=4;} break;
 case 038:
 	card_has_forms=global.mod_gen3to8
@@ -349,7 +349,7 @@ case 038:
 	card_grid_x=1; card_grid_y=5;}
 	else {
 	card_type_a=13; card_type_b=08;
-	card_base_hp=73; card_base_atk=67+81; card_base_def=75+100; //speed
+	card_base_hp=73; card_base_atk=67+81; card_base_def=75+100; card_base_speed=109;
 	card_grid_x=2; card_grid_y=5;} break;
 case 039:
 	card_name="Jigglypuff";
@@ -427,7 +427,7 @@ case 050:
 	card_grid_x=1; card_grid_y=6;}
 	else {
 	card_type_a=09; card_type_b=15;
-	card_base_hp=10; card_base_atk=55+35; card_base_def=30+45; //speed
+	card_base_hp=10; card_base_atk=55+35; card_base_def=30+45; card_base_speed=90;
 	card_grid_x=2; card_grid_y=6;} break;
 case 051:
 	card_has_forms=global.mod_gen3to8
@@ -439,7 +439,7 @@ case 051:
 	card_grid_x=3; card_grid_y=6;}
 	else {
 	card_type_a=09; card_type_b=15;
-	card_base_hp=35; card_base_atk=100+50; card_base_def=60+70; //speed
+	card_base_hp=35; card_base_atk=100+50; card_base_def=60+70; card_base_speed=110;
 	card_grid_x=4; card_grid_y=6;} break;
 case 052:
 	card_has_forms=global.mod_gen3to8
@@ -453,13 +453,13 @@ case 052:
 	else if card_form_value<=666 {
 	card_evo[0]=053;
 	card_type_a=17; card_type_b=-1;
-	card_base_hp=40; card_base_atk=35+50; card_base_def=35+40; //speed
+	card_base_hp=40; card_base_atk=35+50; card_base_def=35+40; card_base_speed=90;
 	card_grid_x=7; card_grid_y=6;}
 	else {
 	card_sheet=sp_poke_d;
 	card_evo[0]=863;
 	card_type_a=15; card_type_b=-1;
-	card_base_hp=40; card_base_atk=35+50; card_base_def=35+40; //speed
+	card_base_hp=40; card_base_atk=35+50; card_base_def=35+40; card_base_speed=40;
 	card_grid_x=6; card_grid_y=9;}
 	break;
 case 053:
@@ -472,7 +472,7 @@ case 053:
 	card_grid_x=8; card_grid_y=6;}
 	else {
 	card_type_a=17; card_type_b=-1;
-	card_base_hp=65; card_base_atk=60+75; card_base_def=60+65; //speed
+	card_base_hp=65; card_base_atk=60+75; card_base_def=60+65; card_base_speed=115;
 	card_grid_x=9; card_grid_y=6;} break;
 case 054:
 	card_name="Psyduck";
@@ -510,7 +510,7 @@ case 058:
 	else {
 	card_sheet=sp_poke_d;
 	card_type_a=02; card_type_b=10;
-	card_base_hp=60; card_base_atk=75+65; card_base_def=45+50; //speed
+	card_base_hp=60; card_base_atk=75+65; card_base_def=45+50; card_base_speed=55;
 	card_grid_x=8; card_grid_y=9;
 	}
 	break;
@@ -526,7 +526,7 @@ case 059:
 	else {
 	card_sheet=sp_poke_d;
 	card_type_a=02; card_type_b=10;
-	card_base_hp=95; card_base_atk=115+95; card_base_def=80+80; //speed
+	card_base_hp=95; card_base_atk=115+95; card_base_def=80+80; card_base_speed=90;
 	card_grid_x=9; card_grid_y=9;
 	}
 	break;
@@ -572,7 +572,7 @@ case 065:
 	card_name="M-Alakazam";
 	card_stage=3; card_enigma=true;
 	card_type_a=07; card_type_b=-1;
-	card_base_hp=55; card_base_atk=50+175; card_base_def=65+105; //speed
+	card_base_hp=55; card_base_atk=50+175; card_base_def=65+105; card_base_speed=150;
 	card_grid_x=9; card_grid_y=7;} break;
 case 066:
 	card_name="Machop";
@@ -632,7 +632,7 @@ case 074:
 	card_grid_x=3; card_grid_y=8;}
 	else {
 	card_type_a=10; card_type_b=04;
-	card_base_hp=40; card_base_atk=80+30; card_base_def=100+30; //speed
+	card_base_hp=40; card_base_atk=80+30; card_base_def=100+30; card_base_speed=20;
 	card_grid_x=4; card_grid_y=8;} break;
 case 075:
 	card_has_forms=global.mod_gen3to8
@@ -644,7 +644,7 @@ case 075:
 	card_grid_x=5; card_grid_y=8;}
 	else {
 	card_type_a=10; card_type_b=04;
-	card_base_hp=55; card_base_atk=95+45; card_base_def=115+45; //speed
+	card_base_hp=55; card_base_atk=95+45; card_base_def=115+45; card_base_speed=35;
 	card_grid_x=6; card_grid_y=8;} break;
 case 076:
 	card_has_forms=global.mod_gen3to8
@@ -656,7 +656,7 @@ case 076:
 	card_grid_x=7; card_grid_y=8;}
 	else {
 	card_type_a=10; card_type_b=04;
-	card_base_hp=80; card_base_atk=120+55; card_base_def=130+65; //speed
+	card_base_hp=80; card_base_atk=120+55; card_base_def=130+65; card_base_speed=45;
 	card_grid_x=8; card_grid_y=8;} break;
 case 077:
 	card_name="Ponyta";
@@ -670,7 +670,7 @@ case 077:
 	}else{
 		card_sheet=sp_poke_d;
 		card_type_a=07; card_type_b=-1;
-		card_base_hp=50; card_base_atk=85+65; card_base_def=55+65; //speed
+		card_base_hp=50; card_base_atk=85+65; card_base_def=55+65; card_base_speed=90
 		card_grid_x=11; card_grid_y=9; 
 	}
 	break;
@@ -686,7 +686,7 @@ case 078:
 	}else{
 	card_sheet=sp_poke_d;
 	card_type_a=07; card_type_b=8;
-	card_base_hp=65; card_base_atk=100+80; card_base_def=70+80; //speed
+	card_base_hp=65; card_base_atk=100+80; card_base_def=70+80; card_base_speed=105;
 	card_grid_x=12; card_grid_y=9; 
 	}
 	break;
@@ -701,7 +701,7 @@ case 079:
 	}else{
 		card_sheet=sp_poke_d;
 		card_type_a=07; card_type_b=-1;
-		card_base_hp=90; card_base_atk=65+40; card_base_def=65+40; //speed
+		card_base_hp=90; card_base_atk=65+40; card_base_def=65+40; card_base_speed=15;
 		card_grid_x=13; card_grid_y=9; 
 	}
 	break;
@@ -713,7 +713,7 @@ case 080:
 	if card_form_value<500 or global.mod_gen3to8 {
 		card_can_mega=global.mod_megaforms
 		card_type_a=03; card_type_b=07;
-		card_base_hp=95; card_base_atk=75+100; card_base_def=110+80; //speed
+		card_base_hp=95; card_base_atk=75+100; card_base_def=110+80; card_base_speed=30;
 		card_grid_x=12; card_grid_y=8;
 	}else if card_form_value<=999{
 		card_sheet=sp_poke_d;
@@ -727,19 +727,19 @@ case 080:
 	card_name="M-Slowbro";
 	card_stage=2; card_enigma=true;
 	card_type_a=03; card_type_b=07;
-	card_base_hp=95; card_base_atk=75+130; card_base_def=180+80;
+	card_base_hp=95; card_base_atk=75+130; card_base_def=180+80; card_base_speed=30;
 	card_grid_x=13; card_grid_y=8;} break;
 case 081:
 	card_name="Magnemite";
 	card_stage=1; card_evo[0]=082;
 	card_type_a=04; card_type_b=15;
-	card_base_hp=23; card_base_atk=35+95; card_base_def=70+55;
+	card_base_hp=23; card_base_atk=35+95; card_base_def=70+55; card_base_speed=45;
 	card_grid_x=14; card_grid_y=8; break;
 case 082:
 	card_name="Magneton";
 	card_stage=2; card_evo[0]=462;
 	card_type_a=04; card_type_b=15;
-	card_base_hp=50; card_base_atk=60+120; card_base_def=95+70;
+	card_base_hp=50; card_base_atk=60+120; card_base_def=95+70; card_base_speed=70;
 	card_grid_x=15; card_grid_y=8; break;
 case 083:
 	card_has_forms=global.mod_gen3to8
@@ -748,14 +748,14 @@ case 083:
 	if card_form_value<500 or global.mod_gen3to8 {
 		card_stage=1;
 		card_type_a=00; card_type_b=05;
-		card_base_hp=52; card_base_atk=90+58; card_base_def=55+62;
+		card_base_hp=52; card_base_atk=90+58; card_base_def=55+62; card_base_speed=60;
 		card_grid_x=1; card_grid_y=9; 
 	}
 	else {
 		card_sheet=sp_poke_d;
 		card_stage=1; card_evo[0]=865;
 		card_type_a=06; card_type_b=-1;
-		card_base_hp=52; card_base_atk=95+58; card_base_def=55+62;
+		card_base_hp=52; card_base_atk=95+58; card_base_def=55+62; card_base_speed=55;
 		card_grid_x=15; card_grid_y=9; 
 	}
 	break;
@@ -763,25 +763,25 @@ case 084:
 	card_name="Doduo";
 	card_stage=1; card_evo[0]=085;
 	card_type_a=00; card_type_b=05;
-	card_base_hp=35; card_base_atk=85+35; card_base_def=45+35;
+	card_base_hp=35; card_base_atk=85+35; card_base_def=45+35; card_base_speed=75;
 	card_grid_x=2; card_grid_y=9; break;
 case 085:
 	card_name="Dodrio";
 	card_stage=2;
 	card_type_a=00; card_type_b=05;
-	card_base_hp=60; card_base_atk=110+60; card_base_def=70+60;
+	card_base_hp=60; card_base_atk=110+60; card_base_def=70+60; card_base_speed=110;
 	card_grid_x=3; card_grid_y=9; break;
 case 086:
 	card_name="Seel";
 	card_stage=1; card_evo[0]=087;
 	card_type_a=03; card_type_b=-1;
-	card_base_hp=65; card_base_atk=45+45; card_base_def=55+70;
+	card_base_hp=65; card_base_atk=45+45; card_base_def=55+70; card_base_speed=45;
 	card_grid_x=4; card_grid_y=9; break;
 case 087:
 	card_name="Dewgong";
 	card_stage=2;
 	card_type_a=03; card_type_b=13;
-	card_base_hp=90; card_base_atk=70+70; card_base_def=80+95;
+	card_base_hp=90; card_base_atk=70+70; card_base_def=80+95; card_base_speed=70;
 	card_grid_x=5; card_grid_y=9; break;
 case 088:
 	card_has_forms=global.mod_gen3to8
@@ -789,11 +789,11 @@ case 088:
 	card_stage=1; card_evo[0]=089;
 	if card_form_value<500 or global.mod_gen3to8 {
 	card_type_a=12; card_type_b=-1;
-	card_base_hp=80; card_base_atk=80+40; card_base_def=50+50;
+	card_base_hp=80; card_base_atk=80+40; card_base_def=50+50; card_base_speed=25;
 	card_grid_x=6; card_grid_y=9;}
 	else {
 	card_type_a=12; card_type_b=17;
-	card_base_hp=80; card_base_atk=80+40; card_base_def=50+50;
+	card_base_hp=80; card_base_atk=80+40; card_base_def=50+50; card_base_speed=25;
 	card_grid_x=7; card_grid_y=9;} break;
 case 089:
 	card_has_forms=global.mod_gen3to8
@@ -801,35 +801,35 @@ case 089:
 	card_stage=2;
 	if card_form_value<500 or global.mod_gen3to8 {
 	card_type_a=12; card_type_b=-1;
-	card_base_hp=105; card_base_atk=105+65; card_base_def=75+100;
+	card_base_hp=105; card_base_atk=105+65; card_base_def=75+100; card_base_speed=50;
 	card_grid_x=8; card_grid_y=9;}
 	else {
 	card_type_a=12; card_type_b=17;
-	card_base_hp=105; card_base_atk=105+65; card_base_def=75+100;
+	card_base_hp=105; card_base_atk=105+65; card_base_def=75+100; card_base_speed=50;
 	card_grid_x=9; card_grid_y=9;} break;
 case 090:
 	card_name="Shellder";
 	card_stage=1; card_evo[0]=091;
 	card_type_a=03; card_type_b=-1;
-	card_base_hp=30; card_base_atk=65+45; card_base_def=100+25;
+	card_base_hp=30; card_base_atk=65+45; card_base_def=100+25; card_base_speed=40;
 	card_grid_x=11; card_grid_y=9; break;
 case 091:
 	card_name="Cloyster";
 	card_stage=2;
 	card_type_a=03; card_type_b=13;
-	card_base_hp=50; card_base_atk=95+85; card_base_def=180+45;
+	card_base_hp=50; card_base_atk=95+85; card_base_def=180+45; card_base_speed=70;
 	card_grid_x=12; card_grid_y=9; break;
 case 092:
 	card_name="Gastly";
 	card_stage=1; card_evo[0]=093;
 	card_type_a=16; card_type_b=12;
-	card_base_hp=30; card_base_atk=35+100; card_base_def=30+35;
+	card_base_hp=30; card_base_atk=35+100; card_base_def=30+35; card_base_speed=80;
 	card_grid_x=13; card_grid_y=9; break;
 case 093:
 	card_name="Haunter";
 	card_stage=2; card_evo[0]=094;
 	card_type_a=16; card_type_b=12;
-	card_base_hp=45; card_base_atk=50+115; card_base_def=45+55;
+	card_base_hp=45; card_base_atk=50+115; card_base_def=45+55; card_base_speed=95;
 	card_grid_x=14; card_grid_y=9; break;
 case 094:
 	card_can_mega=global.mod_megaforms
@@ -837,43 +837,43 @@ case 094:
 	card_name="Gengar";
 	card_stage=3;
 	card_type_a=16; card_type_b=12;
-	card_base_hp=60; card_base_atk=65+130; card_base_def=60+75;
+	card_base_hp=60; card_base_atk=65+130; card_base_def=60+75; card_base_speed=110;
 	card_grid_x=15; card_grid_y=9;}
 	else {
 	card_name="M-Gengar";
 	card_stage=3; card_enigma=true;
 	card_type_a=16; card_type_b=12;
-	card_base_hp=60; card_base_atk=65+170; card_base_def=80+95;
+	card_base_hp=60; card_base_atk=65+170; card_base_def=80+95; card_base_speed=130;
 	card_grid_x=1; card_grid_y=10;} break;
 case 095:
 	card_name="Onix";
 	card_stage=1; card_evo[0]=208;
 	card_type_a=10; card_type_b=09;
-	card_base_hp=35; card_base_atk=45+30; card_base_def=160+45;
+	card_base_hp=35; card_base_atk=45+30; card_base_def=160+45; card_base_speed=70;
 	card_grid_x=2; card_grid_y=10; break;
 case 096:
 	card_name="Drowzee";
 	card_stage=1; card_evo[0]=097;
 	card_type_a=07; card_type_b=-1;
-	card_base_hp=60; card_base_atk=48+43; card_base_def=45+90;
+	card_base_hp=60; card_base_atk=48+43; card_base_def=45+90; card_base_speed=42;
 	card_grid_x=3; card_grid_y=10; break;
 case 097:
 	card_name="Hypno";
 	card_stage=2;
 	card_type_a=07; card_type_b=-1;
-	card_base_hp=85; card_base_atk=73+73; card_base_def=70+115;
+	card_base_hp=85; card_base_atk=73+73; card_base_def=70+115; card_base_speed=67;
 	card_grid_x=4; card_grid_y=10; break;
 case 098:
 	card_name="Krabby";
 	card_stage=1; card_evo[0]=099;
 	card_type_a=03; card_type_b=-1;
-	card_base_hp=30; card_base_atk=105+25; card_base_def=90+25;
+	card_base_hp=30; card_base_atk=105+25; card_base_def=90+25; card_base_speed=50;
 	card_grid_x=5; card_grid_y=10; break;
 case 099:
 	card_name="Kingler";
 	card_stage=2;
 	card_type_a=03; card_type_b=-1;
-	card_base_hp=55; card_base_atk=130+50; card_base_def=115+50;
+	card_base_hp=55; card_base_atk=130+50; card_base_def=115+50; card_base_speed=75;
 	card_grid_x=6; card_grid_y=10; break;
 case 100:
 	card_name="Voltorb";
@@ -882,13 +882,13 @@ case 100:
 	card_has_forms=global.mod_gen3to8
 	if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=04; card_type_b=-1;
-		card_base_hp=40; card_base_atk=30+55; card_base_def=50+55;
+		card_base_hp=40; card_base_atk=30+55; card_base_def=50+55; card_base_speed=100;
 		card_grid_x=8; card_grid_y=10; 
 	}
 	else {
 		card_sheet=sp_poke_d;
 		card_type_a=04; card_type_b=1;
-		card_base_hp=40; card_base_atk=30+55; card_base_def=50+55;
+		card_base_hp=40; card_base_atk=30+55; card_base_def=50+55; card_base_speed=100;
 		card_grid_x=3; card_grid_y=10; }
 	break;
 case 101:
@@ -897,19 +897,19 @@ case 101:
 	card_has_forms=global.mod_gen3to8
 	if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=04; card_type_b=-1;
-		card_base_hp=60; card_base_atk=50+80; card_base_def=70+80;
+		card_base_hp=60; card_base_atk=50+80; card_base_def=70+80; card_base_speed=150;
 		card_grid_x=9; card_grid_y=10; }
 	else {
 		card_sheet=sp_poke_d;
 		card_type_a=04; card_type_b=1;
-		card_base_hp=60; card_base_atk=50+80; card_base_def=70+80;
+		card_base_hp=60; card_base_atk=50+80; card_base_def=70+80; card_base_speed=150;
 		card_grid_x=4; card_grid_y=10; }
 	break;
 case 102:
 	card_name="Exeggcute";
 	card_stage=1; card_evo[0]=103;
 	card_type_a=01; card_type_b=07;
-	card_base_hp=60; card_base_atk=40+60; card_base_def=80+45;
+	card_base_hp=60; card_base_atk=40+60; card_base_def=80+45; card_base_speed=40;
 	card_grid_x=10; card_grid_y=10; break;
 case 103:
 	card_has_forms=global.mod_gen3to8
@@ -917,17 +917,17 @@ case 103:
 	card_stage=2;
 	if card_form_value<500 or global.mod_gen3to8 {
 	card_type_a=01; card_type_b=07;
-	card_base_hp=95; card_base_atk=95+125; card_base_def=85+75;
+	card_base_hp=95; card_base_atk=95+125; card_base_def=85+75; card_base_speed=55;
 	card_grid_x=11; card_grid_y=10;}
 	else {
 	card_type_a=01; card_type_b=14;
-	card_base_hp=95; card_base_atk=105+125; card_base_def=85+75;
+	card_base_hp=95; card_base_atk=105+125; card_base_def=85+75; card_base_speed=45;
 	card_grid_x=12; card_grid_y=10;} break;
 case 104:
 	card_name="Cubone";
 	card_stage=1; card_evo[0]=105;
 	card_type_a=09; card_type_b=-1;
-	card_base_hp=50; card_base_atk=50+40; card_base_def=95+50;
+	card_base_hp=50; card_base_atk=50+40; card_base_def=95+50; card_base_speed=35;
 	card_grid_x=13; card_grid_y=10; break;
 case 105:
 	card_has_forms=global.mod_gen3to8
@@ -935,35 +935,35 @@ case 105:
 	card_stage=2;
 	if card_form_value<500 or global.mod_gen3to8 {
 	card_type_a=09; card_type_b=-1;
-	card_base_hp=60; card_base_atk=80+50; card_base_def=110+80;
+	card_base_hp=60; card_base_atk=80+50; card_base_def=110+80; card_base_speed=45;
 	card_grid_x=14; card_grid_y=10;}
 	else {
 	card_type_a=02; card_type_b=16;
-	card_base_hp=60; card_base_atk=80+50; card_base_def=110+80;
+	card_base_hp=60; card_base_atk=80+50; card_base_def=110+80; card_base_speed=45;
 	card_grid_x=15; card_grid_y=10;} break;
 case 106:
 	card_name="Hitmonlee";
 	card_stage=1;
 	card_type_a=06; card_type_b=-1;
-	card_base_hp=50; card_base_atk=120+35; card_base_def=53+110;
+	card_base_hp=50; card_base_atk=120+35; card_base_def=53+110; card_base_speed=87;
 	card_grid_x=1; card_grid_y=11; break;
 case 107:
 	card_name="Hitmonchan";
 	card_stage=1;
 	card_type_a=06; card_type_b=-1;
-	card_base_hp=50; card_base_atk=105+35; card_base_def=79+110;
+	card_base_hp=50; card_base_atk=105+35; card_base_def=79+110; card_base_speed=76;
 	card_grid_x=2; card_grid_y=11; break;
 case 108:
 	card_name="Lickitung";
 	card_stage=1; card_evo[0]=463;
 	card_type_a=00; card_type_b=-1;
-	card_base_hp=90; card_base_atk=55+60; card_base_def=75+75;
+	card_base_hp=90; card_base_atk=55+60; card_base_def=75+75; card_base_speed=30;
 	card_grid_x=3; card_grid_y=11; break;
 case 109:
 	card_name="Koffing";
 	card_stage=1; card_evo[0]=110;
 	card_type_a=12; card_type_b=-1;
-	card_base_hp=40; card_base_atk=65+60; card_base_def=95+45;
+	card_base_hp=40; card_base_atk=65+60; card_base_def=95+45; card_base_speed=35;
 	card_grid_x=4; card_grid_y=11; break;
 case 110:
 	card_name="Weezing";
@@ -971,12 +971,12 @@ case 110:
 	card_has_forms=global.mod_gen3to8
 	if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=12; card_type_b=-1;
-		card_base_hp=65; card_base_atk=90+85; card_base_def=120+70;
+		card_base_hp=65; card_base_atk=90+85; card_base_def=120+70; card_base_speed=60;
 		card_grid_x=5; card_grid_y=11; }
 	else {
 		card_sheet=sp_poke_d;
 		card_type_a=12; card_type_b=08;
-		card_base_hp=65; card_base_atk=90+85; card_base_def=120+70;
+		card_base_hp=65; card_base_atk=90+85; card_base_def=120+70; card_base_speed=60;
 		card_grid_x=5; card_grid_y=10; }
 		
 	break;
@@ -984,25 +984,25 @@ case 111:
 	card_name="Rhyhorn";
 	card_stage=1; card_evo[0]=112;
 	card_type_a=09; card_type_b=10;
-	card_base_hp=80; card_base_atk=85+30; card_base_def=95+30;
+	card_base_hp=80; card_base_atk=85+30; card_base_def=95+30; card_base_speed=25;
 	card_grid_x=6; card_grid_y=11; break;
 case 112:
 	card_name="Rhydon";
 	card_stage=2; card_evo[0]=464;
 	card_type_a=09; card_type_b=10;
-	card_base_hp=105; card_base_atk=130+45; card_base_def=120+45;
+	card_base_hp=105; card_base_atk=130+45; card_base_def=120+45; card_base_speed=40;
 	card_grid_x=7; card_grid_y=11; break;
 case 113:
 	card_name="Chansey";
 	card_stage=1; card_evo[0]=242;
 	card_type_a=00; card_type_b=-1;
-	card_base_hp=250; card_base_atk=5+35; card_base_def=5+105;
+	card_base_hp=250; card_base_atk=5+35; card_base_def=5+105; card_base_speed=50;
 	card_grid_x=8; card_grid_y=11; break;
 case 114:
 	card_name="Tangela";
 	card_stage=1; card_evo[0]=465;
 	card_type_a=01; card_type_b=-1;
-	card_base_hp=65; card_base_atk=55+100; card_base_def=115+40;
+	card_base_hp=65; card_base_atk=55+100; card_base_def=115+40; card_base_speed=60;
 	card_grid_x=9; card_grid_y=11; break;
 case 115:
 	card_can_mega=global.mod_megaforms
@@ -1010,49 +1010,49 @@ case 115:
 	card_name="Kangaskhan";
 	card_stage=1;
 	card_type_a=00; card_type_b=-1;
-	card_base_hp=105; card_base_atk=95+40; card_base_def=80+80;
+	card_base_hp=105; card_base_atk=95+40; card_base_def=80+80; card_base_speed=90;
 	card_grid_x=10; card_grid_y=11;}
 	else {
 	card_name="M-Kangaskhan";
 	card_stage=1; card_enigma=true;
 	card_type_a=00; card_type_b=-1;
-	card_base_hp=105; card_base_atk=125+60; card_base_def=100+100;
+	card_base_hp=105; card_base_atk=125+60; card_base_def=100+100; card_base_speed=100;
 	card_grid_x=11; card_grid_y=11;} break;
 case 116:
 	card_name="Horsea";
 	card_stage=1; card_evo[0]=117;
 	card_type_a=03; card_type_b=-1;
-	card_base_hp=30; card_base_atk=40+70; card_base_def=70+25;
+	card_base_hp=30; card_base_atk=40+70; card_base_def=70+25; card_base_speed=60;
 	card_grid_x=12; card_grid_y=11; break;
 case 117:
 	card_name="Seadra";
 	card_stage=2; card_evo[0]=230;
 	card_type_a=03; card_type_b=-1;
-	card_base_hp=55; card_base_atk=65+95; card_base_def=95+45;
+	card_base_hp=55; card_base_atk=65+95; card_base_def=95+45; card_base_speed=85;
 	card_grid_x=13; card_grid_y=11; break;
 case 118:
 	card_name="Goldeen";
 	card_stage=1; card_evo[0]=119;
 	card_type_a=03; card_type_b=-1;
-	card_base_hp=45; card_base_atk=67+35; card_base_def=60+50;
+	card_base_hp=45; card_base_atk=67+35; card_base_def=60+50; card_base_speed=63;
 	card_grid_x=14; card_grid_y=11; break;
 case 119:
 	card_name="Seaking";
 	card_stage=2;
 	card_type_a=03; card_type_b=-1;
-	card_base_hp=80; card_base_atk=92+65; card_base_def=65+80;
+	card_base_hp=80; card_base_atk=92+65; card_base_def=65+80; card_base_speed=68;
 	card_grid_x=15; card_grid_y=11; break;
 case 120:
 	card_name="Staryu";
 	card_stage=1; card_evo[0]=121;
 	card_type_a=03; card_type_b=-1;
-	card_base_hp=30; card_base_atk=45+70; card_base_def=55+55;
+	card_base_hp=30; card_base_atk=45+70; card_base_def=55+55; card_base_speed=85;
 	card_grid_x=1; card_grid_y=12; break;
 case 121:
 	card_name="Starmie";
 	card_stage=2;
 	card_type_a=03; card_type_b=07;
-	card_base_hp=60; card_base_atk=75+100; card_base_def=85+85;
+	card_base_hp=60; card_base_atk=75+100; card_base_def=85+85; card_base_speed=115;
 	card_grid_x=2; card_grid_y=12; break;
 case 122:
 	card_name="Mr. Mime";
@@ -1060,13 +1060,13 @@ case 122:
 	card_has_forms=global.mod_gen3to8
 	if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=07; card_type_b=08;
-		card_base_hp=40; card_base_atk=45+100; card_base_def=65+120;
+		card_base_hp=40; card_base_atk=45+100; card_base_def=65+120; card_base_speed=90;
 		card_grid_x=3; card_grid_y=12;}
 	else {
 		card_evo[0]=866;
 		card_sheet=sp_poke_d;
 		card_type_a=13; card_type_b=07;
-		card_base_hp=50; card_base_atk=65+90; card_base_def=65+90;
+		card_base_hp=50; card_base_atk=65+90; card_base_def=65+90; card_base_speed=100;
 		card_grid_x=6; card_grid_y=10; }
 	break;
 		
@@ -1074,25 +1074,25 @@ case 123:
 	card_name="Scyther";
 	card_stage=1; card_evo[0]=212; card_evo[1]=900;
 	card_type_a=11; card_type_b=05;
-	card_base_hp=70; card_base_atk=110+55; card_base_def=80+80;
+	card_base_hp=70; card_base_atk=110+55; card_base_def=80+80; card_base_speed=105;
 	card_grid_x=4; card_grid_y=12; break;
 case 124:
 	card_name="Jynx";
 	card_stage=1;
 	card_type_a=13; card_type_b=07;
-	card_base_hp=65; card_base_atk=50+115; card_base_def=35+95;
+	card_base_hp=65; card_base_atk=50+115; card_base_def=35+95; card_base_speed=95;
 	card_grid_x=5; card_grid_y=12; break;
 case 125:
 	card_name="Electabuzz";
 	card_stage=1; card_evo[0]=466;
 	card_type_a=04; card_type_b=-1;
-	card_base_hp=65; card_base_atk=83+95; card_base_def=57+85;
+	card_base_hp=65; card_base_atk=83+95; card_base_def=57+85; card_base_speed=105;
 	card_grid_x=6; card_grid_y=12; break;
 case 126:
 	card_name="Magmar";
 	card_stage=1; card_evo[0]=467;
 	card_type_a=02; card_type_b=-1;
-	card_base_hp=65; card_base_atk=95+100; card_base_def=57+85;
+	card_base_hp=65; card_base_atk=95+100; card_base_def=57+85; card_base_speed=93;
 	card_grid_x=7; card_grid_y=12; break;
 case 127:
 	card_can_mega=global.mod_megaforms
@@ -1100,25 +1100,25 @@ case 127:
 	card_name="Pinsir";
 	card_stage=1;
 	card_type_a=11; card_type_b=-1;
-	card_base_hp=65; card_base_atk=125+55; card_base_def=100+70;
+	card_base_hp=65; card_base_atk=125+55; card_base_def=100+70; card_base_speed=85;
 	card_grid_x=8; card_grid_y=12;}
 	else {
 	card_name="M-Pinsir";
 	card_stage=1; card_enigma=true;
 	card_type_a=11; card_type_b=05;
-	card_base_hp=65; card_base_atk=155+65; card_base_def=120+90;
+	card_base_hp=65; card_base_atk=155+65; card_base_def=120+90; card_base_speed=105;
 	card_grid_x=9; card_grid_y=12;} break;
 case 128:
 	card_name="Tauros";
 	card_stage=1;
 	card_type_a=00; card_type_b=-1;
-	card_base_hp=75; card_base_atk=100+40; card_base_def=95+70;
+	card_base_hp=75; card_base_atk=100+40; card_base_def=95+70; card_base_speed=110;
 	card_grid_x=10; card_grid_y=12; break;
 case 129:
 	card_name="Magikarp";
 	card_stage=1; card_evo[0]=130;
 	card_type_a=03; card_type_b=-1;
-	card_base_hp=20; card_base_atk=10+15; card_base_def=55+20;
+	card_base_hp=20; card_base_atk=10+15; card_base_def=55+20; card_base_speed=80;
 	card_grid_x=11; card_grid_y=12; break;
 case 130:
 	card_can_mega=global.mod_megaforms
@@ -1126,79 +1126,79 @@ case 130:
 	card_name="Gyarados";
 	card_stage=2;
 	card_type_a=03; card_type_b=05;
-	card_base_hp=95; card_base_atk=125+60; card_base_def=79+100;
+	card_base_hp=95; card_base_atk=125+60; card_base_def=79+100; card_base_speed=81;
 	card_grid_x=12; card_grid_y=12;}
 	else {
 	card_name="M-Gyarados";
 	card_stage=2; card_enigma=true;
 	card_type_a=03; card_type_b=17;
-	card_base_hp=95; card_base_atk=155+70; card_base_def=109+130;
+	card_base_hp=95; card_base_atk=155+70; card_base_def=109+130; card_base_speed=81;
 	card_grid_x=13; card_grid_y=12;} break;
 case 131:
 	card_name="Lapras";
 	card_stage=1;
 	card_type_a=03; card_type_b=13;
-	card_base_hp=130; card_base_atk=85+85; card_base_def=80+95;
+	card_base_hp=130; card_base_atk=85+85; card_base_def=80+95; card_base_speed=60;
 	card_grid_x=14; card_grid_y=12; break;
 case 132:
 	card_name="Ditto";
 	card_stage=1;
 	card_type_a=00; card_type_b=-1;
-	card_base_hp=48; card_base_atk=48+48; card_base_def=48+48;
+	card_base_hp=48; card_base_atk=48+48; card_base_def=48+48; card_base_speed=48;
 	card_grid_x=15; card_grid_y=12; break;
 case 133:
 	card_name="Eevee";
 	card_stage=1; card_evo[0]=134; card_evo[1]=135; card_evo[2]=136; card_evo[3]=196; card_evo[4]=197; card_evo[5]=470; card_evo[6]=471; card_evo[7]=700;
 	card_type_a=00; card_type_b=-1;
-	card_base_hp=55; card_base_atk=55+45; card_base_def=50+65;
+	card_base_hp=55; card_base_atk=55+45; card_base_def=50+65; card_base_speed=55;
 	card_grid_x=1; card_grid_y=13; break;
 case 134:
 	card_name="Vaporeon";
 	card_stage=2;
 	card_type_a=03; card_type_b=-1;
-	card_base_hp=130; card_base_atk=65+110; card_base_def=60+95;
+	card_base_hp=130; card_base_atk=65+110; card_base_def=60+95; card_base_speed=65;
 	card_grid_x=2; card_grid_y=13; break;
 case 135:
 	card_name="Jolteon";
 	card_stage=2;
 	card_type_a=04; card_type_b=-1;
-	card_base_hp=65; card_base_atk=65+110; card_base_def=60+95;
+	card_base_hp=65; card_base_atk=65+110; card_base_def=60+95; card_base_speed=130;
 	card_grid_x=3; card_grid_y=13; break;
 case 136:
 	card_name="Flareon";
 	card_stage=2;
 	card_type_a=02; card_type_b=-1;
-	card_base_hp=65; card_base_atk=130+95; card_base_def=60+110;
+	card_base_hp=65; card_base_atk=130+95; card_base_def=60+110; card_base_speed=65
 	card_grid_x=4; card_grid_y=13; break;
 case 137:
 	card_name="Porygon";
 	card_stage=1; card_evo[0]=233;
 	card_type_a=00; card_type_b=-1;
-	card_base_hp=65; card_base_atk=60+85; card_base_def=70+75;
+	card_base_hp=65; card_base_atk=60+85; card_base_def=70+75; card_base_speed=40;
 	card_grid_x=5; card_grid_y=13; break;
 case 138:
 	card_name="Omanyte";
 	card_stage=1; card_evo[0]=139; card_fossil=true;
 	card_type_a=10; card_type_b=03;
-	card_base_hp=35; card_base_atk=40+90; card_base_def=100+55;
+	card_base_hp=35; card_base_atk=40+90; card_base_def=100+55; card_base_speed=35;
 	card_grid_x=6; card_grid_y=13; break;
 case 139:
 	card_name="Omastar";
 	card_stage=2; card_fossil=true;
 	card_type_a=10; card_type_b=03;
-	card_base_hp=70; card_base_atk=60+115; card_base_def=125+70;
+	card_base_hp=70; card_base_atk=60+115; card_base_def=125+70; card_base_speed=55;
 	card_grid_x=7; card_grid_y=13; break;
 case 140:
 	card_name="Kabuto";
 	card_stage=1; card_evo[0]=141; card_fossil=true;
 	card_type_a=10; card_type_b=03;
-	card_base_hp=30; card_base_atk=80+55; card_base_def=90+45;
+	card_base_hp=30; card_base_atk=80+55; card_base_def=90+45; card_base_speed=55;
 	card_grid_x=8; card_grid_y=13; break;
 case 141:
 	card_name="Kabutops";
 	card_stage=2; card_fossil=true;
 	card_type_a=10; card_type_b=03;
-	card_base_hp=60; card_base_atk=115+65; card_base_def=105+70;
+	card_base_hp=60; card_base_atk=115+65; card_base_def=105+70; card_base_speed=80;
 	card_grid_x=9; card_grid_y=13; break;
 case 142:
 	card_can_mega=global.mod_megaforms
@@ -1206,19 +1206,19 @@ case 142:
 	card_name="Aerodactyl";
 	card_stage=1; card_fossil=true;
 	card_type_a=10; card_type_b=05;
-	card_base_hp=80; card_base_atk=105+60; card_base_def=65+75;
+	card_base_hp=80; card_base_atk=105+60; card_base_def=65+75; card_base_speed=130;
 	card_grid_x=10; card_grid_y=13;}
 	else {
 	card_name="M-Aerodactyl";
 	card_stage=1; card_fossil=true; card_enigma=true;
 	card_type_a=10; card_type_b=05;
-	card_base_hp=80; card_base_atk=135+70; card_base_def=85+95;
+	card_base_hp=80; card_base_atk=135+70; card_base_def=85+95; card_base_speed=150;
 	card_grid_x=11; card_grid_y=13;} break;
 case 143:
 	card_name="Snorlax";
 	card_stage=1;
 	card_type_a=00; card_type_b=-1;
-	card_base_hp=160; card_base_atk=110+65; card_base_def=65+110;
+	card_base_hp=160; card_base_atk=110+65; card_base_def=65+110; card_base_speed=30;
 	card_grid_x=12; card_grid_y=13; break;
 case 144:
 	card_name="Articuno";
@@ -1226,12 +1226,12 @@ case 144:
 	card_has_forms=global.mod_gen3to8
 	if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=13; card_type_b=05;
-		card_base_hp=90; card_base_atk=85+95; card_base_def=100+125;
+		card_base_hp=90; card_base_atk=85+95; card_base_def=100+125; card_base_speed=85;
 		card_grid_x=13; card_grid_y=13; }
 	else {
 		card_sheet=sp_poke_d;
 		card_type_a=7; card_type_b=05;
-		card_base_hp=90; card_base_atk=85+125; card_base_def=85+100;
+		card_base_hp=90; card_base_atk=85+125; card_base_def=85+100; card_base_speed=95;
 		card_grid_x=10; card_grid_y=10; }
 	break;
 case 145:
@@ -1240,12 +1240,12 @@ case 145:
 	card_has_forms=global.mod_gen3to8
 	if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=04; card_type_b=05;
-		card_base_hp=90; card_base_atk=90+125; card_base_def=85+90;
+		card_base_hp=90; card_base_atk=90+125; card_base_def=85+90; card_base_speed=100;
 		card_grid_x=14; card_grid_y=13; }
 	else {
 		card_sheet=sp_poke_d;
 		card_type_a=06; card_type_b=05;
-		card_base_hp=90; card_base_atk=125+85; card_base_def=90+90;
+		card_base_hp=90; card_base_atk=125+85; card_base_def=90+90; card_base_speed=100;
 		card_grid_x=11; card_grid_y=10; }
 	break;
 case 146:
@@ -1254,31 +1254,31 @@ case 146:
 	card_has_forms=global.mod_gen3to8
 	if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=02; card_type_b=05;
-		card_base_hp=90; card_base_atk=100+125; card_base_def=90+85;
+		card_base_hp=90; card_base_atk=100+125; card_base_def=90+85; card_base_speed=90;
 		card_grid_x=15; card_grid_y=13; }
 	else {
 		card_sheet=sp_poke_d;
 		card_type_a=17; card_type_b=05;
-		card_base_hp=90; card_base_atk=85+100; card_base_def=90+125;
+		card_base_hp=90; card_base_atk=85+100; card_base_def=90+125; card_base_speed=90;
 		card_grid_x=12; card_grid_y=10; }
 	break;
 case 147:
 	card_name="Dratini";
 	card_stage=1; card_evo[0]=148; card_pseudo=true;
 	card_type_a=14; card_type_b=-1;
-	card_base_hp=41; card_base_atk=64+50; card_base_def=45+50;
+	card_base_hp=41; card_base_atk=64+50; card_base_def=45+50; card_base_speed=50;
 	card_grid_x=1; card_grid_y=14; break;
 case 148:
 	card_name="Dragonair";
 	card_stage=2; card_evo[0]=149; card_pseudo=true;
 	card_type_a=14; card_type_b=-1;
-	card_base_hp=61; card_base_atk=84+70; card_base_def=65+70;
+	card_base_hp=61; card_base_atk=84+70; card_base_def=65+70; card_base_speed=70;
 	card_grid_x=2; card_grid_y=14; break;
 case 149:
 	card_name="Dragonite";
 	card_stage=3; card_pseudo=true;
 	card_type_a=14; card_type_b=05;
-	card_base_hp=91; card_base_atk=134+100; card_base_def=95+100;
+	card_base_hp=91; card_base_atk=134+100; card_base_def=95+100; card_base_speed=80;
 	card_grid_x=3; card_grid_y=14; break;
 case 150:
 	card_can_mega=global.mod_megaforms
@@ -1286,7 +1286,7 @@ case 150:
 	card_name="Mewtwo";
 	card_stage=1; card_enigma=true;
 	card_type_a=07; card_type_b=-1;
-	card_base_hp=106; card_base_atk=110+154; card_base_def=90+90;
+	card_base_hp=106; card_base_atk=110+154; card_base_def=90+90; card_base_speed=130;
 	card_grid_x=4; card_grid_y=14;}
 	else if card_form_value=1000{
 	card_name="M-Mewtwo X";
@@ -1294,7 +1294,7 @@ case 150:
 	card_has_forms=true;
 	card_stage=1; card_enigma=true;
 	card_type_a=07; card_type_b=-1;
-	card_base_hp=106; card_base_atk=190+154; card_base_def=100+100;
+	card_base_hp=106; card_base_atk=190+154; card_base_def=100+100; card_base_speed=130;
 	card_grid_x=5; card_grid_y=14;}
 	else{
 	card_name="M-Mewtwo Y";
@@ -1302,44 +1302,44 @@ case 150:
 	card_has_forms=true;
 	card_stage=1; card_enigma=true;
 	card_type_a=07; card_type_b=-1;
-	card_base_hp=106; card_base_atk=150+194; card_base_def=70+120;
+	card_base_hp=106; card_base_atk=150+194; card_base_def=70+120; card_base_speed=140;
 	card_grid_x=6; card_grid_y=14;} 
 	break;
 case 151:
 	card_name="Mew";
 	card_stage=1; card_enigma=true;
 	card_type_a=07; card_type_b=-1;
-	card_base_hp=100; card_base_atk=100+100; card_base_def=100+100;
+	card_base_hp=100; card_base_atk=100+100; card_base_def=100+100; card_base_speed=100;
 	card_grid_x=7; card_grid_y=14; break;
 case 152:
 	card_name="Chikorita";
 	card_stage=1; card_evo[0]=153; card_starter=true;
 	card_type_a=01; card_type_b=-1;
-	card_base_hp=45; card_base_atk=49+49; card_base_def=65+65;
+	card_base_hp=45; card_base_atk=49+49; card_base_def=65+65; card_base_speed=45;
 	card_grid_x=1; card_grid_y=15; break;
 case 153:
 	card_name="Bayleef";
 	card_stage=2; card_evo[0]=154; card_starter=true;
 	card_type_a=01; card_type_b=-1;
-	card_base_hp=60; card_base_atk=62+63; card_base_def=80+80;
+	card_base_hp=60; card_base_atk=62+63; card_base_def=80+80; card_base_speed=60;
 	card_grid_x=2; card_grid_y=15; break;
 case 154:
 	card_name="Meganium";
 	card_stage=3; card_starter=true;
 	card_type_a=01; card_type_b=-1;
-	card_base_hp=80; card_base_atk=82+83; card_base_def=100+100;
+	card_base_hp=80; card_base_atk=82+83; card_base_def=100+100; card_base_speed=80;
 	card_grid_x=3; card_grid_y=15; break;
 case 155:
 	card_name="Cyndaquil";
 	card_stage=1; card_evo[0]=156; card_starter=true;
 	card_type_a=02; card_type_b=-1;
-	card_base_hp=39; card_base_atk=52+60; card_base_def=43+50;
+	card_base_hp=39; card_base_atk=52+60; card_base_def=43+50; card_base_speed=65;
 	card_grid_x=4; card_grid_y=15; break;
 case 156:
 	card_name="Quilava";
 	card_stage=2; card_evo[0]=157; card_starter=true;
 	card_type_a=02; card_type_b=-1;
-	card_base_hp=58; card_base_atk=64+80; card_base_def=58+65;
+	card_base_hp=58; card_base_atk=64+80; card_base_def=58+65; card_base_speed=80;
 	card_grid_x=5; card_grid_y=15; break;
 case 157:
 	card_name="Typhlosion";
@@ -1347,13 +1347,13 @@ case 157:
 	card_has_forms=global.mod_gen3to8
 	if card_form_value<500 or global.mod_gen3to8 {
 		card_type_a=02; card_type_b=-1;
-		card_base_hp=78; card_base_atk=84+109; card_base_def=78+85;
+		card_base_hp=78; card_base_atk=84+109; card_base_def=78+85; card_base_speed=100;
 		card_grid_x=6; card_grid_y=15; 
 	}
 	else {
 		card_sheet=sp_poke_d;
 		card_type_a=02; card_type_b=16;
-		card_base_hp=73; card_base_atk=84+119; card_base_def=78+85;
+		card_base_hp=73; card_base_atk=84+119; card_base_def=78+85; card_base_speed=95;
 		card_grid_x=13; card_grid_y=10; 
 	}
 	break;
@@ -1361,139 +1361,139 @@ case 158:
 	card_name="Totodile";
 	card_stage=1; card_evo[0]=159; card_starter=true;
 	card_type_a=03; card_type_b=-1;
-	card_base_hp=50; card_base_atk=65+44; card_base_def=64+48;
+	card_base_hp=50; card_base_atk=65+44; card_base_def=64+48; card_base_speed=43;
 	card_grid_x=7; card_grid_y=15; break;
 case 159:
 	card_name="Croconaw";
 	card_stage=2; card_evo[0]=160; card_starter=true;
 	card_type_a=03; card_type_b=-1;
-	card_base_hp=65; card_base_atk=80+59; card_base_def=80+63;
+	card_base_hp=65; card_base_atk=80+59; card_base_def=80+63; card_base_speed=58;
 	card_grid_x=8; card_grid_y=15; break;
 case 160:
 	card_name="Feraligatr";
 	card_stage=3; card_starter=true;
 	card_type_a=03; card_type_b=-1;
-	card_base_hp=85; card_base_atk=105+79; card_base_def=100+83;
+	card_base_hp=85; card_base_atk=105+79; card_base_def=100+83; card_base_speed=78;
 	card_grid_x=10; card_grid_y=15; break;
 case 161:
 	card_name="Sentret";
 	card_stage=1; card_evo[0]=162;
 	card_type_a=00; card_type_b=-1;
-	card_base_hp=35; card_base_atk=46+35; card_base_def=34+45;
+	card_base_hp=35; card_base_atk=46+35; card_base_def=34+45; card_base_speed=20;
 	card_grid_x=11; card_grid_y=15; break;
 case 162:
 	card_name="Furret";
 	card_stage=2;
 	card_type_a=00; card_type_b=-1;
-	card_base_hp=85; card_base_atk=76+45; card_base_def=64+55;
+	card_base_hp=85; card_base_atk=76+45; card_base_def=64+55; card_base_speed=90;
 	card_grid_x=12; card_grid_y=15; break;
 case 163:
 	card_name="Hoothoot";
 	card_stage=1; card_evo[0]=164;
 	card_type_a=00; card_type_b=05;
-	card_base_hp=60; card_base_atk=30+36; card_base_def=30+56;
+	card_base_hp=60; card_base_atk=30+36; card_base_def=30+56; card_base_speed=50;
 	card_grid_x=13; card_grid_y=15; break;
 case 164:
 	card_name="Noctowl";
 	card_stage=2;
 	card_type_a=00; card_type_b=05;
-	card_base_hp=100; card_base_atk=50+86; card_base_def=50+96;
+	card_base_hp=100; card_base_atk=50+86; card_base_def=50+96; card_base_speed=70;
 	card_grid_x=14; card_grid_y=15; break;
 case 165:
 	card_name="Ledyba";
 	card_stage=1; card_evo[0]=166;
 	card_type_a=11; card_type_b=05;
-	card_base_hp=40; card_base_atk=20+40; card_base_def=30+80;
+	card_base_hp=40; card_base_atk=20+40; card_base_def=30+80; card_base_speed=55;
 	card_grid_x=15; card_grid_y=15; break;
 case 166:
 	card_name="Ledian";
 	card_stage=2;
 	card_type_a=11; card_type_b=05;
-	card_base_hp=55; card_base_atk=35+55; card_base_def=50+110;
+	card_base_hp=55; card_base_atk=35+55; card_base_def=50+110; card_base_speed=85;
 	card_grid_x=1; card_grid_y=16; break;
 case 167:
 	card_name="Spinarak";
 	card_stage=1; card_evo[0]=168;
 	card_type_a=11; card_type_b=12;
-	card_base_hp=40; card_base_atk=60+40; card_base_def=40+40;
+	card_base_hp=40; card_base_atk=60+40; card_base_def=40+40; card_base_speed=30;
 	card_grid_x=2; card_grid_y=16; break;
 case 168:
 	card_name="Ariados";
 	card_stage=2;
 	card_type_a=11; card_type_b=12;
-	card_base_hp=70; card_base_atk=90+60; card_base_def=70+70;
+	card_base_hp=70; card_base_atk=90+60; card_base_def=70+70; card_base_speed=40;
 	card_grid_x=3; card_grid_y=16; break;
 case 169:
 	card_name="Crobat";
 	card_stage=3;
 	card_type_a=12; card_type_b=05;
-	card_base_hp=85; card_base_atk=90+70; card_base_def=80+80;
+	card_base_hp=85; card_base_atk=90+70; card_base_def=80+80; card_base_speed=130;
 	card_grid_x=4; card_grid_y=16; break;
 case 170:
 	card_name="Chinchou";
 	card_stage=1; card_evo[0]=171;
 	card_type_a=03; card_type_b=04;
-	card_base_hp=75; card_base_atk=38+56; card_base_def=38+56;
+	card_base_hp=75; card_base_atk=38+56; card_base_def=38+56; card_base_speed=67;
 	card_grid_x=5; card_grid_y=16; break;
 case 171:
 	card_name="Lanturn";
 	card_stage=2;
 	card_type_a=03; card_type_b=04;
-	card_base_hp=125; card_base_atk=58+76; card_base_def=58+76;
+	card_base_hp=125; card_base_atk=58+76; card_base_def=58+76; card_base_speed=67;
 	card_grid_x=6; card_grid_y=16; break;
 case 172:
 	card_name="Pichu";
 	card_stage=0; card_evo[0]=025;
 	card_type_a=04; card_type_b=-1;
-	card_base_hp=20; card_base_atk=40+35; card_base_def=15+35;
+	card_base_hp=20; card_base_atk=40+35; card_base_def=15+35; card_base_speed=60;
 	card_grid_x=7; card_grid_y=16; break;
 case 173:
 	card_name="Cleffa";
 	card_stage=0; card_evo[0]=035;
 	card_type_a=08; card_type_b=-1;
-	card_base_hp=50; card_base_atk=25+45; card_base_def=28+55;
+	card_base_hp=50; card_base_atk=25+45; card_base_def=28+55; card_base_speed=15;
 	card_grid_x=8; card_grid_y=16; break;
 case 174:
 	card_name="Igglybuff";
 	card_stage=0; card_evo[0]=039;
 	card_type_a=00; card_type_b=08;
-	card_base_hp=90; card_base_atk=30+40; card_base_def=15+20;
+	card_base_hp=90; card_base_atk=30+40; card_base_def=15+20; card_base_speed=15;
 	card_grid_x=10; card_grid_y=16; break;
 case 175:
 	card_name="Togepi";
 	card_stage=0; card_evo[0]=176;
 	card_type_a=08; card_type_b=-1;
-	card_base_hp=35; card_base_atk=20+40; card_base_def=65+65;
+	card_base_hp=35; card_base_atk=20+40; card_base_def=65+65; card_base_speed=20;
 	card_grid_x=12; card_grid_y=16; break;
 case 176:
 	card_name="Togetic";
 	card_stage=1; card_evo[0]=468;
 	card_type_a=08; card_type_b=05;
-	card_base_hp=55; card_base_atk=40+80; card_base_def=85+105;
+	card_base_hp=55; card_base_atk=40+80; card_base_def=85+105; card_base_speed=40;
 	card_grid_x=13; card_grid_y=16; break;
 case 177:
 	card_name="Natu";
 	card_stage=1; card_evo[0]=178;
 	card_type_a=07; card_type_b=05;
-	card_base_hp=40; card_base_atk=50+70; card_base_def=45+45;
+	card_base_hp=40; card_base_atk=50+70; card_base_def=45+45; card_base_speed=70;
 	card_grid_x=14; card_grid_y=16; break;
 case 178:
 	card_name="Xatu";
 	card_stage=2;
 	card_type_a=07; card_type_b=05;
-	card_base_hp=65; card_base_atk=75+95; card_base_def=70+70;
+	card_base_hp=65; card_base_atk=75+95; card_base_def=70+70; card_base_speed=95;
 	card_grid_x=15; card_grid_y=16; break;
 case 179:
 	card_name="Mareep";
 	card_stage=1; card_evo[0]=180;
 	card_type_a=04; card_type_b=-1;
-	card_base_hp=55; card_base_atk=40+65; card_base_def=40+45;
+	card_base_hp=55; card_base_atk=40+65; card_base_def=40+45; card_base_speed=35;
 	card_grid_x=1; card_grid_y=17; break;
 case 180:
 	card_name="Flaaffy";
 	card_stage=2; card_evo[0]=181;
 	card_type_a=04; card_type_b=-1;
-	card_base_hp=70; card_base_atk=55+80; card_base_def=55+60;
+	card_base_hp=70; card_base_atk=55+80; card_base_def=55+60; card_base_speed=45;
 	card_grid_x=2; card_grid_y=17; break;
 case 181:
 	card_can_mega=global.mod_megaforms
@@ -1501,80 +1501,80 @@ case 181:
 	card_name="Ampharos";
 	card_stage=3;
 	card_type_a=04; card_type_b=-1;
-	card_base_hp=90; card_base_atk=75+115; card_base_def=85+90;
+	card_base_hp=90; card_base_atk=75+115; card_base_def=85+90; card_base_speed=55;
 	card_grid_x=3; card_grid_y=17;}
 	else {
 	card_name="M-Ampharos";
 	card_stage=3; card_enigma=true;
 	card_type_a=04; card_type_b=14;
-	card_base_hp=90; card_base_atk=95+165; card_base_def=105+110;
+	card_base_hp=90; card_base_atk=95+165; card_base_def=105+110; card_base_speed=45;
 	card_grid_x=4; card_grid_y=17;}
 	break;
 case 182:
 	card_name="Bellossom";
 	card_stage=3;
 	card_type_a=01; card_type_b=-1;
-	card_base_hp=75; card_base_atk=80+90; card_base_def=95+100;
+	card_base_hp=75; card_base_atk=80+90; card_base_def=95+100;  card_base_speed=50;
 	card_grid_x=5; card_grid_y=17; break;
 case 183:
 	card_name="Marill";
 	card_stage=1; card_evo[0]=184;
 	card_type_a=03; card_type_b=08;
-	card_base_hp=70; card_base_atk=20+20; card_base_def=50+50;
+	card_base_hp=70; card_base_atk=20+20; card_base_def=50+50; card_base_speed=40;
 	card_grid_x=6; card_grid_y=17; break;
 case 184:
 	card_name="Azumarill";
 	card_stage=2;
 	card_type_a=03; card_type_b=08;
-	card_base_hp=100; card_base_atk=50+60; card_base_def=80+80;
+	card_base_hp=100; card_base_atk=50+60; card_base_def=80+80; card_base_speed=50;
 	card_grid_x=7; card_grid_y=17; break;
 case 185:
 	card_name="Sudowoodo";
 	card_stage=1;
 	card_type_a=10; card_type_b=-1;
-	card_base_hp=70; card_base_atk=100+30; card_base_def=115+65;
+	card_base_hp=70; card_base_atk=100+30; card_base_def=115+65; card_base_speed=30;
 	card_grid_x=8; card_grid_y=17; break;
 case 186:
 	card_name="Politoed";
 	card_stage=3;
 	card_type_a=03; card_type_b=-1;
-	card_base_hp=90; card_base_atk=75+90; card_base_def=75+100;
+	card_base_hp=90; card_base_atk=75+90; card_base_def=75+100; card_base_speed=70;
 	card_grid_x=9; card_grid_y=17; break;
 case 187:
 	card_name="Hoppip";
 	card_stage=1; card_evo[0]=188;
 	card_type_a=01; card_type_b=05;
-	card_base_hp=35; card_base_atk=35+35; card_base_def=40+55;
+	card_base_hp=35; card_base_atk=35+35; card_base_def=40+55; card_base_speed=50;
 	card_grid_x=11; card_grid_y=17; break;
 case 188:
 	card_name="Skiploom";
 	card_stage=2; card_evo[0]=189;
 	card_type_a=01; card_type_b=05;
-	card_base_hp=55; card_base_atk=45+45; card_base_def=50+65;
+	card_base_hp=55; card_base_atk=45+45; card_base_def=50+65; card_base_speed=80;
 	card_grid_x=12; card_grid_y=17; break;
 case 189:
 	card_name="Jumpluff";
 	card_stage=3;
 	card_type_a=01; card_type_b=05;
-	card_base_hp=75; card_base_atk=55+55; card_base_def=70+95;
+	card_base_hp=75; card_base_atk=55+55; card_base_def=70+95; card_base_speed=110;
 	card_grid_x=13; card_grid_y=17; break;
 case 190:
 	card_name="Aipom";
 	card_stage=1; card_evo[0]=424;
 	card_type_a=00; card_type_b=-1;
-	card_base_hp=55; card_base_atk=70+40; card_base_def=55+55;
+	card_base_hp=55; card_base_atk=70+40; card_base_def=55+55; card_base_speed=85;
 	card_grid_x=14; card_grid_y=17; break;
 case 191:
 	card_name="Sunkern";
 	card_stage=1; card_evo[0]=192;
 	card_type_a=01; card_type_b=-1;
-	card_base_hp=30; card_base_atk=30+30; card_base_def=30+30;
+	card_base_hp=30; card_base_atk=30+30; card_base_def=30+30; card_base_speed=30;
 	card_grid_x=15; card_grid_y=17; break;
 case 192:
 	card_name="Sunflora";
 	card_stage=2;
 	card_type_a=01; card_type_b=-1;
-	card_base_hp=75; card_base_atk=75+105; card_base_def=55+85;
+	card_base_hp=75; card_base_atk=75+105; card_base_def=55+85; card_base_speed=30;
 	card_grid_x=1; card_grid_y=18; break;
 case 193:
 	card_name="Yanma";
