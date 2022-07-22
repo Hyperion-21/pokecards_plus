@@ -10,12 +10,11 @@ global.mod_qol = undefined;
 global.mod_speed = undefined;
 global.mod_campfire = undefined;
 
-i = 1;
-max_button = 5;
+instance_create_depth(2, 55, 0, ob_initbutton, {init_id : 1});
+instance_create_depth(2, 95, 0, ob_initbutton, {init_id : 2});
+instance_create_depth(2, 135, 0, ob_initbutton, {init_id : 5});
 
-while i <= max_button {
-	instance_create_depth(2, 40*i + 2, 0, ob_initbutton, {init_id : i});
-	i++;
-}
+instance_create_depth(2, 200, 0, ob_initbutton, {init_id : 3});
+instance_create_depth(2, 240, 0, ob_initbutton, {init_id : 4});
 
-instance_create_depth(2, 40*(i+1), 0, ob_initbutton_start);
+instance_create_depth(2, 325, 0, ob_initbutton_start);

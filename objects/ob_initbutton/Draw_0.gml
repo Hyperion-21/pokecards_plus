@@ -19,19 +19,19 @@ switch (init_id) {
 		global.mod_megaforms = buttonstate;
 		break;
 	case 3:
-		draw_text(id.x + 42, id.y + 2,"Quality of Life Patches (WIP)"); 
+		draw_text(id.x + 42, id.y + 2,"Quality of Life Patches"); 
 		draw_set_font(fn_m3x6);
 		draw_text(id.x + 42, id.y + 18,"Toggles quality of life patches, such as increased card pack size, inventory in events, etc."); 
 		global.mod_qol = buttonstate;
 		break;
 	case 4:
-		draw_text(id.x + 42, id.y + 2,"Speed Into Health Patch (WIP)"); 
+		draw_text(id.x + 42, id.y + 2,"Speed Crits (WIP - Fork attack + only some Pokes have speed)"); 
 		draw_set_font(fn_m3x6);
-		draw_text(id.x + 42, id.y + 18,"Toggles if a Pokemon's speed stat is integrated into its health stat. Buffs fast Pokemon, nerfs slow Pokemon."); 
+		draw_text(id.x + 42, id.y + 18,"Toggles random critical hits, determined by Pokemon speed stat."); 
 		global.mod_speed = buttonstate;
 		break;
 	case 5:
-		draw_text(id.x + 42, id.y + 2,"Campfires and Sacrifices"); 
+		draw_text(id.x + 42, id.y + 2,"Bonus Events (WIP - Not all modded events are affected)"); 
 		draw_set_font(fn_m3x6);
 		draw_text(id.x + 42, id.y + 18,"Toggles if the Campfire or Sacrifice event occurs."); 
 		global.mod_campfire = buttonstate;
