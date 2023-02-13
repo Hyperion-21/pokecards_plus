@@ -1,11 +1,7 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
 #macro game_version "v1.6.0.0"
-<<<<<<< Updated upstream
-#macro pclp_version "v1.3.1.1"
-=======
 #macro pclp_version "v2.0.0.0"
->>>>>>> Stashed changes
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -118,7 +114,7 @@ textbox_char_pos=0;
 #macro money_badge_base 200 //200 325 450 575 700 825 950 1075 1200 (minimum should be enough for a card pack)
 #macro money_badge_area_bonus 125
 #macro sell_value_multiplier 2.5 //bankers rounding
-#macro tutorial_payout 50000000
+#macro tutorial_payout 500
 //
 battle_hp[0]=5; //10
 battle_hp[1]=15; //30
