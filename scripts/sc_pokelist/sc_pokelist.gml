@@ -3,11 +3,20 @@ function sc_pokelist() {
 //00 normal, 01 grass, 02 fire, 03 water, 04 electric, 05 flying, 06 fighting, 07 psychic, 08 fairy
 //09 ground, 10 rock, 11 bug, 12 poison, 13 ice, 14 dragon, 15 steel, 16 ghost, 17 dark, 18 trainer
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if card_id<=386 { card_sheet=sp_poke_a; }
-else if card_id<=807 { card_sheet=sp_poke_b; }
-else if card_id<=905 { card_sheet=sp_poke_d; }
-else if card_id<=2000 { card_sheet=sp_poke_e; }
-else { card_sheet=sp_poke_c; }
+if shiny = false{
+	if card_id<=386 { card_sheet=sp_poke_a; }
+	else if card_id<=807 { card_sheet=sp_poke_b; }
+	else if card_id<=905 { card_sheet=sp_poke_d; }
+	else if card_id<=2000 { card_sheet=sp_poke_e; }
+	else { card_sheet=sp_poke_c; }
+}
+else{
+	if card_id<=386 { card_sheet=sp_shinypoke_a; }
+	else if card_id<=807 { card_sheet=sp_shinypoke_b; }
+	else if card_id<=905 { card_sheet=sp_shinypoke_d; }
+	else if card_id<=2000 { card_sheet=sp_shinypoke_e; }
+	else { card_sheet=sp_shinypoke_c; }
+}
 var i=0;
 repeat (8) {
 	card_evo[i]=-1;

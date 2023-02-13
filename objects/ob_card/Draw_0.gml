@@ -82,6 +82,11 @@ if card_cat=0 and card_face=true and in_view=true {
 		}
 	}
 	//
+	//SHINY
+	if card_shiny = true{
+	draw_sprite_general(sp_sheet,0,48,16,12,11,draw_x+43,draw_y+30,1,1,0,c_white,c_white,c_white,c_white,1);
+	}
+	//
 	//NAMEBAR
 	draw_sprite_general(sp_sheet,0,16*1,16*2,53,10,draw_x+2,draw_y+41,1,1,0,namebar_color,global.color_white,global.color_white,namebar_color,1);
 	//

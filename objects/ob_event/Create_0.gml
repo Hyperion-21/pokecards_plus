@@ -194,6 +194,7 @@ switch (event_kind){
 			create_card_glyph_b=-1;
 			create_card_glyph_c=-1;
 			create_card_innate=1;
+			create_card_shiny=-1;
 			// Leave forms low so no one gets alolan rattata. (requires leppa berries due to dark typing.)
 			create_card_form_value=0;
 			//
@@ -204,6 +205,7 @@ switch (event_kind){
 				create_card_glyph_b=-1;
 				create_card_glyph_c=-1;
 				create_card_innate=4;
+				create_card_shiny = -1;
 				create_card_form_value=irandom(999);
 			}
 			//
@@ -290,6 +292,7 @@ switch (event_kind){
 		    create_card_glyph_b = ob_main.main_card_glyph_b[i];
 		    create_card_glyph_c = ob_main.main_card_glyph_c[i];
 		    create_card_innate = ob_main.main_card_innate[i];
+			create_card_shiny = ob_main.main_card_shiny[i];
 		    create_card_form_value = ob_main.main_card_form_value[i];
     
 		    if (ob_main.serial_card_indeck[ob_main.main_card_serial[i]][0] == true)

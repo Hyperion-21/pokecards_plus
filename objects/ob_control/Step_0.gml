@@ -223,6 +223,7 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or ob_main.cursor_hide=true) 
 							create_card_glyph_b=-1;
 							create_card_glyph_c=-1;
 							create_card_innate=1;
+							create_card_shiny=-1;
 							create_card_form_value=0;
 							create_enemy_randomizer=false;
 							create_enemy_costcount=false;

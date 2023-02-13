@@ -55,6 +55,8 @@ repeat (maindeck_total) {
 	ds_map_add(savemap,value_name,main_card_glyph_c[i]);
 	var value_name="main_card_innate_" + string(i);
 	ds_map_add(savemap,value_name,main_card_innate[i]);
+	var value_name="main_card_shiny_" + string(i);
+	ds_map_add(savemap,value_name,main_card_shiny[i]);
 	var value_name="main_card_form_value_" + string(i);
 	ds_map_add(savemap,value_name,main_card_form_value[i]);
 	var value_name="main_card_serial_" + string(i);

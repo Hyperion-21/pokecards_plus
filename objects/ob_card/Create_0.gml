@@ -1,4 +1,5 @@
 depth=200;
+card_shiny = false;
 //
 if instance_exists(ob_control) { var reference_id=ob_control; }
 else if instance_exists(ob_deckbuild) { var reference_id=ob_deckbuild; }
@@ -28,6 +29,7 @@ potential_y=y;
 for (var i=0; i<=3; i++;) {
 	consumed_berry[i]=0;
 }
+
 //
 already_attacked=false;
 effect_damaged=0;
@@ -43,8 +45,13 @@ else { enemy_costcount=false; }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if card_cat=0 {
 	var random_group_chance=irandom(9999);
+	var random_shiny_chance=irandom(8192);
+	
 	//
 	do {
+		if random_shiny_chance < 6000{
+				card_shiny = true;
+		}
 		card_id=reference_id.create_card_id;
 		if card_id=-1 { var random_card=true; } else { var random_card=false; }
 		//
@@ -90,7 +97,7 @@ if card_cat=0 {
 				card_innate=1;
 			}
 			else {
-				card_id=irandom_range(1,normal_poke_id_max);
+				card_id=irandom_range(1,normal_poke_id_max); /// Sets eneies to never have shinies.
 				//
 				if reference_id.create_card_innate=-1 {
 					var card_enemy_innate_value=irandom(999);
@@ -99,15 +106,17 @@ if card_cat=0 {
 						else if card_enemy_innate_value<(40+ob_main.area_zone*20) { card_innate=3; } //3% - 11%
 						else if card_enemy_innate_value<(100+ob_main.area_zone*30) { card_innate=2; } //6% - 14%
 						else { card_innate=1; } //90% - 66%
+						card_shiny = false;
 					}
 					else {
 						if card_enemy_innate_value<(10+ob_main.area_zone*5) { card_innate=innate_max; } //1% - 5%
 						else if card_enemy_innate_value<(40+ob_main.area_zone*10) { card_innate=3; } //3% - 7%
 						else if card_enemy_innate_value<(100+ob_main.area_zone*15) { card_innate=2; } //6% - 10%
 						else { card_innate=1; } //90% - 78%
+						card_shiny = false;
 					}
 				}
-				else { card_innate=reference_id.create_card_innate; }
+				else { card_innate=reference_id.create_card_innate; card_shiny = false; }
 				//
 				var random_id_chance=irandom(99); if random_id_chance<90 { allow_id_pseudo=true; } //90% pseudo allowed
 				var random_id_chance=irandom(99); if random_id_chance<75 { allow_id_fossil=true; } //75% fossil allowed
@@ -140,6 +149,7 @@ if card_cat=0 {
 			card_glyph_b=reference_id.create_card_glyph_b;
 			card_glyph_c=reference_id.create_card_glyph_c;
 			card_innate=reference_id.create_card_innate;
+			card_shiny=reference_id.create_card_shiny;
 			card_form_value=reference_id.create_card_form_value;
 		}
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -282,9 +292,13 @@ if card_cat=0 {
 				}
 			}
 		}
+
 	} until (random_card=false or (card_rarity_check=true and card_name!=""));
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	sc_card_level_stats_all(true,true);
+	
+	
+
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if card_cat=1 {

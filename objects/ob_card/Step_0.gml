@@ -233,6 +233,7 @@ else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spr
 					ob_main.main_card_glyph_b[ob_main.maindeck_total]=card_glyph_b;
 					ob_main.main_card_glyph_c[ob_main.maindeck_total]=card_glyph_c;
 					ob_main.main_card_innate[ob_main.maindeck_total]=card_innate;
+					ob_main.main_card_shiny[ob_main.maindeck_total]=card_shiny;
 					ob_main.main_card_form_value[ob_main.maindeck_total]=card_form_value;
 					for (var i=0; i<=deck_setup_max; i++;) {
 						ob_main.serial_card_indeck[ob_main.serial_count][i]=false;

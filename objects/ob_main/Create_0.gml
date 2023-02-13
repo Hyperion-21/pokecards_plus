@@ -114,7 +114,7 @@ textbox_char_pos=0;
 #macro money_badge_base 200 //200 325 450 575 700 825 950 1075 1200 (minimum should be enough for a card pack)
 #macro money_badge_area_bonus 125
 #macro sell_value_multiplier 2.5 //bankers rounding
-#macro tutorial_payout 500
+#macro tutorial_payout 5000000
 //
 battle_hp[0]=5; //10
 battle_hp[1]=15; //30
@@ -194,12 +194,14 @@ player_lives = 10
 
 
 // Chance in 10000, chances if weight changes.
-event_card_weight[event_card_group_secret] = 0;
-event_card_weight[event_card_group_environment] = 0;
-event_card_weight[event_card_group_enigma] = 10000;
-event_card_weight[event_card_group_stage_2] = 0;
-event_card_weight[event_card_group_stage_3] = 0;
-event_card_weight[event_card_group_common] = 0;
+event_card_weight[event_card_group_secret] = 1;
+event_card_weight[event_card_group_environment] = 200;
+event_card_weight[event_card_group_enigma] = 15;
+event_card_weight[event_card_group_stage_2] = 250;
+event_card_weight[event_card_group_stage_3] = 50;
+event_card_weight[event_card_group_common] = 9484;
+
+
 
 // Chance in 100 to be added to possible common selection
 event_card_addition_chance[event_card_type_pseudo] = 50;
@@ -442,3 +444,4 @@ if !file_exists("!README!.txt") {
 	
 	file_text_close(readme);
 }
+
