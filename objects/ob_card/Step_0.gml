@@ -415,6 +415,7 @@ if ((reference_id=ob_control and ob_control.card_focus=id) or reference_id=ob_ev
 			case 15: reference_id.tooltip_text="Steel"; break;
 			case 16: reference_id.tooltip_text="Ghost"; break;
 			case 17: reference_id.tooltip_text="Dark"; break;
+			case 18: reference_id.tooltip_text="Trainer"; break;
 		}
 		reference_id.tooltip_lines=1;
 	}

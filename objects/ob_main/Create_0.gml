@@ -1,7 +1,11 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
 #macro game_version "v1.6.0.0"
+<<<<<<< Updated upstream
 #macro pclp_version "v1.3.1.1"
+=======
+#macro pclp_version "v2.0.0.0"
+>>>>>>> Stashed changes
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -96,9 +100,9 @@ textbox_timer=0;
 textbox_timer_max=1;
 textbox_char_pos=0;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-#macro normal_poke_id_max 905 //normal (non-secret and non-environment) poke cards
+#macro normal_poke_id_max 1008 //1008 //normal (non-secret and non-environment) poke cards
 #macro secret_cards_total 2
-#macro environment_cards_total 3
+#macro environment_cards_total 5
 //
 #macro deck_setup_max 5 //0: current (always), 1-5: saved setups
 #macro maindeck_total_max 2000
@@ -114,7 +118,7 @@ textbox_char_pos=0;
 #macro money_badge_base 200 //200 325 450 575 700 825 950 1075 1200 (minimum should be enough for a card pack)
 #macro money_badge_area_bonus 125
 #macro sell_value_multiplier 2.5 //bankers rounding
-#macro tutorial_payout 500
+#macro tutorial_payout 50000000
 //
 battle_hp[0]=5; //10
 battle_hp[1]=15; //30
@@ -135,6 +139,7 @@ money_payout=0;
 effect_money_error=0;
 event_cost_standby=0;
 event_cost_standby_levelup=0;
+player_lives = 10
 //
 #macro ref_event_battle 0
 #macro ref_event_payout 1
@@ -185,24 +190,27 @@ event_cost_standby_levelup=0;
 #macro event_card_group_stage_3 4
 #macro event_card_group_common 5
 
+
 #macro event_card_type_pseudo 0
 #macro event_card_type_fossil 1
 #macro event_card_type_starter 2
 #macro event_card_type_baby 3
 
+
 // Chance in 10000, chances if weight changes.
-event_card_weight[event_card_group_secret] = 1;
-event_card_weight[event_card_group_environment] = 200;
-event_card_weight[event_card_group_enigma] = 15;
-event_card_weight[event_card_group_stage_2] = 250;
-event_card_weight[event_card_group_stage_3] = 50;
-event_card_weight[event_card_group_common] = 9484;
+event_card_weight[event_card_group_secret] = 0;
+event_card_weight[event_card_group_environment] = 0;
+event_card_weight[event_card_group_enigma] = 10000;
+event_card_weight[event_card_group_stage_2] = 0;
+event_card_weight[event_card_group_stage_3] = 0;
+event_card_weight[event_card_group_common] = 0;
 
 // Chance in 100 to be added to possible common selection
 event_card_addition_chance[event_card_type_pseudo] = 50;
 event_card_addition_chance[event_card_type_fossil] = 50;
 event_card_addition_chance[event_card_type_starter] = 25;
 event_card_addition_chance[event_card_type_baby] = 25;
+
 
 for (var i=0; i<=999; i++;) {
 	event_cost[i]=0;
@@ -254,10 +262,44 @@ tooltip_lines=0;
 #macro ref_glyph_berserk 15
 #macro ref_glyph_adaptability 16
 #macro ref_glyph_recovery 17
+//#macro ref_glyph_bless 18
 //
 #macro ref_glyph_mist 100
 #macro ref_glyph_transform 101
 #macro ref_glyph_sketch 102
+#macro ref_glyph_command 103
+#macro ref_glyph_determination 104
+
+
+/// Glyph Graphics
+ref_glyph_img[0] = 2;
+ref_glyph_img[1] = 3;
+ref_glyph_img[2] = 4;
+ref_glyph_img[3] = 5;
+ref_glyph_img[4] = 6;
+ref_glyph_img[5] = 7;
+ref_glyph_img[6] = 8;
+ref_glyph_img[7] = 9;
+ref_glyph_img[8] = 10;
+ref_glyph_img[9] = 11;
+ref_glyph_img[10] = 12;
+ref_glyph_img[11] = 13;
+ref_glyph_img[12] = 14;
+ref_glyph_img[13] = 15;
+ref_glyph_img[14] = 16;
+ref_glyph_img[15] = 17;
+ref_glyph_img[16] = 18;
+ref_glyph_img[17] = 19;
+// ref_glyph_img[18] = 24;
+ref_glyph_img[100] = 23;
+ref_glyph_img[101] = 20;
+ref_glyph_img[102] = 21;
+ref_glyph_img[103] = 25;
+ref_glyph_img[104] = 26;
+
+
+
+
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 #macro options_total 11
 #macro playericon_max 15
@@ -277,6 +319,10 @@ tooltip_lines=0;
 #macro ch_resolution 1
 #macro ch_dominance 2
 #macro ch_barrenness 3
+#macro ch_roguelite_easy 4
+#macro ch_roguelite_medium 5
+#macro ch_roguelite_hard 6
+#macro ch_swiftness 7
 //
 for (var i=0; i<options_total; i++;) {
 	if i=opt_fullscreen { option_name[i]="Fullscreen: "; }
@@ -377,6 +423,12 @@ if progress_r>255 { progress_r=255; }
 if progress_g>255 { progress_g=255; }
 if progress_b>255 { progress_b=255; }
 global.color_character_light=make_colour_rgb(progress_r,progress_g,progress_b);
+
+
+
+//window_set_fullscreen(option_state[i]);
+//window_set_size(512*(option_state[opt_scaling]),288*(option_state[opt_scaling]));
+
 
 time_incrementer = 1;
 backup_speed = 30 * 60 * 1000; // miliseconds per backup

@@ -459,6 +459,16 @@ if (apply_event) {
 					sc_card_effect(event_space_id[1].x, event_space_id[1].y, 0, false, true);
 					sc_playsound(sn_upgrade, 50, false, false);
 
+					event_applied = true;
+				    ob_main.main_card_innate[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_innate;
+					ob_main.main_card_innate[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_innate;
+					ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;
+					ob_main.main_card_glyph_b[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_b;
+					ob_main.main_card_glyph_c[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_c;
+					ob_main.main_card_glyph_a[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_glyph_a;
+					ob_main.main_card_glyph_b[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_glyph_b;
+					ob_main.main_card_glyph_c[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_glyph_c;
+
 					with (card_id_in_space[0])
 					{
 					    if (devour)
@@ -477,16 +487,8 @@ if (apply_event) {
 					{
 					    sc_card_level_stats_all(true, true);
 					}
-					event_applied = true;
+					
 
-				    ob_main.main_card_innate[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_innate;
-					ob_main.main_card_innate[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_innate;
-					ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;
-					ob_main.main_card_glyph_b[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_b;
-					ob_main.main_card_glyph_c[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_c;
-					ob_main.main_card_glyph_a[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_glyph_a;
-					ob_main.main_card_glyph_b[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_glyph_b;
-					ob_main.main_card_glyph_c[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_glyph_c;
 				}
 			}
 		break;

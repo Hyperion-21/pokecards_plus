@@ -55,7 +55,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_splash) {
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if option_state[opt_challenge]=ch_resolution { roadmap_road_max=roadmap_road_max_resolution; }
+if option_state[opt_challenge]=ch_resolution || option_state[opt_challenge]=ch_swiftness{ roadmap_road_max=roadmap_road_max_resolution; }
 else { roadmap_road_max=roadmap_road_max_normal; }
 //
 if area_zone=area_zone_max-1 and zone_first_lap=true { roadmap_current_max=roadmap_road_max+roadmap_league_max-1; }
@@ -102,7 +102,7 @@ money_prize_badge=money_badge_base+money_badge_area_bonus*area_zone;
 money_prize_min=round(0.9*(round(power(money_prize_power_base+money_prize_power_area_bonus*area_zone,money_prize_power_n))-money_prize_penalty_multiplier*(latest_zone-area_zone)));
 money_prize_max=round(1.1*(round(power(money_prize_power_base+money_prize_power_area_bonus*area_zone,money_prize_power_n))-money_prize_penalty_multiplier*(latest_zone-area_zone)));
 //
-if option_state[opt_challenge]=ch_resolution {
+if option_state[opt_challenge]=ch_resolution || option_state[opt_challenge]=ch_swiftness{
 	money_payout=round(money_payout*2);
 	money_prize_badge=round(money_prize_badge*2);
 	money_prize_min=round(money_prize_min*2);
@@ -440,7 +440,7 @@ if roadmap_get_details=true {
 			else if event_kind[ii][i]=ref_event_evolution { event_name[ii][i]="Evolution\n$" + string(event_cost[ref_event_evolution]); }
 			
 			else if event_kind[ii][i]=ref_event_sacrifice { event_name[ii][i]="Sacrifice"; }
-			else if event_kind[ii][i]=ref_event_megaevolve { event_name[ii][i]="Mega Evolve\n$" + string(event_cost[ref_event_megaevolve]); }
+			else if event_kind[ii][i]=ref_event_megaevolve { event_name[ii][i]="Transcend\n$" + string(event_cost[ref_event_megaevolve]); }
 			else if event_kind[ii][i]=ref_event_campfire { event_name[ii][i]="Campfire"; }
 			else if event_kind[ii][i]=ref_event_changeform { event_name[ii][i]="Change form"; }
 			else if event_kind[ii][i]=ref_event_deglyph { event_name[ii][i]="De-Glyph"; }
@@ -576,7 +576,7 @@ if event_transition>-1 and fade_black<1 {
 			fade_black+=1;
 		}
 		else {
-			fade_black+=0.0027; //6.17s (slightly longer than ms_victory and ms_defeat)
+			fade_black+=0.02; //6.17s (slightly longer than ms_victory and ms_defeat)
 		}
 	}
 	else if event_transition=ref_event_battle or event_transition=ref_event_gymbattle or event_transition=ref_event_elitebattle or event_transition=ref_event_championbattle or
@@ -689,6 +689,16 @@ else if event_transition>-1 and fade_black>=1 {
 		money_prize=0;
 		fade_black_exit=0;
 		type_chart=false;
+		if event_transition = ref_event_defeat && (option_state[opt_challenge]=ch_roguelite_easy || option_state[opt_challenge]=ch_roguelite_medium || option_state[opt_challenge]=ch_roguelite_hard || option_state[opt_challenge]=ch_swiftness) {
+			player_lives -= 1;
+
+			if player_lives <=0 {
+			button_delete_data=instance_create_layer(screen_options_x+cam_w-60,screen_main_y+4,"instances",ob_button_16x16);
+			button_delete_data.button_id=102;
+			button_delete_data.button_state = 1;
+			}
+		
+		}
 		//
 		if playing_tutorial=true {
 			sc_textbox(22);
@@ -756,7 +766,7 @@ else if event_transition=-1 and event_transition_standby=-1 and fade_black<=0 {
 					if maindeck_used_total<maindeck_size_min { event_conditions=false; }
 				}
 				//
-				if event_kind[mouse_in_event][roadmap_area]=ref_event_loop and option_state[opt_challenge]=ch_resolution { event_conditions=false; }
+				if event_kind[mouse_in_event][roadmap_area]=ref_event_loop and (option_state[opt_challenge]=ch_resolution || option_state[opt_challenge]=ch_swiftness) { event_conditions=false; }
 				//
 				if event_conditions=true {
 					event_transition_standby=event_kind[mouse_in_event][roadmap_area];
@@ -794,7 +804,7 @@ else if event_transition=-1 and event_transition_standby=-1 and fade_black<=0 {
 		}
 		//
 		else if mouse_in_fly>-1 {
-			if option_state[opt_challenge]!=ch_resolution {
+			if option_state[opt_challenge]!=ch_resolution && option_state[opt_challenge]!=ch_swiftness {
 				sc_playsound(sn_event,50,false,false);
 				//
 				event_cost_standby=0;
@@ -808,6 +818,7 @@ else if event_transition=-1 and event_transition_standby=-1 and fade_black<=0 {
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+
 //CHEATS
 if (RUN_FROM_IDE) {	
 	if keyboard_check_pressed(vk_f12) { game_restart(); }
@@ -1044,11 +1055,11 @@ repeat (options_total) {
 				if area_zone=0 and zone_first_lap=true and roadmap_area=0 {
 					if mouse_check_button_pressed(mb_left) {
 						option_state[i]++;
-						if option_state[i]>3 { option_state[i]=0; }
+						if option_state[i]>7 { option_state[i]=0; }
 					}
 					else if mouse_check_button_pressed(mb_right) {
 						option_state[i]--;
-						if option_state[i]<0 { option_state[i]=3; }
+						if option_state[i]<0 { option_state[i]=7; }
 					}
 					//
 					roadmap_generated=false;
@@ -1119,6 +1130,10 @@ repeat (options_total) {
 		else if option_state[i]=ch_resolution { option_state_text[i]="RESOLUTION"; }
 		else if option_state[i]=ch_dominance { option_state_text[i]="DOMINANCE"; }
 		else if option_state[i]=ch_barrenness { option_state_text[i]="BARRENNESS"; }
+		else if option_state[i]=ch_roguelite_easy { option_state_text[i]="ROGUE-LITE EASY"; }
+		else if option_state[i]=ch_roguelite_medium { option_state_text[i]="ROGUE-LITE MEDIUM"; }
+		else if option_state[i]=ch_roguelite_hard { option_state_text[i]="ROGUE-LITE HARD"; }
+		else if option_state[i]=ch_swiftness { option_state_text[i]="SWIFTNESS"; }
 	}
 	else if i=opt_playericon {
 		option_state_text[i]="   ";
@@ -1150,8 +1165,33 @@ repeat (options_total) {
 			"Can only acquire a total of 30 Berries.";
 			tooltip_lines=3;
 		}
+		else if option_state[opt_challenge]=ch_roguelite_easy {
+			tooltip_text="// ROGUE-LITE EASY //\n" +
+			"You have 10 lives. Save data will be deleted if you lose 10 times.\nPlay carefully!";
+			tooltip_lines=3;
+			if area_zone=0 and zone_first_lap=true and roadmap_area=0{ player_lives = 10;}
+		}
+		else if option_state[opt_challenge]=ch_roguelite_medium {
+			tooltip_text="// ROGUE-LITE MEDIUM //\n" +
+			"You have 5 lives. Save data will be deleted if you lose 5 times.\nPlay carefully!";
+			tooltip_lines=3;
+			if area_zone=0 and zone_first_lap=true and roadmap_area=0{ player_lives = 5;}
+		}
+		else if option_state[opt_challenge]=ch_roguelite_hard {
+			tooltip_text="// ROGUE-LITE HARD //\n" +
+			"You have 1 life. Save data will be deleted if you lose 1 time.\nPlay carefully!";
+			tooltip_lines=3;
+			if area_zone=0 and zone_first_lap=true and roadmap_area=0{ player_lives = 1;}
+		}
+		else if option_state[opt_challenge]=ch_swiftness {
+			tooltip_text="// RESOLUTION + ROGUE-LITE //\n" +
+			"You have 5 lives. All money rewards are multiplied x2 and all\nroutes are extended, but cannot go back to outskirts or fly\nto any previous locations.";
+			tooltip_lines=3;
+			if area_zone=0 and zone_first_lap=true and roadmap_area=0{ player_lives = 5;}
+		}
 		//
 		tooltip_text=tooltip_text + "\nChallenges can only be set before picking a Starter Deck.";
+		
 	}
 	//
 	i++;

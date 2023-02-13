@@ -81,6 +81,10 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	var money_x=road_win_x+237, money_y=road_win_y+2+rel_hud, money_color=global.color_card_light;
 	if effect_money_error>0 { money_x+=irandom_range(-2,2); money_y+=irandom_range(-2,2); money_color=global.color_damage; }
 	sc_drawtext(money_x,money_y,"$" + string(money_show),money_color,global.color_black,1,1,0,-1);
+	if (option_state[opt_challenge]= ch_roguelite_easy || option_state[opt_challenge]= ch_roguelite_medium || option_state[opt_challenge] = ch_roguelite_hard || option_state[opt_challenge] = ch_swiftness){
+	draw_set_halign(fa_left);
+	sc_drawtext(money_x - 232,money_y,"Lives: " + string(player_lives),money_color,global.color_black,1,1,0,-1);}
+	
 	//
 	draw_set_halign(fa_center);
 	var zone_name_text="";
@@ -221,11 +225,12 @@ if credits_screen=true {
 	sc_drawrectangle(-2,-2,room_width+2,room_height+2,global.color_black,c_white,0,0.9,0,0);
 	sc_drawtext(screen_options_x+cam_w/2,screen_main_y+53,
 	"PCL+ is a mod made by Hyperion_21, Tukurai, DarkAnarchist, 2fast4you98, and Blizzow.\n\n" +
+	"PCL++ is a mod made by Criminon\n" +
 	"Pokemon belongs to Nintendo and The Pokemon Company." + "\n" +
 	"This is a fangame made just for fun and it's in no way related to Nintendo." + "\n\n" +
 	"Official art/sprites by GAME FREAK." + "\n" +
 	"Official music by ICHIRO SHIMAKURA (HUDSON SOFT)." + "\n" +
-	"Custom art/sprites by MOODYTAIL." + "\n" +
+	"Custom art/sprites by MOODYTAIL. and Criminon" + "\n" +
 	"Sound effects by MOODYTAIL and TOM VIAN." + "\n" +
 	"Fonts by DANIEL LINSSEN and EEVE SOMEPX." + "\n\n" +
 	"Created by MOODYTAIL." + "\n" +

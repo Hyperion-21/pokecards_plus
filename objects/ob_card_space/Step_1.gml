@@ -25,6 +25,19 @@ if (instance_exists(ob_control))
     {
         card_bonus_atk += 2;
     }
+	
+    // glyph: command
+    if (((space_slot > 0 && space_slot <= 4) || (space_slot > 5 && space_slot <= 9)) &&
+        ob_control.card_space_id[space_slot - 1].occupy_id != -1 && sc_glyph_check(ob_control.card_space_id[space_slot - 1].occupy_id, ref_glyph_command, true))
+    {
+        card_bonus_atk += 3;
+    }
+    if (((space_slot >= 0 && space_slot < 4) || (space_slot >= 5 && space_slot < 9)) &&
+        ob_control.card_space_id[space_slot + 1].occupy_id != -1 && sc_glyph_check(ob_control.card_space_id[space_slot + 1].occupy_id, ref_glyph_command, true))
+    {
+        card_bonus_atk += 3;
+    }
+    
     
     // glyph: shield
     if (((space_slot > 0 && space_slot <= 4) || (space_slot > 5 && space_slot <= 9)) &&
@@ -36,6 +49,18 @@ if (instance_exists(ob_control))
         ob_control.card_space_id[space_slot + 1].occupy_id != -1 && sc_glyph_check(ob_control.card_space_id[space_slot + 1].occupy_id, ref_glyph_shield, true))
     {
         card_bonus_def += 1;
+    }
+	
+    // glyph: determination
+    if (((space_slot > 0 && space_slot <= 4) || (space_slot > 5 && space_slot <= 9)) &&
+        ob_control.card_space_id[space_slot - 1].occupy_id != -1 && sc_glyph_check(ob_control.card_space_id[space_slot - 1].occupy_id, ref_glyph_determination, true))
+    {
+        card_bonus_def += 2;
+    }
+    if (((space_slot >= 0 && space_slot < 4) || (space_slot >= 5 && space_slot < 9)) &&
+        ob_control.card_space_id[space_slot + 1].occupy_id != -1 && sc_glyph_check(ob_control.card_space_id[space_slot + 1].occupy_id, ref_glyph_determination, true))
+    {
+        card_bonus_def += 2;
     }
     
     // glyph: debilitate
@@ -55,5 +80,12 @@ if (instance_exists(ob_control))
     {
         card_penalty_def += 2;
     }
+	
+	// glyph: bless
+	//if (((space_slot > 0 && space_slot <= 4) || (space_slot > 5 && space_slot <= 9)) &&
+    //    ob_control.card_space_id[space_slot].occupy_id != -1 && sc_glyph_check(ob_control.card_space_id[space_slot].occupy_id, ref_glyph_bless, true))
+    //{
+    //    card_bonus_atk += 2;
+   // }
 }
 

@@ -70,7 +70,7 @@ else if (instance_exists(ob_event) && occupy_id == -1 && ob_main.cursor_hide == 
         }
         else if (ob_event.event_kind == ref_event_megaevolve)
         {
-            ob_event.tooltip_text = "// MEGA EVOLUTION //\nThe Pokemon mega evolves into its mega form.";
+            ob_event.tooltip_text = "// MEGA EVOLUTION OR GIGANTAMAX //\nThe Pokemon transcends its evolution.";
             ob_event.tooltip_lines = 2;
         }
         else if (ob_event.event_kind == ref_event_glyph)
