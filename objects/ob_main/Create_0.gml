@@ -1,7 +1,7 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
 #macro game_version "v1.6.0.0"
-#macro pclp_version "v2.0.0.0"
+#macro pclp_version "v2.3.0.0"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -13,6 +13,7 @@ x=screen_main_x;
 //
 #macro screen_main_y 0
 y=screen_main_y;
+
 //
 #macro road_win_x screen_main_x+136
 #macro road_win_y screen_main_y+97
@@ -46,12 +47,14 @@ credits_screen=false;
 credits_screen_toggle=false;
 ending_screen=false;
 ending_static_timer=-1;
+coin_skin = 0;
+
 //
 #macro area_zone_max 9
 #macro roadmap_full_max 50 //save/load, needs to be bigger than the rest (and their sum, just in case)
 roadmap_current_max=0;
-roadmap_road_max_normal=12;
-roadmap_road_max_resolution=20;
+roadmap_road_max_normal=14;
+roadmap_road_max_resolution=22;
 roadmap_road_max=roadmap_road_max_normal;
 roadmap_outskirts_max=8;
 roadmap_league_max=5;
@@ -97,7 +100,7 @@ textbox_timer_max=1;
 textbox_char_pos=0;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 #macro normal_poke_id_max 1008 //1008 //normal (non-secret and non-environment) poke cards
-#macro secret_cards_total 2
+#macro secret_cards_total 15
 #macro environment_cards_total 5
 //
 #macro deck_setup_max 5 //0: current (always), 1-5: saved setups
@@ -114,7 +117,11 @@ textbox_char_pos=0;
 #macro money_badge_base 200 //200 325 450 575 700 825 950 1075 1200 (minimum should be enough for a card pack)
 #macro money_badge_area_bonus 125
 #macro sell_value_multiplier 2.5 //bankers rounding
-#macro tutorial_payout 5000000
+#macro tutorial_payout 600
+
+#macro dupemax 2 // sets duplicates max
+
+
 //
 battle_hp[0]=5; //10
 battle_hp[1]=15; //30
@@ -137,6 +144,10 @@ event_cost_standby=0;
 event_cost_standby_levelup=0;
 player_lives = 10
 //
+
+shinycharm = 0;
+
+
 #macro ref_event_battle 0
 #macro ref_event_payout 1
 #macro ref_event_freecard 2
@@ -163,6 +174,10 @@ player_lives = 10
 #macro ref_event_megaevolve 502
 #macro ref_event_changeform 503
 #macro ref_event_deglyph 504
+#macro ref_event_shinycharm 505
+#macro ref_event_holo_freecard 506
+#macro ref_event_coin 507
+#macro ref_event_delta 508
 
 #macro ref_event_cardpack_0 600 // Joke cards such as missingno and ghost.
 #macro ref_event_cardpack_1 601 // Focus on Gen 1.
@@ -193,15 +208,19 @@ player_lives = 10
 #macro event_card_type_baby 3
 
 
+
+
 // Chance in 10000, chances if weight changes.
-event_card_weight[event_card_group_secret] = 1;
-event_card_weight[event_card_group_environment] = 200;
-event_card_weight[event_card_group_enigma] = 15;
-event_card_weight[event_card_group_stage_2] = 250;
-event_card_weight[event_card_group_stage_3] = 50;
-event_card_weight[event_card_group_common] = 9484;
+event_card_weight[event_card_group_secret] = 5; //5
+event_card_weight[event_card_group_environment] = 95; //100
+event_card_weight[event_card_group_enigma] = 50; //150   - 50
+event_card_weight[event_card_group_stage_2] = 450; //500
+event_card_weight[event_card_group_stage_3] = 100; //600
+// common cards fill in the blanks
 
-
+shiny_chance = 10; // out of 8192
+shinycharm_chance = 700;
+delta_chance = 50 // out of 8192
 
 // Chance in 100 to be added to possible common selection
 event_card_addition_chance[event_card_type_pseudo] = 50;
@@ -213,14 +232,16 @@ event_card_addition_chance[event_card_type_baby] = 25;
 for (var i=0; i<=999; i++;) {
 	event_cost[i]=0;
 }
+
 event_cost[ref_event_cardpack]=200;
-event_cost[ref_event_berry]=100;
+event_cost[ref_event_berry]=0;
 event_cost[ref_event_levelup]=100;
 #macro levelup_cost_multiplier 50 //100 150 200 250 300 350 400 450 500
 event_cost[ref_event_evolution]=500;
 
 event_cost[ref_event_megaevolve]=500;
-
+event_cost[ref_event_shinycharm]=5000;
+event_cost[ref_event_delta]=4000;
 event_cost[ref_event_cardpack_0]=5000;
 event_cost[ref_event_cardpack_1]=300;
 event_cost[ref_event_cardpack_2]=300;
@@ -299,7 +320,7 @@ ref_glyph_img[104] = 26;
 
 
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-#macro options_total 11
+#macro options_total 13
 #macro playericon_max 15
 //
 #macro opt_fullscreen 0
@@ -308,12 +329,15 @@ ref_glyph_img[104] = 26;
 #macro opt_scaling 3
 #macro opt_music 4
 #macro opt_sound 5
-#macro opt_autodeck 6
-#macro opt_edge 7
-#macro opt_challenge 8
-#macro opt_playericon 9
-#macro opt_bg_type 10
+#macro opt_coin 6
+#macro opt_autodeck 7
+#macro opt_jumping 8
+#macro opt_edge 9
+#macro opt_challenge 10
+#macro opt_playericon 11
+#macro opt_bg_type 12
 //
+#macro ch_none 0
 #macro ch_resolution 1
 #macro ch_dominance 2
 #macro ch_barrenness 3
@@ -321,6 +345,17 @@ ref_glyph_img[104] = 26;
 #macro ch_roguelite_medium 5
 #macro ch_roguelite_hard 6
 #macro ch_swiftness 7
+#macro ch_delta 8
+#macro ch_rainbow 9
+//
+#macro coin_normal 0
+#macro coin_aegislash 1
+#macro coin_2 2
+#macro coin_3 3
+#macro coin_4 4
+#macro coin_5 5
+#macro coin_6 6
+#macro coin_7 7
 //
 for (var i=0; i<options_total; i++;) {
 	if i=opt_fullscreen { option_name[i]="Fullscreen: "; }
@@ -329,14 +364,16 @@ for (var i=0; i<options_total; i++;) {
 	else if i=opt_scaling { option_name[i]="Window Scaling: "; }
 	else if i=opt_music { option_name[i]="Music: "; }
 	else if i=opt_sound { option_name[i]="Sound Effects: "; }
+	else if i=opt_coin { option_name[i]="Coin Selection: "; }
 	else if i=opt_autodeck { option_name[i]="New Cards: "; }
+	else if i=opt_jumping { option_name[i]="Pokemon Jumping: "; }
 	else if i=opt_edge { option_name[i]="Edge Shading: "; }
 	else if i=opt_challenge { option_name[i]="Challenge Mode: "; }
 	else if i=opt_playericon { option_name[i]="Player Icon: "; }
 	else if i=opt_bg_type { option_name[i]="Battle Background Style: "; }
 	//
 	option_x[i]=22;
-	option_y[i]=19+18*i;
+	option_y[i]=18*i;
 	option_focus[i]=false;
 	option_state_text[i]="";
 }
@@ -359,7 +396,7 @@ for (var i=0; i<colorsetup_total; i++;) {
 	colorsetup_r_x[i]=colorsetup_main_x[i]+166;
 	colorsetup_g_x[i]=colorsetup_r_x[i]+38;
 	colorsetup_b_x[i]=colorsetup_g_x[i]+38;
-	colorsetup_y[i]=19+13*i+18*options_total;
+	colorsetup_y[i]=13*i+18*options_total;
 	colorsetup_focus_r[i]=false;
 	colorsetup_focus_g[i]=false;
 	colorsetup_focus_b[i]=false;
@@ -384,8 +421,8 @@ repeat (8) {
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-#macro config_file "config_pcl+.sav"
-#macro data_file "data_pcl+.sav"
+#macro config_file "config_pcl++.sav"
+#macro data_file "data_pcl++.sav"
 sc_config_load();
 sc_config_save();
 sc_data_load();
@@ -424,7 +461,9 @@ global.color_character_light=make_colour_rgb(progress_r,progress_g,progress_b);
 
 
 
-//window_set_fullscreen(option_state[i]);
+//if option_state[opt_fullscreen]=false { option_state[opt_fullscreen]=true; }
+//else { option_state[opt_fullscreen]=false; }
+//window_set_fullscreen(option_state[opt_fullscreen]);
 //window_set_size(512*(option_state[opt_scaling]),288*(option_state[opt_scaling]));
 
 

@@ -64,30 +64,38 @@ if reference_id=ob_control and card_cat=0 {
 			i++;
 		}
 	}
-	//
+	var old_id = card_id;
 	if sc_glyph_check(id,ref_glyph_transform,false) and card_played=true { //glyph: transform (Ditto only)
 		if sc_glyph_check(id,ref_glyph_transform,true) and vs_card!=-1 and vs_card.card_environment=false {
 			//transforms only if there's no mist
+
 			if card_id!=vs_card.card_id {
 				card_id=vs_card.card_id;
 				card_form_value=vs_card.card_form_value;
 				sc_pokelist();
 				sc_card_level_stats_all(false,false);
-				card_name="Ditto";
+				if old_id = 132
+				{
+					card_name="Ditto";
+				}
+				else
+				{
+					card_name="Animon";
+				}
 				effect_damaged=1;
 			}
 		}
-		else if card_id!=132 {
+		else if card_id!=old_id {
 			//transforms back even if there's mist
-			card_id=132;
+			card_id=old_id;
 			sc_pokelist();
 			sc_card_level_stats_all(false,false);
 			effect_damaged=1;
 		}
 	}
 	else if sc_glyph_check(id,ref_glyph_transform,false) and card_played=false {
-		if card_id!=132 {
-			card_id=132;
+		if card_id!=old_id {
+			card_id=old_id;
 			sc_pokelist();
 			sc_card_level_stats_all(false,false);
 		}
@@ -211,11 +219,19 @@ else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spr
 				if (card_cat=1 and card_id=3003) or
 				(card_cat=0 and (card_stage>1 or (card_glyph_a!=-1 and card_glyph_a<glyph_common_amount) or
 				(card_glyph_b!=-1 and card_glyph_b<glyph_common_amount) or (card_glyph_c!=-1 and card_glyph_c<glyph_common_amount))) {
+					if card_shiny = true{
+					sc_playsound(sn_shiny,50,false,false);
+					}else{
 					sc_playsound(sn_rare,50,false,false);
+					}
 					sc_card_effect(x,y,0,false,true);
 				}
-				else if card_cat=0 and (card_enigma=true or card_secret=true) {
+				else if card_cat=0 and (card_enigma=true or card_secret=true or card_shiny = true or card_delta = true) {
+					if card_shiny = true{
+					sc_playsound(sn_shiny,50,false,false);
+					}else{
 					sc_playsound(sn_rare_2,50,false,false);
+					}
 					sc_card_effect(x,y,0,false,true);
 				}
 				else {
@@ -234,6 +250,11 @@ else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spr
 					ob_main.main_card_glyph_c[ob_main.maindeck_total]=card_glyph_c;
 					ob_main.main_card_innate[ob_main.maindeck_total]=card_innate;
 					ob_main.main_card_shiny[ob_main.maindeck_total]=card_shiny;
+					ob_main.main_card_holo[ob_main.maindeck_total]=card_holo;
+					ob_main.main_card_delta[ob_main.maindeck_total]=card_delta;
+					ob_main.main_card_delta_type[ob_main.maindeck_total]=card_delta_type;
+					ob_main.main_card_type_a[ob_main.maindeck_total]=card_type_a;
+					ob_main.main_card_type_b[ob_main.maindeck_total]=card_type_b;
 					ob_main.main_card_form_value[ob_main.maindeck_total]=card_form_value;
 					for (var i=0; i<=deck_setup_max; i++;) {
 						ob_main.serial_card_indeck[ob_main.serial_count][i]=false;
@@ -311,20 +332,34 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 	//
 	if card_cat=0 {
 		if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false {
-			sc_playsound(sn_card,50,false,false);
-			//
-			if card_indeck[0]=false and ob_deckbuild.deck_build_used_total<ob_main.maindeck_size_max {
+			
+		//var i = 0;
+		//for (var i=0; i<ob_deckbuild.deck_build_used_total; i++;) { //checks for same pokemon and blocks them from deck building. Uses dupemax to determine how many you can have in your deck
+			//if ob_deckbuild.deck_card_used[i].card_id = card_id
+					//{
+						//duplicate += 1; // I'm disabling this because I can't figure out how to stop them from evolving. I really wanted to put limits on it, but I seem incapable of figuring out this
+						/// variable system the main developer has created.
+					//}	
+				//}
+
+			if card_indeck[0]=false and ob_deckbuild.deck_build_used_total<ob_main.maindeck_size_max && duplicate < dupemax {
+				sc_playsound(sn_click,50,false,false);
 				card_indeck[0]=true;
 				ob_deckbuild.reorder_swap_standby=ob_deckbuild.reorder_selected;
 				ob_deckbuild.reorder_selected=0; //pokemon id
 				ob_deckbuild.reorder_type=ob_deckbuild.reorder_selected;
 			}
 			else if card_indeck[0]=true {
+				sc_playsound(sn_click,50,false,false);
 				card_indeck[0]=false;
 				ob_deckbuild.reorder_swap_standby=ob_deckbuild.reorder_selected;
 				ob_deckbuild.reorder_selected=0; //pokemon id
 				ob_deckbuild.reorder_type=ob_deckbuild.reorder_selected;
 			}
+				else 
+				{
+					sc_playsound(sn_hurt,50,false,false);
+				}
 			card_delete_timer=0;
 		}
 		else if mouse_check_button(mb_right) and ob_deckbuild.deck_build_all_total>ob_main.maindeck_size_min_full and card_indeck[0]=false and ob_main.cursor_hide=false {
@@ -333,14 +368,40 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 			card_delete_timer++;
 			if card_delete_timer=card_delete_timer_max {
 				sc_playsound(sn_faint,50,false,false);
+				if card_holo = true && card_shiny = true && card_secret = true
+				{
+					var 	bonus = 6
+				}
+				else if card_holo = true && card_shiny = true
+				{
+					var 	bonus = 4
+				}
+				else if card_holo = true
+				{
+					var bonus = 2;
+				}
+
+				else if card_shiny = true
+				{
+					var 	bonus = 2
+				}
+				else if card_secret = true
+				{
+					var 	bonus = 2
+				}
+				else
+				{
+					var bonus = 1;
+				}
+				
 				if(card_innate = -1){
 					ob_main.money += 1;
 				} else {
-					ob_main.money+=round(card_value*sell_value_multiplier);
+					ob_main.money+=round(card_value*sell_value_multiplier* bonus);
 				}
 				//
 				ob_deckbuild.reorder_swap_standby=ob_deckbuild.reorder_selected;
-				ob_deckbuild.reorder_type=5;
+				ob_deckbuild.reorder_type=10;
 				instance_destroy();
 			}
 		}
@@ -390,9 +451,13 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 }
 else {
 	card_delete_timer=0;
+	duplicate = false;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if ((reference_id=ob_control and ob_control.card_focus=id) or reference_id=ob_event or reference_id=ob_deckbuild) and card_face=true and card_cat=0 and ob_main.cursor_hide=false {
+if ((reference_id=ob_control and ob_control.card_focus=id) or reference_id=ob_event or reference_id=ob_deckbuild) and card_face=true and card_cat=0 and ob_main.cursor_hide=false { 
+		
+	var heartwidth = ((card_innate-1)*2);
+	
 	if (mouse_x>=x+2 and mouse_y>=y+2 and mouse_x<=x+13 and mouse_y<=y+12) or
 	(card_type_b>=0 and mouse_x>=x+2 and mouse_y>=y+12 and mouse_x<=x+13 and mouse_y<=y+22) {
 		if card_type_b>=0 and mouse_x>=x+2 and mouse_y>=y+12 and mouse_x<=x+13 and mouse_y<=y+22 { var switch_var=card_type_b; }
@@ -417,6 +482,10 @@ if ((reference_id=ob_control and ob_control.card_focus=id) or reference_id=ob_ev
 			case 16: reference_id.tooltip_text="Ghost"; break;
 			case 17: reference_id.tooltip_text="Dark"; break;
 			case 18: reference_id.tooltip_text="Trainer"; break;
+			case 19: reference_id.tooltip_text="Shadow"; break;
+			case 20: reference_id.tooltip_text="Crystal"; break;
+			case 21: reference_id.tooltip_text="Bird"; break;
+			case 22: reference_id.tooltip_text="???"; break;
 		}
 		reference_id.tooltip_lines=1;
 	}
@@ -448,6 +517,31 @@ if ((reference_id=ob_control and ob_control.card_focus=id) or reference_id=ob_ev
 		}
 		reference_id.tooltip_text=reference_id.tooltip_text + ".";
 		reference_id.tooltip_lines=1;
+
+	} //21 + 35
+	else if card_cost_total>0 and mouse_x>=((x+29)-heartwidth) and mouse_y>=y and mouse_x<=((x+27)+heartwidth) and mouse_y<=y+5 && card_innate > 0{
+		reference_id.tooltip_text="Hearts: " + string(card_innate-1);
+		reference_id.tooltip_lines=1;
+	}
+	else if card_cost_total>0 and mouse_x>=((x+29)+heartwidth) and mouse_y>=y and mouse_x<=((x+27)-heartwidth) and mouse_y<=y+5 && card_innate = 0{
+		reference_id.tooltip_text="Weakened: " + string(card_innate+1);
+		reference_id.tooltip_lines=1;
+	}
+	else if card_cost_total>0 and mouse_x>=((x+27)+heartwidth) and mouse_y>=y and mouse_x<=((x+29)-heartwidth) and mouse_y<=y+5 && card_innate = -1{
+		reference_id.tooltip_text="Fainted";
+		reference_id.tooltip_lines=1;
+	}
+	else if card_cost_total>0 and mouse_x>=x+25 and mouse_y>=y+33 and mouse_x<=x+32 and mouse_y<=y+37 and card_shiny = true {
+		reference_id.tooltip_text="Shiny!";
+		reference_id.tooltip_lines=1;
+	}
+	else if card_cost_total>0 and mouse_x>=x+5 and mouse_y>=y+5 and mouse_x<=x+51 and mouse_y<=y+36 and card_holo = true {
+		reference_id.tooltip_text="Holofoil!";
+		reference_id.tooltip_lines=1;
+	}
+	else if card_cost_total>0 and mouse_x>=x+25 and mouse_y>=y+72 and mouse_x<=x+32 and mouse_y<=y+76 and card_delta = true {
+		reference_id.tooltip_text="Delta Species!";
+		reference_id.tooltip_lines=1;
 	}
 }
 else if reference_id=ob_deckbuild and card_cat=1 and ob_main.cursor_hide=false {
@@ -456,5 +550,61 @@ else if reference_id=ob_deckbuild and card_cat=1 and ob_main.cursor_hide=false {
 			reference_id.tooltip_text="Can be used as any Berry.\nTotal amount cannot exceed half of Berry Deck.";
 			reference_id.tooltip_lines=2;
 		}
+
+	}
+
+}
+
+if ((reference_id=ob_control) or reference_id=ob_event or reference_id=ob_deckbuild) and card_face=true and card_cat=0{
+	if ob_main.option_state[opt_jumping]< 2 && card_environment=false && card_innate >-1{
+		if ob_main.option_state[opt_jumping]< 1 or !instance_exists(ob_deckbuild)
+			{
+			if jumping = 3
+				{
+					if jumpy <= jumpmax
+					{
+						jumping = 2;
+					}
+					else
+					{
+						jumpy -= 1;
+					}
+				}
+			else if jumping = 2
+				{
+					if jumpy >=  0
+					{
+						var i = irandom_range(0,10000)
+						if i < 2000
+						{
+							jumping = 3
+						}
+						else
+						{
+							jumptimer = irandom_range(50,1000)
+							jumping = 1;
+						}
+					}
+					else
+					{
+						jumpy += 1;
+					}
+				} 
+			else if jumping = 1
+				{
+					jumpy = 0;
+		
+					if jumpcount >= jumptimer
+						{
+								jumpcount = 0;
+								jumping = 3;
+						}
+						else
+						{
+							jumpcount += 1;
+						}
+				}
+		}
 	}
 }
+

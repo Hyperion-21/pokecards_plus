@@ -28,11 +28,11 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	repeat (var_event_num) {
 		var event_sprite_x=16*(1+event_kind[i][roadmap_area]*2);
 		if event_kind[i][roadmap_area]=ref_event_gymbattle or event_kind[i][roadmap_area]=ref_event_elitebattle or event_kind[i][roadmap_area]=ref_event_championbattle {
-			event_sprite_x=16*(1+13*2); }
-		else if event_kind[i][roadmap_area]=ref_event_tutorial { event_sprite_x=16*(1+0*2); }
-		else if event_kind[i][roadmap_area]=ref_event_grass { event_sprite_x=16*(1+10*2); }
-		else if event_kind[i][roadmap_area]=ref_event_fire { event_sprite_x=16*(1+11*2); }
-		else if event_kind[i][roadmap_area]=ref_event_water { event_sprite_x=16*(1+12*2); }
+			event_sprite_x=16*(1+13*2); event_sprite_y = 208; }
+		else if event_kind[i][roadmap_area]=ref_event_tutorial { event_sprite_x=16*(1+0*2); event_sprite_y = 208; }
+		else if event_kind[i][roadmap_area]=ref_event_grass { event_sprite_x=16*(1+10*2); event_sprite_y = 208; }
+		else if event_kind[i][roadmap_area]=ref_event_fire { event_sprite_x=16*(1+11*2); event_sprite_y = 208; }
+		else if event_kind[i][roadmap_area]=ref_event_water { event_sprite_x=16*(1+12*2);  event_sprite_y = 208; }
 		
 		else if event_kind[i][roadmap_area]=ref_event_cardpack_0 { event_sprite_x=16*(1+13*2); event_sprite_y = 272; }
 		else if event_kind[i][roadmap_area]=ref_event_cardpack_1 { event_sprite_x=16*(1+9*2); event_sprite_y = 240; }
@@ -45,11 +45,16 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 		else if event_kind[i][roadmap_area]=ref_event_cardpack_8 { event_sprite_x=16*(1+11*2); event_sprite_y = 272; }
 		else if event_kind[i][roadmap_area]=ref_event_cardpack_9 { event_sprite_x=16*(1+12*2); event_sprite_y = 272; }
 		
-		else if event_kind[i][roadmap_area]=ref_event_megaevolve { event_sprite_x=16*(1+16*2); }
-		else if event_kind[i][roadmap_area]=ref_event_sacrifice { event_sprite_x=16*(1+14*2); }
-		else if event_kind[i][roadmap_area]=ref_event_campfire { event_sprite_x=16*(1+17*2); }
-		else if event_kind[i][roadmap_area]=ref_event_changeform { event_sprite_x=16*(1+18*2); }
-		else if event_kind[i][roadmap_area]=ref_event_deglyph { event_sprite_x=16*(1+19*2); }
+		else if event_kind[i][roadmap_area]=ref_event_megaevolve { event_sprite_x=16*(1+16*2);  event_sprite_y = 208; }
+		else if event_kind[i][roadmap_area]=ref_event_sacrifice { event_sprite_x=16*(1+14*2);  event_sprite_y = 208;}
+		else if event_kind[i][roadmap_area]=ref_event_campfire { event_sprite_x=16*(1+17*2);  event_sprite_y = 208;}
+		else if event_kind[i][roadmap_area]=ref_event_changeform { event_sprite_x=16*(1+18*2);  event_sprite_y = 208;}
+		else if event_kind[i][roadmap_area]=ref_event_deglyph { event_sprite_x=16*(1+19*2);  event_sprite_y = 208;}
+		else if event_kind[i][roadmap_area]=ref_event_shinycharm { event_sprite_x=496; ; event_sprite_y = 272; }
+		else if event_kind[i][roadmap_area]=ref_event_coin { event_sprite_x=528; ; event_sprite_y = 272; }
+		else if event_kind[i][roadmap_area]=ref_event_delta { event_sprite_x=560; ; event_sprite_y = 272; }
+		else if event_kind[i][roadmap_area]=ref_event_holo_freecard { event_sprite_x=16*(1+14*2); ; event_sprite_y = 272; }
+		else { event_sprite_y = 208;}
 		//
 		sc_drawrectangle(event_button_x[i],event_button_y[i],event_button_x[i]+42,event_button_y[i]+42,global.color_black,global.color_white,2,0.8,0.5,0);
 		draw_sprite_general(sp_sheet,0,event_sprite_x,event_sprite_y,26,27,event_button_x[i]+9,event_button_y[i]+9-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
@@ -79,12 +84,21 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	//
 	draw_set_halign(fa_right);
 	var money_x=road_win_x+237, money_y=road_win_y+2+rel_hud, money_color=global.color_card_light;
+	var lives_x=road_win_x+237, lives_y=road_win_y+2+rel_hud, lives_color=c_white
 	if effect_money_error>0 { money_x+=irandom_range(-2,2); money_y+=irandom_range(-2,2); money_color=global.color_damage; }
 	sc_drawtext(money_x,money_y,"$" + string(money_show),money_color,global.color_black,1,1,0,-1);
 	if (option_state[opt_challenge]= ch_roguelite_easy || option_state[opt_challenge]= ch_roguelite_medium || option_state[opt_challenge] = ch_roguelite_hard || option_state[opt_challenge] = ch_swiftness){
+	var shiny_y=road_win_y+12+rel_hud
 	draw_set_halign(fa_left);
-	sc_drawtext(money_x - 232,money_y,"Lives: " + string(player_lives),money_color,global.color_black,1,1,0,-1);}
-	
+	sc_drawtext(lives_x - 232,lives_y,"Lives: " + string(player_lives),lives_color,global.color_black,1,1,0,-1);}
+	else{
+		var shiny_y = lives_y
+		}
+	if shinycharm > 0
+	{
+	draw_set_halign(fa_left);
+	sc_drawtext(lives_x - 232,shiny_y,"Shiny Charm: " + string(shinycharm),lives_color,global.color_black,1,1,0,-1);
+	}
 	//
 	draw_set_halign(fa_center);
 	var zone_name_text="";
@@ -150,7 +164,15 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	repeat (options_total) {
 		if option_focus[i]=true { var option_alpha=1; }
 		else { var option_alpha=0.5; }
-		sc_drawtext(screen_options_x+option_x[i],screen_main_y+option_y[i],option_name[i],global.color_white,global.color_black,option_alpha,option_alpha,0,-1);
+		if i = opt_challenge
+		{	var c_challenge = make_color_rgb(245,105,77)
+			sc_drawtext(screen_options_x+option_x[i],screen_main_y+option_y[i],option_name[i],c_challenge,global.color_black,option_alpha,option_alpha,0,-1);
+			}
+		else 
+		{	
+			sc_drawtext(screen_options_x+option_x[i],screen_main_y+option_y[i],option_name[i],global.color_white,global.color_black,option_alpha,option_alpha,0,-1);
+			}
+		
 		sc_drawtext(screen_options_x+option_x[i]+string_width(option_name[i])+rel_hud*2,screen_main_y+option_y[i],option_state_text[i],
 		global.color_white,global.color_black,option_alpha,option_alpha,0,-1);
 		if i=opt_playericon {
@@ -230,7 +252,9 @@ if credits_screen=true {
 	"This is a fangame made just for fun and it's in no way related to Nintendo." + "\n\n" +
 	"Official art/sprites by GAME FREAK." + "\n" +
 	"Official music by ICHIRO SHIMAKURA (HUDSON SOFT)." + "\n" +
-	"Custom art/sprites by MOODYTAIL. and Criminon" + "\n" +
+	"Custom art/sprites by MOODYTAIL, Tukurai and Criminon" + "\n" +
+	"Pokemon Gen 9 icons by Ezerart" + "\n" +
+	"Variant icons by Porygato" + "\n" +
 	"Sound effects by MOODYTAIL and TOM VIAN." + "\n" +
 	"Fonts by DANIEL LINSSEN and EEVE SOMEPX." + "\n\n" +
 	"Created by MOODYTAIL." + "\n" +

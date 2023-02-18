@@ -13,11 +13,11 @@ if reorder_type>-1 {
 		var ii=0;
 		repeat (deck_build_all_total) {
 			if instance_exists(deck_card_all[ii]) {
-				if (reorder_type=0 or reorder_type=5) and deck_card_all[ii].card_serial=serial_check and card_pos_replace[i]=-1 {
+				if (reorder_type=0 or reorder_type=10) and deck_card_all[ii].card_serial=serial_check and card_pos_replace[i]=-1 {
 					card_pos_replace[i]=deck_card_all[ii];
 					i++;
 				}
-				else if (reorder_type>=1 and reorder_type<=4) and deck_card_all[ii].card_serial=serial_check and card_pos_replace[deck_build_all_total-i-1]=-1 {
+				else if (reorder_type>=1 and reorder_type<=9) and deck_card_all[ii].card_serial=serial_check and card_pos_replace[deck_build_all_total-i-1]=-1 {
 					card_pos_replace[deck_build_all_total-i-1]=deck_card_all[ii];
 					i++;
 				}
@@ -25,7 +25,7 @@ if reorder_type>-1 {
 			ii++;
 		}
 		serial_check++;
-	} until (i=deck_build_all_total or (reorder_type=5 and i=deck_build_all_total-1));
+	} until (i=deck_build_all_total or (reorder_type=10 and i=deck_build_all_total-1));
 	//
 	var i=0;
 	repeat (deck_build_all_total) {
@@ -33,7 +33,7 @@ if reorder_type>-1 {
 		i++;
 	}
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
-	if reorder_type=5 {
+	if reorder_type=10 {
 		deck_build_all_total--;
 	}
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -45,17 +45,22 @@ if reorder_type>-1 {
 		ds_grid_set(order_grid,0,i,deck_card_all[i]); //instance id
 		//
 		var order_number=0;
-		if reorder_type=0 or reorder_type=5 { order_number=deck_card_all[i].card_id; }
+		if reorder_type=0 or reorder_type=10 { order_number=deck_card_all[i].card_id; }
 		else if reorder_type=1 { order_number=deck_card_all[i].card_level; }
 		else if reorder_type=2 { order_number=deck_card_all[i].card_full_atk; }
 		else if reorder_type=3 { order_number=deck_card_all[i].card_full_def; }
 		else if reorder_type=4 { order_number=deck_card_all[i].card_full_hp; }
+		else if reorder_type=5 { order_number=deck_card_all[i].card_type_a; }
+		else if reorder_type=6 { order_number=deck_card_all[i].card_type_b; }
+		else if reorder_type=7 { order_number=deck_card_all[i].card_shiny; }
+		else if reorder_type=8 { order_number=deck_card_all[i].card_holo; }
+		else if reorder_type=9 { order_number=deck_card_all[i].card_berry; }
 		//
 		order_number+=(deck_card_all[i].card_serial/(ob_main.serial_count+1)); //never adds +1, always only decimal
 		ds_grid_set(order_grid,1,i,order_number);
 	}
 	//
-	if reorder_type=0 or reorder_type=5 { ds_grid_sort(order_grid,1,true); }
+	if reorder_type=0 or reorder_type=10 { ds_grid_sort(order_grid,1,true); }
 	else { ds_grid_sort(order_grid,1,false); }
 	//
 	for (var i=0; i<deck_build_all_total; i++;) {
@@ -64,7 +69,7 @@ if reorder_type>-1 {
 	//
 	ds_grid_destroy(order_grid);
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
-	if reorder_type=5 {
+	if reorder_type=10 {
 		for (var i=0; i<ob_main.serial_count; i++;) {
 			for (var ii=1; ii<=deck_setup_max; ii++;) { //clear all decks
 				ob_main.serial_card_indeck[i][ii]=false;
@@ -135,6 +140,11 @@ repeat (deck_build_all_total) {
 	ob_main.main_card_glyph_c[i]=deck_card_all[i].card_glyph_c;
 	ob_main.main_card_innate[i]=deck_card_all[i].card_innate;
 	ob_main.main_card_shiny[i]=deck_card_all[i].card_shiny;
+	ob_main.main_card_holo[i]=deck_card_all[i].card_holo;
+	ob_main.main_card_delta[i]=deck_card_all[i].card_delta;
+	ob_main.main_card_delta_type[i]=deck_card_all[i].card_delta_type;
+	ob_main.main_card_type_a[i]=deck_card_all[i].card_type_a;
+	ob_main.main_card_type_b[i]=deck_card_all[i].card_type_b;
 	ob_main.main_card_form_value[i]=deck_card_all[i].card_form_value;
 	ob_main.main_card_serial[i]=deck_card_all[i].card_serial;
 	//

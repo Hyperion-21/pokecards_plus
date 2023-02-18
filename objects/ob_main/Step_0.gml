@@ -233,22 +233,108 @@ if roadmap_generated=false {
 		}
 			
 		// [weight, event reference, free] Determine event odds.
-		var events = [
-			[10, ref_event_megaevolve, false],
-			[10, ref_event_changeform, false],
-			[330, ref_event_battle, true],
-			[25, ref_event_payout, true],
-			[25, ref_event_freecard, true],
-			[50, ref_event_cardpack, false],
-			[100, ref_event_berry, false],
-			[200, ref_event_levelup, false],
-			[50, ref_event_evolution, false],
-			[35, ref_event_glyph, false],
-			[10, ref_event_deglyph, false],
-			[15, ref_event_tribute, false],
-			[15, ref_event_sacrifice, false],
-			[10, ref_event_campfire, true]
+		
+
+
+		
+		if area_zone < 2
+		{ /// 885 total
+			var events = [
+			[0, ref_event_megaevolve, false], //10
+			[0, ref_event_changeform, false], //10
+			[328, ref_event_battle, true], //330
+			[35, ref_event_payout, true], //25
+			[25, ref_event_freecard, true], // 25
+			[0, ref_event_holo_freecard, true], //0
+			[0, ref_event_coin, true],//0
+			[0, ref_event_shinycharm, true], //0
+			[2, ref_event_delta, false], //0
+			[0, ref_event_cardpack_1, false], //0
+			[0, ref_event_cardpack_2, false], //0
+			[0, ref_event_cardpack_3, false], //0
+			[0, ref_event_cardpack_4, false], //0
+			[0, ref_event_cardpack_5, false], //0
+			[0, ref_event_cardpack_6, false], //0
+			[0, ref_event_cardpack_7, false], //0
+			[0, ref_event_cardpack_8, false], //0
+			[0, ref_event_cardpack_9, false], //0
+			[50, ref_event_cardpack, false], //50
+			[100, ref_event_berry, true], //100
+			[200, ref_event_levelup, false],//200
+			[50, ref_event_evolution, false], //50
+			[35, ref_event_glyph, false], //35
+			[0, ref_event_deglyph, false], //10
+			[15, ref_event_tribute, false], //15
+			[15, ref_event_sacrifice, false], //15
+			[20, ref_event_campfire, true] //10
 		];
+		}
+		else if area_zone < 9
+		{ /// 885 total
+			var events = [
+			[15, ref_event_megaevolve, false], //10
+			[15, ref_event_changeform, false], //10
+			[326, ref_event_battle, true], //330
+			[35, ref_event_payout, true], //25
+			[24, ref_event_freecard, true], // 25
+			[1, ref_event_holo_freecard, true], //0
+			[7-coin_skin, ref_event_coin, true],//0
+			[1, ref_event_shinycharm, true], //0
+			[4, ref_event_delta, false], //0
+			[5, ref_event_cardpack_1, false], //0
+			[5, ref_event_cardpack_2, false], //0
+			[5, ref_event_cardpack_3, false], //0
+			[5, ref_event_cardpack_4, false], //0
+			[5, ref_event_cardpack_5, false], //0
+			[5, ref_event_cardpack_6, false], //0
+			[5, ref_event_cardpack_7, false], //0
+			[5, ref_event_cardpack_8, false], //0
+			[5, ref_event_cardpack_9, false], //0
+			[50, ref_event_cardpack, false], //50
+			[68, ref_event_berry, true], //100
+			[159, ref_event_levelup, false],//200
+			[50, ref_event_evolution, false], //50
+			[35+coin_skin, ref_event_glyph, false], //35
+			[10, ref_event_deglyph, false], //10
+			[15, ref_event_tribute, false], //15
+			[15, ref_event_sacrifice, false], //15
+			[20, ref_event_campfire, true] //10
+		];
+		}
+		else
+		{ /// 885 total
+			var events = [
+			[30, ref_event_megaevolve, false], //10
+			[30, ref_event_changeform, false], //10
+			[300, ref_event_battle, true], //330
+			[35, ref_event_payout, true], //25
+			[20, ref_event_freecard, true], // 25
+			[4, ref_event_holo_freecard, true], //0
+			[7-coin_skin, ref_event_coin, true],//0
+			[1, ref_event_shinycharm, true], //0
+			[5, ref_event_delta, false], //0
+			[5, ref_event_cardpack_1, false], //0
+			[5, ref_event_cardpack_2, false], //0
+			[5, ref_event_cardpack_3, false], //0
+			[5, ref_event_cardpack_4, false], //0
+			[5, ref_event_cardpack_5, false], //0
+			[5, ref_event_cardpack_6, false], //0
+			[5, ref_event_cardpack_7, false], //0
+			[5, ref_event_cardpack_8, false], //0
+			[5, ref_event_cardpack_9, false], //0
+			[50, ref_event_cardpack, false], //50
+			[53, ref_event_berry, true], //100
+			[159, ref_event_levelup, false],//200
+			[50, ref_event_evolution, false], //50
+			[35+coin_skin, ref_event_glyph, false], //35
+			[10, ref_event_deglyph, false], //10
+			[15, ref_event_tribute, false], //15
+			[15, ref_event_sacrifice, false], //15
+			[20, ref_event_campfire, true] //10
+		];
+		}
+		
+		
 		
 		do {
 			var ii=0;
@@ -434,8 +520,12 @@ if roadmap_get_details=true {
 				event_name[ii][i]="Payout\n($" + string(tutorial_payout) + ")"; }
 			else if event_kind[ii][i]=ref_event_payout { event_name[ii][i]="Payout\n($" + string(money_payout) + ")"; }
 			else if event_kind[ii][i]=ref_event_freecard { event_name[ii][i]="Free Card"; }
+			else if event_kind[ii][i]=ref_event_shinycharm { event_name[ii][i]="Shiny Charm\n$" + string(event_cost[ref_event_shinycharm]);}
+			else if event_kind[ii][i]=ref_event_holo_freecard { event_name[ii][i]="Free Holo"; }
+			else if event_kind[ii][i]=ref_event_coin { event_name[ii][i]="New Coin!"; }		
+			else if event_kind[ii][i]=ref_event_delta { event_name[ii][i]="Delta!\n$" + string(event_cost[ref_event_delta]);}			
 			else if event_kind[ii][i]=ref_event_cardpack { event_name[ii][i]="Card Pack\n$" + string(event_cost[ref_event_cardpack]); }
-			else if event_kind[ii][i]=ref_event_berry { event_name[ii][i]="Berry Pack\n$" + string(event_cost[ref_event_berry]); }
+			else if event_kind[ii][i]=ref_event_berry { event_name[ii][i]="Berry Pack"; }
 			else if event_kind[ii][i]=ref_event_levelup { event_name[ii][i]="Level Up\n$" + string(event_cost[ref_event_levelup]) + " (*)"; }
 			else if event_kind[ii][i]=ref_event_evolution { event_name[ii][i]="Evolution\n$" + string(event_cost[ref_event_evolution]); }
 			
@@ -445,7 +535,7 @@ if roadmap_get_details=true {
 			else if event_kind[ii][i]=ref_event_changeform { event_name[ii][i]="Change form"; }
 			else if event_kind[ii][i]=ref_event_deglyph { event_name[ii][i]="De-Glyph"; }
 			
-			else if event_kind[ii][i]=ref_event_cardpack_0 { event_name[ii][i]="Joke Pack\n$" + string(event_cost[ref_event_cardpack_0]); }
+			else if event_kind[ii][i]=ref_event_cardpack_0 { event_name[ii][i]="Secret!\n$" + string(event_cost[ref_event_cardpack_0]); }
 			else if event_kind[ii][i]=ref_event_cardpack_1 { event_name[ii][i]="Gen 1 Pack\n$" + string(event_cost[ref_event_cardpack_1]); }
 			else if event_kind[ii][i]=ref_event_cardpack_2 { event_name[ii][i]="Gen 2 Pack\n$" + string(event_cost[ref_event_cardpack_2]); }
 			else if event_kind[ii][i]=ref_event_cardpack_3 { event_name[ii][i]="Gen 3 Pack\n$" + string(event_cost[ref_event_cardpack_3]); }
@@ -476,6 +566,10 @@ if roadmap_get_details=true {
 				"\nBattle HP: " + string(battle_hp[area_zone]*2) + " (" + string(battle_hp[area_zone]) + "/" + string(battle_hp[area_zone]) + ")" +
 				"\nReward: $" + string(money_prize_min) + "-$" + string(money_prize_max);
 				event_description_lines[ii][i]=4;
+			}
+			else if event_kind[ii][i]=ref_event_shinycharm {
+				event_description[ii][i]="// SHINY CHARM //\nIncreases shiny encounters for\n10 turns.";
+				event_description_lines[ii][i]=3;
 			}
 			else if event_kind[ii][i]=ref_event_tutorial {
 				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nBattle HP: " + string(battle_hp[area_zone]*2) +
@@ -576,7 +670,7 @@ if event_transition>-1 and fade_black<1 {
 			fade_black+=1;
 		}
 		else {
-			fade_black+=0.02; //6.17s (slightly longer than ms_victory and ms_defeat)
+			fade_black+=0.004; //6.17s (slightly longer than ms_victory and ms_defeat)
 		}
 	}
 	else if event_transition=ref_event_battle or event_transition=ref_event_gymbattle or event_transition=ref_event_elitebattle or event_transition=ref_event_championbattle or
@@ -637,6 +731,31 @@ else if event_transition>-1 and fade_black>=1 {
 	else if event_transition=ref_event_payout {
 		if area_zone=0 and zone_first_lap=true and roadmap_area<roadmap_lab_max { money+=tutorial_payout; } //same conditions also when getting event name
 		else { money+=money_payout; }
+				if shinycharm >= 1
+				{
+					shinycharm -= 1;
+				}
+		roadmap_area++;
+		//
+		if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(false); }
+	}
+	else if event_transition=ref_event_shinycharm {
+		
+		if money>=5000 {
+		sc_playsound(sn_shiny,50,false,false);
+		shinycharm += 10;
+		money -= 5000
+		roadmap_area++;
+			}
+			else if money<event_cost[event_kind[ref_event_shinycharm][roadmap_area]] {
+				sc_playsound(sn_hurt,50,false,false);
+				effect_money_error=1;
+			}
+		//
+		if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(false); }
+	}
+	else if event_transition=ref_event_coin {	
+		coin_skin += 1;
 		roadmap_area++;
 		//
 		if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(false); }
@@ -726,10 +845,17 @@ else if event_transition>-1 and fade_black>=1 {
 		}
 		else {
 			if event_transition=ref_event_grass or event_transition=ref_event_fire or event_transition=ref_event_water { sc_textbox(1); }
-			else if option_state[opt_autodeck]=true and (event_transition=ref_event_freecard or event_transition=ref_event_cardpack or event_transition=ref_event_berry) {
+			else if option_state[opt_autodeck]=true and (event_transition=ref_event_freecard or event_transition=ref_event_cardpack or event_transition=ref_event_berry or event_transition=ref_event_holo_freecard or event_transition=ref_event_shinycharm or
+			event_transition=ref_event_cardpack_1 or event_transition=ref_event_cardpack_2 or event_transition=ref_event_cardpack_3 or event_transition=ref_event_cardpack_4 or event_transition=ref_event_cardpack_5 or event_transition=ref_event_cardpack_6
+			or event_transition=ref_event_cardpack_7 or event_transition=ref_event_cardpack_8 or event_transition=ref_event_cardpack_9) {
 				auto_deck_transition=true;
 			}
-			if ob_event.event_cancelled=false { roadmap_area++; }
+			if ob_event.event_cancelled=false { 
+				if shinycharm >= 1
+				{
+					shinycharm -= 1;
+				}
+				roadmap_area++; }
 			//
 			with (ob_event) { instance_destroy(); }
 			with (ob_card) { instance_destroy(); }
@@ -755,10 +881,10 @@ else if event_transition=-1 and event_transition_standby=-1 and fade_black<=0 {
 			if money>=event_cost[event_kind[mouse_in_event][roadmap_area]] {
 				var event_conditions=true;
 				if event_kind[mouse_in_event][roadmap_area]=ref_event_tutorial {
-                    //for (var i=0; i<5; i++;) {
-                    //    if serial_card_indeck[i][0]=false { event_conditions=false; } //checks serials 0-4 (first 5 cards acquired)
-                    //}
-                    //if berry_num_used[0][0]<5 { event_conditions=false; }
+                    for (var i=0; i<5; i++;) {
+                        if serial_card_indeck[i][0]=false { event_conditions=false; } //checks serials 0-4 (first 5 cards acquired)
+                    }
+                    if berry_num_used[0][0]<5 { event_conditions=false; }
                     event_conditions=false;
                 }
 				else if event_kind[mouse_in_event][roadmap_area]=ref_event_battle or event_kind[mouse_in_event][roadmap_area]=ref_event_gymbattle or
@@ -767,6 +893,7 @@ else if event_transition=-1 and event_transition_standby=-1 and fade_black<=0 {
 				}
 				//
 				if event_kind[mouse_in_event][roadmap_area]=ref_event_loop and (option_state[opt_challenge]=ch_resolution || option_state[opt_challenge]=ch_swiftness) { event_conditions=false; }
+				
 				//
 				if event_conditions=true {
 					event_transition_standby=event_kind[mouse_in_event][roadmap_area];
@@ -1047,23 +1174,43 @@ repeat (options_total) {
 				}
 				window_set_size(512*(option_state[i]),288*(option_state[i]));
 			}
+			else if i=opt_coin {
+					if mouse_check_button_pressed(mb_left) {
+						option_state[i]++;
+						if option_state[i]>coin_skin { option_state[i]=0; }
+					}
+					else if mouse_check_button_pressed(mb_right) {
+						option_state[i]--;
+						if option_state[i]<0 { option_state[i]=coin_skin; }
+					}	
+			}
 			else if i=opt_autodeck {
 				if option_state[i]=false { option_state[i]=true; }
 				else { option_state[i]=false; }
+			}
+			else if i=opt_jumping {
+					if mouse_check_button_pressed(mb_left) {
+						option_state[i]++;
+						if option_state[i]>2 { option_state[i]=0; }
+					}
+					else if mouse_check_button_pressed(mb_right) {
+						option_state[i]--;
+						if option_state[i]<0 { option_state[i]=2; }
+					}	
 			}
 			else if i=opt_challenge {
 				if area_zone=0 and zone_first_lap=true and roadmap_area=0 {
 					if mouse_check_button_pressed(mb_left) {
 						option_state[i]++;
-						if option_state[i]>7 { option_state[i]=0; }
+						if option_state[i]>9 { option_state[i]=0; }
 					}
 					else if mouse_check_button_pressed(mb_right) {
 						option_state[i]--;
-						if option_state[i]<0 { option_state[i]=7; }
+						if option_state[i]<0 { option_state[i]=9; }
 					}
 					//
 					roadmap_generated=false;
-				}
+				}				
 			}
 			else if i=opt_playericon {
 				if mouse_check_button_pressed(mb_left) {
@@ -1118,22 +1265,39 @@ repeat (options_total) {
 	else if i=opt_music or i=opt_sound {
 		option_state_text[i]=string(option_state[i]) + "%";
 	}
+	else if i=opt_coin {
+		if option_state[i]= coin_normal {option_state_text[i]="NORMAL"; }
+		else if option_state[i]= coin_aegislash { option_state_text[i]="POKEBALL"; }
+		else if option_state[i]= coin_2 { option_state_text[i]="GREATBALL"; }
+		else if option_state[i]= coin_3 { option_state_text[i]="ULTRABALL"; }
+		else if option_state[i]= coin_4 { option_state_text[i]="MASTERBALL"; }
+		else if option_state[i]= coin_5 { option_state_text[i]="PIKACHU"; }
+		else if option_state[i]= coin_6 { option_state_text[i]="METAGROSS"; }
+		else if option_state[i]= coin_7 { option_state_text[i]="AEGISLASH"; } 
+	}
 	else if i=opt_autodeck {
 		if option_state[i]=true { option_state_text[i]="GO TO DECK"; }
 		else { option_state_text[i]="DO NOTHING"; }
+	}
+	else if i=opt_jumping{
+		if option_state[i]=0 { option_state_text[i]="COMBAT AND DECK"; }
+		else if option_state[i]=1 { option_state_text[i]="COMBAT ONLY"; }
+		else if option_state[i]=2 { option_state_text[i]="OFF"; }
 	}
 	else if i=opt_edge {
 		option_state_text[i]=string(option_state[i]) + "%";
 	}
 	else if i=opt_challenge {
-		if option_state[i]=0 { option_state_text[i]="NONE"; }
+		if option_state[i]= ch_swiftness {option_state_text[i]="SWIFTNESS"; }
 		else if option_state[i]=ch_resolution { option_state_text[i]="RESOLUTION"; }
 		else if option_state[i]=ch_dominance { option_state_text[i]="DOMINANCE"; }
 		else if option_state[i]=ch_barrenness { option_state_text[i]="BARRENNESS"; }
 		else if option_state[i]=ch_roguelite_easy { option_state_text[i]="ROGUE-LITE EASY"; }
 		else if option_state[i]=ch_roguelite_medium { option_state_text[i]="ROGUE-LITE MEDIUM"; }
 		else if option_state[i]=ch_roguelite_hard { option_state_text[i]="ROGUE-LITE HARD"; }
-		else if option_state[i]=ch_swiftness { option_state_text[i]="SWIFTNESS"; }
+		else if option_state[i]=ch_delta { option_state_text[i]="SHINY DELTA"; }
+		else if option_state[i]=ch_rainbow { option_state_text[i]="RAINBOW"; }
+		else if option_state[i]= ch_none {option_state_text[i]="NONE"; }
 	}
 	else if i=opt_playericon {
 		option_state_text[i]="   ";
@@ -1146,9 +1310,10 @@ repeat (options_total) {
 	}
 	//
 	if option_focus[opt_challenge]=true {
-		if option_state[opt_challenge]=0 {
-			tooltip_text="Normal playthrough.";
-			tooltip_lines=2;
+		if option_state[opt_challenge]= ch_none {
+			tooltip_text="// NO CHALLENGES //\n" +
+			"No modifiers and play as long as you like..";
+			tooltip_lines=3;
 		}
 		else if option_state[opt_challenge]=ch_resolution {
 			tooltip_text="// RESOLUTION //\n" +
@@ -1168,26 +1333,36 @@ repeat (options_total) {
 		else if option_state[opt_challenge]=ch_roguelite_easy {
 			tooltip_text="// ROGUE-LITE EASY //\n" +
 			"You have 10 lives. Save data will be deleted if you lose 10 times.\nPlay carefully!";
-			tooltip_lines=3;
+			tooltip_lines=4;
 			if area_zone=0 and zone_first_lap=true and roadmap_area=0{ player_lives = 10;}
 		}
 		else if option_state[opt_challenge]=ch_roguelite_medium {
 			tooltip_text="// ROGUE-LITE MEDIUM //\n" +
 			"You have 5 lives. Save data will be deleted if you lose 5 times.\nPlay carefully!";
-			tooltip_lines=3;
+			tooltip_lines=4;
 			if area_zone=0 and zone_first_lap=true and roadmap_area=0{ player_lives = 5;}
 		}
 		else if option_state[opt_challenge]=ch_roguelite_hard {
 			tooltip_text="// ROGUE-LITE HARD //\n" +
 			"You have 1 life. Save data will be deleted if you lose 1 time.\nPlay carefully!";
-			tooltip_lines=3;
+			tooltip_lines=4;
 			if area_zone=0 and zone_first_lap=true and roadmap_area=0{ player_lives = 1;}
 		}
 		else if option_state[opt_challenge]=ch_swiftness {
 			tooltip_text="// RESOLUTION + ROGUE-LITE //\n" +
 			"You have 5 lives. All money rewards are multiplied x2 and all\nroutes are extended, but cannot go back to outskirts or fly\nto any previous locations.";
-			tooltip_lines=3;
+			tooltip_lines=5;
 			if area_zone=0 and zone_first_lap=true and roadmap_area=0{ player_lives = 5;}
+		}
+		else if option_state[opt_challenge]=ch_delta {
+			tooltip_text="// SHINY DELTA //\n" +
+			"Enemies are able to use shinies and delta Pokemon, but they have\nthe same rates that you do.";
+			tooltip_lines=4;
+		}
+		else if option_state[opt_challenge]=ch_rainbow {
+			tooltip_text="// RAINBOW //\n" +
+			"Enemy Pokemon are ALWAYS Delta Pokemon.";
+			tooltip_lines=3;
 		}
 		//
 		tooltip_text=tooltip_text + "\nChallenges can only be set before picking a Starter Deck.";
@@ -1242,3 +1417,6 @@ if progress_r>255 { progress_r=255; }
 if progress_g>255 { progress_g=255; }
 if progress_b>255 { progress_b=255; }
 global.color_character_light=make_colour_rgb(progress_r,progress_g,progress_b);
+
+
+

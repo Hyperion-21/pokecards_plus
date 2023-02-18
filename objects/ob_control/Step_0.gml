@@ -224,6 +224,11 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or ob_main.cursor_hide=true) 
 							create_card_glyph_c=-1;
 							create_card_innate=1;
 							create_card_shiny=-1;
+							create_card_holo=-0;
+							create_card_delta=-1;
+							create_card_delta_type=-1;
+							create_card_type_a=-1;
+							create_card_type_b=-1;
 							create_card_form_value=0;
 							create_enemy_randomizer=false;
 							create_enemy_costcount=false;
@@ -384,7 +389,7 @@ if ob_main.playing_tutorial=false or (ob_main.playing_tutorial=true and (sc_tuto
 			battler_turn=2;
 			if turn_num>1 { enemycard_draw_points+=2; }
 			else { enemycard_draw_points+=5; }
-			card_draw_points=0;
+			//card_draw_points=0;
 			enemy_turn_timer=irandom_range(30,60);
 			//
 			for (var i=0; i<=4; i++;) {
