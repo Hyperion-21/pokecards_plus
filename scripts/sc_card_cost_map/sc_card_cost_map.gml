@@ -18,14 +18,17 @@ else if argument0=2 and argument1=false and argument3>=0 and argument4=1 { retur
 //2 cost, enigma: EN/A
 else if argument0=2 and argument1=true and argument4=0 { return 20; }
 else if argument0=2 and argument1=true and argument4=1 { return argument2; }
+
+
+
 //3 cost, 1 type, enigma: EN/A/A
-//else if argument0=3 and argument1=true and argument3=-1 and argument4=0 { return 20; }
-//else if argument0=3 and argument1=true and argument3=-1 and argument4=1 { return argument2; }
-//else if argument0=3 and argument1=true and argument3=-1 and argument4=2 { return argument2; }
+else if argument0=3 and argument1=true and argument3=-1 and argument4=0 { return 20; }
+else if argument0=3 and argument1=true and argument3=-1 and argument4=1 { return argument2; }
+else if argument0=3 and argument1=true and argument3=-1 and argument4=2 { return argument2; }
 //3 cost, 2 types, enigma: EN/A/B
-//else if argument0=3 and argument1=true and argument3>=0 and argument4=0 { return 20; }
-//else if argument0=3 and argument1=true and argument3>=0 and argument4=1 { return argument2; }
-//else if argument0=3 and argument1=true and argument3>=0 and argument4=2 { return argument3; }
+else if argument0=3 and argument1=true and argument3>=0 and argument4=0 { return 20; }
+else if argument0=3 and argument1=true and argument3>=0 and argument4=1 { return argument2; }
+else if argument0=3 and argument1=true and argument3>=0 and argument4=2 { return argument3; }
 //
 else { return -1; }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

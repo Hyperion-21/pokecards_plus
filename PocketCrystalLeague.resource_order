@@ -61,6 +61,7 @@
     {"name":"sp_poke_a","order":1,"path":"sprites/sp_poke_a/sp_poke_a.yy",},
     {"name":"sc_tutorial_conditions","order":14,"path":"scripts/sc_tutorial_conditions/sc_tutorial_conditions.yy",},
     {"name":"sc_type_bonus","order":8,"path":"scripts/sc_type_bonus/sc_type_bonus.yy",},
+    {"name":"sc_pokedex","order":29,"path":"scripts/sc_pokedex/sc_pokedex.yy",},
     {"name":"sp_poke_e","order":15,"path":"sprites/sp_poke_e/sp_poke_e.yy",},
     {"name":"sp_holo","order":21,"path":"sprites/sp_holo/sp_holo.yy",},
     {"name":"ob_button_31x24","order":9,"path":"objects/ob_button_31x24/ob_button_31x24.yy",},

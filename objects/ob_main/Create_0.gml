@@ -1,7 +1,7 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
 #macro game_version "v1.6.0.0"
-#macro pclp_version "v2.3.0.0"
+#macro pclp_version "v1.3.0.0"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -39,6 +39,7 @@ surface_resize(application_surface,cam_w,cam_h);
 mouse_cursor=0;
 cursor_hide=false;
 screen_transition=-1;
+auto_deck_transition=false;
 auto_deck_transition=false;
 moving_hud=0;
 type_chart=false;
@@ -117,9 +118,9 @@ textbox_char_pos=0;
 #macro money_badge_base 200 //200 325 450 575 700 825 950 1075 1200 (minimum should be enough for a card pack)
 #macro money_badge_area_bonus 125
 #macro sell_value_multiplier 2.5 //bankers rounding
-#macro tutorial_payout 600
+#macro tutorial_payout 600000
 
-#macro dupemax 2 // sets duplicates max
+
 
 
 //
@@ -133,6 +134,7 @@ battle_hp[6]=100; //200
 battle_hp[7]=150; //300
 battle_hp[8]=200; //400
 battle_hp[9]=250; //500
+battle_hp[10]=300; //600
 //
 money_show=0;
 money_prize=0;
@@ -168,6 +170,7 @@ shinycharm = 0;
 #macro ref_event_victory 300 //only for transitions
 #macro ref_event_defeat 301 //only for transitions
 #macro ref_event_exitbattle 302 //only for transitions
+#macro ref_event_legendarybattle 303
 
 #macro ref_event_sacrifice 500
 #macro ref_event_campfire 501
@@ -178,6 +181,8 @@ shinycharm = 0;
 #macro ref_event_holo_freecard 506
 #macro ref_event_coin 507
 #macro ref_event_delta 508
+#macro ref_event_candy 509
+#macro ref_event_loophome 510
 
 #macro ref_event_cardpack_0 600 // Joke cards such as missingno and ghost.
 #macro ref_event_cardpack_1 601 // Focus on Gen 1.
@@ -212,14 +217,14 @@ shinycharm = 0;
 
 // Chance in 10000, chances if weight changes.
 event_card_weight[event_card_group_secret] = 5; //5
-event_card_weight[event_card_group_environment] = 95; //100
-event_card_weight[event_card_group_enigma] = 50; //150   - 50
-event_card_weight[event_card_group_stage_2] = 450; //500
-event_card_weight[event_card_group_stage_3] = 100; //600
+event_card_weight[event_card_group_environment] = 95; //95
+event_card_weight[event_card_group_enigma] = 50; //50
+event_card_weight[event_card_group_stage_2] = 450; //450
+event_card_weight[event_card_group_stage_3] = 100; //100
 // common cards fill in the blanks
 
 shiny_chance = 10; // out of 8192
-shinycharm_chance = 700;
+shinycharm_chance = 400;
 delta_chance = 50 // out of 8192
 
 // Chance in 100 to be added to possible common selection
@@ -242,6 +247,7 @@ event_cost[ref_event_evolution]=500;
 event_cost[ref_event_megaevolve]=500;
 event_cost[ref_event_shinycharm]=5000;
 event_cost[ref_event_delta]=4000;
+event_cost[ref_event_holo_freecard]=3000;
 event_cost[ref_event_cardpack_0]=5000;
 event_cost[ref_event_cardpack_1]=300;
 event_cost[ref_event_cardpack_2]=300;
@@ -261,7 +267,7 @@ current_glyph_add=-1;
 tooltip_text="";
 tooltip_lines=0;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-#macro glyph_common_amount 18
+#macro glyph_common_amount 24
 //
 #macro ref_glyph_lucky 00
 #macro ref_glyph_harvest 01
@@ -281,7 +287,13 @@ tooltip_lines=0;
 #macro ref_glyph_berserk 15
 #macro ref_glyph_adaptability 16
 #macro ref_glyph_recovery 17
-//#macro ref_glyph_bless 18
+#macro ref_glyph_rush 18
+#macro ref_glyph_rations 19
+#macro ref_glyph_taunt 20
+#macro ref_glyph_picky 21
+#macro ref_glyph_underdog 22
+#macro ref_glyph_bless 23
+#macro ref_glyph_adversity 24
 //
 #macro ref_glyph_mist 100
 #macro ref_glyph_transform 101
@@ -309,6 +321,15 @@ ref_glyph_img[14] = 16;
 ref_glyph_img[15] = 17;
 ref_glyph_img[16] = 18;
 ref_glyph_img[17] = 19;
+ref_glyph_img[18] = 27;
+ref_glyph_img[19] = 28;
+ref_glyph_img[20] = 29;
+ref_glyph_img[21] = 30;
+ref_glyph_img[22] = 31;
+ref_glyph_img[23] = 24;
+ref_glyph_img[24] = 32;
+
+
 // ref_glyph_img[18] = 24;
 ref_glyph_img[100] = 23;
 ref_glyph_img[101] = 20;
@@ -347,6 +368,7 @@ ref_glyph_img[104] = 26;
 #macro ch_swiftness 7
 #macro ch_delta 8
 #macro ch_rainbow 9
+#macro ch_unlimited 10
 //
 #macro coin_normal 0
 #macro coin_aegislash 1
@@ -421,8 +443,23 @@ repeat (8) {
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-#macro config_file "config_pcl++.sav"
-#macro data_file "data_pcl++.sav"
+
+savestate = 0;
+
+saveconf[0] = "data_pcl++0.sav"
+saveconf[1] = "data_pcl++1.sav"
+saveconf[2] = "data_pcl++2.sav"
+saveconf[3] = "data_pcl++3.sav"
+saveconf[4] = "data_pcl++4.sav"
+
+savedata[0] = "config_pcl++0.sav";
+savedata[1] = "config_pcl++1.sav";
+savedata[2] = "config_pcl++2.sav";
+savedata[3] = "config_pcl++3.sav";
+savedata[4] = "config_pcl++4.sav";
+
+//#macro ob_main.saveconf[ob_main.savestate] "config_pcl++.sav"
+//#macro ob_main.savedata[ob_main.savestate] "data_pcl++.sav"
 sc_config_load();
 sc_config_save();
 sc_data_load();

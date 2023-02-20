@@ -192,6 +192,10 @@ if (apply_event) {
 			        sc_playsound(sn_upgrade, 50, false, false);
 			        ob_main.main_card_level[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_level;
 			    }
+				else
+				{
+					sc_playsound(sn_hurt,50,false,false);
+				}
 			}
 		break;
 		case ref_event_evolution:
@@ -202,7 +206,7 @@ if (apply_event) {
 					
 					//if (ob_main.main_card_id[i] = card_id_in_space[0].card_id)
 					//{
-						duplicate += 1;
+						//duplicate += 1;
 					//} //  || (ob_main.main_card_id[i] = card_id_in_space[0].card_evo[0])
 				//}
 							
@@ -226,6 +230,20 @@ if (apply_event) {
 			        with (card_id_in_space[0])
 			        {
 			            sc_pokelist();
+						if card_delta = true
+						{
+							if card_delta_type = card_type_a && card_type_b = -1
+							{
+								card_delta_type = irandom_range(0,17);
+							}
+							card_type_a = card_delta_type;
+							card_type_b = -1;
+							if card_environment = true
+							{
+								card_id = irandom_range(0,normal_poke_id_max);
+								card_environment = false;
+							}
+						}
 			            sc_card_level_stats_all(true, true);
 			        }
 			        event_applied = true;
@@ -384,7 +402,7 @@ if (apply_event) {
 		case ref_event_glyph:
 			if (card_id_in_space[0] != -1)
 			{
-			    if (card_id_in_space[0].card_glyph_c == -1 && card_id_in_space[0].card_innate > 0 &&
+			    if (card_id_in_space[0].card_glyph_c == -1 && (card_id_in_space[0].card_innate > 0 or (glyph_add_id = ref_glyph_adversity && card_id_in_space[0].card_innate = -1 )) &&
 			        card_id_in_space[0].card_glyph_a != glyph_add_id && card_id_in_space[0].card_glyph_b != glyph_add_id && card_id_in_space[0].card_glyph_c != glyph_add_id)
 			    {
 			        sc_insert_into_free_glyph_slot(card_id_in_space[0], glyph_add_id);
@@ -400,6 +418,10 @@ if (apply_event) {
 			        ob_main.main_card_glyph_b[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_b;
 			        ob_main.main_card_glyph_c[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_c;
 			    }
+				else
+				{
+					sc_playsound(sn_hurt,50,false,false);
+				}
 			}
 		break;
 		case ref_event_tribute:
@@ -425,6 +447,10 @@ if (apply_event) {
 				    event_applied = true;
 				    ob_main.main_card_innate[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_innate;
 				    ob_main.main_card_innate[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_innate;
+				}
+				else
+				{
+					sc_playsound(sn_hurt,50,false,false);
 				}
 			}
 		break;
@@ -539,6 +565,10 @@ if (apply_event) {
 					
 
 				}
+				else
+				{
+					sc_playsound(sn_hurt,50,false,false);
+				}
 			}
 		break;
 		case ref_event_deglyph:
@@ -578,6 +608,10 @@ if (apply_event) {
 					ob_main.main_card_glyph_b[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_b;
 					ob_main.main_card_glyph_c[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_c;
 				}
+				else
+				{
+					sc_playsound(sn_hurt,50,false,false);
+				}
 			}
 		break;
 		case ref_event_campfire:
@@ -597,8 +631,35 @@ if (apply_event) {
 			        event_applied = true;
 			        ob_main.main_card_innate[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_innate;
 			    }
+				else
+				{
+					sc_playsound(sn_hurt,50,false,false);
+				}
 			}
 		break;
+		case ref_event_candy:
+			if (card_id_in_space[0] != -1)
+			{
+			    if (card_id_in_space[0].card_innate < innate_max+1 && card_id_in_space[0].card_environment == false)
+			    {
+			        card_id_in_space[0].card_innate = (innate_max+1);
+			        sc_card_effect(event_space_id[0].x, event_space_id[0].y, 0, false, true);
+			        sc_playsound(sn_upgrade, 50, false, false);
+        
+			        with (card_id_in_space[0])
+			        {
+			            sc_card_level_stats_all(true, true);
+			        }
+        
+			        event_applied = true;
+			        ob_main.main_card_innate[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_innate;
+			    }
+				else
+				{
+					sc_playsound(sn_hurt,50,false,false);
+				}
+			}
+		break;	
 		default:
 		break;
 	}

@@ -121,6 +121,9 @@ else if argument0=43 { //APRIL
 else if argument0=44 { //DUNCAN
 	ob_main.textbox_string[0]="KYOUMU CRYSTAL LEAGUE, FINAL BATTLE: Duncan.\nThe Crystal Champion.";
 }
+else if argument0=45 { //MEWTWO
+	ob_main.textbox_string[0]="MYSTERIOUS CAVE, THE ULTIMATE POKEMON: Mewtwo.\nWhy have you come to this place, human?";
+}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if argument0=50 {
 	ob_main.textbox_string[0]="And thus, after a long series of arduous battles, our hero overcame their challenges and rose to be the next Crystal League Champion...";

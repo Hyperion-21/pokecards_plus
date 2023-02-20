@@ -26,6 +26,9 @@ if (instance_exists(ob_event))
 		case ref_event_campfire:
 			draw_sprite_general(sp_sheet, 0, 560, 240, 26, 26, x + 16, y + 26, 1, 1, 0, c_white, c_white, c_white, c_white, var_event_alpha);
 		break;
+		case ref_event_candy:
+			draw_sprite_general(sp_sheet, 0, 624, 272, 26, 26, x + 16, y + 26, 1, 1, 0, c_white, c_white, c_white, c_white, var_event_alpha);
+		break;
 		case ref_event_megaevolve:
 			draw_sprite_general(sp_sheet, 0, 528, 240, 26, 26, x + 16, y + 26, 1, 1, 0, c_white, c_white, c_white, c_white, var_event_alpha);
 		break;
@@ -84,7 +87,7 @@ if (instance_exists(ob_event))
 			{
 			    // berry costs from sc_card_level_stats_all
 			    var imaginary_card_cost;
-			    for (var i = 0; i <= 2; i++)
+			    for (var i = 0; i <= 3; i++)
 			    {
 			        imaginary_card_cost[i] = sc_card_cost_map(occupy_id.card_cost_total + 1, occupy_id.card_enigma, occupy_id.card_type_a, occupy_id.card_type_b, i);
 			    }

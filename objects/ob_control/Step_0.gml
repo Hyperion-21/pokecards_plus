@@ -135,6 +135,8 @@ if card_focus!=-1 { //click played card
 		//
 		if ob_main.playing_tutorial=false or (ob_main.playing_tutorial=true and sc_tutorial_conditions(5,-1)) {
 			if turn_num>2 { sc_card_attack(true,card_focus); }
+			else if card_focus.card_glyph_a == ref_glyph_rush or card_focus.card_glyph_b == ref_glyph_rush or card_focus.card_glyph_c == ref_glyph_rush
+			{ sc_card_attack(true,card_focus); }
 			else {
 				first_turn_attack_warning=true;
 				tooltip_timer=tooltip_timer_max;
@@ -363,9 +365,15 @@ battler_turn=1 and card_hold=-1 and ob_main.cursor_hide=false {
 				sc_card_attack(true,card_space_id[auto_attack_slot+5].occupy_id);
 				auto_attack_timer=8; //same as enemy
 			}
-			if auto_attack_slot<=3 { auto_attack_slot++; }
+			if auto_attack_slot<=3 { auto_attack_slot++; }		
 		}
 		else {
+			if card_space_id[auto_attack_slot+5].occupy_id!=-1 and (card_space_id[auto_attack_slot+5].occupy_id.card_glyph_a == ref_glyph_rush or card_space_id[auto_attack_slot+5].occupy_id.card_glyph_b == ref_glyph_rush or card_space_id[auto_attack_slot+5].occupy_id.card_glyph_c == ref_glyph_rush) and
+			card_space_id[auto_attack_slot+5].occupy_id.already_attacked=false and card_space_id[auto_attack_slot+5].occupy_id.card_environment=false { // Rush Glyph
+				sc_card_attack(true,card_space_id[auto_attack_slot+5].occupy_id);
+				auto_attack_timer=8; //same as enemy
+			}
+			if auto_attack_slot<=3 { auto_attack_slot++; }		
 			first_turn_attack_warning=true;
 			tooltip_timer=tooltip_timer_max;
 		}

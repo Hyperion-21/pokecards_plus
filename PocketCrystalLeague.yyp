@@ -86,6 +86,7 @@
     {"id":{"name":"sc_tutorial_conditions","path":"scripts/sc_tutorial_conditions/sc_tutorial_conditions.yy",},"order":14,},
     {"id":{"name":"sc_type_bonus","path":"scripts/sc_type_bonus/sc_type_bonus.yy",},"order":8,},
     {"id":{"name":"sp_16x16","path":"sprites/sp_16x16/sp_16x16.yy",},"order":0,},
+    {"id":{"name":"sc_pokedex","path":"scripts/sc_pokedex/sc_pokedex.yy",},"order":0,},
     {"id":{"name":"sp_poke_e","path":"sprites/sp_poke_e/sp_poke_e.yy",},"order":0,},
     {"id":{"name":"sp_holo","path":"sprites/sp_holo/sp_holo.yy",},"order":0,},
     {"id":{"name":"ob_button_31x24","path":"objects/ob_button_31x24/ob_button_31x24.yy",},"order":9,},

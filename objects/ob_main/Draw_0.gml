@@ -27,7 +27,8 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	var event_sprite_y = 16*13;
 	repeat (var_event_num) {
 		var event_sprite_x=16*(1+event_kind[i][roadmap_area]*2);
-		if event_kind[i][roadmap_area]=ref_event_gymbattle or event_kind[i][roadmap_area]=ref_event_elitebattle or event_kind[i][roadmap_area]=ref_event_championbattle {
+		if event_kind[i][roadmap_area]=ref_event_gymbattle or event_kind[i][roadmap_area]=ref_event_elitebattle or event_kind[i][roadmap_area]=ref_event_championbattle or
+		event_kind[i][roadmap_area]=ref_event_legendarybattle{
 			event_sprite_x=16*(1+13*2); event_sprite_y = 208; }
 		else if event_kind[i][roadmap_area]=ref_event_tutorial { event_sprite_x=16*(1+0*2); event_sprite_y = 208; }
 		else if event_kind[i][roadmap_area]=ref_event_grass { event_sprite_x=16*(1+10*2); event_sprite_y = 208; }
@@ -53,6 +54,8 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 		else if event_kind[i][roadmap_area]=ref_event_shinycharm { event_sprite_x=496; ; event_sprite_y = 272; }
 		else if event_kind[i][roadmap_area]=ref_event_coin { event_sprite_x=528; ; event_sprite_y = 272; }
 		else if event_kind[i][roadmap_area]=ref_event_delta { event_sprite_x=560; ; event_sprite_y = 272; }
+		else if event_kind[i][roadmap_area]=ref_event_candy { event_sprite_x=592; ; event_sprite_y = 272; }
+		else if event_kind[i][roadmap_area]=ref_event_loophome { event_sprite_x=272; ; event_sprite_y = 272; }
 		else if event_kind[i][roadmap_area]=ref_event_holo_freecard { event_sprite_x=16*(1+14*2); ; event_sprite_y = 272; }
 		else { event_sprite_y = 208;}
 		//
@@ -61,7 +64,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 		sc_drawtext(event_button_x[i]+22,event_button_y[i]+51,event_name[i][roadmap_area],global.color_white,global.color_black,1,1,0,-1);
 		//
 		if event_kind[i][roadmap_area]=ref_event_battle or event_kind[i][roadmap_area]=ref_event_gymbattle or event_kind[i][roadmap_area]=ref_event_elitebattle or
-		event_kind[i][roadmap_area]=ref_event_championbattle or event_kind[i][roadmap_area]=ref_event_tutorial {
+		event_kind[i][roadmap_area]=ref_event_championbattle or event_kind[i][roadmap_area]=ref_event_legendarybattle or event_kind[i][roadmap_area]=ref_event_tutorial {
 			if trainer_sprite[roadmap_area]<=playericon_max {
 				draw_sprite_general(sp_sheet,0,16*((trainer_sprite[roadmap_area] mod 2)+1),16*(11+trainer_skin[roadmap_area]),16,16,
 				event_button_x[i]+25,event_button_y[i]+27,1,1,0,c_white,c_white,c_white,c_white,1);
@@ -76,7 +79,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 			}
 		}
 		if event_kind[i][roadmap_area]=ref_event_glyph {
-			draw_sprite_general(sp_sheet,0,16*(event_glyph_add[i][roadmap_area]+1),16*6,12,11,event_button_x[i]+29,event_button_y[i]+3,1,1,0,c_white,c_white,c_white,c_white,0.8);
+			draw_sprite_general(sp_sheet,0,16*(ref_glyph_img[event_glyph_add[i][roadmap_area]]-1),16*6,12,11,event_button_x[i]+29,event_button_y[i]+3,1,1,0,c_white,c_white,c_white,c_white,0.8);
 		}
 		//
 		i++;
@@ -90,7 +93,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	if (option_state[opt_challenge]= ch_roguelite_easy || option_state[opt_challenge]= ch_roguelite_medium || option_state[opt_challenge] = ch_roguelite_hard || option_state[opt_challenge] = ch_swiftness){
 	var shiny_y=road_win_y+12+rel_hud
 	draw_set_halign(fa_left);
-	sc_drawtext(lives_x - 232,lives_y,"Lives: " + string(player_lives),lives_color,global.color_black,1,1,0,-1);}
+	sc_drawtext(lives_x - 232,lives_y,"Lives: " + string(player_lives),lives_color,global.color_black,1,1,0,-1);}	
 	else{
 		var shiny_y = lives_y
 		}
@@ -100,6 +103,8 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	sc_drawtext(lives_x - 232,shiny_y,"Shiny Charm: " + string(shinycharm),lives_color,global.color_black,1,1,0,-1);
 	}
 	//
+	draw_set_halign(fa_left);
+	//sc_drawtext(lives_x - 232,lives_y,"Latest Zone: " + string(latest_zone),lives_color,global.color_black,1,1,0,-1);
 	draw_set_halign(fa_center);
 	var zone_name_text="";
 	if roadmap_area=roadmap_current_max-1 or area_zone=area_zone_max-1 or (area_zone=0 and roadmap_area<roadmap_lab_max and zone_first_lap=true) { zone_name_text=zone_name; }
@@ -133,6 +138,12 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	draw_sprite_general(sp_sheet,0,16*(option_state[opt_playericon]+3),16*11,16,16,road_win_x-2+(bar_amount*228)/100,road_win_y-23-rel_hud,1,1,0,
 	global.color_character,global.color_character,global.color_character,global.color_character,1);
 	draw_sprite_general(sp_sheet,0,16*(option_state[opt_playericon]+3),16*12,16,16,road_win_x-2+(bar_amount*228)/100,road_win_y-23-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
+	
+	draw_set_halign(fa_left)
+	draw_set_font(fn_m6x11_L);
+	sc_drawtext(screen_main_x-86,screen_main_y+25,"Save File: " + string(ob_main.savestate +1),global.color_card_light,global.color_black,1,0.25,0,-1);
+	draw_set_font(fn_m3x6);	
+	
 	//
 	for (var i=0; i<=7; i++;) {
 		if area_zone=i { var zone_icon_alpha=0.8; } else { var zone_icon_alpha=0.4; }
@@ -156,6 +167,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	// OPTIONS
 	if menu_back_options_hover=true { var menu_alpha=1; } else { var menu_alpha=0.5; }
 	draw_sprite_general(sp_sheet,0,16*8,16*9,16,16,screen_options_x+cam_w-32+rel_hud*2,screen_main_y+136,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
+
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	draw_set_font(fn_matchup); //must be the same font as in mouse check for string width
 	draw_set_halign(fa_left);
@@ -222,7 +234,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 		draw_sprite_ext(sp_back_pixel,0,bg_preview_x+16*4,bg_preview_y+16*i,16,16,0,global.color_background_tile,option_alpha);
 		draw_sprite_ext(sp_back_pixel,0,bg_preview_x+16*1,bg_preview_y+16*(i+1),16,16,0,global.color_background_tile,option_alpha);
 		draw_sprite_ext(sp_back_pixel,0,bg_preview_x+16*3,bg_preview_y+16*(i+1),16,16,0,global.color_background_tile,option_alpha);
-		draw_sprite_ext(sp_back_pixel,0,bg_preview_x+16*5,bg_preview_y+16*(i+1),16,16,0,global.color_background_tile,option_alpha);
+		draw_sprite_ext(sp_back_pixel,0,bg_preview_x+16*5,bg_preview_y+16*(i+1),16,16,0,global.color_background_tile,option_alpha);		
 	}
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	// DECK
@@ -278,7 +290,7 @@ if ending_screen=true {
 		//
 		draw_set_font(fn_m3x6);
 		draw_set_halign(fa_right);
-		sc_drawtext(screen_main_x+cam_w-3,screen_main_y+cam_h-14,"PHOENIX: 35.176861, 158.977194",global.color_white,global.color_black,0.75,0.25,0,-1);
+		sc_drawtext(screen_main_x+cam_w-3,screen_main_y+cam_h-14,"Or is it?",global.color_white,global.color_black,1,0.25,0,-1);
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

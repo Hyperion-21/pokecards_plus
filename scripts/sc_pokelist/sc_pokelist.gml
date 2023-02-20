@@ -2297,7 +2297,7 @@ switch (card_id) {
 	case 261:
 		card_name="Poochyena";
 		card_stage=1; card_evo[0]=262;
-		card_type_a=17; card_type_b=0;
+		card_type_a=17; card_type_b=-1;
 		card_base_hp=35; card_base_atk=55+30; card_base_def=35+30;
 		card_grid_x=13; card_grid_y=26; break;
 		
@@ -2333,6 +2333,7 @@ switch (card_id) {
 			card_grid_x=1; card_grid_y=27; }
 		else {
 			if card_shiny = true {card_sheet=sp_shinypoke_d;}else{card_sheet=sp_poke_d;}
+			card_evo[0]=862;
 			card_type_a=17; card_type_b=00;
 			card_base_hp=78; card_base_atk=70+50; card_base_def=61+61;
 			card_grid_x=4; card_grid_y=11; }
@@ -4443,7 +4444,7 @@ switch (card_id) {
 			card_base_hp=95; 
 			card_base_atk=117+44; 
 			card_base_def=184+46; 
-			card_grid_x=4; card_grid_y=31; }
+			card_grid_x=12; card_grid_y=31; }
 		else {
 			if card_shiny = true {card_sheet=sp_shinypoke_d;}else{card_sheet=sp_poke_d;}
 			card_type_a=14; card_type_b=10; 
@@ -4805,7 +4806,7 @@ switch (card_id) {
 		card_name="G-Inteleon";
 		card_enigma=true;
 		card_base_hp=170; card_base_atk=85+125; card_base_def=65+65;
-		card_grid_x=11; card_grid_y=1;} break;
+		card_grid_x=4; card_grid_y=13;} break;
 	case 0819: card_name="Skwovet"; card_stage=1; card_evo[0]=820; card_type_a=0; card_type_b=-1; card_base_hp=70; card_base_atk=55+35; card_base_def=55+35; card_grid_x=12; card_grid_y=1; break;
 	case 0820: card_name="Greedent"; card_stage=2;  card_type_a=0; card_type_b=-1; card_base_hp=120; card_base_atk=95+55; card_base_def=95+75; card_grid_x=13; card_grid_y=1; break;
 	case 0821: card_name="Rookidee"; card_stage=1; card_evo[0]=822; card_type_a=5; card_type_b=-1; card_base_hp=38; card_base_atk=47+33; card_base_def=35+35; card_grid_x=14; card_grid_y=1; break;
@@ -4951,7 +4952,6 @@ switch (card_id) {
 	case 0846: card_name="Arrokuda"; card_stage=1; card_evo[0]=847; card_type_a=3; card_type_b=-1; card_base_hp=41; card_base_atk=63+40; card_base_def=40+30; card_grid_x=11; card_grid_y=3; break;
 	case 0847: card_name="Barraskewda"; card_stage=2;  card_type_a=3; card_type_b=-1; card_base_hp=61; card_base_atk=123+60; card_base_def=60+50; card_grid_x=12; card_grid_y=3; break;
 	case 0848: card_name="Toxel"; card_stage=1; card_evo[0]=849; card_type_a=4; card_type_b=12; card_base_hp=40; card_base_atk=38+54; card_base_def=35+35; card_grid_x=13; card_grid_y=3; break;
-	
 	case 0849: 
 		card_can_mega=true;
 		card_has_forms=true;
@@ -4968,14 +4968,13 @@ switch (card_id) {
 		    card_type_a=4; card_type_b=12; 
 		    card_base_hp=75; card_base_atk=98+114; card_base_def=70+70; 
 			card_grid_x=15; card_grid_y=3;} 
-        else if card_form_value<1001 {
+        else if card_form_value<1000 {
 		card_name="G-Toxtricity";
-			if card_shiny = true {card_sheet=sp_shinypoke_d;}else{card_sheet=sp_poke_d;}
+		if card_shiny = true {card_sheet=sp_shinypoke_d;}else{card_sheet=sp_poke_d;}
 		card_stage=2; card_enigma=true;
 		card_type_a=4; card_type_b=12;
 		card_base_hp=175; card_base_atk=98+114; card_base_def=70+70;
 		card_grid_x=12; card_grid_y=13;} break;
-	
 	case 0850: card_name="Sizzlipede"; card_stage=1; card_evo[0]=851; card_type_a=2; card_type_b=11; card_base_hp=50; card_base_atk=65+50; card_base_def=45+50; card_grid_x=1; card_grid_y=4; break;
 	case 0851: 
 		card_can_mega=true;
@@ -5519,7 +5518,7 @@ switch (card_id) {
 		else if card_form_value<750 { card_grid_x=5; card_grid_y=8; }
 		else if card_form_value<1000 { card_grid_x=6; card_grid_y=8; }break;
 	case 932:
-		card_name="Nacil";
+		card_name="Nacli";
 		card_stage=1; card_evo[0]=933;
 		card_type_a=10; card_type_b=-1;
 		card_base_hp=55; card_base_atk=55+35; card_base_def=75+35;
@@ -5670,13 +5669,13 @@ switch (card_id) {
 		card_grid_x=6; card_grid_y=4; break;
 	case 957:
 		card_name="Tinkatink";
-		card_stage=1; card_evo[0]=959;
+		card_stage=1; card_evo[0]=958;
 		card_type_a=08; card_type_b=15;
 		card_base_hp=50; card_base_atk=45+35; card_base_def=45+64;
 		card_grid_x=7; card_grid_y=4; break;
 	case 958:
 		card_name="Tinkatuff";
-		card_stage=2; card_evo[0]=960;
+		card_stage=2; card_evo[0]=959;
 		card_type_a=08; card_type_b=15;
 		card_base_hp=65; card_base_atk=55+45; card_base_def=55+82;
 		card_grid_x=8; card_grid_y=4; break;

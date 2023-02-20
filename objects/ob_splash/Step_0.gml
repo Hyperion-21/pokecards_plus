@@ -1,9 +1,37 @@
 //ob_splash
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if (mouse_check_button_pressed(mb_any) or keyboard_check_pressed(vk_anykey)) and ob_main.fade_black<=0 {
+
+
+
+if mouse_x>=(screen_main_x+(cam_w/2)-35) and mouse_y>= (screen_main_y+cam_h-50) and mouse_x<=(screen_main_x+(cam_w/2)+35) and mouse_y<=(screen_main_y+cam_h-25) {
+	with (ob_main)
+		{
+		if mouse_check_button_pressed(mb_left){
+			savestate++;
+			if savestate>4 { savestate = 0; }
+		}
+		else if mouse_check_button_pressed(mb_right){
+			savestate--;
+			if savestate<0 { savestate = 4; }
+		}
+	}
+}	
+else if (mouse_check_button_pressed(mb_any) or keyboard_check_pressed(vk_anykey)) and ob_main.fade_black<=0 {
 	sc_playsound(sn_click,50,false,false);
-	ob_main.event_transition=ref_mainmenu;
-}
+	with (ob_main)
+	{
+		sc_config_load();
+		sc_data_load();
+		audio_sound_gain(ms_main,(option_state[opt_music]/100),0);
+		audio_sound_gain(ms_league,(option_state[opt_music]/100),0);
+		event_transition=ref_mainmenu;
+	}
+	
+}				
+	
+
+
+
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if sc_music_sync()=true {
 	text_potential_y=-70;

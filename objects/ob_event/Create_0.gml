@@ -579,6 +579,7 @@ switch (event_kind){
 	case ref_event_glyph:
 	case ref_event_tribute:
 	case ref_event_campfire:
+	case ref_event_candy:
 	case ref_event_sacrifice:
 	case ref_event_megaevolve:
 	case ref_event_changeform:

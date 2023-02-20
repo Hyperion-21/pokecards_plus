@@ -152,7 +152,7 @@ repeat (4) {
 	i++;
 }
 //
-ds_map_secure_save(savemap, backup ? "backup/backup-" + string(current_year) + "-" + string(current_month) + "-" + string(current_day) + "-" + string(current_hour) + "-" + string(current_minute) + "-" + string(current_second) + ".sav" : data_file);
+ds_map_secure_save(savemap, backup ? "backup/backup-" + string(current_year) + "-" + string(current_month) + "-" + string(current_day) + "-" + string(current_hour) + "-" + string(current_minute) + "-" + string(current_second) + ".sav" : ob_main.savedata[ob_main.savestate]);
 ds_map_destroy(savemap);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }

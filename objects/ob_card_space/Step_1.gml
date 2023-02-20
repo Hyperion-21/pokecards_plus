@@ -26,6 +26,35 @@ if (instance_exists(ob_control))
         card_bonus_atk += 2;
     }
 	
+	// glyph: underdog
+    if (space_slot >= 0 && space_slot < 4 && ob_control.card_space_id[space_slot+5].occupy_id != -1) {
+		if (ob_control.card_space_id[space_slot].occupy_id != -1 && sc_glyph_check(ob_control.card_space_id[space_slot].occupy_id, ref_glyph_underdog, true) && (ob_control.card_space_id[space_slot].occupy_id.card_hp < ob_control.card_space_id[space_slot+5].occupy_id.card_hp))
+		{
+			card_bonus_atk += 2;
+		}
+	}
+
+    if (space_slot >= 5 && space_slot < 9 && ob_control.card_space_id[space_slot-5].occupy_id != -1) {
+        if (ob_control.card_space_id[space_slot].occupy_id != -1 && sc_glyph_check(ob_control.card_space_id[space_slot].occupy_id, ref_glyph_underdog, true) && (ob_control.card_space_id[space_slot].occupy_id.card_hp < ob_control.card_space_id[space_slot-5].occupy_id.card_hp))
+		{
+			card_bonus_atk += 2;
+		}
+	}
+	
+	// glyph: bless
+    if (((space_slot > 0 && space_slot <= 4) || (space_slot > 5 && space_slot <= 9)) &&
+        ob_control.card_space_id[space_slot].occupy_id != -1 && sc_glyph_check(ob_control.card_space_id[space_slot].occupy_id, ref_glyph_bless, true))
+    {
+        card_bonus_atk += 1;
+    }
+	
+	// glyph: adversity
+    if (((space_slot > 0 && space_slot <= 4) || (space_slot > 5 && space_slot <= 9)) &&
+        ob_control.card_space_id[space_slot].occupy_id != -1 && sc_glyph_check(ob_control.card_space_id[space_slot].occupy_id, ref_glyph_bless, true) && ob_control.card_space_id[space_slot].occupy_id.card_innate = -1)
+    {
+        card_bonus_atk += 3;
+    }
+	
     // glyph: command
     if (((space_slot > 0 && space_slot <= 4) || (space_slot > 5 && space_slot <= 9)) &&
         ob_control.card_space_id[space_slot - 1].occupy_id != -1 && sc_glyph_check(ob_control.card_space_id[space_slot - 1].occupy_id, ref_glyph_command, true))
@@ -80,12 +109,5 @@ if (instance_exists(ob_control))
     {
         card_penalty_def += 2;
     }
-	
-	// glyph: bless
-	//if (((space_slot > 0 && space_slot <= 4) || (space_slot > 5 && space_slot <= 9)) &&
-    //    ob_control.card_space_id[space_slot].occupy_id != -1 && sc_glyph_check(ob_control.card_space_id[space_slot].occupy_id, ref_glyph_bless, true))
-    //{
-    //    card_bonus_atk += 2;
-   // }
 }
 

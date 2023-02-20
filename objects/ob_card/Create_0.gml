@@ -8,7 +8,7 @@ card_gen = -1;
 count[0] = 0;
 count[1] = 0;
 count[2] = 0;
-
+fakenum = 0;
 
 
 jumpmax = -5
@@ -17,7 +17,8 @@ jumpcount = 0
 jumpy = 0
 jumping = 1;
 
-duplicate = false
+dupe = 0;
+dupemax = 1000;
 card_berry = -1;
 
 holo_index = irandom_range(0,21);
@@ -235,10 +236,19 @@ else
 				if reference_id.create_card_innate=-1 {
 					var card_enemy_innate_value=irandom(999);
 					if ob_main.playing_gym=true or ob_main.playing_elite=true or ob_main.playing_champion=true {
-						if card_enemy_innate_value<(10+ob_main.area_zone*10) { card_innate=innate_max; } //1% - 9%
-						else if card_enemy_innate_value<(40+ob_main.area_zone*20) { card_innate=3; } //3% - 11%
-						else if card_enemy_innate_value<(100+ob_main.area_zone*30) { card_innate=2; } //6% - 14%
-						else { card_innate=1; } //90% - 66%
+						if ob_main.area_zone < area_zone_max
+						{
+							if card_enemy_innate_value<(10+ob_main.area_zone*10) { card_innate=innate_max; } //1% - 9%
+							else if card_enemy_innate_value<(40+ob_main.area_zone*20) { card_innate=3; } //3% - 11%
+							else if card_enemy_innate_value<(100+ob_main.area_zone*30) { card_innate=2; } //6% - 14%
+							else { card_innate=1; } //90% - 66%
+						}
+						else 
+						{
+							if card_enemy_innate_value < 450 {card_innate = innate_max;}
+							else if card_enemy_innate_value >= 450 {card_innate = innate_max+1;}
+							choose_id_stage_3=true;
+						}							
 					if ob_main.option_state[opt_challenge]=ch_rainbow
 					{
 						card_delta = true;
@@ -253,16 +263,26 @@ else
 					}
 					}
 					else {
-						if card_enemy_innate_value<(10+ob_main.area_zone*5) { card_innate=innate_max; } //1% - 5%
-						else if card_enemy_innate_value<(40+ob_main.area_zone*10) { card_innate=3; } //3% - 7%
-						else if card_enemy_innate_value<(100+ob_main.area_zone*15) { card_innate=2; } //6% - 10%
-						else { card_innate=1; } //90% - 78%
+						if ob_main.area_zone < area_zone_max
+						{
+							if card_enemy_innate_value<(10+ob_main.area_zone*5) { card_innate=innate_max; } //1% - 5%
+							else if card_enemy_innate_value<(40+ob_main.area_zone*10) { card_innate=3; } //3% - 7%
+							else if card_enemy_innate_value<(100+ob_main.area_zone*15) { card_innate=2; } //6% - 10%
+							else { card_innate=1; } //90% - 78%
+						}
+						else 
+						{
+							if card_enemy_innate_value < 100 {card_innate = innate_max-1;}
+							else if card_enemy_innate_value < 450 {card_innate = innate_max;}
+							else if card_enemy_innate_value >= 450 {card_innate = innate_max+1;}
+							choose_id_stage_3=true;
+						}	
 						if ob_main.option_state[opt_challenge]=ch_rainbow
 						{
-						card_delta = true;
-						card_delta_type = irandom_range(0,17);
-						card_type_a = card_delta_type;
-						card_type_b = -1;
+							card_delta = true;
+							card_delta_type = irandom_range(0,17);
+							card_type_a = card_delta_type;
+							card_type_b = -1;
 						}
 						else if ob_main.option_state[opt_challenge]  != ch_delta
 						{
@@ -271,7 +291,9 @@ else
 						}
 					}
 				}
-				else { card_innate=reference_id.create_card_innate; card_shiny = false; }
+				else { card_innate= innate_max;
+					//reference_id.create_card_innate;
+					card_shiny = false; }
 				//
 				var random_id_chance=irandom(99); if random_id_chance<90 { allow_id_pseudo=true; } //90% pseudo allowed
 				var random_id_chance=irandom(99); if random_id_chance<75 { allow_id_fossil=true; } //75% fossil allowed
@@ -317,8 +339,15 @@ else
 		sc_pokelist();
 		if card_delta = true
 		{
-				card_type_a = card_delta_type;
-				card_type_b = -1;
+				if card_environment = true
+				{
+					card_delta = false;
+				}
+				else
+				{
+					card_type_a = card_delta_type;
+					card_type_b = -1;
+				}
 		}
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		// SAVE COMPATIBILITY (v1.3.0.1) + (v1.5.0.0)
@@ -487,3 +516,4 @@ else if card_cat=1 {
 	}
 }
 
+old_id = card_id;

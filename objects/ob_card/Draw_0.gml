@@ -1,8 +1,11 @@
 draw_set_alpha(1);
 //
+
 if instance_exists(ob_control) { var reference_id=ob_control; }
 else if instance_exists(ob_deckbuild) { var reference_id=ob_deckbuild; }
 else if instance_exists(ob_event) { var reference_id=ob_event; }
+
+
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if effect_damaged>0 { var draw_x=x+irandom_range(-2,2), draw_y=y+irandom_range(-2,2); }
 else{ var draw_x=x, draw_y=y; }
@@ -217,7 +220,7 @@ if card_shiny = true
 	//COST
 	if card_innate >= 0 || !card_chomp {
 		var i=0;
-		repeat (3) {
+		repeat (4) {
 			if card_cost[i]>=0 { draw_sprite_general(sp_sheet,0,16*(card_cost[i]+1),16*3,4,4,((draw_x+drawskew_x)+3+4*i),(draw_y+drawskew_y)+35,1,1,0,c_white,c_white,c_white,c_white,1); }
 			i++;
 		}
@@ -254,9 +257,41 @@ if card_shiny = true
 	var num_color=c_white;
 	draw_set_halign(fa_left);
 	if card_atk<card_full_atk { num_color=global.color_damage; }
-	else if card_atk>card_full_atk { num_color=global.color_friendly; }
-	else { num_color=global.color_white; }
-	sc_drawtext((draw_x+drawskew_x)+5,(draw_y+drawskew_y)+66,string(card_atk),num_color,global.color_black,1,(1/1.7),0,-1);
+	else if card_atk>card_full_atk { 
+		num_color=global.color_friendly;
+			fakenum = 0;
+			}
+			else if (card_glyph_a = ref_glyph_fork or card_glyph_b = ref_glyph_fork or card_glyph_c = ref_glyph_fork) 
+			{
+				if (card_glyph_a = ref_glyph_bless or card_glyph_b = ref_glyph_bless or card_glyph_c = ref_glyph_bless) 
+				{
+					fakenum = round((card_atk / 3) - 1*-1);
+					
+				}
+				if (card_glyph_a = ref_glyph_adversity or card_glyph_b = ref_glyph_adversity or card_glyph_c = ref_glyph_adversity)
+				{
+					fakenum = round((card_atk / 3) - 3*-1);
+				}
+				else
+				{
+					fakenum = round((card_atk / 3) * -1);
+				}
+			}
+			else if (card_glyph_a = ref_glyph_bless or card_glyph_b = ref_glyph_bless or card_glyph_c = ref_glyph_bless) 
+			{ 
+				fakenum = 1;
+				num_color=global.color_friendly;
+			}
+			else if (card_glyph_a = ref_glyph_adversity or card_glyph_b = ref_glyph_adversity or card_glyph_c = ref_glyph_adversity) && card_innate = -1
+			{ 
+				fakenum = 3;
+				num_color=global.color_friendly;
+			}
+		else 
+		{ 
+			fakenum = 0;
+			num_color=global.color_white; }
+	sc_drawtext((draw_x+drawskew_x)+5,(draw_y+drawskew_y)+66,string(card_atk+fakenum),num_color,global.color_black,1,(1/1.7),0,-1);
 	draw_set_halign(fa_center);
 	
 	if card_hp<card_full_hp { num_color=global.color_damage; }

@@ -64,7 +64,6 @@ if reference_id=ob_control and card_cat=0 {
 			i++;
 		}
 	}
-	var old_id = card_id;
 	if sc_glyph_check(id,ref_glyph_transform,false) and card_played=true { //glyph: transform (Ditto only)
 		if sc_glyph_check(id,ref_glyph_transform,true) and vs_card!=-1 and vs_card.card_environment=false {
 			//transforms only if there's no mist
@@ -126,6 +125,8 @@ if reference_id=ob_control and card_cat=0 {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if reference_id=ob_control and card_cat=0 {
+
+	
 	if sc_glyph_check(id,ref_glyph_berserk,true) and (card_hp<=(card_full_hp/3) or (card_hp=1 and card_hp!=card_full_hp)) { var base_atk_multiplier=2; } //glyph: berserk
 	else { var base_atk_multiplier=1; }
 	//
@@ -140,7 +141,14 @@ if reference_id=ob_control and card_cat=0 {
 		repeat (5) {
 			if ob_control.card_space_id[i].occupy_id=id {
 				if card_environment=false {
-					card_atk=ceil(card_full_atk*base_atk_multiplier/base_atk_divisor)+ob_control.card_space_id[i].card_bonus_atk-ob_control.card_space_id[i].card_penalty_atk;
+					//if (card_enemy=false and ob_control.card_space_id[i-5].occupy_id != -1) or
+					//(card_enemy=true and ob_control.card_space_id[i+5].occupy_id != -1) {
+					//	if card_enemy=false { card_target = ob_control.card_space_id[i-5].occupy_id; }
+					//	else { card_target = ob_control.card_space_id[i+5].occupy_id; }
+					//	if sc_glyph_check(id,ref_glyph_underdog,true) and card_hp < card_target.card_hp { base_atk_multiplier += 2; } //glyph: underdog
+					//}
+					//if sc_glyph_check(id,ref_glyph_bless,true) {var dmgmod = 1;} else { var dmgmod = 0;}
+					card_atk=ceil(card_full_atk*base_atk_multiplier/base_atk_divisor)+(ob_control.card_space_id[i].card_bonus_atk)-ob_control.card_space_id[i].card_penalty_atk;
 					card_def=card_full_def+ob_control.card_space_id[i].card_bonus_def-ob_control.card_space_id[i].card_penalty_def;
 				}
 				else {
@@ -332,17 +340,33 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 	//
 	if card_cat=0 {
 		if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false {
-			
-		//var i = 0;
-		//for (var i=0; i<ob_deckbuild.deck_build_used_total; i++;) { //checks for same pokemon and blocks them from deck building. Uses dupemax to determine how many you can have in your deck
-			//if ob_deckbuild.deck_card_used[i].card_id = card_id
-					//{
-						//duplicate += 1; // I'm disabling this because I can't figure out how to stop them from evolving. I really wanted to put limits on it, but I seem incapable of figuring out this
-						/// variable system the main developer has created.
-					//}	
-				//}
+		
+		if ob_main.option_state[opt_challenge] != ch_unlimited
+		{
+			var i = 0;
+			for (var i=0; i<ob_deckbuild.deck_build_used_total; i++;) {   ///DUPLICATE CHECK
+				if ob_deckbuild.deck_card_used[i].card_secret = card_secret && card_secret = true // Secret Pokemon
+						{
+							dupemax = 1; // sets duplicates max
+							dupe += 1; 
+						}	
+						//else if ob_deckbuild.deck_card_used[i].card_form_value > 999 &&  card_form_value > 999 ///Mega Evolution
+						//{
+							//dupemax = 2; // sets duplicates max
+							//if ob_deckbuild.deck_card_used[i].card_id = card_id
+							//{
+								//dupe += 1;
+							//}
+						//}
+						//if ob_deckbuild.deck_card_used[i].card_enigma =  card_enigma
+						//{
+							//legodupe += 1; // I'm disabling this because I can't figure out how to stop them from evolving. I really wanted to put limits on it, but I seem incapable of figuring out this
+							/// variable system the main developer has created.
+						//}	
+					}
+			}
 
-			if card_indeck[0]=false and ob_deckbuild.deck_build_used_total<ob_main.maindeck_size_max && duplicate < dupemax {
+			if card_indeck[0]=false and ob_deckbuild.deck_build_used_total<ob_main.maindeck_size_max && dupe < dupemax {
 				sc_playsound(sn_click,50,false,false);
 				card_indeck[0]=true;
 				ob_deckbuild.reorder_swap_standby=ob_deckbuild.reorder_selected;
@@ -517,31 +541,76 @@ if ((reference_id=ob_control and ob_control.card_focus=id) or reference_id=ob_ev
 		}
 		reference_id.tooltip_text=reference_id.tooltip_text + ".";
 		reference_id.tooltip_lines=1;
-
-	} //21 + 35
-	else if card_cost_total>0 and mouse_x>=((x+29)-heartwidth) and mouse_y>=y and mouse_x<=((x+27)+heartwidth) and mouse_y<=y+5 && card_innate > 0{
+	}
+	else if mouse_x>=((x+29)-heartwidth) and mouse_y>=y and mouse_x<=((x+27)+heartwidth) and mouse_y<=y+5 && card_innate > 0{
 		reference_id.tooltip_text="Hearts: " + string(card_innate-1);
 		reference_id.tooltip_lines=1;
 	}
-	else if card_cost_total>0 and mouse_x>=((x+29)+heartwidth) and mouse_y>=y and mouse_x<=((x+27)-heartwidth) and mouse_y<=y+5 && card_innate = 0{
-		reference_id.tooltip_text="Weakened: " + string(card_innate+1);
+	else if mouse_x>=((x+29)+heartwidth) and mouse_y>=y and mouse_x<=((x+27)-heartwidth) and mouse_y<=y+5 && card_innate = 0{
+		reference_id.tooltip_text="Weakened";
 		reference_id.tooltip_lines=1;
 	}
-	else if card_cost_total>0 and mouse_x>=((x+27)+heartwidth) and mouse_y>=y and mouse_x<=((x+29)-heartwidth) and mouse_y<=y+5 && card_innate = -1{
-		reference_id.tooltip_text="Fainted";
+	else if mouse_x>=((x+27)+heartwidth) and mouse_y>=y and mouse_x<=((x+29)-heartwidth) and mouse_y<=y+5 && card_innate = -1{
+		reference_id.tooltip_text="Exhausted";
 		reference_id.tooltip_lines=1;
 	}
-	else if card_cost_total>0 and mouse_x>=x+25 and mouse_y>=y+33 and mouse_x<=x+32 and mouse_y<=y+37 and card_shiny = true {
+	else if mouse_x>=x+25 and mouse_y>=y+33 and mouse_x<=x+32 and mouse_y<=y+37 and card_shiny = true {
 		reference_id.tooltip_text="Shiny!";
 		reference_id.tooltip_lines=1;
 	}
-	else if card_cost_total>0 and mouse_x>=x+5 and mouse_y>=y+5 and mouse_x<=x+51 and mouse_y<=y+36 and card_holo = true {
+	else if mouse_x>=x+5 and mouse_y>=y+5 and mouse_x<=x+51 and mouse_y<=y+36 and card_holo = true {
 		reference_id.tooltip_text="Holofoil!";
 		reference_id.tooltip_lines=1;
 	}
-	else if card_cost_total>0 and mouse_x>=x+25 and mouse_y>=y+72 and mouse_x<=x+32 and mouse_y<=y+76 and card_delta = true {
+	else if mouse_x>=x+25 and mouse_y>=y+72 and mouse_x<=x+32 and mouse_y<=y+76 and card_delta = true {
 		reference_id.tooltip_text="Delta Species!";
 		reference_id.tooltip_lines=1;
+	}
+	else if mouse_x>=x and mouse_y>=y and mouse_x<=x+60 and mouse_y<=y+79 and card_secret = true && dupe > 0{
+		reference_id.tooltip_text="Only 1 Secret per deck.";
+		reference_id.tooltip_lines=1;
+	}
+	else if mouse_x>=x+5 and mouse_y>=y+69 and mouse_x<=x+13 and mouse_y<=y+76 && (card_atk > card_full_atk) &&    ///fix this dummy
+	(card_glyph_a = ref_glyph_fork or card_glyph_b = ref_glyph_fork or card_glyph_c = ref_glyph_fork) && 
+	(card_glyph_a = ref_glyph_bless or card_glyph_b = ref_glyph_bless or card_glyph_c = ref_glyph_bless) { // 
+		var fake = round((card_atk / 3) - 1*-1);
+		reference_id.tooltip_text="ATK: " + string(card_full_atk) + " - " + string(fake);
+		reference_id.tooltip_lines=1;
+	}
+	else if mouse_x>=x+5 and mouse_y>=y+69 and mouse_x<=x+13 and mouse_y<=y+76 && (card_atk < card_full_atk) && 
+	(card_glyph_a = ref_glyph_fork or card_glyph_b = ref_glyph_fork or card_glyph_c = ref_glyph_fork) &&
+	(card_glyph_a = ref_glyph_bless or card_glyph_b = ref_glyph_bless or card_glyph_c = ref_glyph_bless) { // 
+		var fake = round((card_atk / 3) - 1*-1);
+		reference_id.tooltip_text="ATK: " + string(card_full_atk) + " - " + string(fake);
+		reference_id.tooltip_lines=1;
+	}
+	else if mouse_x>=x+5 and mouse_y>=y+69 and mouse_x<=x+13 and mouse_y<=y+76 && card_atk > card_full_atk{ // 
+		reference_id.tooltip_text="ATK: " + string(card_full_atk) + " + " + string(card_atk-card_full_atk);
+		reference_id.tooltip_lines=1;
+	}
+	else if mouse_x>=x+5 and mouse_y>=y+69 and mouse_x<=x+13 and mouse_y<=y+76 && card_atk < card_full_atk{
+	reference_id.tooltip_text="ATK: " + string(card_full_atk) + " - " + string(card_full_atk-card_atk);
+	reference_id.tooltip_lines=1;
+	}
+	else if mouse_x>=x+5 and mouse_y>=y+69 and mouse_x<=x+13 and mouse_y<=y+76 && (card_glyph_a = ref_glyph_bless or card_glyph_b = ref_glyph_bless or card_glyph_c = ref_glyph_bless) { // 
+		reference_id.tooltip_text="ATK: " + string(card_full_atk) + " + " + string(1);
+		reference_id.tooltip_lines=1;
+	}
+	else if mouse_x>=x+5 and mouse_y>=y+69 and mouse_x<=x+13 and mouse_y<=y+76 && (card_glyph_a = ref_glyph_adversity or card_glyph_b = ref_glyph_adversity or card_glyph_c = ref_glyph_adversity) && card_innate = -1 { // 
+		reference_id.tooltip_text="ATK: " + string(card_full_atk) + " + " + string(3);
+		reference_id.tooltip_lines=1;
+	}
+	else if mouse_x>=x+44 and mouse_y>=y+69 and mouse_x<=x+60 and mouse_y<=y+76 && card_def > card_full_def{ // 
+		reference_id.tooltip_text="DEF: " + string(card_full_def) + " + " + string(card_def-card_full_def);
+		reference_id.tooltip_lines=1;
+	}
+	else if mouse_x>=x+44 and mouse_y>=y+69 and mouse_x<=x+60 and mouse_y<=y+76 && card_def < card_full_def{
+	reference_id.tooltip_text="DEF: " + string(card_full_def) + " - " + string(card_full_def-card_def);
+	reference_id.tooltip_lines=1;
+	}
+	else if mouse_x>=x+25 and mouse_y>=y+63 and mouse_x<=x+30 and mouse_y<=y+71 && !object_exists(ob_deckbuild){
+	reference_id.tooltip_text="HP: " + string(card_hp) + "/" + string(card_full_hp); 
+	reference_id.tooltip_lines=1;
 	}
 }
 else if reference_id=ob_deckbuild and card_cat=1 and ob_main.cursor_hide=false {
