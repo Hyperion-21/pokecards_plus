@@ -26,16 +26,21 @@ else if credits_screen=true and (mouse_check_button_pressed(mb_left) or mouse_ch
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if ending_static_timer>0 { ending_static_timer-=0.003; }
-else if ending_screen=true and ending_static_timer<=0 and ending_static_timer!=-1 {
+else if ending_static_timer = 1
+{
 	area_zone = area_zone_max; /// send you to mewtwo area
 	roadmap_area=0;
 	roadmap_generated=false;
 	zone_first_lap=true;
 	sc_data_save(false);
 	sc_data_save(true);
+	ending_static_timer-=0.003;
+}
+else if ending_screen=true and ending_static_timer<=0 and ending_static_timer!=-1 {
 	game_restart();
 	//ending_screen=false;
 }
+
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if effect_money_error>0 { effect_money_error-=0.1; }
 if fade_black<0 { fade_black=0; }
@@ -50,7 +55,7 @@ if !instance_exists(ob_splash) and sc_music_sync()=true {
 if option_state[opt_challenge]=ch_resolution || option_state[opt_challenge]=ch_swiftness{ roadmap_road_max=roadmap_road_max_resolution; }
 else { roadmap_road_max=roadmap_road_max_normal; }
 //
-if area_zone=area_zone_max and zone_first_lap=true { roadmap_current_max=roadmap_road_max+2; } ///check this
+if area_zone=area_zone_max and zone_first_lap=true { roadmap_current_max=roadmap_road_max; } ///check this
 else if area_zone=area_zone_max-1 and zone_first_lap=true { roadmap_current_max=roadmap_road_max+roadmap_league_max-1; }
 else if area_zone=area_zone_max-1 and zone_first_lap=false { roadmap_current_max=roadmap_outskirts_max+roadmap_league_max-1; } //roadmap_outskirts_max is also used when flying to league
 else if area_zone=0 and zone_first_lap=true { roadmap_current_max=roadmap_road_max+roadmap_lab_max; }
@@ -140,6 +145,7 @@ if textbox_string[textbox_current]!="" {
 				//
 				if ending_screen=true {
 					ending_static_timer=1;
+					
 					sc_playsound(sn_noise,100,true,true);
 				}
 			}
@@ -151,7 +157,7 @@ if textbox_string[textbox_current]!="" {
 				if event_transition=ref_event_gymbattle { playing_gym=true; }
 				if event_transition=ref_event_elitebattle { playing_elite=true; }
 				if event_transition=ref_event_championbattle { playing_champion=true; }
-				if event_transition=ref_event_legendarybattle { playing_champion=true; }
+				//if event_transition=ref_event_legendarybattle { playing_champion=true; }
 				if event_transition=ref_event_tutorial { playing_tutorial=true; }
 				if event_transition=ref_event_gymbattle or event_transition=ref_event_elitebattle or event_transition=ref_event_championbattle or
 				event_transition=ref_event_tutorial {
@@ -554,9 +560,18 @@ if roadmap_get_details=true {
 				event_description_lines[ii][i]=sc_glyph_text(event_glyph_add[ii][i],true);
 			}
 			//
+			if newgameplus = false
+			{
+				var battlehp = area_zone;
+			}
+			else
+			{
+				var battlehp = 9;
+			}
+			
 			if event_kind[ii][i]=ref_event_battle {
 				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nMinimum deck size: " + string(maindeck_size_min) + " cards" +
-				"\nBattle HP: " + string(battle_hp[area_zone]*2) + " (" + string(battle_hp[area_zone]) + "/" + string(battle_hp[area_zone]) + ")" +
+				"\nBattle HP: " + string(battle_hp[battlehp]*2) + " (" + string(battle_hp[battlehp]) + "/" + string(battle_hp[battlehp]) + ")" +
 				"\nReward: $" + string(money_prize_min) + "-$" + string(money_prize_max);
 				event_description_lines[ii][i]=4;
 			}
@@ -574,18 +589,18 @@ if roadmap_get_details=true {
 				else { var reward_text="$" + string(money_prize_min) + "-$" + string(money_prize_max); }
 				//
 				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nMinimum deck size: " + string(maindeck_size_min) + " cards" +
-				"\nBattle HP: " + string(battle_hp[area_zone+1]*2) + " (" + string(battle_hp[area_zone+1]) + "/" + string(battle_hp[area_zone+1]) + ")" +
+				"\nBattle HP: " + string(battle_hp[battlehp+1]*2) + " (" + string(battle_hp[battlehp+1]) + "/" + string(battle_hp[battlehp+1]) + ")" +
 				"\nReward: " + reward_text;
 				event_description_lines[ii][i]=4;
 			}
 			else if event_kind[ii][i]=ref_event_championbattle {
 				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nMinimum deck size: " + string(maindeck_size_min) + " cards" +
-				"\nBattle HP: " + string(battle_hp[area_zone+1]*2) + " (" + string(battle_hp[area_zone+1]) + "/" + string(battle_hp[area_zone+1]) + ")";
+				"\nBattle HP: " + string(battle_hp[battlehp+1]*2) + " (" + string(battle_hp[battlehp+1]) + "/" + string(battle_hp[battlehp+1]) + ")";
 				event_description_lines[ii][i]=3;
 			}
 			else if event_kind[ii][i]=ref_event_legendarybattle {
 				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nMinimum deck size: " + string(maindeck_size_min) + " cards" +
-				"\nBattle HP: " + string(battle_hp[area_zone+1]*2) + " (" + string(battle_hp[area_zone+1]) + "/" + string(battle_hp[area_zone+1]) + ")";
+				"\nBattle HP: " + string(battle_hp[battlehp+1]*2) + " (" + string(battle_hp[battlehp+1]) + "/" + string(battle_hp[battlehp+1]) + ")";
 				event_description_lines[ii][i]=3;
 			}
 			//
@@ -643,7 +658,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 	fly_next_y=road_win_y+118;
 	//
 	if area_zone>0 and //same conditions as draw
-	((area_zone<area_zone_max-1 and roadmap_area=roadmap_current_max-1) or (area_zone=area_zone_max-1 and roadmap_area>=roadmap_current_max-roadmap_league_max)) and
+	(((area_zone<area_zone_max-1 or newgameplus = true) and roadmap_area=roadmap_current_max-1) or ((area_zone=area_zone_max-1 or newgameplus = true) and roadmap_area>=roadmap_current_max-roadmap_league_max)) and
 	mouse_x>=fly_prev_x and mouse_y>=fly_prev_y and mouse_x<fly_prev_x+16 and mouse_y<fly_prev_y+16 and cursor_hide=false {
 		mouse_in_fly=0;
 		//
@@ -651,8 +666,8 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 		tooltip_text="Fly to previous city/area.";
 		tooltip_lines=1;
 	}
-	else if area_zone<area_zone_max-1 and latest_zone>area_zone and //same conditions as draw
-	((area_zone<area_zone_max-1 and roadmap_area=roadmap_current_max-1) or (area_zone=area_zone_max-1 and roadmap_area>=roadmap_current_max-roadmap_league_max)) and
+	else if (area_zone<area_zone_max-1 or newgameplus = true) and latest_zone>area_zone and //same conditions as draw
+	((area_zone<area_zone_max-1 and roadmap_area=roadmap_current_max-1) or ((area_zone=area_zone_max-1 or newgameplus = true) and roadmap_area>=roadmap_current_max-roadmap_league_max)) and
 	mouse_x>=fly_next_x and mouse_y>=fly_next_y and mouse_x<fly_next_x+16 and mouse_y<fly_next_y+16 and cursor_hide=false {
 		mouse_in_fly=1;
 		//
@@ -729,10 +744,14 @@ else if event_transition>-1 and fade_black>=1 {
 	}
 	else if event_transition=ref_event_loophome {
 	if area_zone=area_zone_max-1 and roadmap_area>roadmap_current_max-roadmap_league_max {
-		roadmap_area=roadmap_current_max-roadmap_league_max;
+		roadmap_area=0;
+		zone_first_lap=false;
+		newgameplus = true;
+		latest_zone=area_zone_max;
+		roadmap_area=2;
+		roadmap_generated=false;
 	}
 	else {
-		area_zone = 0;
 		roadmap_area=0;
 		roadmap_generated=false;
 		zone_first_lap=false;
@@ -823,7 +842,8 @@ else if event_transition>-1 and fade_black>=1 {
 		money_prize=0;
 		fade_black_exit=0;
 		type_chart=false;
-		if event_transition = ref_event_defeat && (option_state[opt_challenge]=ch_roguelite_easy || option_state[opt_challenge]=ch_roguelite_medium || option_state[opt_challenge]=ch_roguelite_hard || option_state[opt_challenge]=ch_swiftness) {
+		if event_transition = ref_event_defeat && (option_state[opt_challenge]=ch_roguelite_easy || option_state[opt_challenge]=ch_roguelite_medium || 
+		option_state[opt_challenge]=ch_roguelite_hard || option_state[opt_challenge]=ch_swiftness) {
 			player_lives -= 1;
 
 			if player_lives <=0 {
@@ -1012,13 +1032,14 @@ if roadmap_area=roadmap_current_max && area_zone != area_zone_max {
 	sc_data_save(false);
 	sc_data_save(true);
 }
-else
+else if roadmap_area=roadmap_current_max && area_zone = area_zone_max
 {
 	area_zone = 0;
-	if area_zone>latest_zone { latest_zone=area_zone; }
-	roadmap_area=0;
+	latest_zone=area_zone_max;
+	roadmap_area=2;
 	roadmap_generated=false;
-	zone_first_lap=true;
+	zone_first_lap=false;
+	newgameplus = true;
 	sc_data_save(false);
 	sc_data_save(true);
 }
@@ -1083,6 +1104,9 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) {
 	else {
 		menu_deck_hover=false;
 	}
+	
+
+
 	//
 	if screen_x=screen_options_x and event_transition=-1 and event_transition_standby=-1 and screen_transition=-1 and cursor_hide=false and
 	(keyboard_check_pressed(vk_right) or keyboard_check_pressed(ord("D")) or
@@ -1492,6 +1516,5 @@ if progress_r>255 { progress_r=255; }
 if progress_g>255 { progress_g=255; }
 if progress_b>255 { progress_b=255; }
 global.color_character_light=make_colour_rgb(progress_r,progress_g,progress_b);
-
 
 

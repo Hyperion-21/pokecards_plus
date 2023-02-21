@@ -18,13 +18,33 @@ if cam_w<(deck_build_used_total*60) {
 draw_sprite_general(sp_sheet,0,16*13,16*9,48,32,screen_deck_x+38,screen_main_y+110-rel_hud*2,1,1,0,c_white,c_white,c_white,c_white,0.5);
 draw_sprite_general(sp_sheet,0,16*16,16*9,48,32,screen_deck_x+38,screen_main_y+110+36+rel_hud*2,1,1,0,c_white,c_white,c_white,c_white,0.5);
 draw_sprite_general(sp_sheet,0,16*19,16*9,48,32,screen_deck_x+448+rel_hud,screen_main_y+109,1,1,0,c_white,c_white,c_white,c_white,0.5);
-draw_sprite_general(sp_sheet,0,16*22,16*9,48,32,screen_deck_x+449-rel_hud,screen_main_y+109+38,1,1,0,c_white,c_white,c_white,c_white,0.5);
+
+draw_sprite_general(sp_sheet,0,16*22,16*9,48,32,screen_deck_x+449-rel_hud,screen_main_y+109+38,1,1,0,c_white,c_white,c_white,c_white,1);
+
+if berry[0] = false
+{
+	draw_sprite_general(sp_sheet,0,462,144,13,13,1477-rel_hud,167,1,1,0,c_white,c_white,c_white,c_white,1);
+}
+if berry[1] = false
+{
+	draw_sprite_general(sp_sheet,0,462,144,13,13,1490-rel_hud,167,1,1,0,c_white,c_white,c_white,c_white,1);
+}
+if berry[2] = false
+{
+	draw_sprite_general(sp_sheet,0,462,144,13,13,1503-rel_hud,167,1,1,0,c_white,c_white,c_white,c_white,1);
+}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 draw_set_font(fn_m3x6);
 draw_set_halign(fa_left);
 //
 if deck_build_used_total>0 {
-	var var_text="Deck: " + string(deck_build_used_total) + "/" + string(ob_main.maindeck_size_max);
+	if ob_main.option_state[opt_challenge] != ch_unlimited{
+		var var_text="Deck: " + string(deck_build_used_total) + "/" + string(ob_main.maindeck_size_max) + " One Secret Card Allowed";
+	}
+	else
+	{
+		var var_text="Deck: " + string(deck_build_used_total) + "/" + string(ob_main.maindeck_size_max);
+	}
 	sc_drawtext(screen_deck_x+6,screen_main_y+used_y-21,var_text,global.color_white,global.color_black,1,1,0,-1);
 	//
 	var var_text_berries=" (x" + string(berries_needed_deck[0]) + " Oran, x" + string(berries_needed_deck[1]) + " Leppa, x" + string(berries_needed_deck[2]) + " Lum";
@@ -41,3 +61,5 @@ else if deck_build_all_total=maindeck_total_max {
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 sc_draw_tooltip_text(screen_deck_x+cam_w);
+
+

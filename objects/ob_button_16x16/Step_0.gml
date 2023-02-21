@@ -166,7 +166,7 @@ if (mouse_x >= x && mouse_y >= y + 2 && mouse_x < x + sprite_width && mouse_y < 
         else if (instance_exists(ob_event))
         {
             if (button_id == 0 && ob_event.event_cancelled == false &&
-                (ob_event.event_applied == false || ob_event.evolution_retry == true || ob_event.event_kind == ref_event_levelup || ob_event.event_kind == ref_event_deglyph || ob_event.event_kind == ref_event_evolution))
+                 (ob_event.event_applied == false || ob_event.evolution_retry == true || ob_event.event_kind == ref_event_levelup || ob_event.event_kind == ref_event_deglyph || ob_event.event_kind == ref_event_evolution))
             {
                 ob_event.apply_event = true;
             }

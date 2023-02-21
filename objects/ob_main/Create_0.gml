@@ -49,6 +49,7 @@ credits_screen_toggle=false;
 ending_screen=false;
 ending_static_timer=-1;
 coin_skin = 0;
+newgameplus = false;
 
 //
 #macro area_zone_max 9
@@ -287,7 +288,7 @@ tooltip_lines=0;
 #macro ref_glyph_berserk 15
 #macro ref_glyph_adaptability 16
 #macro ref_glyph_recovery 17
-#macro ref_glyph_rush 18
+#macro ref_glyph_rush 18 ///no longer in the pool
 #macro ref_glyph_rations 19
 #macro ref_glyph_taunt 20
 #macro ref_glyph_picky 21

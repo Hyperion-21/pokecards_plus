@@ -1,5 +1,8 @@
 function sc_data_load() {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+
 area_zone=0;
 latest_zone=0;
 latest_city=-1;
@@ -10,6 +13,7 @@ money=0;
 shinycharm=0;
 player_lives=0;
 coin_skin=0;
+newgameplus = false;
 //
 option_state[opt_challenge]=0;
 option_state[opt_coin]=0;
@@ -88,7 +92,7 @@ repeat (4) {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if file_exists(ob_main.savedata[ob_main.savestate]) {
 	var savemap=ds_map_secure_load(ob_main.savedata[ob_main.savestate]);
-	//
+if !is_undefined(ds_map_find_value(savemap,"version")) { version=ds_map_find_value(savemap,"version"); 
 	if !is_undefined(ds_map_find_value(savemap,"area_zone")) { area_zone=ds_map_find_value(savemap,"area_zone"); }
 	if !is_undefined(ds_map_find_value(savemap,"latest_zone")) { latest_zone=ds_map_find_value(savemap,"latest_zone"); }
 	if !is_undefined(ds_map_find_value(savemap,"latest_city")) { latest_city=ds_map_find_value(savemap,"latest_city"); }
@@ -99,6 +103,7 @@ if file_exists(ob_main.savedata[ob_main.savestate]) {
 	if !is_undefined(ds_map_find_value(savemap,"lives")) { player_lives=ds_map_find_value(savemap,"lives"); }
 	if !is_undefined(ds_map_find_value(savemap,"shinycharm")) { shinycharm=ds_map_find_value(savemap,"shinycharm"); }
 	if !is_undefined(ds_map_find_value(savemap,"coin_skin")) { coin_skin=ds_map_find_value(savemap,"coin_skin"); }
+	if !is_undefined(ds_map_find_value(savemap,"newgameplus")) { newgameplus=ds_map_find_value(savemap,"newgameplus"); }
 	//
 	if !is_undefined(ds_map_find_value(savemap,"challenge_mode")) { option_state[opt_challenge]=ds_map_find_value(savemap,"challenge_mode"); }
 	if !is_undefined(ds_map_find_value(savemap,"coin")) && coin_skin >= (ds_map_find_value(savemap,"coin")){ option_state[opt_coin]=ds_map_find_value(savemap,"coin"); }
@@ -198,4 +203,5 @@ if file_exists(ob_main.savedata[ob_main.savestate]) {
 	ds_map_destroy(savemap);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+}
 }

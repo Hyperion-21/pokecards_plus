@@ -36,6 +36,7 @@ if reorder_type>-1 {
 	if reorder_type=10 {
 		deck_build_all_total--;
 	}
+	
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	//ORDER BY STATS
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -112,6 +113,8 @@ if deck_setup_load>-1 {
 deck_build_stored_total=0;
 deck_build_used_total=0;
 //
+
+	
 var i=0, ii=0, iii=0;
 repeat (deck_build_all_total) {
 	if deck_card_all[i].card_indeck[0]=false {
@@ -126,36 +129,33 @@ repeat (deck_build_all_total) {
 	}
 	i++;
 }
+
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 //SAVE DECKS
 ob_main.maindeck_total=deck_build_all_total;
 ob_main.maindeck_used_total=deck_build_used_total;
 //
-var i=0;
-repeat (deck_build_all_total) {
-	ob_main.main_card_id[i]=deck_card_all[i].card_id;
-	ob_main.main_card_level[i]=deck_card_all[i].card_level;
-	ob_main.main_card_glyph_a[i]=deck_card_all[i].card_glyph_a;
-	ob_main.main_card_glyph_b[i]=deck_card_all[i].card_glyph_b;
-	ob_main.main_card_glyph_c[i]=deck_card_all[i].card_glyph_c;
-	ob_main.main_card_innate[i]=deck_card_all[i].card_innate;
-	ob_main.main_card_shiny[i]=deck_card_all[i].card_shiny;
-	ob_main.main_card_holo[i]=deck_card_all[i].card_holo;
-	ob_main.main_card_delta[i]=deck_card_all[i].card_delta;
-	ob_main.main_card_delta_type[i]=deck_card_all[i].card_delta_type;
-	ob_main.main_card_type_a[i]=deck_card_all[i].card_type_a;
-	ob_main.main_card_type_b[i]=deck_card_all[i].card_type_b;
-	ob_main.main_card_form_value[i]=deck_card_all[i].card_form_value;
-	ob_main.main_card_serial[i]=deck_card_all[i].card_serial;
-	//
-	ob_main.serial_card_indeck[ob_main.main_card_serial[i]][0]=deck_card_all[i].card_indeck[0];
-	if deck_setup_save>-1 {
-		deck_card_all[i].card_indeck[deck_setup_save]=deck_card_all[i].card_indeck[0];
-		ob_main.serial_card_indeck[ob_main.main_card_serial[i]][deck_setup_save]=deck_card_all[i].card_indeck[deck_setup_save];
-	}
-	//
-	i++;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //
 ob_main.berrydeck_total=card_berrydeck_total;
 var i=0;
@@ -257,3 +257,86 @@ if cam_w<(deck_build_used_total*60) { //when moving last cards in list
 	if used_x<cam_w-(deck_build_used_total*60)-1 { used_x=cam_w-(deck_build_used_total*60)-1; }
 }
 else { used_x=4; }
+///mass deleting cards
+if (mouse_x>=1477 and mouse_y>=166 and mouse_x<=1488 and mouse_y<=176) { ///Oran Berry (blue)
+	draw_set_halign(fa_left)
+	ob_main.mouse_cursor=1;
+	tooltip_lines = 2;
+	if berry[0] = true
+	{
+		ob_deckbuild.tooltip_text = "Right click to deactivate\nOran Berry deletion.";
+	}
+	else
+	{
+		ob_deckbuild.tooltip_text = "Left click to activate\nOran Berry deletion.";
+	}
+	if (mouse_check_button(mb_right))
+		{
+			berry[0] = false;
+		}
+	if mouse_check_button(mb_left)
+		{
+			berry[0] = true;
+		}
+
+}
+else if (mouse_x>=1490 and mouse_y>=166 and mouse_x<=1501 and mouse_y<=176) { ///Leppa Berry (red)
+	draw_set_halign(fa_left)
+	ob_main.mouse_cursor=1;
+	tooltip_lines = 2;
+	if berry[1] = true
+	{
+		ob_deckbuild.tooltip_text = "Right click to deactivate\nLeppa Berry deletion.";
+	}
+	else
+	{
+		ob_deckbuild.tooltip_text = "Left click to activate\nLeppa Berry deletion.";
+	}
+	if (mouse_check_button(mb_right))
+		{
+			berry[1] = false;
+		}
+	if mouse_check_button(mb_left)
+		{
+			berry[1] = true;
+		}
+
+}
+else if (mouse_x>=1503 and mouse_y>=166 and mouse_x<=1514 and mouse_y<=176) { ///Lum Berry (green)
+	draw_set_halign(fa_left)
+	ob_main.mouse_cursor=1;
+	tooltip_lines = 2;
+	if berry[2] = true
+	{
+		ob_deckbuild.tooltip_text = "Right click to deactivate\nLum Berry deletion.";
+	}
+	else
+	{
+		ob_deckbuild.tooltip_text = "Left click to activate\nLum Berry deletion.";
+	}
+	if (mouse_check_button(mb_right))
+		{
+			berry[2] = false;
+		}
+	if mouse_check_button(mb_left)
+		{
+			berry[2] = true;
+		}
+
+}
+else if (mouse_x>=1472 and mouse_y>=147 and mouse_x<=1518 and mouse_y<=178){
+	draw_set_halign(fa_left)
+	ob_main.mouse_cursor=1;
+	tooltip_lines = 2;
+	ob_deckbuild.tooltip_text = "Hold Left or Right click to sell all.\nBE CAREFUL!";
+	if (mouse_check_button(mb_right) or mouse_check_button(mb_left))
+		{
+			massdel = true;
+		}
+		else if massdel = true
+		{
+			massdel = false;
+		}
+}
+
+    

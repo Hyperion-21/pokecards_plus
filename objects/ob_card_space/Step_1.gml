@@ -50,7 +50,7 @@ if (instance_exists(ob_control))
 	
 	// glyph: adversity
     if (((space_slot > 0 && space_slot <= 4) || (space_slot > 5 && space_slot <= 9)) &&
-        ob_control.card_space_id[space_slot].occupy_id != -1 && sc_glyph_check(ob_control.card_space_id[space_slot].occupy_id, ref_glyph_bless, true) && ob_control.card_space_id[space_slot].occupy_id.card_innate = -1)
+        ob_control.card_space_id[space_slot].occupy_id != -1 && sc_glyph_check(ob_control.card_space_id[space_slot].occupy_id, ref_glyph_adversity, true) && ob_control.card_space_id[space_slot].occupy_id.card_innate = -1)
     {
         card_bonus_atk += 3;
     }

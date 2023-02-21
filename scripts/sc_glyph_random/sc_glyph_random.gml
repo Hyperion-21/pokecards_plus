@@ -3,7 +3,7 @@ function sc_glyph_random(argument0) {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if argument0=false { 
 	var var_random=irandom(954);
-	var distribution_range = 955 / 21; // dividing 955 by the number of glyphs + 1, to get the distribution range
+	var distribution_range = 955 / 23; // dividing 955 by the number of glyphs + 1, to get the distribution range
 
 	if var_random < distribution_range { return ref_glyph_lucky; } //75 lucky
 	else if var_random < 2*distribution_range { return ref_glyph_harvest; } //85 harvest
@@ -23,12 +23,10 @@ if argument0=false {
 	else if var_random < 16*distribution_range { return ref_glyph_berserk; } //50 berserk
 	else if var_random < 17*distribution_range { return ref_glyph_adaptability; } //50 adaptability
 	else if var_random < 18*distribution_range { return ref_glyph_recovery; } //25 recovery
-	else if var_random < 19*distribution_range { return ref_glyph_rush; } //20 rush
-	else if var_random < 20*distribution_range { return ref_glyph_rations; } //20 rations
-	else if var_random < 21*distribution_range { return ref_glyph_taunt; } //20 taunt
-	else if var_random < 22*distribution_range { return ref_glyph_picky; } //20 picky
-	else if var_random < 23*distribution_range { return ref_glyph_underdog; } //20 underdog
-	else if var_random < 24*distribution_range { return ref_glyph_bless; } //20 bless
+	else if var_random < 19*distribution_range { return ref_glyph_rations; } //20 rations
+	else if var_random < 20*distribution_range { return ref_glyph_picky; } //20 picky
+	else if var_random < 21*distribution_range { return ref_glyph_underdog; } //20 underdog
+	else if var_random < 22*distribution_range { return ref_glyph_bless; } //20 bless
 	else { return ref_glyph_adversity; } //20 adversity
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -46,8 +44,7 @@ else {
 	else if var_random<485 { return ref_glyph_bulwark; } //25 bulwark
 	else if var_random<500 { return ref_glyph_curse; } //15 curse
 	else if var_random<560 { return ref_glyph_memento; } //70 memento
-	else if var_random<570 { return ref_glyph_recovery; } //25 recovery
-	else if var_random<630 { return ref_glyph_taunt; } //35 taunt
+	else if var_random<630 { return ref_glyph_recovery; } //25 recovery
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }

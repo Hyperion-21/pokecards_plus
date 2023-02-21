@@ -7,6 +7,11 @@ hold_stored_bar=false;
 used_x=4;
 used_y=204;
 hold_used_bar=false;
+massdel = false;
+berry[0] = true;
+berry[1] = true;
+berry[2] = true;
+
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var i=0, button_create;
 repeat (5) {

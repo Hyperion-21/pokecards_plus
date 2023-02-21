@@ -14,6 +14,8 @@ ds_map_add(savemap,"money",money);
 ds_map_add(savemap,"lives",player_lives);
 ds_map_add(savemap,"shinycharm",shinycharm);
 ds_map_add(savemap,"coin_skin",coin_skin);
+ds_map_add(savemap,"newgameplus",newgameplus);
+ds_map_add(savemap,"version",game_version);
 //
 ds_map_add(savemap,"challenge_mode",option_state[opt_challenge]);
 ds_map_add(savemap,"coin",option_state[opt_coin]);

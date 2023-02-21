@@ -1,6 +1,6 @@
-if instance_exists(ob_control) { var reference_id=ob_control; }
-else if instance_exists(ob_deckbuild) { var reference_id=ob_deckbuild; }
-else if instance_exists(ob_event) { var reference_id=ob_event; }
+if instance_exists(ob_control) { var reference_id=ob_control; var massdel = false;}
+else if instance_exists(ob_deckbuild) { var reference_id=ob_deckbuild; var massdel = ob_deckbuild.massdel}
+else if instance_exists(ob_event) { var reference_id=ob_event; var massdel = false; }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if potential_x!=x {
 	if potential_x>x {
@@ -335,11 +335,11 @@ else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spr
 	auto_turn_add=false;
 }
 //
-else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height and reference_id=ob_deckbuild {
+else if (mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height and reference_id=ob_deckbuild) or massdel = true {
 	ob_main.mouse_cursor=1;
 	//
 	if card_cat=0 {
-		if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false {
+		if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false && massdel = false {
 		
 		if ob_main.option_state[opt_challenge] != ch_unlimited
 		{
@@ -386,10 +386,34 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 				}
 			card_delete_timer=0;
 		}
-		else if mouse_check_button(mb_right) and ob_deckbuild.deck_build_all_total>ob_main.maindeck_size_min_full and card_indeck[0]=false and ob_main.cursor_hide=false {
+		else if ((mouse_check_button(mb_right) and ob_main.cursor_hide=false) or massdel = true) and (card_indeck[0]=false and ob_deckbuild.deck_build_all_total>ob_main.maindeck_size_min_full) {
 			if mouse_check_button_pressed(mb_right) { sc_playsound(sn_card,50,false,false); }
 			//
-			card_delete_timer++;
+						
+						if card_shiny = false && card_delta = false && card_glyph_a = -1 && card_enigma = false && 
+						card_starter = false && card_can_mega = false && card_secret = false && card_environment = false && massdel = true
+						{
+
+								if ob_deckbuild.berry[0] = true && (card_cost[0] = 0 or card_cost[1] = 0 or card_cost[2] = 0)
+								{
+									card_delete_timer++;
+								}
+								else if ob_deckbuild.berry[1] = true && (card_cost[0] = 1 or card_cost[1] = 1 or card_cost[2] = 1)
+								{
+									card_delete_timer++;
+								}
+								else if ob_deckbuild.berry[2] = true && (card_cost[0] = 2 or card_cost[1] = 2 or card_cost[2] = 2)
+								{
+									card_delete_timer++;
+								}
+
+						}	
+						else if massdel = false
+						{
+							card_delete_timer++;
+						}
+
+
 			if card_delete_timer=card_delete_timer_max {
 				sc_playsound(sn_faint,50,false,false);
 				if card_holo = true && card_shiny = true && card_secret = true
@@ -423,17 +447,16 @@ else if mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprit
 				} else {
 					ob_main.money+=round(card_value*sell_value_multiplier* bonus);
 				}
-				//
-				ob_deckbuild.reorder_swap_standby=ob_deckbuild.reorder_selected;
-				ob_deckbuild.reorder_type=10;
-				instance_destroy();
+				marked = true;
+
+
 			}
 		}
 		else {
 			card_delete_timer=0;
 		}
 	}
-	else if card_cat=1 {
+	else if card_cat=1 && massdel = false {
 		var berry_common_used=ob_deckbuild.deck_berry_used[0]+ob_deckbuild.deck_berry_used[1]+ob_deckbuild.deck_berry_used[2];
 		var berry_enigma_used=ob_deckbuild.deck_berry_used[3];
 		//
@@ -570,35 +593,13 @@ if ((reference_id=ob_control and ob_control.card_focus=id) or reference_id=ob_ev
 		reference_id.tooltip_text="Only 1 Secret per deck.";
 		reference_id.tooltip_lines=1;
 	}
-	else if mouse_x>=x+5 and mouse_y>=y+69 and mouse_x<=x+13 and mouse_y<=y+76 && (card_atk > card_full_atk) &&    ///fix this dummy
-	(card_glyph_a = ref_glyph_fork or card_glyph_b = ref_glyph_fork or card_glyph_c = ref_glyph_fork) && 
-	(card_glyph_a = ref_glyph_bless or card_glyph_b = ref_glyph_bless or card_glyph_c = ref_glyph_bless) { // 
-		var fake = round((card_atk / 3) - 1*-1);
-		reference_id.tooltip_text="ATK: " + string(card_full_atk) + " - " + string(fake);
+	else if mouse_x>=x+5 and mouse_y>=y+69 and mouse_x<=x+13 and mouse_y<=y+76 && card_atk_real > card_full_atk{ // 
+		reference_id.tooltip_text="ATK: " + string(card_full_atk) + " + " + string(card_atk_real-card_full_atk);
 		reference_id.tooltip_lines=1;
 	}
-	else if mouse_x>=x+5 and mouse_y>=y+69 and mouse_x<=x+13 and mouse_y<=y+76 && (card_atk < card_full_atk) && 
-	(card_glyph_a = ref_glyph_fork or card_glyph_b = ref_glyph_fork or card_glyph_c = ref_glyph_fork) &&
-	(card_glyph_a = ref_glyph_bless or card_glyph_b = ref_glyph_bless or card_glyph_c = ref_glyph_bless) { // 
-		var fake = round((card_atk / 3) - 1*-1);
-		reference_id.tooltip_text="ATK: " + string(card_full_atk) + " - " + string(fake);
-		reference_id.tooltip_lines=1;
-	}
-	else if mouse_x>=x+5 and mouse_y>=y+69 and mouse_x<=x+13 and mouse_y<=y+76 && card_atk > card_full_atk{ // 
-		reference_id.tooltip_text="ATK: " + string(card_full_atk) + " + " + string(card_atk-card_full_atk);
-		reference_id.tooltip_lines=1;
-	}
-	else if mouse_x>=x+5 and mouse_y>=y+69 and mouse_x<=x+13 and mouse_y<=y+76 && card_atk < card_full_atk{
-	reference_id.tooltip_text="ATK: " + string(card_full_atk) + " - " + string(card_full_atk-card_atk);
+	else if mouse_x>=x+5 and mouse_y>=y+69 and mouse_x<=x+13 and mouse_y<=y+76 && card_atk_real < card_full_atk{
+	reference_id.tooltip_text="ATK: " + string(card_full_atk) + " - " + string(card_full_atk-card_atk_real);
 	reference_id.tooltip_lines=1;
-	}
-	else if mouse_x>=x+5 and mouse_y>=y+69 and mouse_x<=x+13 and mouse_y<=y+76 && (card_glyph_a = ref_glyph_bless or card_glyph_b = ref_glyph_bless or card_glyph_c = ref_glyph_bless) { // 
-		reference_id.tooltip_text="ATK: " + string(card_full_atk) + " + " + string(1);
-		reference_id.tooltip_lines=1;
-	}
-	else if mouse_x>=x+5 and mouse_y>=y+69 and mouse_x<=x+13 and mouse_y<=y+76 && (card_glyph_a = ref_glyph_adversity or card_glyph_b = ref_glyph_adversity or card_glyph_c = ref_glyph_adversity) && card_innate = -1 { // 
-		reference_id.tooltip_text="ATK: " + string(card_full_atk) + " + " + string(3);
-		reference_id.tooltip_lines=1;
 	}
 	else if mouse_x>=x+44 and mouse_y>=y+69 and mouse_x<=x+60 and mouse_y<=y+76 && card_def > card_full_def{ // 
 		reference_id.tooltip_text="DEF: " + string(card_full_def) + " + " + string(card_def-card_full_def);
@@ -608,7 +609,7 @@ if ((reference_id=ob_control and ob_control.card_focus=id) or reference_id=ob_ev
 	reference_id.tooltip_text="DEF: " + string(card_full_def) + " - " + string(card_full_def-card_def);
 	reference_id.tooltip_lines=1;
 	}
-	else if mouse_x>=x+25 and mouse_y>=y+63 and mouse_x<=x+30 and mouse_y<=y+71 && !object_exists(ob_deckbuild){
+	else if mouse_x>=x+25 and mouse_y>=y+63 and mouse_x<=x+30 and mouse_y<=y+71 && instance_exists(ob_control){
 	reference_id.tooltip_text="HP: " + string(card_hp) + "/" + string(card_full_hp); 
 	reference_id.tooltip_lines=1;
 	}

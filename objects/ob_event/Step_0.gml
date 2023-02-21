@@ -211,7 +211,7 @@ if (apply_event) {
 				//}
 							
 					//ob_main.serial_card_indeck[ob_main.main_card_serial[i]][0]
-			    if (evo_list[0] != -1 && evo_list[0] <= normal_poke_id_max && card_id_in_space[0].card_innate > 0 && duplicate < 2 &&
+			    if ( evo_list[0] != -1 && evo_list[0] <= normal_poke_id_max && card_id_in_space[0].card_innate > 0 &&
 			        (ob_main.money - ob_main.event_cost_standby >= ob_main.event_cost[ref_event_evolution]) or (count>0))
 			    {
 					free=false;
@@ -246,15 +246,24 @@ if (apply_event) {
 						}
 			            sc_card_level_stats_all(true, true);
 			        }
-			        event_applied = true;
-			        evolution_retry = true;
+					if card_id_in_space[0].card_has_rush = true and card_id_in_space[0].card_glyph_a != ref_glyph_rush  && 
+					card_id_in_space[0].card_has_taunt = true and card_id_in_space[0].card_glyph_b != ref_glyph_taunt {
+						card_id_in_space[0].card_glyph_a=ref_glyph_rush; 
+						card_id_in_space[0].card_glyph_b=ref_glyph_taunt; 
+						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;
+						ob_main.main_card_glyph_b[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_b;} 							
+					else if card_id_in_space[0].card_has_rush = true and card_id_in_space[0].card_glyph_a != ref_glyph_rush { 
+						card_id_in_space[0].card_glyph_a=ref_glyph_rush; 
+						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;} 
+					else if card_id_in_space[0].card_has_taunt = true and card_id_in_space[0].card_glyph_a != ref_glyph_taunt { 
+						card_id_in_space[0].card_glyph_a=ref_glyph_taunt; 
+						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;} 						
 					if(!free){ob_main.event_cost_standby += ob_main.event_cost[ref_event_evolution];
 			        sc_playsound(sn_upgrade, 50, false, false);}
 			        ob_main.main_card_id[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_id;
-			    	
-					}
-					else
-					{
+			    	event_applied = true;
+			        //evolution_retry = true;
+
 						sc_playsound(sn_hurt,50,false,false)
 					}				
 				
@@ -290,7 +299,19 @@ if (apply_event) {
 			            sc_pokelist();
 			            sc_card_level_stats_all(true, true);
 			        }
-        
+					if card_id_in_space[0].card_has_rush = true and card_id_in_space[0].card_glyph_a != ref_glyph_rush  && 
+						card_id_in_space[0].card_has_taunt = true and card_id_in_space[0].card_glyph_b != ref_glyph_taunt {
+						card_id_in_space[0].card_glyph_a=ref_glyph_rush; 
+						card_id_in_space[0].card_glyph_b=ref_glyph_taunt; 
+						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;
+						ob_main.main_card_glyph_b[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_b;} 							
+					else if card_id_in_space[0].card_has_rush = true and card_id_in_space[0].card_glyph_a != ref_glyph_rush { 
+						card_id_in_space[0].card_glyph_a=ref_glyph_rush; 
+						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;} 
+					else if card_id_in_space[0].card_has_taunt = true and card_id_in_space[0].card_glyph_a != ref_glyph_taunt { 
+						card_id_in_space[0].card_glyph_a=ref_glyph_taunt; 
+						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;} 		
+						
 			        event_applied = true;
 			        evolution_retry = true;
 			        sc_playsound(sn_upgrade, 50, false, false);
@@ -392,11 +413,52 @@ if (apply_event) {
 				        sc_card_level_stats_all(true, true);
 				    }
         
+					if card_id_in_space[0].card_has_rush = true and card_id_in_space[0].card_glyph_a != ref_glyph_rush  && 
+						card_id_in_space[0].card_has_taunt = true and card_id_in_space[0].card_glyph_b != ref_glyph_taunt {
+						card_id_in_space[0].card_glyph_a=ref_glyph_rush; 
+						card_id_in_space[0].card_glyph_b=ref_glyph_taunt; 
+						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;
+						ob_main.main_card_glyph_b[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_b;} 							
+					else if card_id_in_space[0].card_has_rush = true and card_id_in_space[0].card_glyph_a != ref_glyph_rush { 
+						card_id_in_space[0].card_glyph_a=ref_glyph_rush; 
+						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;} 
+					else if card_id_in_space[0].card_has_taunt = true and card_id_in_space[0].card_glyph_a != ref_glyph_taunt { 
+						card_id_in_space[0].card_glyph_a=ref_glyph_taunt; 
+						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;} 						
+					if(!free){ob_main.event_cost_standby += ob_main.event_cost[ref_event_evolution];
+			        sc_playsound(sn_upgrade, 50, false, false);}
+			        ob_main.main_card_id[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_id;
+		
 				    event_applied = true;
 				    evolution_retry = true;
 				    sc_playsound(sn_upgrade, 50, false, false);
 				    ob_main.main_card_form_value[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_form_value;
 				}
+				else if (card_id_in_space[0].card_has_forms && card_id_in_space[0].card_can_mega = false){
+									        do
+				        {
+				            if (card_id_in_space[0].card_form_value < 500)
+				            {
+				                card_id_in_space[0].card_form_value = irandom(499) + 500;
+				            }
+				            else
+				            {
+				                card_id_in_space[0].card_form_value = irandom(499);
+				            }
+				        } until (card_id_in_space[0].card_id != -1 && card_id_in_space[0].card_id <= normal_poke_id_max)
+										    sc_card_effect(event_space_id[0].x, event_space_id[0].y, 0, false, true);
+				    with (card_id_in_space[0])
+				    {
+				        sc_pokelist();
+				        sc_card_level_stats_all(true, true);
+				    }
+        
+				    event_applied = true;
+				    evolution_retry = true;
+				    sc_playsound(sn_upgrade, 50, false, false);
+				    ob_main.main_card_form_value[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_form_value;
+				}
+					
 			}
 		break;
 		case ref_event_glyph:
@@ -456,7 +518,13 @@ if (apply_event) {
 		break;
 		case ref_event_sacrifice:
 			if (card_id_in_space[0] != -1 && card_id_in_space[1] != -1 && !card_id_in_space[1].card_environment) {
-				if ((card_id_in_space[0].card_glyph_a != -1 || card_id_in_space[0].card_glyph_b != -1 || card_id_in_space[0].card_glyph_c != -1) && card_id_in_space[0].card_innate > 0){
+				if ((card_id_in_space[0].card_glyph_a != -1 || card_id_in_space[0].card_glyph_b != -1 || card_id_in_space[0].card_glyph_c != -1) && card_id_in_space[0].card_innate > 0) && 
+				((card_id_in_space[0].card_glyph_a != ref_glyph_rush && card_id_in_space[0].card_glyph_b != ref_glyph_rush && card_id_in_space[0].card_glyph_c != ref_glyph_rush)) && 
+				((card_id_in_space[0].card_glyph_a != ref_glyph_taunt && card_id_in_space[0].card_glyph_b != ref_glyph_taunt && card_id_in_space[0].card_glyph_c != ref_glyph_taunt)) && 
+				((card_id_in_space[0].card_glyph_a != ref_glyph_transform && card_id_in_space[0].card_glyph_b != ref_glyph_transform && card_id_in_space[0].card_glyph_c != ref_glyph_transform)) && 
+				((card_id_in_space[0].card_glyph_a != ref_glyph_sketch && card_id_in_space[0].card_glyph_b != ref_glyph_sketch && card_id_in_space[0].card_glyph_c != ref_glyph_sketch)) && 
+				((card_id_in_space[0].card_glyph_a != ref_glyph_command && card_id_in_space[0].card_glyph_b != ref_glyph_command && card_id_in_space[0].card_glyph_c != ref_glyph_command)) && 
+				((card_id_in_space[0].card_glyph_a != ref_glyph_adaptability && card_id_in_space[0].card_glyph_b != ref_glyph_adaptability && card_id_in_space[0].card_glyph_c != ref_glyph_adaptability)){
 					var devour = false;
 					if(card_id_in_space[0].card_innate < 2 && card_id_in_space[0].card_innate != -1){
 						if (card_id_in_space[0].card_glyph_c != -1 && !sc_glyph_bound(card_id_in_space[0].card_glyph_c) && !sc_glyph_exists_on_card(card_id_in_space[1], card_id_in_space[0].card_glyph_c))
