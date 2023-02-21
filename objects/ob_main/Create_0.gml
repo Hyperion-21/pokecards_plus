@@ -102,7 +102,7 @@ textbox_timer_max=1;
 textbox_char_pos=0;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 #macro normal_poke_id_max 1008 //1008 //normal (non-secret and non-environment) poke cards
-#macro secret_cards_total 15
+#macro secret_cards_total 18
 #macro environment_cards_total 5
 //
 #macro deck_setup_max 5 //0: current (always), 1-5: saved setups
@@ -119,7 +119,7 @@ textbox_char_pos=0;
 #macro money_badge_base 200 //200 325 450 575 700 825 950 1075 1200 (minimum should be enough for a card pack)
 #macro money_badge_area_bonus 125
 #macro sell_value_multiplier 2.5 //bankers rounding
-#macro tutorial_payout 600000
+#macro tutorial_payout 600
 
 
 

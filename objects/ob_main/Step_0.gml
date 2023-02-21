@@ -258,8 +258,7 @@ if roadmap_generated=false {
 			var events = [
 			[15, ref_event_megaevolve, false], //10
 			[15, ref_event_changeform, false], //10
-			[320, ref_event_battle, true], //330
-			[6, ref_event_candy, true], //330
+			[326, ref_event_battle, true], //330
 			[35, ref_event_payout, true], //25
 			[24, ref_event_freecard, false], // 25
 			[1, ref_event_holo_freecard, true], //0
@@ -1221,6 +1220,7 @@ if mouse_x>=(screen_main_x-86) and mouse_y>= (screen_main_y+25) and mouse_x<=(sc
 		sc_data_load();
 		audio_sound_gain(ms_main,(option_state[opt_music]/100),0);
 		audio_sound_gain(ms_league,(option_state[opt_music]/100),0);
+		game_restart();
 	}
 	else if mouse_check_button_pressed(mb_right){
 		sc_config_save();
@@ -1232,6 +1232,7 @@ if mouse_x>=(screen_main_x-86) and mouse_y>= (screen_main_y+25) and mouse_x<=(sc
 		sc_data_load();
 		audio_sound_gain(ms_main,(option_state[opt_music]/100),0);
 		audio_sound_gain(ms_league,(option_state[opt_music]/100),0);
+		game_restart();
 	}
 }	
 
