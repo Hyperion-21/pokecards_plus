@@ -48,6 +48,15 @@ if (instance_exists(ob_control))
         card_bonus_atk += 1;
     }
 	
+
+	//	glyph: rush 
+	if (((space_slot > 0 && space_slot <= 4) || (space_slot > 5 && space_slot <= 9)) &&
+	    ob_control.card_space_id[space_slot].occupy_id != -1 && sc_glyph_check(ob_control.card_space_id[space_slot].occupy_id, ref_glyph_rush, true) && ob_control.turn_num <= 2)
+	{
+	    card_bonus_atk += ceil((ob_control.card_space_id[space_slot].occupy_id.card_atk*1.5)-ob_control.card_space_id[space_slot].occupy_id.card_atk);
+	}
+
+	
 	// glyph: adversity
     if (((space_slot > 0 && space_slot <= 4) || (space_slot > 5 && space_slot <= 9)) &&
         ob_control.card_space_id[space_slot].occupy_id != -1 && sc_glyph_check(ob_control.card_space_id[space_slot].occupy_id, ref_glyph_adversity, true) && ob_control.card_space_id[space_slot].occupy_id.card_innate = -1)
@@ -59,12 +68,12 @@ if (instance_exists(ob_control))
     if (((space_slot > 0 && space_slot <= 4) || (space_slot > 5 && space_slot <= 9)) &&
         ob_control.card_space_id[space_slot - 1].occupy_id != -1 && sc_glyph_check(ob_control.card_space_id[space_slot - 1].occupy_id, ref_glyph_command, true))
     {
-        card_bonus_atk += 3;
+        card_bonus_atk += 6;
     }
     if (((space_slot >= 0 && space_slot < 4) || (space_slot >= 5 && space_slot < 9)) &&
         ob_control.card_space_id[space_slot + 1].occupy_id != -1 && sc_glyph_check(ob_control.card_space_id[space_slot + 1].occupy_id, ref_glyph_command, true))
     {
-        card_bonus_atk += 3;
+        card_bonus_atk += 6;
     }
     
     
@@ -84,12 +93,12 @@ if (instance_exists(ob_control))
     if (((space_slot > 0 && space_slot <= 4) || (space_slot > 5 && space_slot <= 9)) &&
         ob_control.card_space_id[space_slot - 1].occupy_id != -1 && sc_glyph_check(ob_control.card_space_id[space_slot - 1].occupy_id, ref_glyph_determination, true))
     {
-        card_bonus_def += 2;
+        card_bonus_def += 5;
     }
     if (((space_slot >= 0 && space_slot < 4) || (space_slot >= 5 && space_slot < 9)) &&
         ob_control.card_space_id[space_slot + 1].occupy_id != -1 && sc_glyph_check(ob_control.card_space_id[space_slot + 1].occupy_id, ref_glyph_determination, true))
     {
-        card_bonus_def += 2;
+        card_bonus_def += 5;
     }
     
     // glyph: debilitate

@@ -35,7 +35,7 @@ if argument0<=100 {
 		if ob_main.area_zone = area_zone_max or ob_main.newgameplus = true
 			{
 			for (var i=0; i<enemycard_maindeck_total; i++;) {
-			sc_enemy_deck_addcard(i,-1,1,irandom_range(0,24),-1,-1,choose(2,3,4),0); } 
+			sc_enemy_deck_addcard(i,-1,1,irandom_range(0,22),-1,-1,choose(2,3,4),0); } 
 		}	
 	}
 	else if argument0=00 { //CAMPER/PICNICKER
@@ -458,20 +458,20 @@ else if argument0 = 213 { // Mewtwo
 	enemy_type_chance[17]=100; //dark
 	//
 		for (var i=0; i<enemycard_maindeck_total; i++;) {
-		if i<1 { sc_enemy_deck_addcard(i,150,10,ref_glyph_vampire,ref_glyph_bless,ref_glyph_fork,innate_max+1,-1); } //MEWTWO, LV 10 (IN MAX)
-		else if i<2 { sc_enemy_deck_addcard(i,2013,10,ref_glyph_vampire,ref_glyph_bless,ref_glyph_fork,innate_max+1,-1); } //ARMORED MEWTWO, LV 10 (IN MAX)
-		else if i<3 { sc_enemy_deck_addcard(i,2016,10,irandom_range(0,24),irandom_range(0,24),irandom_range(0,24),innate_max+1,-1); } //CLONE BLASTOISE
-		else if i<4 { sc_enemy_deck_addcard(i,2017,10,irandom_range(0,24),irandom_range(0,24),irandom_range(0,24),innate_max+1,-1); } //CLONE VENUSAUR
-		else if i<5 { sc_enemy_deck_addcard(i,2018,10,irandom_range(0,24),irandom_range(0,24),irandom_range(0,24),innate_max+1,-1); } //CLONE CHARIZARD
-		else if i<6 { sc_enemy_deck_addcard(i,150,10,ref_glyph_vampire,ref_glyph_bless,ref_glyph_fork,innate_max+1,-1); } //MEWTWO, LV 10 (IN MAX)
-		else if i<7 { sc_enemy_deck_addcard(i,2013,10,ref_glyph_vampire,ref_glyph_bless,ref_glyph_fork,innate_max+1,-1); } //ARMORED MEWTWO, LV 10 (IN MAX)
-		else if i<8 { sc_enemy_deck_addcard(i,2016,10,irandom_range(0,24),irandom_range(0,24),irandom_range(0,24),innate_max+1,-1); } //CLONE BLASTOISE
-		else if i<9 { sc_enemy_deck_addcard(i,2017,10,irandom_range(0,24),irandom_range(0,24),irandom_range(0,24),innate_max+1,-1); } //CLONE VENUSAUR
-		else if i<10 { sc_enemy_deck_addcard(i,2018,10,irandom_range(0,24),irandom_range(0,24),irandom_range(0,24),innate_max+1,-1); } //CLONE CHARIZARD
-		else if i<11 { sc_enemy_deck_addcard(i,2009,10,ref_glyph_vampire,ref_glyph_bless,ref_glyph_fork,innate_max+1,-1); } //SHADOW MEWTWO, LV 10 (IN MAX)
-		else if i<12 { sc_enemy_deck_addcard(i,150,10,ref_glyph_vampire,ref_glyph_bless,ref_glyph_fork,innate_max+1,1000); } //MEWTWO X MEWTWO, LV 10 (IN MAX)
-		else if i<12 { sc_enemy_deck_addcard(i,150,10,ref_glyph_vampire,ref_glyph_bless,ref_glyph_fork,innate_max+1,1001); } //MEWTWO Y MEWTWO, LV 10 (IN MAX)
-		else if i<40 { sc_enemy_deck_addcard(i,-1,10,irandom_range(0,24),irandom_range(0,24),irandom_range(0,24),innate_max+1,-1); } //(5) LV 10 (IN MAX)
+		if i<1 { sc_enemy_deck_addcard(i,150,10,ref_glyph_command,ref_glyph_determination,ref_glyph_berserk,innate_max+1,-1); } //MEWTWO, LV 10 (IN MAX)
+		else if i<2 { sc_enemy_deck_addcard(i,2013,10,ref_glyph_command,ref_glyph_determination,ref_glyph_berserk,innate_max+1,-1); } //ARMORED MEWTWO, LV 10 (IN MAX)
+		else if i<3 { sc_enemy_deck_addcard(i,2016,10,irandom_range(0,22),irandom_range(0,22),irandom_range(0,22),innate_max+1,-1); } //CLONE BLASTOISE
+		else if i<4 { sc_enemy_deck_addcard(i,2017,10,irandom_range(0,22),irandom_range(0,22),irandom_range(0,22),innate_max+1,-1); } //CLONE VENUSAUR
+		else if i<5 { sc_enemy_deck_addcard(i,2018,10,irandom_range(0,22),irandom_range(0,22),irandom_range(0,22),innate_max+1,-1); } //CLONE CHARIZARD
+		else if i<6 { sc_enemy_deck_addcard(i,150,10,ref_glyph_command,ref_glyph_determination,ref_glyph_berserk,innate_max+1,-1); } //MEWTWO, LV 10 (IN MAX)
+		else if i<7 { sc_enemy_deck_addcard(i,2013,10,ref_glyph_command,ref_glyph_determination,ref_glyph_berserk,innate_max+1,-1); } //ARMORED MEWTWO, LV 10 (IN MAX)
+		else if i<8 { sc_enemy_deck_addcard(i,2016,10,irandom_range(0,22),irandom_range(0,22),irandom_range(0,22),innate_max+1,-1); } //CLONE BLASTOISE
+		else if i<9 { sc_enemy_deck_addcard(i,2017,10,irandom_range(0,22),irandom_range(0,22),irandom_range(0,22),innate_max+1,-1); } //CLONE VENUSAUR
+		else if i<10 { sc_enemy_deck_addcard(i,2018,10,irandom_range(0,22),irandom_range(0,22),irandom_range(0,22),innate_max+1,-1); } //CLONE CHARIZARD
+		else if i<11 { sc_enemy_deck_addcard(i,2009,10,ref_glyph_command,ref_glyph_determination,ref_glyph_berserk,innate_max+1,-1); } //SHADOW MEWTWO, LV 10 (IN MAX)
+		else if i<12 { sc_enemy_deck_addcard(i,150,10,ref_glyph_command,ref_glyph_determination,ref_glyph_berserk,innate_max+1,1000); } //MEWTWO X MEWTWO, LV 10 (IN MAX)
+		else if i<12 { sc_enemy_deck_addcard(i,150,10,ref_glyph_command,ref_glyph_determination,ref_glyph_berserk,innate_max+1,1001); } //MEWTWO Y MEWTWO, LV 10 (IN MAX)
+		else if i<40 { sc_enemy_deck_addcard(i,-1,10,irandom_range(0,22),irandom_range(0,22),irandom_range(0,22),innate_max+1,-1); } //(5) LV 10 (IN MAX)
 		}
 	}
 }

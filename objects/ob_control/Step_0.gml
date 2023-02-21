@@ -135,9 +135,9 @@ if card_focus!=-1 { //click played card
 		//
 		if ob_main.playing_tutorial=false or (ob_main.playing_tutorial=true and sc_tutorial_conditions(5,-1)) {
 			if turn_num>2 { sc_card_attack(true,card_focus); }
-			else if card_focus.card_glyph_a == ref_glyph_rush or card_focus.card_glyph_b == ref_glyph_rush or card_focus.card_glyph_c == ref_glyph_rush
+			else if (card_focus.card_glyph_a = ref_glyph_rush or card_focus.card_glyph_b = ref_glyph_rush or card_focus.card_glyph_c = ref_glyph_rush)
 			{ sc_card_attack(true,card_focus); }
-			else {
+			else if (card_focus.card_glyph_a != ref_glyph_rush and card_focus.card_glyph_b != ref_glyph_rush and card_focus.card_glyph_c != ref_glyph_rush){
 				first_turn_attack_warning=true;
 				tooltip_timer=tooltip_timer_max;
 			}
@@ -157,7 +157,7 @@ if card_hold!=-1 and (!mouse_check_button(mb_left) or ob_main.cursor_hide=true) 
 		var_cardspace_id=card_space_id[8] or var_cardspace_id=card_space_id[9] {
 			if card_hold.card_cat=0 and sc_card_cost_check(var_cardspace_id.berries_total_type[0],var_cardspace_id.berries_total_type[1],
 			var_cardspace_id.berries_total_type[2],var_cardspace_id.berries_total_type[3],
-			card_hold.card_cost_total_type[0],card_hold.card_cost_total_type[1],card_hold.card_cost_total_type[2],card_hold.card_cost_total_type[3],-1) {
+			card_hold.card_cost_total_type[0],card_hold.card_cost_total_type[1],card_hold.card_cost_total_type[2],card_hold.card_cost_total_type[3],-1){
 				playing_requirements=true;
 				//
 				for (var i=0; i<=3; i++;) {
@@ -374,8 +374,13 @@ battler_turn=1 and card_hold=-1 and ob_main.cursor_hide=false {
 				auto_attack_timer=8; //same as enemy
 			}
 			if auto_attack_slot<=3 { auto_attack_slot++; }		
-			first_turn_attack_warning=true;
-			tooltip_timer=tooltip_timer_max;
+			if card_space_id[auto_attack_slot+5].occupy_id != -1
+			{
+				if (card_space_id[auto_attack_slot+5].occupy_id.card_glyph_a != ref_glyph_rush and card_space_id[auto_attack_slot+5].occupy_id.card_glyph_b != ref_glyph_rush and card_space_id[auto_attack_slot+5].occupy_id.card_glyph_c != ref_glyph_rush){
+					first_turn_attack_warning=true;
+					tooltip_timer=tooltip_timer_max;
+				}
+			}
 		}
 	}
 }

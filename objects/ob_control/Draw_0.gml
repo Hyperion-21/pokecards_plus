@@ -147,6 +147,7 @@ if card_focus!=-1 and card_focus.card_cat=0 and card_focus_hand!=-1 and card_hol
 			if sc_glyph_check(card_focus,ref_glyph_underdog,true) && card_space_id[i].occupy_id.card_hp > card_focus.card_hp { bonus_damage_preview += 2; } //glyph: underdog
 			if sc_glyph_check(card_focus,ref_glyph_bless,true) { bonus_damage_preview += 1; } //glyph: bless
 			if sc_glyph_check(card_focus,ref_glyph_adversity,true) && card_focus.card_innate = -1 { bonus_damage_preview += 3; } //glyph: adversity
+			if sc_glyph_check(card_focus,ref_glyph_rush,true) && ob_control.turn_num <= 2 { bonus_damage_preview += (ceil(own_atk*1.5) - own_atk);} //glyph: rush
 			//
 			var damage_preview_text="";
 			if sc_glyph_check(card_focus,ref_glyph_transform,true) or sc_glyph_check(card_space_id[i].occupy_id,ref_glyph_transform,true) { //glyph: transform (Ditto only)
@@ -160,22 +161,35 @@ if card_focus!=-1 and card_focus.card_cat=0 and card_focus_hand!=-1 and card_hol
 				if bonus_damage_preview=0 { damage_preview_text=string(damage_preview); }
 				else { damage_preview_text=string(damage_preview) + "+" + string(bonus_damage_preview); }
 			}
-			if !sc_glyph_check(card_focus,ref_glyph_piercing,true) or sc_glyph_check(card_space_id[i].occupy_id,ref_glyph_taunt,true) { //glyph: piercing attack (if not) // 
+			if (i > 0 && i <= 4)
+			{ var targetsub = 5;}	
+			else if  (i > 5 && i <= 9)
+			{ var targetsub = -5;}
+			else
+			{ var targetsub = 0;}
+			if !sc_glyph_check(card_focus,ref_glyph_piercing,true) { //glyph: piercing attack (if not) // 
 				draw_sprite_general(sp_sheet,0,16*11,16*9,24,16,card_space_id[i].x+8,card_space_id[i].y+75,1,1,0,c_white,c_white,c_white,c_white,0.8);
 				sc_drawtext(card_space_id[i].x+18,card_space_id[i].y+74,damage_preview_text,global.color_friendly,global.color_black,1,1,0,-1);
-			}
+				}
+				else if sc_glyph_check(card_focus,ref_glyph_piercing,true) && card_space_id[i+targetsub].occupy_id != -1 { /// if glyph: piercing but also taunt
+					if sc_glyph_check(card_space_id[i].occupy_id,ref_glyph_taunt,true){
+						draw_sprite_general(sp_sheet,0,16*11,16*9,24,16,card_space_id[i].x+8,card_space_id[i].y+75,1,1,0,c_white,c_white,c_white,c_white,0.8);
+						sc_drawtext(card_space_id[i].x+18,card_space_id[i].y+74,damage_preview_text,global.color_friendly,global.color_black,1,1,0,-1);
+					}
+				}					
 			//
 			var damage_preview=vs_atk-own_def;
 			if damage_preview<0 { damage_preview=0; }
 			//
 			var bonus_damage_preview=0;
-			if vs_bonus_dmg=true {
+			if vs_bonus_dmg=true { // bonus damage actually just means super effective.
 				bonus_damage_preview=ceil(card_space_id[i].occupy_id.card_level/advantage_level_interval);
 				if sc_glyph_check(card_space_id[i].occupy_id,ref_glyph_adaptability,true) { bonus_damage_preview+=2; } //glyph: adaptability
 			}
 			if sc_glyph_check(card_space_id[i].occupy_id,ref_glyph_underdog,true) && card_space_id[i].occupy_id.card_hp < card_focus.card_hp{ bonus_damage_preview += 2; } //glyph: underdog
 			if sc_glyph_check(card_space_id[i].occupy_id,ref_glyph_bless,true) { bonus_damage_preview += 1; } //glyph: bless
-			if sc_glyph_check(card_space_id[i].occupy_id,ref_glyph_adversity,true)  && card_space_id[i].occupy_id.card_innate = -1{ bonus_damage_preview += 3; } //glyph: bless
+			if sc_glyph_check(card_space_id[i].occupy_id,ref_glyph_adversity,true)  && card_space_id[i].occupy_id.card_innate = -1{ bonus_damage_preview += 3; } //glyph: adversity
+			if sc_glyph_check(card_space_id[i].occupy_id,ref_glyph_rush,true) && ob_control.turn_num <= 2  { bonus_damage_preview (ceil(vs_atk*1.5) - vs_atk);} //glyph: rush
 			//
 			var damage_preview_text="";
 			if sc_glyph_check(card_focus,ref_glyph_transform,true) or sc_glyph_check(card_space_id[i].occupy_id,ref_glyph_transform,true) { //glyph: transform (Ditto only)

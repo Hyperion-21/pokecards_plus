@@ -14,12 +14,13 @@ card_def=card_full_def;
 card_value=card_full_hp+card_full_atk*2+card_full_def*2;
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if argument1=true {
-	if (card_value<=3 && card_id < 2000) || (card_glyph_a = ref_glyph_rations or card_glyph_b = ref_glyph_rations or card_glyph_c = ref_glyph_rations) { card_cost_total=0; } //and also used in tutorial for card with glyph
+	if (card_value<=3 && card_id < 2000) || (card_glyph_a = ref_glyph_rations or card_glyph_b = ref_glyph_rations or card_glyph_c = ref_glyph_rations)  { card_cost_total=0; } //and also used in tutorial for card with glyph
 	//else if card_full_atk >= 20 { card_cost_total=2; } 
 	else { card_cost_total=1; } 
 	//
 	if (card_glyph_a>=0 and card_glyph_a<glyph_common_amount) or (card_glyph_b>=0 and card_glyph_b<glyph_common_amount) or (card_glyph_c>=0 and card_glyph_c<glyph_common_amount) {
 		card_cost_total++; } //similar conditions in ob_card_space for showing new cost when adding a glyph to an empty card
+		
 	//
 	if card_environment=true { card_cost_total=0; }
 	//
@@ -27,6 +28,7 @@ if argument1=true {
 	{
 		card_cost_total++;
 	}
+	
 //	else if card_secret = true
 //	{
 //		card_cost_total++;
@@ -35,6 +37,8 @@ if argument1=true {
 	{
 		card_cost_total++;
 	}
+	
+	
 	for (var i=0; i<=3; i++;) {
 		card_cost[i]=sc_card_cost_map(card_cost_total,card_enigma,card_type_a,card_type_b,i);
 	}

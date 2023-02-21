@@ -18,7 +18,7 @@ with (argument1) {
 		//
 		if sc_glyph_check(id,ref_glyph_fork,true) { //glyph: fork attack
 			attack_cycle=2;
-			if (!sc_glyph_check(id,ref_glyph_piercing,true) or sc_glyph_check(card_target,ref_glyph_taunt,true) )  { //glyph: piercing attack (if not)   
+			if (!sc_glyph_check(id,ref_glyph_piercing,true))  { //glyph: piercing attack (if not)   
 
 				if (argument0=true and card_space_slot>5 and ob_control.card_space_id[card_space_slot-6].occupy_id!=-1) or
 				(argument0=false and card_space_slot>0 and ob_control.card_space_id[card_space_slot+4].occupy_id!=-1) {
@@ -31,20 +31,40 @@ with (argument1) {
 					else { card_target_fork_b=ob_control.card_space_id[card_space_slot+6].occupy_id; }
 				}
 			}
+			else if (sc_glyph_check(id,ref_glyph_piercing,true)){ /// checks to make sure if piercing is active, taunt is also active to work
+				//if argument0=true && ob_control.card_space_id[card_space_slot-6].occupy_id != -1 { if sc_glyph_check(ob_control.card_space_id[card_space_slot-6].occupy_id,ref_glyph_taunt,true) {card_target_fork_a = ob_control.card_space_id[card_space_slot-6].occupy_id; }}
+				//else if argument0=true && ob_control.card_space_id[card_space_slot+4].occupy_id != -1  { if sc_glyph_check(ob_control.card_space_id[card_space_slot+4].occupy_id,ref_glyph_taunt,true) {card_target_fork_a=ob_control.card_space_id[card_space_slot+4].occupy_id; }}	
+			
+			
+				if argument0=true and card_space_slot>5 and ob_control.card_space_id[card_space_slot-6].occupy_id !=- 1 {if argument0=true and sc_glyph_check(ob_control.card_space_id[card_space_slot-6].occupy_id,ref_glyph_taunt,true)
+					{ card_target_fork_a=ob_control.card_space_id[card_space_slot-6].occupy_id; }}
+				else if argument0=false and card_space_slot>0 and ob_control.card_space_id[card_space_slot+4].occupy_id!=-1 { if sc_glyph_check(ob_control.card_space_id[card_space_slot+4].occupy_id,ref_glyph_taunt,true)
+					{ card_target_fork_a=ob_control.card_space_id[card_space_slot+4].occupy_id; }}
+					
+					
+				if (argument0=true and card_space_slot<9 and ob_control.card_space_id[card_space_slot-4].occupy_id!=-1){ if sc_glyph_check(ob_control.card_space_id[card_space_slot-4].occupy_id,ref_glyph_taunt,true) { card_target_fork_b=ob_control.card_space_id[card_space_slot-4].occupy_id; }}
+				else if (argument0=false and card_space_slot<4 and ob_control.card_space_id[card_space_slot+6].occupy_id!=-1) { if sc_glyph_check(ob_control.card_space_id[card_space_slot+6].occupy_id,ref_glyph_taunt,true) { card_target_fork_b=ob_control.card_space_id[card_space_slot+6].occupy_id; }}
+				}				
 			if argument0=true and card_space_slot=5 { card_target_fork_a=-2; }
 			else if argument0=false and card_space_slot=0 { card_target_fork_a=-2; }
 			if argument0=true and card_space_slot=9 { card_target_fork_b=-2; }
 			else if argument0=false and card_space_slot=4 { card_target_fork_b=-2; }
 		}
-		else {
-			if (!sc_glyph_check(id,ref_glyph_piercing,true) or sc_glyph_check(card_target,ref_glyph_taunt,true) ) { //glyph: piercing attack (if not)
+		else if (!sc_glyph_check(id,ref_glyph_piercing,true)) { //glyph: piercing attack (if not)
 				if (argument0=true and ob_control.card_space_id[card_space_slot-5].occupy_id!=-1) or
 				(argument0=false and ob_control.card_space_id[card_space_slot+5].occupy_id!=-1) {
 					if argument0=true { card_target=ob_control.card_space_id[card_space_slot-5].occupy_id; }
 					else { card_target=ob_control.card_space_id[card_space_slot+5].occupy_id; }
+					}
 				}
+				else if (sc_glyph_check(id,ref_glyph_piercing,true)) && ((argument0=true and ob_control.card_space_id[card_space_slot-5].occupy_id!=-1) or
+				(argument0=false and ob_control.card_space_id[card_space_slot+5].occupy_id!=-1)){ //glyph: piercing attack is true but also taunt
+				if (argument0=true and ob_control.card_space_id[card_space_slot-5].occupy_id != -1) {sc_glyph_check(ob_control.card_space_id[card_space_slot-5].occupy_id,ref_glyph_taunt,true) { card_target=ob_control.card_space_id[card_space_slot-5].occupy_id; }}
+				else if (argument0=false and ob_control.card_space_id[card_space_slot+5].occupy_id != -1) {if sc_glyph_check(ob_control.card_space_id[card_space_slot+5].occupy_id,ref_glyph_taunt,true) { card_target=ob_control.card_space_id[card_space_slot+5].occupy_id; }}
+				else {
+					card_target = -1;
+					}
 			}
-		}
 		//
 		do {
 			if sc_glyph_check(id,ref_glyph_fork,true) { //glyph: fork attack
@@ -59,15 +79,25 @@ with (argument1) {
 				if sc_type_bonus(card_type_a,card_type_b,card_target.card_type_a,card_target.card_type_b)=true {
 					damage_extra_dealt=ceil(card_level/advantage_level_interval);
 					if sc_glyph_check(id,ref_glyph_adaptability,true) { damage_extra_dealt+=2; } //glyph: adaptability
-					if sc_glyph_check(id,ref_glyph_underdog,true) && card_target.card_hp > card_hp { damage_extra_dealt+=2; } //glyph: underdog
 					//
 					if card_enemy=true and ob_main.option_state[opt_challenge]=ch_dominance and ob_main.playing_tutorial=false { damage_extra_dealt=card_target.card_full_hp; }
 				}
-				damage_dealt+=damage_extra_dealt;
-				card_target.card_hp-=damage_dealt;
+					if sc_glyph_check(id,ref_glyph_underdog,true) && card_target.card_hp > card_hp { damage_extra_dealt+=2; } //glyph: underdog
+					if sc_glyph_check(id,ref_glyph_bless,true) { damage_extra_dealt+= 1; } //glyph: bless
+					if sc_glyph_check(id,ref_glyph_rush,true) && ob_control.turn_num <= 2 { damage_extra_dealt+= ceil((card_atk*1.5)-card_atk) } //glyph: rush
+				//damage_dealt+=damage_extra_dealt;
+				if sc_glyph_check(card_target,ref_glyph_taunt,true) && (card_target.card_hp = card_target.hp_max) && (card_target.card_hp-damage_dealt <= 0)
+				{
+					card_target.card_hp = 1;
+				}
+				else
+				{
+					card_target.card_hp-=damage_dealt;
+				}
+					
 				card_target.effect_damaged=1;
 				var damage_num_id=instance_create_layer(card_target.x+29,card_target.y+18,"instances",ob_damage_num);
-				damage_num_id.damage_num=damage_dealt-damage_extra_dealt;
+				damage_num_id.damage_num=damage_dealt;//-damage_extra_dealt;
 				damage_num_id.damage_extra=damage_extra_dealt;
 				damage_num_id.text_alpha=damage_num_id.text_alpha_full;
 				damage_num_id.text_color=global.color_damage;

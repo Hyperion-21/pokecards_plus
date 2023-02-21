@@ -16,6 +16,8 @@ jumpcount = 0
 jumpy = 0
 jumping = 1;
 
+card_glyph_a = -1;
+
 dupe = 0;
 dupemax = 1000;
 card_berry = -1;

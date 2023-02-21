@@ -1,7 +1,7 @@
 depth=-1100;
 //
 if ob_main.playing_tutorial=true { coin_state=2; } //makes you always go first
-else { coin_state=choose(0,2); }
+else { coin_state=0 }
 //
 ground_y=y;
 coin_vspeed=0;

@@ -288,20 +288,19 @@ tooltip_lines=0;
 #macro ref_glyph_berserk 15
 #macro ref_glyph_adaptability 16
 #macro ref_glyph_recovery 17
-#macro ref_glyph_rush 18 ///no longer in the pool
-#macro ref_glyph_rations 19
-#macro ref_glyph_taunt 20
-#macro ref_glyph_picky 21
-#macro ref_glyph_underdog 22
-#macro ref_glyph_bless 23
-#macro ref_glyph_adversity 24
+#macro ref_glyph_rations 18
+#macro ref_glyph_picky 19
+#macro ref_glyph_underdog 20
+#macro ref_glyph_bless 21
+#macro ref_glyph_adversity 22
 //
 #macro ref_glyph_mist 100
 #macro ref_glyph_transform 101
 #macro ref_glyph_sketch 102
 #macro ref_glyph_command 103
 #macro ref_glyph_determination 104
-
+#macro ref_glyph_taunt 105
+#macro ref_glyph_rush 106
 
 /// Glyph Graphics
 ref_glyph_img[0] = 2;
@@ -322,13 +321,11 @@ ref_glyph_img[14] = 16;
 ref_glyph_img[15] = 17;
 ref_glyph_img[16] = 18;
 ref_glyph_img[17] = 19;
-ref_glyph_img[18] = 27;
-ref_glyph_img[19] = 28;
-ref_glyph_img[20] = 29;
-ref_glyph_img[21] = 30;
-ref_glyph_img[22] = 31;
-ref_glyph_img[23] = 24;
-ref_glyph_img[24] = 32;
+ref_glyph_img[18] = 28;
+ref_glyph_img[19] = 30;
+ref_glyph_img[20] = 31;
+ref_glyph_img[21] = 24;
+ref_glyph_img[22] = 32;
 
 
 // ref_glyph_img[18] = 24;
@@ -337,7 +334,8 @@ ref_glyph_img[101] = 20;
 ref_glyph_img[102] = 21;
 ref_glyph_img[103] = 25;
 ref_glyph_img[104] = 26;
-
+ref_glyph_img[105] = 29;
+ref_glyph_img[106] = 27;
 
 
 

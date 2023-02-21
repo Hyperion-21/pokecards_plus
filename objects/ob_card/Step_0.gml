@@ -126,9 +126,16 @@ if reference_id=ob_control and card_cat=0 {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if reference_id=ob_control and card_cat=0 {
 
-	
-	if sc_glyph_check(id,ref_glyph_berserk,true) and (card_hp<=(card_full_hp/3) or (card_hp=1 and card_hp!=card_full_hp)) { var base_atk_multiplier=2; } //glyph: berserk
-	else { var base_atk_multiplier=1; }
+	if instance_exists(ob_control)
+	{
+		if sc_glyph_check(id,ref_glyph_berserk,true) and (card_hp<=(card_full_hp/3) or (card_hp=1 and card_hp!=card_full_hp)) { var base_atk_multiplier=2; } //glyph: berserk
+		else { var base_atk_multiplier=1; }
+	}
+	else
+	{
+		if sc_glyph_check(id,ref_glyph_berserk,true) and (card_hp<=(card_full_hp/3) or (card_hp=1 and card_hp!=card_full_hp)) { var base_atk_multiplier=2; } //glyph: berserk
+		else { var base_atk_multiplier=1; }
+	}
 	//
 	if sc_glyph_check(id,ref_glyph_fork,true) { var base_atk_divisor=1.5; } //glyph: fork attack
 	else { var base_atk_divisor=1; }
@@ -139,15 +146,8 @@ if reference_id=ob_control and card_cat=0 {
 	else if card_played=true and card_trash=false {
 		if card_enemy=true { var i=0; } else { var i=5; }
 		repeat (5) {
-			if ob_control.card_space_id[i].occupy_id=id {
+			//if ob_control.card_space_id[i].occupy_id=id {
 				if card_environment=false {
-					//if (card_enemy=false and ob_control.card_space_id[i-5].occupy_id != -1) or
-					//(card_enemy=true and ob_control.card_space_id[i+5].occupy_id != -1) {
-					//	if card_enemy=false { card_target = ob_control.card_space_id[i-5].occupy_id; }
-					//	else { card_target = ob_control.card_space_id[i+5].occupy_id; }
-					//	if sc_glyph_check(id,ref_glyph_underdog,true) and card_hp < card_target.card_hp { base_atk_multiplier += 2; } //glyph: underdog
-					//}
-					//if sc_glyph_check(id,ref_glyph_bless,true) {var dmgmod = 1;} else { var dmgmod = 0;}
 					card_atk=ceil(card_full_atk*base_atk_multiplier/base_atk_divisor)+(ob_control.card_space_id[i].card_bonus_atk)-ob_control.card_space_id[i].card_penalty_atk;
 					card_def=card_full_def+ob_control.card_space_id[i].card_bonus_def-ob_control.card_space_id[i].card_penalty_def;
 				}
@@ -157,7 +157,7 @@ if reference_id=ob_control and card_cat=0 {
 				}
 				if card_atk<0 { card_atk=0; }
 				if card_def<0 { card_def=0; }
-			}
+			//}
 			i++;
 		}
 	}
@@ -593,11 +593,11 @@ if ((reference_id=ob_control and ob_control.card_focus=id) or reference_id=ob_ev
 		reference_id.tooltip_text="Only 1 Secret per deck.";
 		reference_id.tooltip_lines=1;
 	}
-	else if mouse_x>=x+5 and mouse_y>=y+69 and mouse_x<=x+13 and mouse_y<=y+76 && card_atk_real > card_full_atk{ // 
+	else if mouse_x>=x+5 and mouse_y>=y+69 and mouse_x<=x+13 and mouse_y<=y+76 && card_atk_real > card_full_atk{//&& instance_exists(ob_deckbuild){ // 
 		reference_id.tooltip_text="ATK: " + string(card_full_atk) + " + " + string(card_atk_real-card_full_atk);
 		reference_id.tooltip_lines=1;
 	}
-	else if mouse_x>=x+5 and mouse_y>=y+69 and mouse_x<=x+13 and mouse_y<=y+76 && card_atk_real < card_full_atk{
+	else if mouse_x>=x+5 and mouse_y>=y+69 and mouse_x<=x+13 and mouse_y<=y+76 && card_atk_real < card_full_atk{// && instance_exists(ob_deckbuild){
 	reference_id.tooltip_text="ATK: " + string(card_full_atk) + " - " + string(card_full_atk-card_atk_real);
 	reference_id.tooltip_lines=1;
 	}
@@ -678,3 +678,5 @@ if ((reference_id=ob_control) or reference_id=ob_event or reference_id=ob_deckbu
 	}
 }
 
+
+		

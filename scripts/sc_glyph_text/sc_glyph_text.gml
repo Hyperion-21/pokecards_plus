@@ -22,9 +22,7 @@ if argument1=false {
 		case ref_glyph_berserk: return "// BERSERK //\nWhen HP is 1/3 or less (or just 1, if hurt),\nbase attack is doubled."; break;
 		case ref_glyph_adaptability: return "// ADAPTABILITY //\nType-advantage attacks deal 2 extra points of bonus damage."; break;
 		case ref_glyph_recovery: return "// RECOVERY //\nRecovers 1 HP at the beginning of each active turn."; break;
-		case ref_glyph_rush: return "// AGILITY // INNATE GLYPH\nAble to attack on the first turn."; break;
 		case ref_glyph_rations: return "// RATIONS //\nBerry cost is reduced by 1."; break;
-		case ref_glyph_taunt: return "// TAUNT // INNATE GLYPH\nBlocks Piercing Attack."; break;
 		case ref_glyph_picky: return "// PICKY //\nCraves only one type of Berry."; break;
 		case ref_glyph_underdog: return "// UNDERDOG //\nIncreases damage against higher HP foes."; break;
 		case ref_glyph_bless: return "// BLESS //\nIncreases damage done by 1."; break;
@@ -33,14 +31,18 @@ if argument1=false {
 		case ref_glyph_mist: return "// MIST // INNATE GLYPH\nWhile this card is active, Glyphs have no effect."; break;
 		case ref_glyph_transform: return "// TRANSFORM // INNATE GLYPH\nTransforms into the opposing enemy Pokemon."; break;
 		case ref_glyph_sketch: return "// SKETCH // INNATE GLYPH\nCopies the opposing enemy Pokemon's types."; break;
-		case ref_glyph_command: return "// COMMAND // INNATE GLYPH\nRaises attack of nearby friendly Pokemon by 3."; break;
-		case ref_glyph_determination: return "// DETERMINATION // INNATE GLYPH\nRaises defense of nearby friendly Pokemon by 2."; break;
+		case ref_glyph_command: return "// COMMAND // INNATE GLYPH\nRaises attack of nearby friendly Pokemon by 6."; break;
+		case ref_glyph_determination: return "// DETERMINATION // INNATE GLYPH\nRaises defense of nearby friendly Pokemon by 5."; break;
+		case ref_glyph_rush:  return "// AGILITY // INNATE GLYPH\nAble to attack and deal increased\ndamage on the first turn."; break;
+		case ref_glyph_taunt: return "// STURDY // INNATE GLYPH\nBlocks Piercing Attacks and prevents\n1HKOs."; break;
 	}
 }
 else {
 	switch (argument0) {
 		case ref_glyph_fork: return 3; break;
 		case ref_glyph_berserk: return 3; break;
+		case ref_glyph_rush: return 3; break;
+		case ref_glyph_taunt: return 3; break;
 		default: return 2;
 	}
 }
