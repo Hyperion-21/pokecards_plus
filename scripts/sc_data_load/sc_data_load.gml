@@ -1,5 +1,8 @@
 function sc_data_load() {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+
+
+
 area_zone=0;
 latest_zone=0;
 latest_city=-1;
@@ -7,8 +10,18 @@ zone_first_lap=true;
 roadmap_area=0;
 roadmap_generated=false;
 money=0;
+shinycharm=0;
+player_lives=0;
+coin_skin=0;
+newgameplus = false;
 //
 option_state[opt_challenge]=0;
+option_state[opt_coin]=0;
+
+//if option_state[opt_fullscreen]=false { option_state[opt_fullscreen]=true; }
+//else { option_state[opt_fullscreen]=false; }
+//window_set_fullscreen(option_state[opt_fullscreen]);
+//window_set_size(512*(option_state[opt_scaling]),288*(option_state[opt_scaling]));
 //
 var i=0;
 repeat (roadmap_full_max) {
@@ -40,6 +53,12 @@ repeat (maindeck_total) {
 	main_card_glyph_b[i]=-1;
 	main_card_glyph_c[i]=-1;
 	main_card_innate[i]=-1;
+	main_card_shiny[i]=-1;
+	main_card_holo[i]=-1;
+	main_card_delta[i]=-1;
+	main_card_delta_type[i]=-1;
+	main_card_type_a[i]=-1;
+	main_card_type_b[i]=-1;
 	main_card_form_value[i]=-1;
 	main_card_serial[i]=-1;
 	i++;
@@ -71,9 +90,9 @@ repeat (4) {
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if file_exists(data_file) {
-	var savemap=ds_map_secure_load(data_file);
-	//
+if file_exists(ob_main.savedata[ob_main.savestate]) {
+	var savemap=ds_map_secure_load(ob_main.savedata[ob_main.savestate]);
+if !is_undefined(ds_map_find_value(savemap,"version")) { version=ds_map_find_value(savemap,"version"); 
 	if !is_undefined(ds_map_find_value(savemap,"area_zone")) { area_zone=ds_map_find_value(savemap,"area_zone"); }
 	if !is_undefined(ds_map_find_value(savemap,"latest_zone")) { latest_zone=ds_map_find_value(savemap,"latest_zone"); }
 	if !is_undefined(ds_map_find_value(savemap,"latest_city")) { latest_city=ds_map_find_value(savemap,"latest_city"); }
@@ -81,8 +100,14 @@ if file_exists(data_file) {
 	if !is_undefined(ds_map_find_value(savemap,"roadmap_area")) { roadmap_area=ds_map_find_value(savemap,"roadmap_area"); }
 	if !is_undefined(ds_map_find_value(savemap,"roadmap_generated")) { roadmap_generated=ds_map_find_value(savemap,"roadmap_generated"); }
 	if !is_undefined(ds_map_find_value(savemap,"money")) { money=ds_map_find_value(savemap,"money"); }
+	if !is_undefined(ds_map_find_value(savemap,"lives")) { player_lives=ds_map_find_value(savemap,"lives"); }
+	if !is_undefined(ds_map_find_value(savemap,"shinycharm")) { shinycharm=ds_map_find_value(savemap,"shinycharm"); }
+	if !is_undefined(ds_map_find_value(savemap,"coin_skin")) { coin_skin=ds_map_find_value(savemap,"coin_skin"); }
+	if !is_undefined(ds_map_find_value(savemap,"newgameplus")) { newgameplus=ds_map_find_value(savemap,"newgameplus"); }
 	//
 	if !is_undefined(ds_map_find_value(savemap,"challenge_mode")) { option_state[opt_challenge]=ds_map_find_value(savemap,"challenge_mode"); }
+	if !is_undefined(ds_map_find_value(savemap,"coin")) && coin_skin >= (ds_map_find_value(savemap,"coin")){ option_state[opt_coin]=ds_map_find_value(savemap,"coin"); }
+	else { option_state[opt_coin]=ds_map_find_value(savemap,"coin_skin"); }
 	//
 	var i=0;
 	repeat (roadmap_full_max) {
@@ -120,13 +145,25 @@ if file_exists(data_file) {
 		var value_name="main_card_level_" + string(i);
 		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_level[i]=ds_map_find_value(savemap,value_name); }
 		var value_name="main_card_glyph_a_" + string(i);
-		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_glyph_a[i]=ds_map_find_value(savemap,value_name); }
+		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_glyph_a[i]=ds_map_find_value(savemap,value_name); }		
 		var value_name="main_card_glyph_b_" + string(i);
 		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_glyph_b[i]=ds_map_find_value(savemap,value_name); }
 		var value_name="main_card_glyph_c_" + string(i);
 		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_glyph_c[i]=ds_map_find_value(savemap,value_name); }
 		var value_name="main_card_innate_" + string(i);
 		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_innate[i]=ds_map_find_value(savemap,value_name); }
+		var value_name="main_card_shiny_" + string(i);
+		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_shiny[i]=ds_map_find_value(savemap,value_name); }
+		var value_name="main_card_holo_" + string(i);
+		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_holo[i]=ds_map_find_value(savemap,value_name); }
+		var value_name="main_card_delta_" + string(i);
+		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_delta[i]=ds_map_find_value(savemap,value_name); }
+		var value_name="main_card_delta_type_" + string(i);
+		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_delta_type[i]=ds_map_find_value(savemap,value_name); }		
+		var value_name="main_card_type_a_" + string(i);
+		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_type_a[i]=ds_map_find_value(savemap,value_name); }
+		var value_name="main_card_type_b_" + string(i);
+		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_type_b[i]=ds_map_find_value(savemap,value_name); }
 		var value_name="main_card_form_value_" + string(i);
 		if !is_undefined(ds_map_find_value(savemap,value_name)) { main_card_form_value[i]=ds_map_find_value(savemap,value_name); }
 		var value_name="main_card_serial_" + string(i);
@@ -166,4 +203,5 @@ if file_exists(data_file) {
 	ds_map_destroy(savemap);
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+}
 }

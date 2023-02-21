@@ -31,6 +31,12 @@ if argument0<=100 {
 		enemy_type_chance[15]=00; //steel
 		enemy_type_chance[16]=00; //ghost
 		enemy_type_chance[17]=00; //dark
+		
+		if ob_main.area_zone = area_zone_max or ob_main.newgameplus = true
+			{
+			for (var i=0; i<enemycard_maindeck_total; i++;) {
+			sc_enemy_deck_addcard(i,-1,1,irandom_range(0,24),-1,-1,choose(2,3,4),0); } 
+		}	
 	}
 	else if argument0=00 { //CAMPER/PICNICKER
 		enemy_type_chance[00]=100; //normal
@@ -431,4 +437,42 @@ else if argument0=212 { //CHAMPION: DUNCAN (ALL)
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
+else if argument0 = 213 { // Mewtwo
+	enemy_type_chance[00]=100; //normal
+	enemy_type_chance[01]=100; //grass
+	enemy_type_chance[02]=100; //fire
+	enemy_type_chance[03]=100; //water
+	enemy_type_chance[04]=100; //electric
+	enemy_type_chance[05]=100; //flying
+	enemy_type_chance[06]=100; //fighting
+	enemy_type_chance[07]=100; //psychic
+	enemy_type_chance[08]=100; //fairy
+	enemy_type_chance[09]=100; //ground
+	enemy_type_chance[10]=100; //rock
+	enemy_type_chance[11]=100; //bug
+	enemy_type_chance[12]=100; //poison
+	enemy_type_chance[13]=100; //ice
+	enemy_type_chance[14]=100; //dragon
+	enemy_type_chance[15]=100; //steel
+	enemy_type_chance[16]=100; //ghost
+	enemy_type_chance[17]=100; //dark
+	//
+		for (var i=0; i<enemycard_maindeck_total; i++;) {
+		if i<1 { sc_enemy_deck_addcard(i,150,10,ref_glyph_vampire,ref_glyph_bless,ref_glyph_fork,innate_max+1,-1); } //MEWTWO, LV 10 (IN MAX)
+		else if i<2 { sc_enemy_deck_addcard(i,2013,10,ref_glyph_vampire,ref_glyph_bless,ref_glyph_fork,innate_max+1,-1); } //ARMORED MEWTWO, LV 10 (IN MAX)
+		else if i<3 { sc_enemy_deck_addcard(i,2016,10,irandom_range(0,24),irandom_range(0,24),irandom_range(0,24),innate_max+1,-1); } //CLONE BLASTOISE
+		else if i<4 { sc_enemy_deck_addcard(i,2017,10,irandom_range(0,24),irandom_range(0,24),irandom_range(0,24),innate_max+1,-1); } //CLONE VENUSAUR
+		else if i<5 { sc_enemy_deck_addcard(i,2018,10,irandom_range(0,24),irandom_range(0,24),irandom_range(0,24),innate_max+1,-1); } //CLONE CHARIZARD
+		else if i<6 { sc_enemy_deck_addcard(i,150,10,ref_glyph_vampire,ref_glyph_bless,ref_glyph_fork,innate_max+1,-1); } //MEWTWO, LV 10 (IN MAX)
+		else if i<7 { sc_enemy_deck_addcard(i,2013,10,ref_glyph_vampire,ref_glyph_bless,ref_glyph_fork,innate_max+1,-1); } //ARMORED MEWTWO, LV 10 (IN MAX)
+		else if i<8 { sc_enemy_deck_addcard(i,2016,10,irandom_range(0,24),irandom_range(0,24),irandom_range(0,24),innate_max+1,-1); } //CLONE BLASTOISE
+		else if i<9 { sc_enemy_deck_addcard(i,2017,10,irandom_range(0,24),irandom_range(0,24),irandom_range(0,24),innate_max+1,-1); } //CLONE VENUSAUR
+		else if i<10 { sc_enemy_deck_addcard(i,2018,10,irandom_range(0,24),irandom_range(0,24),irandom_range(0,24),innate_max+1,-1); } //CLONE CHARIZARD
+		else if i<11 { sc_enemy_deck_addcard(i,2009,10,ref_glyph_vampire,ref_glyph_bless,ref_glyph_fork,innate_max+1,-1); } //SHADOW MEWTWO, LV 10 (IN MAX)
+		else if i<12 { sc_enemy_deck_addcard(i,150,10,ref_glyph_vampire,ref_glyph_bless,ref_glyph_fork,innate_max+1,1000); } //MEWTWO X MEWTWO, LV 10 (IN MAX)
+		else if i<12 { sc_enemy_deck_addcard(i,150,10,ref_glyph_vampire,ref_glyph_bless,ref_glyph_fork,innate_max+1,1001); } //MEWTWO Y MEWTWO, LV 10 (IN MAX)
+		else if i<40 { sc_enemy_deck_addcard(i,-1,10,irandom_range(0,24),irandom_range(0,24),irandom_range(0,24),innate_max+1,-1); } //(5) LV 10 (IN MAX)
+		}
+	}
 }
+//————————————————————————————————————————————————————————————————————————————————————————————————————

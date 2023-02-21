@@ -49,6 +49,9 @@ if (instance_exists(ob_control))
         case 4:
             draw_sprite_general(sp_sheet, 0, 16 * 30, 16 * (7 + ceil(button_state)), 16, 16, x, y, 1, 1, 0, c_white, c_white, c_white, c_white, 1);
             break;
+        case 5:
+            draw_sprite_general(sp_sheet, 0, 16 * 30, 16 * (7 + ceil(button_state)), 16, 16, x, y, 1, 1, 0, c_white, c_white, c_white, c_white, 1);
+            break;
         default:
             break;
     }
@@ -96,13 +99,13 @@ if (instance_exists(ob_event))
 // Draw deckbuilding controls.
 if (instance_exists(ob_deckbuild))
 {
-    if (button_id < 10)
+    if (button_id < 15)
     {
-        draw_sprite_general(sp_sheet, 0, 16 * (13 + button_id), 16 * (7 + ceil(button_state)), 16, 16, x, y, 1, 1, 0, c_white, c_white, c_white, c_white, 1);
+        draw_sprite_general(sp_sheet, 0, 16 * (8 + button_id), 16 * (7 + ceil(button_state)), 16, 16, x, y, 1, 1, 0, c_white, c_white, c_white, c_white, 1);
     }
     else
     {
-        draw_sprite_general(sp_sheet, 0, 16 * (13 + 10), 16 * (7 + ceil(button_state)), 16, 16, x, y, 1, 1, 0, c_white, c_white, c_white, c_white, 1);
+        draw_sprite_general(sp_sheet, 0, 16 * (8 + 15), 16 * (7 + ceil(button_state)), 16, 16, x, y, 1, 1, 0, c_white, c_white, c_white, c_white, 1);
     }
 	return;
 }

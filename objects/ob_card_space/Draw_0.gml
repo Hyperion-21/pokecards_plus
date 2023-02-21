@@ -26,6 +26,9 @@ if (instance_exists(ob_event))
 		case ref_event_campfire:
 			draw_sprite_general(sp_sheet, 0, 560, 240, 26, 26, x + 16, y + 26, 1, 1, 0, c_white, c_white, c_white, c_white, var_event_alpha);
 		break;
+		case ref_event_candy:
+			draw_sprite_general(sp_sheet, 0, 624, 272, 26, 26, x + 16, y + 26, 1, 1, 0, c_white, c_white, c_white, c_white, var_event_alpha);
+		break;
 		case ref_event_megaevolve:
 			draw_sprite_general(sp_sheet, 0, 528, 240, 26, 26, x + 16, y + 26, 1, 1, 0, c_white, c_white, c_white, c_white, var_event_alpha);
 		break;
@@ -84,33 +87,35 @@ if (instance_exists(ob_event))
 			{
 			    // berry costs from sc_card_level_stats_all
 			    var imaginary_card_cost;
-			    for (var i = 0; i <= 2; i++)
+			    for (var i = 0; i <= 3; i++)
 			    {
 			        imaginary_card_cost[i] = sc_card_cost_map(occupy_id.card_cost_total + 1, occupy_id.card_enigma, occupy_id.card_type_a, occupy_id.card_type_b, i);
 			    }
     
-			    // normal, grass, fire, water, flying
-			    if (imaginary_card_cost[occupy_id.card_cost_total] == 00 || imaginary_card_cost[occupy_id.card_cost_total] == 01 ||
-			        imaginary_card_cost[occupy_id.card_cost_total] == 02 || imaginary_card_cost[occupy_id.card_cost_total] == 03 || imaginary_card_cost[occupy_id.card_cost_total] == 05)
-			    {
-			        var new_cost_text = "Oran Berry";
-			    } // psychic, fairy, bug, poison, ghost, dark
-			    else if (imaginary_card_cost[occupy_id.card_cost_total] == 07 || imaginary_card_cost[occupy_id.card_cost_total] == 08 ||
-			        imaginary_card_cost[occupy_id.card_cost_total] == 11 || imaginary_card_cost[occupy_id.card_cost_total] == 12 ||
-			        imaginary_card_cost[occupy_id.card_cost_total] == 16 || imaginary_card_cost[occupy_id.card_cost_total] == 17)
-			    {
-			        var new_cost_text = "Leppa Berry";
-			    } // electric, fighting, ground, rock, ice, dragon, steel
-			    else if (imaginary_card_cost[occupy_id.card_cost_total] == 04 || imaginary_card_cost[occupy_id.card_cost_total] == 06 ||
-			        imaginary_card_cost[occupy_id.card_cost_total] == 09 || imaginary_card_cost[occupy_id.card_cost_total] == 10 || imaginary_card_cost[occupy_id.card_cost_total] == 13 ||
-			        imaginary_card_cost[occupy_id.card_cost_total] == 14 || imaginary_card_cost[occupy_id.card_cost_total] == 15)
-			    {
-			        var new_cost_text = "Lum Berry";
-			    } // enigma
-			    else if (imaginary_card_cost[occupy_id.card_cost_total] == 20)
-			    {
-			        var new_cost_text = "Enigma Berry";
-			    }
+		    // water, ice, steel, normal, dragon, ghost       
+		    if (imaginary_card_cost[occupy_id.card_cost_total] == 03 || imaginary_card_cost[occupy_id.card_cost_total] == 13 || imaginary_card_cost[occupy_id.card_cost_total] == 15 ||
+		        imaginary_card_cost[occupy_id.card_cost_total] == 00 || imaginary_card_cost[occupy_id.card_cost_total] == 14 || imaginary_card_cost[occupy_id.card_cost_total] == 16)
+		    {
+		        var new_cost_text = "Oran Berry";
+		    } // fire, psychic, fairy, fighting, ground, dark
+		    else if (imaginary_card_cost[occupy_id.card_cost_total] == 02 || imaginary_card_cost[occupy_id.card_cost_total] == 07 ||
+		        imaginary_card_cost[occupy_id.card_cost_total] == 08 || imaginary_card_cost[occupy_id.card_cost_total] == 06 ||
+		        imaginary_card_cost[occupy_id.card_cost_total] == 09 || imaginary_card_cost[occupy_id.card_cost_total] == 17)
+		    {
+		        var new_cost_text = "Leppa Berry";
+		    } // grass, electric, poison, bug, steel, flying
+		    else if (imaginary_card_cost[occupy_id.card_cost_total] == 01 || imaginary_card_cost[occupy_id.card_cost_total] == 04 ||
+		        imaginary_card_cost[occupy_id.card_cost_total] == 12 || imaginary_card_cost[occupy_id.card_cost_total] == 11 ||
+		        imaginary_card_cost[occupy_id.card_cost_total] == 05 || imaginary_card_cost[occupy_id.card_cost_total] == 10)
+		    {
+		        var new_cost_text = "Lum Berry";
+		    } // enigma
+		    else if (imaginary_card_cost[occupy_id.card_cost_total] == 18 || imaginary_card_cost[occupy_id.card_cost_total] == 19 || imaginary_card_cost[occupy_id.card_cost_total] == 20 ||
+					 imaginary_card_cost[occupy_id.card_cost_total] == 21 || imaginary_card_cost[occupy_id.card_cost_total] == 22)
+		    {
+		        var new_cost_text = "Enigma Berry";
+		    }
+
     
 			    sc_drawtext(x - 108, y + 30, "Card cost: +1 " + new_cost_text, global.color_card_light, global.color_black, 1, 1, 0, -1);
 			}

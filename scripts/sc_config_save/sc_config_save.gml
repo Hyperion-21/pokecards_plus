@@ -9,9 +9,11 @@ ds_map_add(savemap,"window_scaling",option_state[opt_scaling]);
 ds_map_add(savemap,"music",option_state[opt_music]);
 ds_map_add(savemap,"sound",option_state[opt_sound]);
 ds_map_add(savemap,"autodeck",option_state[opt_autodeck]);
+ds_map_add(savemap,"jumping",option_state[opt_jumping]);
 ds_map_add(savemap,"edge_shading",option_state[opt_edge]);
 ds_map_add(savemap,"player_icon",option_state[opt_playericon]);
 ds_map_add(savemap,"background_type",option_state[opt_bg_type]);
+ds_map_add(savemap,"savestate",savestate);
 //
 ds_map_add(savemap,"color_a_r",colorsetup_r[opt_bg_a]);
 ds_map_add(savemap,"color_a_g",colorsetup_g[opt_bg_a]);
@@ -26,7 +28,7 @@ ds_map_add(savemap,"color_char_r",colorsetup_r[opt_c_char]);
 ds_map_add(savemap,"color_char_g",colorsetup_g[opt_c_char]);
 ds_map_add(savemap,"color_char_b",colorsetup_b[opt_c_char]);
 //
-ds_map_secure_save(savemap,config_file);
+ds_map_secure_save(savemap,saveconf[savestate]);
 ds_map_destroy(savemap);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }

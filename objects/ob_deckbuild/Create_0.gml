@@ -7,20 +7,30 @@ hold_stored_bar=false;
 used_x=4;
 used_y=204;
 hold_used_bar=false;
+massdel = false;
+berry[0] = true;
+berry[1] = true;
+berry[2] = true;
+
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 var i=0, button_create;
 repeat (5) {
-	button_create=instance_create_layer(screen_deck_x+97,screen_main_y+104+(i*16),"instances",ob_button_15x16);
+	button_create=instance_create_layer(screen_deck_x+89,screen_main_y+104+(i*16),"instances",ob_button_15x16);
 	button_create.button_id=i;
 	i++;
 }
 repeat (5) {
-	button_create=instance_create_layer(screen_deck_x+400,screen_main_y+104+((i-5)*16),"instances",ob_button_16x16);
+	button_create=instance_create_layer(screen_deck_x+106,screen_main_y+104+((i-5)*16),"instances",ob_button_15x16);
 	button_create.button_id=i;
 	i++;
 }
 repeat (5) {
-	button_create=instance_create_layer(screen_deck_x+416,screen_main_y+104+((i-10)*16),"instances",ob_button_16x16);
+	button_create=instance_create_layer(screen_deck_x+400,screen_main_y+104+((i-10)*16),"instances",ob_button_16x16);
+	button_create.button_id=i;
+	i++;
+}
+repeat (5) {
+	button_create=instance_create_layer(screen_deck_x+416,screen_main_y+104+((i-15)*16),"instances",ob_button_16x16);
 	button_create.button_id=i;
 	i++;
 }
@@ -39,6 +49,12 @@ repeat (deck_build_all_total) {
 	create_card_glyph_b=ob_main.main_card_glyph_b[i];
 	create_card_glyph_c=ob_main.main_card_glyph_c[i];
 	create_card_innate=ob_main.main_card_innate[i];
+	create_card_shiny=ob_main.main_card_shiny[i];
+	create_card_holo=ob_main.main_card_holo[i];
+	create_card_delta=ob_main.main_card_delta[i];
+	create_card_delta_type=ob_main.main_card_delta_type[i];
+	create_card_type_a=ob_main.main_card_type_a[i];
+	create_card_type_b=ob_main.main_card_type_b[i];
 	create_card_form_value=ob_main.main_card_form_value[i];
 	create_card_serial=ob_main.main_card_serial[i];
 	//
@@ -76,6 +92,6 @@ deck_setup_save=-1; //value 0 not used, because current setup is always saved
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 tooltip_text="";
 tooltip_lines=0;
-reorder_type=0; //0 pokemon id, 1 level, 2 attack, 3 defense, 4 hp, 5 delete card
+reorder_type=0; //0 pokemon id, 1 level, 2 attack, 3 defense, 4 hp, 5 type 1, 6 type 2, 7 shiny, 8 holo, 9 berry, 9 delete card
 reorder_selected=0;
 reorder_swap_standby=0;

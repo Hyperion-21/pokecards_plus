@@ -13,11 +13,11 @@ if reorder_type>-1 {
 		var ii=0;
 		repeat (deck_build_all_total) {
 			if instance_exists(deck_card_all[ii]) {
-				if (reorder_type=0 or reorder_type=5) and deck_card_all[ii].card_serial=serial_check and card_pos_replace[i]=-1 {
+				if (reorder_type=0 or reorder_type=10) and deck_card_all[ii].card_serial=serial_check and card_pos_replace[i]=-1 {
 					card_pos_replace[i]=deck_card_all[ii];
 					i++;
 				}
-				else if (reorder_type>=1 and reorder_type<=4) and deck_card_all[ii].card_serial=serial_check and card_pos_replace[deck_build_all_total-i-1]=-1 {
+				else if (reorder_type>=1 and reorder_type<=9) and deck_card_all[ii].card_serial=serial_check and card_pos_replace[deck_build_all_total-i-1]=-1 {
 					card_pos_replace[deck_build_all_total-i-1]=deck_card_all[ii];
 					i++;
 				}
@@ -25,7 +25,7 @@ if reorder_type>-1 {
 			ii++;
 		}
 		serial_check++;
-	} until (i=deck_build_all_total or (reorder_type=5 and i=deck_build_all_total-1));
+	} until (i=deck_build_all_total or (reorder_type=10 and i=deck_build_all_total-1));
 	//
 	var i=0;
 	repeat (deck_build_all_total) {
@@ -33,9 +33,10 @@ if reorder_type>-1 {
 		i++;
 	}
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
-	if reorder_type=5 {
+	if reorder_type=10 {
 		deck_build_all_total--;
 	}
+	
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	//ORDER BY STATS
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -45,17 +46,22 @@ if reorder_type>-1 {
 		ds_grid_set(order_grid,0,i,deck_card_all[i]); //instance id
 		//
 		var order_number=0;
-		if reorder_type=0 or reorder_type=5 { order_number=deck_card_all[i].card_id; }
+		if reorder_type=0 or reorder_type=10 { order_number=deck_card_all[i].card_id; }
 		else if reorder_type=1 { order_number=deck_card_all[i].card_level; }
 		else if reorder_type=2 { order_number=deck_card_all[i].card_full_atk; }
 		else if reorder_type=3 { order_number=deck_card_all[i].card_full_def; }
 		else if reorder_type=4 { order_number=deck_card_all[i].card_full_hp; }
+		else if reorder_type=5 { order_number=deck_card_all[i].card_type_a; }
+		else if reorder_type=6 { order_number=deck_card_all[i].card_type_b; }
+		else if reorder_type=7 { order_number=deck_card_all[i].card_shiny; }
+		else if reorder_type=8 { order_number=deck_card_all[i].card_holo; }
+		else if reorder_type=9 { order_number=deck_card_all[i].card_berry; }
 		//
 		order_number+=(deck_card_all[i].card_serial/(ob_main.serial_count+1)); //never adds +1, always only decimal
 		ds_grid_set(order_grid,1,i,order_number);
 	}
 	//
-	if reorder_type=0 or reorder_type=5 { ds_grid_sort(order_grid,1,true); }
+	if reorder_type=0 or reorder_type=10 { ds_grid_sort(order_grid,1,true); }
 	else { ds_grid_sort(order_grid,1,false); }
 	//
 	for (var i=0; i<deck_build_all_total; i++;) {
@@ -64,7 +70,7 @@ if reorder_type>-1 {
 	//
 	ds_grid_destroy(order_grid);
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
-	if reorder_type=5 {
+	if reorder_type=10 {
 		for (var i=0; i<ob_main.serial_count; i++;) {
 			for (var ii=1; ii<=deck_setup_max; ii++;) { //clear all decks
 				ob_main.serial_card_indeck[i][ii]=false;
@@ -107,6 +113,8 @@ if deck_setup_load>-1 {
 deck_build_stored_total=0;
 deck_build_used_total=0;
 //
+
+	
 var i=0, ii=0, iii=0;
 repeat (deck_build_all_total) {
 	if deck_card_all[i].card_indeck[0]=false {
@@ -121,6 +129,7 @@ repeat (deck_build_all_total) {
 	}
 	i++;
 }
+
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 //SAVE DECKS
 ob_main.maindeck_total=deck_build_all_total;
@@ -134,6 +143,12 @@ repeat (deck_build_all_total) {
 	ob_main.main_card_glyph_b[i]=deck_card_all[i].card_glyph_b;
 	ob_main.main_card_glyph_c[i]=deck_card_all[i].card_glyph_c;
 	ob_main.main_card_innate[i]=deck_card_all[i].card_innate;
+	ob_main.main_card_shiny[i]=deck_card_all[i].card_shiny;
+	ob_main.main_card_holo[i]=deck_card_all[i].card_holo;
+	ob_main.main_card_delta[i]=deck_card_all[i].card_delta;
+	ob_main.main_card_delta_type[i]=deck_card_all[i].card_delta_type;
+	ob_main.main_card_type_a[i]=deck_card_all[i].card_type_a;
+	ob_main.main_card_type_b[i]=deck_card_all[i].card_type_b;
 	ob_main.main_card_form_value[i]=deck_card_all[i].card_form_value;
 	ob_main.main_card_serial[i]=deck_card_all[i].card_serial;
 	//
@@ -145,6 +160,7 @@ repeat (deck_build_all_total) {
 	//
 	i++;
 }
+
 //
 ob_main.berrydeck_total=card_berrydeck_total;
 var i=0;
@@ -246,3 +262,86 @@ if cam_w<(deck_build_used_total*60) { //when moving last cards in list
 	if used_x<cam_w-(deck_build_used_total*60)-1 { used_x=cam_w-(deck_build_used_total*60)-1; }
 }
 else { used_x=4; }
+///mass deleting cards
+if (mouse_x>=1477 and mouse_y>=166 and mouse_x<=1488 and mouse_y<=176) { ///Oran Berry (blue)
+	draw_set_halign(fa_left)
+	ob_main.mouse_cursor=1;
+	tooltip_lines = 2;
+	if berry[0] = true
+	{
+		ob_deckbuild.tooltip_text = "Right click to deactivate\nOran Berry deletion.";
+	}
+	else
+	{
+		ob_deckbuild.tooltip_text = "Left click to activate\nOran Berry deletion.";
+	}
+	if (mouse_check_button(mb_right))
+		{
+			berry[0] = false;
+		}
+	if mouse_check_button(mb_left)
+		{
+			berry[0] = true;
+		}
+
+}
+else if (mouse_x>=1490 and mouse_y>=166 and mouse_x<=1501 and mouse_y<=176) { ///Leppa Berry (red)
+	draw_set_halign(fa_left)
+	ob_main.mouse_cursor=1;
+	tooltip_lines = 2;
+	if berry[1] = true
+	{
+		ob_deckbuild.tooltip_text = "Right click to deactivate\nLeppa Berry deletion.";
+	}
+	else
+	{
+		ob_deckbuild.tooltip_text = "Left click to activate\nLeppa Berry deletion.";
+	}
+	if (mouse_check_button(mb_right))
+		{
+			berry[1] = false;
+		}
+	if mouse_check_button(mb_left)
+		{
+			berry[1] = true;
+		}
+
+}
+else if (mouse_x>=1503 and mouse_y>=166 and mouse_x<=1514 and mouse_y<=176) { ///Lum Berry (green)
+	draw_set_halign(fa_left)
+	ob_main.mouse_cursor=1;
+	tooltip_lines = 2;
+	if berry[2] = true
+	{
+		ob_deckbuild.tooltip_text = "Right click to deactivate\nLum Berry deletion.";
+	}
+	else
+	{
+		ob_deckbuild.tooltip_text = "Left click to activate\nLum Berry deletion.";
+	}
+	if (mouse_check_button(mb_right))
+		{
+			berry[2] = false;
+		}
+	if mouse_check_button(mb_left)
+		{
+			berry[2] = true;
+		}
+
+}
+else if (mouse_x>=1472 and mouse_y>=147 and mouse_x<=1518 and mouse_y<=178){
+	draw_set_halign(fa_left)
+	ob_main.mouse_cursor=1;
+	tooltip_lines = 2;
+	ob_deckbuild.tooltip_text = "Hold Left or Right click to sell all.\nBE CAREFUL!";
+	if (mouse_check_button(mb_right) or mouse_check_button(mb_left))
+		{
+			massdel = true;
+		}
+		else if massdel = true
+		{
+			massdel = false;
+		}
+}
+
+    

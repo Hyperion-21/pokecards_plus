@@ -7,6 +7,9 @@ show_deck = false;
 apply_event = false;
 event_applied = false;
 event_cancelled = false;
+card_gen = -1;
+
+duplicate = false;
 
 levelup_new_hp = 0;
 levelup_new_atk = 0;
@@ -28,10 +31,24 @@ switch (event_kind){
 		card_prize = 5;
 		var main_amount = card_prize, berry_amount = round(main_amount/5);
 
+		var holoset = false;
 		var i = 0;
 		repeat (card_prize)
 		{
-		    if (main_amount > 0 && berry_amount > 0)
+		    create_card_id = -1;
+			card_gen = -1;
+			if holoset = false
+			{
+				create_card_cat = 0;
+				var holo =  instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+				with (holo)
+				{
+					card_holo = true;
+				}
+					holoset = true;
+			}
+			else {
+			if (main_amount > 0 && berry_amount > 0)
 		    {
 		        create_card_cat = choose(0, 1);
 		    }
@@ -51,12 +68,264 @@ switch (event_kind){
 		    {
 		        berry_amount--;
 		    }
-		    create_card_id = -1;
-    
-		    instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+				instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+			}
 		    i++;
 		}
+		button_create = instance_create_layer(screen_main_x + cam_w - 24, screen_main_y + cam_h - 24, "instances", ob_button_16x16);
+		button_create.button_id = 2;
 
+	break;
+	case ref_event_cardpack_1:
+		card_prize = 5;
+		var main_amount = card_prize;
+		var holoset = false;
+		var i = 0;
+		repeat (card_prize)
+		{
+		    create_card_id = -1;
+			create_card_cat = 0;
+			card_gen = 1;
+			if holoset = false
+			{
+			var holo =   instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+				with (holo)
+				{
+					card_holo = true;
+				}
+					holoset = true;
+			}
+			else
+			{
+				instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+			}
+		    i++;
+		}
+		button_create = instance_create_layer(screen_main_x + cam_w - 24, screen_main_y + cam_h - 24, "instances", ob_button_16x16);
+		button_create.button_id = 2;
+	break;
+	case ref_event_cardpack_2:
+		card_prize = 5;
+		var main_amount = card_prize;
+		var holoset = false;
+		var i = 0;
+		repeat (card_prize)
+		{
+		    create_card_id = -1;
+			create_card_cat = 0;
+			card_gen = 2;
+			if holoset = false
+			{
+			var holo =   instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+				with (holo)
+				{
+					card_holo = true;
+				}
+					holoset = true;
+			}
+			else
+			{
+				instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+			}
+		    i++;
+		}
+		button_create = instance_create_layer(screen_main_x + cam_w - 24, screen_main_y + cam_h - 24, "instances", ob_button_16x16);
+		button_create.button_id = 2;
+	break;
+	case ref_event_cardpack_3:
+		card_prize = 5;
+		var main_amount = card_prize;
+		var holoset = false;
+		var i = 0;
+		repeat (card_prize)
+		{
+		    create_card_id = -1;
+			create_card_cat = 0;
+			card_gen = 3;
+			if holoset = false
+			{
+			var holo =   instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+				with (holo)
+				{
+					card_holo = true;
+				}
+					holoset = true;
+			}
+			else
+			{
+				instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+			}
+		    i++;
+		}
+		button_create = instance_create_layer(screen_main_x + cam_w - 24, screen_main_y + cam_h - 24, "instances", ob_button_16x16);
+		button_create.button_id = 2;
+	break;
+	case ref_event_cardpack_4:
+		card_prize = 5;
+		var main_amount = card_prize;
+		var holoset = false;
+		var i = 0;
+		repeat (card_prize)
+		{
+		    create_card_id = -1;
+			create_card_cat = 0;
+			card_gen = 4;
+			if holoset = false
+			{
+			var holo =   instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+				with (holo)
+				{
+					card_holo = true;
+				}
+					holoset = true;
+			}
+			else
+			{
+				instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+			}
+		    i++;
+		}
+		button_create = instance_create_layer(screen_main_x + cam_w - 24, screen_main_y + cam_h - 24, "instances", ob_button_16x16);
+		button_create.button_id = 2;
+	break;
+	case ref_event_cardpack_5:
+		card_prize = 5;
+		var main_amount = card_prize;
+		var holoset = false;
+		var i = 0;
+		repeat (card_prize)
+		{
+		    create_card_id = -1;
+			create_card_cat = 0;
+			card_gen = 5;
+			if holoset = false
+			{
+			var holo =   instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+				with (holo)
+				{
+					card_holo = true;
+				}
+					holoset = true;
+			}
+			else
+			{
+				instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+			}
+		    i++;
+		}
+		button_create = instance_create_layer(screen_main_x + cam_w - 24, screen_main_y + cam_h - 24, "instances", ob_button_16x16);
+		button_create.button_id = 2;
+	break;
+	case ref_event_cardpack_6:
+		card_prize = 5;
+		var main_amount = card_prize;
+		var holoset = false;
+		var i = 0;
+		repeat (card_prize)
+		{
+		    create_card_id = -1;
+			create_card_cat = 0;
+			card_gen = 6;
+			if holoset = false
+			{
+			var holo =   instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+				with (holo)
+				{
+					card_holo = true;
+				}
+					holoset = true;
+			}
+			else
+			{
+				instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+			}
+		    i++;
+		}
+		button_create = instance_create_layer(screen_main_x + cam_w - 24, screen_main_y + cam_h - 24, "instances", ob_button_16x16);
+		button_create.button_id = 2;
+	break;
+	case ref_event_cardpack_7:
+		card_prize = 5;
+		var main_amount = card_prize;
+		var holoset = false;
+		var i = 0;
+		repeat (card_prize)
+		{
+		    create_card_id = -1;
+			create_card_cat = 0;
+			card_gen = 7;
+			if holoset = false
+			{
+			var holo =   instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+				with (holo)
+				{
+					card_holo = true;
+				}
+					holoset = true;
+			}
+			else
+			{
+				instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+			}
+		    i++;
+		}
+		button_create = instance_create_layer(screen_main_x + cam_w - 24, screen_main_y + cam_h - 24, "instances", ob_button_16x16);
+		button_create.button_id = 2;
+	break;
+	case ref_event_cardpack_8:
+		card_prize = 5;
+		var main_amount = card_prize;
+		var holoset = false;
+		var i = 0;
+		repeat (card_prize)
+		{
+		    create_card_id = -1;
+			create_card_cat = 0;
+			card_gen = 8;
+			if holoset = false
+			{
+			var holo =   instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+				with (holo)
+				{
+					card_holo = true;
+				}
+					holoset = true;
+			}
+			else
+			{
+				instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+			}
+		    i++;
+		}
+		button_create = instance_create_layer(screen_main_x + cam_w - 24, screen_main_y + cam_h - 24, "instances", ob_button_16x16);
+		button_create.button_id = 2;
+	break;
+	case ref_event_cardpack_9:
+		card_prize = 5;
+		var main_amount = card_prize;
+		var holoset = false;
+		var i = 0;
+		repeat (card_prize)
+		{
+		    create_card_id = -1;
+			create_card_cat = 0;
+			card_gen = 9;
+
+			if holoset = false
+			{
+			var holo =   instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+				with (holo)
+				{
+					card_holo = true;
+				}
+					holoset = true;
+			}
+			else
+			{
+				instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+			}
+		    i++;
+		}
 		button_create = instance_create_layer(screen_main_x + cam_w - 24, screen_main_y + cam_h - 24, "instances", ob_button_16x16);
 		button_create.button_id = 2;
 	break;
@@ -129,9 +398,50 @@ switch (event_kind){
 		{
 		    create_card_cat = 0;
 		    create_card_id = -1;
+			card_gen = -1;
     
 		    //
 		    instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+		    i++;
+		} break;
+	case ref_event_holo_freecard:
+		card_prize = 1;
+		var i = 0;
+		repeat (5)
+		{
+		    create_card_cat = 0;
+		    create_card_id = -1;
+			card_gen = -1;
+    
+		    //
+		    var holo = instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+			with (holo)
+				{
+					card_holo = true;
+				}
+		    i++;
+		}
+	break;
+		case ref_event_delta:
+		card_prize = 1;
+		var i = 0;
+		repeat (5)
+		{
+		    create_card_cat = 0;
+		    create_card_id = -1;
+			card_gen = -1;
+    
+		    //
+		    var delta = instance_create_layer(screen_main_x + 83 + (72 * i), screen_main_y + 104, "instances", ob_card);
+			with (delta)
+				{
+					card_delta = true;
+					randomize();
+					card_delta_type = irandom_range(0,17);
+					card_type_a = card_delta_type;
+					card_type_b = -1;
+					sc_card_level_stats_all(false,true);
+				}
 		    i++;
 		}
 	break;
@@ -146,28 +456,39 @@ switch (event_kind){
 		var creatures_num = round(card_prize / 2);
 		var berries_num = card_prize - creatures_num;
 		var i = 0;
-	
-		var card_pool_gen_1_2;
-		var card_pool_gen_3_4_5;
-		var card_pool_gen_6_7_8;
-		var card_pool_birds = [[10, 016],[10, 163],[10, 276],[10, 396],[10, 519],[10, 661],[10, 731], [10, 821]];
-		var card_pool_rodents = [[10, 019],[10, 161],[10, 263],[10, 399],[10, 504],[10, 659],[10, 734], [10, 819]];
-	
+
+
+		var card_pool_gen_1_2
+		var card_pool_gen_3_4
+		var card_pool_gen_5_6
+		var card_pool_gen_7_8
+		var card_pool_random = [[10, irandom_range(1,normal_poke_id_max)]];
+		var fire = false;
+		var grass = false;
+		var water = false;
+		
+		
 		switch (event_kind){
 			case ref_event_grass: 
-				card_pool_gen_1_2 = [[10, 001],[10, 152]];		
-				card_pool_gen_3_4_5 = [[10, 252],[10, 387],[10, 495]];		
-				card_pool_gen_6_7_8 = [[10, 650],[10, 722],[10, 810]];
+				card_pool_gen_1_2 = [[10, 001],[10, 152],[10, 906]];
+				card_pool_gen_3_4 = [[10, 252],[10, 387]];		
+				card_pool_gen_5_6 = [[10, 495],[10, 650]];
+				card_pool_gen_7_8 = [[10, 722],[10, 810]];
+				var grass = true;
 			break;
 			case ref_event_fire: 
-				card_pool_gen_1_2 = [[10, 004],[10, 155]];
-				card_pool_gen_3_4_5 = [[10, 255],[10, 390],[10, 498]];		
-				card_pool_gen_6_7_8 = [[10, 653],[10, 725],[10, 813]];
+				card_pool_gen_1_2 = [[10, 004],[10, 155],[10, 909]];
+				card_pool_gen_3_4 = [[10, 255],[10, 390]];		
+				card_pool_gen_5_6 = [[10, 498],[10, 653]];
+				card_pool_gen_7_8 = [[10, 725],[10, 813]];
+				var fire = true;
 			break;
 			case ref_event_water: 
-				card_pool_gen_1_2 = [[10, 007],[10, 158]];		
-				card_pool_gen_3_4_5 = [[10, 258],[10, 393],[10, 501]];	
-				card_pool_gen_6_7_8 = [[10, 656],[10, 728],[10, 816]];
+				card_pool_gen_1_2 = [[10, 007],[10, 158],[10, 912]];
+				card_pool_gen_3_4 = [[10, 258],[10, 393]];		
+				card_pool_gen_5_6 = [[10, 501],[10, 656]];
+				card_pool_gen_7_8 = [[10, 728],[10, 816]];
+				var water = true;
 			break;
 		}
 		//
@@ -176,14 +497,13 @@ switch (event_kind){
 		test = false;
 		if(RUN_FROM_IDE and test){
 			card_pool_gen_1_2 = [[10, 2001]];		
-			card_pool_gen_3_4_5 = [[10, 2001]];		
-			card_pool_gen_6_7_8 = [[10, 2001]];
-			var card_pool_birds = [[10, 2001]];
-			var card_pool_rodents = [[10, 2001]];
+			card_pool_gen_3_4 = [[10, 2001]];		
+			card_pool_gen_5_6 = [[10, 2001]];
+			card_pool_gen_7_8 = [[10, 2001]];
 		}
 		//
 		//
-		var card_pool_compiled = [card_pool_gen_1_2, card_pool_gen_3_4_5, card_pool_gen_6_7_8, card_pool_birds, card_pool_rodents];
+		var card_pool_compiled = [card_pool_gen_1_2, card_pool_gen_3_4, card_pool_gen_5_6, card_pool_gen_7_8, card_pool_random];
 		
 		create_card_cat=0;
 		repeat (creatures_num) {
@@ -194,6 +514,12 @@ switch (event_kind){
 			create_card_glyph_b=-1;
 			create_card_glyph_c=-1;
 			create_card_innate=1;
+			create_card_shiny=-1;
+			create_card_holo=-1;
+			create_card_delta=-1;
+			create_card_delta_type=-1;
+			create_card_type_a=-1;
+			create_card_type_b=-1;
 			// Leave forms low so no one gets alolan rattata. (requires leppa berries due to dark typing.)
 			create_card_form_value=0;
 			//
@@ -204,6 +530,12 @@ switch (event_kind){
 				create_card_glyph_b=-1;
 				create_card_glyph_c=-1;
 				create_card_innate=4;
+				create_card_shiny = -1;
+				create_card_holo = -1;	
+				create_card_delta=-1;
+				create_card_delta_type=-1;
+				create_card_type_a=-1;
+				create_card_type_b=-1;
 				create_card_form_value=irandom(999);
 			}
 			//
@@ -218,7 +550,19 @@ switch (event_kind){
 		create_card_cat=1;
 		repeat (berries_num){
 			// Only creating Oran berries for starters.
-			create_card_id=3000;
+			
+			if grass == true
+			{
+				create_card_id=3002;
+			}
+			else if fire == true
+			{
+				create_card_id=3001;
+			}
+			else if water == true
+			{
+				create_card_id=3000;
+			}
 		
 			var card_x=screen_main_x+83+(72*(i)), card_y=screen_main_y+104+47;
 		
@@ -235,6 +579,7 @@ switch (event_kind){
 	case ref_event_glyph:
 	case ref_event_tribute:
 	case ref_event_campfire:
+	case ref_event_candy:
 	case ref_event_sacrifice:
 	case ref_event_megaevolve:
 	case ref_event_changeform:
@@ -290,6 +635,12 @@ switch (event_kind){
 		    create_card_glyph_b = ob_main.main_card_glyph_b[i];
 		    create_card_glyph_c = ob_main.main_card_glyph_c[i];
 		    create_card_innate = ob_main.main_card_innate[i];
+			create_card_shiny = ob_main.main_card_shiny[i];
+			create_card_holo = ob_main.main_card_holo[i];
+			create_card_delta = ob_main.main_card_delta[i];
+			create_card_delta_type = ob_main.main_card_delta_type[i];
+		    create_card_type_a = ob_main.main_card_type_a[i];
+		    create_card_type_b = ob_main.main_card_type_b[i];
 		    create_card_form_value = ob_main.main_card_form_value[i];
     
 		    if (ob_main.serial_card_indeck[ob_main.main_card_serial[i]][0] == true)

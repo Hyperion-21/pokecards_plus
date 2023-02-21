@@ -192,12 +192,26 @@ if (apply_event) {
 			        sc_playsound(sn_upgrade, 50, false, false);
 			        ob_main.main_card_level[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_level;
 			    }
+				else
+				{
+					sc_playsound(sn_hurt,50,false,false);
+				}
 			}
 		break;
 		case ref_event_evolution:
 			if (card_id_in_space[0] != -1)
 			{
-			    if (evo_list[0] != -1 && evo_list[0] <= normal_poke_id_max && card_id_in_space[0].card_innate > 0 &&
+				//var i = 0;
+				//for (var i=0; i<ob_main.maindeck_total; i++;) {
+					
+					//if (ob_main.main_card_id[i] = card_id_in_space[0].card_id)
+					//{
+						//duplicate += 1;
+					//} //  || (ob_main.main_card_id[i] = card_id_in_space[0].card_evo[0])
+				//}
+							
+					//ob_main.serial_card_indeck[ob_main.main_card_serial[i]][0]
+			    if ( evo_list[0] != -1 && evo_list[0] <= normal_poke_id_max && card_id_in_space[0].card_innate > 0 &&
 			        (ob_main.money - ob_main.event_cost_standby >= ob_main.event_cost[ref_event_evolution]) or (count>0))
 			    {
 					free=false;
@@ -216,14 +230,38 @@ if (apply_event) {
 			        with (card_id_in_space[0])
 			        {
 			            sc_pokelist();
+						if card_delta = true
+						{
+							card_type_a = card_delta_type;
+							card_type_b = -1;
+						}
 			            sc_card_level_stats_all(true, true);
 			        }
-			        event_applied = true;
-			        evolution_retry = true;
+					if card_id_in_space[0].card_has_rush = true and card_id_in_space[0].card_glyph_a != ref_glyph_rush  && 
+					card_id_in_space[0].card_has_taunt = true and card_id_in_space[0].card_glyph_b != ref_glyph_taunt {
+						card_id_in_space[0].card_glyph_a=ref_glyph_rush; 
+						card_id_in_space[0].card_glyph_b=ref_glyph_taunt; 
+						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;
+						ob_main.main_card_glyph_b[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_b;} 							
+					else if card_id_in_space[0].card_has_rush = true and card_id_in_space[0].card_glyph_a != ref_glyph_rush { 
+						card_id_in_space[0].card_glyph_a=ref_glyph_rush; 
+						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;} 
+					else if card_id_in_space[0].card_has_taunt = true and card_id_in_space[0].card_glyph_a != ref_glyph_taunt { 
+						card_id_in_space[0].card_glyph_a=ref_glyph_taunt; 
+						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;} 		
+					else if card_id_in_space[0].card_has_rush = false && card_id_in_space[0].card_glyph_a = ref_glyph_rush { card_id_in_space[0].card_glyph_a = -1;}
+					else if card_id_in_space[0].card_has_rush = false && card_id_in_space[0].card_glyph_b = ref_glyph_rush { card_id_in_space[0].card_glyph_b = -1;}
+					else if card_id_in_space[0].card_has_taunt = false && card_id_in_space[0].card_glyph_a = ref_glyph_taunt { card_id_in_space[0].card_glyph_a = -1;}
+					else if card_id_in_space[0].card_has_taunt = false && card_id_in_space[0].card_glyph_b = ref_glyph_taunt { card_id_in_space[0].card_glyph_b = -1;}
 					if(!free){ob_main.event_cost_standby += ob_main.event_cost[ref_event_evolution];
 			        sc_playsound(sn_upgrade, 50, false, false);}
 			        ob_main.main_card_id[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_id;
-			    }
+			    	event_applied = true;
+			        //evolution_retry = true;
+
+						sc_playsound(sn_hurt,50,false,false)
+					}				
+				
 			}
 			else {evolution_position = 0;}
 		break;
@@ -236,7 +274,14 @@ if (apply_event) {
 			        {
 			            if (card_id_in_space[0].card_form_value <= 999)
 			            {
-			                card_id_in_space[0].card_form_value = 1000 + irandom(1);
+									if card_id_in_space[0].card_id == 006 //checks for charizard and allows for third mega form
+									{
+										card_id_in_space[0].card_form_value = choose(1000,1001,1002);
+									}
+									else
+									{
+										card_id_in_space[0].card_form_value = 1000 + irandom(1);
+									}			                
 			            }
 			            else
 			            {
@@ -247,9 +292,29 @@ if (apply_event) {
 			        with (card_id_in_space[0])
 			        {
 			            sc_pokelist();
+						if card_delta = true
+						{
+							card_type_a = card_delta_type;
+							card_type_b = -1;
+						}
 			            sc_card_level_stats_all(true, true);
 			        }
-        
+					if card_id_in_space[0].card_has_rush = true and card_id_in_space[0].card_glyph_a != ref_glyph_rush  && 
+						card_id_in_space[0].card_has_taunt = true and card_id_in_space[0].card_glyph_b != ref_glyph_taunt {
+						card_id_in_space[0].card_glyph_a=ref_glyph_rush; 
+						card_id_in_space[0].card_glyph_b=ref_glyph_taunt; 
+						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;
+						ob_main.main_card_glyph_b[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_b;} 							
+					else if card_id_in_space[0].card_has_rush = true and card_id_in_space[0].card_glyph_a != ref_glyph_rush { 
+						card_id_in_space[0].card_glyph_a=ref_glyph_rush; 
+						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;} 
+					else if card_id_in_space[0].card_has_taunt = true and card_id_in_space[0].card_glyph_a != ref_glyph_taunt { 
+						card_id_in_space[0].card_glyph_a=ref_glyph_taunt; 
+						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;} 		
+					else if card_id_in_space[0].card_has_rush = false && card_id_in_space[0].card_glyph_a = ref_glyph_rush { card_id_in_space[0].card_glyph_a = -1;}
+					else if card_id_in_space[0].card_has_rush = false && card_id_in_space[0].card_glyph_b = ref_glyph_rush { card_id_in_space[0].card_glyph_b = -1;}
+					else if card_id_in_space[0].card_has_taunt = false && card_id_in_space[0].card_glyph_a = ref_glyph_taunt { card_id_in_space[0].card_glyph_a = -1;}
+					else if card_id_in_space[0].card_has_taunt = false && card_id_in_space[0].card_glyph_b = ref_glyph_taunt { card_id_in_space[0].card_glyph_b = -1;}						
 			        event_applied = true;
 			        evolution_retry = true;
 			        sc_playsound(sn_upgrade, 50, false, false);
@@ -262,7 +327,7 @@ if (apply_event) {
 			{
 				if (card_id_in_space[0].card_has_forms && card_id_in_space[0].card_form_change == true)
 				{
-				    if (card_id_in_space[0].card_id == 493 or card_id_in_space[0].card_id == 773)
+				    if (card_id_in_space[0].card_id == 493 or card_id_in_space[0].card_id == 773) //Arceus or Silvally
 				    {
 				        do
 				        {
@@ -304,9 +369,25 @@ if (apply_event) {
 				    {
 				        do
 				        {
-				            if (card_id_in_space[0].card_form_value == 1000)
+							if card_id_in_space[0].card_id == 006 //checks for charizard and allows for third mega form
+							{
+										if (card_id_in_space[0].card_form_value == 1000)
+										{
+												card_id_in_space[0].card_form_value = choose(1001,1002);
+										}
+										else if (card_id_in_space[0].card_form_value == 1001)
+										{
+												card_id_in_space[0].card_form_value = choose(1000,1002);
+										}
+										else if (card_id_in_space[0].card_form_value == 1002)
+										{
+												card_id_in_space[0].card_form_value = choose(1000,1001);
+										}	
+							} 
+				            else if (card_id_in_space[0].card_form_value == 1000)
 				            {
-				                card_id_in_space[0].card_form_value = 1001;
+									
+										card_id_in_space[0].card_form_value = 1001;
 				            }
 				            else
 				            {
@@ -335,17 +416,62 @@ if (apply_event) {
 				        sc_card_level_stats_all(true, true);
 				    }
         
+					if card_id_in_space[0].card_has_rush = true and card_id_in_space[0].card_glyph_a != ref_glyph_rush  && 
+						card_id_in_space[0].card_has_taunt = true and card_id_in_space[0].card_glyph_b != ref_glyph_taunt {
+						card_id_in_space[0].card_glyph_a=ref_glyph_rush; 
+						card_id_in_space[0].card_glyph_b=ref_glyph_taunt; 
+						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;
+						ob_main.main_card_glyph_b[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_b;} 							
+					else if card_id_in_space[0].card_has_rush = true and card_id_in_space[0].card_glyph_a != ref_glyph_rush { 
+						card_id_in_space[0].card_glyph_a=ref_glyph_rush; 
+						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;} 
+					else if card_id_in_space[0].card_has_taunt = true and card_id_in_space[0].card_glyph_a != ref_glyph_taunt { 
+						card_id_in_space[0].card_glyph_a=ref_glyph_taunt; 
+						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;} 		
+					else if card_id_in_space[0].card_has_rush = false && card_id_in_space[0].card_glyph_a = ref_glyph_rush { card_id_in_space[0].card_glyph_a = -1;}
+					else if card_id_in_space[0].card_has_rush = false && card_id_in_space[0].card_glyph_b = ref_glyph_rush { card_id_in_space[0].card_glyph_b = -1;}
+					else if card_id_in_space[0].card_has_taunt = false && card_id_in_space[0].card_glyph_a = ref_glyph_taunt { card_id_in_space[0].card_glyph_a = -1;}
+					else if card_id_in_space[0].card_has_taunt = false && card_id_in_space[0].card_glyph_b = ref_glyph_taunt { card_id_in_space[0].card_glyph_b = -1;}
+					//if(!free){ob_main.event_cost_standby += ob_main.event_cost[ref_event_evolution];
+			       // sc_playsound(sn_upgrade, 50, false, false);}
+			        ob_main.main_card_id[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_id;
+		
 				    event_applied = true;
 				    evolution_retry = true;
 				    sc_playsound(sn_upgrade, 50, false, false);
 				    ob_main.main_card_form_value[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_form_value;
 				}
+				else if (card_id_in_space[0].card_has_forms && card_id_in_space[0].card_can_mega = false){
+									        do
+				        {
+				            if (card_id_in_space[0].card_form_value < 500)
+				            {
+				                card_id_in_space[0].card_form_value = irandom(499) + 500;
+				            }
+				            else
+				            {
+				                card_id_in_space[0].card_form_value = irandom(499);
+				            }
+				        } until (card_id_in_space[0].card_id != -1 && card_id_in_space[0].card_id <= normal_poke_id_max)
+										    sc_card_effect(event_space_id[0].x, event_space_id[0].y, 0, false, true);
+				    with (card_id_in_space[0])
+				    {
+				        sc_pokelist();
+				        sc_card_level_stats_all(true, true);
+				    }
+        
+				    event_applied = true;
+				    evolution_retry = true;
+				    sc_playsound(sn_upgrade, 50, false, false);
+				    ob_main.main_card_form_value[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_form_value;
+				}
+					
 			}
 		break;
 		case ref_event_glyph:
 			if (card_id_in_space[0] != -1)
 			{
-			    if (card_id_in_space[0].card_glyph_c == -1 && card_id_in_space[0].card_innate > 0 &&
+			    if (card_id_in_space[0].card_glyph_c == -1 && (card_id_in_space[0].card_innate > 0 or (glyph_add_id = ref_glyph_adversity && card_id_in_space[0].card_innate = -1 )) &&
 			        card_id_in_space[0].card_glyph_a != glyph_add_id && card_id_in_space[0].card_glyph_b != glyph_add_id && card_id_in_space[0].card_glyph_c != glyph_add_id)
 			    {
 			        sc_insert_into_free_glyph_slot(card_id_in_space[0], glyph_add_id);
@@ -361,6 +487,10 @@ if (apply_event) {
 			        ob_main.main_card_glyph_b[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_b;
 			        ob_main.main_card_glyph_c[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_c;
 			    }
+				else
+				{
+					sc_playsound(sn_hurt,50,false,false);
+				}
 			}
 		break;
 		case ref_event_tribute:
@@ -387,11 +517,21 @@ if (apply_event) {
 				    ob_main.main_card_innate[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_innate;
 				    ob_main.main_card_innate[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_innate;
 				}
+				else
+				{
+					sc_playsound(sn_hurt,50,false,false);
+				}
 			}
 		break;
 		case ref_event_sacrifice:
 			if (card_id_in_space[0] != -1 && card_id_in_space[1] != -1 && !card_id_in_space[1].card_environment) {
-				if ((card_id_in_space[0].card_glyph_a != -1 || card_id_in_space[0].card_glyph_b != -1 || card_id_in_space[0].card_glyph_c != -1) && card_id_in_space[0].card_innate > 0){
+				if ((card_id_in_space[0].card_glyph_a != -1 || card_id_in_space[0].card_glyph_b != -1 || card_id_in_space[0].card_glyph_c != -1) && card_id_in_space[0].card_innate > 0) && 
+				((card_id_in_space[0].card_glyph_a != ref_glyph_rush && card_id_in_space[0].card_glyph_b != ref_glyph_rush && card_id_in_space[0].card_glyph_c != ref_glyph_rush)) && 
+				((card_id_in_space[0].card_glyph_a != ref_glyph_taunt && card_id_in_space[0].card_glyph_b != ref_glyph_taunt && card_id_in_space[0].card_glyph_c != ref_glyph_taunt)) && 
+				((card_id_in_space[0].card_glyph_a != ref_glyph_transform && card_id_in_space[0].card_glyph_b != ref_glyph_transform && card_id_in_space[0].card_glyph_c != ref_glyph_transform)) && 
+				((card_id_in_space[0].card_glyph_a != ref_glyph_sketch && card_id_in_space[0].card_glyph_b != ref_glyph_sketch && card_id_in_space[0].card_glyph_c != ref_glyph_sketch)) && 
+				((card_id_in_space[0].card_glyph_a != ref_glyph_command && card_id_in_space[0].card_glyph_b != ref_glyph_command && card_id_in_space[0].card_glyph_c != ref_glyph_command)) && 
+				((card_id_in_space[0].card_glyph_a != ref_glyph_adaptability && card_id_in_space[0].card_glyph_b != ref_glyph_adaptability && card_id_in_space[0].card_glyph_c != ref_glyph_adaptability)){
 					var devour = false;
 					if(card_id_in_space[0].card_innate < 2 && card_id_in_space[0].card_innate != -1){
 						if (card_id_in_space[0].card_glyph_c != -1 && !sc_glyph_bound(card_id_in_space[0].card_glyph_c) && !sc_glyph_exists_on_card(card_id_in_space[1], card_id_in_space[0].card_glyph_c))
@@ -459,14 +599,34 @@ if (apply_event) {
 					sc_card_effect(event_space_id[1].x, event_space_id[1].y, 0, false, true);
 					sc_playsound(sn_upgrade, 50, false, false);
 
+					event_applied = true;
+				    ob_main.main_card_innate[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_innate;
+					ob_main.main_card_innate[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_innate;
+					ob_main.main_card_shiny[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_shiny;
+					ob_main.main_card_shiny[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_shiny;
+					ob_main.main_card_holo[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_holo;
+					ob_main.main_card_holo[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_holo;
+					ob_main.main_card_delta[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_delta;
+					ob_main.main_card_delta[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_delta;
+					ob_main.main_card_delta_type[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_delta_type;
+					ob_main.main_card_delta_type[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_delta_type;
+					ob_main.main_card_type_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_type_a;
+					ob_main.main_card_type_b[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_type_b;
+					ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;
+					ob_main.main_card_glyph_b[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_b;
+					ob_main.main_card_glyph_c[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_c;
+					ob_main.main_card_glyph_a[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_glyph_a;
+					ob_main.main_card_glyph_b[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_glyph_b;
+					ob_main.main_card_glyph_c[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_glyph_c;
+
 					with (card_id_in_space[0])
 					{
-					    if (devour)
+					    if (devour) && card_environment=false
 					    {
 					        sc_playsound(sn_faint, 50, false, false);
 							instance_destroy();
 					    }
-					    else
+					    else if card_environment=false
 					    {
 					        sc_card_level_stats_all(true, true);
 					    }
@@ -477,16 +637,12 @@ if (apply_event) {
 					{
 					    sc_card_level_stats_all(true, true);
 					}
-					event_applied = true;
+					
 
-				    ob_main.main_card_innate[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_innate;
-					ob_main.main_card_innate[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_innate;
-					ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;
-					ob_main.main_card_glyph_b[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_b;
-					ob_main.main_card_glyph_c[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_c;
-					ob_main.main_card_glyph_a[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_glyph_a;
-					ob_main.main_card_glyph_b[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_glyph_b;
-					ob_main.main_card_glyph_c[card_id_in_space[1].num_in_all] = card_id_in_space[1].card_glyph_c;
+				}
+				else
+				{
+					sc_playsound(sn_hurt,50,false,false);
 				}
 			}
 		break;
@@ -527,6 +683,10 @@ if (apply_event) {
 					ob_main.main_card_glyph_b[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_b;
 					ob_main.main_card_glyph_c[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_c;
 				}
+				else
+				{
+					sc_playsound(sn_hurt,50,false,false);
+				}
 			}
 		break;
 		case ref_event_campfire:
@@ -546,8 +706,35 @@ if (apply_event) {
 			        event_applied = true;
 			        ob_main.main_card_innate[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_innate;
 			    }
+				else
+				{
+					sc_playsound(sn_hurt,50,false,false);
+				}
 			}
 		break;
+		case ref_event_candy:
+			if (card_id_in_space[0] != -1)
+			{
+			    if (card_id_in_space[0].card_innate < innate_max+1 && card_id_in_space[0].card_environment == false)
+			    {
+			        card_id_in_space[0].card_innate = (innate_max+1);
+			        sc_card_effect(event_space_id[0].x, event_space_id[0].y, 0, false, true);
+			        sc_playsound(sn_upgrade, 50, false, false);
+        
+			        with (card_id_in_space[0])
+			        {
+			            sc_card_level_stats_all(true, true);
+			        }
+        
+			        event_applied = true;
+			        ob_main.main_card_innate[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_innate;
+			    }
+				else
+				{
+					sc_playsound(sn_hurt,50,false,false);
+				}
+			}
+		break;	
 		default:
 		break;
 	}

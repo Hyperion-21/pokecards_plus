@@ -68,8 +68,7 @@ repeat (card_maindeck_total) {
 		else if ob_main.main_card_id[i]=016 { card_shuffle[i]=4; } //pidgey
 		else if ob_main.main_card_id[i]=021 { card_shuffle[i]=1; } //spearow
 		else if ob_main.main_card_id[i]=019 { card_shuffle[i]=3; } //rattata
-	}
-	else {
+	} else {
 		do {
 			var shuffle_taken=false;
 			card_shuffle[i]=irandom(card_maindeck_total-1);
@@ -95,6 +94,12 @@ repeat (ob_main.maindeck_total) {
 		create_card_glyph_c=ob_main.main_card_glyph_c[i];
 		create_card_innate=ob_main.main_card_innate[i];
 		create_card_form_value=ob_main.main_card_form_value[i];
+		create_card_shiny=ob_main.main_card_shiny[i];
+		create_card_holo=ob_main.main_card_holo[i];
+		create_card_delta=ob_main.main_card_delta[i];
+		create_card_delta_type=ob_main.main_card_delta_type[i];
+		create_card_type_a=ob_main.main_card_type_a[i];
+		create_card_type_b=ob_main.main_card_type_b[i];
 		//
 		create_enemy_randomizer=false;
 		create_enemy_costcount=false;
@@ -187,6 +192,7 @@ repeat (enemycard_maindeck_total) {
 	create_card_glyph_b=enemy_card_glyph_b[card_shuffle[i]];
 	create_card_glyph_c=enemy_card_glyph_c[card_shuffle[i]];
 	create_card_innate=enemy_card_innate[card_shuffle[i]];
+	//create_card_shiny=enemy_card_shiny[card_shuffle[i]];
 	create_card_form_value=enemy_card_form_value[card_shuffle[i]];
 	//
 	create_enemy_randomizer=true;
@@ -233,6 +239,7 @@ repeat (card_hand_max+1) { //+1 to replace value when using last card when hand 
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 tooltip_text="";
 tooltip_lines=0;
+
 tooltip_timer=0;
 tooltip_timer_max=300;
 first_turn_attack_warning=false;

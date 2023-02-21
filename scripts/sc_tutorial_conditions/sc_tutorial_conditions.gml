@@ -52,7 +52,6 @@ else if argument0=2 { //draw berry
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if argument0=3 { //play main
 	if ob_control.turn_num=1 and ob_control.card_hold.card_id=019 { return true; } //rattata
-	else if ob_control.turn_num=3 and ob_control.card_hold.card_id=016 { return true; } //pidgey
 	else if ob_control.turn_num=5 { return true; }
 	else if ob_control.turn_num=7 {} //can't play
 	else if ob_control.turn_num=9 { return true; }

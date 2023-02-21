@@ -166,7 +166,7 @@ if (mouse_x >= x && mouse_y >= y + 2 && mouse_x < x + sprite_width && mouse_y < 
         else if (instance_exists(ob_event))
         {
             if (button_id == 0 && ob_event.event_cancelled == false &&
-                (ob_event.event_applied == false || ob_event.evolution_retry == true || ob_event.event_kind == ref_event_levelup || ob_event.event_kind == ref_event_deglyph || ob_event.event_kind == ref_event_evolution))
+                 (ob_event.event_applied == false || ob_event.evolution_retry == true || ob_event.event_kind == ref_event_levelup || ob_event.event_kind == ref_event_deglyph || ob_event.event_kind == ref_event_evolution))
             {
                 ob_event.apply_event = true;
             }
@@ -188,22 +188,22 @@ if (mouse_x >= x && mouse_y >= y + 2 && mouse_x < x + sprite_width && mouse_y < 
         }
         else if (instance_exists(ob_deckbuild))
         {
-            if (button_id <= 4)
+            if (button_id <= 9)
             {
                 ob_deckbuild.reorder_selected = button_id;
                 ob_deckbuild.reorder_swap_standby = ob_deckbuild.reorder_selected;
                 ob_deckbuild.reorder_type = ob_deckbuild.reorder_selected;
             }
-            else if (button_id <= 9)
+            else if (button_id <= 14)
             {
-                ob_deckbuild.deck_setup_load = button_id - 4;
+                ob_deckbuild.deck_setup_load = button_id - 9;
                 ob_deckbuild.reorder_swap_standby = ob_deckbuild.reorder_selected;
                 ob_deckbuild.reorder_selected = 0;
                 ob_deckbuild.reorder_type = ob_deckbuild.reorder_selected;
             }
-            else if (button_id <= 14)
+            else if (button_id <= 19)
             {
-                ob_deckbuild.deck_setup_save = button_id - 9;
+                ob_deckbuild.deck_setup_save = button_id - 14;
                 ob_deckbuild.reorder_swap_standby = ob_deckbuild.reorder_selected;
                 ob_deckbuild.reorder_selected = 0;
                 ob_deckbuild.reorder_type = ob_deckbuild.reorder_selected;
@@ -279,33 +279,48 @@ if (ob_main.cursor_hide == false && mouse_x >= x && mouse_y >= y + 2 && mouse_x 
                 ob_deckbuild.tooltip_text = "Sort cards by hit points.";
                 break;
             case 05:
-                ob_deckbuild.tooltip_text = "Load deck setup 1.";
+                ob_deckbuild.tooltip_text = "Sort cards by type 1.";
                 break;
             case 06:
-                ob_deckbuild.tooltip_text = "Load deck setup 2.";
+                ob_deckbuild.tooltip_text = "Sort cards by type 2.";
                 break;
             case 07:
-                ob_deckbuild.tooltip_text = "Load deck setup 3.";
+                ob_deckbuild.tooltip_text = "Sort cards by shiny.";
                 break;
             case 08:
-                ob_deckbuild.tooltip_text = "Load deck setup 4.";
+                ob_deckbuild.tooltip_text = "Sort cards by holographic.";
                 break;
             case 09:
-                ob_deckbuild.tooltip_text = "Load deck setup 5.";
+                ob_deckbuild.tooltip_text = "Sort cards by berry";
                 break;
             case 10:
-                ob_deckbuild.tooltip_text = "Save deck setup 1.";
+                ob_deckbuild.tooltip_text = "Load deck setup 1.";
                 break;
             case 11:
-                ob_deckbuild.tooltip_text = "Save deck setup 2.";
+                ob_deckbuild.tooltip_text = "Load deck setup 2.";
                 break;
             case 12:
-                ob_deckbuild.tooltip_text = "Save deck setup 3.";
+                ob_deckbuild.tooltip_text = "Load deck setup 3.";
                 break;
             case 13:
-                ob_deckbuild.tooltip_text = "Save deck setup 4.";
+                ob_deckbuild.tooltip_text = "Load deck setup 4.";
                 break;
             case 14:
+                ob_deckbuild.tooltip_text = "Load deck setup 5.";
+                break;
+            case 15:
+                ob_deckbuild.tooltip_text = "Save deck setup 1.";
+                break;
+            case 16:
+                ob_deckbuild.tooltip_text = "Save deck setup 2.";
+                break;
+            case 17:
+                ob_deckbuild.tooltip_text = "Save deck setup 3.";
+                break;
+            case 18:
+                ob_deckbuild.tooltip_text = "Save deck setup 4.";
+                break;
+            case 19:
                 ob_deckbuild.tooltip_text = "Save deck setup 5.";
                 break;
         }

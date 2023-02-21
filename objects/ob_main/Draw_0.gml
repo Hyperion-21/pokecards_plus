@@ -27,12 +27,13 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	var event_sprite_y = 16*13;
 	repeat (var_event_num) {
 		var event_sprite_x=16*(1+event_kind[i][roadmap_area]*2);
-		if event_kind[i][roadmap_area]=ref_event_gymbattle or event_kind[i][roadmap_area]=ref_event_elitebattle or event_kind[i][roadmap_area]=ref_event_championbattle {
-			event_sprite_x=16*(1+13*2); }
-		else if event_kind[i][roadmap_area]=ref_event_tutorial { event_sprite_x=16*(1+0*2); }
-		else if event_kind[i][roadmap_area]=ref_event_grass { event_sprite_x=16*(1+10*2); }
-		else if event_kind[i][roadmap_area]=ref_event_fire { event_sprite_x=16*(1+11*2); }
-		else if event_kind[i][roadmap_area]=ref_event_water { event_sprite_x=16*(1+12*2); }
+		if event_kind[i][roadmap_area]=ref_event_gymbattle or event_kind[i][roadmap_area]=ref_event_elitebattle or event_kind[i][roadmap_area]=ref_event_championbattle or
+		event_kind[i][roadmap_area]=ref_event_legendarybattle{
+			event_sprite_x=16*(1+13*2); event_sprite_y = 208; }
+		else if event_kind[i][roadmap_area]=ref_event_tutorial { event_sprite_x=16*(1+0*2); event_sprite_y = 208; }
+		else if event_kind[i][roadmap_area]=ref_event_grass { event_sprite_x=16*(1+10*2); event_sprite_y = 208; }
+		else if event_kind[i][roadmap_area]=ref_event_fire { event_sprite_x=16*(1+11*2); event_sprite_y = 208; }
+		else if event_kind[i][roadmap_area]=ref_event_water { event_sprite_x=16*(1+12*2);  event_sprite_y = 208; }
 		
 		else if event_kind[i][roadmap_area]=ref_event_cardpack_0 { event_sprite_x=16*(1+13*2); event_sprite_y = 272; }
 		else if event_kind[i][roadmap_area]=ref_event_cardpack_1 { event_sprite_x=16*(1+9*2); event_sprite_y = 240; }
@@ -45,18 +46,25 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 		else if event_kind[i][roadmap_area]=ref_event_cardpack_8 { event_sprite_x=16*(1+11*2); event_sprite_y = 272; }
 		else if event_kind[i][roadmap_area]=ref_event_cardpack_9 { event_sprite_x=16*(1+12*2); event_sprite_y = 272; }
 		
-		else if event_kind[i][roadmap_area]=ref_event_megaevolve { event_sprite_x=16*(1+16*2); }
-		else if event_kind[i][roadmap_area]=ref_event_sacrifice { event_sprite_x=16*(1+14*2); }
-		else if event_kind[i][roadmap_area]=ref_event_campfire { event_sprite_x=16*(1+17*2); }
-		else if event_kind[i][roadmap_area]=ref_event_changeform { event_sprite_x=16*(1+18*2); }
-		else if event_kind[i][roadmap_area]=ref_event_deglyph { event_sprite_x=16*(1+19*2); }
+		else if event_kind[i][roadmap_area]=ref_event_megaevolve { event_sprite_x=16*(1+16*2);  event_sprite_y = 208; }
+		else if event_kind[i][roadmap_area]=ref_event_sacrifice { event_sprite_x=16*(1+14*2);  event_sprite_y = 208;}
+		else if event_kind[i][roadmap_area]=ref_event_campfire { event_sprite_x=16*(1+17*2);  event_sprite_y = 208;}
+		else if event_kind[i][roadmap_area]=ref_event_changeform { event_sprite_x=16*(1+18*2);  event_sprite_y = 208;}
+		else if event_kind[i][roadmap_area]=ref_event_deglyph { event_sprite_x=16*(1+19*2);  event_sprite_y = 208;}
+		else if event_kind[i][roadmap_area]=ref_event_shinycharm { event_sprite_x=496; ; event_sprite_y = 272; }
+		else if event_kind[i][roadmap_area]=ref_event_coin { event_sprite_x=528; ; event_sprite_y = 272; }
+		else if event_kind[i][roadmap_area]=ref_event_delta { event_sprite_x=560; ; event_sprite_y = 272; }
+		else if event_kind[i][roadmap_area]=ref_event_candy { event_sprite_x=592; ; event_sprite_y = 272; }
+		else if event_kind[i][roadmap_area]=ref_event_loophome { event_sprite_x=272; ; event_sprite_y = 272; }
+		else if event_kind[i][roadmap_area]=ref_event_holo_freecard { event_sprite_x=16*(1+14*2); ; event_sprite_y = 272; }
+		else { event_sprite_y = 208;}
 		//
 		sc_drawrectangle(event_button_x[i],event_button_y[i],event_button_x[i]+42,event_button_y[i]+42,global.color_black,global.color_white,2,0.8,0.5,0);
 		draw_sprite_general(sp_sheet,0,event_sprite_x,event_sprite_y,26,27,event_button_x[i]+9,event_button_y[i]+9-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
 		sc_drawtext(event_button_x[i]+22,event_button_y[i]+51,event_name[i][roadmap_area],global.color_white,global.color_black,1,1,0,-1);
 		//
 		if event_kind[i][roadmap_area]=ref_event_battle or event_kind[i][roadmap_area]=ref_event_gymbattle or event_kind[i][roadmap_area]=ref_event_elitebattle or
-		event_kind[i][roadmap_area]=ref_event_championbattle or event_kind[i][roadmap_area]=ref_event_tutorial {
+		event_kind[i][roadmap_area]=ref_event_championbattle or event_kind[i][roadmap_area]=ref_event_legendarybattle or event_kind[i][roadmap_area]=ref_event_tutorial {
 			if trainer_sprite[roadmap_area]<=playericon_max {
 				draw_sprite_general(sp_sheet,0,16*((trainer_sprite[roadmap_area] mod 2)+1),16*(11+trainer_skin[roadmap_area]),16,16,
 				event_button_x[i]+25,event_button_y[i]+27,1,1,0,c_white,c_white,c_white,c_white,1);
@@ -71,7 +79,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 			}
 		}
 		if event_kind[i][roadmap_area]=ref_event_glyph {
-			draw_sprite_general(sp_sheet,0,16*(event_glyph_add[i][roadmap_area]+1),16*6,12,11,event_button_x[i]+29,event_button_y[i]+3,1,1,0,c_white,c_white,c_white,c_white,0.8);
+			draw_sprite_general(sp_sheet,0,16*(ref_glyph_img[event_glyph_add[i][roadmap_area]]-1),16*6,12,11,event_button_x[i]+29,event_button_y[i]+3,1,1,0,c_white,c_white,c_white,c_white,0.8);
 		}
 		//
 		i++;
@@ -79,9 +87,24 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	//
 	draw_set_halign(fa_right);
 	var money_x=road_win_x+237, money_y=road_win_y+2+rel_hud, money_color=global.color_card_light;
+	var lives_x=road_win_x+237, lives_y=road_win_y+2+rel_hud, lives_color=c_white
 	if effect_money_error>0 { money_x+=irandom_range(-2,2); money_y+=irandom_range(-2,2); money_color=global.color_damage; }
 	sc_drawtext(money_x,money_y,"$" + string(money_show),money_color,global.color_black,1,1,0,-1);
+	if (option_state[opt_challenge]= ch_roguelite_easy || option_state[opt_challenge]= ch_roguelite_medium || option_state[opt_challenge] = ch_roguelite_hard || option_state[opt_challenge] = ch_swiftness){
+	var shiny_y=road_win_y+12+rel_hud
+	draw_set_halign(fa_left);
+	sc_drawtext(lives_x - 232,lives_y,"Lives: " + string(player_lives),lives_color,global.color_black,1,1,0,-1);}	
+	else{
+		var shiny_y = lives_y
+		}
+	if shinycharm > 0
+	{
+	draw_set_halign(fa_left);
+	sc_drawtext(lives_x - 232,shiny_y,"Shiny Charm: " + string(shinycharm),lives_color,global.color_black,1,1,0,-1);
+	}
 	//
+	draw_set_halign(fa_left);
+	//sc_drawtext(lives_x - 232,lives_y,"Latest Zone: " + string(latest_zone),lives_color,global.color_black,1,1,0,-1);
 	draw_set_halign(fa_center);
 	var zone_name_text="";
 	if roadmap_area=roadmap_current_max-1 or area_zone=area_zone_max-1 or (area_zone=0 and roadmap_area<roadmap_lab_max and zone_first_lap=true) { zone_name_text=zone_name; }
@@ -115,6 +138,12 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	draw_sprite_general(sp_sheet,0,16*(option_state[opt_playericon]+3),16*11,16,16,road_win_x-2+(bar_amount*228)/100,road_win_y-23-rel_hud,1,1,0,
 	global.color_character,global.color_character,global.color_character,global.color_character,1);
 	draw_sprite_general(sp_sheet,0,16*(option_state[opt_playericon]+3),16*12,16,16,road_win_x-2+(bar_amount*228)/100,road_win_y-23-rel_hud,1,1,0,c_white,c_white,c_white,c_white,1);
+	
+	draw_set_halign(fa_left)
+	draw_set_font(fn_m6x11_L);
+	sc_drawtext(screen_main_x-86,screen_main_y+25,"Change Save",global.color_card_light,global.color_black,1,0.25,0,-1);
+	draw_set_font(fn_m3x6);	
+	
 	//
 	for (var i=0; i<=7; i++;) {
 		if area_zone=i { var zone_icon_alpha=0.8; } else { var zone_icon_alpha=0.4; }
@@ -138,6 +167,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	// OPTIONS
 	if menu_back_options_hover=true { var menu_alpha=1; } else { var menu_alpha=0.5; }
 	draw_sprite_general(sp_sheet,0,16*8,16*9,16,16,screen_options_x+cam_w-32+rel_hud*2,screen_main_y+136,1,1,0,c_white,c_white,c_white,c_white,menu_alpha);
+
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	draw_set_font(fn_matchup); //must be the same font as in mouse check for string width
 	draw_set_halign(fa_left);
@@ -146,7 +176,15 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	repeat (options_total) {
 		if option_focus[i]=true { var option_alpha=1; }
 		else { var option_alpha=0.5; }
-		sc_drawtext(screen_options_x+option_x[i],screen_main_y+option_y[i],option_name[i],global.color_white,global.color_black,option_alpha,option_alpha,0,-1);
+		if i = opt_challenge
+		{	var c_challenge = make_color_rgb(245,105,77)
+			sc_drawtext(screen_options_x+option_x[i],screen_main_y+option_y[i],option_name[i],c_challenge,global.color_black,option_alpha,option_alpha,0,-1);
+			}
+		else 
+		{	
+			sc_drawtext(screen_options_x+option_x[i],screen_main_y+option_y[i],option_name[i],global.color_white,global.color_black,option_alpha,option_alpha,0,-1);
+			}
+		
 		sc_drawtext(screen_options_x+option_x[i]+string_width(option_name[i])+rel_hud*2,screen_main_y+option_y[i],option_state_text[i],
 		global.color_white,global.color_black,option_alpha,option_alpha,0,-1);
 		if i=opt_playericon {
@@ -196,7 +234,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 		draw_sprite_ext(sp_back_pixel,0,bg_preview_x+16*4,bg_preview_y+16*i,16,16,0,global.color_background_tile,option_alpha);
 		draw_sprite_ext(sp_back_pixel,0,bg_preview_x+16*1,bg_preview_y+16*(i+1),16,16,0,global.color_background_tile,option_alpha);
 		draw_sprite_ext(sp_back_pixel,0,bg_preview_x+16*3,bg_preview_y+16*(i+1),16,16,0,global.color_background_tile,option_alpha);
-		draw_sprite_ext(sp_back_pixel,0,bg_preview_x+16*5,bg_preview_y+16*(i+1),16,16,0,global.color_background_tile,option_alpha);
+		draw_sprite_ext(sp_back_pixel,0,bg_preview_x+16*5,bg_preview_y+16*(i+1),16,16,0,global.color_background_tile,option_alpha);		
 	}
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	// DECK
@@ -221,11 +259,14 @@ if credits_screen=true {
 	sc_drawrectangle(-2,-2,room_width+2,room_height+2,global.color_black,c_white,0,0.9,0,0);
 	sc_drawtext(screen_options_x+cam_w/2,screen_main_y+53,
 	"PCL+ is a mod made by Hyperion_21, Tukurai, DarkAnarchist, 2fast4you98, and Blizzow.\n\n" +
+	"PCL++ is a mod made by Criminon\n" +
 	"Pokemon belongs to Nintendo and The Pokemon Company." + "\n" +
 	"This is a fangame made just for fun and it's in no way related to Nintendo." + "\n\n" +
 	"Official art/sprites by GAME FREAK." + "\n" +
 	"Official music by ICHIRO SHIMAKURA (HUDSON SOFT)." + "\n" +
-	"Custom art/sprites by MOODYTAIL." + "\n" +
+	"Custom art/sprites by MOODYTAIL, Tukurai and Criminon" + "\n" +
+	"Pokemon Gen 9 icons by Ezerart" + "\n" +
+	"Variant icons by Porygato" + "\n" +
 	"Sound effects by MOODYTAIL and TOM VIAN." + "\n" +
 	"Fonts by DANIEL LINSSEN and EEVE SOMEPX." + "\n\n" +
 	"Created by MOODYTAIL." + "\n" +
@@ -247,9 +288,10 @@ if ending_screen=true {
 			}
 		}
 		//
+		draw_set_font(fn_m6x11_L);
+		draw_set_halign(fa_left);
+		sc_drawtext(screen_main_x+(cam_w/2),(screen_main_y+cam_h/2),"Or is it?",global.color_white,global.color_black,1,1,0,-1);
 		draw_set_font(fn_m3x6);
-		draw_set_halign(fa_right);
-		sc_drawtext(screen_main_x+cam_w-3,screen_main_y+cam_h-14,"PHOENIX: 35.176861, 158.977194",global.color_white,global.color_black,0.75,0.25,0,-1);
 	}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -295,3 +337,4 @@ draw_sprite_ext(sp_border_shading,0,camera_get_view_x(view_camera[0]),camera_get
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if cursor_hide=false { var mouse_alpha=1; } else { var mouse_alpha=0.5; }
 draw_sprite_general(sp_sheet,0,16*(mouse_cursor+1),16*0,16,16,mouse_x-5,mouse_y-5,1,1,0,c_white,c_white,c_white,c_white,mouse_alpha);
+
