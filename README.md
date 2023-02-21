@@ -4,7 +4,7 @@
 THIS IS NOT CREATED BY THE ORIGINAL GAME'S CREATOR NOR THE POKEMON COMPANY! THIS IS A MOD OF A FANGAME! FIND THE ORIGINAL GAME [HERE](https://moodytail.itch.io/pocket-crystal-league)! ALL CREDIT TO THEM!
 
 Mod contents:
-- Added Generation 3 - 8.
+- Added Generation 3 - 9.
 - Included all alternative forms. (Alolan/Galarian/Hisui)
 - Boosters contain 5 cards.
 - Free card event gives 5 options.
@@ -14,6 +14,11 @@ Mod contents:
 - Added a Deglyph event.
 - Changed evolution event to be multi use.
 - Included chances to get other generation starters from starting decks.
+- Added Gigantamax.
+- Added 4 new difficulty modes.
+- Added 2 new environment cards.
+- Added 2 new glyphs.
+- Fixed Legendaries
 
 To build this mod:
 - Clone the repo onto your computer
