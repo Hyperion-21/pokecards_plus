@@ -1,5 +1,5 @@
-# Pocket Crystal League +
-### A mod by Hyperion_21, Tukurai, and DarkAnarchist
+# Pocket Crystal League ++
+### A mod by Hyperion_21, Tukurai, DarkAnarchist and Criminon.
 
 THIS IS NOT CREATED BY THE ORIGINAL GAME'S CREATOR NOR THE POKEMON COMPANY! THIS IS A MOD OF A FANGAME! FIND THE ORIGINAL GAME [HERE](https://moodytail.itch.io/pocket-crystal-league)! ALL CREDIT TO THEM!
 
