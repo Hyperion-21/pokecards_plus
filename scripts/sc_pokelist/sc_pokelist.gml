@@ -907,7 +907,7 @@ switch (card_id) {
 		card_grid_x=11; card_grid_y=9; break;
 	case 091:
 		card_name="Cloyster";
-		card_has_taunt = true;
+		
 		card_stage=2;
 		card_type_a=03; card_type_b=13;
 		card_base_hp=50; card_base_atk=95+85; card_base_def=180+45;
@@ -951,7 +951,7 @@ switch (card_id) {
 		card_base_hp=160; card_base_atk=65+130; card_base_def=60+75;
 		card_grid_x=1; card_grid_y=10;} break;
 	case 095:
-		card_has_taunt = true;
+		
 		card_name="Onix";
 		card_stage=1; card_evo[0]=208;
 		card_type_a=10; card_type_b=09;
@@ -1883,7 +1883,7 @@ switch (card_id) {
 		card_grid_x=1; card_grid_y=22; break;
 	case 208:
 		card_can_mega=true;
-		card_has_taunt = true;
+		
 		if card_form_value<=999{
 		card_name="Steelix";
 		card_stage=2;
@@ -1938,7 +1938,7 @@ switch (card_id) {
 		card_base_hp=70; card_base_atk=150+65; card_base_def=140+100;
 		card_grid_x=8; card_grid_y=22;} break;
 	case 213:
-		card_has_taunt = true;
+		
 		card_name="Shuckle";
 		card_stage=1;
 		card_type_a=11; card_type_b=10;
@@ -2672,7 +2672,7 @@ switch (card_id) {
 	case 0305: card_name="Lairon";  card_stage=2; card_evo[0]=306; card_starter=false; card_type_a=15; card_type_b=10; card_base_hp=60; card_base_atk=90+50; card_base_def=140+50; card_grid_x=15; card_grid_y=29; break;
 	case 0306: 
 		card_can_mega=true;
-		card_has_taunt = true;
+		
 		if card_form_value<=999 {
 		card_name="Aggron"; 
 		card_stage=3; card_starter=false; 
@@ -2912,7 +2912,7 @@ switch (card_id) {
 		card_grid_x=1; card_grid_y=36;}
 		break;
 		
-	case 0377: card_name="Regirock"; card_has_taunt = true; card_stage=1; card_starter=false; card_enigma=true; card_type_a=10; card_type_b=-1; card_base_hp=80; card_base_atk=100+50; card_base_def=200+100; card_grid_x=2; card_grid_y=36; break;
+	case 0377: card_name="Regirock";  card_stage=1; card_starter=false; card_enigma=true; card_type_a=10; card_type_b=-1; card_base_hp=80; card_base_atk=100+50; card_base_def=200+100; card_grid_x=2; card_grid_y=36; break;
 	case 0378: card_name="Regice";  card_stage=1; card_starter=false; card_enigma=true; card_type_a=13; card_type_b=-1; card_base_hp=80; card_base_atk=50+100; card_base_def=100+200; card_grid_x=4; card_grid_y=36; break;
 	case 0379: card_name="Registeel";  card_stage=1; card_starter=false; card_enigma=true; card_type_a=15; card_type_b=-1; card_base_hp=80; card_base_atk=75+75; card_base_def=150+150; card_grid_x=5; card_grid_y=36; break;
 	case 0380: 
@@ -3000,7 +3000,7 @@ switch (card_id) {
 	case 0385: card_name="Jirachi"; card_stage=1; card_starter=false; card_enigma=true; card_type_a=15; card_type_b=7; card_base_hp=100; card_base_atk=100+100; card_base_def=100+100; card_grid_x=1; card_grid_y=37; break;
 	case 0386: card_form_change=true; card_has_forms=true; card_name="Deoxys"; card_stage=1; card_starter=false; card_enigma=true; card_type_a=7; card_type_b=-1; card_base_hp=50; 
 	if card_form_value<250 {card_has_rush=true; card_base_atk=150+150; card_base_def=50+50; card_grid_x=4; card_grid_y=37;}
-	else if card_form_value<500 {card_has_taunt = true; card_base_atk=180+180; card_base_def=20+20; card_grid_x=2; card_grid_y=37;}
+	else if card_form_value<500 { card_base_atk=180+180; card_base_def=20+20; card_grid_x=2; card_grid_y=37;}
 	else if card_form_value<750 {card_has_rush=true; card_base_atk=70+70; card_base_def=160+160; card_grid_x=3; card_grid_y=37;}
 	else {card_has_rush=true; card_base_atk=95+95; card_base_def=90+90; card_grid_x=5; card_grid_y=37;} break;
 	
@@ -3151,7 +3151,7 @@ switch (card_id) {
 		card_grid_x=12; card_grid_y=2; break;
 	case 411:
 		card_name="Bastiodon";
-		card_has_taunt = true;
+		
 		card_stage=2; card_fossil=true;
 		card_type_a=10; card_type_b=15;
 		card_base_hp=60; card_base_atk=52+47; card_base_def=168+138;
@@ -4496,7 +4496,7 @@ switch (card_id) {
 	case 0712: card_name="Bergmite"; card_stage=1;  card_evo[0]=713; card_type_a=13; card_type_b=-1; card_base_hp=55; card_base_atk=69+32; card_base_def=85+35; card_grid_x=11; card_grid_y=31; break;
 	case 0713: 
 		card_name="Avalugg"; 
-		card_has_taunt = true;
+		
 		card_stage=2;
 		card_has_forms=true;	
 		if card_form_value<500 { 
@@ -4796,7 +4796,7 @@ switch (card_id) {
 	case 0802: card_name="Marshadow"; card_has_rush = true; card_stage=1;  card_enigma=true; card_type_a=6; card_type_b=16; card_base_hp=90; card_base_atk=125+90; card_base_def=80+90; card_grid_x=10; card_grid_y=40; break;
 	case 0803: card_name="Poipole"; card_stage=1; card_evo[0]=804; card_enigma=true; card_type_a=12; card_type_b=-1; card_base_hp=67; card_base_atk=73+73; card_base_def=67+67; card_grid_x=12; card_grid_y=40; break;
 	case 0804: card_name="Naganadel"; card_has_rush = true; card_stage=2;  card_enigma=true; card_type_a=12; card_type_b=14; card_base_hp=73; card_base_atk=73+127; card_base_def=73+73; card_grid_x=13; card_grid_y=40; break;
-	case 0805: card_name="Stakataka"; card_has_taunt = true; card_stage=1;  card_enigma=true; card_type_a=10; card_type_b=15; card_base_hp=61; card_base_atk=131+53; card_base_def=211+101; card_grid_x=14; card_grid_y=40; break;
+	case 0805: card_name="Stakataka";  card_stage=1;  card_enigma=true; card_type_a=10; card_type_b=15; card_base_hp=61; card_base_atk=131+53; card_base_def=211+101; card_grid_x=14; card_grid_y=40; break;
 	case 0806: card_name="Blacephalon"; card_stage=1;  card_enigma=true; card_type_a=2; card_type_b=16; card_base_hp=53; card_base_atk=127+151; card_base_def=53+79; card_grid_x=1; card_grid_y=41; break;
 	case 0807: card_name="Zeraora"; card_has_rush = true; card_stage=1;  card_enigma=true; card_type_a=4; card_type_b=-1; card_base_hp=88; card_base_atk=112+102; card_base_def=75+80; card_grid_x=3; card_grid_y=41; break;
 	
@@ -6089,22 +6089,22 @@ switch (card_id) {
 		if card_shiny = true {card_sheet=sp_shinypoke_e;}else{card_sheet=sp_poke_e;}
 		card_stage=1; card_secret=true;
 		card_type_a=19; card_type_b=05;
-		card_base_hp=106; card_base_atk=140+140; card_base_def=130+150;
+		card_base_hp=106; card_base_atk=280; card_base_def=130+150;
 		card_grid_x=15; card_grid_y=8; break;
 	case 2004:
 		card_name="Primal Dialga"; 
 		if card_shiny = true {card_sheet=sp_shinypoke_e;}else{card_sheet=sp_poke_e;}
 		card_stage=1; card_secret=true;
 		card_type_a=15; card_type_b=14;
-		card_base_hp=150; card_base_atk=150+150; card_base_def=120+120;
+		card_base_hp=150; card_base_atk=280; card_base_def=120+120;
 		card_grid_x=1; card_grid_y=9; break;
 	case 2005:
-		card_has_taunt = true;
+		
 		card_name="Crystal Onix"; 
 		card_stage=1; card_secret=true;
 		if card_shiny = true {card_sheet=sp_shinypoke_e;}else{card_sheet=sp_poke_e;}
 		card_type_a=20; card_type_b=-1;
-		card_base_hp=145; card_base_atk=45+30; card_base_def=255+95;
+		card_base_hp=145; card_base_atk=100; card_base_def=255+95;
 		card_grid_x=2; card_grid_y=9; break;
 	case 2006:
 		card_name="Animon"; 
@@ -6118,14 +6118,14 @@ switch (card_id) {
 		card_stage=1; card_secret=true;
 		if card_shiny = true {card_sheet=sp_shinypoke_e;}else{card_sheet=sp_poke_e;}
 		card_type_a=00; card_type_b=-1;
-		card_base_hp=150; card_base_atk=0; card_base_def=100+100;
+		card_base_hp=150; card_base_atk=0; card_base_def=200;
 		card_grid_x=4; card_grid_y=9; break;
 	case 2008:
 		card_name="Venustoise"; 
 		card_stage=1; card_secret=true;
 		if card_shiny = true {card_sheet=sp_shinypoke_e;}else{card_sheet=sp_poke_e;}
 		card_type_a=01; card_type_b=03;
-		card_base_hp=80+80; card_base_atk=100+85; card_base_def=105+100;
+		card_base_hp=80+80; card_base_atk=250; card_base_def=280;
 		card_grid_x=5; card_grid_y=9; break;
 	case 2009:
 		card_has_rush = true;
@@ -6133,7 +6133,7 @@ switch (card_id) {
 		card_stage=1; card_secret=true;
 		if card_shiny = true {card_sheet=sp_shinypoke_e;}else{card_sheet=sp_poke_e;}
 		card_type_a=19; card_type_b=07;
-		card_base_hp=126; card_base_atk=190+154; card_base_def=70+120;
+		card_base_hp=126; card_base_atk=300; card_base_def=70+120;
 		card_grid_x=6; card_grid_y=9; break;
 	case 2010:
 		card_name="Pink Nidoking"; 
@@ -6147,7 +6147,7 @@ switch (card_id) {
 		card_stage=1; card_secret=true;
 		if card_shiny = true {card_sheet=sp_shinypoke_e;}else{card_sheet=sp_poke_e;}
 		card_type_a=16; card_type_b=-1;
-		card_base_hp=105; card_base_atk=180+180; card_base_def=100+100;
+		card_base_hp=105; card_base_atk=240; card_base_def=100+100;
 		card_grid_x=8; card_grid_y=9; break;
 	case 2012:
 		card_has_rush = true;
@@ -6155,7 +6155,7 @@ switch (card_id) {
 		card_stage=1; card_secret=true;
 		if card_shiny = true {card_sheet=sp_shinypoke_e;}else{card_sheet=sp_poke_e;}
 		card_type_a=17; card_type_b=22;
-		card_base_hp=105; card_base_atk=135+135; card_base_def=90+90;
+		card_base_hp=105; card_base_atk=135+135; card_base_def=180;
 		card_grid_x=9; card_grid_y=9; break;
 	case 2013:
 		card_has_rush = true;
@@ -6163,7 +6163,7 @@ switch (card_id) {
 		card_stage=1; card_secret=true;
 		if card_shiny = true {card_sheet=sp_shinypoke_e;}else{card_sheet=sp_poke_e;}
 		card_type_a=07; card_type_b=15;
-		card_base_hp=126; card_base_atk=190+154; card_base_def=70+120;
+		card_base_hp=126; card_base_atk=240; card_base_def=260;
 		card_grid_x=10; card_grid_y=9; break;
 	case 2014:
 		card_name="Surfing Pikachu"; 
@@ -6171,7 +6171,7 @@ switch (card_id) {
 		card_stage=1; card_secret=true;
 		if card_shiny = true {card_sheet=sp_shinypoke_e;}else{card_sheet=sp_poke_e;}
 		card_type_a=04; card_type_b=03;
-		card_base_hp=45; card_base_atk=80+75; card_base_def=100+100;
+		card_base_hp=55; card_base_atk=140; card_base_def=220;
 		card_grid_x=11; card_grid_y=9; break;
 	case 2015:
 		card_name="Flying Pikachu"; 
@@ -6179,47 +6179,47 @@ switch (card_id) {
 		card_stage=1; card_secret=true;
 		if card_shiny = true {card_sheet=sp_shinypoke_e;}else{card_sheet=sp_poke_e;}
 		card_type_a=04; card_type_b=05;
-		card_base_hp=45; card_base_atk=80+75; card_base_def=100+100;
+		card_base_hp=45; card_base_atk=160; card_base_def=190;
 		card_grid_x=12; card_grid_y=9; break;
 	case 2016:
 		card_name="Clone Blastoise"; 
 		card_stage=1; card_secret=true;
 		if card_shiny = true {card_sheet=sp_shinypoke_e;}else{card_sheet=sp_poke_e;}
 		card_type_a=03; card_type_b=-1;
-		card_base_hp=120; card_base_atk=100+100; card_base_def=135+135;
+		card_base_hp=120; card_base_atk=200; card_base_def=260;
 		card_grid_x=13; card_grid_y=9; break;
 	case 2017:
 		card_name="Clone Venusaur"; 
 		card_stage=1; card_secret=true;
 		if card_shiny = true {card_sheet=sp_shinypoke_e;}else{card_sheet=sp_poke_e;}
 		card_type_a=01; card_type_b=-1;
-		card_base_hp=115; card_base_atk=115+115; card_base_def=115+115;
+		card_base_hp=115; card_base_atk=220; card_base_def=220;
 		card_grid_x=14; card_grid_y=9; break;
 	case 2018:
 		card_name="Clone Charizard"; 
 		card_stage=1; card_secret=true;
 		if card_shiny = true {card_sheet=sp_shinypoke_e;}else{card_sheet=sp_poke_e;}
 		card_type_a=02; card_type_b=-1;
-		card_base_hp=100; card_base_atk=135+135; card_base_def=100+100;
+		card_base_hp=100; card_base_atk=250; card_base_def=200;
 		card_grid_x=15; card_grid_y=9; break;
 		
 	//
 	case 2501:
-		card_has_taunt = true;
+		card_has_taunt=true;
 		card_name="Elm Tree";
 		card_stage=1; card_environment=true;
 		card_type_a=01; card_type_b=-1;
 		card_base_hp=255; card_base_atk=0; card_base_def=90; //hp 4-28, def 0-3
 		card_grid_x=1; card_grid_y=14; break;
 	case 2502:
-		card_has_taunt = true;
+		card_has_taunt=true;
 		card_name="Spruce Tree";
 		card_stage=1; card_environment=true;
 		card_type_a=01; card_type_b=-1;
 		card_base_hp=210; card_base_atk=0; card_base_def=150; //hp 3-25, def 0-4
 		card_grid_x=2; card_grid_y=14; break;
 	case 2503:
-		card_has_taunt = true;
+		card_has_taunt=true;
 		card_name="Rock";
 		card_stage=1; card_environment=true;
 		card_type_a=10; card_type_b=-1;
@@ -6248,10 +6248,15 @@ switch (card_id) {
 		card_base_hp=100; card_base_atk=100; card_base_def=100; //hp 3-20, def 1-5
 		card_grid_x=5; card_grid_y=14; 
 		break;
-	if card_base_def >= 180
+
+}
+	if card_base_def >= 220
 	{
 		card_has_taunt=true;
 	}
-}
+	if card_has_rush = true
+	{
+		card_has_taunt = false;
+	}
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 }

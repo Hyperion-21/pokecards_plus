@@ -19,7 +19,7 @@ else if argument0=2 { //DEF
 }
 //
 if card_secret=false { return_value+=(return_value*((card_innate-1)/(innate_max-1))*0.42); } //max x1.42
-else { return_value+=(return_value*((card_innate-1)/(innate_max-1))*1.5); } //secret: max x2.5
+else { return_value+=(return_value*((card_innate-1)/(innate_max-1))*1.2); } //secret: max x2.5
 //
 return_value=round(return_value);
 if return_value<min_value { return_value=min_value; }

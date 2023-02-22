@@ -83,12 +83,13 @@ if anypoke_playable=true and ob_main.playing_tutorial=false {
 	var var_shield=ref_glyph_shield;
 	var var_medic=ref_glyph_medic;
 	var var_fork=ref_glyph_fork;
+	var var_rush=ref_glyph_rush;
 	//
 	if enemycard_playplan_id=-1 { AI_play_plan(-1,-1,0,0,0,0,0,0,0,0,1,-1,0,-1,0,0); } //ANY CARD > ANY > WIN
 	//
 	if turn_num<=2 {
-		if enemycard_playplan_id=-1 { AI_play_plan(3,-1,0,0,0,1,0,0,0,0,0,-1,0,-1,0,0); } //HIGHEST VALUE > ANY > RECEIVE NO DAMAGE
-		if enemycard_playplan_id=-1 { AI_play_plan(2,1,0,0,1,0,1,0,0,0,0,-1,0,-1,0,1); } //HIGHEST DEF > VS > TURN ADVANTAGE
+		if enemycard_playplan_id=-1 { AI_play_plan(3,-1,0,0,0,1,0,0,0,0,0,var_rush,0,-1,0,0); } //HIGHEST VALUE > ANY > RECEIVE NO DAMAGE
+		if enemycard_playplan_id=-1 { AI_play_plan(2,1,0,0,1,0,1,0,0,0,0,var_rush,0,-1,0,1); } //HIGHEST DEF > VS > TURN ADVANTAGE
 	}
 	else if random_value<40 { //AGGRESIVE: DIRECT
 		if enemycard_playplan_id=-1 { AI_play_plan(3,1,0,0,0,1,0,0,0,1,0,-1,0,-1,0,0); } //HIGHEST VALUE > VS > BLOCK WIN AND RECEIVE NO DAMAGE

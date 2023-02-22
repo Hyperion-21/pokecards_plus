@@ -25,8 +25,8 @@ else if credits_screen=true and (mouse_check_button_pressed(mb_left) or mouse_ch
 	credits_screen=false;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
-if ending_static_timer>0 { ending_static_timer-=0.003; }
-else if ending_static_timer = 1
+
+if ending_static_timer = 1
 {
 	area_zone = area_zone_max; /// send you to mewtwo area
 	roadmap_area=0;
@@ -36,6 +36,7 @@ else if ending_static_timer = 1
 	sc_data_save(true);
 	ending_static_timer-=0.003;
 }
+else if ending_static_timer>0 { ending_static_timer-=0.003; }
 else if ending_screen=true and ending_static_timer<=0 and ending_static_timer!=-1 {
 	game_restart();
 	//ending_screen=false;

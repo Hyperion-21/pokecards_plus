@@ -367,7 +367,7 @@ else
 			else if card_id=235 and card_glyph_a!=ref_glyph_sketch { card_glyph_a=ref_glyph_sketch; } //smeargle
 			else if card_id=2504 and card_glyph_a!=ref_glyph_determination{ card_glyph_a=ref_glyph_determination; } //red
 			else if card_id=2505 and card_glyph_a!=ref_glyph_command{ card_glyph_a=ref_glyph_command; } //blue
-			else if (card_has_rush = true and card_has_taunt = true) and (card_glyph_a!=ref_glyph_rush or card_glyph_b!=ref_glyph_taunt) { card_glyph_a=ref_glyph_rush; card_glyph_a=ref_glyph_taunt; } //rush and taunt	
+			else if (card_has_rush = true and card_has_taunt = true) and (card_glyph_a!=ref_glyph_rush or card_glyph_b!=ref_glyph_taunt) { card_glyph_a=ref_glyph_rush; card_glyph_b=ref_glyph_taunt; } //rush and taunt	
 			else if card_has_rush = true and card_glyph_a!=ref_glyph_rush{ card_glyph_a=ref_glyph_rush; } //rush 
 			else if card_has_taunt = true and card_glyph_a!=ref_glyph_taunt{ card_glyph_a=ref_glyph_taunt; } //taunt
 		}
@@ -382,7 +382,7 @@ else
 			else if card_id=235 { card_glyph_a=ref_glyph_sketch; } //smeargle
 			else if card_id=2504 { card_glyph_a=ref_glyph_determination; } //red
 			else if card_id=2505 { card_glyph_a=ref_glyph_command; } //blue
-			else if (card_has_rush = true and card_has_taunt = true) and (card_glyph_a!=ref_glyph_rush or card_glyph_b!=ref_glyph_taunt) { card_glyph_a=ref_glyph_rush; card_glyph_a=ref_glyph_taunt; } //rush and taunt
+			else if (card_has_rush = true and card_has_taunt = true) and (card_glyph_a!=ref_glyph_rush or card_glyph_b!=ref_glyph_taunt) { card_glyph_a=ref_glyph_rush; card_glyph_b=ref_glyph_taunt; } //rush and taunt
 			else if card_has_rush = true and card_glyph_a!=ref_glyph_rush{ card_glyph_a=ref_glyph_rush; } //rush 
 			else if card_has_taunt = true and card_glyph_a!=ref_glyph_taunt{ card_glyph_a=ref_glyph_taunt; } //taunt
 			//

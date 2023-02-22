@@ -241,14 +241,14 @@ for (var i=0; i<=999; i++;) {
 
 event_cost[ref_event_cardpack]=200;
 event_cost[ref_event_berry]=0;
-event_cost[ref_event_levelup]=100;
+event_cost[ref_event_levelup]=50;
 #macro levelup_cost_multiplier 50 //100 150 200 250 300 350 400 450 500
 event_cost[ref_event_evolution]=500;
 
 event_cost[ref_event_megaevolve]=500;
-event_cost[ref_event_shinycharm]=5000;
-event_cost[ref_event_delta]=4000;
-event_cost[ref_event_holo_freecard]=3000;
+event_cost[ref_event_shinycharm]=4000;
+event_cost[ref_event_delta]=3000;
+event_cost[ref_event_holo_freecard]=2000;
 event_cost[ref_event_cardpack_0]=5000;
 event_cost[ref_event_cardpack_1]=300;
 event_cost[ref_event_cardpack_2]=300;
