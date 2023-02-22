@@ -154,3 +154,6 @@ if berries_total > 0 {
 	    i++;
 	}
 }
+
+//draw_set_halign(fa_left)
+//draw_text(x+15,y + 80, card_bonus_atk);

@@ -141,7 +141,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	
 	draw_set_halign(fa_left)
 	draw_set_font(fn_m6x11_L);
-	sc_drawtext(screen_main_x-86,screen_main_y+25,"Change Save",global.color_card_light,global.color_black,1,0.25,0,-1);
+	sc_drawtext(screen_main_x-89,screen_main_y+25,"Change Save",global.color_card_light,global.color_black,1,0.25,0,-1);
 	draw_set_font(fn_m3x6);	
 	
 	//

@@ -81,20 +81,19 @@ with (argument1) {
 					if sc_glyph_check(id,ref_glyph_adaptability,true) { damage_extra_dealt+=2; } //glyph: adaptability
 					//
 					if card_enemy=true and ob_main.option_state[opt_challenge]=ch_dominance and ob_main.playing_tutorial=false { damage_extra_dealt=card_target.card_full_hp; }
-				}
+					}
 					if sc_glyph_check(id,ref_glyph_underdog,true) && card_target.card_hp > card_hp { damage_extra_dealt+=2; } //glyph: underdog
 					if sc_glyph_check(id,ref_glyph_bless,true) { damage_extra_dealt+= 1; } //glyph: bless
 					if sc_glyph_check(id,ref_glyph_rush,true) && ob_control.turn_num <= 2 { damage_extra_dealt+= ceil((card_atk*1.5)-card_atk) } //glyph: rush
 				//damage_dealt+=damage_extra_dealt;
-				if sc_glyph_check(card_target,ref_glyph_taunt,true) && (card_target.card_hp = card_target.hp_max) && (card_target.card_hp-damage_dealt <= 0)
+				if sc_glyph_check(card_target,ref_glyph_taunt,true) && (card_hp = card_full_hp) && (card_full_hp!=1 ) && (card_hp-damage_dealt <= 0)
 				{
-					card_target.card_hp = 1;
+					card_target.card_hp-= 1;
 				}
 				else
 				{
-					card_target.card_hp-=damage_dealt;
+					card_target.card_hp-=(damage_dealt + damage_extra_dealt);
 				}
-					
 				card_target.effect_damaged=1;
 				var damage_num_id=instance_create_layer(card_target.x+29,card_target.y+18,"instances",ob_damage_num);
 				damage_num_id.damage_num=damage_dealt;//-damage_extra_dealt;

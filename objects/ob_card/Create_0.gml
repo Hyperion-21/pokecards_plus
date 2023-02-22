@@ -3,6 +3,11 @@ card_shiny = false;
 card_holo = false;
 card_delta = false;
 card_delta_type = -1;
+card_bonus_atk = 0;
+card_glyph_a = -1;
+card_glyph_b = -1;
+card_glyph_c = -1;
+card_full_atk = -1;
 randomize(); //random seed
 card_gen = -1;
 count[0] = 0;
@@ -16,7 +21,6 @@ jumpcount = 0
 jumpy = 0
 jumping = 1;
 
-card_glyph_a = -1;
 
 dupe = 0;
 dupemax = 1000;
