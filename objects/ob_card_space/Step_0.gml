@@ -60,18 +60,18 @@ else if (instance_exists(ob_event) && occupy_id == -1 && ob_main.cursor_hide == 
         }
         else if (ob_event.event_kind == ref_event_evolution)
         {
-            ob_event.tooltip_text = "// EVOLUTION //\nThe Pokemon evolves into its next form.";
-            ob_event.tooltip_lines = 2;
+            ob_event.tooltip_text = "// EVOLUTION //\nThe Pokemon evolves into its next form.\nOnly one Pokemon can be evolved at a time.";
+            ob_event.tooltip_lines = 3;
         }
         else if (ob_event.event_kind == ref_event_changeform)
         {
-            ob_event.tooltip_text = "// CHANGE FORM //\nThe Pokemon changes into its alternate form.";
-            ob_event.tooltip_lines = 2;
+            ob_event.tooltip_text = "// CHANGE FORM //\nThe Pokemon changes into its alternate form.\nOnly one Pokemon can be form changed.";
+            ob_event.tooltip_lines = 3;
         }
         else if (ob_event.event_kind == ref_event_candy)
         {
-                ob_event.tooltip_text = "// RARE CANDY //\nThe Pokemon gains 4 hearts if not maxed.";
-                ob_event.tooltip_lines = 2;
+                ob_event.tooltip_text = "// RARE CANDY //\nThe Pokemon gains 4 hearts if not already\nmaxed out.";
+                ob_event.tooltip_lines = 3;
         }
         else if (ob_event.event_kind == ref_event_megaevolve)
         {
@@ -91,7 +91,7 @@ else if (instance_exists(ob_event) && occupy_id == -1 && ob_main.cursor_hide == 
         }
         else if (ob_event.event_kind == ref_event_deglyph)
         {
-            ob_event.tooltip_text = "// DE-GLYPH //\nRemove non-unique glyphs from Pokemon.";
+            ob_event.tooltip_text = "// DE-GLYPH //\nRemove non-innate glyphs from Pokemon.";
             ob_event.tooltip_lines = 2;
         }
         else if (ob_event.event_kind == ref_event_tribute)

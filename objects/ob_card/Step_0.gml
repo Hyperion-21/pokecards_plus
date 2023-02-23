@@ -253,7 +253,7 @@ else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spr
 		if ob_event.show_deck=false {
 			if card_face=false {
 				if (card_cat=1 and card_id=3003) or
-				(card_cat=0 and (card_stage>1 or (card_glyph_a!=-1 and card_glyph_a<glyph_common_amount) or
+				(card_cat=0 and (card_stage>1 or card_pseudo = true or (card_glyph_a!=-1 and card_glyph_a<glyph_common_amount) or
 				(card_glyph_b!=-1 and card_glyph_b<glyph_common_amount) or (card_glyph_c!=-1 and card_glyph_c<glyph_common_amount))) {
 					if card_shiny = true{
 					sc_playsound(sn_shiny,50,false,false);
@@ -376,7 +376,10 @@ else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spr
 				card_played=false;
 				instance_position(x,y,ob_card_space).occupy_id=-1;
 				ob_event.evolution_retry=false;
-				ob_event.used = true;
+				if ob_event.event_applied = true
+				{
+					ob_event.used = true;
+				}
 			}
 		}
 	}
@@ -440,7 +443,8 @@ else if (mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spri
 			if mouse_check_button_pressed(mb_right) { sc_playsound(sn_card,50,false,false); }
 			//
 						
-						if card_shiny = false && card_holo = false && card_delta = false && card_glyph_a = -1 && card_enigma = false && 
+						if card_shiny = false && card_holo = false && card_delta = false && ((card_glyph_a = -1 or sc_glyph_bound(ref_glyph_taunt) or sc_glyph_bound(ref_glyph_rush) or
+						sc_glyph_bound(ref_glyph_transform) or sc_glyph_bound(ref_glyph_sketch) or sc_glyph_bound(ref_glyph_mist)) && card_glyph_b = -1) && card_enigma = false && 
 						card_starter = false && card_can_mega = false && card_secret = false && card_environment = false && massdel = true
 						{
 

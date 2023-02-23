@@ -366,6 +366,26 @@ else
 				}
 				else
 				{
+						if card_type_b = -1
+						{
+							var reroll = 1;
+						}
+						else 
+						{
+							var reroll = choose(0,0,1);
+						}
+					if card_type_a = (03 or 13 or 16 or 17 or 00 or 14) && reroll = 1// oran berry
+					{
+						card_delta_type = choose(02,07,08,06,09,10,01,04,12,11,15,05); // lum or leppa
+					}
+					else if card_type_a = (02 or 07 or 08 or 06 or 09 or 10)  && reroll = 1// oran berry
+					{
+						card_delta_type = choose(03,13,16,17,00,14,01,04,12,11,15,05); // lum or leppa
+					}
+					if card_type_a = (01 or 04 or 12 or 11 or 15 or 05)  && reroll = 1// oran berry
+					{
+						card_delta_type = choose(02,07,08,06,09,10,03,13,16,17,00,14); // lum or leppa
+					}
 					card_type_a = card_delta_type;
 					card_type_b = -1;
 				}
@@ -479,9 +499,9 @@ else
 					else if card_stage!=3 and choose_id_stage_3=true { card_rarity_check=false; }
 					else if (card_stage>1 or card_enigma=true) and choose_id_normal=true { card_rarity_check=false; }
 				}
-				else {
-					if card_enigma=true { card_rarity_check=false; }
-				}
+				else if ob_main.newgameplus = true{
+						if card_evo[0] != -1  { card_rarity_check=false; }
+						}
 				//
 				if card_pseudo=true and allow_id_pseudo=false { card_rarity_check=false; }
 				if card_fossil=true and allow_id_fossil=false { card_rarity_check=false; }
@@ -504,6 +524,8 @@ else
 				//
 				if card_rarity_check=true and enemy_randomizer=true and card_environment=false {
 					card_rarity_check=false;
+					
+					choose_id_stage_3=true { card_rarity_check=false; }
 					//
 					for (var i=0; i<=17; i++;) {
 						var type_condition_chance=irandom(99);
@@ -514,7 +536,21 @@ else
 				}
 			}
 		}
-
+		if enemy_randomizer=true && ob_main.newgameplus = true
+		{
+			if card_can_mega = true
+			{
+				card_form_value = 1000;
+			}
+			else if card_has_forms = true
+			{
+				if card_form_value < 500
+				{
+					card_form_value = irandom_range(500,999);
+				}
+			}
+		
+		}
 	} until (random_card=false or (card_rarity_check=true and card_name!=""));
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	sc_card_level_stats_all(true,true);
@@ -543,4 +579,4 @@ else if card_cat=1 {
 	}
 }
 
-old_id = card_id;
+old_id = card_id; /// for transform

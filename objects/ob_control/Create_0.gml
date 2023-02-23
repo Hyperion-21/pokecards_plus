@@ -192,7 +192,6 @@ repeat (enemycard_maindeck_total) {
 	create_card_glyph_b=enemy_card_glyph_b[card_shuffle[i]];
 	create_card_glyph_c=enemy_card_glyph_c[card_shuffle[i]];
 	create_card_innate=enemy_card_innate[card_shuffle[i]];
-	//create_card_shiny=enemy_card_shiny[card_shuffle[i]];
 	create_card_form_value=enemy_card_form_value[card_shuffle[i]];
 	//
 	create_enemy_randomizer=true;
@@ -200,6 +199,8 @@ repeat (enemycard_maindeck_total) {
 	//
 	enemycard_maindeck[i]=instance_create_layer(cam_x+cam_w-67,cam_y-100,"instances",ob_card);
 	enemycard_maindeck[i].card_enemy=true;
+
+	
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————

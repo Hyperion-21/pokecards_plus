@@ -260,7 +260,7 @@ if roadmap_generated=false {
 			[20, ref_event_candy, true], //330
 			[55, ref_event_payout, true], //25
 			[30, ref_event_freecard, false], // 25
-			[17, ref_event_holo_freecard, true], //0
+			[10, ref_event_holo_freecard, true], //0
 			[1, ref_event_shinycharm, true], //0
 			[5, ref_event_delta, false], //0
 			[5, ref_event_cardpack_1, false], //0
@@ -272,11 +272,11 @@ if roadmap_generated=false {
 			[5, ref_event_cardpack_7, false], //0
 			[5, ref_event_cardpack_8, false], //0
 			[5, ref_event_cardpack_9, false], //0
-			[100, ref_event_cardpack, false], //50
+			[80, ref_event_cardpack, false], //50
 			[10, ref_event_berry, true], //100
 			[139, ref_event_levelup, false],//200
-			[50, ref_event_evolution, false], //50
-			[42, ref_event_glyph, false], //35
+			[70, ref_event_evolution, false], //50
+			[49, ref_event_glyph, false], //35
 			[10, ref_event_deglyph, false], //10
 			[15, ref_event_tribute, false], //15
 			[15, ref_event_sacrifice, false], //15

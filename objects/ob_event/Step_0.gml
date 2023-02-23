@@ -239,13 +239,6 @@ if (apply_event) {
 				            sc_card_level_stats_all(true, true);
 				        }
 						
-						
-						
-
-							
-						
-						
-						
 						var old_glyph = -1;
 						if card_id_in_space[0].card_has_rush = true and card_id_in_space[0].card_glyph_a != ref_glyph_rush { 
 							if card_id_in_space[0].card_glyph_a != -1 && card_id_in_space[0].card_glyph_a != ref_glyph_taunt
@@ -297,6 +290,7 @@ if (apply_event) {
 					{
 						sc_playsound(sn_hurt,50,false,false);
 					}
+					
 			}
 			else {evolution_position = 0;}
 		break;

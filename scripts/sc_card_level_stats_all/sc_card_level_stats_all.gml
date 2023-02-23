@@ -29,10 +29,6 @@ if argument1=true {
 		card_cost_total++;
 	}
 	
-//	else if card_secret = true
-//	{
-//		card_cost_total++;
-//	}
 	else if card_enigma = true
 	{
 		card_cost_total++;

@@ -268,7 +268,9 @@ if argument0<=100 {
 	}
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 		for (var i=0; i<enemycard_maindeck_total; i++;) {
-		sc_enemy_deck_addcard(i,-1,level,glyph_a,glyph_b,glyph_c,innate,-1); }
+		if ob_main.newgameplus = true {sc_enemy_deck_addcard(i,-1,level,choose(ref_glyph_rush,ref_glyph_taunt),irandom_range(0,11),irandom_range(12,22),choose(3,4),-1); }
+		else {sc_enemy_deck_addcard(i,-1,level,glyph_a,glyph_b,glyph_c,innate,-1); }
+			}
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 else if argument0=101 { //TUTORIAL (PROF. ASPEN)

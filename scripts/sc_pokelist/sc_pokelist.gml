@@ -1532,11 +1532,20 @@ switch (card_id) {
 		card_base_hp=60; card_base_atk=62+63; card_base_def=80+80;
 		card_grid_x=2; card_grid_y=15; break;
 	case 154:
+		card_can_mega=true;
+		if card_form_value<=999{
 		card_name="Meganium";
 		card_stage=3; card_starter=true;
 		card_type_a=01; card_type_b=-1;
 		card_base_hp=80; card_base_atk=82+83; card_base_def=100+100;
-		card_grid_x=3; card_grid_y=15; break;
+		card_grid_x=3; card_grid_y=15; }
+		else if card_form_value=1000{
+		card_name="M-Meganium";
+		if card_shiny = true {card_sheet=sp_shinypoke_e;}else{card_sheet=sp_poke_e;}
+		card_stage=3; card_starter=true; card_enigma=true;
+		card_type_a=01; card_type_b=-1;
+		card_base_hp=80; card_base_atk=100+100; card_base_def=120+120;
+		card_grid_x=1; card_grid_y=13;} break;
 	case 155:
 		card_name="Cyndaquil";
 		card_stage=1; card_evo[0]=156; card_starter=true;
@@ -1550,21 +1559,29 @@ switch (card_id) {
 		card_base_hp=58; card_base_atk=64+80; card_base_def=58+65;
 		card_grid_x=5; card_grid_y=15; break;
 	case 157:
-		card_name="Typhlosion";
-		card_stage=3; card_starter=true;
+		card_can_mega=true;
 		card_has_forms=true;	
 		if card_form_value<500 {
+			card_name="Typhlosion";
+			card_stage=3; card_starter=true;
 			card_type_a=02; card_type_b=-1;
 			card_base_hp=78; card_base_atk=84+109; card_base_def=78+85;
-			card_grid_x=6; card_grid_y=15; 
-		}
-		else {
+			card_grid_x=6; card_grid_y=15; }
+		else if card_form_value < 1000 {
+			card_name="Typhlosion";
+			card_stage=3; card_starter=true;
 			if card_shiny = true {card_sheet=sp_shinypoke_d;}else{card_sheet=sp_poke_d;}
 			card_type_a=02; card_type_b=16;
 			card_base_hp=73; card_base_atk=84+119; card_base_def=78+85;
-			card_grid_x=13; card_grid_y=10; 
-		}
-		break;
+			card_grid_x=13; card_grid_y=10; }
+		else if card_form_value=1000{
+			card_has_rush = true;
+			card_name="M-Typhlosion";
+			if card_shiny = true {card_sheet=sp_shinypoke_e;}else{card_sheet=sp_poke_e;}
+			card_stage=3; card_starter=true; card_enigma=true;
+			card_type_a=02; card_type_b=-1;
+			card_base_hp=78; card_base_atk=100+170; card_base_def=78+85;
+			card_grid_x=2; card_grid_y=13;} break;
 	case 158:
 		card_name="Totodile";
 		card_stage=1; card_evo[0]=159; card_starter=true;
@@ -1578,11 +1595,20 @@ switch (card_id) {
 		card_base_hp=65; card_base_atk=80+59; card_base_def=80+63;
 		card_grid_x=8; card_grid_y=15; break;
 	case 160:
+		card_can_mega=true;
+		if card_form_value<=999{
 		card_name="Feraligatr";
 		card_stage=3; card_starter=true;
 		card_type_a=03; card_type_b=-1;
 		card_base_hp=85; card_base_atk=105+79; card_base_def=100+83;
-		card_grid_x=10; card_grid_y=15; break;
+		card_grid_x=10; card_grid_y=15;}
+		else if card_form_value=1000{
+			card_name="M-Feraligatr";
+			if card_shiny = true {card_sheet=sp_shinypoke_e;}else{card_sheet=sp_poke_e;}
+			card_stage=3; card_starter=true; card_enigma=true;
+			card_type_a=03; card_type_b=-1;
+			card_base_hp=85; card_base_atk=180+59; card_base_def=80+63;
+			card_grid_x=3; card_grid_y=13;} break;
 	case 161:
 		card_name="Sentret";
 		card_stage=1; card_evo[0]=162;

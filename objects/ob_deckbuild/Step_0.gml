@@ -52,7 +52,7 @@ if reorder_type>-1 {
 		else if reorder_type=3 { order_number=deck_card_all[i].card_full_def; }
 		else if reorder_type=4 { order_number=deck_card_all[i].card_full_hp; }
 		else if reorder_type=5 { order_number=deck_card_all[i].card_type_a; }
-		else if reorder_type=6 { order_number=deck_card_all[i].card_type_b; }
+		else if reorder_type=6 { order_number=deck_card_all[i].card_delta_type; }
 		else if reorder_type=7 { order_number=deck_card_all[i].card_shiny; }
 		else if reorder_type=8 { order_number=deck_card_all[i].card_holo; }
 		else if reorder_type=9 { order_number=deck_card_all[i].card_berry; }
