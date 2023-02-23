@@ -93,13 +93,27 @@ if enemy_maindeck_size>40 {
 	enemy_maindeck_size=40;
 }
 //
-maindeck_size_min=6+area_zone*3; //6 9 12 15 18 21 24 27 (30)
-maindeck_size_min_full=6+latest_zone*3;
+if newgameplus = false
+{
+	var areabase = area_zone;
+	var zonebase = latest_zone;
+maindeck_size_min=6+areabase*3; //6 9 12 15 18 21 24 27 (30)
+maindeck_size_min_full=6+zonebase*3;
+}
+else
+{
+	var areabase = 10;
+	var zonebase = 10;	
+maindeck_size_min=40; //6 9 12 15 18 21 24 27 (30)
+maindeck_size_min_full=40;
+}
+
+
 //
-money_payout=money_payout_base+money_payout_area_bonus*area_zone-money_payout_penalty_multiplier*(latest_zone-area_zone);
-money_prize_badge=money_badge_base+money_badge_area_bonus*area_zone;
-money_prize_min=round(0.9*(round(power(money_prize_power_base+money_prize_power_area_bonus*area_zone,money_prize_power_n))-money_prize_penalty_multiplier*(latest_zone-area_zone)));
-money_prize_max=round(1.1*(round(power(money_prize_power_base+money_prize_power_area_bonus*area_zone,money_prize_power_n))-money_prize_penalty_multiplier*(latest_zone-area_zone)));
+money_payout=money_payout_base+money_payout_area_bonus*areabase-money_payout_penalty_multiplier*(zonebase-areabase);
+money_prize_badge=money_badge_base+money_badge_area_bonus*areabase;
+money_prize_min=round(0.9*(round(power(money_prize_power_base+money_prize_power_area_bonus*areabase,money_prize_power_n))-money_prize_penalty_multiplier*(zonebase-areabase)));
+money_prize_max=round(1.1*(round(power(money_prize_power_base+money_prize_power_area_bonus*areabase,money_prize_power_n))-money_prize_penalty_multiplier*(zonebase-areabase)));
 //
 if option_state[opt_challenge]=ch_resolution || option_state[opt_challenge]=ch_swiftness{
 	money_payout=round(money_payout*2);
@@ -237,8 +251,39 @@ if roadmap_generated=false {
 		
 
 
-		
-		if area_zone < 2
+		if newgameplus = true
+		{ /// 885 total
+			var events = [
+			[30, ref_event_megaevolve, false], //10
+			[30, ref_event_changeform, false], //10
+			[250, ref_event_battle, true], //330
+			[20, ref_event_candy, true], //330
+			[55, ref_event_payout, true], //25
+			[30, ref_event_freecard, false], // 25
+			[17, ref_event_holo_freecard, true], //0
+			[1, ref_event_shinycharm, true], //0
+			[5, ref_event_delta, false], //0
+			[5, ref_event_cardpack_1, false], //0
+			[5, ref_event_cardpack_2, false], //0
+			[5, ref_event_cardpack_3, false], //0
+			[5, ref_event_cardpack_4, false], //0   
+			[5, ref_event_cardpack_5, false], //0
+			[5, ref_event_cardpack_6, false], //0
+			[5, ref_event_cardpack_7, false], //0
+			[5, ref_event_cardpack_8, false], //0
+			[5, ref_event_cardpack_9, false], //0
+			[100, ref_event_cardpack, false], //50
+			[10, ref_event_berry, true], //100
+			[139, ref_event_levelup, false],//200
+			[50, ref_event_evolution, false], //50
+			[42, ref_event_glyph, false], //35
+			[10, ref_event_deglyph, false], //10
+			[15, ref_event_tribute, false], //15
+			[15, ref_event_sacrifice, false], //15
+			[20, ref_event_campfire, true] //10
+		];
+		}
+		else if area_zone < 2
 		{ /// 885 total
 			var events = [
 			[330, ref_event_battle, true], //330
@@ -254,16 +299,16 @@ if roadmap_generated=false {
 			[20, ref_event_campfire, true] //10
 		];
 		}
-		else if area_zone < 9
+		else if area_zone < 9 && coin_skin < 8
 		{ /// 885 total
 			var events = [
 			[15, ref_event_megaevolve, false], //10
 			[15, ref_event_changeform, false], //10
-			[326, ref_event_battle, true], //330
+			[325, ref_event_battle, true], //330
 			[35, ref_event_payout, true], //25
 			[24, ref_event_freecard, false], // 25
 			[1, ref_event_holo_freecard, true], //0
-			[7-coin_skin, ref_event_coin, true],//0
+			[8-coin_skin, ref_event_coin, true],//0
 			[1, ref_event_shinycharm, true], //0
 			[4, ref_event_delta, false], //0
 			[5, ref_event_cardpack_1, false], //0
@@ -286,17 +331,48 @@ if roadmap_generated=false {
 			[20, ref_event_campfire, true] //10
 		];
 		}
-		else
+		else if area_zone < 9 && coin_skin >= 8
+		{ /// 885 total
+			var events = [
+			[15, ref_event_megaevolve, false], //10
+			[15, ref_event_changeform, false], //10
+			[333, ref_event_battle, true], //330
+			[35, ref_event_payout, true], //25
+			[24, ref_event_freecard, false], // 25
+			[1, ref_event_holo_freecard, true], //0
+			[1, ref_event_shinycharm, true], //0
+			[4, ref_event_delta, false], //0
+			[5, ref_event_cardpack_1, false], //0
+			[5, ref_event_cardpack_2, false], //0
+			[5, ref_event_cardpack_3, false], //0
+			[5, ref_event_cardpack_4, false], //0
+			[5, ref_event_cardpack_5, false], //0
+			[5, ref_event_cardpack_6, false], //0
+			[5, ref_event_cardpack_7, false], //0
+			[5, ref_event_cardpack_8, false], //0
+			[5, ref_event_cardpack_9, false], //0
+			[50, ref_event_cardpack, false], //50
+			[68, ref_event_berry, true], //100
+			[159, ref_event_levelup, false],//200
+			[50, ref_event_evolution, false], //50
+			[35, ref_event_glyph, false], //35
+			[10, ref_event_deglyph, false], //10
+			[15, ref_event_tribute, false], //15
+			[15, ref_event_sacrifice, false], //15
+			[20, ref_event_campfire, true] //10
+		];
+		}
+		else if  coin_skin < 8
 		{ /// 885 total
 			var events = [
 			[30, ref_event_megaevolve, false], //10
 			[30, ref_event_changeform, false], //10
-			[280, ref_event_battle, true], //330
+			[279, ref_event_battle, true], //330
 			[20, ref_event_candy, true], //330
 			[35, ref_event_payout, true], //25
 			[20, ref_event_freecard, false], // 25
 			[4, ref_event_holo_freecard, true], //0
-			[7-coin_skin, ref_event_coin, true],//0
+			[8-coin_skin, ref_event_coin, true],//0
 			[1, ref_event_shinycharm, true], //0
 			[5, ref_event_delta, false], //0
 			[5, ref_event_cardpack_1, false], //0
@@ -313,6 +389,38 @@ if roadmap_generated=false {
 			[159, ref_event_levelup, false],//200
 			[50, ref_event_evolution, false], //50
 			[35+coin_skin, ref_event_glyph, false], //35
+			[10, ref_event_deglyph, false], //10
+			[15, ref_event_tribute, false], //15
+			[15, ref_event_sacrifice, false], //15
+			[20, ref_event_campfire, true] //10
+		];
+		}
+		else
+		{ /// 885 total
+			var events = [
+			[30, ref_event_megaevolve, false], //10
+			[30, ref_event_changeform, false], //10
+			[280, ref_event_battle, true], //330
+			[20, ref_event_candy, true], //330
+			[35, ref_event_payout, true], //25
+			[20, ref_event_freecard, false], // 25
+			[4, ref_event_holo_freecard, true], //0
+			[1, ref_event_shinycharm, true], //0
+			[5, ref_event_delta, false], //0
+			[5, ref_event_cardpack_1, false], //0
+			[5, ref_event_cardpack_2, false], //0
+			[5, ref_event_cardpack_3, false], //0
+			[5, ref_event_cardpack_4, false], //0
+			[5, ref_event_cardpack_5, false], //0
+			[5, ref_event_cardpack_6, false], //0
+			[5, ref_event_cardpack_7, false], //0
+			[5, ref_event_cardpack_8, false], //0
+			[5, ref_event_cardpack_9, false], //0
+			[50, ref_event_cardpack, false], //50
+			[53, ref_event_berry, true], //100
+			[159, ref_event_levelup, false],//200
+			[50, ref_event_evolution, false], //50
+			[42, ref_event_glyph, false], //35
 			[10, ref_event_deglyph, false], //10
 			[15, ref_event_tribute, false], //15
 			[15, ref_event_sacrifice, false], //15
@@ -529,7 +637,7 @@ if roadmap_get_details=true {
 			else if event_kind[ii][i]=ref_event_sacrifice { event_name[ii][i]="Sacrifice"; }
 			else if event_kind[ii][i]=ref_event_megaevolve { event_name[ii][i]="Transcend\n$" + string(event_cost[ref_event_megaevolve]); }
 			else if event_kind[ii][i]=ref_event_campfire { event_name[ii][i]="Campfire"; }
-			else if event_kind[ii][i]=ref_event_changeform { event_name[ii][i]="Change form"; }
+			else if event_kind[ii][i]=ref_event_changeform { event_name[ii][i]="Change\nForm"; }
 			else if event_kind[ii][i]=ref_event_deglyph { event_name[ii][i]="De-Glyph"; }
 			
 			else if event_kind[ii][i]=ref_event_cardpack_0 { event_name[ii][i]="Secret!\n$" + string(event_cost[ref_event_cardpack_0]); }
@@ -600,7 +708,7 @@ if roadmap_get_details=true {
 			}
 			else if event_kind[ii][i]=ref_event_legendarybattle {
 				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nMinimum deck size: " + string(maindeck_size_min) + " cards" +
-				"\nBattle HP: " + string(battle_hp[battlehp+1]*2) + " (" + string(battle_hp[battlehp+1]) + "/" + string(battle_hp[battlehp+1]) + ")";
+				"\nBattle HP: " + string(battle_hp[battlehp+1]*2) + " (" + string(player_hp=hp_max-((hp_max*1.5)-hp_max)) + "/" + string(enemy_hp=hp_max+((hp_max*1.5)-hp_max)) + ")";
 				event_description_lines[ii][i]=3;
 			}
 			//
@@ -753,8 +861,9 @@ else if event_transition>-1 and fade_black>=1 {
 	}
 	else {
 		roadmap_area=0;
-		roadmap_generated=false;
 		zone_first_lap=false;
+		roadmap_generated=false;
+
 	}
 	//
 	if area_zone<area_zone_max-1 or roadmap_area<=roadmap_current_max-roadmap_league_max { sc_data_save(false); }
@@ -1034,11 +1143,11 @@ if roadmap_area=roadmap_current_max && area_zone != area_zone_max {
 }
 else if roadmap_area=roadmap_current_max && area_zone = area_zone_max
 {
+	zone_first_lap=false;
 	area_zone = 0;
 	latest_zone=area_zone_max;
 	roadmap_area=2;
 	roadmap_generated=false;
-	zone_first_lap=false;
 	newgameplus = true;
 	sc_data_save(false);
 	sc_data_save(true);
@@ -1196,6 +1305,7 @@ if button_reset_config!=-1 {
 		//
 		audio_sound_gain(ms_main,(option_state[opt_music]/100),0);
 		audio_sound_gain(ms_league,(option_state[opt_music]/100),0);
+		game_restart();
 	}
 }
 if button_delete_data!=-1 {
@@ -1369,6 +1479,7 @@ repeat (options_total) {
 		else if option_state[i]= coin_5 { option_state_text[i]="PIKACHU"; }
 		else if option_state[i]= coin_6 { option_state_text[i]="METAGROSS"; }
 		else if option_state[i]= coin_7 { option_state_text[i]="AEGISLASH"; } 
+		else if option_state[i]= coin_8 { option_state_text[i]="ZOROARK"; } 
 	}
 	else if i=opt_autodeck {
 		if option_state[i]=true { option_state_text[i]="GO TO DECK"; }

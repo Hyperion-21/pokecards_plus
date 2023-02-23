@@ -70,7 +70,7 @@ else if (instance_exists(ob_event) && occupy_id == -1 && ob_main.cursor_hide == 
         }
         else if (ob_event.event_kind == ref_event_candy)
         {
-                ob_event.tooltip_text = "// RARE CANDY //\nThe Pokemon gains 4 hearts if not maxxed.";
+                ob_event.tooltip_text = "// RARE CANDY //\nThe Pokemon gains 4 hearts if not maxed.";
                 ob_event.tooltip_lines = 2;
         }
         else if (ob_event.event_kind == ref_event_megaevolve)
@@ -91,7 +91,7 @@ else if (instance_exists(ob_event) && occupy_id == -1 && ob_main.cursor_hide == 
         }
         else if (ob_event.event_kind == ref_event_deglyph)
         {
-            ob_event.tooltip_text = "// DE-GLYPH //\nRemove non-unique glyphs from pokemon.";
+            ob_event.tooltip_text = "// DE-GLYPH //\nRemove non-unique glyphs from Pokemon.";
             ob_event.tooltip_lines = 2;
         }
         else if (ob_event.event_kind == ref_event_tribute)
@@ -105,7 +105,7 @@ else if (instance_exists(ob_event) && occupy_id == -1 && ob_main.cursor_hide == 
             else if (id == ob_event.event_space_id[1])
             {
                 ob_event.tooltip_text = "// TRIBUTE //\nTransfers the intrinsic strength of one Pokemon into another." +
-                    "\nThe card placed here will receive a boost to its innate parameters.";
+                    "\nThe card placed here will gain one heart from the weakened Pokemon.";
                 ob_event.tooltip_lines = 3;
             }
         }
@@ -114,13 +114,13 @@ else if (instance_exists(ob_event) && occupy_id == -1 && ob_main.cursor_hide == 
             if (id == ob_event.event_space_id[0])
             {
                 ob_event.tooltip_text = "// SACRIFICE //\nTransfers glyphs from one Pokemon into another." +
-                    "\nThe card placed here will be lost if\nits intrinsic strength is too low.";
+                    "\nThe card placed here will be exhausted if it has no hearts.\nIt will lose 1 heart and glyph at a time.";
                 ob_event.tooltip_lines = 4;
             }
             else if (id == ob_event.event_space_id[1])
             {
                 ob_event.tooltip_text = "// SACRIFICE //\nTransfers glyphs from one Pokemon into another." +
-                    "\nThe card placed here will gain as many glyphs as it can,\nstarting from the top of the sacrifice.";
+                    "\nThe card placed here will gain 1 heart and as many glyphs\nas it can, starting from the last slot of the sacrifice.";
                 ob_event.tooltip_lines = 4;
             }
         }

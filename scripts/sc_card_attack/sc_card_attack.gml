@@ -32,8 +32,8 @@ with (argument1) {
 				}
 			}
 			else if (sc_glyph_check(id,ref_glyph_piercing,true)){  //checks to make sure if piercing is active, taunt is also active to work
-				if argument0=true && ob_control.card_space_id[card_space_slot-6].occupy_id != -1 { if sc_glyph_check(ob_control.card_space_id[card_space_slot-6].occupy_id,ref_glyph_taunt,true) {card_target_fork_a = ob_control.card_space_id[card_space_slot-6].occupy_id; }}
-				else if argument0=true && ob_control.card_space_id[card_space_slot+4].occupy_id != -1  { if sc_glyph_check(ob_control.card_space_id[card_space_slot+4].occupy_id,ref_glyph_taunt,true) {card_target_fork_a=ob_control.card_space_id[card_space_slot+4].occupy_id; }}	
+				//if argument0=true && ob_control.card_space_id[card_space_slot-6].occupy_id != -1 { if sc_glyph_check(ob_control.card_space_id[card_space_slot-6].occupy_id,ref_glyph_taunt,true) {card_target_fork_a = ob_control.card_space_id[card_space_slot-6].occupy_id; }}
+				//else if argument0=true && ob_control.card_space_id[card_space_slot+4].occupy_id != -1  { if sc_glyph_check(ob_control.card_space_id[card_space_slot+4].occupy_id,ref_glyph_taunt,true) {card_target_fork_a=ob_control.card_space_id[card_space_slot+4].occupy_id; }}	
 			
 			
 				if argument0=true and card_space_slot>5 and ob_control.card_space_id[card_space_slot-6].occupy_id !=- 1 {if argument0=true and sc_glyph_check(ob_control.card_space_id[card_space_slot-6].occupy_id,ref_glyph_taunt,true)
@@ -59,13 +59,13 @@ with (argument1) {
 				}
 				else if (sc_glyph_check(id,ref_glyph_piercing,true)) && ((argument0=true and ob_control.card_space_id[card_space_slot-5].occupy_id!=-1) or
 				(argument0=false and ob_control.card_space_id[card_space_slot+5].occupy_id!=-1)){ //glyph: piercing attack is true but also taunt
-				if (argument0=true and ob_control.card_space_id[card_space_slot-5].occupy_id != -1) {sc_glyph_check(ob_control.card_space_id[card_space_slot-5].occupy_id,ref_glyph_taunt,true) { card_target=ob_control.card_space_id[card_space_slot-5].occupy_id; }}
-				else if (argument0=false and ob_control.card_space_id[card_space_slot+5].occupy_id != -1) {if sc_glyph_check(ob_control.card_space_id[card_space_slot+5].occupy_id,ref_glyph_taunt,true) { card_target=ob_control.card_space_id[card_space_slot+5].occupy_id; }}
-				else {
-					card_target = -1;
-					}
+				if (argument0=true and ob_control.card_space_id[card_space_slot-5].occupy_id != -1) {if sc_glyph_check(ob_control.card_space_id[card_space_slot-5].occupy_id,ref_glyph_taunt,true) { card_target=ob_control.card_space_id[card_space_slot-5].occupy_id; }
+					else { card_target = -1;}
+				}				
+				else if (argument0=false and ob_control.card_space_id[card_space_slot+5].occupy_id != -1) {if sc_glyph_check(ob_control.card_space_id[card_space_slot+5].occupy_id,ref_glyph_taunt,true) { card_target=ob_control.card_space_id[card_space_slot+5].occupy_id; }
+					else { card_target = -1;}
+				}
 			}
-		//
 		do {
 			if sc_glyph_check(id,ref_glyph_fork,true) { //glyph: fork attack
 				if attack_cycle=2 { card_target=card_target_fork_a; }
@@ -86,9 +86,9 @@ with (argument1) {
 					if sc_glyph_check(id,ref_glyph_bless,true) { damage_extra_dealt+= 1; } //glyph: bless
 					if sc_glyph_check(id,ref_glyph_rush,true) && ob_control.turn_num <= 2 { damage_extra_dealt+= ceil((card_atk*1.5)-card_atk) } //glyph: rush
 				//damage_dealt+=damage_extra_dealt;
-				if sc_glyph_check(card_target,ref_glyph_taunt,true) && (card_hp = card_full_hp) && (card_full_hp!=1 ) && (card_hp-damage_dealt <= 0)
+				if sc_glyph_check(card_target,ref_glyph_taunt,true) && (card_target.card_hp = card_target.card_full_hp) && (card_target.card_full_hp != 1 ) && (card_target.card_hp-damage_dealt <= 0)
 				{
-					card_target.card_hp-= 1;
+					card_target.card_hp = 1;
 				}
 				else
 				{

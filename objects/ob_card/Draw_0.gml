@@ -186,9 +186,43 @@ if card_shiny = true
 	
 	
 	//SPRITE
-	if(card_innate >= 0 || !card_chomp)
+	if(card_innate >= 0 || !card_chomp) && card_has_animate = false
 	{
 		draw_sprite_general(card_sheet,0,65*(card_grid_x-1)+1,33*(card_grid_y-1)+1,64,32,draw_x-4,draw_y+jumpy+3,1,1,0,c_white,c_white,c_white,c_white,1);
+	} else if card_has_animate = true
+	{
+		var spr = anim_sp;
+
+		
+		anim_speed = 0.2;
+		anim_index += anim_speed; // Advance the image index based on the animation speed
+		if (anim_index >= sprite_get_number(spr)) 
+			{
+			  anim_index = 0; // Reset to the first frame when we reach the end of the animation
+			}
+		if sprite_get_width(spr) <= 47
+		{
+			var spr_width = sprite_get_width(spr);
+			var add_spr = floor(sprite_get_width(spr)/5);
+		}
+		else
+		{
+			var spr_width = 47;
+			var add_spr = 0;
+		}
+		if sprite_get_height(spr) <= 32
+		{
+			var spr_height = sprite_get_height(spr)/2;
+		}
+		else
+		{
+			var spr_height = 32;			
+		}
+		draw_sprite_general(spr,floor(anim_index),0,spr_height,spr_width,32,draw_x+5+add_spr,draw_y+5,1,1,0,c_white,c_white,c_white,c_white,1);
+		if card_shiny = true
+		{
+			draw_sprite_general(sp_sheet,0,48,22,32,12,draw_x+12,draw_y+33,1,1,0,c_white,c_white,c_white,c_white,1);
+		}
 	}
 	//
 	//TYPES

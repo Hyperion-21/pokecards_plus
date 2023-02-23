@@ -8,6 +8,7 @@ card_glyph_a = -1;
 card_glyph_b = -1;
 card_glyph_c = -1;
 card_full_atk = -1;
+card_has_animate = false;
 randomize(); //random seed
 card_gen = -1;
 count[0] = 0;
@@ -15,18 +16,21 @@ count[1] = 0;
 count[2] = 0;
 marked = false;
 
-jumpmax = -5
-jumptimer = irandom_range(50,1000)
-jumpcount = 0
-jumpy = 0
+jumpmax = -5;
+jumptimer = irandom_range(50,1000);
+jumpcount = 0;
+jumpy = 0;
 jumping = 1;
+jumpfloor = choose(0.5,2);
 
 
 dupe = 0;
-dupemax = 1000;
+
 card_berry = -1;
+card_animate = false;
 
 holo_index = irandom_range(0,21);
+anim_index = irandom_range(0,5);
 
 //
 if instance_exists(ob_control) { var reference_id=ob_control; }
@@ -52,6 +56,7 @@ if instance_exists(ob_main){
 	var baby_chance = ob_main.event_card_addition_chance[event_card_type_baby];
 	var shiny_chance = ob_main.shiny_chance;
 	var delta_chance = ob_main.delta_chance;
+	var animate_chance = ob_main.animate_chance;
 }
 	
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -97,6 +102,7 @@ if card_cat=0 {
 	var random_group_chance=irandom(9999);
 	var random_shiny_chance=irandom(8192);
 	var random_delta_chance=irandom(8192);
+	var random_animate_chance=irandom(8192);
 var poke_floor, poke_max;
 
 if reference_id = ob_event
@@ -342,6 +348,11 @@ else
 		}
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		sc_pokelist();
+		
+		if random_animate_chance < animate_chance && card_has_animate = true
+		{
+			card_animate = true;			
+		}
 
 		if card_has_rush = true and card_has_taunt = true { card_glyph_a=ref_glyph_rush; card_glyph_b=ref_glyph_taunt; } //rush and taunt
 		else if card_has_rush = true and card_glyph_a!=ref_glyph_rush { card_glyph_a=ref_glyph_rush; } //rush	

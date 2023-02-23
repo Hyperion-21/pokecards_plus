@@ -8,8 +8,7 @@ apply_event = false;
 event_applied = false;
 event_cancelled = false;
 card_gen = -1;
-
-duplicate = false;
+used = false;
 
 levelup_new_hp = 0;
 levelup_new_atk = 0;
@@ -462,7 +461,7 @@ switch (event_kind){
 		var card_pool_gen_3_4
 		var card_pool_gen_5_6
 		var card_pool_gen_7_8
-		var card_pool_random = [[10, irandom_range(1,normal_poke_id_max)]];
+
 		var fire = false;
 		var grass = false;
 		var water = false;
@@ -503,49 +502,33 @@ switch (event_kind){
 		}
 		//
 		//
-		var card_pool_compiled = [card_pool_gen_1_2, card_pool_gen_3_4, card_pool_gen_5_6, card_pool_gen_7_8, card_pool_random];
+		var card_pool_compiled = [card_pool_gen_1_2, card_pool_gen_3_4, card_pool_gen_5_6, card_pool_gen_7_8];
 		
 		create_card_cat=0;
 		repeat (creatures_num) {
-			create_card_id = sc_determine_starter_card(i, card_pool_compiled);
+			if i != 5
+			{ create_card_id = sc_determine_starter_card(i, card_pool_compiled); 
+				
+					create_card_level=1;
+					create_card_glyph_a=-1;
+					create_card_glyph_b=-1;
+					create_card_glyph_c=-1;
+					create_card_innate=1;
+					create_card_shiny=-1;
+					create_card_holo=-1;
+					create_card_delta=false;
+					create_card_delta_type=-1;
+					create_card_type_a=-1;
+					create_card_type_b=-1;
+					// Leave forms low so no one gets alolan rattata. (requires leppa berries due to dark typing.)
+					create_card_form_value=0;
+				var card_x=screen_main_x+83+(72*i), card_y=screen_main_y+104-47; 
 			
-			create_card_level=1;
-			create_card_glyph_a=-1;
-			create_card_glyph_b=-1;
-			create_card_glyph_c=-1;
-			create_card_innate=1;
-			create_card_shiny=-1;
-			create_card_holo=-1;
-			create_card_delta=-1;
-			create_card_delta_type=-1;
-			create_card_type_a=-1;
-			create_card_type_b=-1;
-			// Leave forms low so no one gets alolan rattata. (requires leppa berries due to dark typing.)
-			create_card_form_value=0;
-			//
-			// If run from Gamemaker and test is true.
-			if(RUN_FROM_IDE and test){
-				create_card_level=10;
-				create_card_glyph_a=-1;
-				create_card_glyph_b=-1;
-				create_card_glyph_c=-1;
-				create_card_innate=4;
-				create_card_shiny = -1;
-				create_card_holo = -1;	
-				create_card_delta=-1;
-				create_card_delta_type=-1;
-				create_card_type_a=-1;
-				create_card_type_b=-1;
-				create_card_form_value=irandom(999);
-			}
-			//
-			//
-			var card_x=screen_main_x+83+(72*i), card_y=screen_main_y+104-47; 
-			
-			instance_create_layer(card_x,card_y,"instances",ob_card);		
-			i++;
+				instance_create_layer(card_x,card_y,"instances",ob_card);	
+				i++;
+			} 
+
 		}
-	
 		i = 0;
 		create_card_cat=1;
 		repeat (berries_num){

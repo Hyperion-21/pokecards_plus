@@ -119,7 +119,7 @@ textbox_char_pos=0;
 #macro money_badge_base 200 //200 325 450 575 700 825 950 1075 1200 (minimum should be enough for a card pack)
 #macro money_badge_area_bonus 125
 #macro sell_value_multiplier 2.5 //bankers rounding
-#macro tutorial_payout 600
+#macro tutorial_payout 600000
 
 
 
@@ -227,6 +227,7 @@ event_card_weight[event_card_group_stage_3] = 100; //100
 shiny_chance = 10; // out of 8192
 shinycharm_chance = 400;
 delta_chance = 50 // out of 8192
+animate_chance = 10 // out of 8192
 
 // Chance in 100 to be added to possible common selection
 event_card_addition_chance[event_card_type_pseudo] = 50;
@@ -241,7 +242,7 @@ for (var i=0; i<=999; i++;) {
 
 event_cost[ref_event_cardpack]=200;
 event_cost[ref_event_berry]=0;
-event_cost[ref_event_levelup]=50;
+event_cost[ref_event_levelup]=100;
 #macro levelup_cost_multiplier 50 //100 150 200 250 300 350 400 450 500
 event_cost[ref_event_evolution]=500;
 
@@ -377,6 +378,7 @@ ref_glyph_img[106] = 27;
 #macro coin_5 5
 #macro coin_6 6
 #macro coin_7 7
+#macro coin_8 8
 //
 for (var i=0; i<options_total; i++;) {
 	if i=opt_fullscreen { option_name[i]="Fullscreen: "; }

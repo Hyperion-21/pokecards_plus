@@ -116,32 +116,32 @@ if argument1=true {
 					{
 						card_cost[1] = 0;
 						card_cost_total_type[0] = 2;
-						card_cost_total_type[1] = -1;
-						card_cost_total_type[2] = -1;
-						card_cost_total_type[3] = -1;
+						card_cost_total_type[1] = 0;
+						card_cost_total_type[2] = 0;
+						card_cost_total_type[3] = 0;
 					}
 					else if card_cost[0] = 1 //leppa
 					{
 						card_cost[1] = 1;
-						card_cost_total_type[0] = -1;
+						card_cost_total_type[0] = 0;
 						card_cost_total_type[1] = 2;
-						card_cost_total_type[2] = -1;
-						card_cost_total_type[3] = -1;
+						card_cost_total_type[2] = 0;
+						card_cost_total_type[3] = 0;
 					}
 					else if card_cost[0] = 2 //lum
 					{
 						card_cost[1] = 2;
-						card_cost_total_type[0] = -1;
-						card_cost_total_type[1] = -1;
+						card_cost_total_type[0] = 0;
+						card_cost_total_type[1] = 0;
 						card_cost_total_type[2] = 2;
-						card_cost_total_type[3] = -1;
+						card_cost_total_type[3] = 0;
 					}
 					else if card_cost[0] = 3 // enigma
 					{
 						card_cost[1] = 3;
-						card_cost_total_type[0] = -1;
-						card_cost_total_type[1] = -1;
-						card_cost_total_type[2] = -1;
+						card_cost_total_type[0] = 0;
+						card_cost_total_type[1] = 0;
+						card_cost_total_type[2] = 0;
 						card_cost_total_type[3] = 2;
 					}
 				}
@@ -152,27 +152,27 @@ if argument1=true {
 						card_cost[1] = 0;
 						card_cost[2] = 0;
 						card_cost_total_type[0] = 3;
-						card_cost_total_type[1] = -1;
-						card_cost_total_type[2] = -1;
-						card_cost_total_type[3] = -1;
+						card_cost_total_type[1] = 0;
+						card_cost_total_type[2] = 0;
+						card_cost_total_type[3] = 0;
 					}
 					else if card_cost[0] = 1 //leppa
 					{
 						card_cost[1] = 1;
 						card_cost[2] = 1;
-						card_cost_total_type[0] = -1;
+						card_cost_total_type[0] = 0;
 						card_cost_total_type[1] = 3;
-						card_cost_total_type[2] = -1;
-						card_cost_total_type[3] = -1;
+						card_cost_total_type[2] = 0;
+						card_cost_total_type[3] = 0;
 					}
 					else if card_cost[0] = 2 //lum
 					{
 						card_cost[1] = 2;
 						card_cost[2] = 2;
-						card_cost_total_type[0] = -1;
-						card_cost_total_type[1] = -1;
+						card_cost_total_type[0] = 0;
+						card_cost_total_type[1] = 0;
 						card_cost_total_type[2] = 3;
-						card_cost_total_type[3] = -1;
+						card_cost_total_type[3] = 0;
 					}
 					else if card_cost[0] = 3 // enigma
 					{
@@ -180,29 +180,29 @@ if argument1=true {
 						if card_cost[1] = 0
 						{
 							card_cost_total_type[0] = 2;
-							card_cost_total_type[1] = -1;
-							card_cost_total_type[2] = -1;
+							card_cost_total_type[1] = 0;
+							card_cost_total_type[2] = 0;
 							card_cost_total_type[3] = 1;
 						}
 						else if card_cost[1] = 1
 						{
-							card_cost_total_type[0] = -1;
+							card_cost_total_type[0] = 0;
 							card_cost_total_type[1] = 2;
-							card_cost_total_type[2] = -1;
+							card_cost_total_type[2] = 0;
 							card_cost_total_type[3] = 1;
 						}
 						else if card_cost[1] = 2
 						{
-							card_cost_total_type[0] = -1;
-							card_cost_total_type[1] = -1;
+							card_cost_total_type[0] = 0;
+							card_cost_total_type[1] = 0;
 							card_cost_total_type[2] = 2;
 							card_cost_total_type[3] = 1;
 						}
 						else if card_cost[1] = 3
 						{
-							card_cost_total_type[0] = -1;
-							card_cost_total_type[1] = -1;
-							card_cost_total_type[2] = -1;
+							card_cost_total_type[0] = 0;
+							card_cost_total_type[1] = 0;
+							card_cost_total_type[2] = 0;
 							card_cost_total_type[3] = 3;
 						}
 					}

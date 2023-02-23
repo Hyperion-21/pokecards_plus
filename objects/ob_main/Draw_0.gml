@@ -104,7 +104,12 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	}
 	//
 	draw_set_halign(fa_left);
-	//sc_drawtext(lives_x - 232,lives_y,"Latest Zone: " + string(latest_zone),lives_color,global.color_black,1,1,0,-1);
+	
+	if newgameplus = true && !instance_exists(ob_deckbuild) && !instance_exists(ob_control)
+	{
+		sc_drawtext(road_win_x-120,road_win_y+170,"NG +",lives_color,global.color_black,1,1,0,-1);
+	}
+
 	draw_set_halign(fa_center);
 	var zone_name_text="";
 	if roadmap_area=roadmap_current_max-1 or area_zone=area_zone_max-1 or (area_zone=0 and roadmap_area<roadmap_lab_max and zone_first_lap=true) { zone_name_text=zone_name; }
