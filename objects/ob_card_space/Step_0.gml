@@ -70,7 +70,7 @@ else if (instance_exists(ob_event) && occupy_id == -1 && ob_main.cursor_hide == 
         }
         else if (ob_event.event_kind == ref_event_candy)
         {
-                ob_event.tooltip_text = "// RARE CANDY //\nThe Pokemon gains 4 hearts if not already\nmaxed out.";
+                ob_event.tooltip_text = "// RARE CANDY //\nThe Pokemon gains a 4th heart if\nit has 3 hearts.";
                 ob_event.tooltip_lines = 3;
         }
         else if (ob_event.event_kind == ref_event_megaevolve)

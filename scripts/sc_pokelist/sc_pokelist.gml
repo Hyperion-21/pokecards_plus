@@ -1012,7 +1012,7 @@ switch (card_id) {
 		if card_shiny = true {card_sheet=sp_shinypoke_d;}else{card_sheet=sp_poke_d;}
 		card_stage=2; card_enigma=true;
 		card_type_a=03; card_type_b=-1;
-		card_base_hp=55; card_base_atk=130+50; card_base_def=115+50;
+		card_base_hp=155; card_base_atk=130+50; card_base_def=115+50;
 		card_grid_x=2; card_grid_y=10;} break;
 	case 100:
 		card_name="Voltorb";
@@ -1533,13 +1533,13 @@ switch (card_id) {
 		card_grid_x=2; card_grid_y=15; break;
 	case 154:
 		card_can_mega=true;
-		if card_form_value<=999{
+		if card_form_value<=999 {
 		card_name="Meganium";
 		card_stage=3; card_starter=true;
 		card_type_a=01; card_type_b=-1;
 		card_base_hp=80; card_base_atk=82+83; card_base_def=100+100;
 		card_grid_x=3; card_grid_y=15; }
-		else if card_form_value=1000{
+		else {
 		card_name="M-Meganium";
 		if card_shiny = true {card_sheet=sp_shinypoke_e;}else{card_sheet=sp_poke_e;}
 		card_stage=3; card_starter=true; card_enigma=true;
@@ -1567,14 +1567,14 @@ switch (card_id) {
 			card_type_a=02; card_type_b=-1;
 			card_base_hp=78; card_base_atk=84+109; card_base_def=78+85;
 			card_grid_x=6; card_grid_y=15; }
-		else if card_form_value < 1000 {
+		else if card_form_value <= 999 {
 			card_name="Typhlosion";
 			card_stage=3; card_starter=true;
 			if card_shiny = true {card_sheet=sp_shinypoke_d;}else{card_sheet=sp_poke_d;}
 			card_type_a=02; card_type_b=16;
 			card_base_hp=73; card_base_atk=84+119; card_base_def=78+85;
 			card_grid_x=13; card_grid_y=10; }
-		else if card_form_value=1000{
+		else {
 			card_has_rush = true;
 			card_name="M-Typhlosion";
 			if card_shiny = true {card_sheet=sp_shinypoke_e;}else{card_sheet=sp_poke_e;}
@@ -1596,13 +1596,13 @@ switch (card_id) {
 		card_grid_x=8; card_grid_y=15; break;
 	case 160:
 		card_can_mega=true;
-		if card_form_value<=999{
+		if card_form_value<=999 {
 		card_name="Feraligatr";
 		card_stage=3; card_starter=true;
 		card_type_a=03; card_type_b=-1;
 		card_base_hp=85; card_base_atk=105+79; card_base_def=100+83;
 		card_grid_x=10; card_grid_y=15;}
-		else if card_form_value=1000{
+		else {
 			card_name="M-Feraligatr";
 			if card_shiny = true {card_sheet=sp_shinypoke_e;}else{card_sheet=sp_poke_e;}
 			card_stage=3; card_starter=true; card_enigma=true;

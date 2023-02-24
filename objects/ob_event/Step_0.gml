@@ -785,7 +785,7 @@ if (apply_event) {
 		case ref_event_candy:
 			if (card_id_in_space[0] != -1)
 			{
-			    if (card_id_in_space[0].card_innate < innate_max+1 && card_id_in_space[0].card_environment == false)
+			    if (card_id_in_space[0].card_innate = innate_max && card_id_in_space[0].card_environment == false)
 			    {
 			        card_id_in_space[0].card_innate = (innate_max+1);
 			        sc_card_effect(event_space_id[0].x, event_space_id[0].y, 0, false, true);

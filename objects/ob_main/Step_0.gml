@@ -250,8 +250,39 @@ if roadmap_generated=false {
 		// [weight, event reference, free] Determine event odds.
 		
 
-
-		if newgameplus = true
+		if newgameplus = true && coin_skin < 8
+		{ /// 885 total
+			var events = [
+			[15, ref_event_megaevolve, false], //10
+			[15, ref_event_changeform, false], //10
+			[325, ref_event_battle, true], //330
+			[35, ref_event_payout, true], //25
+			[24, ref_event_freecard, false], // 25
+			[1, ref_event_holo_freecard, true], //0
+			[8-coin_skin, ref_event_coin, true],//0
+			[1, ref_event_shinycharm, true], //0
+			[4, ref_event_delta, false], //0
+			[5, ref_event_cardpack_1, false], //0
+			[5, ref_event_cardpack_2, false], //0
+			[5, ref_event_cardpack_3, false], //0
+			[5, ref_event_cardpack_4, false], //0
+			[5, ref_event_cardpack_5, false], //0
+			[5, ref_event_cardpack_6, false], //0
+			[5, ref_event_cardpack_7, false], //0
+			[5, ref_event_cardpack_8, false], //0
+			[5, ref_event_cardpack_9, false], //0
+			[50, ref_event_cardpack, false], //50
+			[68, ref_event_berry, true], //100
+			[159, ref_event_levelup, false],//200
+			[50, ref_event_evolution, false], //50
+			[35+coin_skin, ref_event_glyph, false], //35
+			[10, ref_event_deglyph, false], //10
+			[15, ref_event_tribute, false], //15
+			[15, ref_event_sacrifice, false], //15
+			[20, ref_event_campfire, true] //10
+		];
+		}
+		else if newgameplus = true && area_zone = 0
 		{ /// 885 total
 			var events = [
 			[30, ref_event_megaevolve, false], //10
@@ -259,28 +290,212 @@ if roadmap_generated=false {
 			[250, ref_event_battle, true], //330
 			[20, ref_event_candy, true], //330
 			[55, ref_event_payout, true], //25
-			[30, ref_event_freecard, false], // 25
+			[10, ref_event_freecard, false], // 25
 			[10, ref_event_holo_freecard, true], //0
 			[1, ref_event_shinycharm, true], //0
 			[5, ref_event_delta, false], //0
-			[5, ref_event_cardpack_1, false], //0
-			[5, ref_event_cardpack_2, false], //0
-			[5, ref_event_cardpack_3, false], //0
-			[5, ref_event_cardpack_4, false], //0   
-			[5, ref_event_cardpack_5, false], //0
-			[5, ref_event_cardpack_6, false], //0
-			[5, ref_event_cardpack_7, false], //0
-			[5, ref_event_cardpack_8, false], //0
-			[5, ref_event_cardpack_9, false], //0
-			[80, ref_event_cardpack, false], //50
+			[85, ref_event_cardpack_1, false], //0
+			[40, ref_event_cardpack, false], //50
 			[10, ref_event_berry, true], //100
 			[139, ref_event_levelup, false],//200
 			[70, ref_event_evolution, false], //50
-			[49, ref_event_glyph, false], //35
+			[50, ref_event_glyph, false], //35
 			[10, ref_event_deglyph, false], //10
 			[15, ref_event_tribute, false], //15
 			[15, ref_event_sacrifice, false], //15
-			[20, ref_event_campfire, true] //10
+			[40, ref_event_campfire, true] //10
+		];
+		}
+		else if newgameplus = true && area_zone = 1
+		{ /// 885 total
+			var events = [
+			[30, ref_event_megaevolve, false], //10
+			[30, ref_event_changeform, false], //10
+			[250, ref_event_battle, true], //330
+			[20, ref_event_candy, true], //330
+			[55, ref_event_payout, true], //25
+			[10, ref_event_freecard, false], // 25
+			[10, ref_event_holo_freecard, true], //0
+			[1, ref_event_shinycharm, true], //0
+			[5, ref_event_delta, false], //0
+			[85, ref_event_cardpack_2, false], //0
+			[40, ref_event_cardpack, false], //50
+			[10, ref_event_berry, true], //100
+			[139, ref_event_levelup, false],//200
+			[70, ref_event_evolution, false], //50
+			[50, ref_event_glyph, false], //35
+			[10, ref_event_deglyph, false], //10
+			[15, ref_event_tribute, false], //15
+			[15, ref_event_sacrifice, false], //15
+			[40, ref_event_campfire, true] //10
+		];
+		}
+		else if newgameplus = true && area_zone = 2
+		{ /// 885 total
+			var events = [
+			[30, ref_event_megaevolve, false], //10
+			[30, ref_event_changeform, false], //10
+			[250, ref_event_battle, true], //330
+			[20, ref_event_candy, true], //330
+			[55, ref_event_payout, true], //25
+			[10, ref_event_freecard, false], // 25
+			[10, ref_event_holo_freecard, true], //0
+			[1, ref_event_shinycharm, true], //0
+			[5, ref_event_delta, false], //0
+			[85, ref_event_cardpack_3, false], //0
+			[40, ref_event_cardpack, false], //50
+			[10, ref_event_berry, true], //100
+			[139, ref_event_levelup, false],//200
+			[70, ref_event_evolution, false], //50
+			[50, ref_event_glyph, false], //35
+			[10, ref_event_deglyph, false], //10
+			[15, ref_event_tribute, false], //15
+			[15, ref_event_sacrifice, false], //15
+			[40, ref_event_campfire, true] //10
+		];
+		}
+		else if newgameplus = true && area_zone = 3
+		{ /// 885 total
+			var events = [
+			[30, ref_event_megaevolve, false], //10
+			[30, ref_event_changeform, false], //10
+			[250, ref_event_battle, true], //330
+			[20, ref_event_candy, true], //330
+			[55, ref_event_payout, true], //25
+			[10, ref_event_freecard, false], // 25
+			[10, ref_event_holo_freecard, true], //0
+			[1, ref_event_shinycharm, true], //0
+			[5, ref_event_delta, false], //0
+			[85, ref_event_cardpack_4, false], //0
+			[40, ref_event_cardpack, false], //50
+			[10, ref_event_berry, true], //100
+			[139, ref_event_levelup, false],//200
+			[70, ref_event_evolution, false], //50
+			[50, ref_event_glyph, false], //35
+			[10, ref_event_deglyph, false], //10
+			[15, ref_event_tribute, false], //15
+			[15, ref_event_sacrifice, false], //15
+			[40, ref_event_campfire, true] //10
+		];
+		}
+		else if newgameplus = true && area_zone = 4
+		{ /// 885 total
+			var events = [
+			[30, ref_event_megaevolve, false], //10
+			[30, ref_event_changeform, false], //10
+			[250, ref_event_battle, true], //330
+			[20, ref_event_candy, true], //330
+			[55, ref_event_payout, true], //25
+			[10, ref_event_freecard, false], // 25
+			[10, ref_event_holo_freecard, true], //0
+			[1, ref_event_shinycharm, true], //0
+			[5, ref_event_delta, false], //0
+			[85, ref_event_cardpack_5, false], //0
+			[40, ref_event_cardpack, false], //50
+			[10, ref_event_berry, true], //100
+			[139, ref_event_levelup, false],//200
+			[70, ref_event_evolution, false], //50
+			[50, ref_event_glyph, false], //35
+			[10, ref_event_deglyph, false], //10
+			[15, ref_event_tribute, false], //15
+			[15, ref_event_sacrifice, false], //15
+			[40, ref_event_campfire, true] //10
+		];
+		}
+		else if newgameplus = true && area_zone = 5
+		{ /// 885 total
+			var events = [
+			[30, ref_event_megaevolve, false], //10
+			[30, ref_event_changeform, false], //10
+			[250, ref_event_battle, true], //330
+			[20, ref_event_candy, true], //330
+			[55, ref_event_payout, true], //25
+			[10, ref_event_freecard, false], // 25
+			[10, ref_event_holo_freecard, true], //0
+			[1, ref_event_shinycharm, true], //0
+			[5, ref_event_delta, false], //0
+			[85, ref_event_cardpack_6, false], //0
+			[40, ref_event_cardpack, false], //50
+			[10, ref_event_berry, true], //100
+			[139, ref_event_levelup, false],//200
+			[70, ref_event_evolution, false], //50
+			[50, ref_event_glyph, false], //35
+			[10, ref_event_deglyph, false], //10
+			[15, ref_event_tribute, false], //15
+			[15, ref_event_sacrifice, false], //15
+			[40, ref_event_campfire, true] //10
+		];
+		}
+		else if newgameplus = true && area_zone = 6
+		{ /// 885 total
+			var events = [
+			[30, ref_event_megaevolve, false], //10
+			[30, ref_event_changeform, false], //10
+			[250, ref_event_battle, true], //330
+			[20, ref_event_candy, true], //330
+			[55, ref_event_payout, true], //25
+			[10, ref_event_freecard, false], // 25
+			[10, ref_event_holo_freecard, true], //0
+			[1, ref_event_shinycharm, true], //0
+			[5, ref_event_delta, false], //0
+			[85, ref_event_cardpack_6, false], //0
+			[40, ref_event_cardpack, false], //50
+			[10, ref_event_berry, true], //100
+			[139, ref_event_levelup, false],//200
+			[70, ref_event_evolution, false], //50
+			[50, ref_event_glyph, false], //35
+			[10, ref_event_deglyph, false], //10
+			[15, ref_event_tribute, false], //15
+			[15, ref_event_sacrifice, false], //15
+			[40, ref_event_campfire, true] //10
+		];
+		}
+		else if newgameplus = true && area_zone = 7
+		{ /// 885 total
+			var events = [
+			[30, ref_event_megaevolve, false], //10
+			[30, ref_event_changeform, false], //10
+			[250, ref_event_battle, true], //330
+			[20, ref_event_candy, true], //330
+			[55, ref_event_payout, true], //25
+			[10, ref_event_freecard, false], // 25
+			[10, ref_event_holo_freecard, true], //0
+			[1, ref_event_shinycharm, true], //0
+			[5, ref_event_delta, false], //0
+			[85, ref_event_cardpack_8, false], //0
+			[40, ref_event_cardpack, false], //50
+			[10, ref_event_berry, true], //100
+			[139, ref_event_levelup, false],//200
+			[70, ref_event_evolution, false], //50
+			[50, ref_event_glyph, false], //35
+			[10, ref_event_deglyph, false], //10
+			[15, ref_event_tribute, false], //15
+			[15, ref_event_sacrifice, false], //15
+			[40, ref_event_campfire, true] //10
+		];
+		}
+		else if newgameplus = true && area_zone = 8
+		{ /// 885 total
+			var events = [
+			[30, ref_event_megaevolve, false], //10
+			[30, ref_event_changeform, false], //10
+			[250, ref_event_battle, true], //330
+			[20, ref_event_candy, true], //330
+			[55, ref_event_payout, true], //25
+			[10, ref_event_freecard, false], // 25
+			[10, ref_event_holo_freecard, true], //0
+			[1, ref_event_shinycharm, true], //0
+			[5, ref_event_delta, false], //0
+			[85, ref_event_cardpack_9, false], //0
+			[40, ref_event_cardpack, false], //50
+			[10, ref_event_berry, true], //100
+			[139, ref_event_levelup, false],//200
+			[70, ref_event_evolution, false], //50
+			[50, ref_event_glyph, false], //35
+			[10, ref_event_deglyph, false], //10
+			[15, ref_event_tribute, false], //15
+			[15, ref_event_sacrifice, false], //15
+			[40, ref_event_campfire, true] //10
 		];
 		}
 		else if area_zone < 2
@@ -676,6 +891,22 @@ if roadmap_get_details=true {
 			{
 				var battlehp = 9;
 			}
+			
+			if ob_main.playing_tutorial=true { hp_max=ob_main.battle_hp[0]; }
+			else if ob_main.newgameplus = true {hp_max=ob_main.battle_hp[10];}
+			else if ob_main.playing_gym=false and ob_main.playing_elite=false and ob_main.playing_champion=false { hp_max=ob_main.battle_hp[ob_main.area_zone]; }
+			else { hp_max=ob_main.battle_hp[ob_main.area_zone+1]; }
+			//
+			if ob_main.area_zone != area_zone_max
+			{
+				player_hp=hp_max;
+				enemy_hp=hp_max;
+			}
+			else 
+			{
+				player_hp=hp_max-((hp_max*1.5)-hp_max);
+				enemy_hp=hp_max+((hp_max*1.5)-hp_max);
+			}			
 			
 			if event_kind[ii][i]=ref_event_battle {
 				event_description[ii][i]="// " + string_upper(trainer_name[i]) + " //\nMinimum deck size: " + string(maindeck_size_min) + " cards" +

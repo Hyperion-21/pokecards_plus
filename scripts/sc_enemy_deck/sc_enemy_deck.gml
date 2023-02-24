@@ -470,7 +470,7 @@ else if argument0=207 { //GYM 8: LAKE (GRASS/FIRE/WATER)
 			var glyph_b = irandom_range(0,11);
 			var glyph_c = irandom_range(12,22);
 		}
-		else { var pkmn = 071; var pkmn2 = 126; var pkmn3 = 099; var form = -1;}
+		else { var pkmn1 = 071; var pkmn2 = 126; var pkmn3 = 099; var form = -1;}
 		if i<1 { sc_enemy_deck_addcard(i,pkmn1,10,ref_glyph_adaptability,glyph_b,glyph_c,innate,form); } //VICTREEBEL, LV 10 (>MAX)
 		else if i<2 { sc_enemy_deck_addcard(i,pkmn2,10,ref_glyph_adaptability,glyph_b,glyph_c,-1,form); } //MAGMAR, LV 10 (>MAX)
 		else if i<3 { sc_enemy_deck_addcard(i,pkmn3,10,ref_glyph_adaptability,glyph_b,glyph_c,-1,form); } //KINGLER, LV 10 (>MAX)
@@ -606,7 +606,7 @@ else if argument0=212 { //CHAMPION: DUNCAN (ALL)
 			var glyph_b = irandom_range(0,11);
 			var glyph_c = irandom_range(12,22);
 		}
-		else { var pkmn = 248; var pkmn2 = 376; var pkmn3 = 384; var form = -1;}
+		else { var pkmn1 = 248; var pkmn2 = 376; var pkmn3 = 384; var form = -1;}
 		if i<1 { sc_enemy_deck_addcard(i,pkmn1,10,ref_glyph_tenacity,glyph_b,glyph_c,innate_max,-1); } //TYRANITAR, LV 10 (IN MAX)
 		else if i<2 { sc_enemy_deck_addcard(i,pkmn2,10,ref_glyph_counter,ref_glyph_curse,ref_glyph_medic,innate_max,-1); } //MEWTWO, LV 10 (IN MAX)
 		else if i<7 { sc_enemy_deck_addcard(i,pkmn3,10,glyph_a,glyph_b,glyph_c,innate_max,-1); } //(5) LV 10 (IN MAX)

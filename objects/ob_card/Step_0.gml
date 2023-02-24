@@ -453,7 +453,7 @@ else if (mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spri
 			if mouse_check_button_pressed(mb_right) { sc_playsound(sn_card,50,false,false); }
 			//
 						
-						if card_shiny = false && card_holo = false && card_delta = false && ((card_glyph_a = -1 or sc_glyph_bound(ref_glyph_taunt) or sc_glyph_bound(ref_glyph_rush) or
+						if card_shiny = false && card_delta = false && ((card_glyph_a = -1 or sc_glyph_bound(ref_glyph_taunt) or sc_glyph_bound(ref_glyph_rush) or
 						sc_glyph_bound(ref_glyph_transform) or sc_glyph_bound(ref_glyph_sketch) or sc_glyph_bound(ref_glyph_mist)) && card_glyph_b = -1) && card_enigma = false && 
 						card_starter = false && card_can_mega = false && card_secret = false && card_environment = false && massdel = true
 						{
