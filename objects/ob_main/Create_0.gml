@@ -1,7 +1,7 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
 #macro game_version "v1.6.0.0"
-#macro pclp_version "v1.3.0.0"
+#macro pclp_version "v2.0.0.0"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -119,7 +119,7 @@ textbox_char_pos=0;
 #macro money_badge_base 200 //200 325 450 575 700 825 950 1075 1200 (minimum should be enough for a card pack)
 #macro money_badge_area_bonus 125
 #macro sell_value_multiplier 2.5 //bankers rounding
-#macro tutorial_payout 600000
+#macro tutorial_payout 600
 
 
 
@@ -226,7 +226,7 @@ event_card_weight[event_card_group_stage_3] = 100; //100
 
 shiny_chance = 10; // out of 8192
 shinycharm_chance = 400;
-delta_chance = 50 // out of 8192
+delta_chance = 80 // out of 8192
 animate_chance = 10 // out of 8192
 
 // Chance in 100 to be added to possible common selection

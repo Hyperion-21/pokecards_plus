@@ -205,7 +205,8 @@ if (apply_event) {
 				var i = 0;
 				for (var i=0; i<ob_main.maindeck_total; i++;) {
 					var dupemax = 2;
-					if (ob_main.main_card_id[i] = card_id_in_space[0].card_evo[0])
+					if (ob_main.main_card_id[i] = card_id_in_space[0].card_evo[0] && card_id_in_space[0].in_deck = true && ob_main.option_state[opt_challenge] != ch_unlimited)
+
 					{
 						duplicate += 1;
 					}   //|| (ob_main.main_card_id[i] = card_id_in_space[0].card_evo[0])

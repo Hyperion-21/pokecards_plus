@@ -339,6 +339,11 @@ else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spr
 						ob_event.event_space_id_deck[i] = false;
 						if(mouse_y > 144) {
 							ob_event.event_space_id_deck[i] = true;
+							in_deck = true;
+						}
+						else
+						{
+							in_deck = false;
 						}
 							
 						sc_card_effect(ob_event.event_space_id[i].x,ob_event.event_space_id[i].y,0,true,false);
@@ -366,6 +371,11 @@ else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spr
 						ob_event.event_space_id_deck[i] = false;
 						if(mouse_y > 144) {
 							ob_event.event_space_id_deck[i] = true;
+							in_deck = true;
+						}
+						else
+						{
+							in_deck = false;
 						}
 						sc_card_effect(ob_event.event_space_id[i].x,ob_event.event_space_id[i].y,0,true,false);
 						i=ob_event.event_space_total;						

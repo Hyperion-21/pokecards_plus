@@ -3,7 +3,7 @@
 
 
 
-if mouse_x>=(screen_main_x+(cam_w/2)-35) and mouse_y>= (screen_main_y+cam_h-50) and mouse_x<=(screen_main_x+(cam_w/2)+35) and mouse_y<=(screen_main_y+cam_h-25) {
+if mouse_x>=(screen_main_x+(cam_w/2)-35) and mouse_y>= (screen_main_y+cam_h-50) and mouse_x<=(screen_main_x+(cam_w/2)+35) and mouse_y<=(screen_main_y+cam_h-25) && set = false {
 	with (ob_main)
 		{
 		if mouse_check_button_pressed(mb_left){
@@ -18,6 +18,7 @@ if mouse_x>=(screen_main_x+(cam_w/2)-35) and mouse_y>= (screen_main_y+cam_h-50) 
 }	
 else if (mouse_check_button_pressed(mb_any) or keyboard_check_pressed(vk_anykey)) and ob_main.fade_black<=0 {
 	sc_playsound(sn_click,50,false,false);
+	set = true
 	with (ob_main)
 	{
 		sc_config_load();

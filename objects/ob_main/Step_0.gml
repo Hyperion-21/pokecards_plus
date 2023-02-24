@@ -1319,33 +1319,17 @@ if button_delete_data!=-1 {
 draw_set_font(fn_matchup);
 //
 
-if mouse_x>=(screen_main_x-86) and mouse_y>= (screen_main_y+25) and mouse_x<=(screen_main_x) and mouse_y<=(screen_main_y+40) {
+//if mouse_x>=(screen_main_x-86) and mouse_y>= (screen_main_y+25) and mouse_x<=(screen_main_x) and mouse_y<=(screen_main_y+40) {
 
-	if mouse_check_button_pressed(mb_left){
-		sc_config_save();
-		sc_data_save(false);
-		sc_data_save(true);
-		ob_main.savestate++;
-		if ob_main.savestate>4 { ob_main.savestate = 0; }
-		sc_config_load();
-		sc_data_load();
-		audio_sound_gain(ms_main,(option_state[opt_music]/100),0);
-		audio_sound_gain(ms_league,(option_state[opt_music]/100),0);
-		game_restart();
-	}
-	else if mouse_check_button_pressed(mb_right){
-		sc_config_save();
-		sc_data_save(false);
-		sc_data_save(true);
-		ob_main.savestate--;
-		if ob_main.savestate<0 { ob_main.savestate = 4; }
-		sc_config_load();
-		sc_data_load();
-		audio_sound_gain(ms_main,(option_state[opt_music]/100),0);
-		audio_sound_gain(ms_league,(option_state[opt_music]/100),0);
-		game_restart();
-	}
-}	
+//	if mouse_check_button_pressed(mb_left){
+//		sc_config_save();
+//		sc_data_save(false);
+//		sc_data_save(true);
+//		audio_sound_gain(ms_main,(option_state[opt_music]/100),0);
+//		audio_sound_gain(ms_league,(option_state[opt_music]/100),0);
+//		game_restart();
+//	}
+//}	
 
 var i=0;
 repeat (options_total) {

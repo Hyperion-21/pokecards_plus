@@ -10,6 +10,7 @@ event_cancelled = false;
 card_gen = -1;
 used = false;
 
+
 levelup_new_hp = 0;
 levelup_new_atk = 0;
 levelup_new_def = 0;

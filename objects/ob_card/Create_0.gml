@@ -15,6 +15,7 @@ count[0] = 0;
 count[1] = 0;
 count[2] = 0;
 marked = false;
+in_deck = false;
 
 jumpmax = -5;
 jumptimer = irandom_range(50,1000);
