@@ -436,10 +436,8 @@ switch (event_kind){
 			with (delta)
 				{
 					card_delta = true;
-					randomize();
-					card_delta_type = irandom_range(0,17);
-					card_type_a = card_delta_type;
-					card_type_b = -1;
+					card_delta_type = -1;
+					sc_determine_card_delta();
 					sc_card_level_stats_all(false,true);
 				}
 		    i++;

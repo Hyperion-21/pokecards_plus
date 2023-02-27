@@ -1499,7 +1499,7 @@ switch (card_id) {
 		card_form_change=true;
 		card_has_forms=true;
 		card_stage=1; card_enigma=true;
-		card_type_a=07; card_type_b=-1;
+		card_type_a=07; card_type_b=06;
 		card_base_hp=106; card_base_atk=190+154; card_base_def=100+100;
 		card_grid_x=5; card_grid_y=14;}
 		else{
@@ -5404,7 +5404,7 @@ switch (card_id) {
 	case 0890: 
 		card_can_fly = true;
 		card_has_rush = true;
-		card_has_forms=true;
+		//card_has_forms=true;
 		card_stage=1;  
 		card_enigma=true; 
 		card_type_a=12; card_type_b=14; 
@@ -5819,7 +5819,7 @@ switch (card_id) {
 	case 947:
 		card_name="Brambleghast";
 		card_stage=2;
-		card_type_a=01; card_type_b=-16;
+		card_type_a=01; card_type_b=16;
 		card_base_hp=55; card_base_atk=115+80; card_base_def=70+70;
 		card_grid_x=12; card_grid_y=3; break;
 	case 948:

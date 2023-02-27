@@ -234,51 +234,14 @@ if (apply_event) {
 				            sc_pokelist();
 							if card_delta = true
 							{
-								card_type_a = card_delta_type;
-								card_type_b = -1;
+								sc_determine_card_delta();
 							}
 				            sc_card_level_stats_all(true, true);
 				        }
-						
-						var old_glyph = -1;
-						if card_id_in_space[0].card_has_rush = true and card_id_in_space[0].card_glyph_a != ref_glyph_rush { 
-							if card_id_in_space[0].card_glyph_a != -1 && card_id_in_space[0].card_glyph_a != ref_glyph_taunt
-							{
-								var old_glyph = card_id_in_space[0].card_glyph_a;
-								if card_id_in_space[0].card_glyph_b = -1
-								{
-									card_id_in_space[0].card_glyph_b = old_glyph;
-								}
-								else
-								if card_id_in_space[0].card_glyph_c = -1
-								{
-									card_id_in_space[0].card_glyph_c = old_glyph;
-								}
-								ob_main.main_card_glyph_b[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_b; 
-							}
-							card_id_in_space[0].card_glyph_a=ref_glyph_rush; 
-							ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a; 
-							} 
-						else if card_id_in_space[0].card_has_taunt = true and card_id_in_space[0].card_glyph_a != ref_glyph_taunt { 
-							if card_id_in_space[0].card_glyph_a != -1 && card_id_in_space[0].card_glyph_a != ref_glyph_rush
-							{
-								var old_glyph = card_id_in_space[0].card_glyph_a;
-								if card_id_in_space[0].card_glyph_b = -1
-								{
-									card_id_in_space[0].card_glyph_b = old_glyph;
-								}
-								else
-								if card_id_in_space[0].card_glyph_c = -1
-								{
-									card_id_in_space[0].card_glyph_c = old_glyph;
-								}
-								ob_main.main_card_glyph_b[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_b; 
-							}
-							card_id_in_space[0].card_glyph_a=ref_glyph_taunt; 
-							ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a; 
-							} 
-						else if card_id_in_space[0].card_has_rush = false && card_id_in_space[0].card_glyph_a = ref_glyph_rush { card_id_in_space[0].card_glyph_a = -1;}
-						else if card_id_in_space[0].card_has_taunt = false && card_id_in_space[0].card_glyph_a = ref_glyph_taunt { card_id_in_space[0].card_glyph_a = -1;}
+						targetcard = card_id_in_space[0];
+						sc_check_innate(ref_glyph_taunt,"card_has_taunt");
+						sc_check_innate(ref_glyph_rush,"card_has_rush");
+						card_id_in_space[0] = targetcard;
 						event_applied = true;
 				        evolution_retry = true;
 						if(!free){ob_main.event_cost_standby += ob_main.event_cost[ref_event_evolution];
@@ -324,27 +287,15 @@ if (apply_event) {
 			            sc_pokelist();
 						if card_delta = true
 						{
-							card_type_a = card_delta_type;
-							card_type_b = -1;
+							sc_determine_card_delta();
 						}
 			            sc_card_level_stats_all(true, true);
 			        }
-					if card_id_in_space[0].card_has_rush = true and card_id_in_space[0].card_glyph_a != ref_glyph_rush  && 
-						card_id_in_space[0].card_has_taunt = true and card_id_in_space[0].card_glyph_b != ref_glyph_taunt {
-						card_id_in_space[0].card_glyph_a=ref_glyph_rush; 
-						card_id_in_space[0].card_glyph_b=ref_glyph_taunt; 
-						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;
-						ob_main.main_card_glyph_b[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_b;} 							
-					else if card_id_in_space[0].card_has_rush = true and card_id_in_space[0].card_glyph_a != ref_glyph_rush { 
-						card_id_in_space[0].card_glyph_a=ref_glyph_rush; 
-						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;} 
-					else if card_id_in_space[0].card_has_taunt = true and card_id_in_space[0].card_glyph_a != ref_glyph_taunt { 
-						card_id_in_space[0].card_glyph_a=ref_glyph_taunt; 
-						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;} 		
-					else if card_id_in_space[0].card_has_rush = false && card_id_in_space[0].card_glyph_a = ref_glyph_rush { card_id_in_space[0].card_glyph_a = -1;}
-					else if card_id_in_space[0].card_has_rush = false && card_id_in_space[0].card_glyph_b = ref_glyph_rush { card_id_in_space[0].card_glyph_b = -1;}
-					else if card_id_in_space[0].card_has_taunt = false && card_id_in_space[0].card_glyph_a = ref_glyph_taunt { card_id_in_space[0].card_glyph_a = -1;}
-					else if card_id_in_space[0].card_has_taunt = false && card_id_in_space[0].card_glyph_b = ref_glyph_taunt { card_id_in_space[0].card_glyph_b = -1;}						
+						
+					targetcard = card_id_in_space[0];
+					sc_check_innate(ref_glyph_taunt,"card_has_taunt");
+					sc_check_innate(ref_glyph_rush,"card_has_rush");
+					card_id_in_space[0] = targetcard;				
 			        event_applied = true;
 			        evolution_retry = true;
 			        sc_playsound(sn_upgrade, 50, false, false);
@@ -440,28 +391,20 @@ if (apply_event) {
 				        } until (card_id_in_space[0].card_id != -1 && card_id_in_space[0].card_id <= normal_poke_id_max)
 				    }
 				    sc_card_effect(event_space_id[0].x, event_space_id[0].y, 0, false, true);
-				    with (card_id_in_space[0])
-				    {
-				        sc_pokelist();
-				        sc_card_level_stats_all(true, true);
-				    }
-        
-					if card_id_in_space[0].card_has_rush = true and card_id_in_space[0].card_glyph_a != ref_glyph_rush  && 
-						card_id_in_space[0].card_has_taunt = true and card_id_in_space[0].card_glyph_b != ref_glyph_taunt {
-						card_id_in_space[0].card_glyph_a=ref_glyph_rush; 
-						card_id_in_space[0].card_glyph_b=ref_glyph_taunt; 
-						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;
-						ob_main.main_card_glyph_b[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_b;} 							
-					else if card_id_in_space[0].card_has_rush = true and card_id_in_space[0].card_glyph_a != ref_glyph_rush { 
-						card_id_in_space[0].card_glyph_a=ref_glyph_rush; 
-						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;} 
-					else if card_id_in_space[0].card_has_taunt = true and card_id_in_space[0].card_glyph_a != ref_glyph_taunt { 
-						card_id_in_space[0].card_glyph_a=ref_glyph_taunt; 
-						ob_main.main_card_glyph_a[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_glyph_a;} 		
-					else if card_id_in_space[0].card_has_rush = false && card_id_in_space[0].card_glyph_a = ref_glyph_rush { card_id_in_space[0].card_glyph_a = -1;}
-					else if card_id_in_space[0].card_has_rush = false && card_id_in_space[0].card_glyph_b = ref_glyph_rush { card_id_in_space[0].card_glyph_b = -1;}
-					else if card_id_in_space[0].card_has_taunt = false && card_id_in_space[0].card_glyph_a = ref_glyph_taunt { card_id_in_space[0].card_glyph_a = -1;}
-					else if card_id_in_space[0].card_has_taunt = false && card_id_in_space[0].card_glyph_b = ref_glyph_taunt { card_id_in_space[0].card_glyph_b = -1;}
+				     with (card_id_in_space[0])
+			        {
+			            sc_pokelist();
+						if card_delta = true
+						{
+							sc_determine_card_delta();
+						}
+			            sc_card_level_stats_all(true, true);
+			        }
+        						
+					targetcard = card_id_in_space[0];
+					sc_check_innate(ref_glyph_taunt,"card_has_taunt");
+					sc_check_innate(ref_glyph_rush,"card_has_rush");
+					card_id_in_space[0] = targetcard;
 					//if(!free){ob_main.event_cost_standby += ob_main.event_cost[ref_event_evolution];
 			       // sc_playsound(sn_upgrade, 50, false, false);}
 			        ob_main.main_card_id[card_id_in_space[0].num_in_all] = card_id_in_space[0].card_id;

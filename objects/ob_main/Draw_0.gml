@@ -56,6 +56,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 		else if event_kind[i][roadmap_area]=ref_event_delta { event_sprite_x=560; ; event_sprite_y = 272; }
 		else if event_kind[i][roadmap_area]=ref_event_candy { event_sprite_x=592; ; event_sprite_y = 272; }
 		else if event_kind[i][roadmap_area]=ref_event_loophome { event_sprite_x=272; ; event_sprite_y = 272; }
+		else if event_kind[i][roadmap_area]=ref_event_skip { event_sprite_x=304; ; event_sprite_y = 208; }
 		else if event_kind[i][roadmap_area]=ref_event_holo_freecard { event_sprite_x=16*(1+14*2); ; event_sprite_y = 272; }
 		else { event_sprite_y = 208;}
 		//
@@ -99,8 +100,8 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 		}
 	if shinycharm > 0
 	{
-	draw_set_halign(fa_left);
-	sc_drawtext(lives_x - 232,shiny_y,"Shiny Charm: " + string(shinycharm),lives_color,global.color_black,1,1,0,-1);
+		draw_set_halign(fa_left);
+		sc_drawtext(lives_x - 232,shiny_y,"Shiny Charm: " + string(shinycharm),lives_color,global.color_black,1,1,0,-1);
 	}
 	//
 	draw_set_halign(fa_left);

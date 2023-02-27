@@ -399,13 +399,13 @@ else if ((mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spr
 //
 else if (mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+sprite_height and reference_id=ob_deckbuild) or massdel = true {
 	ob_main.mouse_cursor=1;
-	//
+	var dupemax = 100;
 	if card_cat=0 {
 		if mouse_check_button_pressed(mb_left) and ob_main.cursor_hide=false && massdel = false {
 		
 		if ob_main.option_state[opt_challenge] != ch_unlimited
 		{
-			var dupemax = 100;
+			
 			var i = 0;
 			for (var i=0; i<ob_deckbuild.deck_build_used_total; i++;) {   ///DUPLICATE CHECK
 				if ob_deckbuild.deck_card_used[i].card_secret = card_secret && card_secret = true // Secret Pokemon
@@ -454,7 +454,7 @@ else if (mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spri
 			//
 						
 						if card_shiny = false && card_delta = false && ((card_glyph_a = -1 or sc_glyph_bound(ref_glyph_taunt) or sc_glyph_bound(ref_glyph_rush) or
-						sc_glyph_bound(ref_glyph_transform) or sc_glyph_bound(ref_glyph_sketch) or sc_glyph_bound(ref_glyph_mist)) && card_glyph_b = -1) && card_enigma = false && 
+						sc_glyph_bound(ref_glyph_transform) or sc_glyph_bound(ref_glyph_sketch) or sc_glyph_bound(ref_glyph_mist)) && card_glyph_b = -1 && card_glyph_a != ref_glyph_rations) && card_enigma = false && 
 						card_starter = false && card_can_mega = false && card_secret = false && card_environment = false && massdel = true
 						{
 

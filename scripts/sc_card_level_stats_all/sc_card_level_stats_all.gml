@@ -104,8 +104,7 @@ if argument1=true {
 		i++;
 		if (card_glyph_a = ref_glyph_picky or card_glyph_b = ref_glyph_picky or card_glyph_c = ref_glyph_picky)
 			{
-
-
+				
 				if card_cost_total = 2
 				{
 					if card_cost[0] = 0 //oran
@@ -132,17 +131,10 @@ if argument1=true {
 						card_cost_total_type[2] = 2;
 						card_cost_total_type[3] = 0;
 					}
-					else if card_cost[0] = 3 // enigma
-					{
-						card_cost[1] = 3;
-						card_cost_total_type[0] = 0;
-						card_cost_total_type[1] = 0;
-						card_cost_total_type[2] = 0;
-						card_cost_total_type[3] = 2;
-					}
 				}
 				else if card_cost_total > 2
 				{
+					
 					if card_cost[0] = 0 //oran
 					{
 						card_cost[1] = 0;
@@ -170,38 +162,7 @@ if argument1=true {
 						card_cost_total_type[2] = 3;
 						card_cost_total_type[3] = 0;
 					}
-					else if card_cost[0] = 3 // enigma
-					{
-						card_cost[2] = card_cost[1];
-						if card_cost[1] = 0
-						{
-							card_cost_total_type[0] = 2;
-							card_cost_total_type[1] = 0;
-							card_cost_total_type[2] = 0;
-							card_cost_total_type[3] = 1;
-						}
-						else if card_cost[1] = 1
-						{
-							card_cost_total_type[0] = 0;
-							card_cost_total_type[1] = 2;
-							card_cost_total_type[2] = 0;
-							card_cost_total_type[3] = 1;
-						}
-						else if card_cost[1] = 2
-						{
-							card_cost_total_type[0] = 0;
-							card_cost_total_type[1] = 0;
-							card_cost_total_type[2] = 2;
-							card_cost_total_type[3] = 1;
-						}
-						else if card_cost[1] = 3
-						{
-							card_cost_total_type[0] = 0;
-							card_cost_total_type[1] = 0;
-							card_cost_total_type[2] = 0;
-							card_cost_total_type[3] = 3;
-						}
-					}
+					
 				}
 			}
 	}

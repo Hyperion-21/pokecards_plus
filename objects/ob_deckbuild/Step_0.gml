@@ -333,8 +333,9 @@ else if (mouse_x>=1472 and mouse_y>=147 and mouse_x<=1518 and mouse_y<=178){
 	draw_set_halign(fa_left)
 	ob_main.mouse_cursor=1;
 	tooltip_lines = 3;
+	if ob_deckbuild.deck_build_all_total>ob_main.maindeck_size_min_full
 	ob_deckbuild.tooltip_text = "Hold Left or Right click to sell all.\nSell all will not sell rare cards.\n(This takes a long time. Go get a drink...)";
-	if (mouse_check_button(mb_right) or mouse_check_button(mb_left))
+	if (mouse_check_button(mb_right) or mouse_check_button(mb_left)) 
 		{
 			massdel = true;
 		}

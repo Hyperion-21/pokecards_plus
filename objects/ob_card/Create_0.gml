@@ -16,6 +16,8 @@ count[1] = 0;
 count[2] = 0;
 marked = false;
 in_deck = false;
+card_delta_set = false;
+
 
 jumpmax = -5;
 jumptimer = irandom_range(50,1000);
@@ -28,7 +30,7 @@ jumpfloor = choose(0.5,2);
 dupe = 0;
 
 card_berry = -1;
-card_animate = false;
+//card_animate = false;
 
 holo_index = irandom_range(0,21);
 anim_index = irandom_range(0,5);
@@ -57,7 +59,7 @@ if instance_exists(ob_main){
 	var baby_chance = ob_main.event_card_addition_chance[event_card_type_baby];
 	var shiny_chance = ob_main.shiny_chance;
 	var delta_chance = ob_main.delta_chance;
-	var animate_chance = ob_main.animate_chance;
+	//var animate_chance = ob_main.animate_chance;
 }
 	
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -103,7 +105,7 @@ if card_cat=0 {
 	var random_group_chance=irandom(9999);
 	var random_shiny_chance=irandom(8192);
 	var random_delta_chance=irandom(8192);
-	var random_animate_chance=irandom(8192);
+	//var random_animate_chance=irandom(8192);
 var poke_floor, poke_max;
 
 if reference_id = ob_event
@@ -182,7 +184,6 @@ else
 		if random_delta_chance < delta_chance
 		{
 			card_delta = true;
-			card_delta_type = irandom_range(00,17);
 		}
 		card_id=reference_id.create_card_id;
 		if card_id=-1 { var random_card=true; } else { var random_card=false; }
@@ -264,7 +265,7 @@ else
 					if ob_main.option_state[opt_challenge]=ch_rainbow
 					{
 						card_delta = true;
-						card_delta_type = irandom_range(0,17);
+						//card_delta_type = irandom_range(0,17);
 						card_type_a = card_delta_type;
 						card_type_b = -1;
 					}
@@ -292,7 +293,7 @@ else
 						if ob_main.option_state[opt_challenge]=ch_rainbow
 						{
 							card_delta = true;
-							card_delta_type = irandom_range(0,17);
+							//card_delta_type = irandom_range(0,17);
 							card_type_a = card_delta_type;
 							card_type_b = -1;
 						}
@@ -341,8 +342,8 @@ else
 			card_innate=reference_id.create_card_innate;
 			card_shiny=reference_id.create_card_shiny;
 			card_holo=reference_id.create_card_holo;
+			//card_delta_type=reference_id.create_card_delta_type;
 			card_delta=reference_id.create_card_delta;
-			card_delta_type=reference_id.create_card_delta_type;
 			card_type_a=reference_id.create_card_type_a;
 			card_type_b=reference_id.create_card_type_b;
 			card_form_value=reference_id.create_card_form_value;
@@ -350,10 +351,10 @@ else
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		sc_pokelist();
 		
-		if random_animate_chance < animate_chance && card_has_animate = true
-		{
-			card_animate = true;			
-		}
+		//if random_animate_chance < animate_chance && card_has_animate = true
+		//{
+		//	card_animate = true;			
+		//}
 
 		if card_has_rush = true and card_has_taunt = true { card_glyph_a=ref_glyph_rush; card_glyph_b=ref_glyph_taunt; } //rush and taunt
 		else if card_has_rush = true and card_glyph_a!=ref_glyph_rush { card_glyph_a=ref_glyph_rush; } //rush	
@@ -361,36 +362,9 @@ else
 
 		if card_delta = true
 		{
-				if card_environment = true
-				{
-					card_delta = false;
-				}
-				else
-				{
-						if card_type_b = -1
-						{
-							var reroll = 1;
-						}
-						else 
-						{
-							var reroll = choose(0,0,1);
-						}
-					if card_type_a = (03 or 13 or 16 or 17 or 00 or 14) && reroll = 1// oran berry
-					{
-						card_delta_type = choose(02,07,08,06,09,10,01,04,12,11,15,05); // lum or leppa
-					}
-					else if card_type_a = (02 or 07 or 08 or 06 or 09 or 10)  && reroll = 1// oran berry
-					{
-						card_delta_type = choose(03,13,16,17,00,14,01,04,12,11,15,05); // lum or leppa
-					}
-					if card_type_a = (01 or 04 or 12 or 11 or 15 or 05)  && reroll = 1// oran berry
-					{
-						card_delta_type = choose(02,07,08,06,09,10,03,13,16,17,00,14); // lum or leppa
-					}
-					card_type_a = card_delta_type;
-					card_type_b = -1;
-				}
+			sc_determine_card_delta();
 		}
+		
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		// SAVE COMPATIBILITY (v1.3.0.1) + (v1.5.0.0)
 		if random_card=false {

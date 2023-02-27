@@ -5,20 +5,20 @@ if argument0=false {
 	var var_random=irandom(954);
 	var distribution_range = 955 / 23; // dividing 955 by the number of glyphs + 1, to get the distribution range
 
-	if var_random < distribution_range { return ref_glyph_lucky; } //75 lucky
-	else if var_random < 2*distribution_range { return ref_glyph_harvest; } //85 harvest
-	else if var_random < 3*distribution_range { return ref_glyph_debilitate; } //85 debilitate
-	else if var_random < 4*distribution_range { return ref_glyph_ruthless; } //85 ruthless
-	else if var_random < 5*distribution_range { return ref_glyph_courage; } //75 courage
-	else if var_random < 6*distribution_range { return ref_glyph_piercing; } //50 piercing attack
-	else if var_random < 7*distribution_range { return ref_glyph_counter; } //25 counterattack
-	else if var_random < 8*distribution_range { return ref_glyph_shield; } //75 shield
-	else if var_random < 9*distribution_range { return ref_glyph_medic; } //25 medic
-	else if var_random < 10*distribution_range { return ref_glyph_tenacity; } //15 tenacity
-	else if var_random < 11*distribution_range { return ref_glyph_bulwark; } //25 bulwark
-	else if var_random < 12*distribution_range { return ref_glyph_fork; } //50 fork attack
-	else if var_random < 13*distribution_range { return ref_glyph_vampire; } //25 vampire
-	else if var_random < 14*distribution_range { return ref_glyph_curse; } //15 curse
+	if var_random < distribution_range { return ref_glyph_rations; } //75 lucky
+	else if var_random < 2*distribution_range { return ref_glyph_rations; } //85 harvest
+	else if var_random < 3*distribution_range { return ref_glyph_rations; } //85 debilitate
+	else if var_random < 4*distribution_range { return ref_glyph_rations; } //85 ruthless
+	else if var_random < 5*distribution_range { return ref_glyph_rations; } //75 courage
+	else if var_random < 6*distribution_range { return ref_glyph_rations; } //50 piercing attack
+	else if var_random < 7*distribution_range { return ref_glyph_rations; } //25 counterattack
+	else if var_random < 8*distribution_range { return ref_glyph_rations; } //75 shield
+	else if var_random < 9*distribution_range { return ref_glyph_rations; } //25 medic
+	else if var_random < 10*distribution_range { return ref_glyph_rations; } //15 tenacity
+	else if var_random < 11*distribution_range { return ref_glyph_rations; } //25 bulwark
+	else if var_random < 12*distribution_range { return ref_glyph_rations; } //50 fork attack
+	else if var_random < 13*distribution_range { return ref_glyph_rations; } //25 vampire
+	else if var_random < 14*distribution_range { return ref_glyph_rations; } //15 curse
 	else if var_random < 15*distribution_range { return ref_glyph_memento; } //75 memento
 	else if var_random < 16*distribution_range { return ref_glyph_berserk; } //50 berserk
 	else if var_random < 17*distribution_range { return ref_glyph_adaptability; } //50 adaptability

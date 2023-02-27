@@ -1,4 +1,4 @@
-if marked = true  //deletes the card
+if marked = true   //deletes the card
 {
 	if ob_deckbuild.reorder_type=-1
 	{
@@ -7,4 +7,3 @@ if marked = true  //deletes the card
 			instance_destroy();
 	}
 }
-

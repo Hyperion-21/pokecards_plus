@@ -1,7 +1,7 @@
 randomize(); //random seed
 #macro game_name "Pocket Crystal League"
 #macro game_version "v1.6.0.0"
-#macro pclp_version "v2.0.0.0"
+#macro pclp_version "v2.1.0.0"
 window_set_caption(game_name);
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 depth=-2000;
@@ -136,6 +136,16 @@ battle_hp[7]=150; //300
 battle_hp[8]=200; //400
 battle_hp[9]=250; //500
 battle_hp[10]=300; //600
+battle_hp[11]=300; //600
+battle_hp[12]=300; //600
+battle_hp[13]=300; //600
+battle_hp[14]=300; //600
+battle_hp[15]=300; //600
+battle_hp[16]=300; //600
+battle_hp[17]=300; //600
+battle_hp[18]=300; //600
+battle_hp[19]=300; //600
+battle_hp[20]=300; //600
 //
 money_show=0;
 money_prize=0;
@@ -149,6 +159,7 @@ player_lives = 10
 //
 
 shinycharm = 0;
+
 
 
 #macro ref_event_battle 0
@@ -178,12 +189,13 @@ shinycharm = 0;
 #macro ref_event_megaevolve 502
 #macro ref_event_changeform 503
 #macro ref_event_deglyph 504
-#macro ref_event_shinycharm 505
+#macro ref_event_skip 505
 #macro ref_event_holo_freecard 506
 #macro ref_event_coin 507
 #macro ref_event_delta 508
 #macro ref_event_candy 509
 #macro ref_event_loophome 510
+#macro ref_event_shinycharm 511
 
 #macro ref_event_cardpack_0 600 // Joke cards such as missingno and ghost.
 #macro ref_event_cardpack_1 601 // Focus on Gen 1.
@@ -226,7 +238,7 @@ event_card_weight[event_card_group_stage_3] = 100; //100
 
 shiny_chance = 10; // out of 8192
 shinycharm_chance = 400;
-delta_chance = 80 // out of 8192
+delta_chance = 9999 // out of 8192
 animate_chance = 10 // out of 8192
 
 // Chance in 100 to be added to possible common selection
@@ -247,9 +259,10 @@ event_cost[ref_event_levelup]=100;
 event_cost[ref_event_evolution]=500;
 
 event_cost[ref_event_megaevolve]=500;
-event_cost[ref_event_shinycharm]=4000;
-event_cost[ref_event_delta]=3000;
-event_cost[ref_event_holo_freecard]=2000;
+event_cost[ref_event_shinycharm]=3000;
+event_cost[ref_event_skip]=0;
+event_cost[ref_event_delta]=1000;
+event_cost[ref_event_holo_freecard]=800;
 event_cost[ref_event_cardpack_0]=5000;
 event_cost[ref_event_cardpack_1]=300;
 event_cost[ref_event_cardpack_2]=300;
@@ -327,6 +340,15 @@ ref_glyph_img[19] = 30;
 ref_glyph_img[20] = 31;
 ref_glyph_img[21] = 24;
 ref_glyph_img[22] = 32;
+ref_glyph_img[23] = 32; //placeholder
+ref_glyph_img[24] = 32; //placeholder
+ref_glyph_img[25] = 32; //placeholder
+ref_glyph_img[26] = 32; //placeholder
+ref_glyph_img[27] = 32; //placeholder
+ref_glyph_img[28] = 32; //placeholder
+ref_glyph_img[29] = 32; //placeholder
+ref_glyph_img[30] = 32; //placeholder
+
 
 
 // ref_glyph_img[18] = 24;
@@ -337,6 +359,10 @@ ref_glyph_img[103] = 25;
 ref_glyph_img[104] = 26;
 ref_glyph_img[105] = 29;
 ref_glyph_img[106] = 27;
+ref_glyph_img[107] = 27; //placeholder
+ref_glyph_img[108] = 27; //placeholder
+ref_glyph_img[109] = 27; //placeholder
+ref_glyph_img[110] = 27; //placeholder
 
 
 
@@ -447,17 +473,35 @@ repeat (8) {
 
 savestate = 0;
 
+//saveconf[0] = "config_pcl++0.sav"
+//saveconf[1] = "config_pcl++1.sav"
+//saveconf[2] = "config_pcl++2.sav"
+//saveconf[3] = "config_pcl++3.sav"
+//saveconf[4] = "config_pcl++4.sav"
+//saveconf[5] = "config_pcl++5.sav"
+
+//savedata[0] = "data_pcl++0.sav";
+//savedata[1] = "data_pcl++1.sav";
+//savedata[2] = "data_pcl++2.sav";
+//savedata[3] = "data_pcl++3.sav";
+//savedata[4] = "data_pcl++4.sav";
+//savedata[5] = "data_pcl++5.sav";
+
+
 saveconf[0] = "data_pcl++0.sav"
 saveconf[1] = "data_pcl++1.sav"
 saveconf[2] = "data_pcl++2.sav"
 saveconf[3] = "data_pcl++3.sav"
 saveconf[4] = "data_pcl++4.sav"
+saveconf[5] = "data_pcl++5.sav"
 
 savedata[0] = "config_pcl++0.sav";
 savedata[1] = "config_pcl++1.sav";
 savedata[2] = "config_pcl++2.sav";
 savedata[3] = "config_pcl++3.sav";
 savedata[4] = "config_pcl++4.sav";
+savedata[5] = "config_pcl++5.sav";
+
 
 //#macro ob_main.saveconf[ob_main.savestate] "config_pcl++.sav"
 //#macro ob_main.savedata[ob_main.savestate] "data_pcl++.sav"

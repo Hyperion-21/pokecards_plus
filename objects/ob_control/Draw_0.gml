@@ -149,10 +149,10 @@ if card_focus!=-1 and card_focus.card_cat=0 and card_focus_hand!=-1 and card_hol
 			if sc_glyph_check(card_focus,ref_glyph_transform,true) or sc_glyph_check(card_space_id[i].occupy_id,ref_glyph_transform,true) { //glyph: transform (Ditto only)
 				damage_preview_text="?";
 			}
-			else if sc_glyph_check(card_focus,ref_glyph_fork,true) { //glyph: fork attack
-				if bonus_damage_preview=0 { damage_preview_text="+0"; }
-				else { damage_preview_text="+" + string(bonus_damage_preview); }
-			}
+			//else if sc_glyph_check(card_focus,ref_glyph_fork,true) { //glyph: fork attack
+			//	if bonus_damage_preview=0 { damage_preview_text="+0"; }
+			//	else { damage_preview_text="+" + string(bonus_damage_preview); }
+			//}
 			else {
 				if bonus_damage_preview=0 { damage_preview_text=string(damage_preview); }
 				else { damage_preview_text=string(damage_preview) + "+" + string(bonus_damage_preview); }
