@@ -182,6 +182,17 @@ if reference_id=ob_control and card_cat=0 {
 		{
 			card_bonus_atk += 1;
 		}
+		if card_glyph_a = ref_glyph_wealth or card_glyph_b = ref_glyph_wealth or card_glyph_c = ref_glyph_wealth
+		{
+			if card_cost_total < 3
+			{
+				card_bonus_atk += card_cost_total;
+			}
+			else if card_cost_total = 3
+			{
+				card_bonus_atk += 5;
+			}	
+		}
 		if (card_glyph_a = ref_glyph_adversity or card_glyph_b = ref_glyph_adversity or card_glyph_c = ref_glyph_adversity) && card_innate = -1
 		{
 			card_bonus_atk += 3;
@@ -453,8 +464,8 @@ else if (mouse_x>=x and mouse_y>=y and mouse_x<x+sprite_width and mouse_y<y+spri
 			if mouse_check_button_pressed(mb_right) { sc_playsound(sn_card,50,false,false); }
 			//
 						
-						if card_shiny = false && card_delta = false && ((card_glyph_a = -1 or sc_glyph_bound(ref_glyph_taunt) or sc_glyph_bound(ref_glyph_rush) or
-						sc_glyph_bound(ref_glyph_transform) or sc_glyph_bound(ref_glyph_sketch) or sc_glyph_bound(ref_glyph_mist)) && card_glyph_b = -1 && card_glyph_a != ref_glyph_rations) && card_enigma = false && 
+						if card_shiny = false && card_delta = false && (card_glyph_a = -1 or (card_glyph_a = ref_glyph_taunt and card_glyph_a = ref_glyph_rush and
+						card_glyph_a = ref_glyph_transform and card_glyph_a = ref_glyph_sketch and card_glyph_a = ref_glyph_mist and card_glyph_b = -1))  && card_enigma = false && 
 						card_starter = false && card_can_mega = false && card_secret = false && card_environment = false && massdel = true
 						{
 
