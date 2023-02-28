@@ -14,3 +14,7 @@ card_bonus_def = 0;
 card_penalty_atk = 0;
 card_penalty_def = 0;
 
+card_glyph_a = -1;
+card_glyph_b = -1;
+card_glyph_c = -1;
+
