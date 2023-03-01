@@ -3,24 +3,37 @@ card_shiny = false;
 card_holo = false;
 card_delta = false;
 card_delta_type = -1;
+card_bonus_atk = 0;
+card_glyph_a = -1;
+card_glyph_b = -1;
+card_glyph_c = -1;
+card_full_atk = -1;
+card_has_animate = false;
 randomize(); //random seed
 card_gen = -1;
 count[0] = 0;
 count[1] = 0;
 count[2] = 0;
 marked = false;
+in_deck = false;
+card_delta_set = false;
 
-jumpmax = -5
-jumptimer = irandom_range(50,1000)
-jumpcount = 0
-jumpy = 0
+
+jumpmax = -5;
+jumptimer = irandom_range(50,1000);
+jumpcount = 0;
+jumpy = 0;
 jumping = 1;
+jumpfloor = choose(0.5,2);
+
 
 dupe = 0;
-dupemax = 1000;
+
 card_berry = -1;
+//card_animate = false;
 
 holo_index = irandom_range(0,21);
+anim_index = irandom_range(0,5);
 
 //
 if instance_exists(ob_control) { var reference_id=ob_control; }
@@ -46,6 +59,7 @@ if instance_exists(ob_main){
 	var baby_chance = ob_main.event_card_addition_chance[event_card_type_baby];
 	var shiny_chance = ob_main.shiny_chance;
 	var delta_chance = ob_main.delta_chance;
+	//var animate_chance = ob_main.animate_chance;
 }
 	
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -91,6 +105,7 @@ if card_cat=0 {
 	var random_group_chance=irandom(9999);
 	var random_shiny_chance=irandom(8192);
 	var random_delta_chance=irandom(8192);
+	//var random_animate_chance=irandom(8192);
 var poke_floor, poke_max;
 
 if reference_id = ob_event
@@ -169,7 +184,6 @@ else
 		if random_delta_chance < delta_chance
 		{
 			card_delta = true;
-			card_delta_type = irandom_range(00,17);
 		}
 		card_id=reference_id.create_card_id;
 		if card_id=-1 { var random_card=true; } else { var random_card=false; }
@@ -251,7 +265,7 @@ else
 					if ob_main.option_state[opt_challenge]=ch_rainbow
 					{
 						card_delta = true;
-						card_delta_type = irandom_range(0,17);
+						//card_delta_type = irandom_range(0,17);
 						card_type_a = card_delta_type;
 						card_type_b = -1;
 					}
@@ -279,7 +293,7 @@ else
 						if ob_main.option_state[opt_challenge]=ch_rainbow
 						{
 							card_delta = true;
-							card_delta_type = irandom_range(0,17);
+							//card_delta_type = irandom_range(0,17);
 							card_type_a = card_delta_type;
 							card_type_b = -1;
 						}
@@ -328,14 +342,19 @@ else
 			card_innate=reference_id.create_card_innate;
 			card_shiny=reference_id.create_card_shiny;
 			card_holo=reference_id.create_card_holo;
+			//card_delta_type=reference_id.create_card_delta_type;
 			card_delta=reference_id.create_card_delta;
-			card_delta_type=reference_id.create_card_delta_type;
 			card_type_a=reference_id.create_card_type_a;
 			card_type_b=reference_id.create_card_type_b;
 			card_form_value=reference_id.create_card_form_value;
 		}
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		sc_pokelist();
+		
+		//if random_animate_chance < animate_chance && card_has_animate = true
+		//{
+		//	card_animate = true;			
+		//}
 
 		if card_has_rush = true and card_has_taunt = true { card_glyph_a=ref_glyph_rush; card_glyph_b=ref_glyph_taunt; } //rush and taunt
 		else if card_has_rush = true and card_glyph_a!=ref_glyph_rush { card_glyph_a=ref_glyph_rush; } //rush	
@@ -343,16 +362,9 @@ else
 
 		if card_delta = true
 		{
-				if card_environment = true
-				{
-					card_delta = false;
-				}
-				else
-				{
-					card_type_a = card_delta_type;
-					card_type_b = -1;
-				}
+			sc_determine_card_delta();
 		}
+		
 		//————————————————————————————————————————————————————————————————————————————————————————————————————
 		// SAVE COMPATIBILITY (v1.3.0.1) + (v1.5.0.0)
 		if random_card=false {
@@ -361,7 +373,7 @@ else
 			else if card_id=235 and card_glyph_a!=ref_glyph_sketch { card_glyph_a=ref_glyph_sketch; } //smeargle
 			else if card_id=2504 and card_glyph_a!=ref_glyph_determination{ card_glyph_a=ref_glyph_determination; } //red
 			else if card_id=2505 and card_glyph_a!=ref_glyph_command{ card_glyph_a=ref_glyph_command; } //blue
-			else if (card_has_rush = true and card_has_taunt = true) and (card_glyph_a!=ref_glyph_rush or card_glyph_b!=ref_glyph_taunt) { card_glyph_a=ref_glyph_rush; card_glyph_a=ref_glyph_taunt; } //rush and taunt	
+			else if (card_has_rush = true and card_has_taunt = true) and (card_glyph_a!=ref_glyph_rush or card_glyph_b!=ref_glyph_taunt) { card_glyph_a=ref_glyph_rush; card_glyph_b=ref_glyph_taunt; } //rush and taunt	
 			else if card_has_rush = true and card_glyph_a!=ref_glyph_rush{ card_glyph_a=ref_glyph_rush; } //rush 
 			else if card_has_taunt = true and card_glyph_a!=ref_glyph_taunt{ card_glyph_a=ref_glyph_taunt; } //taunt
 		}
@@ -376,7 +388,7 @@ else
 			else if card_id=235 { card_glyph_a=ref_glyph_sketch; } //smeargle
 			else if card_id=2504 { card_glyph_a=ref_glyph_determination; } //red
 			else if card_id=2505 { card_glyph_a=ref_glyph_command; } //blue
-			else if (card_has_rush = true and card_has_taunt = true) and (card_glyph_a!=ref_glyph_rush or card_glyph_b!=ref_glyph_taunt) { card_glyph_a=ref_glyph_rush; card_glyph_a=ref_glyph_taunt; } //rush and taunt
+			else if (card_has_rush = true and card_has_taunt = true) and (card_glyph_a!=ref_glyph_rush or card_glyph_b!=ref_glyph_taunt) { card_glyph_a=ref_glyph_rush; card_glyph_b=ref_glyph_taunt; } //rush and taunt
 			else if card_has_rush = true and card_glyph_a!=ref_glyph_rush{ card_glyph_a=ref_glyph_rush; } //rush 
 			else if card_has_taunt = true and card_glyph_a!=ref_glyph_taunt{ card_glyph_a=ref_glyph_taunt; } //taunt
 			//
@@ -462,9 +474,9 @@ else
 					else if card_stage!=3 and choose_id_stage_3=true { card_rarity_check=false; }
 					else if (card_stage>1 or card_enigma=true) and choose_id_normal=true { card_rarity_check=false; }
 				}
-				else {
-					if card_enigma=true { card_rarity_check=false; }
-				}
+				else if ob_main.newgameplus = true{
+						if card_evo[0] != -1  { card_rarity_check=false; }
+						}
 				//
 				if card_pseudo=true and allow_id_pseudo=false { card_rarity_check=false; }
 				if card_fossil=true and allow_id_fossil=false { card_rarity_check=false; }
@@ -487,6 +499,8 @@ else
 				//
 				if card_rarity_check=true and enemy_randomizer=true and card_environment=false {
 					card_rarity_check=false;
+					
+					choose_id_stage_3=true { card_rarity_check=false; }
 					//
 					for (var i=0; i<=17; i++;) {
 						var type_condition_chance=irandom(99);
@@ -497,7 +511,21 @@ else
 				}
 			}
 		}
-
+		if enemy_randomizer=true && ob_main.newgameplus = true
+		{
+			if card_can_mega = true
+			{
+				card_form_value = 1000;
+			}
+			else if card_has_forms = true
+			{
+				if card_form_value < 500
+				{
+					card_form_value = irandom_range(500,999);
+				}
+			}
+		
+		}
 	} until (random_card=false or (card_rarity_check=true and card_name!=""));
 	//————————————————————————————————————————————————————————————————————————————————————————————————————
 	sc_card_level_stats_all(true,true);
@@ -526,4 +554,4 @@ else if card_cat=1 {
 	}
 }
 
-old_id = card_id;
+old_id = card_id; /// for transform

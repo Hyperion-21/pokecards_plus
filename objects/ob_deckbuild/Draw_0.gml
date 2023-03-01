@@ -39,7 +39,7 @@ draw_set_halign(fa_left);
 //
 if deck_build_used_total>0 {
 	if ob_main.option_state[opt_challenge] != ch_unlimited{
-		var var_text="Deck: " + string(deck_build_used_total) + "/" + string(ob_main.maindeck_size_max) + " One Secret Card Allowed";
+		var var_text="Deck: " + string(deck_build_used_total) + "/" + string(ob_main.maindeck_size_max) + " One Secret Card Allowed. Duplicate max = 2.";
 	}
 	else
 	{

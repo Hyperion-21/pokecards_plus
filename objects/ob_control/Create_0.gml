@@ -192,7 +192,6 @@ repeat (enemycard_maindeck_total) {
 	create_card_glyph_b=enemy_card_glyph_b[card_shuffle[i]];
 	create_card_glyph_c=enemy_card_glyph_c[card_shuffle[i]];
 	create_card_innate=enemy_card_innate[card_shuffle[i]];
-	//create_card_shiny=enemy_card_shiny[card_shuffle[i]];
 	create_card_form_value=enemy_card_form_value[card_shuffle[i]];
 	//
 	create_enemy_randomizer=true;
@@ -200,6 +199,8 @@ repeat (enemycard_maindeck_total) {
 	//
 	enemycard_maindeck[i]=instance_create_layer(cam_x+cam_w-67,cam_y-100,"instances",ob_card);
 	enemycard_maindeck[i].card_enemy=true;
+
+	
 	i++;
 }
 //————————————————————————————————————————————————————————————————————————————————————————————————————
@@ -252,13 +253,23 @@ tutorial_textbox_line_max=21; //last tutorial line in battle
 tutorial_textbox_line_newturn_seen=false;
 tutorial_textbox_line_drawn_seen=false;
 tutorial_textbox_line_attacked_seen=false;
+
 //
 if ob_main.playing_tutorial=true { hp_max=ob_main.battle_hp[0]; }
+else if ob_main.newgameplus = true {hp_max=ob_main.battle_hp[10];}
 else if ob_main.playing_gym=false and ob_main.playing_elite=false and ob_main.playing_champion=false { hp_max=ob_main.battle_hp[ob_main.area_zone]; }
 else { hp_max=ob_main.battle_hp[ob_main.area_zone+1]; }
 //
-player_hp=hp_max;
-enemy_hp=hp_max;
+if ob_main.area_zone != area_zone_max
+{
+	player_hp=hp_max;
+	enemy_hp=hp_max;
+}
+else 
+{
+	player_hp=hp_max-((hp_max*1.5)-hp_max);
+	enemy_hp=hp_max+((hp_max*1.5)-hp_max);
+}
 player_effect_damaged=0;
 enemy_effect_damaged=0;
 //

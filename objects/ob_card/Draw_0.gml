@@ -186,9 +186,43 @@ if card_shiny = true
 	
 	
 	//SPRITE
-	if(card_innate >= 0 || !card_chomp)
+	if(card_innate >= 0 || !card_chomp) && card_has_animate = false
 	{
 		draw_sprite_general(card_sheet,0,65*(card_grid_x-1)+1,33*(card_grid_y-1)+1,64,32,draw_x-4,draw_y+jumpy+3,1,1,0,c_white,c_white,c_white,c_white,1);
+	} else if card_has_animate = true
+	{
+		var spr = anim_sp;
+
+		
+		anim_speed = 0.2;
+		anim_index += anim_speed; // Advance the image index based on the animation speed
+		if (anim_index >= sprite_get_number(spr)) 
+			{
+			  anim_index = 0; // Reset to the first frame when we reach the end of the animation
+			}
+		if sprite_get_width(spr) <= 47
+		{
+			var spr_width = sprite_get_width(spr);
+			var add_spr = floor(sprite_get_width(spr)/5);
+		}
+		else
+		{
+			var spr_width = 47;
+			var add_spr = 0;
+		}
+		if sprite_get_height(spr) <= 32
+		{
+			var spr_height = sprite_get_height(spr)/2;
+		}
+		else
+		{
+			var spr_height = 32;			
+		}
+		draw_sprite_general(spr,floor(anim_index),0,spr_height,spr_width,32,draw_x+5+add_spr,draw_y+5,1,1,0,c_white,c_white,c_white,c_white,1);
+		if card_shiny = true
+		{
+			draw_sprite_general(sp_sheet,0,48,22,32,12,draw_x+12,draw_y+33,1,1,0,c_white,c_white,c_white,c_white,1);
+		}
 	}
 	//
 	//TYPES
@@ -254,46 +288,14 @@ if card_shiny = true
 	sc_drawtext((draw_x+drawskew_x)+29,(draw_y+drawskew_y)+50,"lv " + string(card_level),global.color_gray,global.color_black,1,(1/1.7),0,-1);
 	//sc_drawtext(draw_x+29,draw_y+4,"#" + string(card_id) + "\nv " + string(card_value) + "\nfv " + string(card_form_value) + "\ns " + string(card_serial),c_aqua,c_black,1,1,0,-1);
 	//
-	if (card_glyph_a = ref_glyph_berserk or card_glyph_b = ref_glyph_berserk or card_glyph_c = ref_glyph_berserk) and (card_hp<=(card_full_hp/3) or (card_hp=1 and card_hp!=card_full_hp)) { var base_atk_multiplier=2; } //glyph: berserk
-	else { var base_atk_multiplier=1; }
-	//
-	if (card_glyph_a = ref_glyph_fork or card_glyph_b = ref_glyph_fork or card_glyph_c = ref_glyph_fork) { var base_atk_divisor=1.5; } //glyph: fork attack
-	else { var base_atk_divisor=1; }
-	if reference_id=ob_control
-	{
-		var card_bonus_atk = ob_control.card_space_id[i].card_bonus_atk;
-		var card_penalty_atk = ob_control.card_space_id[i].card_penalty_atk;
-	}
-	else
-	{
-			var card_bonus_atk = 0;
-			if card_glyph_a = ref_glyph_bless or card_glyph_b = ref_glyph_bless or card_glyph_c = ref_glyph_bless
-			{
-				card_bonus_atk += 1;
-			}
-			if card_glyph_a = ref_glyph_adversity or card_glyph_b = ref_glyph_adversity or card_glyph_c = ref_glyph_adversity && card_innate = -1
-			{
-				card_bonus_atk += 3;
-			}			
-			var card_penalty_atk = 0;
-	}
-	card_atk_real = (ceil(card_full_atk*base_atk_multiplier/base_atk_divisor)+(card_bonus_atk)- card_penalty_atk);
+	
+	//CALCULATE PREVIEW DAMAGE
 	var num_color=c_white;
 	draw_set_halign(fa_left);
-			if card_atk_real > card_full_atk
-			{
-				var fakenum = card_atk_real - card_full_atk;
-				num_color=global.color_friendly;
-			}
-			else if card_atk_real < card_full_atk
-			{
-				var fakenum = card_atk_real - card_full_atk;
-				num_color=global.color_damage;
-			}
-			else {
-				var fakenum = 0
-				num_color=global.color_white; }
-	sc_drawtext((draw_x+drawskew_x)+5,(draw_y+drawskew_y)+66,string(card_atk_real),num_color,global.color_black,1,(1/1.7),0,-1);
+	if card_atk > card_full_atk{num_color=global.color_friendly;}
+	else if card_atk < card_full_atk {num_color=global.color_damage;}
+	else {num_color=global.color_white; }	
+	sc_drawtext((draw_x+drawskew_x)+5,(draw_y+drawskew_y)+66,string(card_atk),num_color,global.color_black,1,(1/1.7),0,-1);		
 	draw_set_halign(fa_center);
 	
 	if card_hp<card_full_hp { num_color=global.color_damage; }

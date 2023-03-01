@@ -52,7 +52,7 @@ if reorder_type>-1 {
 		else if reorder_type=3 { order_number=deck_card_all[i].card_full_def; }
 		else if reorder_type=4 { order_number=deck_card_all[i].card_full_hp; }
 		else if reorder_type=5 { order_number=deck_card_all[i].card_type_a; }
-		else if reorder_type=6 { order_number=deck_card_all[i].card_type_b; }
+		else if reorder_type=6 { order_number=deck_card_all[i].card_delta_type; }
 		else if reorder_type=7 { order_number=deck_card_all[i].card_shiny; }
 		else if reorder_type=8 { order_number=deck_card_all[i].card_holo; }
 		else if reorder_type=9 { order_number=deck_card_all[i].card_berry; }
@@ -332,9 +332,10 @@ else if (mouse_x>=1503 and mouse_y>=166 and mouse_x<=1514 and mouse_y<=176) { //
 else if (mouse_x>=1472 and mouse_y>=147 and mouse_x<=1518 and mouse_y<=178){
 	draw_set_halign(fa_left)
 	ob_main.mouse_cursor=1;
-	tooltip_lines = 2;
-	ob_deckbuild.tooltip_text = "Hold Left or Right click to sell all.\nBE CAREFUL!";
-	if (mouse_check_button(mb_right) or mouse_check_button(mb_left))
+	tooltip_lines = 3;
+	if ob_deckbuild.deck_build_all_total>ob_main.maindeck_size_min_full
+	ob_deckbuild.tooltip_text = "Hold Left or Right click to sell all.\nSell all will not sell rare cards.\n(This takes a long time. Go get a drink...)";
+	if (mouse_check_button(mb_right) or mouse_check_button(mb_left)) 
 		{
 			massdel = true;
 		}

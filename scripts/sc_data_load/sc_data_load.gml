@@ -92,7 +92,7 @@ repeat (4) {
 //————————————————————————————————————————————————————————————————————————————————————————————————————
 if file_exists(ob_main.savedata[ob_main.savestate]) {
 	var savemap=ds_map_secure_load(ob_main.savedata[ob_main.savestate]);
-if !is_undefined(ds_map_find_value(savemap,"version")) { version=ds_map_find_value(savemap,"version"); 
+	if !is_undefined(ds_map_find_value(savemap,"version")) { version=ds_map_find_value(savemap,"version"); 
 	if !is_undefined(ds_map_find_value(savemap,"area_zone")) { area_zone=ds_map_find_value(savemap,"area_zone"); }
 	if !is_undefined(ds_map_find_value(savemap,"latest_zone")) { latest_zone=ds_map_find_value(savemap,"latest_zone"); }
 	if !is_undefined(ds_map_find_value(savemap,"latest_city")) { latest_city=ds_map_find_value(savemap,"latest_city"); }

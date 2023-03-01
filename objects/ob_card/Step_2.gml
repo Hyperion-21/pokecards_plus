@@ -1,4 +1,4 @@
-if marked = true
+if marked = true   //deletes the card
 {
 	if ob_deckbuild.reorder_type=-1
 	{

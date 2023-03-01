@@ -56,6 +56,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 		else if event_kind[i][roadmap_area]=ref_event_delta { event_sprite_x=560; ; event_sprite_y = 272; }
 		else if event_kind[i][roadmap_area]=ref_event_candy { event_sprite_x=592; ; event_sprite_y = 272; }
 		else if event_kind[i][roadmap_area]=ref_event_loophome { event_sprite_x=272; ; event_sprite_y = 272; }
+		else if event_kind[i][roadmap_area]=ref_event_skip { event_sprite_x=304; ; event_sprite_y = 208; }
 		else if event_kind[i][roadmap_area]=ref_event_holo_freecard { event_sprite_x=16*(1+14*2); ; event_sprite_y = 272; }
 		else { event_sprite_y = 208;}
 		//
@@ -99,12 +100,17 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 		}
 	if shinycharm > 0
 	{
-	draw_set_halign(fa_left);
-	sc_drawtext(lives_x - 232,shiny_y,"Shiny Charm: " + string(shinycharm),lives_color,global.color_black,1,1,0,-1);
+		draw_set_halign(fa_left);
+		sc_drawtext(lives_x - 232,shiny_y,"Shiny Charm: " + string(shinycharm),lives_color,global.color_black,1,1,0,-1);
 	}
 	//
 	draw_set_halign(fa_left);
-	//sc_drawtext(lives_x - 232,lives_y,"Latest Zone: " + string(latest_zone),lives_color,global.color_black,1,1,0,-1);
+	
+	if newgameplus = true && !instance_exists(ob_deckbuild) && !instance_exists(ob_control)
+	{
+		sc_drawtext(road_win_x-120,road_win_y+170,"NG+",lives_color,global.color_black,1,1,0,-1);
+	}
+
 	draw_set_halign(fa_center);
 	var zone_name_text="";
 	if roadmap_area=roadmap_current_max-1 or area_zone=area_zone_max-1 or (area_zone=0 and roadmap_area<roadmap_lab_max and zone_first_lap=true) { zone_name_text=zone_name; }
@@ -141,7 +147,7 @@ if !instance_exists(ob_control) and !instance_exists(ob_event) and !instance_exi
 	
 	draw_set_halign(fa_left)
 	draw_set_font(fn_m6x11_L);
-	sc_drawtext(screen_main_x-86,screen_main_y+25,"Change Save",global.color_card_light,global.color_black,1,0.25,0,-1);
+	//sc_drawtext(screen_main_x-89,screen_main_y+25,"Change Save",global.color_card_light,global.color_black,1,0.25,0,-1);
 	draw_set_font(fn_m3x6);	
 	
 	//

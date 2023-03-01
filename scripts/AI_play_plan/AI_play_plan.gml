@@ -163,7 +163,7 @@ do {
 					//checks with card_atk instead of vs_atk because penalty wouldn't be applied if not played
 					all_conditions_met=false;
 				}
-				if argument10=true and (own_atk<player_hp or (opposing_card_id!=-1 and !sc_glyph_check(enemycard_hand[i],ref_glyph_piercing,true))) {
+				if argument10=true and (own_atk<player_hp or (opposing_card_id!=-1 and (!sc_glyph_check(enemycard_hand[i],ref_glyph_piercing,true) or sc_glyph_check(enemycard_hand[i],ref_glyph_taunt,true)))) {
 					//glyph: piercing attack (if not)
 					all_conditions_met=false;
 				}
@@ -180,7 +180,7 @@ do {
 					}
 				}
 				if argument15=true and //glyph: fork attack / piercing attack
-				(sc_glyph_check(enemycard_hand[i],ref_glyph_fork,true) or sc_glyph_check(enemycard_hand[i],ref_glyph_piercing,true)) {
+				(sc_glyph_check(enemycard_hand[i],ref_glyph_fork,true) or (sc_glyph_check(enemycard_hand[i],ref_glyph_piercing,true) && !sc_glyph_check(enemycard_hand[i],ref_glyph_taunt,true))) {
 					all_conditions_met=false;
 				}
 				//

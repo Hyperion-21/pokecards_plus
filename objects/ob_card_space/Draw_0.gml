@@ -77,7 +77,7 @@ if (instance_exists(ob_event))
 
 		break;
 		case ref_event_glyph:
-			draw_sprite_general(sp_sheet, 0, 16 * (ob_event.glyph_add_id + 1), 16 * 6, 12, 11, x + 41, y + 4, 1, 1, 0, c_white, c_white, c_white, c_white, var_event_alpha);
+			draw_sprite_general(sp_sheet, 0,16*(ob_main.ref_glyph_img[ob_main.current_glyph_add]-1),97, 12, 11, x + 41, y + 4, 1, 1, 0, c_white, c_white, c_white, c_white, var_event_alpha);
 
 			draw_set_font(fn_matchup);
 			draw_set_halign(fa_center);
@@ -154,3 +154,6 @@ if berries_total > 0 {
 	    i++;
 	}
 }
+
+//draw_set_halign(fa_left)
+//draw_text(x+15,y + 80, card_bonus_atk);

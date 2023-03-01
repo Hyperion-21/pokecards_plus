@@ -279,10 +279,10 @@ if (ob_main.cursor_hide == false && mouse_x >= x && mouse_y >= y + 2 && mouse_x 
                 ob_deckbuild.tooltip_text = "Sort cards by hit points.";
                 break;
             case 05:
-                ob_deckbuild.tooltip_text = "Sort cards by type 1.";
+                ob_deckbuild.tooltip_text = "Sort cards by type.";
                 break;
             case 06:
-                ob_deckbuild.tooltip_text = "Sort cards by type 2.";
+                ob_deckbuild.tooltip_text = "Sort cards by Delta type.";
                 break;
             case 07:
                 ob_deckbuild.tooltip_text = "Sort cards by shiny.";
